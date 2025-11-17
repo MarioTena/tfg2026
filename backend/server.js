@@ -1,119 +1,108 @@
+// ============================================================================
+// SERVER.JS - Backend básico del TFG
+// Servidor Express + MongoDB para gestionar ejecuciones y pruebas
+// ============================================================================
 
-
-// Importamos Express, el framework para crear APIs HTTP
 const express = require("express");
-
-// Importamos Mongoose, que nos facilita trabajar con MongoDB desde Node.js
 const mongoose = require("mongoose");
-
-// CORS permite que tu frontend (en otro origen/puerto) pueda llamar a este backend
 const cors = require("cors");
-
-// Dotenv carga las variables del archivo .env (por ejemplo MONGO_URI, PORT)
 const dotenv = require("dotenv");
 
-// Importamos el modelo Attempt, que representa los intentos de ejecución de los alumnos
-// (definido en /models/Attempt.js)
 const Attempt = require("./models/Attempt");
+const { runCodeInDocker } = require("./utils/dockerRunner"); // Python con Docker, C simulado
 
-// Cargamos las variables de entorno definidas en .env
+// ============================================================================
+// Configuración inicial
+// ============================================================================
+
+// Cargo las variables del archivo .env (por ejemplo, MONGO_URI y PORT)
 dotenv.config();
 
-// Creamos la aplicación Express
+// Inicializo la aplicación Express
 const app = express();
 
-// Habilitamos CORS para permitir peticiones desde el frontend
+// Permito peticiones desde el frontend (CORS abierto por ahora)
 app.use(cors());
 
-// Habilitamos el parseo automático de JSON en el body de las peticiones
+// Habilito el uso de JSON en las peticiones
 app.use(express.json());
 
-// Puerto donde escuchará la API.
-// Si no hay PORT en el .env, usa 3000 por defecto.
+// Puerto donde escuchará la API (por defecto 3000)
 const PORT = process.env.PORT || 3000;
 
-// URL de conexión a MongoDB. Si no hay MONGO_URI en .env, usa localhost.
+// URL de conexión a MongoDB (si no hay variable, usa la local)
 const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/tfgdb";
 
 // ============================================================================
 // Conexión a MongoDB
 // ============================================================================
-// Nos conectamos a Mongo usando Mongoose.
-// dbName indica el nombre de la base de datos (tfgdb). Si no existe, se crea.
-mongoose.connect(MONGO_URI, { dbName: "tfgdb" })
+mongoose
+  .connect(MONGO_URI, { dbName: "tfgdb" })
   .then(() => console.log("✅ MongoDB conectado"))
   .catch((err) => {
     console.error("❌ Error conectando a Mongo:", err.message);
-    // Si no podemos conectar con la base de datos, cerramos el servidor.
     process.exit(1);
   });
 
 // ============================================================================
-// ✅ GET /api/health
-// Comprueba que:
-//  la API está viva
-//  la base de datos responde correctamente
+// GET /api/health
+// Comprueba que la API responde y que MongoDB está accesible
 // ============================================================================
 app.get("/api/health", async (req, res) => {
   try {
-    // Usamos el "admin" de la BD para hacer un ping
     const admin = mongoose.connection.db.admin();
     const ping = await admin.ping();
 
     res.json({
-      api: "ok",                                   // La API está levantada
-      mongo: ping?.ok === 1 ? "ok" : "fail",      // Mongo responde o no
+      api: "ok",
+      mongo: ping?.ok === 1 ? "ok" : "fail",
     });
   } catch (e) {
-    // Si algo falla con Mongo, lo indicamos pero confirmamos que la API responde
-    res.status(500).json({ api: "ok", mongo: "fail", error: e.message });
+    res.status(500).json({
+      api: "ok",
+      mongo: "fail",
+      error: e.message,
+    });
   }
 });
 
 // ============================================================================
-// ✅ POST /api/test-insert
-// Inserta un documento de prueba en la colección "tests".
-// Sirve para comprobar que podemos ESCRIBIR en MongoDB.
+// POST /api/test-insert
+// Inserta un documento de prueba en la colección "tests"
+// Sirve para probar que se puede escribir en MongoDB
 // ============================================================================
 app.post("/api/test-insert", async (req, res) => {
   try {
-    // Leemos "note" y "meta" del body. Si no vienen, usamos valores por defecto.
     const { note = "Hola TFG", meta = {} } = req.body || {};
 
-    // Construimos el documento a guardar
     const doc = {
       note,
       meta,
-      at: new Date(), // Marca temporal del momento del guardado
+      at: new Date(),
     };
 
-    // Insertamos el documento en la colección "tests"
     const result = await mongoose.connection.db
       .collection("tests")
       .insertOne(doc);
 
-    // Devolvemos el id insertado y ok = true
-    res.json({ insertedId: result.insertedId, ok: true });
+    res.json({ ok: true, insertedId: result.insertedId });
   } catch (e) {
-    // Si hay error (por ejemplo, conexión caída), lo devolvemos
     res.status(500).json({ ok: false, error: e.message });
   }
 });
 
 // ============================================================================
-// ✅ GET /api/test-list
-// Lista los últimos N documentos de la colección "tests".
-// Sirve para comprobar que podemos LEER de MongoDB.
+// GET /api/test-list
+// Devuelve los últimos N documentos de la colección "tests"
+// Parámetro opcional: ?limit=10 (máximo 50)
 // ============================================================================
 app.get("/api/test-list", async (req, res) => {
   try {
-    // Obtenemos el límite desde query (?limit=), con valores seguros
     const limit = Math.max(
       1,
       Math.min(parseInt(req.query.limit || "5", 10), 50)
     );
 
-    // Buscamos documentos en "tests", ordenados por fecha (más recientes primero)
     const items = await mongoose.connection.db
       .collection("tests")
       .find({})
@@ -121,126 +110,130 @@ app.get("/api/test-list", async (req, res) => {
       .limit(limit)
       .toArray();
 
-    // Devolvemos los resultados
-    res.json({ ok: true, count: items.length, items });
+    res.json({
+      ok: true,
+      count: items.length,
+      items,
+    });
   } catch (e) {
     res.status(500).json({ ok: false, error: e.message });
   }
 });
 
 // ============================================================================
-// ✅ POST /api/attempts
-// Guarda un intento de ejecución real usando el modelo Attempt.
-// Más adelante lo usaremos desde /api/run para registrar ejecuciones de código.
+// POST /api/attempts
+// Guarda un intento de ejecución usando el modelo Attempt
+// Este endpoint se usa para registrar intentos manuales o desde /api/run
 // ============================================================================
 app.post("/api/attempts", async (req, res) => {
   try {
-    // Creamos una nueva instancia del modelo Attempt con los datos del body
-    // Esperamos campos como:
-    // user, language, code, stdout, stderr, status, timeMs
     const attempt = new Attempt(req.body);
-
-    // Guardamos el intento en la base de datos
     const saved = await attempt.save();
 
-    // Devolvemos el documento guardado al cliente
     res.json({ ok: true, saved });
   } catch (e) {
-    // Si falta algún campo requerido o hay error de validación/conexión,
-    // devolvemos un 500 con el mensaje
     res.status(500).json({ ok: false, error: e.message });
   }
 });
 
 // ============================================================================
-// ✅ POST /api/run  (VERSIÓN 0 - SIMULADA)
+// ✅ GET /api/attempts
+// Devuelve los últimos N intentos guardados en la colección "attempts".
+// Parámetros opcionales:
+//   - ?limit=5  → número máximo de intentos (máx 50)
+//   - ?user=alumno1 → filtrar por usuario
+// ============================================================================
+app.get("/api/attempts", async (req, res) => {
+  try {
+    const limit = Math.max(
+      1,
+      Math.min(parseInt(req.query.limit || "5", 10), 50)
+    );
+
+    const user = (req.query.user || "").trim();
+
+    const filter = {};
+    if (user) {
+      filter.user = user;
+    }
+
+    const items = await Attempt.find(filter)
+      .sort({ createdAt: -1 }) // más recientes primero
+      .limit(limit)
+      .lean();
+
+    res.json({
+      ok: true,
+      count: items.length,
+      items,
+    });
+  } catch (e) {
+    console.error("Error en GET /api/attempts:", e);
+    res.status(500).json({ ok: false, error: e.message });
+  }
+});
+
 
 // ============================================================================
-
+// POST /api/run  (Versión sin Docker real)
+// Ejecuta el código recibido (por ahora simulado en dockerRunner.js)
+// Flujo:
+// 1. Valida user, language y code
+// 2. Ejecuta con runCodeInDocker()
+// 3. Guarda el intento en MongoDB
+// 4. Devuelve el resultado al cliente
+// ============================================================================
 app.post("/api/run", async (req, res) => {
   try {
-    // 1) Extraemos los datos del body de la petición
     const { user, language, code } = req.body || {};
 
-    // 2) Validamos campos obligatorios
     if (!user || !language || !code) {
-      // 400 = Bad Request (el cliente ha enviado algo incompleto)
       return res.status(400).json({
         ok: false,
-        error: "Faltan campos obligatorios: 'user', 'language', 'code'."
+        error: "Faltan campos obligatorios: user, language, code",
       });
     }
 
-    // 3) Validamos que el lenguaje sea uno de los permitidos
     const allowedLanguages = ["python", "c"];
     if (!allowedLanguages.includes(language)) {
       return res.status(400).json({
         ok: false,
-        error: `Lenguaje no soportado. Usa: ${allowedLanguages.join(", ")}.`
+        error: `Lenguaje no soportado. Usa: ${allowedLanguages.join(", ")}.`,
       });
     }
 
-    // 4) (VERSIÓN SIMPLIFICADA) Simulamos la ejecución
-    // ------------------------------------------------
-    // En lugar de ejecutar código real, devolvemos un comportamiento de prueba.
-    
-    let stdout = "";
-    let stderr = "";
-    let status = "success";
-    const timeMs = Math.floor(Math.random() * 50) + 10; // tiempo simulado (10-60 ms)
+    // Ejecuto el código (simulado)
+    const result = await runCodeInDocker(language, code);
 
-    // Regla de simulación muy simple:
-    // - Si el código contiene la palabra "error", simulamos fallo.
-    // - Si no, simulamos ejecución correcta.
-    if (code.toLowerCase().includes("error")) {
-      status = "error";
-      stdout = "";
-      stderr = "Simulación: se ha detectado un error en el código.";
-    } else {
-      status = "success";
-      stdout = "Simulación: el código se ha ejecutado correctamente.";
-      stderr = "";
-    }
-
-    // 5) Creamos y guardamos el Attempt en la base de datos
+    // Guardo el intento con el resultado obtenido
     const attempt = new Attempt({
       user,
       language,
       code,
-      stdout,
-      stderr,
-      status,
-      timeMs,
+      stdout: result.stdout,
+      stderr: result.stderr,
+      status: result.status,
+      timeMs: result.timeMs,
     });
 
     const saved = await attempt.save();
 
-    // 6) Devolvemos al cliente el resultado de la "ejecución" y el intento guardado
-    return res.json({
+    res.json({
       ok: true,
-      run: {
-        stdout,
-        stderr,
-        status,
-        timeMs,
-      },
+      run: result,
       attemptId: saved._id,
     });
-
   } catch (e) {
-    // Si algo sale mal (error inesperado en el servidor o en Mongo)
-    console.error("❌ Error en /api/run:", e);
-    return res.status(500).json({
+    console.error("Error en /api/run:", e);
+    res.status(500).json({
       ok: false,
-      error: "Error interno en /api/run.",
-      details: e.message,
+      error: "Error interno en /api/run",
     });
   }
 });
 
-
 // ============================================================================
-// 🚀 Arrancamos el servidor HTTP
+// sArranque del servidor
 // ============================================================================
 app.listen(PORT, () => {
   console.log(`🚀 API escuchando en http://localhost:${PORT}`);
