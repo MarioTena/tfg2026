@@ -1,0 +1,268 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #0f172a;
+  color: #e5e7eb;
+}
+
+.header {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid #1f2937;
+  background: #020617;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.header p {
+  margin: 0.25rem 0 0;
+  font-size: 0.9rem;
+  color: #9ca3af;
+}
+
+
+.main-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  padding: 1.5rem 2rem 2rem;
+}
+
+.panel {
+  background: #020617;
+  border: 1px solid #1f2937;
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem 1.25rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+.panel h2 {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+
+.field {
+  margin-bottom: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.field label {
+  font-size: 0.9rem;
+  color: #cbd5f5;
+}
+
+.field input,
+.field select,
+.field textarea {
+  border-radius: 0.5rem;
+  border: 1px solid #1f2937;
+  padding: 0.5rem 0.6rem;
+  background: #020617;
+  color: #e5e7eb;
+  font-size: 0.9rem;
+  font-family: inherit;
+}
+
+.field textarea {
+  font-family: "JetBrains Mono", "Fira Code", Consolas, monospace;
+  resize: vertical;
+}
+
+
+#run-btn {
+  margin-top: 0.75rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.95rem;
+  background: #22c55e;
+  color: #022c22;
+  transition: transform 0.05s ease, box-shadow 0.1s ease, background 0.1s ease;
+}
+
+#run-btn:hover {
+  background: #16a34a;
+  box-shadow: 0 8px 18px rgba(34, 197, 94, 0.3);
+}
+
+#run-btn:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+#run-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+  box-shadow: none;
+}
+
+.status-msg {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #e5e7eb;
+}
+
+
+.output-block {
+  margin-bottom: 0.75rem;
+}
+
+.output-block h3 {
+  margin: 0 0 0.25rem;
+  font-size: 0.95rem;
+  color: #cbd5f5;
+}
+
+.output-block pre {
+  background: #020617;
+  border-radius: 0.5rem;
+  border: 1px solid #1f2937;
+  padding: 0.6rem 0.7rem;
+  font-family: "JetBrains Mono", "Fira Code", Consolas, monospace;
+  font-size: 0.85rem;
+  min-height: 2.2rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.output-inline {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.output-inline .label {
+  color: #9ca3af;
+}
+
+/* ============================================================================
+   Historial de intentos
+   ============================================================================ */
+
+.history {
+  margin: 0 2rem 2rem;
+  padding: 1rem 1.25rem;
+  background: #020617;
+  border-radius: 0.75rem;
+  border: 1px solid #1f2937;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+.history h2 {
+  margin-top: 0;
+  font-size: 1.05rem;
+}
+
+#attempts-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
+}
+
+#attempts-list li {
+  padding: 0.35rem 0;
+  border-bottom: 1px solid #111827;
+}
+
+#attempts-list li:last-child {
+  border-bottom: none;
+}
+
+.attempt-status-success {
+  color: #22c55e;
+}
+
+.attempt-status-error {
+  color: #f97373;
+}
+
+.attempt-status-timeout {
+  color: #fbbf24;
+}
+
+@media (max-width: 900px) {
+  .main-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================================
+   Layout de una sola columna para páginas de teoría/ejercicios
+   ============================================================================ */
+
+.single-column {
+  grid-template-columns: 1fr;
+}
+
+/* ============================================================================
+   Lista de temas
+   ============================================================================ */
+
+.temas-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.temas-list li {
+  margin-bottom: 0.75rem;
+}
+
+.temas-list a {
+  color: #e5e7eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.temas-list a:hover {
+  text-decoration: underline;
+}
+
+/* ============================================================================
+   Botones tipo enlace
+   ============================================================================ */
+
+.buttons-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.btn-link {
+  display: inline-block;
+  padding: 0.45rem 0.9rem;
+  border-radius: 0.5rem;
+  background: #22c55e;
+  color: #022c22;
+  font-size: 0.9rem;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.btn-link:hover {
+  background: #16a34a;
+}
+
+.btn-link.secondary {
+  background: #111827;
+  color: #e5e7eb;
+}
+
+.btn-link.secondary:hover {
+  background: #1f2937;
+}
+
