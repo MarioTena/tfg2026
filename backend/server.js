@@ -10,6 +10,10 @@ const dotenv = require("dotenv");
 
 const Attempt = require("./models/Attempt");
 const { runCodeInDocker } = require("./utils/dockerRunner"); // Python con Docker, C simulado
+const { generateFeedbackForAttempt } = require("./services/aiFeedback");
+const authRoutes = require("./routes/authRoutes");
+const { requireAuth } = require("./middleware/requireAuth");
+
 
 // ============================================================================
 // Configuración inicial
@@ -26,6 +30,10 @@ app.use(cors());
 
 // Habilito el uso de JSON en las peticiones
 app.use(express.json());
+// ============================================================================
+// Rutas de autenticación
+// ============================================================================
+app.use("/api/auth", authRoutes);
 
 // Puerto donde escuchará la API (por defecto 3000)
 const PORT = process.env.PORT || 3000;
@@ -120,77 +128,43 @@ app.get("/api/test-list", async (req, res) => {
   }
 });
 
-// ============================================================================
-// POST /api/attempts
-// Guarda un intento de ejecución usando el modelo Attempt
-// Este endpoint se usa para registrar intentos manuales o desde /api/run
-// ============================================================================
-app.post("/api/attempts", async (req, res) => {
-  try {
-    const attempt = new Attempt(req.body);
-    const saved = await attempt.save();
 
-    res.json({ ok: true, saved });
-  } catch (e) {
-    res.status(500).json({ ok: false, error: e.message });
-  }
-});
+
 
 // ============================================================================
 // ✅ GET /api/attempts
 // Devuelve los últimos N intentos guardados en la colección "attempts".
-// Parámetros opcionales:
-//   - ?limit=5  → número máximo de intentos (máx 50)
-//   - ?user=alumno1 → filtrar por usuario
 // ============================================================================
-app.get("/api/attempts", async (req, res) => {
+app.get("/api/attempts", requireAuth, async (req, res) => {
   try {
-    const limit = Math.max(
-      1,
-      Math.min(parseInt(req.query.limit || "5", 10), 50)
-    );
+    const limit = Math.min(parseInt(req.query.limit || "5", 10), 20);
 
-    const user = (req.query.user || "").trim();
-
-    const filter = {};
-    if (user) {
-      filter.user = user;
-    }
-
-    const items = await Attempt.find(filter)
-      .sort({ createdAt: -1 }) // más recientes primero
-      .limit(limit)
-      .lean();
+    const attempts = await Attempt.find({ userId: req.user.id })
+      .sort({ createdAt: -1 })
+      .limit(limit);
 
     res.json({
       ok: true,
-      count: items.length,
-      items,
+      items: attempts,
     });
   } catch (e) {
-    console.error("Error en GET /api/attempts:", e);
     res.status(500).json({ ok: false, error: e.message });
   }
 });
 
 
-// ============================================================================
-// POST /api/run  (Versión sin Docker real)
-// Ejecuta el código recibido (por ahora simulado en dockerRunner.js)
-// Flujo:
-// 1. Valida user, language y code
-// 2. Ejecuta con runCodeInDocker()
-// 3. Guarda el intento en MongoDB
-// 4. Devuelve el resultado al cliente
-// ============================================================================
-app.post("/api/run", async (req, res) => {
-  try {
-    const { user, language, code } = req.body || {};
 
-    if (!user || !language || !code) {
+// ============================================================================
+// ✅ POST /api/run
+// ============================================================================
+app.post("/api/run", requireAuth, async (req, res) => {
+  try {
+    const { language, code, exerciseId } = req.body || {};
+
+    if (!language || !code) {
       return res.status(400).json({
         ok: false,
-        error: "Faltan campos obligatorios: user, language, code",
+        error: "Faltan campos: language, code",
       });
     }
 
@@ -202,12 +176,12 @@ app.post("/api/run", async (req, res) => {
       });
     }
 
-    // Ejecuto el código (simulado)
+    // 1) Ejecutar código
     const result = await runCodeInDocker(language, code);
 
-    // Guardo el intento con el resultado obtenido
+    // 2) Crear intento asociado al usuario del token
     const attempt = new Attempt({
-      user,
+      userId: req.user.id,
       language,
       code,
       stdout: result.stdout,
@@ -216,21 +190,37 @@ app.post("/api/run", async (req, res) => {
       timeMs: result.timeMs,
     });
 
+    // 3) Generar feedback automático (por ahora heurístico)
+    const feedback = await generateFeedbackForAttempt(attempt, { exerciseId });
+
+    // 4) Guardar feedback dentro del intento
+    attempt.aiFeedback = {
+      message: feedback.message,
+      level: feedback.level,
+      createdAt: new Date(),
+      exerciseId: exerciseId || null,
+    };
+
+    // 5) Guardar en Mongo
     const saved = await attempt.save();
 
-    res.json({
+    // 6) Responder
+    return res.json({
       ok: true,
       run: result,
       attemptId: saved._id,
+      feedback,
     });
   } catch (e) {
-    console.error("Error en /api/run:", e);
-    res.status(500).json({
+    console.error("❌ Error en /api/run:", e);
+    return res.status(500).json({
       ok: false,
       error: "Error interno en /api/run",
+      details: e.message,
     });
   }
 });
+
 
 // ============================================================================
 // sArranque del servidor

@@ -82,7 +82,7 @@ function runDockerCommand(image, extraArgs, code, timeoutMs = 15000) {
 // ============================================================================
 async function runPythonInDocker(code) {
   // python -  => lee el código desde stdin
-  return runDockerCommand("python:3.11", ["python", "-"], code, 5000);
+  return runDockerCommand("python:3.11", ["python", "-"], code, 10000);
 }
 
 // ============================================================================
