@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 1.3 – Variables y tipos</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<header class="header">
+  <h1>Tema 1 · Python</h1>
+  <p>1.3 · Variables: guardar información y reutilizarla</p>
+</header>
+
+<main class="main-container single-column">
+
+  <!-- BLOQUE 1 -->
+  <section class="panel">
+    <h2>¿Qué es una variable?</h2>
+    <p>
+      Una variable es una forma de <strong>guardar información</strong>
+      para usarla más adelante.
+    </p>
+
+    <div class="callout">
+      Piensa en una variable como una etiqueta con un valor dentro.
+    </div>
+  </section>
+
+  <!-- BLOQUE 2 -->
+  <section class="panel">
+    <h2>Crear una variable</h2>
+    <p>
+      En Python, crear una variable es muy sencillo:
+    </p>
+
+    <pre><code>edad = 20</code></pre>
+
+    <p>
+      Aquí estamos diciendo:
+    </p>
+
+    <ul>
+      <li>El nombre de la variable es <code>edad</code></li>
+      <li>Su valor es <code>20</code></li>
+    </ul>
+  </section>
+
+  <!-- BLOQUE 3 -->
+  <section class="panel">
+    <h2>💭 Piensa antes de ejecutar</h2>
+
+    <p>
+      Antes de probar este código, piensa:
+    </p>
+
+    <pre><code>edad = 20
+print(edad)</code></pre>
+
+    <ul>
+      <li>¿Qué va a mostrar?</li>
+      <li>¿Mostrará el texto <code>edad</code> o el número?</li>
+    </ul>
+
+    <div class="callout">
+      Ejecuta el código solo cuando tengas una respuesta en mente.
+    </div>
+  </section>
+
+  <!-- BLOQUE 4 -->
+  <section class="panel">
+    <h2>Usar variables en mensajes</h2>
+    <p>
+      Las variables sirven para combinar información:
+    </p>
+
+    <pre><code>nombre = "Ana"
+print("Me llamo", nombre)</code></pre>
+
+    <p>
+      Python sustituye la variable por su valor.
+    </p>
+  </section>
+
+  <!-- BLOQUE 5 -->
+  <section class="panel">
+    <h2>Tipos de datos (sin memorizar)</h2>
+    <p>
+      Cada valor tiene un <strong>tipo</strong>.
+      Python lo detecta automáticamente.
+    </p>
+
+    <pre><code>edad = 21        # número entero
+altura = 1.70    # número decimal
+nombre = "Luis"  # texto
+activo = True    # booleano</code></pre>
+
+    <div class="callout">
+      No tienes que indicar el tipo: Python lo deduce por ti.
+    </div>
+  </section>
+
+  <!-- BLOQUE 6 -->
+  <section class="panel">
+    <h2>⚠️ Error típico (muy importante)</h2>
+
+    <p>
+      Observa este código:
+    </p>
+
+    <pre><code>print(nombre)
+nombre = "Ana"</code></pre>
+
+    <p>
+      ❓ Pregunta clave:
+    </p>
+
+    <ul>
+      <li>¿Funcionará?</li>
+      <li>¿Por qué sí o por qué no?</li>
+    </ul>
+
+    <div class="callout">
+      Python ejecuta de arriba hacia abajo.
+      No puede usar una variable que aún no existe.
+    </div>
+  </section>
+
+  <!-- BLOQUE 7 -->
+  <section class="panel">
+    <h2>Mini-reto guiado</h2>
+    <p>
+      Crea un programa que:
+    </p>
+
+    <ol>
+      <li>Guarde tu nombre en una variable</li>
+      <li>Guarde tu edad en otra variable</li>
+      <li>Muestre un mensaje usando ambas</li>
+    </ol>
+
+    <pre><code># Ejemplo de estructura
+nombre = "Tu nombre"
+edad = 0
+print("Me llamo", nombre)
+print("Tengo", edad, "años")</code></pre>
+
+    <div class="callout">
+      No copies sin pensar.  
+      Cambia valores y observa qué ocurre.
+    </div>
+  </section>
+
+  <!-- NAVEGACIÓN -->
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./02-primer-programa.html">
+      Anterior
+    </a>
+
+    <a class="btn btn-primary"
+       href="../../../playground/index.html?lang=python">
+      Probar en el playground
+    </a>
+
+    <a class="btn btn-secondary" href="./04-operaciones.html">
+      Siguiente tema
+    </a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('1.3')">
+  Marcar como completado
+  </button>
+
+<script>
+async function completeTopic(topicId) {
+  await fetch("http://localhost:3000/api/progress/python/complete", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${localStorage.getItem("token")}`
+    },
+    body: JSON.stringify({ topic: topicId })
+  });
+
+  alert("Tema completado 🎉");
+}
+</script>
+
+
+</main>
+
+</body>
+</html>

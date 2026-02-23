@@ -2,16 +2,17 @@
 // Registro, login y endpoint /me (requiere JWT)
 // ============================================================================
 
-const express = require("express");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const User = require("../models/User");
-const { requireAuth } = require("../middleware/requireAuth");
+const express = require("express"); //creamos rutas
+const bcrypt = require("bcryptjs"); //ciframos contraseñas
+const jwt = require("jsonwebtoken"); //creamos tokens de sesion
+const User = require("../models/User"); //modelo de usuario en MongoDB
+const { requireAuth } = require("../middleware/requireAuth");// protegemos rutas privadas
 
-const router = express.Router();
+const router = express.Router(); //creamos un miniservidor se rutas
 
 // ----------------------------------------------------------------------------
 // Helper: crear token JWT
+// Con JWT podemos identificar al usuario sin mantener sesiones en el servidor.
 // ----------------------------------------------------------------------------
 function signToken(user) {
   const secret = process.env.JWT_SECRET;
@@ -106,6 +107,7 @@ router.post("/login", async (req, res) => {
 
 // ----------------------------------------------------------------------------
 // GET /api/auth/me  (requiere token)
+// mostramos info del usuario por pantalla y lo usamos para la validación del token en requireAuth.js
 // ----------------------------------------------------------------------------
 router.get("/me", requireAuth, async (req, res) => {
   // req.user viene del middleware

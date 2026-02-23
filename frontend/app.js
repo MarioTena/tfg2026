@@ -6,6 +6,12 @@
 
 const API_URL = "http://localhost:3000/api/run";
 
+// Si no hay token, no dejamos entrar al playground
+(function redirectIfNotLogged() {
+  const token = localStorage.getItem("token");
+  if (!token) window.location.href = "../login.html";
+})();
+
 // ============================================================================
 // Snippets de ejemplo para precargar ejercicios
 // Cada clave es un id que se pasa por la URL (?snippet=...)
@@ -40,6 +46,7 @@ const stderrEl = document.getElementById("stderr");
 const runStatusEl = document.getElementById("run-status");
 const runTimeEl = document.getElementById("run-time");
 const attemptsListEl = document.getElementById("attempts-list");
+const feedbackEl = document.getElementById("feedback");
 
 // ============================================================================
 // Función para limpiar la salida antes de una nueva ejecución
@@ -50,6 +57,10 @@ function resetOutput() {
   runStatusEl.textContent = "-";
   runTimeEl.textContent = "-";
   statusMsg.textContent = "";
+
+  if (feedbackEl) {
+    feedbackEl.textContent = "";
+  }
 }
 
 // ============================================================================
@@ -73,31 +84,61 @@ function loadSnippetFromURL() {
   }
 }
 
+
 // ============================================================================
 // Carga el historial de intentos desde el backend y lo pinta en la lista
+// (ahora viene del usuario autenticado por JWT)
 // ============================================================================
 async function loadAttempts() {
-  const user = userInput.value.trim() || "alumno1";
-  const url = `http://localhost:3000/api/attempts?limit=5&user=${encodeURIComponent(
-    user
-  )}`;
+  const url = `http://localhost:3000/api/attempts?limit=5`;
+
+  // Si no hay token, lo mostramos claro (en vez de intentar llamar y fallar)
+  const token = localStorage.getItem("token");
+  attemptsListEl.innerHTML = "";
+
+  if (!token) {
+    const li = document.createElement("li");
+    li.textContent = "Necesitas hacer login para ver el historial.";
+    attemptsListEl.appendChild(li);
+    return;
+  }
 
   try {
-    const res = await fetch(url);
-    const data = await res.json();
+    const res = await fetch(url, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
-    attemptsListEl.innerHTML = "";
-
-    if (!res.ok || !data.ok) {
+    // Si el token no vale (caducado / inválido)
+    if (res.status === 401) {
       const li = document.createElement("li");
-      li.textContent = "No se ha podido cargar el historial.";
+      li.textContent = "Sesión caducada o token inválido. Vuelve a hacer login.";
       attemptsListEl.appendChild(li);
       return;
     }
 
-    if (!data.items.length) {
+    // Intentamos parsear JSON de forma segura
+    let data = null;
+    try {
+      data = await res.json();
+    } catch {
       const li = document.createElement("li");
-      li.textContent = "Sin intentos todavía para este usuario.";
+      li.textContent = "Respuesta inválida del servidor (no es JSON).";
+      attemptsListEl.appendChild(li);
+      return;
+    }
+
+    if (!res.ok || !data.ok) {
+      const li = document.createElement("li");
+      li.textContent = data?.error || "No se ha podido cargar el historial.";
+      attemptsListEl.appendChild(li);
+      return;
+    }
+
+    if (!data.items || !data.items.length) {
+      const li = document.createElement("li");
+      li.textContent = "Sin intentos todavía.";
       attemptsListEl.appendChild(li);
       return;
     }
@@ -111,8 +152,7 @@ async function loadAttempts() {
         timeout: "attempt-status-timeout",
       };
 
-      const statusClass =
-        statusClassMap[attempt.status] || "attempt-status-error";
+      const statusClass = statusClassMap[attempt.status] || "attempt-status-error";
 
       const when = attempt.createdAt
         ? new Date(attempt.createdAt).toLocaleString()
@@ -132,12 +172,13 @@ async function loadAttempts() {
     });
   } catch (err) {
     console.error("Error cargando historial:", err);
-    attemptsListEl.innerHTML = "";
     const li = document.createElement("li");
     li.textContent = "Error de conexión al cargar el historial.";
     attemptsListEl.appendChild(li);
   }
 }
+
+
 
 // ============================================================================
 // Función principal: envía el código al backend y procesa la respuesta
@@ -159,15 +200,17 @@ async function runCode() {
   runButton.disabled = true;
 
   try {
-    const body = { user, language, code };
+    const body = { language, code };
 
     const response = await fetch(API_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
-    });
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "Authorization": `Bearer ${localStorage.getItem("token")}`,
+  },
+  body: JSON.stringify(body),
+});
+
 
     const data = await response.json();
 
@@ -185,6 +228,12 @@ async function runCode() {
     runStatusEl.textContent = run.status || "-";
     runTimeEl.textContent =
       typeof run.timeMs === "number" ? `${run.timeMs} ms` : "-";
+
+      // Feedback automático devuelto por el backend
+    if (feedbackEl) {
+      const fb = data.feedback;
+      feedbackEl.textContent = fb && fb.message ? fb.message : "";
+    }
 
     // Actualizo el historial de intentos
     await loadAttempts();
@@ -204,6 +253,15 @@ async function runCode() {
   } finally {
     runButton.disabled = false;
   }
+}
+
+const logoutBtn = document.getElementById("logout-btn");
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    window.location.href = "../login.html";
+  });
 }
 
 // ============================================================================

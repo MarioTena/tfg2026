@@ -3,29 +3,33 @@
 // Servidor Express + MongoDB para gestionar ejecuciones y pruebas
 // ============================================================================
 
+//Infrestructura de API
 const express = require("express");
-const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
 
-const Attempt = require("./models/Attempt");
-const { runCodeInDocker } = require("./utils/dockerRunner"); // Python con Docker, C simulado
-const { generateFeedbackForAttempt } = require("./services/aiFeedback");
-const authRoutes = require("./routes/authRoutes");
-const { requireAuth } = require("./middleware/requireAuth");
+const mongoose = require("mongoose"); //conexion mongodb
+
+const Attempt = require("./models/Attempt"); //guardar intentos
+const { runCodeInDocker } = require("./utils/dockerRunner"); //ejecutar codigo en Docker
+const { generateFeedbackForAttempt } = require("./services/aiFeedback"); //feedback IA
+const authRoutes = require("./routes/authRoutes"); //rutas de registro/login
+const { requireAuth } = require("./middleware/requireAuth"); //middleware para proteger endpoints
+const progressRoutes = require("./routes/progressRoutes");
+
 
 
 // ============================================================================
 // Configuración inicial
 // ============================================================================
 
-// Cargo las variables del archivo .env (por ejemplo, MONGO_URI y PORT)
+// Cargo las variables del archivo .env (por ejemplo MONGO_URI y PORT)
 dotenv.config();
 
 // Inicializo la aplicación Express
 const app = express();
 
-// Permito peticiones desde el frontend (CORS abierto por ahora)
+// Permito peticiones desde el frontend al backend
 app.use(cors());
 
 // Habilito el uso de JSON en las peticiones
@@ -34,6 +38,8 @@ app.use(express.json());
 // Rutas de autenticación
 // ============================================================================
 app.use("/api/auth", authRoutes);
+
+app.use("/api/progress", progressRoutes);
 
 // Puerto donde escuchará la API (por defecto 3000)
 const PORT = process.env.PORT || 3000;
@@ -102,7 +108,6 @@ app.post("/api/test-insert", async (req, res) => {
 // ============================================================================
 // GET /api/test-list
 // Devuelve los últimos N documentos de la colección "tests"
-// Parámetro opcional: ?limit=10 (máximo 50)
 // ============================================================================
 app.get("/api/test-list", async (req, res) => {
   try {
@@ -129,7 +134,7 @@ app.get("/api/test-list", async (req, res) => {
 });
 
 
-
+//Aqui empezamos con los endpoints reales
 
 // ============================================================================
 // ✅ GET /api/attempts
@@ -190,7 +195,7 @@ app.post("/api/run", requireAuth, async (req, res) => {
       timeMs: result.timeMs,
     });
 
-    // 3) Generar feedback automático (por ahora heurístico)
+    // 3) Generar feedback automático (de momento lo de chatgpt, luego sera un botón que se conectará a una ia)
     const feedback = await generateFeedbackForAttempt(attempt, { exerciseId });
 
     // 4) Guardar feedback dentro del intento
@@ -223,7 +228,7 @@ app.post("/api/run", requireAuth, async (req, res) => {
 
 
 // ============================================================================
-// sArranque del servidor
+// Arranque del servidor
 // ============================================================================
 app.listen(PORT, () => {
   console.log(`🚀 API escuchando en http://localhost:${PORT}`);

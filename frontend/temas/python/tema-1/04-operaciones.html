@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 1.4 – Operaciones y cálculos</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<header class="header">
+  <h1>Tema 1 · Python</h1>
+  <p>1.4 · Operaciones: cómo calcula Python</p>
+</header>
+
+<main class="main-container single-column">
+
+  <!-- BLOQUE 1 -->
+  <section class="panel">
+    <h2>Python también calcula</h2>
+    <p>
+      Además de guardar información, Python puede realizar
+      <strong>operaciones matemáticas</strong>.
+    </p>
+
+    <pre><code>print(5 + 3)</code></pre>
+
+    <div class="callout">
+      Python evalúa la operación y muestra el resultado.
+    </div>
+  </section>
+
+
+  <!-- BLOQUE 2 -->
+  <section class="panel">
+    <h2>Operaciones básicas</h2>
+
+    <pre><code>a = 10
+b = 3
+
+print(a + b)   # suma
+print(a - b)   # resta
+print(a * b)   # multiplicación
+print(a / b)   # división
+print(a // b)  # división entera
+print(a % b)   # resto
+print(a ** b)  # potencia</code></pre>
+
+    <p>
+      No memorices aún. Lo importante es entender qué hace cada símbolo.
+    </p>
+  </section>
+
+
+  <!-- BLOQUE 3 -->
+  <section class="panel">
+    <h2>💭 Piensa antes de ejecutar</h2>
+
+    <pre><code>print(10 / 3)</code></pre>
+
+    <ul>
+      <li>¿Qué resultado esperas?</li>
+      <li>¿Será 3 o 3.333...?</li>
+    </ul>
+
+    <div class="callout">
+      Python siempre devuelve decimal en divisiones normales.
+    </div>
+  </section>
+
+
+  <!-- BLOQUE 4 -->
+  <section class="panel">
+    <h2>División normal vs división entera</h2>
+
+    <pre><code>print(10 / 3)
+print(10 // 3)</code></pre>
+
+    <p>
+      Observa la diferencia:
+    </p>
+
+    <ul>
+      <li><code>/</code> → devuelve decimal</li>
+      <li><code>//</code> → elimina los decimales</li>
+    </ul>
+
+    <div class="callout">
+      Esta diferencia es clave en muchos algoritmos.
+    </div>
+  </section>
+
+
+  <!-- BLOQUE 5 -->
+  <section class="panel">
+    <h2>Orden de operaciones</h2>
+
+    <pre><code>print(2 + 3 * 4)</code></pre>
+
+    <ul>
+      <li>¿Da 20?</li>
+      <li>¿O da 14?</li>
+    </ul>
+
+    <div class="callout">
+      Python respeta las reglas matemáticas:
+      primero multiplicación, luego suma.
+    </div>
+
+    <pre><code>print((2 + 3) * 4)</code></pre>
+  </section>
+
+
+  <!-- BLOQUE 6 -->
+  <section class="panel">
+    <h2>⚠️ Error típico: mezclar tipos</h2>
+
+    <pre><code>edad = 20
+print("Tengo " + edad + " años")</code></pre>
+
+    <p>
+      ❓ ¿Funcionará?
+    </p>
+
+    <div class="callout">
+      No. No se puede sumar texto con número directamente.
+    </div>
+
+    <p>Forma correcta:</p>
+
+    <pre><code>print("Tengo", edad, "años")</code></pre>
+  </section>
+
+
+  <!-- BLOQUE 7 -->
+  <section class="panel">
+    <h2>Mini-reto práctico</h2>
+
+    <p>
+      Crea un programa que:
+    </p>
+
+    <ol>
+      <li>Guarde dos números en variables</li>
+      <li>Calcule su suma</li>
+      <li>Calcule su multiplicación</li>
+      <li>Muestre ambos resultados</li>
+    </ol>
+
+    <pre><code># Estructura base
+a = 0
+b = 0
+
+print("Suma:", a + b)
+print("Multiplicación:", a * b)</code></pre>
+
+    <div class="callout">
+      Cambia los números y observa cómo varían los resultados.
+    </div>
+  </section>
+
+
+  <!-- BLOQUE 8 -->
+  <section class="panel panel-challenge">
+    <h2>🎯 Reto extra (nivel 2)</h2>
+
+    <p>
+      ¿Qué ocurre si divides entre cero?
+    </p>
+
+    <pre><code>print(5 / 0)</code></pre>
+
+    <p>
+      Ejecuta y observa el error.
+    </p>
+
+    <div class="callout">
+      Aprender a leer errores es parte fundamental de programar.
+    </div>
+  </section>
+
+
+  <!-- NAVEGACIÓN -->
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./03-variables.html">
+      Anterior
+    </a>
+
+    <a class="btn btn-primary"
+       href="../../../playground/index.html?lang=python">
+      Probar en el playground
+    </a>
+
+    <a class="btn btn-secondary" href="./05-strings.html">
+      Siguiente tema
+    </a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('1.4')">
+  Marcar como completado
+  </button>
+
+<script>
+async function completeTopic(topicId) {
+  await fetch("http://localhost:3000/api/progress/python/complete", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${localStorage.getItem("token")}`
+    },
+    body: JSON.stringify({ topic: topicId })
+  });
+
+  alert("Tema completado 🎉");
+}
+</script>
+</main>
+
+</body>
+</html>

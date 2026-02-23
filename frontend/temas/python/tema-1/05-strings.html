@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 1.5 – Strings (texto)</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<header class="header">
+  <h1>Tema 1 · Python</h1>
+  <p>1.5 · Strings: trabajar con texto</p>
+</header>
+
+<main class="main-container single-column">
+
+  <!-- BLOQUE 1 -->
+  <section class="panel">
+    <h2>¿Qué es un string?</h2>
+    <p>
+      Un <strong>string</strong> es texto.  
+      Cualquier cosa que esté entre comillas.
+    </p>
+
+    <pre><code>nombre = "Ana"
+mensaje = "Hola mundo"</code></pre>
+
+    <div class="callout">
+      Si lleva comillas → es texto.
+    </div>
+  </section>
+
+
+  <!-- BLOQUE 2 -->
+  <section class="panel">
+    <h2>Comillas simples o dobles</h2>
+
+    <pre><code>texto1 = "Hola"
+texto2 = 'Hola'</code></pre>
+
+    <p>
+      Ambas funcionan igual.
+    </p>
+
+    <div class="callout">
+      Lo importante es abrir y cerrar correctamente.
+    </div>
+  </section>
+
+
+  <!-- BLOQUE 3 -->
+  <section class="panel">
+    <h2>💭 Piensa antes de ejecutar</h2>
+
+    <pre><code>print("Hola" + "Mundo")</code></pre>
+
+    <ul>
+      <li>¿Qué mostrará?</li>
+      <li>¿Habrá espacio entre palabras?</li>
+    </ul>
+
+    <div class="callout">
+      Python no añade espacios automáticamente.
+    </div>
+  </section>
+
+
+  <!-- BLOQUE 4 -->
+  <section class="panel">
+    <h2>Concatenar texto</h2>
+
+    <pre><code>print("Hola" + " " + "Mundo")</code></pre>
+
+    <p>
+      El símbolo <code>+</code> une strings.
+    </p>
+
+    <p>
+      Pero hay una forma más sencilla:
+    </p>
+
+    <pre><code>print("Hola", "Mundo")</code></pre>
+
+    <div class="callout">
+      Con comas, Python añade espacios automáticamente.
+    </div>
+  </section>
+
+
+  <!-- BLOQUE 5 -->
+  <section class="panel">
+    <h2>Usar variables con texto</h2>
+
+    <pre><code>nombre = "Lucía"
+print("Hola", nombre)</code></pre>
+
+    <p>
+      Python sustituye la variable por su valor.
+    </p>
+  </section>
+
+
+  <!-- BLOQUE 6 -->
+  <section class="panel">
+    <h2>⚠️ Error típico: mezclar texto y número</h2>
+
+    <pre><code>edad = 20
+print("Tengo " + edad + " años")</code></pre>
+
+    <p>❓ ¿Funcionará?</p>
+
+    <div class="callout">
+      No. Python no puede sumar texto y número directamente.
+    </div>
+
+    <p>Forma correcta:</p>
+
+    <pre><code>print("Tengo", edad, "años")</code></pre>
+  </section>
+
+
+  <!-- BLOQUE 7 -->
+  <section class="panel">
+    <h2>Longitud de un string</h2>
+
+    <pre><code>nombre = "Carlos"
+print(len(nombre))</code></pre>
+
+    <p>
+      La función <code>len()</code> devuelve cuántos caracteres tiene el texto.
+    </p>
+
+    <div class="callout">
+      También cuenta espacios.
+    </div>
+  </section>
+
+
+  <!-- BLOQUE 8 -->
+  <section class="panel">
+    <h2>Acceder a letras individuales</h2>
+
+    <pre><code>nombre = "Ana"
+print(nombre[0])
+print(nombre[1])</code></pre>
+
+    <p>
+      Python empieza a contar desde <strong>0</strong>.
+    </p>
+
+    <div class="callout">
+      0 → primera letra  
+      1 → segunda  
+      2 → tercera
+    </div>
+  </section>
+
+
+  <!-- BLOQUE 9 -->
+  <section class="panel">
+    <h2>Mini-reto guiado</h2>
+
+    <p>Crea un programa que:</p>
+
+    <ol>
+      <li>Guarde tu nombre</li>
+      <li>Muestre cuántas letras tiene</li>
+      <li>Muestre la primera letra</li>
+    </ol>
+
+    <pre><code># Estructura base
+nombre = "Tu nombre"
+
+print("Tu nombre tiene", len(nombre), "letras")
+print("La primera letra es:", nombre[0])</code></pre>
+
+    <div class="callout">
+      Cambia el nombre y observa cómo cambia el resultado.
+    </div>
+  </section>
+
+
+  <!-- BLOQUE 10 -->
+  <section class="panel panel-challenge">
+    <h2>🎯 Reto extra</h2>
+
+    <p>
+      ¿Qué ocurre aquí?
+    </p>
+
+    <pre><code>nombre = "Ana"
+print(nombre[5])</code></pre>
+
+    <p>
+      Ejecuta y observa el error.
+    </p>
+
+    <div class="callout">
+      Intentas acceder a una posición que no existe.
+    </div>
+  </section>
+
+
+  <!-- NAVEGACIÓN -->
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./04-operaciones.html">
+      Anterior
+    </a>
+
+    <a class="btn btn-primary"
+       href="../../../playground/index.html?lang=python">
+      Probar en el playground
+    </a>
+
+    <a class="btn btn-secondary" href="./06-errores.html">
+      Siguiente tema
+    </a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('1.5')">
+  Marcar como completado
+  </button>
+
+<script>
+async function completeTopic(topicId) {
+  await fetch("http://localhost:3000/api/progress/python/complete", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${localStorage.getItem("token")}`
+    },
+    body: JSON.stringify({ topic: topicId })
+  });
+
+  alert("Tema completado 🎉");
+}
+</script>
+
+</main>
+
+</body>
+</html>

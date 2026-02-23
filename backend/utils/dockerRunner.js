@@ -86,7 +86,7 @@ async function runPythonInDocker(code) {
 }
 
 // ============================================================================
-// C: por ahora lo dejo simulado, pero mantengo el mismo formato de salida
+// C: der momento simulado
 // ============================================================================
 async function runCInDockerSimulado(code) {
   let stdout = "";

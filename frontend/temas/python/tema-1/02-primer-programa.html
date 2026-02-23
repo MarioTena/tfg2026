@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 1.2 – Primer programa en Python</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<header class="header">
+  <h1>Tema 1 · Python</h1>
+  <p>1.2 · Tu primer programa y cómo se ejecuta</p>
+</header>
+
+<main class="main-container single-column">
+
+  <!-- BLOQUE 1 -->
+  <section class="panel">
+    <h2>Un programa es una secuencia</h2>
+    <p>
+      Python ejecuta el código de arriba hacia abajo, sin saltarse líneas.
+    </p>
+
+    <pre><code>print("Uno")
+print("Dos")
+print("Tres")</code></pre>
+
+    <div class="callout">
+      El orden importa. Siempre.
+    </div>
+  </section>
+
+  <!-- BLOQUE 2 -->
+  <section class="panel">
+    <h2>Tu primer programa real</h2>
+    <p>
+      El comando <code>print</code> sirve para mostrar información.
+    </p>
+
+    <pre><code>print("Hola mundo")</code></pre>
+
+    <p>
+      Esta línea ya es un programa completo.
+    </p>
+  </section>
+
+  <!-- BLOQUE 3 -->
+  <section class="panel">
+    <h2>💡 Piensa antes de ejecutar</h2>
+    <p>
+      Antes de darle a “Ejecutar”, pregúntate:
+    </p>
+
+    <ul>
+      <li>¿Qué va a mostrar?</li>
+      <li>¿Cuántas líneas?</li>
+      <li>¿En qué orden?</li>
+    </ul>
+  </section>
+
+  <!-- BLOQUE 4 -->
+  <section class="panel">
+    <h2>Mini-reto guiado</h2>
+    <p>
+      Escribe un programa que muestre:
+    </p>
+
+    <ol>
+      <li>Tu nombre</li>
+      <li>Tu edad</li>
+      <li>Un mensaje final</li>
+    </ol>
+
+    <pre><code># Ejemplo de estructura
+print("Nombre")
+print("Edad")
+print("Mensaje final")</code></pre>
+
+    <div class="callout">
+      No busques hacerlo perfecto.  
+      El objetivo es probar y equivocarte.
+    </div>
+  </section>
+
+  <!-- BLOQUE 5 -->
+  <section class="panel">
+    <h2>Errores = aprendizaje</h2>
+    <p>
+      Prueba a cometer un error a propósito:
+    </p>
+
+    <pre><code>print(Hola)</code></pre>
+
+    <p>
+      Lee el error que aparece.  
+      Aprender a interpretar errores es parte fundamental de programar.
+    </p>
+  </section>
+
+  <!-- NAVEGACIÓN -->
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./01-que-es-python.html">Anterior</a>
+    <a class="btn btn-primary"
+       href="../../../playground/index.html?lang=python">
+      Probar en el playground
+    </a>
+
+    <a class="btn btn-secondary" href="./03-variables-y-tipos-de-datos.html">
+      Siguiente
+    </a>
+  </div>
+<button class="btn btn-primary" onclick="completeTopic('1.2')">
+  Marcar como completado
+  </button>
+
+<script>
+async function completeTopic(topicId) {
+  await fetch("http://localhost:3000/api/progress/python/complete", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${localStorage.getItem("token")}`
+    },
+    body: JSON.stringify({ topic: topicId })
+  });
+
+  alert("Tema completado 🎉");
+}
+</script>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Inicio</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="header">
+    <h1>Inicio</h1>
+    <p>Elige el lenguaje que quieres estudiar hoy.</p>
+    <p id="session-info" style="opacity: 0.9;"></p>
+  </header>
+
+  <main class="main-container">
+    <section class="panel panel-input">
+  <h2>Python</h2>
+  <p>Ideal para empezar: variables, tipos, condicionales, bucles y funciones.</p>
+  <button id="go-python" class="btn-primary btn-python">
+    Estudiar Python
+  </button>
+</section>
+
+<section class="panel panel-input">
+  <h2>C</h2>
+  <p>Más cerca del hardware: memoria, punteros, compilación y estructuras.</p>
+  <button id="go-c" class="btn-primary btn-c">
+    Estudiar C
+  </button>
+</section>
+
+  </main>
+
+  <section class="history" style="max-width: 980px; margin: 0 auto;">
+    <button id="logout-btn" class="btn-primary btn-secondary">
+    Salir
+    </button>
+  </section>
+
+  <script src="./home.js"></script>
+</body>
+</html>

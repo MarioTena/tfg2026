@@ -1,7 +1,6 @@
 // ============================================================================
 // aiFeedback.js
-// "IA" sencilla para dar feedback automático a un intento de ejecución.
-// Más adelante esto se puede cambiar por una llamada real a OpenAI.
+// "IA" esto es un ejemplo de ia que me ha hecho chatgpt, todo esto hay que cambiarlo por una IA real
 // ============================================================================
 
 // attempt: documento Attempt (Mongoose) con campos como:

@@ -1,9 +1,9 @@
 // ============================================================================
-// Middleware para validar JWT y exponer req.user
+// Middleware para validar JWT y exponer req.user y que solo usuarios reales puedan acceder
 // ============================================================================
 
-const jwt = require("jsonwebtoken");
-const User = require("../models/User");
+const jwt = require("jsonwebtoken"); //comprueba verficiación, caducidad y manipulacion de tokens
+const User = require("../models/User"); //saber si el user sigue existiendo
 
 async function requireAuth(req, res, next) {
   try {
@@ -19,9 +19,11 @@ async function requireAuth(req, res, next) {
       return res.status(500).json({ ok: false, error: "Falta JWT_SECRET en el .env" });
     }
 
-    const payload = jwt.verify(token, secret);
+    const payload = jwt.verify(token, secret); //comrpobamos firma, caducicad y se decodifica el contenido
+    //el payload contiene lo que metimos al crear el token (nombre, rol etc)
     const userId = payload.sub;
 
+    // confirmamos con la bbdd que el user existe 
     const user = await User.findById(userId).select("_id name email role createdAt");
     if (!user) {
       return res.status(401).json({ ok: false, error: "Token válido pero usuario no existe" });

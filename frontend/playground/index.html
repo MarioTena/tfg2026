@@ -11,8 +11,8 @@
        Cabecera
        ============================================================================ -->
   <header class="header">
-    <h1>Playground de código - TFG</h1>
-    <p>Ejecuta código (por ahora Python) contra el backend /api/run.</p>
+    <h1>Playground de código</h1>
+    <p>Ejecuta código.</p>
   </header>
 
   <!-- ============================================================================
@@ -46,10 +46,11 @@
       </div>
 
       <button id="run-btn">Ejecutar</button>
+      <button id="logout-btn" style="margin-left: 12px; background: #333;">Salir</button>
       <p id="status-msg" class="status-msg"></p>
     </section>
 
-    <!-- Panel de salida -->
+    <!-- Panel de salida ÚNICO -->
     <section class="panel panel-output">
       <h2>Salida</h2>
 
@@ -73,6 +74,12 @@
           <span id="run-time">-</span>
         </div>
       </div>
+
+      <!-- 💬 Bloque de feedback automático -->
+      <div class="output-block">
+        <h3>Feedback automático</h3>
+        <pre id="feedback"></pre>
+      </div>
     </section>
   </main>
 
@@ -84,7 +91,6 @@
     <ul id="attempts-list"></ul>
   </section>
 
-  <!-- OJO: también ../ porque app.js está en /frontend -->
   <script src="../app.js"></script>
 </body>
 </html>
