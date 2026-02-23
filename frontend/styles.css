@@ -1,0 +1,252 @@
+/* ===========================
+   BASE
+=========================== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #020617, #020617 40%, #0f172a);
+  color: #e5e7eb;
+}
+
+/* ===========================
+   HEADER
+=========================== */
+.header {
+  padding: 2rem;
+  background: linear-gradient(180deg, #020617, #020617cc);
+  border-bottom: 1px solid #1f2937;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 1.7rem;
+}
+
+.header p {
+  margin-top: 0.4rem;
+  color: #9ca3af;
+  max-width: 720px;
+}
+
+/* ===========================
+   LAYOUT
+=========================== */
+.main-container {
+  padding: 2rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.single-column {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ===========================
+   PANELS / CARDS
+=========================== */
+.panel {
+  background: linear-gradient(180deg, #020617, #020617ee);
+  border: 1px solid #1f2937;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.panel h2 {
+  margin-top: 0;
+  font-size: 1.2rem;
+}
+
+.panel p {
+  line-height: 1.6;
+  color: #d1d5db;
+}
+
+/* ===========================
+   CALLOUT / IDEA CLAVE
+=========================== */
+.callout {
+  background: #020617;
+  border-left: 4px solid #22c55e;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  font-family: "JetBrains Mono", monospace;
+  color: #a7f3d0;
+}
+
+/* ===========================
+   CODE BLOCK
+=========================== */
+pre {
+  background: #020617;
+  border: 1px solid #1f2937;
+  border-radius: 0.6rem;
+  padding: 0.8rem;
+  font-size: 0.85rem;
+  overflow-x: auto;
+}
+
+/* ===========================
+   BUTTONS
+=========================== */
+.buttons-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.6rem;
+  text-decoration: none;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.15s ease;
+}
+
+.btn-primary {
+  background: #22c55e;
+  color: #022c22;
+}
+
+.btn-primary:hover {
+  background: #16a34a;
+  box-shadow: 0 10px 25px rgba(34,197,94,0.4);
+}
+
+.btn-secondary {
+  background: #111827;
+  color: #e5e7eb;
+  border: 1px solid #1f2937;
+}
+
+.btn-secondary:hover {
+  background: #1f2937;
+}
+
+.btn-python {
+  background: #3b82f6;
+  color: #020617;
+}
+
+.btn-c {
+  background: #f97316;
+  color: #020617;
+}
+
+/* ===========================
+   PROGRESS GRID
+=========================== */
+.progress-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.progress-card {
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  border: 1px solid #1f2937;
+  background: #020617;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.progress-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.45);
+}
+
+.progress-card h3 {
+  margin-top: 0;
+}
+
+/* ===========================
+   SECCIONES DE APRENDIZAJE
+=========================== */
+
+.panel h2 {
+  margin-bottom: 0.5rem;
+}
+
+.panel ul {
+  margin-left: 1.2rem;
+  line-height: 1.6;
+}
+
+.panel ul li {
+  margin-bottom: 0.3rem;
+}
+
+/* ===========================
+   INDICADOR DE MISIÓN
+=========================== */
+
+.mission-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: #111827;
+  color: #9ca3af;
+  margin-bottom: 0.5rem;
+}
+
+/* ===========================
+   RETOS
+=========================== */
+
+.challenge {
+  border: 1px dashed #22c55e;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  background: #020617;
+}
+
+
+
+
+
+.topic-card {
+  padding: 1.5rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid #1f2937;
+}
+
+.topic-card h3 {
+  margin: 0 0 0.5rem 0;
+}
+
+.topic-card.available {
+  background: #1e293b;
+  border-color: #3b82f6;
+}
+
+.topic-card.available:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(59,130,246,0.3);
+}
+
+.topic-card.completed {
+  background: #052e1f;
+  border-color: #22c55e;
+}
+
+.topic-card.completed:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(34,197,94,0.3);
+}
+
+.topic-card.locked {
+  background: #111827;
+  opacity: 0.5;
+  cursor: not-allowed;
+}

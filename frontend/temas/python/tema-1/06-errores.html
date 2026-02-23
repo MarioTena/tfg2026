@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 1.6 – Laboratorio de errores</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<header class="header">
+  <h1>Tema 1 · Python</h1>
+  <p>1.6 · Laboratorio de errores: aprender equivocándote</p>
+</header>
+
+<main class="main-container single-column">
+
+  <!-- INTRO -->
+  <section class="panel">
+    <h2>💡 Antes de empezar</h2>
+    <p>
+      Los errores no significan que no sabes programar.
+      Significan que estás programando.
+    </p>
+
+    <div class="callout">
+      Un buen programador no es el que no comete errores,
+      sino el que sabe leerlos.
+    </div>
+  </section>
+
+
+  <!-- ERROR 1 -->
+  <section class="panel panel-challenge">
+    <h2>🔴 Error 1 · Variable no definida</h2>
+
+    <pre><code>print(nombre)
+nombre = "Ana"</code></pre>
+
+    <p>❓ Antes de ejecutar:</p>
+    <ul>
+      <li>¿Qué crees que pasará?</li>
+      <li>¿Por qué?</li>
+    </ul>
+
+    <div class="callout">
+      Python ejecuta de arriba hacia abajo.
+    </div>
+
+    <p>Mensaje esperado:</p>
+
+    <pre><code>NameError: name 'nombre' is not defined</code></pre>
+
+    <p>
+      El error te está diciendo exactamente el problema:
+      intentas usar algo que aún no existe.
+    </p>
+  </section>
+
+
+  <!-- ERROR 2 -->
+  <section class="panel panel-challenge">
+    <h2>🔴 Error 2 · Comillas mal cerradas</h2>
+
+    <pre><code>print("Hola mundo)</code></pre>
+
+    <p>❓ ¿Qué falta?</p>
+
+    <pre><code>SyntaxError: unterminated string literal</code></pre>
+
+    <div class="callout">
+      Si abres comillas, debes cerrarlas.
+    </div>
+  </section>
+
+
+  <!-- ERROR 3 -->
+  <section class="panel panel-challenge">
+    <h2>🔴 Error 3 · Mezclar texto y número</h2>
+
+    <pre><code>edad = 20
+print("Tengo " + edad + " años")</code></pre>
+
+    <p>❓ ¿Por qué falla?</p>
+
+    <pre><code>TypeError: can only concatenate str (not "int") to str</code></pre>
+
+    <p>
+      Python no puede sumar directamente texto y número.
+    </p>
+
+    <div class="callout">
+      Usa comas en print o convierte el número a texto.
+    </div>
+  </section>
+
+
+  <!-- ERROR 4 -->
+  <section class="panel panel-challenge">
+    <h2>🔴 Error 4 · División entre cero</h2>
+
+    <pre><code>x = 10
+y = 0
+print(x / y)</code></pre>
+
+    <pre><code>ZeroDivisionError: division by zero</code></pre>
+
+    <p>
+      Matemáticamente no existe dividir entre cero.
+      Python lo bloquea.
+    </p>
+  </section>
+
+
+  <!-- ERROR 5 -->
+  <section class="panel panel-challenge">
+    <h2>🔴 Error 5 · Índice fuera de rango</h2>
+
+    <pre><code>nombre = "Ana"
+print(nombre[5])</code></pre>
+
+    <pre><code>IndexError: string index out of range</code></pre>
+
+    <div class="callout">
+      Intentas acceder a una posición que no existe.
+    </div>
+  </section>
+
+
+  <!-- INTERPRETAR TRACEBACK -->
+  <section class="panel">
+    <h2>🧠 Cómo leer un error (muy importante)</h2>
+
+    <pre><code>Traceback (most recent call last):
+  File "programa.py", line 2, in &lt;module&gt;
+    print(nombre)
+NameError: name 'nombre' is not defined</code></pre>
+
+    <p>
+      Siempre fíjate en:
+    </p>
+
+    <ul>
+      <li>🔎 Tipo de error (NameError, TypeError...)</li>
+      <li>📍 Línea donde ocurre</li>
+      <li>🧾 Mensaje final (es la clave)</li>
+    </ul>
+
+    <div class="callout">
+      El mensaje final casi siempre te dice exactamente qué está mal.
+    </div>
+  </section>
+
+
+  <!-- RETO FINAL -->
+  <section class="panel panel-challenge">
+    <h2>🎯 Reto final del laboratorio</h2>
+
+    <p>
+      Crea un programa que tenga:
+    </p>
+
+    <ul>
+      <li>Una variable mal escrita</li>
+      <li>Una división entre cero</li>
+      <li>Un índice incorrecto</li>
+    </ul>
+
+    <p>
+      Ejecuta uno a uno y observa los errores.
+    </p>
+
+    <div class="callout">
+      Tu objetivo no es que funcione.
+      Tu objetivo es entender el mensaje.
+    </div>
+  </section>
+
+
+  <!-- NAVEGACIÓN -->
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./05-strings.html">
+      Anterior
+    </a>
+
+    <a class="btn btn-primary"
+       href="../../../playground/index.html?lang=python">
+      Ir al playground
+    </a>
+
+    <a class="btn btn-secondary" href="./07-mini-proyecto.html">
+      Siguiente
+    </a>
+  </div>
+<button class="btn btn-primary" onclick="completeTopic('1.6')">
+  Marcar como completado
+  </button>
+
+<script>
+async function completeTopic(topicId) {
+  await fetch("http://localhost:3000/api/progress/python/complete", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${localStorage.getItem("token")}`
+    },
+    body: JSON.stringify({ topic: topicId })
+  });
+
+  alert("Tema completado 🎉");
+}
+</script>
+</main>
+
+</body>
+</html>

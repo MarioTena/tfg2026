@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 1.7 – Mini proyecto final</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<header class="header">
+  <h1>Tema 1 · Python</h1>
+  <p>1.7 · Mini proyecto: tu primer programa completo</p>
+</header>
+
+<main class="main-container single-column">
+
+  <!-- INTRO -->
+  <section class="panel">
+    <h2>🎯 Objetivo</h2>
+    <p>
+      Ahora vas a crear tu primer programa “real”.
+      No será solo una línea suelta.
+      Será un pequeño programa con sentido.
+    </p>
+
+    <div class="callout">
+      Aquí mezclas TODO lo aprendido:
+      variables, tipos, operaciones y mensajes.
+    </div>
+  </section>
+
+  <!-- CONTEXTO -->
+  <section class="panel panel-challenge">
+    <h2>📘 Escenario</h2>
+
+    <p>
+      Vas a crear un pequeño programa que calcule la edad aproximada
+      que tendrá una persona dentro de 10 años.
+    </p>
+
+    <p>
+      El programa debe:
+    </p>
+
+    <ul>
+      <li>Guardar un nombre en una variable</li>
+      <li>Guardar la edad actual en otra variable</li>
+      <li>Calcular la edad dentro de 10 años</li>
+      <li>Mostrar un mensaje completo por pantalla</li>
+    </ul>
+  </section>
+
+
+  <!-- ESTRUCTURA GUIADA -->
+  <section class="panel">
+    <h2>🧩 Estructura base</h2>
+
+<pre><code># Paso 1: variables
+nombre = "Tu nombre"
+edad_actual = 0
+
+# Paso 2: cálculo
+edad_futura = edad_actual + 10
+
+# Paso 3: mensaje final
+print("Hola,", nombre)
+print("Dentro de 10 años tendrás", edad_futura, "años")</code></pre>
+
+    <div class="callout">
+      Cambia valores.
+      Prueba edades distintas.
+      Observa cómo cambia el resultado.
+    </div>
+  </section>
+
+
+  <!-- DESAFÍO 2 -->
+  <section class="panel panel-challenge">
+    <h2>🔥 Nivel 2 (opcional)</h2>
+
+    <p>
+      Añade una variable nueva:
+    </p>
+
+<pre><code>año_actual = 2024
+año_futuro = año_actual + 10</code></pre>
+
+    <p>
+      Y muestra también el año:
+    </p>
+
+<pre><code>print("En el año", año_futuro, "tendrás", edad_futura, "años")</code></pre>
+
+    <div class="callout">
+      Ya estás combinando datos numéricos y texto.
+    </div>
+  </section>
+
+
+  <!-- DESAFÍO 3 -->
+  <section class="panel panel-challenge">
+    <h2>🚀 Nivel 3 (reto creativo)</h2>
+
+    <p>
+      Modifica el programa para que:
+    </p>
+
+    <ul>
+      <li>Use al menos 4 variables</li>
+      <li>Haga al menos 2 operaciones matemáticas</li>
+      <li>Muestre 3 mensajes diferentes</li>
+    </ul>
+
+    <div class="callout">
+      No copies. Piensa.
+      Diseña tu propio pequeño programa.
+    </div>
+  </section>
+
+
+  <!-- REFLEXIÓN -->
+  <section class="panel">
+    <h2>🧠 Reflexión final</h2>
+
+    <p>
+      Si puedes hacer este mini proyecto sin copiar,
+      significa que:
+    </p>
+
+    <ul>
+      <li>Entiendes qué es una variable</li>
+      <li>Sabes hacer operaciones</li>
+      <li>Sabes mostrar resultados</li>
+      <li>Has aprendido a leer errores</li>
+    </ul>
+
+    <div class="callout">
+      Esto ya es programar.
+      Lo demás es ampliar complejidad.
+    </div>
+  </section>
+
+
+  <!-- CIERRE VISUAL -->
+  <section class="panel panel-challenge">
+    <h2>🏁 Has completado el Tema 1</h2>
+
+    <p>
+      Ya no estás en el punto cero.
+      Ahora sabes:
+    </p>
+
+    <ul>
+      <li>Cómo piensa un ordenador</li>
+      <li>Qué es una variable</li>
+      <li>Cómo funcionan los tipos</li>
+      <li>Cómo interpretar errores</li>
+    </ul>
+
+    <div class="callout">
+      El siguiente paso es aprender a tomar decisiones con el código.
+      (Condicionales 👀)
+    </div>
+  </section>
+
+
+  <!-- NAVEGACIÓN -->
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./06-laboratorio-errores.html">
+      Anterior
+    </a>
+
+    <a class="btn btn-primary"
+       href="../../../playground/index.html?lang=python">
+      Ejecutar mi proyecto
+    </a>
+
+    <a class="btn btn-secondary" href="../../python/index.html">
+      Volver al menú Python
+    </a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('1.7')">
+  Marcar como completado
+  </button>
+
+<script>
+async function completeTopic(topicId) {
+  await fetch("http://localhost:3000/api/progress/python/complete", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${localStorage.getItem("token")}`
+    },
+    body: JSON.stringify({ topic: topicId })
+  });
+
+  alert("Tema completado 🎉");
+}
+</script>
+</main>
+
+</body>
+</html>

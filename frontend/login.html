@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Login</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="header">
+    <h1>Login</h1>
+    <p>Entra con tu usuario para acceder al playground.</p>
+  </header>
+
+  <main class="main-container" style="grid-template-columns: 1fr;">
+    <section class="panel panel-input" style="max-width: 520px; margin: 0 auto;">
+      <h2>Acceso</h2>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="tuemail@ejemplo.com" autocomplete="email" />
+      </div>
+
+      <div class="field">
+        <label for="password">Contraseña</label>
+        <input id="password" type="password" placeholder="••••••••" autocomplete="current-password" />
+      </div>
+
+      <button id="login-btn">Entrar</button>
+      <p id="status-msg" class="status-msg"></p>
+
+      <p style="margin-top: 12px; font-size: 14px;">
+        ¿No tienes cuenta? <a href="./register.html">Regístrate</a>
+      </p>
+    </section>
+  </main>
+
+  <script src="./login.js"></script>
+</body>
+</html>

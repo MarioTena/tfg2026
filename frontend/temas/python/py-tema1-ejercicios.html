@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 1 (Python) - Ejercicios</title>
+  <link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+  <!-- ============================================================================
+       Cabecera
+       ============================================================================ -->
+  <header class="header">
+    <h1>Tema 1 (Python) – Ejercicios</h1>
+    <p>Ejercicios básicos para practicar variables, operaciones y errores.</p>
+  </header>
+
+  <!-- ============================================================================
+       Lista de ejercicios
+       ============================================================================ -->
+  <main class="main-container single-column">
+    <section class="panel">
+      <h2>Cómo usar estos ejercicios</h2>
+      <p>
+        Copia cada fragmento de código o escribe tu propia solución en el playground
+        y ejecútalo para ver el resultado y los posibles errores.
+      </p>
+      <div class="buttons-row">
+        <a class="btn-link" href="../../playground/index.html">Abrir playground</a>
+        <a class="btn-link secondary" href="py-tema1-introduccion.html">Volver a la teoría del Tema 1</a>
+        <a class="btn-link secondary" href="../../menu.html">Volver al menú de temas</a>
+      </div>
+    </section>
+
+    <!-- Ejercicio 1 -->
+    <section class="panel">
+      <h2>Ejercicio 1 – "Hola mundo"</h2>
+      <p><strong>Enunciado:</strong></p>
+      <p>
+        Escribe un programa en Python que muestre por pantalla exactamente:
+      </p>
+      <pre><code>Hola mundo desde TFG</code></pre>
+
+      <details>
+        <summary>Ver posible solución</summary>
+        <pre><code>print("Hola mundo desde TFG")</code></pre>
+      </details>
+       <div class="buttons-row">
+        <a class="btn-link" href="../../playground/index.html?lang=python&snippet=py_tema1_ej1">
+          Abrir este ejercicio en el playground
+        </a>
+      </div>
+    </section>
+
+    <!-- Ejercicio 2 -->
+    <section class="panel">
+      <h2>Ejercicio 2 – Operaciones básicas</h2>
+      <p><strong>Enunciado:</strong></p>
+      <p>
+        Crea dos variables <code>a</code> y <code>b</code> con valores 7 y 4.
+        Muestra por pantalla:
+      </p>
+      <ul>
+        <li>La suma de <code>a</code> y <code>b</code>.</li>
+        <li>La resta de <code>a</code> menos <code>b</code>.</li>
+        <li>El producto de <code>a</code> por <code>b</code>.</li>
+      </ul>
+
+      <details>
+        <summary>Ver posible solución</summary>
+        <pre><code>a = 7
+b = 4
+
+print(a + b)
+print(a - b)
+print(a * b)</code></pre>
+      </details>
+            <div class="buttons-row">
+        <a class="btn-link" href="../../playground/index.html?lang=python&snippet=py_tema1_ej2">
+          Abrir este ejercicio en el playground
+        </a>
+      </div>
+
+    </section>
+
+    <!-- Ejercicio 3 -->
+    <section class="panel">
+      <h2>Ejercicio 3 – Nombre del alumno</h2>
+      <p><strong>Enunciado:</strong></p>
+      <p>
+        Define una variable <code>nombre</code> con tu nombre y muestra por pantalla
+        un mensaje como:
+      </p>
+      <pre><code>Me llamo Mario</code></pre>
+
+      <details>
+        <summary>Ver posible solución</summary>
+        <pre><code>nombre = "Mario"
+print("Me llamo", nombre)</code></pre>
+      </details>
+            <div class="buttons-row">
+        <a class="btn-link" href="../../playground/index.html?lang=python&snippet=py_tema1_ej2">
+          Abrir este ejercicio en el playground
+        </a>
+      </div>
+    </section>
+
+    <!-- Ejercicio 4 -->
+    <section class="panel">
+      <h2>Ejercicio 4 – Error intencional</h2>
+      <p><strong>Enunciado:</strong></p>
+      <p>
+        Copia este código en el playground, ejecútalo y fíjate en el mensaje de error que aparece:
+      </p>
+      <pre><code>x = 5
+y = z + 1
+print(x + y)</code></pre>
+      <p>
+        Intenta entender qué ha pasado y cómo se podría corregir el error.
+      </p>
+
+      <details>
+        <summary>Ver posible explicación</summary>
+        <p>
+          La variable <code>z</code> no está definida antes de usarse, por eso Python muestra
+          un <code>NameError</code>. Una forma de arreglarlo sería inicializar <code>z</code>:
+        </p>
+        <pre><code>x = 5
+z = 2
+y = z + 1
+print(x + y)</code></pre>
+      </details>
+            <div class="buttons-row">
+        <a class="btn-link" href="../../playground/index.html?lang=python&snippet=py_tema1_ej4">
+          Abrir este ejercicio en el playground
+        </a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

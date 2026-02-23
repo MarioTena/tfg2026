@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>TFG - Playground de código</title>
+  <!-- OJO: estamos dentro de /playground, por eso uso ../ -->
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <!-- ============================================================================
+       Cabecera
+       ============================================================================ -->
+  <header class="header">
+    <h1>Playground de código</h1>
+    <p>Ejecuta código.</p>
+  </header>
+
+  <!-- ============================================================================
+       Contenedor principal: entrada y salida
+       ============================================================================ -->
+  <main class="main-container">
+    <!-- Panel de entrada -->
+    <section class="panel panel-input">
+      <h2>Entrada</h2>
+
+      <div class="field">
+        <label for="user">Usuario</label>
+        <input id="user" type="text" placeholder="alumno1" value="alumno1" />
+      </div>
+
+      <div class="field">
+        <label for="language">Lenguaje</label>
+        <select id="language">
+          <option value="python" selected>Python</option>
+          <option value="c" disabled>C (pendiente)</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="code">Código</label>
+        <textarea
+          id="code"
+          rows="10"
+          spellcheck="false"
+        >print("Hola desde el playground")</textarea>
+      </div>
+
+      <button id="run-btn">Ejecutar</button>
+      <button id="logout-btn" style="margin-left: 12px; background: #333;">Salir</button>
+      <p id="status-msg" class="status-msg"></p>
+    </section>
+
+    <!-- Panel de salida ÚNICO -->
+    <section class="panel panel-output">
+      <h2>Salida</h2>
+
+      <div class="output-block">
+        <h3>stdout</h3>
+        <pre id="stdout"></pre>
+      </div>
+
+      <div class="output-block">
+        <h3>stderr</h3>
+        <pre id="stderr"></pre>
+      </div>
+
+      <div class="output-inline">
+        <div>
+          <span class="label">Estado:</span>
+          <span id="run-status">-</span>
+        </div>
+        <div>
+          <span class="label">Tiempo:</span>
+          <span id="run-time">-</span>
+        </div>
+      </div>
+
+      <!-- 💬 Bloque de feedback automático -->
+      <div class="output-block">
+        <h3>Feedback automático</h3>
+        <pre id="feedback"></pre>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================================
+       Historial de intentos
+       ============================================================================ -->
+  <section class="history">
+    <h2>Historial de intentos (últimos 5)</h2>
+    <ul id="attempts-list"></ul>
+  </section>
+
+  <script src="../app.js"></script>
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 1 (Python) - Introducción</title>
+  <link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+  <!-- ============================================================================
+       Cabecera
+       ============================================================================ -->
+  <header class="header">
+    <h1>Tema 1 (Python) – Introducción al lenguaje</h1>
+    <p>
+      En este tema se explican con detalle los conceptos básicos de Python:
+      qué es, cómo se ejecuta, variables, tipos de datos, operaciones
+      y errores habituales. Es la base para todo lo que vendrá después.
+    </p>
+  </header>
+
+  <!-- ============================================================================
+       Contenido del tema
+       ============================================================================ -->
+  <main class="main-container single-column">
+
+    <!-- 1. Objetivos del tema -->
+    <section class="panel">
+      <h2>1. Objetivos del tema</h2>
+      <p>Al terminar este tema deberías ser capaz de:</p>
+      <ul>
+        <li>Entender qué es Python y en qué se diferencia de otros lenguajes.</li>
+        <li>Reconocer la estructura básica de un programa en Python.</li>
+        <li>Declarar variables y asignarles valores.</li>
+        <li>Trabajar con los tipos de datos más comunes (enteros, decimales, cadenas, booleanos).</li>
+        <li>Realizar operaciones aritméticas simples.</li>
+        <li>Leer e interpretar mensajes de error básicos.</li>
+      </ul>
+      <p>
+        No hace falta memorizar todo a la primera. La idea es que esta página
+        sea una referencia a la que puedas volver cuando tengas dudas.
+      </p>
+    </section>
+
+    <!-- 2. Qué es Python -->
+    <section class="panel">
+      <h2>2. ¿Qué es Python?</h2>
+      <p>
+        Python es un lenguaje de programación de alto nivel, interpretado y de propósito general.
+        Eso significa, en pocas palabras:
+      </p>
+      <ul>
+        <li><strong>Alto nivel</strong>: está más cerca del lenguaje humano que del lenguaje máquina.</li>
+        <li><strong>Interpretado</strong>: el código se ejecuta línea a línea, sin pasar por un proceso
+          de compilación manual (como en C).</li>
+        <li><strong>Propósito general</strong>: se puede usar para muchas cosas diferentes:
+          desarrollo web, ciencia de datos, scripts, automatización, IA, etc.</li>
+      </ul>
+      <p>
+        Uno de los motivos principales por los que se usa tanto en educación es que su sintaxis es
+        muy legible y sencilla. Un "Hola mundo" en Python se ve así:
+      </p>
+      <pre><code>print("Hola mundo")</code></pre>
+      <p>
+        Esa sola línea ya es un programa completo en Python.
+      </p>
+    </section>
+
+    <!-- 3. Cómo se ejecuta un programa en Python -->
+    <section class="panel">
+      <h2>3. Cómo se ejecuta un programa en Python</h2>
+      <p>
+        Normalmente, para ejecutar un programa en Python se guardaría el código en un archivo con
+        extensión <code>.py</code> (por ejemplo <code>programa.py</code>) y se ejecutaría con el
+        intérprete de Python.
+      </p>
+      <p>
+        Python lee las instrucciones de arriba hacia abajo. En este ejemplo:
+      </p>
+      <pre><code>x = 10
+y = 2
+print(x / y)
+print("Fin del programa")</code></pre>
+      <p>
+        El intérprete hará lo siguiente:
+      </p>
+      <ol>
+        <li>Crear una variable <code>x</code> con valor <code>10</code>.</li>
+        <li>Crear una variable <code>y</code> con valor <code>2</code>.</li>
+        <li>Calcular <code>x / y</code> (resultado: <code>5.0</code>) y mostrarlo.</li>
+        <li>Mostrar el texto <code>Fin del programa</code>.</li>
+      </ol>
+      <p>
+        Si en algún punto hay un error (por ejemplo, una variable mal escrita), Python se detiene
+        y muestra un mensaje explicando qué ha pasado.
+      </p>
+    </section>
+
+    <!-- 4. Comentarios e indentación -->
+    <section class="panel">
+      <h2>4. Comentarios e indentación</h2>
+      <p>
+        Dos características muy importantes de Python son los comentarios y la indentación.
+      </p>
+
+      <h3>4.1. Comentarios</h3>
+      <p>
+        Un comentario es una línea que Python ignora. Sirve para que el programador se deje notas
+        a sí mismo o explique qué hace un bloque de código. En Python, los comentarios empiezan con
+        <code>#</code>:
+      </p>
+      <pre><code># Esto es un comentario
+print("Hola")  # Comentario al final de la línea</code></pre>
+
+      <h3>4.2. Indentación</h3>
+      <p>
+        La indentación es el espacio al principio de una línea (normalmente cuatro espacios).
+        En otros lenguajes se usan llaves <code>{}</code> para indicar bloques; en Python se usa
+        la indentación. Un ejemplo sencillo:
+      </p>
+      <pre><code>edad = 18
+
+if edad >= 18:
+    print("Eres mayor de edad")
+    print("Puedes entrar")
+print("Fin")</code></pre>
+      <p>
+        Las dos líneas que están debajo del <code>if</code> y desplazadas hacia la derecha forman parte
+        del <strong>bloque</strong> del <code>if</code>. Si cambiamos la indentación, cambiaremos el
+        comportamiento del programa.
+      </p>
+    </section>
+
+    <!-- 5. Variables -->
+    <section class="panel">
+      <h2>5. Variables en Python</h2>
+      <p>
+        Una variable es un "nombre" que apunta a un valor. La idea es poder reutilizar ese valor
+        sin tener que escribirlo una y otra vez. En Python, la sintaxis básica es:
+      </p>
+      <pre><code>nombre_variable = valor</code></pre>
+      <p>Por ejemplo:</p>
+      <pre><code>nombre = "Ana"
+edad = 21
+altura = 1.70</code></pre>
+      <ul>
+        <li><code>nombre</code> es una variable de tipo cadena (<code>str</code>).</li>
+        <li><code>edad</code> es un entero (<code>int</code>).</li>
+        <li><code>altura</code> es un número con decimales (<code>float</code>).</li>
+      </ul>
+      <p>
+        En Python no se indica el tipo al declarar la variable, el intérprete lo deduce
+        automáticamente en función del valor.
+      </p>
+    </section>
+
+    <!-- 6. Tipos de datos básicos -->
+    <section class="panel">
+      <h2>6. Tipos de datos básicos</h2>
+      <p>Algunos tipos básicos que se usan constantemente en Python son:</p>
+      <ul>
+        <li><strong>int</strong>: números enteros, como <code>3</code>, <code>-10</code>, <code>0</code>.</li>
+        <li><strong>float</strong>: números decimales, como <code>3.14</code>, <code>0.5</code>.</li>
+        <li><strong>str</strong>: cadenas de texto, que van entre comillas (<code>"Hola"</code>).</li>
+        <li><strong>bool</strong>: valores lógicos <code>True</code> o <code>False</code>.</li>
+      </ul>
+      <pre><code>entero = 42           # int
+decimal = 3.14        # float
+texto = "Hola"        # str
+activo = True         # bool</code></pre>
+      <p>
+        Más adelante verás otros tipos como listas, diccionarios, tuplas, etc., pero para empezar
+        con los primeros ejercicios del Tema 1 estos son suficientes.
+      </p>
+    </section>
+
+    <!-- 7. Operaciones aritméticas -->
+    <section class="panel">
+      <h2>7. Operaciones aritméticas básicas</h2>
+      <p>
+        Con los tipos numéricos (<code>int</code> y <code>float</code>) se pueden realizar
+        operaciones aritméticas estándar:
+      </p>
+      <pre><code>a = 5
+b = 3
+
+print(a + b)   # Suma: 8
+print(a - b)   # Resta: 2
+print(a * b)   # Multiplicación: 15
+print(a / b)   # División: 1.6666...
+print(a // b)  # División entera: 1
+print(a % b)   # Resto: 2
+print(a ** b)  # Potencia: 5 elevado a 3 = 125</code></pre>
+      <p>
+        Muchas veces los ejercicios del tema 1 se centran en este tipo de operaciones:
+        crear variables y mostrar resultados por pantalla.
+      </p>
+    </section>
+
+    <!-- 8. Cadenas de texto -->
+    <section class="panel">
+      <h2>8. Cadenas de texto (strings)</h2>
+      <p>
+        Una cadena (o string) es una secuencia de caracteres, normalmente escrita entre
+        comillas dobles o simples:
+      </p>
+      <pre><code>mensaje = "Hola mundo"
+otro = 'Python es divertido'</code></pre>
+      <p>
+        Podemos "unir" cadenas de varias formas. Por ejemplo, usando comas en el <code>print</code>:
+      </p>
+      <pre><code>nombre = "Mario"
+print("Me llamo", nombre)</code></pre>
+      <p>
+        También se pueden usar f-strings (cadenas formateadas) a partir de Python 3.6:
+      </p>
+      <pre><code>nombre = "Ana"
+edad = 20
+print(f"Me llamo {nombre} y tengo {edad} años")</code></pre>
+      <p>
+        En el Tema 1 nos quedaremos con la forma sencilla usando comas, que es suficiente para empezar.
+      </p>
+    </section>
+
+    <!-- 9. Errores habituales -->
+    <section class="panel">
+      <h2>9. Errores habituales al empezar con Python</h2>
+      <p>
+        Es totalmente normal que al aprender un lenguaje aparezcan errores.
+        De hecho, aprender a leer e interpretar errores es parte importante del aprendizaje.
+      </p>
+
+      <h3>9.1. Variable no definida</h3>
+      <pre><code>print(x)  # x no existe todavía</code></pre>
+      <p>
+        Esto generará un error del tipo:
+      </p>
+      <pre><code>NameError: name 'x' is not defined</code></pre>
+
+      <h3>9.2. Problemas con las comillas</h3>
+      <pre><code>print("Hola)   # Falta una comilla</code></pre>
+      <p>
+        Aquí aparecerá un error de sintaxis (<code>SyntaxError</code>) porque la cadena
+        no está bien cerrada.
+      </p>
+
+      <h3>9.3. División entre cero</h3>
+      <pre><code>x = 5
+y = 0
+print(x / y)   # ZeroDivisionError</code></pre>
+      <p>
+        Python no permite dividir entre cero y mostrará un <code>ZeroDivisionError</code>.
+      </p>
+
+      <p>
+        En el playground de tu aplicación, estos errores aparecerán en la parte de
+        <strong>stderr</strong>. Es recomendable leerlos con calma e intentar entender
+        qué significan.
+      </p>
+    </section>
+
+    <!-- 10. Relación con el playground y ejercicios -->
+    <section class="panel">
+      <h2>10. Cómo practicar este tema en el playground</h2>
+      <p>
+        La mejor forma de consolidar estos conceptos es escribir y ejecutar código.
+        En este TFG, para practicar el Tema 1 puedes:
+      </p>
+      <ul>
+        <li>Abrir el playground y escribir tus propios ejemplos de variables y operaciones.</li>
+        <li>Probar a cambiar valores y ver cómo cambian los resultados.</li>
+        <li>Provocar errores intencionadamente para ver qué mensajes muestra Python.</li>
+        <li>Resolver los ejercicios del Tema 1 y ejecutarlos desde el playground.</li>
+      </ul>
+      <p>
+        En la página de ejercicios del Tema 1 encontrarás enlaces que abren directamente
+        el playground con plantillas preparadas para cada ejercicio.
+      </p>
+      <div class="buttons-row">
+        <a class="btn-link" href="py-tema1-ejercicios.html">Ir a ejercicios del Tema 1 (Python)</a>
+        <a class="btn-link secondary" href="../../playground/index.html">Abrir el playground directamente</a>
+        <a class="btn-link secondary" href="../../menu.html">Volver al menú de temas</a>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>

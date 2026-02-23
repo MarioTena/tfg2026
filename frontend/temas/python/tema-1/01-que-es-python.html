@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 1.1 – ¿Qué es Python?</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<header class="header">
+  <h1>Tema 1 · Python</h1>
+  <p>1.1 · ¿Qué es Python y por qué se usa tanto?</p>
+</header>
+
+<main class="main-container single-column">
+
+  <!-- BLOQUE 1 -->
+  <section class="panel">
+    <h2>Python es una herramienta para dar órdenes</h2>
+    <p>
+      Python es un <strong>lenguaje de programación</strong>, es decir,
+      una forma de escribir instrucciones para que un ordenador las ejecute.
+    </p>
+
+    <div class="callout">
+      El ordenador no interpreta, no adivina y no corrige:  
+      ejecuta exactamente lo que le dices.
+    </div>
+  </section>
+
+  <!-- BLOQUE 2 -->
+  <section class="panel">
+    <h2>¿Por qué aprender Python?</h2>
+
+    <div class="progress-grid">
+      <div class="progress-card">
+        <h3>🧠 Fácil de leer</h3>
+        <p>Su sintaxis se parece al lenguaje humano.</p>
+      </div>
+
+      <div class="progress-card">
+        <h3>🚀 Muy usado</h3>
+        <p>Web, IA, datos, automatización, educación.</p>
+      </div>
+
+      <div class="progress-card">
+        <h3>⚡ Ideal para aprender</h3>
+        <p>Permite centrarse en la lógica, no en la complejidad técnica.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOQUE 3 -->
+  <section class="panel">
+    <h2>Python es interpretado</h2>
+    <p>
+      Python ejecuta el código <strong>línea a línea</strong>, en orden.
+      No hay compilación previa como en otros lenguajes.
+    </p>
+
+    <pre><code>print("Empiezo")
+print("Sigo")
+print("Termino")</code></pre>
+
+    <p>
+      Si hay un error, Python se detiene en ese punto.
+    </p>
+  </section>
+
+  <!-- BLOQUE 4 -->
+  <section class="panel">
+    <h2>Piensa como programador</h2>
+    <p>
+      Aprender Python no es memorizar comandos.
+      Es aprender a:
+    </p>
+
+    <ul>
+      <li>Dar instrucciones claras</li>
+      <li>Pensar paso a paso</li>
+      <li>Detectar errores</li>
+    </ul>
+
+    <div class="callout">
+      Programar es aprender a pensar con precisión.
+    </div>
+  </section>
+
+  <!-- NAVEGACIÓN -->
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./index.html">Volver al índice</a>
+    <a class="btn btn-primary" href="./02-primer-programa.html">
+      Siguiente: tu primer programa
+    </a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('1.1')">
+  Marcar como completado
+  </button>
+
+<script>
+async function completeTopic(topicId) {
+  await fetch("http://localhost:3000/api/progress/python/complete", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${localStorage.getItem("token")}`
+    },
+    body: JSON.stringify({ topic: topicId })
+  });
+
+  alert("Tema completado 🎉");
+}
+</script>
+</main>
+
+</body>
+</html>
