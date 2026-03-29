@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 6.3 – Recorrer diccionarios</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<header class="header">
+  <h1>Tema 6 · Python</h1>
+  <p>6.3 · Recorrer diccionarios: trabajar con claves, valores y pares</p>
+</header>
+
+<main class="main-container single-column">
+
+  <section class="panel">
+    <h2>¿Qué significa recorrer un diccionario?</h2>
+    <p>
+      Igual que recorrías listas para procesar varios elementos, puedes recorrer un diccionario
+      para trabajar con sus claves, sus valores o ambos.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Recorrer claves</h2>
+    <pre><code>persona = {
+    "nombre": "Ana",
+    "edad": 30,
+    "ciudad": "Madrid"
+}
+
+for clave in persona:
+    print(clave)</code></pre>
+
+    <p>
+      Si recorres directamente el diccionario, obtienes sus claves.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Recorrer claves y acceder al valor</h2>
+    <pre><code>persona = {
+    "nombre": "Ana",
+    "edad": 30,
+    "ciudad": "Madrid"
+}
+
+for clave in persona:
+    print(clave, persona[clave])</code></pre>
+
+    <p>
+      Esto permite mostrar cada clave junto con su valor.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Recorrer solo valores con <code>values()</code></h2>
+    <pre><code>producto = {
+    "nombre": "Teclado",
+    "precio": 40,
+    "stock": 8
+}
+
+for valor in producto.values():
+    print(valor)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Recorrer claves y valores con <code>items()</code></h2>
+    <pre><code>producto = {
+    "nombre": "Teclado",
+    "precio": 40,
+    "stock": 8
+}
+
+for clave, valor in producto.items():
+    print(clave, "→", valor)</code></pre>
+
+    <p>
+      Esta suele ser la forma más cómoda cuando necesitas ambos.
+    </p>
+
+    <div class="callout">
+      <code>items()</code> es muy útil porque te evita escribir <code>diccionario[clave]</code> dentro del bucle.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Casos reales</h2>
+    <ul>
+      <li>mostrar la ficha de un usuario</li>
+      <li>recorrer configuraciones</li>
+      <li>validar datos obligatorios</li>
+      <li>imprimir informes simples de clave y valor</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>💭 Piensa antes de ejecutar</h2>
+    <pre><code>alumno = {
+    "nombre": "Lucía",
+    "nota": 9,
+    "activo": True
+}
+
+for clave, valor in alumno.items():
+    print(clave, valor)</code></pre>
+
+    <ul>
+      <li>¿cuántas iteraciones habrá?</li>
+      <li>¿qué representa cada pareja <code>clave, valor</code>?</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>⚠️ Error típico: confundir recorrer claves con recorrer valores</h2>
+    <pre><code>persona = {
+    "nombre": "Ana",
+    "edad": 30
+}
+
+for dato in persona:
+    print(dato)</code></pre>
+
+    <p>
+      Esto imprime las claves, no los valores.
+      Si quieres valores, necesitas <code>values()</code> o acceder usando la clave.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Buenas prácticas</h2>
+    <ul>
+      <li>usa nombres claros como <code>clave</code> y <code>valor</code></li>
+      <li>elige <code>items()</code> cuando realmente necesitas ambos</li>
+      <li>evita lógica confusa dentro del bucle</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto guiado</h2>
+    <p>
+      Recorre un diccionario de película y muestra cada clave con su valor.
+    </p>
+
+    <pre><code>pelicula = {
+    "titulo": "Interstellar",
+    "anio": 2014,
+    "director": "Christopher Nolan"
+}
+
+for clave, valor in pelicula.items():
+    print(clave, ":", valor)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Pregunta de entrevista</h2>
+    <p>
+      ¿Qué devuelve un bucle <code>for</code> si recorres directamente un diccionario?
+    </p>
+
+    <p>
+      Respuesta sólida: recorre sus claves.
+    </p>
+  </section>
+
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./02-acceso-y-modificacion.html">Anterior</a>
+    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('6.3')">Marcar como completado</button>
+
+ <script>
+const TOPIC_ID = "6.3";
+const NEXT_URL = "./04-metodos-y-beunas-practicas.html";
+
+const API_URL = "http://localhost:3000/api/progress/python";
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+const nextBtn = document.getElementById("nextBtn");
+
+async function unlockNextIfCompleted() {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token || !nextBtn) return;
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    if (completed.includes(TOPIC_ID)) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error comprobando progreso:", error);
+  }
+}
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Tema completado 🎉");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error marcando tema como completado:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+
+unlockNextIfCompleted();
+</script>
+
+</main>
+</body>
+</html>

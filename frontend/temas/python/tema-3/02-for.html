@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 3.2 – Bucle for</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<header class="header">
+  <h1>Tema 3 · Python</h1>
+  <p>3.2 · Bucle for: recorrer y repetir con precisión</p>
+</header>
+
+<main class="main-container single-column">
+
+  <section class="panel">
+    <h2>¿Qué hace un <code>for</code>?</h2>
+    <p>
+      El bucle <code>for</code> recorre una secuencia elemento a elemento.
+      En cada iteración, una variable toma el siguiente valor de esa secuencia.
+    </p>
+
+    <pre><code>for numero in range(5):
+    print(numero)</code></pre>
+
+    <p>
+      Aquí Python toma valores de <code>range(5)</code> y los va asignando a <code>numero</code>.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Sintaxis básica</h2>
+    <pre><code>for variable in secuencia:
+    bloque</code></pre>
+
+    <p>
+      Las piezas importantes son:
+    </p>
+
+    <ul>
+      <li><code>for</code></li>
+      <li>una variable que cambia en cada iteración</li>
+      <li>una secuencia o conjunto de valores</li>
+      <li>un bloque indentado</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2><code>range()</code>: herramienta fundamental</h2>
+    <p>
+      <code>range()</code> genera una secuencia de números muy útil para los bucles.
+    </p>
+
+    <pre><code>for numero in range(5):
+    print(numero)</code></pre>
+
+    <p>
+      Esto imprime:
+    </p>
+
+    <pre><code>0
+1
+2
+3
+4</code></pre>
+
+    <div class="callout">
+      <code>range(5)</code> empieza en 0 y llega hasta 4. El límite superior no se incluye.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Variantes de <code>range()</code></h2>
+
+    <h3><code>range(fin)</code></h3>
+    <pre><code>range(5)</code></pre>
+    <p>Genera: 0, 1, 2, 3, 4</p>
+
+    <h3><code>range(inicio, fin)</code></h3>
+    <pre><code>range(2, 6)</code></pre>
+    <p>Genera: 2, 3, 4, 5</p>
+
+    <h3><code>range(inicio, fin, salto)</code></h3>
+    <pre><code>range(0, 10, 2)</code></pre>
+    <p>Genera: 0, 2, 4, 6, 8</p>
+  </section>
+
+  <section class="panel">
+    <h2>Mostrar números en secuencia</h2>
+    <pre><code>for numero in range(1, 6):
+    print(numero)</code></pre>
+
+    <p>
+      Muy útil para tablas, repeticiones contadas y patrones numéricos.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Recorrer texto</h2>
+    <pre><code>for letra in "python":
+    print(letra)</code></pre>
+
+    <p>
+      Un <code>for</code> no solo sirve con números. También puede recorrer cadenas carácter a carácter.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Usar el valor del bucle para calcular</h2>
+    <pre><code>for numero in range(1, 6):
+    print(numero * 2)</code></pre>
+
+    <p>
+      En cada iteración puedes operar con la variable y producir resultados nuevos.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Acumular resultados</h2>
+    <p>
+      Muchos problemas con bucles consisten en acumular información.
+      Por ejemplo, sumar números.
+    </p>
+
+    <pre><code>suma = 0
+
+for numero in range(1, 6):
+    suma = suma + numero
+
+print(suma)</code></pre>
+
+    <p>
+      Aquí <code>suma</code> va cambiando en cada iteración.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Seguir mentalmente una variable acumuladora</h2>
+    <p>
+      Una de las habilidades más importantes es simular cómo cambia una variable.
+    </p>
+
+    <pre><code>suma = 0
+
+for numero in range(1, 4):
+    suma = suma + numero
+    print("numero:", numero, "suma:", suma)</code></pre>
+
+    <p>
+      Esto te enseña a pensar el estado del programa durante el bucle.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>⚠️ Error típico: pensar que el límite final se incluye</h2>
+    <pre><code>for numero in range(1, 5):
+    print(numero)</code></pre>
+
+    <p>
+      Esto imprime 1, 2, 3 y 4. No imprime 5.
+      Este error aparece continuamente al empezar.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>⚠️ Error típico: cambiar mal la intención del rango</h2>
+    <p>
+      A veces alguien quiere imprimir del 1 al 10 y escribe esto:
+    </p>
+
+    <pre><code>for numero in range(10):
+    print(numero)</code></pre>
+
+    <p>
+      Eso imprime del 0 al 9. Si quieres del 1 al 10, debes ajustar el rango.
+    </p>
+
+    <pre><code>for numero in range(1, 11):
+    print(numero)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>💭 Piensa antes de ejecutar</h2>
+    <pre><code>for numero in range(2, 8, 2):
+    print(numero)</code></pre>
+
+    <ul>
+      <li>¿qué números aparecen?</li>
+      <li>¿cuántas iteraciones hay?</li>
+      <li>¿por qué no aparece el 8?</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Buenas prácticas con <code>for</code></h2>
+    <ul>
+      <li>usa nombres claros: <code>numero</code>, <code>letra</code>, <code>contador</code></li>
+      <li>no compliques innecesariamente el bloque interno</li>
+      <li>si acumulas algo, inicializa la variable antes del bucle</li>
+      <li>comprueba siempre inicio, final y salto</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto guiado</h2>
+    <p>
+      Muestra los números del 10 al 1 en orden descendente.
+    </p>
+
+    <pre><code>for numero in range(10, 0, -1):
+    print(numero)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Reto de entrevista</h2>
+    <p>
+      Explica qué hace este código:
+    </p>
+
+    <pre><code>total = 0
+for numero in range(1, 4):
+    total = total + numero
+print(total)</code></pre>
+
+    <p>
+      Respuesta sólida: suma 1 + 2 + 3 y muestra 6. La variable <code>total</code> acumula el resultado iteración a iteración.
+    </p>
+  </section>
+
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./01-que-es-un-bucle.html">Anterior</a>
+    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('3.2')">Marcar como completado</button>
+
+  <script>
+const TOPIC_ID = "3.2";
+const NEXT_URL = "./03-while.html";
+
+const API_URL = "http://localhost:3000/api/progress/python";
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+const nextBtn = document.getElementById("nextBtn");
+
+async function unlockNextIfCompleted() {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token || !nextBtn) return;
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    if (completed.includes(TOPIC_ID)) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error comprobando progreso:", error);
+  }
+}
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Tema completado 🎉");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error marcando tema como completado:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+
+unlockNextIfCompleted();
+</script>
+
+</main>
+</body>
+</html>

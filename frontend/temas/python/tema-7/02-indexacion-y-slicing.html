@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 7.2 – Indexación y slicing</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<header class="header">
+  <h1>Tema 7 · Python</h1>
+  <p>7.2 · Indexación y slicing: acceder a letras y fragmentos de texto</p>
+</header>
+
+<main class="main-container single-column">
+
+  <section class="panel">
+    <h2>Acceder a una posición concreta</h2>
+    <p>
+      Igual que en las listas, los strings usan índices que empiezan en 0.
+    </p>
+
+    <pre><code>texto = "Python"
+print(texto[0])
+print(texto[1])</code></pre>
+
+    <p>
+      Esto imprimirá <code>P</code> y <code>y</code>.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Índices negativos</h2>
+    <p>
+      También puedes acceder desde el final.
+    </p>
+
+    <pre><code>texto = "Python"
+print(texto[-1])
+print(texto[-2])</code></pre>
+
+    <ul>
+      <li><code>-1</code> es el último carácter</li>
+      <li><code>-2</code> es el penúltimo</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>⚠️ Error típico: índice fuera de rango</h2>
+    <pre><code>texto = "sol"
+print(texto[3])</code></pre>
+
+    <p>
+      Esto da error porque los índices válidos son 0, 1 y 2.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Slicing: extraer una parte del string</h2>
+    <p>
+      El slicing permite tomar un fragmento de texto.
+    </p>
+
+    <pre><code>texto = "Python"
+print(texto[1:4])</code></pre>
+
+    <p>
+      Devuelve <code>yth</code>.
+      Empieza en el índice 1 y llega hasta antes del 4.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Slicing desde el inicio o hasta el final</h2>
+    <pre><code>texto = "Python"
+print(texto[:3])
+print(texto[3:])</code></pre>
+
+    <p>
+      Esto devuelve <code>Pyt</code> y <code>hon</code>.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Copiar un string completo</h2>
+    <pre><code>texto = "Python"
+print(texto[:])</code></pre>
+
+    <p>
+      Devuelve todo el string.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Salto en slicing</h2>
+    <pre><code>texto = "Python"
+print(texto[0:6:2])</code></pre>
+
+    <p>
+      Va tomando caracteres de dos en dos.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Invertir un string</h2>
+    <pre><code>texto = "Python"
+print(texto[::-1])</code></pre>
+
+    <p>
+      Esto devuelve el texto al revés.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>💭 Piensa antes de ejecutar</h2>
+    <pre><code>palabra = "programa"
+print(palabra[0])
+print(palabra[-1])
+print(palabra[2:6])</code></pre>
+
+    <ul>
+      <li>¿qué devuelve cada línea?</li>
+      <li>¿por qué el límite final no se incluye?</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Errores frecuentes</h2>
+    <ul>
+      <li>pensar que el primer índice es 1</li>
+      <li>olvidar que el slicing no incluye el final</li>
+      <li>usar índices fuera de rango</li>
+      <li>confundir un carácter con una subcadena</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto guiado</h2>
+    <p>
+      Guarda tu nombre en una variable y muestra:
+    </p>
+    <ul>
+      <li>la primera letra</li>
+      <li>la última letra</li>
+      <li>las tres primeras letras</li>
+    </ul>
+
+    <pre><code>nombre = "Carlos"
+print(nombre[0])
+print(nombre[-1])
+print(nombre[:3])</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Pregunta de entrevista</h2>
+    <p>
+      ¿Qué diferencia hay entre <code>texto[2]</code> y <code>texto[2:3]</code>?
+    </p>
+
+    <p>
+      Respuesta sólida: ambos apuntan a la misma posición, pero el primero devuelve un carácter y el segundo devuelve una subcadena de longitud 1.
+    </p>
+  </section>
+
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./01-strings-como-secuencias.html">Anterior</a>
+    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('7.2')">Marcar como completado</button>
+
+  <script>
+const TOPIC_ID = "7.2";
+const NEXT_URL = "./03-metodos-de-strings.html";
+
+const API_URL = "http://localhost:3000/api/progress/python";
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+const nextBtn = document.getElementById("nextBtn");
+
+async function unlockNextIfCompleted() {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token || !nextBtn) return;
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    if (completed.includes(TOPIC_ID)) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error comprobando progreso:", error);
+  }
+}
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Tema completado 🎉");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error marcando tema como completado:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+
+unlockNextIfCompleted();
+</script>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 2.4 – Mini reto integrador</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<header class="header">
+  <h1>Tema 2 · Python</h1>
+  <p>2.4 · Mini-reto: combinar todo lo aprendido</p>
+</header>
+
+<main class="main-container single-column">
+
+  <section class="panel">
+    <h2>Objetivo del reto</h2>
+    <p>
+      Ahora toca unir todo: condicionales, comparaciones, booleanos y operadores lógicos.
+      El objetivo no es escribir muchas líneas, sino escribir lógica correcta y clara.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Enunciado</h2>
+    <p>
+      Vas a crear un pequeño sistema de acceso a una actividad.
+      El programa tendrá estas variables:
+    </p>
+
+    <ul>
+      <li><code>edad</code></li>
+      <li><code>tiene_autorizacion</code></li>
+      <li><code>es_socio</code></li>
+    </ul>
+
+    <p>El programa debe decidir:</p>
+    <ol>
+      <li>si puede entrar o no</li>
+      <li>qué tipo de acceso tiene</li>
+      <li>a qué grupo de edad pertenece</li>
+    </ol>
+  </section>
+
+  <section class="panel">
+    <h2>Solución guiada</h2>
+    <pre><code>edad = 16
+tiene_autorizacion = True
+es_socio = False
+
+if edad >= 18 and es_socio:
+    print("Acceso permitido con ventajas de socio")
+elif edad >= 18:
+    print("Acceso permitido")
+elif edad >= 14 and tiene_autorizacion:
+    print("Acceso permitido con autorización")
+else:
+    print("Acceso denegado")
+
+if edad < 12:
+    print("Grupo: niño")
+elif edad < 18:
+    print("Grupo: adolescente")
+else:
+    print("Grupo: adulto")</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Análisis de la lógica</h2>
+    <ul>
+      <li>primero se evalúa el caso más específico: adulto y socio</li>
+      <li>después el caso general de adulto</li>
+      <li>después el caso del menor autorizado</li>
+      <li>si no se cumple nada, el acceso se deniega</li>
+    </ul>
+
+    <p>
+      Después, en un segundo bloque independiente, se clasifica la edad.
+      Separar decisiones es una técnica útil para no mezclar reglas distintas.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Por qué esta solución es buena</h2>
+    <ul>
+      <li>las condiciones están ordenadas</li>
+      <li>los casos son mutuamente comprensibles</li>
+      <li>no hay lógica repetida innecesaria</li>
+      <li>las variables tienen nombres claros</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Versión ampliada</h2>
+    <pre><code>edad = 68
+tiene_autorizacion = False
+es_socio = True
+
+if edad >= 18 and es_socio:
+    print("Acceso permitido con ventajas de socio")
+elif edad >= 18:
+    print("Acceso permitido")
+elif edad >= 14 and tiene_autorizacion:
+    print("Acceso permitido con autorización")
+else:
+    print("Acceso denegado")
+
+if edad < 12:
+    print("Grupo: niño")
+elif edad < 18:
+    print("Grupo: adolescente")
+elif edad < 65:
+    print("Grupo: adulto")
+else:
+    print("Grupo: senior")</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Casos que deberías probar</h2>
+    <ul>
+      <li>edad 10</li>
+      <li>edad 14 con autorización</li>
+      <li>edad 14 sin autorización</li>
+      <li>edad 18</li>
+      <li>edad 18 y socio</li>
+      <li>edad 65</li>
+    </ul>
+
+    <div class="callout">
+      Probar casos límite distingue a quien solo “escribe código” de quien realmente valida su lógica.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Desafío 1</h2>
+    <p>Añade esta regla:</p>
+    <ul>
+      <li>si tiene menos de 10 años, mostrar <code>Acceso no recomendado</code></li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Desafío 2</h2>
+    <p>Añade esta regla:</p>
+    <ul>
+      <li>si tiene 65 o más, mostrar <code>Tarifa senior disponible</code></li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Desafío 3</h2>
+    <p>
+      Reescribe la solución con la menor repetición posible y con nombres de variables impecables.
+      Piensa como si estuvieras en una entrevista técnica básica.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Pregunta de entrevista</h2>
+    <p>
+      ¿Por qué conviene separar la lógica de acceso y la lógica de clasificación en dos bloques?
+    </p>
+
+    <p>
+      Porque son decisiones distintas, con reglas distintas. Separarlas mejora claridad, mantenimiento y depuración.
+    </p>
+  </section>
+
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./03-operadores-logicos.html">Anterior</a>
+    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Ejercicios Tema 2</a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('2.4')">Marcar como completado</button>
+
+  <script>
+const TOPIC_ID = "2.4";
+const NEXT_URL = "./py-tema2-ejercicios.html";
+
+const API_URL = "http://localhost:3000/api/progress/python";
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+const nextBtn = document.getElementById("nextBtn");
+
+async function unlockNextIfCompleted() {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token || !nextBtn) return;
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    if (completed.includes(TOPIC_ID)) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error comprobando progreso:", error);
+  }
+}
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Tema completado 🎉");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error marcando tema como completado:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+
+unlockNextIfCompleted();
+</script>
+
+</main>
+</body>
+</html>

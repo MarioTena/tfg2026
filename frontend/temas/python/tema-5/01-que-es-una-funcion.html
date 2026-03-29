@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 5.1 – Qué es una función</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<header class="header">
+  <h1>Tema 5 · Python</h1>
+  <p>5.1 · Qué es una función: reutilizar lógica y escribir código profesional</p>
+</header>
+
+<main class="main-container single-column">
+
+  <section class="panel">
+    <h2>¿Qué problema resuelven las funciones?</h2>
+    <p>
+      A medida que los programas crecen, empiezan a aparecer bloques de código que se repiten.
+      Copiar y pegar puede parecer rápido al principio, pero empeora el código:
+    </p>
+
+    <ul>
+      <li>duplica lógica</li>
+      <li>dificulta el mantenimiento</li>
+      <li>aumenta errores</li>
+      <li>hace el programa más difícil de leer</li>
+    </ul>
+
+    <div class="callout">
+      Una función permite encapsular una tarea en un bloque reutilizable con nombre propio.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>¿Qué es una función?</h2>
+    <p>
+      Una función es un bloque de código que realiza una tarea concreta.
+      Se define una vez y puede ejecutarse tantas veces como sea necesario.
+    </p>
+
+    <pre><code>def saludar():
+    print("Hola")</code></pre>
+
+    <p>
+      Aquí hemos definido una función llamada <code>saludar</code>.
+      Pero definirla no significa ejecutarla.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Definir no es lo mismo que llamar</h2>
+    <pre><code>def saludar():
+    print("Hola")
+
+saludar()</code></pre>
+
+    <p>
+      La primera parte crea la función. La segunda la llama para que se ejecute.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Sintaxis básica</h2>
+    <pre><code>def nombre_funcion():
+    bloque</code></pre>
+
+    <p>
+      Elementos importantes:
+    </p>
+
+    <ul>
+      <li><code>def</code> indica que vas a definir una función</li>
+      <li>el nombre describe la tarea</li>
+      <li>los paréntesis son obligatorios</li>
+      <li>el bloque va indentado</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Por qué las funciones son tan importantes</h2>
+    <ul>
+      <li>permiten reutilizar código</li>
+      <li>dividen problemas grandes en partes pequeñas</li>
+      <li>mejoran la legibilidad</li>
+      <li>facilitan probar y depurar</li>
+      <li>son una base esencial para escribir software real</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Ejemplo de problema sin función</h2>
+    <pre><code>print("Hola Ana")
+print("Bienvenida al sistema")
+
+print("Hola Luis")
+print("Bienvenido al sistema")</code></pre>
+
+    <p>
+      Aquí hay repetición. La estructura es la misma.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Idea de función como herramienta reutilizable</h2>
+    <p>
+      Piensa en una función como una pequeña máquina: le das un nombre, sabes qué hace,
+      y la usas cuando la necesitas.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Funciones incorporadas y funciones propias</h2>
+    <p>
+      Ya has usado funciones aunque quizá no lo notaras:
+    </p>
+
+    <pre><code>print("Hola")
+len([1, 2, 3])</code></pre>
+
+    <p>
+      <code>print()</code> y <code>len()</code> son funciones incorporadas de Python.
+      Ahora empiezas a crear las tuyas.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>💭 Piensa antes de ejecutar</h2>
+    <pre><code>def mostrar_mensaje():
+    print("Estoy dentro de la función")
+
+print("Antes")
+mostrar_mensaje()
+print("Después")</code></pre>
+
+    <ul>
+      <li>¿qué se imprime primero?</li>
+      <li>¿qué línea provoca la ejecución de la función?</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Errores frecuentes</h2>
+    <ul>
+      <li>olvidar los paréntesis al llamar a la función</li>
+      <li>pensar que definir una función la ejecuta automáticamente</li>
+      <li>poner mal la indentación</li>
+      <li>elegir nombres poco claros</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Buenas prácticas</h2>
+    <ul>
+      <li>usa nombres que indiquen acción: <code>saludar</code>, <code>calcular_total</code>, <code>mostrar_menu</code></li>
+      <li>haz que cada función tenga una responsabilidad clara</li>
+      <li>evita funciones demasiado largas al empezar</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto guiado</h2>
+    <p>
+      Crea una función llamada <code>mostrar_bienvenida</code> que imprima dos líneas de saludo.
+    </p>
+
+    <pre><code>def mostrar_bienvenida():
+    print("Bienvenido")
+    print("Vamos a aprender funciones")
+
+mostrar_bienvenida()</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Pregunta de entrevista</h2>
+    <p>
+      ¿Qué es una función y para qué sirve?
+    </p>
+
+    <p>
+      Respuesta sólida: una función es un bloque de código reutilizable que encapsula una tarea concreta y ayuda a organizar mejor el programa.
+    </p>
+  </section>
+
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./index.html">Índice tema</a>
+    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('5.1')">Marcar como completado</button>
+
+  <script>
+const TOPIC_ID = "5.1";
+const NEXT_URL = "./02-parametros-y-argumentos.html";
+
+const API_URL = "http://localhost:3000/api/progress/python";
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+const nextBtn = document.getElementById("nextBtn");
+
+async function unlockNextIfCompleted() {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token || !nextBtn) return;
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    if (completed.includes(TOPIC_ID)) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error comprobando progreso:", error);
+  }
+}
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Tema completado 🎉");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error marcando tema como completado:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+
+unlockNextIfCompleted();
+</script>
+
+</main>
+</body>
+</html>

@@ -16,6 +16,7 @@ const { generateFeedbackForAttempt } = require("./services/aiFeedback"); //feedb
 const authRoutes = require("./routes/authRoutes"); //rutas de registro/login
 const { requireAuth } = require("./middleware/requireAuth"); //middleware para proteger endpoints
 const progressRoutes = require("./routes/progressRoutes");
+const aiRoutes = require("./routes/aiRoutes");
 
 
 
@@ -40,6 +41,8 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 
 app.use("/api/progress", progressRoutes);
+
+app.use("/api/ai", aiRoutes);
 
 // Puerto donde escuchará la API (por defecto 3000)
 const PORT = process.env.PORT || 3000;

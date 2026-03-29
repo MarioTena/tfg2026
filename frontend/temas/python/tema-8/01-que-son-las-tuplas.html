@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 8.1 – Qué son las tuplas</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+<header class="header">
+  <h1>Tema 8 · Python</h1>
+  <p>8.1 · Qué son las tuplas: secuencias ordenadas e inmutables</p>
+</header>
+
+<main class="main-container single-column">
+  <section class="panel">
+    <h2>¿Qué es una tupla?</h2>
+    <p>
+      Una tupla es una estructura de datos ordenada, parecida a una lista, pero con una diferencia fundamental:
+      <strong>no se puede modificar después de crearla</strong>.
+    </p>
+
+    <pre><code>coordenada = (10, 20)
+colores = ("rojo", "verde", "azul")</code></pre>
+
+    <div class="callout">
+      Una tupla es útil cuando quieres dejar claro que esos datos no deben cambiar.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Tupla vs lista</h2>
+    <ul>
+      <li>ambas son secuencias ordenadas</li>
+      <li>ambas permiten indexación y slicing</li>
+      <li>la lista es mutable</li>
+      <li>la tupla es inmutable</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Crear tuplas</h2>
+    <pre><code>numeros = (1, 2, 3)
+datos = ("Ana", 30, True)</code></pre>
+
+    <p>
+      También existe la tupla de un solo elemento, pero necesita una coma.
+    </p>
+
+    <pre><code>una_tupla = (5,)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Acceder a sus elementos</h2>
+    <pre><code>colores = ("rojo", "verde", "azul")
+print(colores[0])
+print(colores[-1])</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>⚠️ Error típico: intentar modificar una tupla</h2>
+    <pre><code>colores = ("rojo", "verde", "azul")
+colores[1] = "amarillo"</code></pre>
+
+    <p>
+      Esto da error porque la tupla es inmutable.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Cuándo usar tuplas</h2>
+    <ul>
+      <li>coordenadas</li>
+      <li>fechas simples</li>
+      <li>datos fijos que no deben cambiar</li>
+      <li>devolver varios valores desde una función</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>💭 Piensa antes de ejecutar</h2>
+    <pre><code>punto = (3, 7)
+print(punto[0])
+print(len(punto))</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto guiado</h2>
+    <p>Crea una tupla con día, mes y año y muestra cada valor.</p>
+
+    <pre><code>fecha = (14, 3, 2026)
+print(fecha[0])
+print(fecha[1])
+print(fecha[2])</code></pre>
+  </section>
+
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./index.html">Índice tema</a>
+    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('8.1')">Marcar como completado</button>
+  <script>
+const TOPIC_ID = "8.1";
+const NEXT_URL = "./02-que-son-los-sets.html";
+
+const API_URL = "http://localhost:3000/api/progress/python";
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+const nextBtn = document.getElementById("nextBtn");
+
+async function unlockNextIfCompleted() {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token || !nextBtn) return;
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    if (completed.includes(TOPIC_ID)) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error comprobando progreso:", error);
+  }
+}
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Tema completado 🎉");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error marcando tema como completado:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+
+unlockNextIfCompleted();
+</script>
+
+</main>
+</body>
+</html>

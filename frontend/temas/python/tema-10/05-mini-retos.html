@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 10.5 – Mini retos</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+<header class="header">
+  <h1>Tema 10 · Python</h1>
+  <p>10.5 · Mini retos: integrar manejo de errores y validaciones</p>
+</header>
+
+<main class="main-container single-column">
+  <section class="panel">
+    <h2>Mini-reto 1 · Conversión segura</h2>
+    <pre><code>texto = input("Escribe un número: ")
+
+try:
+    numero = int(texto)
+    print("Número correcto")
+except ValueError:
+    print("Entrada no válida")</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 2 · División segura</h2>
+    <pre><code>try:
+    a = 10
+    b = 0
+    print(a / b)
+except ZeroDivisionError:
+    print("No se puede dividir entre cero")</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 3 · Abrir archivo</h2>
+    <pre><code>try:
+    with open("datos.txt", "r") as archivo:
+        print(archivo.read())
+except FileNotFoundError:
+    print("Archivo no encontrado")</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 4 · Validación con raise</h2>
+    <pre><code>def validar_nota(nota):
+    if nota < 0 or nota > 10:
+        raise ValueError("Nota inválida")
+    return nota</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 5 · else y finally</h2>
+    <pre><code>try:
+    numero = int("7")
+except ValueError:
+    print("Error")
+else:
+    print("Todo correcto")
+finally:
+    print("Fin del proceso")</code></pre>
+  </section>
+
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./04-raise-y-validaciones.html">Anterior</a>
+    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Ejercicios Tema 10</a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('10.5')">Marcar como completado</button>
+  <script>
+const TOPIC_ID = "10.5";
+const NEXT_URL = "./py-tema10-ejercicios.html";
+
+const API_URL = "http://localhost:3000/api/progress/python";
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+const nextBtn = document.getElementById("nextBtn");
+
+async function unlockNextIfCompleted() {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token || !nextBtn) return;
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    if (completed.includes(TOPIC_ID)) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error comprobando progreso:", error);
+  }
+}
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Tema completado 🎉");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error marcando tema como completado:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+
+unlockNextIfCompleted();
+</script>
+
+</main>
+</body>
+</html>

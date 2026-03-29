@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 9.3 – Escribir archivos</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+<header class="header">
+  <h1>Tema 9 · Python</h1>
+  <p>9.3 · Escribir archivos: guardar resultados y datos</p>
+</header>
+
+<main class="main-container single-column">
+  <section class="panel">
+    <h2>Escribir sobrescribiendo</h2>
+    <pre><code>with open("salida.txt", "w") as archivo:
+    archivo.write("Hola mundo")</code></pre>
+
+    <p>
+      El modo <code>w</code> crea el archivo si no existe y sobrescribe si ya existe.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Añadir al final</h2>
+    <pre><code>with open("historial.txt", "a") as archivo:
+    archivo.write("Nueva línea\n")</code></pre>
+
+    <p>
+      El modo <code>a</code> no borra el contenido anterior.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>⚠️ Cuidado con <code>w</code></h2>
+    <p>
+      Si abres un archivo importante con <code>w</code>, puedes borrar todo su contenido sin querer.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Escribir varias líneas</h2>
+    <pre><code>with open("tareas.txt", "w") as archivo:
+    archivo.write("Estudiar\n")
+    archivo.write("Practicar\n")
+    archivo.write("Repasar\n")</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto guiado</h2>
+    <p>Crea un archivo y escribe tres líneas con tareas del día.</p>
+  </section>
+
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./02-leer-archivos.html">Anterior</a>
+    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('9.3')">Marcar como completado</button>
+  <script>
+const TOPIC_ID = "9.3";
+const NEXT_URL = "./04-buenas-practicas-y-errores.html";
+
+const API_URL = "http://localhost:3000/api/progress/python";
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+const nextBtn = document.getElementById("nextBtn");
+
+async function unlockNextIfCompleted() {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token || !nextBtn) return;
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    if (completed.includes(TOPIC_ID)) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error comprobando progreso:", error);
+  }
+}
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Tema completado 🎉");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error marcando tema como completado:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+
+unlockNextIfCompleted();
+</script>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 4.4 – Métodos de listas</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<header class="header">
+  <h1>Tema 4 · Python</h1>
+  <p>4.4 · Métodos de listas: añadir, eliminar y organizar elementos</p>
+</header>
+
+<main class="main-container single-column">
+
+  <section class="panel">
+    <h2>¿Qué es un método?</h2>
+    <p>
+      Un método es una acción que un objeto puede realizar.
+      Las listas tienen varios métodos muy útiles.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2><code>append()</code>: añadir al final</h2>
+    <pre><code>tareas = ["estudiar", "practicar"]
+tareas.append("repasar")
+print(tareas)</code></pre>
+
+    <p>
+      Ahora la lista tendrá un elemento más al final.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2><code>insert()</code>: insertar en una posición</h2>
+    <pre><code>numeros = [10, 30, 40]
+numeros.insert(1, 20)
+print(numeros)</code></pre>
+
+    <p>
+      Inserta <code>20</code> en la posición 1.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2><code>remove()</code>: eliminar por valor</h2>
+    <pre><code>frutas = ["manzana", "pera", "uva"]
+frutas.remove("pera")
+print(frutas)</code></pre>
+
+    <p>
+      Elimina la primera aparición de ese valor.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2><code>pop()</code>: eliminar por posición</h2>
+    <pre><code>numeros = [10, 20, 30, 40]
+numeros.pop(2)
+print(numeros)</code></pre>
+
+    <p>
+      Elimina el elemento de índice 2.
+    </p>
+
+    <pre><code>nombres = ["Ana", "Luis", "Marta"]
+ultimo = nombres.pop()
+print(ultimo)
+print(nombres)</code></pre>
+
+    <p>
+      Si no indicas posición, elimina el último.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2><code>sort()</code>: ordenar</h2>
+    <pre><code>numeros = [4, 1, 9, 2]
+numeros.sort()
+print(numeros)</code></pre>
+
+    <p>
+      Ordena la lista de menor a mayor.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2><code>reverse()</code>: invertir el orden</h2>
+    <pre><code>numeros = [1, 2, 3, 4]
+numeros.reverse()
+print(numeros)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2><code>count()</code>: contar apariciones</h2>
+    <pre><code>numeros = [1, 2, 2, 3, 2]
+print(numeros.count(2))</code></pre>
+
+    <p>
+      Devuelve cuántas veces aparece ese valor.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2><code>index()</code>: encontrar la posición</h2>
+    <pre><code>frutas = ["manzana", "pera", "uva"]
+print(frutas.index("pera"))</code></pre>
+
+    <p>
+      Devuelve el índice de la primera aparición.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>⚠️ Error típico: pensar que un método crea otra lista automáticamente</h2>
+    <p>
+      Muchos métodos modifican la lista original.
+      No siempre devuelven una nueva.
+    </p>
+
+    <pre><code>numeros = [3, 1, 2]
+numeros.sort()
+print(numeros)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>💭 Piensa antes de ejecutar</h2>
+    <pre><code>datos = [10, 20, 30]
+datos.append(40)
+datos.remove(20)
+print(datos)</code></pre>
+
+    <ul>
+      <li>¿qué lista queda al final?</li>
+      <li>¿en qué orden se aplican los cambios?</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Errores frecuentes</h2>
+    <ul>
+      <li>usar <code>remove()</code> pensando en índices</li>
+      <li>usar <code>pop()</code> pensando en valores</li>
+      <li>olvidar que algunos métodos modifican la lista original</li>
+      <li>intentar eliminar valores que no existen</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto guiado</h2>
+    <p>
+      Crea una lista de compras, añade dos productos, elimina uno y ordénala alfabéticamente.
+    </p>
+
+    <pre><code>compras = ["pan", "leche"]
+compras.append("huevos")
+compras.append("arroz")
+compras.remove("leche")
+compras.sort()
+print(compras)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Pregunta de entrevista</h2>
+    <p>
+      ¿Qué diferencia hay entre <code>remove()</code> y <code>pop()</code>?
+    </p>
+
+    <p>
+      Respuesta sólida: <code>remove()</code> elimina por valor; <code>pop()</code> elimina por posición, y si no se indica ninguna, elimina el último elemento.
+    </p>
+  </section>
+
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./03-recorrer-listas.html">Anterior</a>
+    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('4.4')">Marcar como completado</button>
+
+  <script>
+const TOPIC_ID = "4.4";
+const NEXT_URL = "./05-mini-retos.html";
+
+const API_URL = "http://localhost:3000/api/progress/python";
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+const nextBtn = document.getElementById("nextBtn");
+
+async function unlockNextIfCompleted() {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token || !nextBtn) return;
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    if (completed.includes(TOPIC_ID)) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error comprobando progreso:", error);
+  }
+}
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Tema completado 🎉");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error marcando tema como completado:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+
+unlockNextIfCompleted();
+</script>
+
+</main>
+</body>
+</html>

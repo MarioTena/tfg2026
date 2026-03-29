@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 8.5 – Mini retos</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+<header class="header">
+  <h1>Tema 8 · Python</h1>
+  <p>8.5 · Mini retos: integrar tuplas y sets</p>
+</header>
+
+<main class="main-container single-column">
+  <section class="panel">
+    <h2>Mini-reto 1 · Coordenada</h2>
+    <pre><code>punto = (4, 9)
+print(punto[0])
+print(punto[1])</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 2 · Eliminar duplicados</h2>
+    <pre><code>numeros = [1, 2, 2, 3, 4, 4, 5]
+unicos = set(numeros)
+print(unicos)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 3 · Elementos comunes</h2>
+    <pre><code>a = {1, 2, 3, 4}
+b = {3, 4, 5, 6}
+print(a & b)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 4 · Añadir a set</h2>
+    <pre><code>tags = {"python", "html"}
+tags.add("css")
+print(tags)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 5 · Elegir estructura</h2>
+    <p>Decide si usarías lista, tupla o set para:</p>
+    <ul>
+      <li>asientos numerados</li>
+      <li>latitud y longitud</li>
+      <li>usuarios únicos conectados</li>
+    </ul>
+  </section>
+
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./04-cuando-usar-cada-estructura.html">Anterior</a>
+    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Ejercicios Tema 8</a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('8.5')">Marcar como completado</button>
+  <script>
+const TOPIC_ID = "8.5";
+const NEXT_URL = "./py-tema8-ejercicios.html";
+
+const API_URL = "http://localhost:3000/api/progress/python";
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+const nextBtn = document.getElementById("nextBtn");
+
+async function unlockNextIfCompleted() {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token || !nextBtn) return;
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    if (completed.includes(TOPIC_ID)) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error comprobando progreso:", error);
+  }
+}
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Tema completado 🎉");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error marcando tema como completado:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+
+unlockNextIfCompleted();
+</script>
+
+</main>
+</body>
+</html>

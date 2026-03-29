@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 6.4 – Métodos y buenas prácticas</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<header class="header">
+  <h1>Tema 6 · Python</h1>
+  <p>6.4 · Métodos y buenas prácticas: trabajar mejor con diccionarios</p>
+</header>
+
+<main class="main-container single-column">
+
+  <section class="panel">
+    <h2>Métodos fundamentales</h2>
+    <p>
+      Hay varios métodos muy útiles al trabajar con diccionarios.
+      En este tema vamos a centrarnos en los más prácticos para una base sólida.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2><code>keys()</code></h2>
+    <pre><code>usuario = {
+    "nombre": "Ana",
+    "edad": 30,
+    "activo": True
+}
+
+print(usuario.keys())</code></pre>
+
+    <p>
+      Devuelve una vista de las claves del diccionario.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2><code>values()</code></h2>
+    <pre><code>print(usuario.values())</code></pre>
+
+    <p>
+      Devuelve una vista de los valores.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2><code>items()</code></h2>
+    <pre><code>print(usuario.items())</code></pre>
+
+    <p>
+      Devuelve parejas clave-valor.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2><code>get()</code> con valor por defecto</h2>
+    <pre><code>config = {
+    "tema": "oscuro"
+}
+
+print(config.get("idioma", "es"))</code></pre>
+
+    <p>
+      Si la clave no existe, devuelve el valor por defecto indicado.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2><code>pop()</code>: eliminar y devolver</h2>
+    <pre><code>datos = {
+    "nombre": "Marta",
+    "edad": 28
+}
+
+edad = datos.pop("edad")
+print(edad)
+print(datos)</code></pre>
+
+    <p>
+      Elimina la clave y además devuelve el valor eliminado.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2><code>update()</code>: actualizar varios valores</h2>
+    <pre><code>producto = {
+    "nombre": "Monitor",
+    "precio": 200
+}
+
+producto.update({
+    "precio": 180,
+    "stock": 5
+})
+
+print(producto)</code></pre>
+
+    <p>
+      Muy útil para modificar varias claves de una vez.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Buenas prácticas</h2>
+    <ul>
+      <li>usa claves claras y coherentes</li>
+      <li>mantén un mismo criterio de nombres</li>
+      <li>no mezcles datos sin relación en el mismo diccionario</li>
+      <li>usa <code>get()</code> si no estás seguro de que la clave exista</li>
+      <li>piensa si realmente necesitas lista o diccionario</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Lista o diccionario: criterio correcto</h2>
+    <ul>
+      <li>usa lista cuando importa el orden o la secuencia</li>
+      <li>usa diccionario cuando importa el significado de cada dato</li>
+    </ul>
+
+    <div class="callout">
+      Elegir bien la estructura de datos ya es una habilidad de programador serio.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>💭 Piensa antes de ejecutar</h2>
+    <pre><code>usuario = {
+    "nombre": "Luis",
+    "edad": 35
+}
+
+usuario.update({"edad": 36, "activo": True})
+print(usuario.get("activo"))
+print(usuario)</code></pre>
+
+    <ul>
+      <li>¿qué cambia con <code>update()</code>?</li>
+      <li>¿qué devuelve <code>get("activo")</code>?</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Errores frecuentes</h2>
+    <ul>
+      <li>usar una lista donde un diccionario sería más claro</li>
+      <li>acceder a claves sin verificar si existen</li>
+      <li>usar nombres de claves inconsistentes</li>
+      <li>pensar que <code>keys()</code> o <code>values()</code> devuelven listas normales siempre</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto guiado</h2>
+    <p>
+      Crea un diccionario de configuración, actualiza varias claves y elimina una de ellas.
+    </p>
+
+    <pre><code>config = {
+    "tema": "claro",
+    "idioma": "es",
+    "notificaciones": True
+}
+
+config.update({
+    "tema": "oscuro",
+    "fuente": "grande"
+})
+
+config.pop("notificaciones")
+print(config)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Pregunta de entrevista</h2>
+    <p>
+      ¿Cuándo usarías un diccionario en vez de una lista?
+    </p>
+
+    <p>
+      Respuesta sólida: cuando los datos tienen nombres o claves con significado y quiero acceder a ellos de forma explícita en lugar de depender de posiciones.
+    </p>
+  </section>
+
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./03-recorrer-diccionarios.html">Anterior</a>
+    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('6.4')">Marcar como completado</button>
+
+  <script>
+const TOPIC_ID = "6.4";
+const NEXT_URL = "./05-mini-retos.html";
+
+const API_URL = "http://localhost:3000/api/progress/python";
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+const nextBtn = document.getElementById("nextBtn");
+
+async function unlockNextIfCompleted() {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token || !nextBtn) return;
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    if (completed.includes(TOPIC_ID)) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error comprobando progreso:", error);
+  }
+}
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Tema completado 🎉");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error marcando tema como completado:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+
+unlockNextIfCompleted();
+</script>
+
+</main>
+</body>
+</html>

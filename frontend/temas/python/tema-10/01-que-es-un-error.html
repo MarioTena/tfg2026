@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 10.1 – Qué es un error</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+<header class="header">
+  <h1>Tema 10 · Python</h1>
+  <p>10.1 · Qué es un error: entender por qué fallan los programas</p>
+</header>
+
+<main class="main-container single-column">
+  <section class="panel">
+    <h2>Por qué este tema importa de verdad</h2>
+    <p>
+      Hasta ahora has aprendido a escribir programas que funcionan en condiciones normales.
+      Pero en la práctica, los programas reales también deben saber reaccionar cuando algo sale mal.
+    </p>
+
+    <div class="callout">
+      Un programador principiante intenta que nunca haya errores. Un programador sólido asume que algunos errores ocurrirán y diseña cómo responder a ellos.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>¿Qué es un error?</h2>
+    <p>
+      Un error es una situación en la que el programa no puede continuar normalmente.
+      Puede deberse a código incorrecto, datos no válidos, archivos ausentes o conversiones imposibles.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Tipos generales de problemas</h2>
+    <ul>
+      <li><strong>errores de sintaxis</strong>: el programa ni siquiera puede interpretarse</li>
+      <li><strong>errores en tiempo de ejecución</strong>: aparecen mientras el programa corre</li>
+      <li><strong>errores lógicos</strong>: el programa no falla, pero hace algo incorrecto</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Error de sintaxis</h2>
+    <pre><code>if 5 > 3
+    print("Hola")</code></pre>
+
+    <p>
+      Aquí falta <code>:</code>. Python no puede ni empezar a ejecutar el programa.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Error en tiempo de ejecución</h2>
+    <pre><code>numero = int("hola")</code></pre>
+
+    <p>
+      El programa empieza, pero falla al intentar convertir un texto no numérico a entero.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Error lógico</h2>
+    <pre><code>precio = 100
+descuento = 10
+final = precio - descuento / 100
+print(final)</code></pre>
+
+    <p>
+      El programa funciona, pero el cálculo no representa el descuento que seguramente se pretendía.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Algunos errores muy comunes en Python</h2>
+    <ul>
+      <li><code>ValueError</code></li>
+      <li><code>TypeError</code></li>
+      <li><code>NameError</code></li>
+      <li><code>IndexError</code></li>
+      <li><code>KeyError</code></li>
+      <li><code>FileNotFoundError</code></li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Qué significa gestionar errores</h2>
+    <p>
+      Gestionar errores significa detectar situaciones problemáticas y responder de forma controlada,
+      en lugar de dejar que el programa se rompa sin más.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>💭 Piensa antes de ejecutar</h2>
+    <pre><code>edad = int("veinte")</code></pre>
+
+    <ul>
+      <li>¿funcionará?</li>
+      <li>¿qué tipo de error provocará?</li>
+      <li>¿por qué?</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Errores frecuentes al aprender</h2>
+    <ul>
+      <li>asustarse al ver el mensaje de error</li>
+      <li>no leer el tipo de excepción</li>
+      <li>tratar todos los errores como si fueran iguales</li>
+      <li>pensar que si el programa falla “Python va mal”</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto guiado</h2>
+    <p>
+      Clasifica estos casos como error de sintaxis, tiempo de ejecución o lógico:
+    </p>
+    <ul>
+      <li>usar una variable que no existe</li>
+      <li>olvidar un paréntesis</li>
+      <li>calcular mal una fórmula aunque el programa corra</li>
+    </ul>
+  </section>
+
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./index.html">Índice tema</a>
+    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('10.1')">Marcar como completado</button>
+  <script>
+const TOPIC_ID = "10.1";
+const NEXT_URL = "./02-try-except.html";
+
+const API_URL = "http://localhost:3000/api/progress/python";
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+const nextBtn = document.getElementById("nextBtn");
+
+async function unlockNextIfCompleted() {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token || !nextBtn) return;
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    if (completed.includes(TOPIC_ID)) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error comprobando progreso:", error);
+  }
+}
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Tema completado 🎉");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error marcando tema como completado:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+
+unlockNextIfCompleted();
+</script>
+
+</main>
+</body>
+</html>

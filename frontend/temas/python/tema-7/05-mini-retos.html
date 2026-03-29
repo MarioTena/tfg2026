@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 7.5 – Mini retos</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<header class="header">
+  <h1>Tema 7 · Python</h1>
+  <p>7.5 · Mini retos: integrar strings, bucles y métodos</p>
+</header>
+
+<main class="main-container single-column">
+
+  <section class="panel">
+    <h2>Objetivo de esta parte</h2>
+    <p>
+      Aquí vas a combinar indexación, slicing, métodos y recorridos para resolver problemas pequeños pero útiles.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 1 · Primera y última letra</h2>
+    <pre><code>palabra = "programa"
+print(palabra[0])
+print(palabra[-1])</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 2 · Texto invertido</h2>
+    <pre><code>texto = "python"
+print(texto[::-1])</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 3 · Normalizar nombre</h2>
+    <pre><code>nombre = "   ANA   "
+nombre = nombre.strip().lower()
+print(nombre)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 4 · Contar vocales</h2>
+    <pre><code>texto = "Programacion"
+contador = 0
+
+for letra in texto.lower():
+    if letra in "aeiou":
+        contador = contador + 1
+
+print(contador)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 5 · Separar palabras</h2>
+    <pre><code>frase = "Python es muy util"
+palabras = frase.split()
+print(palabras)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 6 · Reemplazar texto</h2>
+    <pre><code>frase = "Me gusta Java"
+frase = frase.replace("Java", "Python")
+print(frase)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Cómo pensar este tipo de ejercicios</h2>
+    <ol>
+      <li>decide si trabajas a nivel de carácter o de palabra</li>
+      <li>si el texto es irregular, normalízalo primero</li>
+      <li>si necesitas contar, crea un acumulador</li>
+      <li>si necesitas extraer una parte, piensa en slicing</li>
+      <li>si necesitas transformar, revisa si ya existe un método adecuado</li>
+    </ol>
+  </section>
+
+  <section class="panel">
+    <h2>Pregunta de entrevista</h2>
+    <p>
+      ¿Qué diferencia hay entre recorrer un string carácter a carácter y usar <code>split()</code>?
+    </p>
+
+    <p>
+      Respuesta sólida: recorrer un string trabaja a nivel de caracteres; <code>split()</code> lo divide en partes, normalmente palabras, y permite analizarlo a otro nivel.
+    </p>
+  </section>
+
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./04-recorrer-y-analizar-texto.html">Anterior</a>
+    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Ejercicios Tema 7</a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('7.5')">Marcar como completado</button>
+
+  <script>
+const TOPIC_ID = "7.5";
+const NEXT_URL = "./py-tema7-ejercicios.html";
+
+const API_URL = "http://localhost:3000/api/progress/python";
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+const nextBtn = document.getElementById("nextBtn");
+
+async function unlockNextIfCompleted() {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token || !nextBtn) return;
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    if (completed.includes(TOPIC_ID)) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error comprobando progreso:", error);
+  }
+}
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Tema completado 🎉");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error marcando tema como completado:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+
+unlockNextIfCompleted();
+</script>
+</main>
+</body>
+</html>

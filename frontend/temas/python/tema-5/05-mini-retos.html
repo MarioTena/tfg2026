@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 5.5 – Mini retos</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<header class="header">
+  <h1>Tema 5 · Python</h1>
+  <p>5.5 · Mini retos: integrar funciones, parámetros y return</p>
+</header>
+
+<main class="main-container single-column">
+
+  <section class="panel">
+    <h2>Objetivo de esta parte</h2>
+    <p>
+      Aquí vas a combinar lo aprendido para empezar a diseñar funciones útiles,
+      no solo ejemplos aislados.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 1 · Función que saluda</h2>
+    <pre><code>def saludar(nombre):
+    print("Hola", nombre)
+
+saludar("Ana")</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 2 · Función que devuelve el doble</h2>
+    <pre><code>def doble(numero):
+    return numero * 2
+
+print(doble(8))</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 3 · Función que clasifica edad</h2>
+    <pre><code>def clasificar_edad(edad):
+    if edad < 12:
+        return "niño"
+    if edad < 18:
+        return "adolescente"
+    return "adulto"
+
+print(clasificar_edad(15))</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 4 · Función que calcula IVA</h2>
+    <pre><code>def calcular_total(precio):
+    return precio * 1.21
+
+print(calcular_total(50))</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 5 · Función booleana</h2>
+    <pre><code>def es_par(numero):
+    return numero % 2 == 0
+
+print(es_par(8))
+print(es_par(5))</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 6 · Reutilizar funciones</h2>
+    <pre><code>def cuadrado(numero):
+    return numero * numero
+
+resultado1 = cuadrado(3)
+resultado2 = cuadrado(5)
+print(resultado1)
+print(resultado2)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Cómo pensar este tipo de ejercicios</h2>
+    <ol>
+      <li>define claramente la tarea de la función</li>
+      <li>decide qué datos necesita recibir</li>
+      <li>decide si debe imprimir o devolver</li>
+      <li>elige un nombre claro</li>
+      <li>prueba varios casos</li>
+    </ol>
+  </section>
+
+  <section class="panel">
+    <h2>Pregunta de entrevista</h2>
+    <p>
+      ¿Cuándo es preferible usar <code>return</code> en lugar de <code>print</code>?
+    </p>
+
+    <p>
+      Respuesta sólida: cuando quieres reutilizar el resultado de la función en otras operaciones, almacenarlo o tomar decisiones con él.
+    </p>
+  </section>
+
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./04-ambito-y-buenas-practicas.html">Anterior</a>
+    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Ejercicios Tema 5</a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('5.5')">Marcar como completado</button>
+
+<script>
+const TOPIC_ID = "5.5";
+const NEXT_URL = "./py-tema5-ejercicios.html";
+
+const API_URL = "http://localhost:3000/api/progress/python";
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+const nextBtn = document.getElementById("nextBtn");
+
+async function unlockNextIfCompleted() {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token || !nextBtn) return;
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    if (completed.includes(TOPIC_ID)) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error comprobando progreso:", error);
+  }
+}
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Tema completado 🎉");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error marcando tema como completado:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+
+unlockNextIfCompleted();
+</script>
+
+</main>
+</body>
+</html>

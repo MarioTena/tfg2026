@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 8.4 – Cuándo usar cada estructura</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+<header class="header">
+  <h1>Tema 8 · Python</h1>
+  <p>8.4 · Cuándo usar listas, tuplas o sets</p>
+</header>
+
+<main class="main-container single-column">
+  <section class="panel">
+    <h2>La decisión correcta importa</h2>
+    <p>
+      Elegir bien la estructura de datos es una habilidad importante. No se trata solo de que el programa funcione, sino de que represente bien el problema.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Usa lista cuando...</h2>
+    <ul>
+      <li>importa el orden</li>
+      <li>admites duplicados</li>
+      <li>vas a modificar elementos</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Usa tupla cuando...</h2>
+    <ul>
+      <li>importa el orden</li>
+      <li>no quieres cambios</li>
+      <li>el conjunto de datos es fijo</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Usa set cuando...</h2>
+    <ul>
+      <li>no quieres duplicados</li>
+      <li>la pertenencia es importante</li>
+      <li>quieres comparar grupos de elementos</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Ejemplos rápidos</h2>
+    <ul>
+      <li>lista: tareas pendientes en orden</li>
+      <li>tupla: coordenadas (x, y)</li>
+      <li>set: etiquetas únicas</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>💭 Piensa antes de ejecutar</h2>
+    <p>
+      ¿Qué usarías en cada caso?
+    </p>
+    <ul>
+      <li>notas de una clase</li>
+      <li>posición GPS</li>
+      <li>emails únicos recibidos</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto guiado</h2>
+    <p>Indica la estructura correcta para cada situación:</p>
+    <ul>
+      <li>productos en carrito</li>
+      <li>fecha fija</li>
+      <li>categorías sin repetir</li>
+    </ul>
+  </section>
+
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./03-operaciones-con-sets.html">Anterior</a>
+    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('8.4')">Marcar como completado</button>
+  <script>
+const TOPIC_ID = "8.4";
+const NEXT_URL = "./05-mini-retos.html";
+
+const API_URL = "http://localhost:3000/api/progress/python";
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+const nextBtn = document.getElementById("nextBtn");
+
+async function unlockNextIfCompleted() {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token || !nextBtn) return;
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    if (completed.includes(TOPIC_ID)) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error comprobando progreso:", error);
+  }
+}
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Tema completado 🎉");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error marcando tema como completado:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+
+unlockNextIfCompleted();
+</script>
+
+</main>
+</body>
+</html>

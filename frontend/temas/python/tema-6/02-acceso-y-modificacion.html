@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 6.2 – Acceso y modificación</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<header class="header">
+  <h1>Tema 6 · Python</h1>
+  <p>6.2 · Acceso y modificación: leer y actualizar valores por clave</p>
+</header>
+
+<main class="main-container single-column">
+
+  <section class="panel">
+    <h2>Acceder a un valor por su clave</h2>
+    <p>
+      Para acceder a un valor en un diccionario, usas la clave entre corchetes.
+    </p>
+
+    <pre><code>persona = {
+    "nombre": "Ana",
+    "edad": 30,
+    "ciudad": "Madrid"
+}
+
+print(persona["nombre"])
+print(persona["edad"])</code></pre>
+
+    <p>
+      Esto devuelve los valores asociados a esas claves.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Modificar un valor existente</h2>
+    <pre><code>persona = {
+    "nombre": "Ana",
+    "edad": 30
+}
+
+persona["edad"] = 31
+print(persona)</code></pre>
+
+    <p>
+      Si la clave ya existe, su valor se actualiza.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Añadir una nueva clave</h2>
+    <pre><code>persona = {
+    "nombre": "Ana",
+    "edad": 30
+}
+
+persona["email"] = "ana@email.com"
+print(persona)</code></pre>
+
+    <p>
+      Si la clave no existía, se crea.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>⚠️ Error típico: acceder a una clave inexistente</h2>
+    <pre><code>producto = {
+    "nombre": "Ratón",
+    "precio": 25
+}
+
+print(producto["stock"])</code></pre>
+
+    <p>
+      Esto da error porque la clave <code>"stock"</code> no existe.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Usar <code>get()</code> para acceder con más seguridad</h2>
+    <pre><code>producto = {
+    "nombre": "Ratón",
+    "precio": 25
+}
+
+print(producto.get("stock"))
+print(producto.get("stock", 0))</code></pre>
+
+    <p>
+      <code>get()</code> devuelve <code>None</code> o un valor por defecto si la clave no existe.
+      Es muy útil para evitar errores.
+    </p>
+
+    <div class="callout">
+      Cuando no estás seguro de si una clave existe, <code>get()</code> suele ser mejor que acceder directamente con corchetes.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Comprobar si una clave existe</h2>
+    <pre><code>usuario = {
+    "nombre": "Luis",
+    "activo": True
+}
+
+print("activo" in usuario)
+print("email" in usuario)</code></pre>
+
+    <p>
+      El operador <code>in</code> permite comprobar si una clave está en el diccionario.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Eliminar una clave</h2>
+    <pre><code>datos = {
+    "nombre": "Marta",
+    "edad": 28,
+    "ciudad": "Sevilla"
+}
+
+ del datos["ciudad"]
+print(datos)</code></pre>
+
+    <p>
+      <code>del</code> elimina la clave y su valor asociado.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>💭 Piensa antes de ejecutar</h2>
+    <pre><code>alumno = {
+    "nombre": "Carlos",
+    "nota": 8
+}
+
+alumno["nota"] = 9
+alumno["curso"] = "Python"
+print(alumno)</code></pre>
+
+    <ul>
+      <li>¿qué claves tiene el diccionario al final?</li>
+      <li>¿qué valor tiene <code>nota</code>?</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Errores frecuentes</h2>
+    <ul>
+      <li>escribir mal una clave</li>
+      <li>acceder a una clave que no existe</li>
+      <li>olvidar que las claves de texto deben ir entre comillas</li>
+      <li>confundir actualizar una clave con añadir una nueva</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto guiado</h2>
+    <p>
+      Crea un diccionario de producto, cambia el precio y añade una clave <code>stock</code>.
+    </p>
+
+    <pre><code>producto = {
+    "nombre": "Monitor",
+    "precio": 150
+}
+
+producto["precio"] = 175
+producto["stock"] = 12
+print(producto)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Pregunta de entrevista</h2>
+    <p>
+      ¿Qué ventaja tiene <code>get()</code> frente a acceder directamente con <code>diccionario[clave]</code>?
+    </p>
+
+    <p>
+      Respuesta sólida: <code>get()</code> permite recuperar un valor sin provocar error si la clave no existe, y además puede devolver un valor por defecto.
+    </p>
+  </section>
+
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./01-que-es-un-diccionario.html">Anterior</a>
+    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('6.2')">Marcar como completado</button>
+
+ <script>
+const TOPIC_ID = "6.2";
+const NEXT_URL = "./03-recorrer-diccionarios.html";
+
+const API_URL = "http://localhost:3000/api/progress/python";
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+const nextBtn = document.getElementById("nextBtn");
+
+async function unlockNextIfCompleted() {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token || !nextBtn) return;
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    if (completed.includes(TOPIC_ID)) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error comprobando progreso:", error);
+  }
+}
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Tema completado 🎉");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error marcando tema como completado:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+
+unlockNextIfCompleted();
+</script>
+
+</main>
+</body>
+</html>

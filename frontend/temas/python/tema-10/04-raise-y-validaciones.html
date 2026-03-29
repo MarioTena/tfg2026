@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 10.4 – raise y validaciones</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+<header class="header">
+  <h1>Tema 10 · Python</h1>
+  <p>10.4 · raise y validaciones: provocar errores de forma intencional cuando los datos no cumplen reglas</p>
+</header>
+
+<main class="main-container single-column">
+  <section class="panel">
+    <h2>¿Qué es <code>raise</code>?</h2>
+    <p>
+      A veces no esperas simplemente un error de Python: quieres indicar tú mismo que un dato no es válido.
+      Para eso existe <code>raise</code>.
+    </p>
+
+    <pre><code>edad = -5
+
+if edad < 0:
+    raise ValueError("La edad no puede ser negativa")</code></pre>
+
+    <div class="callout">
+      <code>raise</code> te permite señalar explícitamente que algo no cumple las reglas del programa.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Por qué esto es útil</h2>
+    <ul>
+      <li>evita que el programa siga con datos incorrectos</li>
+      <li>hace tus validaciones más claras</li>
+      <li>mejora la calidad del código</li>
+      <li>te obliga a pensar qué entradas son válidas</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Validar antes de continuar</h2>
+    <pre><code>nota = 15
+
+if nota < 0 or nota > 10:
+    raise ValueError("La nota debe estar entre 0 y 10")</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Combinar <code>raise</code> con funciones</h2>
+    <pre><code>def dividir(a, b):
+    if b == 0:
+        raise ValueError("El divisor no puede ser cero")
+    return a / b</code></pre>
+
+    <p>
+      Este patrón es muy útil: la función valida antes de calcular.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Capturar un error provocado con <code>raise</code></h2>
+    <pre><code>try:
+    edad = -1
+    if edad < 0:
+        raise ValueError("Edad inválida")
+except ValueError as error:
+    print(error)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>💭 Piensa antes de ejecutar</h2>
+    <pre><code>def validar_precio(precio):
+    if precio < 0:
+        raise ValueError("Precio inválido")
+    return precio
+
+print(validar_precio(10))</code></pre>
+
+    <ul>
+      <li>¿qué pasa con 10?</li>
+      <li>¿qué pasaría con -3?</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Errores frecuentes</h2>
+    <ul>
+      <li>usar <code>raise</code> sin pensar qué regla se está validando</li>
+      <li>no elegir un mensaje claro</li>
+      <li>seguir el programa con datos incorrectos cuando deberías frenarlo</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto guiado</h2>
+    <p>
+      Crea una función que reciba una edad y lance un error si es negativa o mayor que 120.
+    </p>
+
+    <pre><code>def validar_edad(edad):
+    if edad < 0 or edad > 120:
+        raise ValueError("Edad fuera de rango")
+    return edad</code></pre>
+  </section>
+
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./03-else-finally-y-errores-comunes.html">Anterior</a>
+    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('10.4')">Marcar como completado</button>
+  <script>
+const TOPIC_ID = "10.4";
+const NEXT_URL = "./05-mini-retos.html";
+
+const API_URL = "http://localhost:3000/api/progress/python";
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+const nextBtn = document.getElementById("nextBtn");
+
+async function unlockNextIfCompleted() {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token || !nextBtn) return;
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    if (completed.includes(TOPIC_ID)) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error comprobando progreso:", error);
+  }
+}
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Tema completado 🎉");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error marcando tema como completado:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+
+unlockNextIfCompleted();
+</script>
+
+</main>
+</body>
+</html>

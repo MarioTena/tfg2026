@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 3.3 – Bucle while</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<header class="header">
+  <h1>Tema 3 · Python</h1>
+  <p>3.3 · Bucle while: repetir mientras una condición sea verdadera</p>
+</header>
+
+<main class="main-container single-column">
+
+  <section class="panel">
+    <h2>¿Qué hace un <code>while</code>?</h2>
+    <p>
+      El bucle <code>while</code> repite un bloque de código mientras una condición sea verdadera.
+      Se usa cuando no piensas tanto en “recorrer una secuencia”, sino en “seguir mientras ocurra algo”.
+    </p>
+
+    <pre><code>contador = 1
+
+while contador <= 5:
+    print(contador)
+    contador = contador + 1</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Sintaxis básica</h2>
+    <pre><code>while condicion:
+    bloque</code></pre>
+
+    <p>
+      Igual que con <code>if</code> y <code>for</code>, la indentación define el bloque.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>La idea crítica del <code>while</code></h2>
+    <p>
+      En casi todo <code>while</code> debe existir algo que cambie durante el bucle.
+      Si nada cambia y la condición sigue siendo verdadera, el bucle no termina.
+    </p>
+
+    <div class="callout">
+      El mayor peligro de <code>while</code> es el bucle infinito.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Ejemplo paso a paso</h2>
+    <pre><code>contador = 1
+
+while contador <= 3:
+    print("Valor actual:", contador)
+    contador = contador + 1
+
+print("Fin")</code></pre>
+
+    <p>
+      Iteración 1: contador vale 1.
+      Iteración 2: contador vale 2.
+      Iteración 3: contador vale 3.
+      Después pasa a 4, la condición deja de cumplirse y el bucle termina.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Cuándo usar <code>while</code></h2>
+    <ul>
+      <li>cuando no sabes cuántas repeticiones habrá</li>
+      <li>cuando dependes de una condición cambiante</li>
+      <li>cuando validas entradas</li>
+      <li>cuando esperas a que ocurra algo</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Ejemplo clásico: pedir hasta que sea válido</h2>
+    <pre><code>respuesta = ""
+
+while respuesta != "si":
+    respuesta = input("Escribe si para continuar: ")
+
+print("Continuamos")</code></pre>
+
+    <p>
+      Este patrón es muy común: repetir hasta que se cumpla una condición deseada.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>⚠️ Bucle infinito</h2>
+    <pre><code>contador = 1
+
+while contador <= 5:
+    print(contador)</code></pre>
+
+    <p>
+      Este código nunca actualiza <code>contador</code>.
+      Como la condición sigue siendo verdadera, el bucle no termina.
+    </p>
+
+    <pre><code>contador = 1
+
+while contador <= 5:
+    print(contador)
+    contador = contador + 1</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Contadores y acumuladores en <code>while</code></h2>
+    <p>
+      Igual que en <code>for</code>, puedes usar variables que cuentan o acumulan información.
+    </p>
+
+    <pre><code>contador = 1
+suma = 0
+
+while contador <= 4:
+    suma = suma + contador
+    contador = contador + 1
+
+print(suma)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2><code>for</code> vs <code>while</code></h2>
+    <ul>
+      <li><code>for</code>: cuando recorres algo o tienes una repetición más estructurada</li>
+      <li><code>while</code>: cuando dependes de una condición y el número de iteraciones no está tan claro</li>
+    </ul>
+
+    <p>
+      Ambos pueden resolver algunos problemas similares, pero no siempre tienen la misma claridad.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>💭 Piensa antes de ejecutar</h2>
+    <pre><code>contador = 3
+
+while contador > 0:
+    print(contador)
+    contador = contador - 1</code></pre>
+
+    <ul>
+      <li>¿qué imprime?</li>
+      <li>¿cuántas iteraciones hace?</li>
+      <li>¿cuál es el valor final de <code>contador</code>?</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Errores frecuentes</h2>
+    <ul>
+      <li>olvidar actualizar la variable de control</li>
+      <li>escribir una condición que nunca deja de cumplirse</li>
+      <li>cambiar la variable equivocada</li>
+      <li>no pensar en el valor final del contador</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Buenas prácticas con <code>while</code></h2>
+    <ul>
+      <li>deja clara la condición</li>
+      <li>asegúrate de que algo cambia dentro del bucle</li>
+      <li>prueba el caso de salida</li>
+      <li>si el bucle es complejo, añade mensajes de seguimiento mientras aprendes</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto guiado</h2>
+    <p>
+      Imprime los números pares del 2 al 10 usando <code>while</code>.
+    </p>
+
+    <pre><code>numero = 2
+
+while numero <= 10:
+    print(numero)
+    numero = numero + 2</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Reto de entrevista</h2>
+    <p>
+      ¿Por qué este código entra en un bucle infinito?
+    </p>
+
+    <pre><code>x = 1
+while x < 5:
+    print(x)</code></pre>
+
+    <p>
+      Respuesta sólida: porque <code>x</code> nunca cambia; por tanto la condición <code>x &lt; 5</code> siempre sigue siendo verdadera.
+    </p>
+  </section>
+
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./02-for.html">Anterior</a>
+    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('3.3')">Marcar como completado</button>
+
+  <script>
+const TOPIC_ID = "3.3";
+const NEXT_URL = "./04-break-continue.html";
+
+const API_URL = "http://localhost:3000/api/progress/python";
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+const nextBtn = document.getElementById("nextBtn");
+
+async function unlockNextIfCompleted() {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token || !nextBtn) return;
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    if (completed.includes(TOPIC_ID)) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error comprobando progreso:", error);
+  }
+}
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Tema completado 🎉");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error marcando tema como completado:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+
+unlockNextIfCompleted();
+</script>
+
+</main>
+</body>
+</html>

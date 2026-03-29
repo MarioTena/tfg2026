@@ -1,10 +1,12 @@
 // ============================================================================
 // app.js
-// Lógica del playground: coge los datos del formulario,
-// llama a /api/run y pinta la salida en la parte derecha.
+// Playground: carga ejercicio desde URL, pinta metadatos, ejecuta código,
+// muestra historial y permite pedir pistas IA.
 // ============================================================================
 
 const API_URL = "http://localhost:3000/api/run";
+let editor = null;
+let currentExerciseId = null;
 
 // Si no hay token, no dejamos entrar al playground
 (function redirectIfNotLogged() {
@@ -13,31 +15,11 @@ const API_URL = "http://localhost:3000/api/run";
 })();
 
 // ============================================================================
-// Snippets de ejemplo para precargar ejercicios
-// Cada clave es un id que se pasa por la URL (?snippet=...)
-// IMPORTANTE: aquí van plantillas, no las soluciones completas.
-// ============================================================================
-const SNIPPETS = {
-  // Tema 1 (Python) – Ejercicio 1 (Hola mundo)
-  py_tema1_ej1: `# Escribe un programa que imprima exactamente:\n# Hola mundo desde TFG\n`,
-
-  // Tema 1 (Python) – Ejercicio 2 (Operaciones básicas)
-  py_tema1_ej2: `# Crea dos variables a y b con valores 7 y 4\n# y muestra la suma, la resta y el producto.\n\na = ___\nb = ___\n\n# Escribe aquí los prints con las operaciones`,
-
-  // Tema 1 (Python) – Ejercicio 3 (Nombre del alumno)
-  py_tema1_ej3: `# Define una variable 'nombre' con tu nombre\n# y muestra un mensaje del estilo: Me llamo Mario\n\nnombre = ___\n\n# Completa el print\nprint("Me llamo", nombre)`,
-
-  // Tema 1 (Python) – Ejercicio 4 (Error intencional)
-  // Aquí sí va código "completo" porque el objetivo es aprender del error.
-  py_tema1_ej4: `# Ejecuta este código y observa el error que aparece\nx = 5\ny = z + 1\nprint(x + y)`,
-};
-
-// ============================================================================
 // Referencias a elementos del DOM
 // ============================================================================
 const userInput = document.getElementById("user");
 const languageSelect = document.getElementById("language");
-const codeInput = document.getElementById("code");
+const codeTextarea = document.getElementById("code");
 const runButton = document.getElementById("run-btn");
 const statusMsg = document.getElementById("status-msg");
 
@@ -48,8 +30,75 @@ const runTimeEl = document.getElementById("run-time");
 const attemptsListEl = document.getElementById("attempts-list");
 const feedbackEl = document.getElementById("feedback");
 
+const exercisePanelEl = document.getElementById("exercise-panel");
+const exerciseTitleEl = document.getElementById("exercise-title");
+const exerciseStatementEl = document.getElementById("exercise-statement");
+const exerciseHintsEl = document.getElementById("exercise-hints");
+
+const exerciseBadgeLangEl = document.getElementById("exercise-badge-lang");
+const exerciseBadgeTypeEl = document.getElementById("exercise-badge-type");
+const exerciseBadgeDifficultyEl = document.getElementById("exercise-badge-difficulty");
+const exerciseBadgeTimeEl = document.getElementById("exercise-badge-time");
+const exerciseBadgeSkillEl = document.getElementById("exercise-badge-skill");
+
+const topbarSubEl = document.getElementById("topbar-sub");
+const editorMetaEl = document.getElementById("editor-meta");
+const editorTitleEl = document.getElementById("editor-title");
+const backBtn = document.getElementById("back-btn");
+
+const aiHintBtn = document.getElementById("ai-hint-btn");
+const aiCreditsEl = document.getElementById("ai-credits");
+const aiFeedbackEl = document.getElementById("ai-feedback");
+
 // ============================================================================
-// Función para limpiar la salida antes de una nueva ejecución
+// Editor
+// ============================================================================
+function initCodeEditor() {
+  if (!codeTextarea) {
+    console.error("No existe el textarea con id='code'");
+    return;
+  }
+
+  if (typeof CodeMirror === "undefined") {
+    console.error("CodeMirror no está cargado");
+    return;
+  }
+
+  editor = CodeMirror.fromTextArea(codeTextarea, {
+    mode: "python",
+    theme: "material-darker",
+    lineNumbers: true,
+    lineWrapping: false,
+    indentUnit: 4,
+    tabSize: 4,
+    indentWithTabs: false,
+    matchBrackets: true,
+    extraKeys: {
+      Tab: function (cm) {
+        cm.replaceSelection("    ", "end");
+      },
+      "Ctrl-Space": "autocomplete",
+    },
+  });
+
+  editor.setSize("100%", 500);
+}
+
+function setEditorCode(code) {
+  if (editor) {
+    editor.setValue(code || "");
+  } else if (codeTextarea) {
+    codeTextarea.value = code || "";
+  }
+}
+
+function getEditorCode() {
+  if (editor) return editor.getValue();
+  return codeTextarea ? codeTextarea.value : "";
+}
+
+// ============================================================================
+// Helpers visuales
 // ============================================================================
 function resetOutput() {
   stdoutEl.textContent = "";
@@ -58,41 +107,171 @@ function resetOutput() {
   runTimeEl.textContent = "-";
   statusMsg.textContent = "";
 
-  if (feedbackEl) {
-    feedbackEl.textContent = "";
+  if (feedbackEl) feedbackEl.textContent = "";
+}
+
+function formatTopicLabel(topic) {
+  if (!topic) return "Ruta de práctica";
+  return topic
+    .replace("python/", "")
+    .replaceAll("-", " ")
+    .replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+function getTopicPageFromExercise(ex) {
+  if (!ex?.topic) return "../home.html";
+
+  const topicMap = {
+    "python/tema-1": "../temas/python/tema-1/index.html",
+    "python/tema-2": "../temas/python/tema-2/index.html",
+    "python/tema-3": "../temas/python/tema-3/index.html",
+    "python/tema-4": "../temas/python/tema-4/index.html",
+    "python/tema-5": "../temas/python/tema-5/index.html",
+    "python/tema-6": "../temas/python/tema-6/index.html",
+    "python/tema-7": "../temas/python/tema-7/index.html",
+    "python/tema-8": "../temas/python/tema-8/index.html",
+    "python/tema-9": "../temas/python/tema-9/index.html",
+    "python/tema-10": "../temas/python/tema-10/index.html",
+  };
+
+  return topicMap[ex.topic] || "../home.html";
+}
+
+function updateExerciseUI(ex, lang) {
+  const topicLabel = formatTopicLabel(ex?.topic);
+  const type = ex?.type || "Práctica";
+  const difficulty = ex?.difficulty || "-";
+  const estimatedTime = ex?.estimatedTime || "-";
+  const skill = ex?.skill || "-";
+
+  if (exerciseBadgeLangEl) {
+    exerciseBadgeLangEl.textContent = `Lenguaje: ${lang || ex?.language || "-"}`;
+  }
+
+  if (exerciseBadgeTypeEl) {
+    exerciseBadgeTypeEl.textContent = `Modo: ${type}`;
+  }
+
+  if (exerciseBadgeDifficultyEl) {
+    exerciseBadgeDifficultyEl.textContent = `Dificultad: ${difficulty}`;
+  }
+
+  if (exerciseBadgeTimeEl) {
+    exerciseBadgeTimeEl.textContent = `Tiempo: ${estimatedTime}`;
+  }
+
+  if (exerciseBadgeSkillEl) {
+    exerciseBadgeSkillEl.textContent = `Skill: ${skill}`;
+  }
+
+  if (topbarSubEl) {
+    topbarSubEl.textContent = `${topicLabel} · ${type} · ${difficulty}`;
+  }
+
+  if (editorMetaEl) {
+    editorMetaEl.textContent = `${lang || ex?.language || "python"} · ${type} · ${estimatedTime}`;
+  }
+
+  if (editorTitleEl) {
+    editorTitleEl.textContent = ex?.title ? `Resolviendo: ${ex.title}` : "Editor de código";
+  }
+
+  if (backBtn) {
+    backBtn.href = getTopicPageFromExercise(ex);
   }
 }
 
 // ============================================================================
-// Carga código inicial desde la URL (snippet + lenguaje)
-// Ejemplo de URL:
-//   index.html?lang=python&snippet=py_tema1_ej1
+// Carga ejercicio desde URL
 // ============================================================================
-function loadSnippetFromURL() {
+function loadExerciseFromURL() {
   const params = new URLSearchParams(window.location.search);
-  const snippetId = params.get("snippet");
   const lang = params.get("lang");
+  const exerciseId = params.get("exerciseId");
 
-  // Si viene ?lang=python o similar, lo aplico
-  if (lang) {
-    languageSelect.value = lang;
+  if (lang) languageSelect.value = lang;
+
+  if (!exerciseId) {
+    currentExerciseId = null;
+
+    if (exercisePanelEl) exercisePanelEl.style.display = "none";
+    if (topbarSubEl) topbarSubEl.textContent = "Explora, prueba ideas y ejecuta tu código.";
+    if (editorMetaEl) editorMetaEl.textContent = `${languageSelect.value || "python"} · Modo libre`;
+    if (editorTitleEl) editorTitleEl.textContent = "Editor de código";
+
+    return;
   }
 
-  // Si viene un snippet conocido, relleno el textarea
-  if (snippetId && SNIPPETS[snippetId]) {
-    codeInput.value = SNIPPETS[snippetId];
+  currentExerciseId = exerciseId;
+
+  const catalog = window.EXERCISE_CATALOG || {};
+  const ex = catalog[exerciseId];
+
+  if (exercisePanelEl) exercisePanelEl.style.display = "block";
+
+  if (ex) {
+    if (exerciseTitleEl) exerciseTitleEl.textContent = ex.title || `Ejercicio: ${exerciseId}`;
+    if (exerciseStatementEl) exerciseStatementEl.textContent = ex.statement || "";
+
+    if (exerciseHintsEl) {
+      exerciseHintsEl.innerHTML = "";
+      (ex.hints || []).forEach((hint) => {
+        const li = document.createElement("li");
+        li.textContent = hint;
+        exerciseHintsEl.appendChild(li);
+      });
+    }
+
+    updateExerciseUI(ex, lang || ex.language);
+
+    if (ex.starterCode) {
+      setEditorCode(ex.starterCode);
+    }
+
+    const resetBtn = document.getElementById("btn-reset-template");
+    if (resetBtn) {
+      resetBtn.onclick = () => {
+        if (ex.starterCode) setEditorCode(ex.starterCode);
+        statusMsg.textContent = "Plantilla reiniciada.";
+      };
+    }
+
+    const copyBtn = document.getElementById("btn-copy-hints");
+    if (copyBtn) {
+      copyBtn.onclick = async () => {
+        const txt = (ex.hints || []).join("\n- ");
+        try {
+          await navigator.clipboard.writeText("- " + txt);
+          statusMsg.textContent = "Pistas copiadas al portapapeles.";
+        } catch {
+          statusMsg.textContent = "No se pudo copiar (permiso del navegador).";
+        }
+      };
+    }
+
+    return;
   }
+
+  if (exerciseTitleEl) exerciseTitleEl.textContent = `Ejercicio: ${exerciseId}`;
+  if (exerciseStatementEl) {
+    exerciseStatementEl.textContent = "Este ejercicio no está en el catálogo todavía.";
+  }
+
+  if (exerciseHintsEl) {
+    exerciseHintsEl.innerHTML = "";
+    const li = document.createElement("li");
+    li.textContent = "Añade este exerciseId al archivo del catálogo correspondiente.";
+    exerciseHintsEl.appendChild(li);
+  }
+
+  if (topbarSubEl) topbarSubEl.textContent = "Ejercicio no encontrado en catálogo.";
 }
 
-
 // ============================================================================
-// Carga el historial de intentos desde el backend y lo pinta en la lista
-// (ahora viene del usuario autenticado por JWT)
+// Historial
 // ============================================================================
 async function loadAttempts() {
   const url = `http://localhost:3000/api/attempts?limit=5`;
-
-  // Si no hay token, lo mostramos claro (en vez de intentar llamar y fallar)
   const token = localStorage.getItem("token");
   attemptsListEl.innerHTML = "";
 
@@ -110,7 +289,6 @@ async function loadAttempts() {
       },
     });
 
-    // Si el token no vale (caducado / inválido)
     if (res.status === 401) {
       const li = document.createElement("li");
       li.textContent = "Sesión caducada o token inválido. Vuelve a hacer login.";
@@ -118,7 +296,6 @@ async function loadAttempts() {
       return;
     }
 
-    // Intentamos parsear JSON de forma segura
     let data = null;
     try {
       data = await res.json();
@@ -178,39 +355,180 @@ async function loadAttempts() {
   }
 }
 
+// ============================================================================
+// IA
+// ============================================================================
+function getCurrentTopic() {
+  const params = new URLSearchParams(window.location.search);
+  const exerciseId = params.get("exerciseId");
 
+  if (!exerciseId) return null;
+
+  const catalog = window.EXERCISE_CATALOG || {};
+  const ex = catalog[exerciseId];
+
+  return ex?.topic || null;
+}
+
+async function loadAiCredits() {
+  const token = localStorage.getItem("token");
+  const topic = getCurrentTopic();
+
+  if (!token || !topic || !aiCreditsEl) return;
+
+  try {
+    const res = await fetch(
+      `http://localhost:3000/api/ai/credits?topic=${encodeURIComponent(topic)}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    const data = await res.json();
+
+    if (!res.ok || !data.ok) {
+      aiCreditsEl.textContent = "Créditos IA: error";
+      if (aiHintBtn) aiHintBtn.disabled = true;
+      return;
+    }
+
+    aiCreditsEl.textContent = `Créditos IA: ${data.remainingCredits}`;
+
+    if (aiHintBtn) {
+      aiHintBtn.disabled = data.remainingCredits <= 0;
+    }
+  } catch (error) {
+    console.error("Error cargando créditos IA:", error);
+    aiCreditsEl.textContent = "Créditos IA: error";
+    if (aiHintBtn) aiHintBtn.disabled = true;
+  }
+}
+
+async function requestAiHint() {
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    statusMsg.textContent = "Debes iniciar sesión para usar la IA.";
+    return;
+  }
+
+  if (!currentExerciseId) {
+    statusMsg.textContent = "La IA solo está disponible dentro de un ejercicio.";
+    return;
+  }
+
+  const catalog = window.EXERCISE_CATALOG || {};
+  const ex = catalog[currentExerciseId];
+
+  if (!ex) {
+    if (aiFeedbackEl) {
+      aiFeedbackEl.textContent = "No se encontró el ejercicio en el catálogo.";
+    }
+    return;
+  }
+
+  if (aiHintBtn) aiHintBtn.disabled = true;
+  if (aiFeedbackEl) aiFeedbackEl.textContent = "Pensando...";
+
+  try {
+    const body = {
+      topic: ex.topic,
+      exerciseId: ex.id,
+      title: ex.title,
+      statement: ex.statement,
+      hints: ex.hints || [],
+      language: languageSelect.value || "python",
+      code: getEditorCode(),
+      stdout: stdoutEl.textContent || "",
+      stderr: stderrEl.textContent || "",
+      status: runStatusEl.textContent || "unknown",
+      timeMs: (() => {
+        const raw = runTimeEl.textContent || "";
+        const match = raw.match(/(\d+)/);
+        return match ? Number(match[1]) : undefined;
+      })(),
+    };
+
+    const res = await fetch("http://localhost:3000/api/ai/hint", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(body),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok || !data.ok) {
+      if (aiFeedbackEl) {
+        aiFeedbackEl.textContent = data.error || "No se pudo obtener una pista";
+      }
+
+      if (aiCreditsEl && typeof data.remainingCredits === "number") {
+        aiCreditsEl.textContent = `Créditos IA: ${data.remainingCredits}`;
+      }
+
+      await loadAiCredits();
+      return;
+    }
+
+    if (aiFeedbackEl) {
+      aiFeedbackEl.textContent = data.hint || "";
+    }
+
+    if (aiCreditsEl) {
+      aiCreditsEl.textContent = `Créditos IA: ${data.remainingCredits}`;
+    }
+
+    if (aiHintBtn) {
+      aiHintBtn.disabled = data.remainingCredits <= 0;
+    }
+  } catch (error) {
+    console.error("Error pidiendo pista IA:", error);
+    if (aiFeedbackEl) {
+      aiFeedbackEl.textContent = "Error de conexión con la IA.";
+    }
+    await loadAiCredits();
+  } finally {
+    if (aiHintBtn) {
+      const currentCreditsText = aiCreditsEl?.textContent || "";
+      aiHintBtn.disabled = currentCreditsText.includes(": 0");
+    }
+  }
+}
 
 // ============================================================================
-// Función principal: envía el código al backend y procesa la respuesta
+// Ejecutar código
 // ============================================================================
 async function runCode() {
   resetOutput();
 
   const user = userInput.value.trim() || "alumno1";
   const language = languageSelect.value;
-  const code = codeInput.value;
+  const code = getEditorCode();
 
   if (!code.trim()) {
     statusMsg.textContent = "Escribe algún código antes de ejecutar.";
     return;
   }
 
-  // Mensaje de estado mientras se ejecuta
   statusMsg.textContent = "Ejecutando código...";
   runButton.disabled = true;
 
   try {
-    const body = { language, code };
+    const body = { language, code, exerciseId: currentExerciseId, user };
 
     const response = await fetch(API_URL, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-    "Authorization": `Bearer ${localStorage.getItem("token")}`,
-  },
-  body: JSON.stringify(body),
-});
-
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify(body),
+    });
 
     const data = await response.json();
 
@@ -220,7 +538,6 @@ async function runCode() {
       return;
     }
 
-    // Pinto la salida que viene de /api/run
     const run = data.run || {};
 
     stdoutEl.textContent = run.stdout || "";
@@ -229,16 +546,13 @@ async function runCode() {
     runTimeEl.textContent =
       typeof run.timeMs === "number" ? `${run.timeMs} ms` : "-";
 
-      // Feedback automático devuelto por el backend
     if (feedbackEl) {
       const fb = data.feedback;
       feedbackEl.textContent = fb && fb.message ? fb.message : "";
     }
 
-    // Actualizo el historial de intentos
     await loadAttempts();
 
-    // Mensaje general de estado
     if (run.status === "success") {
       statusMsg.textContent = "Ejecución completada correctamente.";
     } else if (run.status === "timeout") {
@@ -255,6 +569,9 @@ async function runCode() {
   }
 }
 
+// ============================================================================
+// Logout
+// ============================================================================
 const logoutBtn = document.getElementById("logout-btn");
 if (logoutBtn) {
   logoutBtn.addEventListener("click", () => {
@@ -265,16 +582,18 @@ if (logoutBtn) {
 }
 
 // ============================================================================
-// Evento del botón Ejecutar + carga inicial
+// Init
 // ============================================================================
+initCodeEditor();
 
-// Botón ejecutar
-runButton.addEventListener("click", () => {
-  runCode();
-});
+if (runButton) {
+  runButton.addEventListener("click", runCode);
+}
 
-// Primero miro si viene algún snippet por la URL (ejercicios)
-loadSnippetFromURL();
+if (aiHintBtn) {
+  aiHintBtn.addEventListener("click", requestAiHint);
+}
 
-// Luego cargo el historial inicial
+loadExerciseFromURL();
 loadAttempts();
+loadAiCredits();

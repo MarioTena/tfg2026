@@ -1,31 +1,33 @@
 // ============================================================================
 // aiFeedback.js
-// "IA" esto es un ejemplo de ia que me ha hecho chatgpt, todo esto hay que cambiarlo por una IA real
+// Feedback heurístico + IA real con fallback
 // ============================================================================
 
-// attempt: documento Attempt (Mongoose) con campos como:
-// { userId, language, code, stdout, stderr, status, timeMs }
+
+const OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions";
+
+// ----------------------------------------------------------------------------
+// FEEDBACK HEURÍSTICO ACTUAL
+// ----------------------------------------------------------------------------
 function buildSimpleFeedback(attempt, extraContext = {}) {
   const { language, code, stdout, stderr, status, timeMs } = attempt;
   const exerciseId = extraContext.exerciseId || null;
 
-  // Empezamos a construir un texto de feedback en castellano
   let mensaje = `Lenguaje: ${language}\n`;
   if (exerciseId) {
     mensaje += `Ejercicio: ${exerciseId}\n`;
   }
   mensaje += `Estado de la ejecución: ${status}\n`;
+
   if (typeof timeMs === "number") {
     mensaje += `Tiempo de ejecución aproximado: ${timeMs} ms\n\n`;
   } else {
     mensaje += `\n`;
   }
 
-  // Caso 1: ejecución correcta
   if (status === "success" && (!stderr || stderr.trim() === "")) {
     mensaje += "✅ La ejecución ha sido correcta.\n";
 
-    // Pistas según el ejercicio (opcional)
     if (exerciseId === "py_tema1_ej1") {
       mensaje +=
         "- Has conseguido imprimir un mensaje en pantalla, que es el objetivo principal de este ejercicio.\n" +
@@ -48,11 +50,11 @@ function buildSimpleFeedback(attempt, extraContext = {}) {
 
     return {
       message: mensaje,
-      level: "ok", // etiqueta sencilla para el frontend
+      level: "ok",
+      source: "heuristic",
     };
   }
 
-  // Caso 2: timeout
   if (status === "timeout") {
     mensaje +=
       "⚠️ La ejecución ha superado el tiempo máximo permitido.\n" +
@@ -66,17 +68,16 @@ function buildSimpleFeedback(attempt, extraContext = {}) {
     return {
       message: mensaje,
       level: "warning",
+      source: "heuristic",
     };
   }
 
-  // Caso 3: hay error (status === "error" o similar)
   mensaje +=
     "❌ La ejecución ha terminado con error.\n" +
     "A continuación tienes algunas pistas para interpretar lo que ha pasado:\n\n";
 
   if (stderr && stderr.trim() !== "") {
     mensaje += `Mensaje de error devuelto por el programa:\n${stderr}\n\n`;
-
 
     const lower = stderr.toLowerCase();
 
@@ -110,16 +111,139 @@ function buildSimpleFeedback(attempt, extraContext = {}) {
   return {
     message: mensaje,
     level: "error",
+    source: "heuristic",
   };
 }
 
-// Función asíncrona por si en el futuro queremos llamar a una API externa
+// ----------------------------------------------------------------------------
+//prompt para IA real
+// ----------------------------------------------------------------------------
+function buildTutorPrompt(attempt, extraContext = {}) {
+  const { language, code, stdout, stderr, status } = attempt;
+
+  const title = extraContext.title || extraContext.exerciseId || "Ejercicio sin título";
+  const statement = extraContext.statement || "Sin enunciado";
+  const hints = Array.isArray(extraContext.hints) ? extraContext.hints : [];
+
+  return `
+Eres un tutor de programación para estudiantes principiantes.
+
+Tu objetivo es ayudar sin dar la solución completa.
+
+Reglas obligatorias:
+- No escribas la solución final completa.
+- No devuelvas el código entero resuelto.
+- No reescribas el ejercicio completo.
+- Da solo pistas graduales y concretas.
+- Explica el error si lo hay.
+- Señala qué concepto debe revisar el alumno.
+- Sugiere un siguiente paso pequeño.
+- Si el alumno está muy cerca, da una pista más precisa, pero sin resolverlo.
+- Responde en español.
+- Sé breve, clara y didáctica.
+
+Datos del ejercicio:
+Título: ${title}
+Lenguaje: ${language}
+Estado de ejecución: ${status}
+Enunciado: ${statement}
+Pistas ya disponibles: ${hints.length ? hints.join(" | ") : "Sin pistas"}
+
+Código actual del alumno:
+${code || ""}
+
+Salida stdout:
+${stdout || ""}
+
+Salida stderr:
+${stderr || ""}
+
+Devuelve la respuesta exactamente en este formato:
+
+1. Qué está pasando
+2. Qué debe revisar
+3. Siguiente paso sugerido
+4. Una pista extra
+`.trim();
+}
+
+// ----------------------------------------------------------------------------
+// llamada a IA real (OpenRouter)
+// ----------------------------------------------------------------------------
+async function generateRealAiFeedback(attempt, extraContext = {}) {
+  const apiKey = process.env.OPENROUTER_API_KEY;
+
+  if (!apiKey) {
+    throw new Error("OPENROUTER_API_KEY no configurada");
+  }
+
+  const prompt = buildTutorPrompt(attempt, extraContext);
+
+  const response = await fetch(OPENROUTER_API_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${apiKey}`,
+      "HTTP-Referer": "http://localhost:3000",
+      "X-Title": "TFG Python Tutor",
+    },
+    body: JSON.stringify({
+      model: "openrouter/free",
+      messages: [
+        {
+          role: "system",
+          content:
+            "Eres un tutor de programación que solo da pistas y nunca entrega la solución completa.",
+        },
+        {
+          role: "user",
+          content: prompt,
+        },
+      ],
+      temperature: 0.4,
+      max_tokens: 350,
+    }),
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data?.error?.message || "Error llamando a la IA");
+  }
+
+  const text = data?.choices?.[0]?.message?.content?.trim();
+
+  if (!text) {
+    throw new Error("La IA no devolvió contenido");
+  }
+
+  return {
+    message: text,
+    level: "ai",
+    source: "openrouter",
+  };
+}
+
+// ----------------------------------------------------------------------------
+// FUNCIÓN PRINCIPAL
+// ----------------------------------------------------------------------------
 async function generateFeedbackForAttempt(attempt, extraContext = {}) {
-  // Aquí podríamos detectar si hay OPENAI_API_KEY y usar un modelo real.
-  // De momento devolvemos la versión heurística.
-  return buildSimpleFeedback(attempt, extraContext);
+  try {
+    // Si quieres activar IA real solo en ciertos casos, puedes condicionar aquí.
+    // Por ejemplo, si extraContext.useRealAI === true
+    if (extraContext.useRealAI) {
+      return await generateRealAiFeedback(attempt, extraContext);
+    }
+
+    return buildSimpleFeedback(attempt, extraContext);
+  } catch (error) {
+    console.error("Fallo IA real, uso feedback heurístico:", error.message);
+    return buildSimpleFeedback(attempt, extraContext);
+  }
 }
 
 module.exports = {
   generateFeedbackForAttempt,
+  buildSimpleFeedback,
+  generateRealAiFeedback,
 };

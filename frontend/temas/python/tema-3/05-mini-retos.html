@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 3.5 – Mini retos</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<header class="header">
+  <h1>Tema 3 · Python</h1>
+  <p>3.5 · Mini-retos: integrar for, while, break y continue</p>
+</header>
+
+<main class="main-container single-column">
+
+  <section class="panel">
+    <h2>Objetivo de esta parte</h2>
+    <p>
+      Aquí ya no se trata solo de entender la sintaxis.
+      Se trata de resolver pequeños problemas combinando ideas del tema.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 1 · Contar hacia atrás</h2>
+    <p>
+      Muestra una cuenta atrás del 5 al 1.
+    </p>
+
+    <pre><code>for numero in range(5, 0, -1):
+    print(numero)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 2 · Sumar del 1 al 10</h2>
+    <pre><code>suma = 0
+
+for numero in range(1, 11):
+    suma = suma + numero
+
+print(suma)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 3 · Mostrar solo impares</h2>
+    <pre><code>for numero in range(1, 11):
+    if numero % 2 == 0:
+        continue
+    print(numero)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 4 · Detener al encontrar un valor</h2>
+    <pre><code>for letra in "programacion":
+    if letra == "g":
+        break
+    print(letra)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 5 · Validación con while</h2>
+    <p>
+      Repite hasta que el usuario escriba la palabra <code>python</code>.
+    </p>
+
+    <pre><code>texto = ""
+
+while texto != "python":
+    texto = input("Escribe python: ")
+
+print("Correcto")</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 6 · Acumulación con while</h2>
+    <pre><code>contador = 1
+suma = 0
+
+while contador <= 5:
+    suma = suma + contador
+    contador = contador + 1
+
+print(suma)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Cómo pensar estos ejercicios</h2>
+    <ol>
+      <li>identifica qué se repite</li>
+      <li>decide si conviene <code>for</code> o <code>while</code></li>
+      <li>piensa qué variable cambia</li>
+      <li>define cuándo termina</li>
+      <li>si hace falta, añade <code>break</code> o <code>continue</code></li>
+    </ol>
+  </section>
+
+  <section class="panel">
+    <h2>Pregunta de entrevista</h2>
+    <p>
+      ¿Cómo decides si usar <code>for</code> o <code>while</code>?
+    </p>
+
+    <p>
+      Respuesta sólida: <code>for</code> cuando recorro una secuencia o una repetición estructurada; <code>while</code> cuando dependo de una condición que puede cambiar y no sé tan claramente cuántas iteraciones habrá.
+    </p>
+  </section>
+
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./04-break-continue.html">Anterior</a>
+    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Ejercicios Tema 3</a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('3.5')">Marcar como completado</button>
+
+  <script>
+const TOPIC_ID = "3.5";
+const NEXT_URL = "./py-tema3-ejercicios.html";
+
+const API_URL = "http://localhost:3000/api/progress/python";
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+const nextBtn = document.getElementById("nextBtn");
+
+async function unlockNextIfCompleted() {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token || !nextBtn) return;
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    if (completed.includes(TOPIC_ID)) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error comprobando progreso:", error);
+  }
+}
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Tema completado 🎉");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error marcando tema como completado:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+
+unlockNextIfCompleted();
+</script>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 4.2 – Acceso y modificación</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<header class="header">
+  <h1>Tema 4 · Python</h1>
+  <p>4.2 · Acceso y modificación: trabajar con posiciones dentro de una lista</p>
+</header>
+
+<main class="main-container single-column">
+
+  <section class="panel">
+    <h2>Acceder a un elemento</h2>
+    <p>
+      Cada elemento de una lista tiene una posición, llamada <strong>índice</strong>.
+      En Python, los índices empiezan en 0.
+    </p>
+
+    <pre><code>frutas = ["manzana", "pera", "uva"]
+print(frutas[0])
+print(frutas[1])
+print(frutas[2])</code></pre>
+
+    <p>
+      Esto imprimirá <code>manzana</code>, <code>pera</code> y <code>uva</code>.
+    </p>
+
+    <div class="callout">
+      En Python, el primer elemento no es el 1. Es el 0.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>¿Por qué empieza en 0?</h2>
+    <p>
+      Es una convención muy común en programación.
+      Cuesta un poco al principio, pero después se vuelve natural.
+      Debes asumirlo cuanto antes porque aparece constantemente.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Modificar un elemento</h2>
+    <p>
+      Las listas en Python son <strong>mutables</strong>, lo que significa que sus elementos se pueden cambiar.
+    </p>
+
+    <pre><code>frutas = ["manzana", "pera", "uva"]
+frutas[1] = "plátano"
+print(frutas)</code></pre>
+
+    <p>
+      Ahora la lista será <code>["manzana", "plátano", "uva"]</code>.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Índices negativos</h2>
+    <p>
+      Python también permite acceder desde el final de la lista usando índices negativos.
+    </p>
+
+    <pre><code>numeros = [10, 20, 30, 40]
+print(numeros[-1])
+print(numeros[-2])</code></pre>
+
+    <ul>
+      <li><code>-1</code> es el último elemento</li>
+      <li><code>-2</code> es el penúltimo</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>⚠️ Error típico: índice fuera de rango</h2>
+    <pre><code>frutas = ["manzana", "pera", "uva"]
+print(frutas[3])</code></pre>
+
+    <p>
+      Este código da error porque esa lista tiene índices 0, 1 y 2.
+      El índice 3 no existe.
+    </p>
+
+    <div class="callout">
+      Si una lista tiene longitud 3, su último índice positivo es 2.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Usar <code>len()</code> para razonar índices</h2>
+    <pre><code>frutas = ["manzana", "pera", "uva"]
+print(len(frutas))</code></pre>
+
+    <p>
+      Si la longitud es 3, los índices válidos van de 0 a 2.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Acceder al primer y último elemento</h2>
+    <pre><code>numeros = [5, 8, 12, 20]
+print(numeros[0])
+print(numeros[-1])</code></pre>
+
+    <p>
+      Esta es una operación muy común.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Rebanado básico o slicing</h2>
+    <p>
+      También puedes obtener una parte de la lista.
+    </p>
+
+    <pre><code>numeros = [10, 20, 30, 40, 50]
+print(numeros[1:4])</code></pre>
+
+    <p>
+      Esto devuelve <code>[20, 30, 40]</code>.
+      Empieza en el índice 1 y llega hasta antes del 4.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>💭 Piensa antes de ejecutar</h2>
+    <pre><code>animales = ["gato", "perro", "loro", "pez"]
+print(animales[0])
+print(animales[-1])
+print(animales[1:3])</code></pre>
+
+    <ul>
+      <li>¿qué imprime cada línea?</li>
+      <li>¿por qué el último valor no sale en el slicing?</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Errores frecuentes</h2>
+    <ul>
+      <li>pensar que el primer índice es 1</li>
+      <li>usar índices fuera del rango</li>
+      <li>confundir modificar un elemento con añadir uno nuevo</li>
+      <li>no entender que el slicing no incluye el límite final</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto guiado</h2>
+    <p>
+      Crea una lista con 4 asignaturas, muestra la primera y la última, y cambia la segunda por otra nueva.
+    </p>
+
+    <pre><code>asignaturas = ["Matemáticas", "Historia", "Física", "Lengua"]
+print(asignaturas[0])
+print(asignaturas[-1])
+asignaturas[1] = "Programación"
+print(asignaturas)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Pregunta de entrevista</h2>
+    <p>
+      ¿Qué significa que una lista sea mutable?
+    </p>
+
+    <p>
+      Respuesta sólida: significa que sus elementos se pueden modificar después de crear la lista.
+    </p>
+  </section>
+
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./01-que-es-una-lista.html">Anterior</a>
+    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('4.2')">Marcar como completado</button>
+
+  <script>
+const TOPIC_ID = "4.2";
+const NEXT_URL = "./03-recorrer-listas.html";
+
+const API_URL = "http://localhost:3000/api/progress/python";
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+const nextBtn = document.getElementById("nextBtn");
+
+async function unlockNextIfCompleted() {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token || !nextBtn) return;
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    if (completed.includes(TOPIC_ID)) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error comprobando progreso:", error);
+  }
+}
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Tema completado 🎉");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error marcando tema como completado:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+
+unlockNextIfCompleted();
+</script>
+
+</main>
+</body>
+</html>

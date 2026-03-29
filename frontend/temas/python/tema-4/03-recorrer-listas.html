@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 4.3 – Recorrer listas</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<header class="header">
+  <h1>Tema 4 · Python</h1>
+  <p>4.3 · Recorrer listas: aplicar bucles a colecciones de datos</p>
+</header>
+
+<main class="main-container single-column">
+
+  <section class="panel">
+    <h2>¿Qué significa recorrer una lista?</h2>
+    <p>
+      Recorrer una lista significa pasar por sus elementos uno a uno para leerlos,
+      mostrarlos, procesarlos, contarlos o transformarlos.
+    </p>
+
+    <p>
+      Esta es una habilidad central en programación.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Recorrer con <code>for</code></h2>
+    <pre><code>frutas = ["manzana", "pera", "uva"]
+
+for fruta in frutas:
+    print(fruta)</code></pre>
+
+    <p>
+      En cada iteración, la variable <code>fruta</code> toma el siguiente elemento de la lista.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Ventaja de este enfoque</h2>
+    <p>
+      No necesitas pensar en índices para los casos más simples.
+      Python te da directamente cada elemento.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Recorrer para acumular</h2>
+    <p>
+      Un patrón muy común es usar una lista y un acumulador.
+    </p>
+
+    <pre><code>numeros = [10, 20, 30, 40]
+suma = 0
+
+for numero in numeros:
+    suma = suma + numero
+
+print(suma)</code></pre>
+
+    <p>
+      Aquí se recorre la lista para sumar todos sus elementos.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Recorrer para contar condiciones</h2>
+    <pre><code>numeros = [2, 5, 8, 11, 14]
+contador_pares = 0
+
+for numero in numeros:
+    if numero % 2 == 0:
+        contador_pares = contador_pares + 1
+
+print(contador_pares)</code></pre>
+
+    <p>
+      Aquí no se suma el valor, se cuenta cuántos cumplen una condición.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Recorrer usando índices</h2>
+    <p>
+      A veces sí necesitas las posiciones. En esos casos puedes usar <code>range(len(lista))</code>.
+    </p>
+
+    <pre><code>frutas = ["manzana", "pera", "uva"]
+
+for i in range(len(frutas)):
+    print(i, frutas[i])</code></pre>
+
+    <p>
+      Esto muestra el índice y el valor.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Cuándo recorrer con elemento y cuándo con índice</h2>
+    <ul>
+      <li>si solo necesitas el valor, usa <code>for elemento in lista</code></li>
+      <li>si necesitas la posición, usa índices</li>
+    </ul>
+
+    <div class="callout">
+      No uses índices por costumbre si no los necesitas. Complica la lectura sin aportar valor.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Buscar un valor</h2>
+    <pre><code>nombres = ["Ana", "Luis", "Marta", "Carlos"]
+
+for nombre in nombres:
+    if nombre == "Marta":
+        print("Encontrado")</code></pre>
+
+    <p>
+      También puedes combinar esto con <code>break</code> si quieres parar en cuanto lo encuentres.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>💭 Piensa antes de ejecutar</h2>
+    <pre><code>numeros = [3, 6, 9]
+
+for numero in numeros:
+    print(numero * 2)</code></pre>
+
+    <ul>
+      <li>¿qué se imprime en cada iteración?</li>
+      <li>¿cuántas iteraciones hay?</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>⚠️ Error típico: confundir el elemento con el índice</h2>
+    <pre><code>frutas = ["manzana", "pera", "uva"]
+
+for fruta in frutas:
+    print(frutas[fruta])</code></pre>
+
+    <p>
+      Esto está mal, porque <code>fruta</code> contiene valores como <code>"manzana"</code>, no índices numéricos.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Buenas prácticas</h2>
+    <ul>
+      <li>pon nombres correctos a la variable del bucle</li>
+      <li>si recorres notas, usa <code>nota</code>, no <code>x</code></li>
+      <li>separa claramente acumuladores y contadores</li>
+      <li>elige la forma más simple posible</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto guiado</h2>
+    <p>
+      Recorre una lista de precios y muestra cada precio con IVA calculado al 21%.
+    </p>
+
+    <pre><code>precios = [10, 20, 30]
+
+for precio in precios:
+    print(precio * 1.21)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Pregunta de entrevista</h2>
+    <p>
+      ¿Cuándo usarías índices al recorrer una lista?
+    </p>
+
+    <p>
+      Respuesta sólida: cuando necesito conocer o utilizar la posición de cada elemento, no solo su valor.
+    </p>
+  </section>
+
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./02-acceso-y-modificacion.html">Anterior</a>
+    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('4.3')">Marcar como completado</button>
+
+  <script>
+const TOPIC_ID = "4.3";
+const NEXT_URL = "./04-metodos-listas.html";
+
+const API_URL = "http://localhost:3000/api/progress/python";
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+const nextBtn = document.getElementById("nextBtn");
+
+async function unlockNextIfCompleted() {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token || !nextBtn) return;
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    if (completed.includes(TOPIC_ID)) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error comprobando progreso:", error);
+  }
+}
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Tema completado 🎉");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error marcando tema como completado:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+
+unlockNextIfCompleted();
+</script>
+
+</main>
+</body>
+</html>

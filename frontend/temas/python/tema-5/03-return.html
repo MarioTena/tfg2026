@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 5.3 – return</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<header class="header">
+  <h1>Tema 5 · Python</h1>
+  <p>5.3 · return: devolver resultados en lugar de solo imprimir</p>
+</header>
+
+<main class="main-container single-column">
+
+  <section class="panel">
+    <h2>Imprimir no es lo mismo que devolver</h2>
+    <p>
+      Este es uno de los saltos conceptuales más importantes del curso.
+      Una función puede mostrar algo por pantalla con <code>print()</code>, pero también puede <strong>devolver</strong> un valor usando <code>return</code>.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Función que imprime</h2>
+    <pre><code>def sumar(a, b):
+    print(a + b)
+
+sumar(2, 3)</code></pre>
+
+    <p>
+      Esto muestra <code>5</code>, pero no lo deja disponible para seguir trabajando con él.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Función que devuelve</h2>
+    <pre><code>def sumar(a, b):
+    return a + b
+
+resultado = sumar(2, 3)
+print(resultado)</code></pre>
+
+    <p>
+      Ahora el valor devuelto puede guardarse, reutilizarse o combinarse con otras operaciones.
+    </p>
+
+    <div class="callout">
+      <code>return</code> convierte a la función en una herramienta que produce un resultado reutilizable.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Qué hace exactamente <code>return</code></h2>
+    <ul>
+      <li>termina la ejecución de la función</li>
+      <li>envía un valor al lugar donde la función fue llamada</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Usar el valor devuelto</h2>
+    <pre><code>def cuadrado(numero):
+    return numero * numero
+
+print(cuadrado(4))
+resultado = cuadrado(6)
+print(resultado + 10)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>⚠️ Error típico: creer que <code>print</code> sustituye a <code>return</code></h2>
+    <pre><code>def sumar(a, b):
+    print(a + b)
+
+resultado = sumar(2, 3)
+print(resultado)</code></pre>
+
+    <p>
+      Esto imprimirá primero 5 y luego <code>None</code>, porque la función no ha devuelto nada.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Funciones que devuelven texto</h2>
+    <pre><code>def crear_saludo(nombre):
+    return "Hola " + nombre
+
+mensaje = crear_saludo("Ana")
+print(mensaje)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Funciones que deciden y devuelven</h2>
+    <pre><code>def es_mayor_de_edad(edad):
+    return edad >= 18
+
+print(es_mayor_de_edad(20))
+print(es_mayor_de_edad(15))</code></pre>
+
+    <p>
+      Una función también puede devolver booleanos.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Devolver pronto</h2>
+    <pre><code>def clasificar(numero):
+    if numero > 0:
+        return "positivo"
+    if numero < 0:
+        return "negativo"
+    return "cero"</code></pre>
+
+    <p>
+      En cuanto se ejecuta un <code>return</code>, la función termina.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>💭 Piensa antes de ejecutar</h2>
+    <pre><code>def doble(numero):
+    return numero * 2
+
+valor = doble(5)
+print(valor)
+print(doble(3) + 1)</code></pre>
+
+    <ul>
+      <li>¿qué vale <code>valor</code>?</li>
+      <li>¿qué imprime la última línea?</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Errores frecuentes</h2>
+    <ul>
+      <li>confundir imprimir con devolver</li>
+      <li>olvidar guardar el resultado devuelto</li>
+      <li>escribir código después de un <code>return</code> pensando que seguirá ejecutándose</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto guiado</h2>
+    <p>
+      Crea una función que reciba un precio y devuelva el precio con IVA del 21%.
+    </p>
+
+    <pre><code>def precio_con_iva(precio):
+    return precio * 1.21
+
+final = precio_con_iva(100)
+print(final)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Pregunta de entrevista</h2>
+    <p>
+      ¿Qué diferencia hay entre <code>print()</code> y <code>return</code> dentro de una función?
+    </p>
+
+    <p>
+      Respuesta sólida: <code>print()</code> muestra información por pantalla; <code>return</code> devuelve un valor para seguir utilizándolo fuera de la función.
+    </p>
+  </section>
+
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./02-parametros-y-argumentos.html">Anterior</a>
+    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('5.3')">Marcar como completado</button>
+
+  <script>
+const TOPIC_ID = "5.3";
+const NEXT_URL = "./04-ambito-y-buenas-practicas.html";
+
+const API_URL = "http://localhost:3000/api/progress/python";
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+const nextBtn = document.getElementById("nextBtn");
+
+async function unlockNextIfCompleted() {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token || !nextBtn) return;
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    if (completed.includes(TOPIC_ID)) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error comprobando progreso:", error);
+  }
+}
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Tema completado 🎉");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error marcando tema como completado:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+
+unlockNextIfCompleted();
+</script>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 3.4 – break y continue</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<header class="header">
+  <h1>Tema 3 · Python</h1>
+  <p>3.4 · break y continue: controlar el flujo dentro de un bucle</p>
+</header>
+
+<main class="main-container single-column">
+
+  <section class="panel">
+    <h2>¿Qué problema resuelven <code>break</code> y <code>continue</code>?</h2>
+    <p>
+      A veces no basta con repetir. Necesitas modificar el comportamiento del bucle desde dentro:
+    </p>
+
+    <ul>
+      <li>detenerlo antes de tiempo</li>
+      <li>saltar una iteración concreta</li>
+    </ul>
+
+    <p>
+      Para eso sirven <code>break</code> y <code>continue</code>.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2><code>break</code>: terminar el bucle inmediatamente</h2>
+    <pre><code>for numero in range(1, 10):
+    if numero == 5:
+        break
+    print(numero)</code></pre>
+
+    <p>
+      Cuando <code>numero</code> vale 5, el bucle se detiene por completo.
+      Ya no hay más iteraciones.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Cuándo usar <code>break</code></h2>
+    <ul>
+      <li>cuando encuentras lo que buscabas</li>
+      <li>cuando ocurre una condición de parada</li>
+      <li>cuando no tiene sentido seguir iterando</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2><code>continue</code>: saltar solo la iteración actual</h2>
+    <pre><code>for numero in range(1, 6):
+    if numero == 3:
+        continue
+    print(numero)</code></pre>
+
+    <p>
+      Aquí no se imprime el 3, pero el bucle sigue con el 4 y el 5.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Diferencia exacta entre ambos</h2>
+    <ul>
+      <li><code>break</code> → corta todo el bucle</li>
+      <li><code>continue</code> → salta solo una vuelta y sigue con la siguiente</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Ejemplo realista con búsqueda</h2>
+    <pre><code>for letra in "python":
+    if letra == "h":
+        break
+    print(letra)</code></pre>
+
+    <p>
+      Se imprimen <code>p</code>, <code>y</code>, <code>t</code> y luego el bucle termina.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Ejemplo realista con filtrado</h2>
+    <pre><code>for numero in range(1, 8):
+    if numero % 2 == 0:
+        continue
+    print(numero)</code></pre>
+
+    <p>
+      Aquí saltas los pares y solo muestras impares.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>⚠️ Error típico: usar <code>break</code> cuando querías <code>continue</code></h2>
+    <p>
+      Si quieres saltarte un valor, no debes romper el bucle entero.
+    </p>
+
+    <pre><code>for numero in range(1, 6):
+    if numero == 3:
+        break
+    print(numero)</code></pre>
+
+    <p>
+      Esto no “omite el 3”. Hace algo más radical: termina completamente el bucle.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Con <code>while</code> también existen</h2>
+    <pre><code>contador = 0
+
+while True:
+    contador = contador + 1
+    if contador == 4:
+        break
+    print(contador)</code></pre>
+
+    <p>
+      Este patrón se usa mucho cuando la condición de salida se decide desde dentro del bucle.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>💭 Piensa antes de ejecutar</h2>
+    <pre><code>for numero in range(1, 6):
+    if numero == 2:
+        continue
+    if numero == 5:
+        break
+    print(numero)</code></pre>
+
+    <ul>
+      <li>¿qué números se imprimen?</li>
+      <li>¿por qué no aparece el 2?</li>
+      <li>¿por qué no aparece el 5?</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Buenas prácticas</h2>
+    <ul>
+      <li>usa <code>break</code> solo cuando la salida anticipada tenga sentido real</li>
+      <li>usa <code>continue</code> para filtrar casos concretos</li>
+      <li>no abuses de ellos si hacen el flujo difícil de leer</li>
+      <li>explica la intención con variables y condiciones claras</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto guiado</h2>
+    <p>
+      Recorre los números del 1 al 10 e imprime todos menos el 5.
+    </p>
+
+    <pre><code>for numero in range(1, 11):
+    if numero == 5:
+        continue
+    print(numero)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Reto de entrevista</h2>
+    <p>
+      ¿Qué diferencia conceptual hay entre <code>break</code> y <code>continue</code>?
+    </p>
+
+    <p>
+      Respuesta sólida: <code>break</code> termina el bucle completo; <code>continue</code> solo omite la iteración actual y permite seguir con las siguientes.
+    </p>
+  </section>
+
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./03-while.html">Anterior</a>
+    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('3.4')">Marcar como completado</button>
+
+  <script>
+const TOPIC_ID = "3.4";
+const NEXT_URL = "./05-mini-retos.html";
+
+const API_URL = "http://localhost:3000/api/progress/python";
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+const nextBtn = document.getElementById("nextBtn");
+
+async function unlockNextIfCompleted() {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token || !nextBtn) return;
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    if (completed.includes(TOPIC_ID)) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error comprobando progreso:", error);
+  }
+}
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Tema completado 🎉");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error marcando tema como completado:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+
+unlockNextIfCompleted();
+</script>
+
+</main>
+</body>
+</html>

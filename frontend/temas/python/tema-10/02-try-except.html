@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 10.2 – try y except</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+<header class="header">
+  <h1>Tema 10 · Python</h1>
+  <p>10.2 · try y except: controlar errores sin romper el programa</p>
+</header>
+
+<main class="main-container single-column">
+  <section class="panel">
+    <h2>Idea principal</h2>
+    <p>
+      Con <code>try</code> y <code>except</code> puedes intentar ejecutar código que podría fallar,
+      y definir qué hacer si efectivamente aparece un error.
+    </p>
+
+    <pre><code>try:
+    numero = int("hola")
+except:
+    print("Ha ocurrido un error")</code></pre>
+
+    <div class="callout">
+      <code>try</code> significa “inténtalo”; <code>except</code> significa “si falla, actúa así”.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Por qué es útil</h2>
+    <ul>
+      <li>evita que el programa termine de forma brusca</li>
+      <li>permite mostrar mensajes más claros al usuario</li>
+      <li>facilita validar entradas problemáticas</li>
+      <li>es esencial cuando trabajas con archivos o conversiones</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Ejemplo con conversión de tipos</h2>
+    <pre><code>texto = "123"
+
+try:
+    numero = int(texto)
+    print(numero)
+except:
+    print("No se pudo convertir")</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Capturar errores concretos</h2>
+    <p>
+      Aunque puedes usar un <code>except</code> genérico, normalmente es mejor capturar el tipo concreto de error.
+    </p>
+
+    <pre><code>try:
+    numero = int("hola")
+except ValueError:
+    print("El texto no representa un número")</code></pre>
+
+    <p>
+      Esto hace el código más claro y más profesional.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Varios <code>except</code></h2>
+    <pre><code>try:
+    archivo = open("datos.txt", "r")
+    numero = int("hola")
+except FileNotFoundError:
+    print("El archivo no existe")
+except ValueError:
+    print("El valor no se puede convertir")</code></pre>
+
+    <p>
+      Cada bloque maneja un tipo distinto de problema.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Guardar el error en una variable</h2>
+    <pre><code>try:
+    numero = int("hola")
+except ValueError as error:
+    print("Ha ocurrido un error:", error)</code></pre>
+
+    <p>
+      Esto es útil para depuración y para entender mejor qué ha pasado.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>⚠️ Error típico: usar <code>except</code> para ocultarlo todo</h2>
+    <p>
+      Un <code>except</code> demasiado genérico puede esconder errores que en realidad deberías corregir.
+    </p>
+
+    <pre><code>try:
+    algo = 10 / 0
+except:
+    print("Error")</code></pre>
+
+    <p>
+      Esto funciona, pero a veces impide entender qué tipo de error ocurrió realmente.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>💭 Piensa antes de ejecutar</h2>
+    <pre><code>texto = "abc"
+
+try:
+    numero = int(texto)
+    print("Conversión correcta")
+except ValueError:
+    print("Conversión incorrecta")</code></pre>
+
+    <ul>
+      <li>¿qué camino sigue el programa?</li>
+      <li>¿por qué entra en <code>except</code>?</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto guiado</h2>
+    <p>
+      Pide al usuario un número y usa <code>try</code> / <code>except</code> para mostrar un mensaje si introduce texto inválido.
+    </p>
+
+    <pre><code>texto = input("Escribe un número: ")
+
+try:
+    numero = int(texto)
+    print("Número válido:", numero)
+except ValueError:
+    print("Debes escribir un número entero")</code></pre>
+  </section>
+
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./01-que-es-un-error.html">Anterior</a>
+    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('10.2')">Marcar como completado</button>
+  <script>
+const TOPIC_ID = "10.2";
+const NEXT_URL = "./03-else-finally-y-errores-comunes.html";
+
+const API_URL = "http://localhost:3000/api/progress/python";
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+const nextBtn = document.getElementById("nextBtn");
+
+async function unlockNextIfCompleted() {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token || !nextBtn) return;
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    if (completed.includes(TOPIC_ID)) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error comprobando progreso:", error);
+  }
+}
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Tema completado 🎉");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error marcando tema como completado:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+
+unlockNextIfCompleted();
+</script>
+</main>
+</body>
+</html>

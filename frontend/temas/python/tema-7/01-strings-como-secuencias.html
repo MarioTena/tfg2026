@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 7.1 – Strings como secuencias</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<header class="header">
+  <h1>Tema 7 · Python</h1>
+  <p>7.1 · Strings como secuencias: entender el texto como una estructura recorrible</p>
+</header>
+
+<main class="main-container single-column">
+
+  <section class="panel">
+    <h2>Qué cambia respecto al tema 1</h2>
+    <p>
+      En el tema 1 viste que un string es texto, por ejemplo <code>"Hola"</code>.
+      Ahora vamos a dar un paso más importante: en Python, un string no es solo texto,
+      sino también una <strong>secuencia de caracteres</strong>.
+    </p>
+
+    <div class="callout">
+      Pensar un string como secuencia permite recorrerlo, acceder a posiciones concretas, cortar partes y analizarlo.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Qué significa “secuencia”</h2>
+    <p>
+      Una secuencia es una estructura ordenada de elementos.
+      En una lista los elementos pueden ser números o textos.
+      En un string, los elementos son caracteres.
+    </p>
+
+    <pre><code>texto = "Python"
+print(texto)</code></pre>
+
+    <p>
+      Ese string está formado por los caracteres <code>P</code>, <code>y</code>, <code>t</code>, <code>h</code>, <code>o</code> y <code>n</code>.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Longitud de un string</h2>
+    <p>
+      Igual que con listas, puedes saber cuántos elementos tiene con <code>len()</code>.
+    </p>
+
+    <pre><code>texto = "Python"
+print(len(texto))</code></pre>
+
+    <p>
+      El resultado será <code>6</code>.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Los espacios también cuentan</h2>
+    <pre><code>frase = "Hola mundo"
+print(len(frase))</code></pre>
+
+    <p>
+      El espacio entre palabras también es un carácter.
+      Esto es importante al contar, recorrer y analizar texto.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Un string es inmutable</h2>
+    <p>
+      Igual que ocurre con otros tipos de datos, un string no se modifica carácter a carácter de forma directa.
+      Se considera <strong>inmutable</strong>.
+    </p>
+
+    <p>
+      Eso significa que, cuando parece que lo cambias, en realidad normalmente estás creando uno nuevo.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Diferencia con una lista</h2>
+    <p>
+      Ambos son secuencias, pero hay una diferencia muy importante:
+    </p>
+
+    <ul>
+      <li>una lista es mutable</li>
+      <li>un string es inmutable</li>
+    </ul>
+
+    <p>
+      Esta diferencia aparecerá mucho al programar.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Cuándo es importante ver un string como secuencia</h2>
+    <ul>
+      <li>cuando quieres contar letras</li>
+      <li>cuando quieres recorrer carácter a carácter</li>
+      <li>cuando quieres extraer una parte del texto</li>
+      <li>cuando necesitas validar formato</li>
+      <li>cuando buscas patrones simples</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>💭 Piensa antes de ejecutar</h2>
+    <pre><code>palabra = "sol"
+print(palabra)
+print(len(palabra))</code></pre>
+
+    <ul>
+      <li>¿qué representa <code>len(palabra)</code>?</li>
+      <li>¿qué pasaría si la palabra fuera <code>"sol brillante"</code>?</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Errores frecuentes</h2>
+    <ul>
+      <li>pensar que un string es indivisible</li>
+      <li>olvidar que los espacios cuentan</li>
+      <li>no distinguir entre string y lista</li>
+      <li>no entender la idea de inmutabilidad</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto guiado</h2>
+    <p>
+      Crea una variable <code>frase</code>, guárdale una frase corta y muestra su longitud.
+    </p>
+
+    <pre><code>frase = "Aprender Python"
+print(frase)
+print(len(frase))</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Pregunta de entrevista</h2>
+    <p>
+      ¿Por qué puede decirse que un string es una secuencia?
+    </p>
+
+    <p>
+      Respuesta sólida: porque está formado por caracteres ordenados sobre los que se puede acceder, recorrer y operar como elementos individuales.
+    </p>
+  </section>
+
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./index.html">Índice tema</a>
+    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('7.1')">Marcar como completado</button>
+
+  <script>
+const TOPIC_ID = "7.1";
+const NEXT_URL = "./02-indexacion-y-slicing.html";
+
+const API_URL = "http://localhost:3000/api/progress/python";
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+const nextBtn = document.getElementById("nextBtn");
+
+async function unlockNextIfCompleted() {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token || !nextBtn) return;
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    if (completed.includes(TOPIC_ID)) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error comprobando progreso:", error);
+  }
+}
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Tema completado 🎉");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error marcando tema como completado:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+
+unlockNextIfCompleted();
+</script>
+
+</main>
+</body>
+</html>
