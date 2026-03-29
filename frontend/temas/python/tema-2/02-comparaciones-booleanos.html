@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 2.2 – Comparaciones y booleanos</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<header class="header">
+  <h1>Tema 2 · Python</h1>
+  <p>2.2 · Comparaciones y booleanos: la base matemática de las decisiones</p>
+</header>
+
+<main class="main-container single-column">
+
+  <section class="panel">
+    <h2>¿Qué es una comparación?</h2>
+    <p>
+      Una comparación es una expresión que enfrenta dos valores para responder una pregunta exacta.
+      El resultado siempre es un booleano: <code>True</code> o <code>False</code>.
+    </p>
+
+    <pre><code>print(5 > 3)
+print(10 == 10)
+print(7 < 2)</code></pre>
+
+    <p>
+      En programación, comparar significa convertir una pregunta en una respuesta formal.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>¿Qué es un booleano?</h2>
+    <p>
+      Un booleano es un tipo de dato que solo puede tener dos valores:
+      <code>True</code> o <code>False</code>.
+      Es el tipo que usa el programa para decidir.
+    </p>
+
+    <pre><code>aprobado = True
+bloqueado = False
+print(type(aprobado))</code></pre>
+
+    <div class="callout">
+      Los condicionales no entienden “más o menos”. Entienden verdadero o falso.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Operadores de comparación</h2>
+    <ul>
+      <li><code>==</code> igual que</li>
+      <li><code>!=</code> distinto de</li>
+      <li><code>&gt;</code> mayor que</li>
+      <li><code>&lt;</code> menor que</li>
+      <li><code>&gt;=</code> mayor o igual que</li>
+      <li><code>&lt;=</code> menor o igual que</li>
+    </ul>
+
+    <pre><code>print(8 == 8)
+print(8 != 3)
+print(9 > 2)
+print(4 < 1)
+print(7 >= 7)
+print(2 <= 10)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>⚠️ El error más importante: <code>=</code> no es <code>==</code></h2>
+    <p>
+      Este error es central. Si no lo entiendes bien, construirás mal casi todo lo que venga después.
+    </p>
+
+    <ul>
+      <li><code>=</code> significa asignar</li>
+      <li><code>==</code> significa comparar</li>
+    </ul>
+
+    <pre><code>edad = 18          # asignación
+print(edad == 18)  # comparación</code></pre>
+
+    <p>
+      La primera línea guarda un valor.
+      La segunda pregunta si el valor guardado es igual a 18.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Comparar números</h2>
+    <pre><code>precio = 50
+print(precio > 100)
+print(precio <= 50)
+print(precio == 50)
+print(precio != 30)</code></pre>
+
+    <p>
+      Las comparaciones numéricas son la base de los rangos, las validaciones y la lógica de negocio.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Comparar textos</h2>
+    <pre><code>usuario = "ana"
+print(usuario == "ana")
+print(usuario == "Ana")
+print(usuario != "admin")</code></pre>
+
+    <p>
+      Python compara exactamente el contenido del texto.
+      Las mayúsculas y minúsculas cuentan.
+    </p>
+
+    <div class="callout">
+      <code>"ana"</code> y <code>"Ana"</code> no son el mismo valor.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Guardar el resultado de una comparación</h2>
+    <p>
+      Una comparación se puede guardar en una variable.
+      Esto es muy útil para hacer el código más legible.
+    </p>
+
+    <pre><code>edad = 17
+es_mayor = edad >= 18
+print(es_mayor)</code></pre>
+
+    <p>
+      Aquí <code>es_mayor</code> vale <code>False</code>.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Comparaciones dentro de condicionales</h2>
+    <pre><code>nota = 6
+
+if nota >= 5:
+    print("Has aprobado")
+else:
+    print("Has suspendido")</code></pre>
+
+    <p>
+      El <code>if</code> no evalúa números directamente: evalúa el resultado booleano de la comparación.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Comparaciones encadenadas</h2>
+    <p>
+      Python permite escribir rangos de forma muy natural.
+    </p>
+
+    <pre><code>edad = 20
+print(18 <= edad <= 30)</code></pre>
+
+    <p>
+      Esto equivale a decir: <code>edad &gt;= 18 and edad &lt;= 30</code>, pero es más limpio.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Verdad y falsedad de valores</h2>
+    <p>
+      Además de las comparaciones, Python puede interpretar algunos valores como verdaderos o falsos.
+      Esto se conoce como <em>truthiness</em>.
+    </p>
+
+    <pre><code>print(bool(0))
+print(bool(1))
+print(bool(""))
+print(bool("Hola"))</code></pre>
+
+    <ul>
+      <li><code>0</code> suele interpretarse como falso</li>
+      <li>un número distinto de 0 suele interpretarse como verdadero</li>
+      <li>una cadena vacía suele interpretarse como falsa</li>
+      <li>una cadena con contenido suele interpretarse como verdadera</li>
+    </ul>
+
+    <p>
+      No necesitas dominarlo todo ahora, pero es importante empezar a verlo.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Comparar booleanos</h2>
+    <pre><code>activo = True
+print(activo == True)
+print(activo == False)</code></pre>
+
+    <p>
+      Aunque se puede hacer, normalmente es más claro usar la variable directamente en condiciones.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>💭 Piensa antes de ejecutar</h2>
+    <pre><code>numero = 10
+print(numero == 10)
+print(numero != 10)
+print(numero > 5)
+print(numero < 3)</code></pre>
+
+    <ul>
+      <li>¿Qué expresiones dan <code>True</code>?</li>
+      <li>¿Cuál da <code>False</code>?</li>
+      <li>¿Qué cambiaría si <code>numero</code> fuera 3?</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Casos límite</h2>
+    <p>
+      Los casos límite son valores que están justo en la frontera de una regla.
+      Son fundamentales al programar bien.
+    </p>
+
+    <pre><code>edad = 18
+if edad >= 18:
+    print("Mayor de edad")</code></pre>
+
+    <p>
+      Aquí <code>18</code> es un caso límite. Debes pensar siempre en estos valores frontera.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Errores frecuentes</h2>
+    <ul>
+      <li>confundir asignación con comparación</li>
+      <li>comparar texto sin tener en cuenta mayúsculas</li>
+      <li>olvidar que el resultado de toda comparación es booleano</li>
+      <li>no probar casos límite</li>
+      <li>usar comparaciones innecesariamente complejas</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto guiado</h2>
+    <p>
+      Guarda dos números y muestra el resultado de estas preguntas:
+    </p>
+
+    <ul>
+      <li>¿son iguales?</li>
+      <li>¿el primero es mayor?</li>
+      <li>¿el segundo es mayor o igual?</li>
+    </ul>
+
+    <pre><code>a = 8
+b = 12
+
+print(a == b)
+print(a > b)
+print(b >= a)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Reto de entrevista</h2>
+    <p>
+      Explica qué devuelve esta expresión y por qué:
+    </p>
+
+    <pre><code>5 <= 5</code></pre>
+
+    <p>
+      Respuesta correcta: devuelve <code>True</code> porque “menor o igual” incluye la igualdad.
+    </p>
+  </section>
+
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./01-condicionales.html">Anterior</a>
+    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('2.2')">Marcar como completado</button>
+
+  <script>
+const TOPIC_ID = "2.2";
+const NEXT_URL = "./03-operadores-logicos.html";
+
+const API_URL = "http://localhost:3000/api/progress/python";
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+const nextBtn = document.getElementById("nextBtn");
+
+async function unlockNextIfCompleted() {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token || !nextBtn) return;
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    if (completed.includes(TOPIC_ID)) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error comprobando progreso:", error);
+  }
+}
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Tema completado 🎉");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error marcando tema como completado:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+
+unlockNextIfCompleted();
+</script>
+</main>
+</body>
+</html>

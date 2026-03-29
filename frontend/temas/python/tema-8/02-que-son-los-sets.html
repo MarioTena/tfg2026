@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 8.2 – Qué son los sets</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+<header class="header">
+  <h1>Tema 8 · Python</h1>
+  <p>8.2 · Qué son los sets: colecciones sin duplicados</p>
+</header>
+
+<main class="main-container single-column">
+  <section class="panel">
+    <h2>¿Qué es un set?</h2>
+    <p>
+      Un set es una colección no ordenada de elementos únicos.
+      Su característica más importante es que <strong>no admite duplicados</strong>.
+    </p>
+
+    <pre><code>numeros = {1, 2, 3, 4}
+letras = {"a", "b", "c"}</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Qué ocurre con duplicados</h2>
+    <pre><code>valores = {1, 2, 2, 3, 3, 3}
+print(valores)</code></pre>
+
+    <p>
+      El resultado solo conserva una copia de cada valor.
+    </p>
+
+    <div class="callout">
+      Un set es muy útil para eliminar repetidos de forma sencilla.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Diferencia con una lista</h2>
+    <ul>
+      <li>la lista mantiene orden y duplicados</li>
+      <li>el set no garantiza orden y elimina duplicados</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Crear un set vacío</h2>
+    <pre><code>conjunto = set()</code></pre>
+
+    <p>
+      No debes usar <code>{}</code> para esto, porque eso crea un diccionario vacío.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Añadir elementos con <code>add()</code></h2>
+    <pre><code>colores = {"rojo", "verde"}
+colores.add("azul")
+print(colores)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Eliminar elementos</h2>
+    <pre><code>colores = {"rojo", "verde", "azul"}
+colores.remove("verde")
+print(colores)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Comprobar pertenencia</h2>
+    <pre><code>numeros = {1, 2, 3, 4}
+print(3 in numeros)
+print(10 in numeros)</code></pre>
+
+    <p>
+      Los sets son especialmente buenos para comprobaciones de pertenencia rápidas.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>💭 Piensa antes de ejecutar</h2>
+    <pre><code>datos = {1, 2, 2, 3}
+datos.add(4)
+print(datos)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Errores frecuentes</h2>
+    <ul>
+      <li>pensar que un set mantiene un orden fijo</li>
+      <li>esperar ver duplicados</li>
+      <li>crear un set vacío con <code>{}</code></li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto guiado</h2>
+    <p>Crea un set con varios números repetidos y muestra el resultado.</p>
+
+    <pre><code>numeros = {1, 1, 2, 2, 3, 4, 4}
+print(numeros)</code></pre>
+  </section>
+
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./01-que-son-las-tuplas.html">Anterior</a>
+    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('8.2')">Marcar como completado</button>
+  <script>
+const TOPIC_ID = "8.2";
+const NEXT_URL = "./03-operaciones-con-sets.html";
+
+const API_URL = "http://localhost:3000/api/progress/python";
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+const nextBtn = document.getElementById("nextBtn");
+
+async function unlockNextIfCompleted() {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token || !nextBtn) return;
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    if (completed.includes(TOPIC_ID)) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error comprobando progreso:", error);
+  }
+}
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Tema completado 🎉");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error marcando tema como completado:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+
+unlockNextIfCompleted();
+</script>
+
+</main>
+</body>
+</html>

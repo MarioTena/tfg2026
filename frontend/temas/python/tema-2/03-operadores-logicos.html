@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 2.3 – Operadores lógicos</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<header class="header">
+  <h1>Tema 2 · Python</h1>
+  <p>2.3 · Operadores lógicos: combinar condiciones de forma correcta</p>
+</header>
+
+<main class="main-container single-column">
+
+  <section class="panel">
+    <h2>¿Por qué hacen falta operadores lógicos?</h2>
+    <p>
+      En problemas reales, una decisión rara vez depende de una sola regla.
+      Normalmente necesitas combinar varias condiciones.
+    </p>
+
+    <p>
+      Ejemplos reales:
+    </p>
+
+    <ul>
+      <li>un usuario puede entrar si la contraseña es correcta <strong>y</strong> su cuenta está activa</li>
+      <li>un cliente recibe descuento si es estudiante <strong>o</strong> tiene menos de 25 años</li>
+      <li>se muestra un error si el pedido no está pagado <strong>o</strong> el stock es insuficiente</li>
+      <li>se bloquea el acceso si <strong>no</strong> ha iniciado sesión</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Los tres operadores lógicos</h2>
+    <ul>
+      <li><code>and</code>: ambas condiciones deben ser verdaderas</li>
+      <li><code>or</code>: basta con que una sea verdadera</li>
+      <li><code>not</code>: invierte el valor lógico</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2><code>and</code></h2>
+    <pre><code>edad = 20
+tiene_entrada = True
+
+if edad >= 18 and tiene_entrada:
+    print("Puedes pasar")
+else:
+    print("No puedes pasar")</code></pre>
+
+    <p>
+      Para que el resultado sea verdadero, deben cumplirse ambas condiciones.
+      Si falla una, falla todo el bloque.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2><code>or</code></h2>
+    <pre><code>es_admin = False
+es_supervisor = True
+
+if es_admin or es_supervisor:
+    print("Acceso permitido")
+else:
+    print("Acceso denegado")</code></pre>
+
+    <p>
+      Con <code>or</code> basta con una condición verdadera.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2><code>not</code></h2>
+    <pre><code>cuenta_activa = False
+
+if not cuenta_activa:
+    print("La cuenta está inactiva")</code></pre>
+
+    <p>
+      <code>not</code> invierte el valor lógico: convierte <code>True</code> en <code>False</code> y viceversa.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Tabla mental rápida</h2>
+    <ul>
+      <li><code>True and True</code> → <code>True</code></li>
+      <li><code>True and False</code> → <code>False</code></li>
+      <li><code>False and True</code> → <code>False</code></li>
+      <li><code>False and False</code> → <code>False</code></li>
+      <li><code>True or False</code> → <code>True</code></li>
+      <li><code>False or False</code> → <code>False</code></li>
+      <li><code>not True</code> → <code>False</code></li>
+      <li><code>not False</code> → <code>True</code></li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Combinar comparaciones</h2>
+    <pre><code>edad = 25
+
+if edad >= 18 and edad <= 30:
+    print("Está dentro del rango")</code></pre>
+
+    <p>
+      Esta lógica es muy común: comprobar intervalos, permisos múltiples o reglas simultáneas.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Forma corta para rangos</h2>
+    <pre><code>edad = 25
+
+if 18 <= edad <= 30:
+    print("Está dentro del rango")</code></pre>
+
+    <p>
+      Esta forma es más idiomática en Python y suele ser más legible.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>⚠️ Error muy común con <code>or</code></h2>
+    <pre><code>color = "rojo"
+
+if color == "rojo" or "azul":
+    print("Color permitido")</code></pre>
+
+    <p>
+      Esto está mal planteado. La segunda parte no es una comparación completa.
+    </p>
+
+    <pre><code>color = "rojo"
+
+if color == "rojo" or color == "azul":
+    print("Color permitido")</code></pre>
+
+    <div class="callout">
+      Cada lado del <code>or</code> debe ser una condición completa.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Prioridad de operadores</h2>
+    <p>
+      Python no evalúa todo al azar. Hay una prioridad lógica:
+    </p>
+
+    <ol>
+      <li><code>not</code></li>
+      <li><code>and</code></li>
+      <li><code>or</code></li>
+    </ol>
+
+    <p>
+      Si la expresión es compleja, usa paréntesis para dejar clara tu intención.
+    </p>
+
+    <pre><code>edad = 20
+es_socio = False
+
+if edad >= 18 and (es_socio or edad > 65):
+    print("Condición cumplida")</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Razonar una condición paso a paso</h2>
+    <pre><code>edad = 17
+tiene_permiso = True
+
+if edad >= 16 and tiene_permiso:
+    print("Puede participar")</code></pre>
+
+    <p>
+      Preguntas mentales correctas:
+    </p>
+
+    <ul>
+      <li>¿edad es mayor o igual que 16? → sí</li>
+      <li>¿tiene_permiso es verdadero? → sí</li>
+      <li>¿ambas se cumplen? → sí</li>
+      <li>resultado final → entra en el bloque</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Casos reales típicos</h2>
+    <ul>
+      <li>login correcto y cuenta activa</li>
+      <li>descuento por edad o por ser estudiante</li>
+      <li>bloqueo por falta de stock o producto inactivo</li>
+      <li>acceso permitido si es admin o tiene permiso especial</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Errores frecuentes</h2>
+    <ul>
+      <li>usar <code>or</code> cuando en realidad se necesita <code>and</code></li>
+      <li>escribir comparaciones incompletas</li>
+      <li>olvidar los paréntesis en expresiones complejas</li>
+      <li>no pensar en todos los casos posibles</li>
+      <li>hacer lógica tan larga que deja de ser legible</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>💭 Piensa antes de ejecutar</h2>
+    <pre><code>llueve = True
+tengo_paraguas = False
+
+if llueve and tengo_paraguas:
+    print("Puedo salir tranquilo")
+else:
+    print("No puedo salir tranquilo")</code></pre>
+
+    <ul>
+      <li>¿Qué ocurre con estos valores?</li>
+      <li>¿Qué cambia si <code>tengo_paraguas = True</code>?</li>
+      <li>¿Qué cambia si <code>llueve = False</code>?</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto guiado</h2>
+    <p>
+      Un usuario puede beneficiarse de una promoción si:
+    </p>
+
+    <ul>
+      <li>es estudiante, o</li>
+      <li>tiene menos de 25 años</li>
+    </ul>
+
+    <pre><code>es_estudiante = False
+edad = 22
+
+if es_estudiante or edad < 25:
+    print("Tiene promoción")
+else:
+    print("No tiene promoción")</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Reto de entrevista</h2>
+    <p>
+      Explica por qué esta condición está bien escrita:
+    </p>
+
+    <pre><code>if edad >= 18 and tiene_entrada:</code></pre>
+
+    <p>
+      Respuesta correcta: porque expresa de forma directa dos requisitos obligatorios que deben cumplirse al mismo tiempo.
+    </p>
+  </section>
+
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./02-comparaciones-booleanos.html">Anterior</a>
+    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('2.3')">Marcar como completado</button>
+
+  <script>
+const TOPIC_ID = "2.3";
+const NEXT_URL = "./04-mini-reto.html";
+
+const API_URL = "http://localhost:3000/api/progress/python";
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+const nextBtn = document.getElementById("nextBtn");
+
+async function unlockNextIfCompleted() {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token || !nextBtn) return;
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    if (completed.includes(TOPIC_ID)) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error comprobando progreso:", error);
+  }
+}
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Tema completado 🎉");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error marcando tema como completado:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+
+unlockNextIfCompleted();
+</script>
+
+</main>
+</body>
+</html>

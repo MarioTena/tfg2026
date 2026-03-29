@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 5.2 – Parámetros y argumentos</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<header class="header">
+  <h1>Tema 5 · Python</h1>
+  <p>5.2 · Parámetros y argumentos: hacer funciones flexibles</p>
+</header>
+
+<main class="main-container single-column">
+
+  <section class="panel">
+    <h2>¿Por qué hacen falta parámetros?</h2>
+    <p>
+      Una función fija sirve, pero una función realmente útil debe poder trabajar con datos distintos.
+      Para eso existen los parámetros.
+    </p>
+
+    <pre><code>def saludar(nombre):
+    print("Hola", nombre)
+
+saludar("Ana")
+saludar("Luis")</code></pre>
+
+    <div class="callout">
+      Los parámetros hacen que una misma función pueda reutilizarse con distintos valores.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Diferencia entre parámetro y argumento</h2>
+    <ul>
+      <li><strong>parámetro</strong>: la variable que aparece en la definición</li>
+      <li><strong>argumento</strong>: el valor real que pasas al llamar a la función</li>
+    </ul>
+
+    <pre><code>def saludar(nombre):
+    print("Hola", nombre)
+
+saludar("Ana")</code></pre>
+
+    <p>
+      Aquí <code>nombre</code> es el parámetro y <code>"Ana"</code> es el argumento.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Más de un parámetro</h2>
+    <pre><code>def presentar(nombre, edad):
+    print("Me llamo", nombre)
+    print("Tengo", edad, "años")
+
+presentar("Ana", 30)</code></pre>
+
+    <p>
+      El orden importa si llamas a la función por posición.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>⚠️ Error típico: número incorrecto de argumentos</h2>
+    <pre><code>def saludar(nombre):
+    print("Hola", nombre)
+
+saludar()</code></pre>
+
+    <p>
+      Esto da error porque la función espera un argumento y no ha recibido ninguno.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Los nombres internos no tienen por qué coincidir con las variables externas</h2>
+    <pre><code>def saludar(persona):
+    print("Hola", persona)
+
+nombre_usuario = "Marta"
+saludar(nombre_usuario)</code></pre>
+
+    <p>
+      El argumento se asigna al parámetro interno al llamar a la función.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Funciones con cálculo interno</h2>
+    <pre><code>def mostrar_doble(numero):
+    print(numero * 2)
+
+mostrar_doble(5)
+mostrar_doble(12)</code></pre>
+
+    <p>
+      La función recibe un valor y actúa con él.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Parámetros con nombres claros</h2>
+    <p>
+      Igual que con las variables, los parámetros deben describir bien lo que representan.
+    </p>
+
+    <pre><code>def calcular_precio_con_iva(precio):
+    print(precio * 1.21)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Argumentos literales y variables</h2>
+    <pre><code>def saludar(nombre):
+    print("Hola", nombre)
+
+saludar("Carlos")
+
+usuario = "Lucía"
+saludar(usuario)</code></pre>
+
+    <p>
+      Puedes pasar directamente un valor o una variable que lo contenga.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>💭 Piensa antes de ejecutar</h2>
+    <pre><code>def multiplicar_por_tres(numero):
+    print(numero * 3)
+
+multiplicar_por_tres(4)
+multiplicar_por_tres(10)</code></pre>
+
+    <ul>
+      <li>¿qué se imprime en cada llamada?</li>
+      <li>¿la lógica de la función cambia o solo cambian los datos?</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Errores frecuentes</h2>
+    <ul>
+      <li>confundir parámetro con argumento</li>
+      <li>pasar menos o más argumentos de los necesarios</li>
+      <li>usar nombres ambiguos</li>
+      <li>pensar que una función “recuerda” automáticamente valores externos</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto guiado</h2>
+    <p>
+      Crea una función que reciba una ciudad y muestre un mensaje de bienvenida.
+    </p>
+
+    <pre><code>def bienvenida_ciudad(ciudad):
+    print("Bienvenido a", ciudad)
+
+bienvenida_ciudad("Madrid")
+bienvenida_ciudad("Bilbao")</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Pregunta de entrevista</h2>
+    <p>
+      ¿Qué diferencia hay entre parámetro y argumento?
+    </p>
+
+    <p>
+      Respuesta sólida: el parámetro es la variable definida en la función; el argumento es el valor real que se pasa al llamarla.
+    </p>
+  </section>
+
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./01-que-es-una-funcion.html">Anterior</a>
+    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('5.2')">Marcar como completado</button>
+
+<script>
+const TOPIC_ID = "5.2";
+const NEXT_URL = "./03-return.html";
+
+const API_URL = "http://localhost:3000/api/progress/python";
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+const nextBtn = document.getElementById("nextBtn");
+
+async function unlockNextIfCompleted() {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token || !nextBtn) return;
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    if (completed.includes(TOPIC_ID)) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error comprobando progreso:", error);
+  }
+}
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Tema completado 🎉");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error marcando tema como completado:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+
+unlockNextIfCompleted();
+</script>
+
+</main>
+</body>
+</html>

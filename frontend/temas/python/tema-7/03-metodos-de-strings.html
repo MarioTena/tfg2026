@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 7.3 – Métodos de strings</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<header class="header">
+  <h1>Tema 7 · Python</h1>
+  <p>7.3 · Métodos de strings: transformar y analizar texto</p>
+</header>
+
+<main class="main-container single-column">
+
+  <section class="panel">
+    <h2>Por qué importan los métodos de strings</h2>
+    <p>
+      Los strings aparecen en casi todos los programas: nombres, formularios, búsquedas, mensajes, validaciones.
+      Por eso Python ofrece muchos métodos para trabajar con ellos.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2><code>lower()</code> y <code>upper()</code></h2>
+    <pre><code>texto = "PyThOn"
+print(texto.lower())
+print(texto.upper())</code></pre>
+
+    <p>
+      Muy útiles para comparar textos sin depender de mayúsculas y minúsculas.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2><code>strip()</code></h2>
+    <pre><code>texto = "   hola   "
+print(texto.strip())</code></pre>
+
+    <p>
+      Elimina espacios al principio y al final.
+      Muy útil con entradas de usuario.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2><code>replace()</code></h2>
+    <pre><code>texto = "Hola mundo"
+print(texto.replace("mundo", "Python"))</code></pre>
+
+    <p>
+      Sustituye una parte del texto por otra.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2><code>find()</code></h2>
+    <pre><code>texto = "programacion"
+print(texto.find("gra"))</code></pre>
+
+    <p>
+      Devuelve la posición donde empieza la subcadena, o <code>-1</code> si no la encuentra.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2><code>startswith()</code> y <code>endswith()</code></h2>
+    <pre><code>archivo = "datos.csv"
+print(archivo.startswith("da"))
+print(archivo.endswith(".csv"))</code></pre>
+
+    <p>
+      Muy útiles para validaciones y comprobaciones simples.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2><code>split()</code></h2>
+    <pre><code>frase = "uno dos tres"
+print(frase.split())</code></pre>
+
+    <p>
+      Convierte el string en una lista, separándolo normalmente por espacios.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2><code>join()</code></h2>
+    <pre><code>palabras = ["Hola", "mundo"]
+print(" ".join(palabras))</code></pre>
+
+    <p>
+      Une elementos de una lista en un único string.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>⚠️ Importante: los strings son inmutables</h2>
+    <p>
+      Métodos como <code>lower()</code> o <code>replace()</code> no cambian el string original; devuelven uno nuevo.
+    </p>
+
+    <pre><code>texto = "HOLA"
+texto.lower()
+print(texto)</code></pre>
+
+    <p>
+      Esto seguirá imprimiendo <code>HOLA</code>.
+      Si quieres conservar el cambio, debes guardarlo.
+    </p>
+
+    <pre><code>texto = texto.lower()</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>💭 Piensa antes de ejecutar</h2>
+    <pre><code>texto = "  PyThOn  "
+texto = texto.strip().lower()
+print(texto)</code></pre>
+
+    <ul>
+      <li>¿qué hace cada método?</li>
+      <li>¿por qué se pueden encadenar?</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Errores frecuentes</h2>
+    <ul>
+      <li>pensar que los métodos modifican el string original</li>
+      <li>olvidar guardar el resultado</li>
+      <li>usar <code>find()</code> sin comprobar el caso <code>-1</code></li>
+      <li>no distinguir entre <code>split()</code> y <code>join()</code></li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto guiado</h2>
+    <p>
+      Crea una frase con espacios sobrantes y conviértela a minúsculas sin espacios laterales.
+    </p>
+
+    <pre><code>frase = "   HOLA PYTHON   "
+frase = frase.strip().lower()
+print(frase)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Pregunta de entrevista</h2>
+    <p>
+      ¿Por qué conviene recordar que los strings son inmutables al usar métodos como <code>replace()</code> o <code>lower()</code>?
+    </p>
+
+    <p>
+      Respuesta sólida: porque esos métodos no cambian el string original; devuelven uno nuevo, así que si no lo guardas, pierdes el resultado.
+    </p>
+  </section>
+
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./02-indexacion-y-slicing.html">Anterior</a>
+    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('7.3')">Marcar como completado</button>
+
+  <script>
+const TOPIC_ID = "7.3";
+const NEXT_URL = "./04-recorrer-y-analizar-texto.html";
+
+const API_URL = "http://localhost:3000/api/progress/python";
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+const nextBtn = document.getElementById("nextBtn");
+
+async function unlockNextIfCompleted() {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token || !nextBtn) return;
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    if (completed.includes(TOPIC_ID)) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error comprobando progreso:", error);
+  }
+}
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Tema completado 🎉");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error marcando tema como completado:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+
+unlockNextIfCompleted();
+</script>
+
+</main>
+</body>
+</html>

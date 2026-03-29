@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 9.2 – Leer archivos</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+<header class="header">
+  <h1>Tema 9 · Python</h1>
+  <p>9.2 · Leer archivos: recuperar información guardada</p>
+</header>
+
+<main class="main-container single-column">
+  <section class="panel">
+    <h2>Lectura completa</h2>
+    <pre><code>archivo = open("datos.txt", "r")
+contenido = archivo.read()
+archivo.close()
+print(contenido)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Leer línea a línea</h2>
+    <pre><code>archivo = open("datos.txt", "r")
+for linea in archivo:
+    print(linea)
+archivo.close()</code></pre>
+
+    <p>
+      Muy útil cuando el archivo tiene varias líneas.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Usar <code>with</code></h2>
+    <pre><code>with open("datos.txt", "r") as archivo:
+    contenido = archivo.read()
+    print(contenido)</code></pre>
+
+    <div class="callout">
+      <code>with</code> es la forma recomendada porque cierra el archivo automáticamente.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>⚠️ Error típico: archivo no encontrado</h2>
+    <p>
+      Si la ruta o el nombre del archivo es incorrecto, el programa falla.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto guiado</h2>
+    <p>Lee un archivo llamado <code>notas.txt</code> y muestra su contenido.</p>
+  </section>
+
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./01-que-es-un-archivo.html">Anterior</a>
+    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('9.2')">Marcar como completado</button>
+  <script>
+const TOPIC_ID = "9.2";
+const NEXT_URL = "./03-escribir-archivos.html";
+
+const API_URL = "http://localhost:3000/api/progress/python";
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+const nextBtn = document.getElementById("nextBtn");
+
+async function unlockNextIfCompleted() {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token || !nextBtn) return;
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    if (completed.includes(TOPIC_ID)) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error comprobando progreso:", error);
+  }
+}
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Tema completado 🎉");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error marcando tema como completado:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+
+unlockNextIfCompleted();
+</script>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 9.1 – Qué es un archivo</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+<header class="header">
+  <h1>Tema 9 · Python</h1>
+  <p>9.1 · Qué es un archivo: guardar datos fuera del programa</p>
+</header>
+
+<main class="main-container single-column">
+  <section class="panel">
+    <h2>¿Qué problema resuelven los archivos?</h2>
+    <p>
+      Hasta ahora, los datos vivían en variables mientras el programa se ejecutaba.
+      Pero cuando el programa termina, esas variables desaparecen.
+    </p>
+
+    <div class="callout">
+      Un archivo permite guardar información de forma persistente para reutilizarla más tarde.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Ejemplos reales</h2>
+    <ul>
+      <li>guardar notas en un archivo de texto</li>
+      <li>leer configuraciones</li>
+      <li>registrar logs</li>
+      <li>guardar resultados de un programa</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>La idea general</h2>
+    <p>
+      Para trabajar con archivos, normalmente sigues este patrón:
+    </p>
+    <ol>
+      <li>abrir el archivo</li>
+      <li>leer o escribir</li>
+      <li>cerrarlo</li>
+    </ol>
+  </section>
+
+  <section class="panel">
+    <h2>Función <code>open()</code></h2>
+    <pre><code>archivo = open("datos.txt", "r")</code></pre>
+
+    <p>
+      Esto abre el archivo en modo lectura.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Modos habituales</h2>
+    <ul>
+      <li><code>"r"</code> leer</li>
+      <li><code>"w"</code> escribir sobrescribiendo</li>
+      <li><code>"a"</code> añadir al final</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto guiado</h2>
+    <p>
+      Identifica qué modo usarías en cada caso:
+    </p>
+    <ul>
+      <li>leer una lista de tareas</li>
+      <li>crear un informe nuevo</li>
+      <li>añadir una línea al historial</li>
+    </ul>
+  </section>
+
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./index.html">Índice tema</a>
+    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('9.1')">Marcar como completado</button>
+  <script>
+const TOPIC_ID = "9.1";
+const NEXT_URL = "./02-leer-archivos.html";
+
+const API_URL = "http://localhost:3000/api/progress/python";
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+const nextBtn = document.getElementById("nextBtn");
+
+async function unlockNextIfCompleted() {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token || !nextBtn) return;
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    if (completed.includes(TOPIC_ID)) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error comprobando progreso:", error);
+  }
+}
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Tema completado 🎉");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error marcando tema como completado:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+
+unlockNextIfCompleted();
+</script>
+
+</main>
+</body>
+</html>

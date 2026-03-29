@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 6.5 – Mini retos</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<header class="header">
+  <h1>Tema 6 · Python</h1>
+  <p>6.5 · Mini retos: integrar diccionarios, bucles y decisiones</p>
+</header>
+
+<main class="main-container single-column">
+
+  <section class="panel">
+    <h2>Objetivo de esta parte</h2>
+    <p>
+      Ahora toca combinar lo aprendido para usar diccionarios en problemas más realistas.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 1 · Ficha de usuario</h2>
+    <pre><code>usuario = {
+    "nombre": "Ana",
+    "edad": 30,
+    "activo": True
+}
+
+for clave, valor in usuario.items():
+    print(clave, ":", valor)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 2 · Actualizar precio</h2>
+    <pre><code>producto = {
+    "nombre": "Teclado",
+    "precio": 50
+}
+
+producto["precio"] = 45
+print(producto)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 3 · Comprobar clave</h2>
+    <pre><code>config = {
+    "tema": "oscuro",
+    "idioma": "es"
+}
+
+if "tema" in config:
+    print("La clave existe")</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 4 · Valor por defecto</h2>
+    <pre><code>usuario = {
+    "nombre": "Luis"
+}
+
+print(usuario.get("email", "No informado"))</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 5 · Recorrer solo valores</h2>
+    <pre><code>medidas = {
+    "alto": 180,
+    "ancho": 90,
+    "profundo": 50
+}
+
+for valor in medidas.values():
+    print(valor)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 6 · Eliminar una clave</h2>
+    <pre><code>alumno = {
+    "nombre": "Marta",
+    "nota": 8,
+    "curso": "Python"
+}
+
+alumno.pop("curso")
+print(alumno)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Cómo pensar este tipo de ejercicios</h2>
+    <ol>
+      <li>decide qué representa el diccionario</li>
+      <li>piensa qué claves son necesarias</li>
+      <li>usa <code>items()</code> si necesitas clave y valor</li>
+      <li>usa <code>get()</code> si hay claves opcionales</li>
+      <li>evita mezclar información sin estructura</li>
+    </ol>
+  </section>
+
+  <section class="panel">
+    <h2>Pregunta de entrevista</h2>
+    <p>
+      ¿Qué ventaja tiene un diccionario para representar una entidad como un producto o un usuario?
+    </p>
+
+    <p>
+      Respuesta sólida: permite asociar cada dato a una clave con significado, haciendo el código más legible y fácil de mantener.
+    </p>
+  </section>
+
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./04-metodos-y-buenas-practicas.html">Anterior</a>
+    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Ejercicios Tema 6</a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('6.5')">Marcar como completado</button>
+
+  <script>
+const TOPIC_ID = "6.5";
+const NEXT_URL = "py-tema6-ejercicios.html";
+
+const API_URL = "http://localhost:3000/api/progress/python";
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+const nextBtn = document.getElementById("nextBtn");
+
+async function unlockNextIfCompleted() {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token || !nextBtn) return;
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    if (completed.includes(TOPIC_ID)) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error comprobando progreso:", error);
+  }
+}
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Tema completado 🎉");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error marcando tema como completado:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+
+unlockNextIfCompleted();
+</script>
+
+</main>
+</body>
+</html>

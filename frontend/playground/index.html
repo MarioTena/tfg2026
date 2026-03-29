@@ -2,95 +2,166 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>TFG - Playground de código</title>
-  <!-- OJO: estamos dentro de /playground, por eso uso ../ -->
+  <title>Playground de código</title>
   <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/theme/material-darker.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/addon/hint/show-hint.min.css">
 </head>
 <body>
-  <!-- ============================================================================
-       Cabecera
-       ============================================================================ -->
-  <header class="header">
-    <h1>Playground de código</h1>
-    <p>Ejecuta código.</p>
-  </header>
 
-  <!-- ============================================================================
-       Contenedor principal: entrada y salida
-       ============================================================================ -->
-  <main class="main-container">
-    <!-- Panel de entrada -->
-    <section class="panel panel-input">
-      <h2>Entrada</h2>
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Playground</h1>
+      <p id="topbar-sub">Resuelve ejercicios, prueba ideas y ejecuta tu código.</p>
+    </div>
 
-      <div class="field">
-        <label for="user">Usuario</label>
-        <input id="user" type="text" placeholder="alumno1" value="alumno1" />
-      </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" id="back-btn" href="../index.html">Volver</a>
+      <button class="btn btn-secondary btn-sm" id="logout-btn" type="button">Salir</button>
+    </div>
+  </div>
+</div>
 
-      <div class="field">
-        <label for="language">Lenguaje</label>
-        <select id="language">
-          <option value="python" selected>Python</option>
-          <option value="c" disabled>C (pendiente)</option>
-        </select>
-      </div>
+<main class="main-container playground-layout">
 
-      <div class="field">
-        <label for="code">Código</label>
-        <textarea
-          id="code"
-          rows="10"
-          spellcheck="false"
-        >print("Hola desde el playground")</textarea>
-      </div>
+  <!-- COLUMNA IZQUIERDA -->
+  <section class="panel panel-input">
+    <h2>Tu misión</h2>
 
-      <button id="run-btn">Ejecutar</button>
-      <button id="logout-btn" style="margin-left: 12px; background: #333;">Salir</button>
-      <p id="status-msg" class="status-msg"></p>
-    </section>
+    <div class="field">
+      <label for="user">Usuario</label>
+      <input id="user" type="text" placeholder="alumno1" value="alumno1" />
+    </div>
 
-    <!-- Panel de salida ÚNICO -->
-    <section class="panel panel-output">
-      <h2>Salida</h2>
+    <div class="field">
+      <label for="language">Lenguaje</label>
+      <select id="language">
+        <option value="python" selected>Python</option>
+        <option value="c" disabled>C (pendiente)</option>
+      </select>
+    </div>
 
-      <div class="output-block">
-        <h3>stdout</h3>
-        <pre id="stdout"></pre>
-      </div>
-
-      <div class="output-block">
-        <h3>stderr</h3>
-        <pre id="stderr"></pre>
-      </div>
-
-      <div class="output-inline">
+    <!-- Tarjeta de ejercicio -->
+    <section id="exercise-panel" class="exercise-card exercise-panel-hero" style="display:none;">
+      <div class="exercise-header">
         <div>
-          <span class="label">Estado:</span>
-          <span id="run-status">-</span>
+          <h3 id="exercise-title" class="exercise-title" style="margin-top:0;">Ejercicio</h3>
+          <p id="exercise-statement" class="exercise-subtitle"></p>
         </div>
-        <div>
-          <span class="label">Tiempo:</span>
-          <span id="run-time">-</span>
+
+        <div class="badges">
+          <span class="badge blue" id="exercise-badge-lang">Lenguaje: -</span>
+          <span class="badge green" id="exercise-badge-type">Modo: práctica</span>
         </div>
       </div>
 
-      <!-- 💬 Bloque de feedback automático -->
-      <div class="output-block">
-        <h3>Feedback automático</h3>
-        <pre id="feedback"></pre>
+      <div class="exercise-meta-row">
+        <span class="mission-tag" id="exercise-badge-difficulty">Dificultad: -</span>
+        <span class="mission-tag" id="exercise-badge-time">Tiempo: -</span>
+        <span class="mission-tag" id="exercise-badge-skill">Skill: -</span>
+      </div>
+
+      <div class="exercise-body">
+        <div class="exercise-block">
+          <h3>Pistas</h3>
+          <ul id="exercise-hints"></ul>
+        </div>
+
+        <div class="exercise-block">
+          <h3>Acciones rápidas</h3>
+          <div class="exercise-actions">
+            <button class="btn btn-secondary btn-sm" id="btn-reset-template" type="button">
+              Reiniciar plantilla
+            </button>
+            <button class="btn btn-secondary btn-sm" id="btn-copy-hints" type="button">
+              Copiar pistas
+            </button>
+          </div>
+          <p class="mini-note">Consejo: intenta predecir la salida antes de ejecutar.</p>
+        </div>
       </div>
     </section>
-  </main>
 
-  <!-- ============================================================================
-       Historial de intentos
-       ============================================================================ -->
-  <section class="history">
-    <h2>Historial de intentos (últimos 5)</h2>
-    <ul id="attempts-list"></ul>
+    <div class="editor-shell">
+      <div class="editor-toolbar">
+        <h3 id="editor-title">Editor de código</h3>
+        <span class="editor-meta" id="editor-meta">Python · Modo práctica</span>
+      </div>
+
+      <textarea id="code">print("Hola desde el playground")</textarea>
+    </div>
+
+    <div class="buttons-row playground-actions">
+      <button id="run-btn" class="btn btn-primary" type="button">Ejecutar código</button>
+      <button id="ai-hint-btn" class="btn btn-secondary" type="button">Pedir pista con IA</button>
+      <span id="ai-credits" class="mission-tag">Créditos IA: -</span>
+    </div>
+
+    <p id="status-msg" class="status-msg"></p>
+
+    <div class="output-block" style="margin-top: 12px;">
+      <h3>Pista IA</h3>
+      <pre id="ai-feedback"></pre>
+    </div>
   </section>
 
-  <script src="../app.js"></script>
+  <!-- COLUMNA DERECHA -->
+  <section class="panel panel-output">
+    <h2>Resultado</h2>
+
+    <div class="output-block">
+      <h3>Salida correcta (stdout)</h3>
+      <pre id="stdout"></pre>
+    </div>
+
+    <div class="output-block">
+      <h3>Errores (stderr)</h3>
+      <pre id="stderr"></pre>
+    </div>
+
+    <div class="output-inline">
+      <div>
+        <span class="label">Estado:</span>
+        <span id="run-status">-</span>
+      </div>
+      <div>
+        <span class="label">Tiempo:</span>
+        <span id="run-time">-</span>
+      </div>
+    </div>
+
+    <div class="output-block">
+      <h3>Feedback automático</h3>
+      <pre id="feedback"></pre>
+    </div>
+  </section>
+</main>
+
+<section class="history">
+  <h2>Historial de intentos (últimos 5)</h2>
+  <ul id="attempts-list"></ul>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/python/python.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/addon/edit/matchbrackets.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/addon/comment/comment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/addon/hint/show-hint.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/addon/hint/anyword-hint.min.js"></script>
+
+<script src="../exercises/python-tema1.catalog.js"></script>
+<script src="../exercises/python-tema2.catalog.js"></script>
+<script src="../exercises/python-tema3.catalog.js"></script>
+<script src="../exercises/python-tema4.catalog.js"></script>
+<script src="../exercises/python-tema5.catalog.js"></script>
+<script src="../exercises/python-tema6.catalog.js"></script>
+<script src="../exercises/python-tema7.catalog.js"></script>
+<script src="../exercises/python-tema8.catalog.js"></script>
+<script src="../exercises/python-tema9.catalog.js"></script>
+<script src="../exercises/python-tema10.catalog.js"></script>
+
+<script src="../app.js"></script>
 </body>
 </html>

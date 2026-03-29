@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 6.1 – Qué es un diccionario</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<header class="header">
+  <h1>Tema 6 · Python</h1>
+  <p>6.1 · Qué es un diccionario: guardar información por clave y valor</p>
+</header>
+
+<main class="main-container single-column">
+
+  <section class="panel">
+    <h2>¿Qué problema resuelven los diccionarios?</h2>
+    <p>
+      Las listas son muy útiles cuando el orden importa y trabajas con posiciones.
+      Pero a veces no quieres acceder por índice, sino por significado.
+    </p>
+
+    <p>
+      Por ejemplo, si tienes información de una persona, esto no es muy expresivo:
+    </p>
+
+    <pre><code>persona = ["Ana", 30, "Madrid"]</code></pre>
+
+    <p>
+      ¿Qué representa cada posición? Hay que recordarlo. En cambio, con un diccionario puedes nombrar cada dato.
+    </p>
+
+    <div class="callout">
+      Un diccionario guarda pares <strong>clave → valor</strong>. Permite acceder a la información por nombre, no por posición.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>¿Qué es un diccionario?</h2>
+    <p>
+      Un diccionario es una estructura de datos que almacena valores asociados a claves.
+      Se escribe entre llaves <code>{}</code>.
+    </p>
+
+    <pre><code>persona = {
+    "nombre": "Ana",
+    "edad": 30,
+    "ciudad": "Madrid"
+}</code></pre>
+
+    <p>
+      Aquí las claves son <code>"nombre"</code>, <code>"edad"</code> y <code>"ciudad"</code>.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Ventajas frente a una lista</h2>
+    <ul>
+      <li>el código es más legible</li>
+      <li>cada dato tiene significado explícito</li>
+      <li>es ideal para representar entidades reales</li>
+      <li>evita depender de recordar posiciones numéricas</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Ejemplos reales</h2>
+    <ul>
+      <li>una persona: nombre, edad, email</li>
+      <li>un producto: nombre, precio, stock</li>
+      <li>una película: título, año, director</li>
+      <li>una configuración: idioma, tema, notificaciones</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Crear un diccionario vacío</h2>
+    <pre><code>configuracion = {}</code></pre>
+
+    <p>
+      Igual que con listas, a veces empiezas vacío y luego añades datos.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Claves únicas</h2>
+    <p>
+      En un diccionario no debería haber claves repetidas. Cada clave identifica un dato concreto.
+    </p>
+
+    <pre><code>producto = {
+    "nombre": "Teclado",
+    "precio": 40
+}</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Qué debes entender desde el principio</h2>
+    <p>
+      Una lista responde a “¿qué hay en la posición 0, 1 o 2?”.
+      Un diccionario responde a “¿qué valor tiene la clave nombre, edad o precio?”.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>💭 Piensa antes de ejecutar</h2>
+    <pre><code>coche = {
+    "marca": "Toyota",
+    "modelo": "Corolla",
+    "anio": 2022
+}
+
+print(coche)</code></pre>
+
+    <ul>
+      <li>¿qué estructura se imprime?</li>
+      <li>¿qué diferencia ves con una lista?</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Errores conceptuales frecuentes</h2>
+    <ul>
+      <li>confundir diccionarios con listas</li>
+      <li>usar corchetes en vez de llaves al crearlos</li>
+      <li>no entender la diferencia entre clave y valor</li>
+      <li>pensar que se accede por posición como en una lista</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto guiado</h2>
+    <p>
+      Crea un diccionario que represente un libro con las claves <code>titulo</code>, <code>autor</code> y <code>anio</code>.
+    </p>
+
+    <pre><code>libro = {
+    "titulo": "Clean Code",
+    "autor": "Robert C. Martin",
+    "anio": 2008
+}
+
+print(libro)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Pregunta de entrevista</h2>
+    <p>
+      ¿Qué diferencia conceptual hay entre una lista y un diccionario?
+    </p>
+
+    <p>
+      Respuesta sólida: una lista organiza datos por posición; un diccionario organiza datos por claves con significado.
+    </p>
+  </section>
+
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./index.html">Índice tema</a>
+    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('6.1')">Marcar como completado</button>
+
+  <script>
+const TOPIC_ID = "6.1";
+const NEXT_URL = "./02-acceso-y-modificacion.html";
+
+const API_URL = "http://localhost:3000/api/progress/python";
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+const nextBtn = document.getElementById("nextBtn");
+
+async function unlockNextIfCompleted() {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token || !nextBtn) return;
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    if (completed.includes(TOPIC_ID)) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error comprobando progreso:", error);
+  }
+}
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Tema completado 🎉");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error marcando tema como completado:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+
+unlockNextIfCompleted();
+</script>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 5.4 – Ámbito y buenas prácticas</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<header class="header">
+  <h1>Tema 5 · Python</h1>
+  <p>5.4 · Ámbito y buenas prácticas: escribir funciones limpias y seguras</p>
+</header>
+
+<main class="main-container single-column">
+
+  <section class="panel">
+    <h2>¿Qué es el ámbito?</h2>
+    <p>
+      El ámbito indica desde dónde puede usarse una variable.
+      Una variable creada dentro de una función normalmente pertenece a esa función.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Variable local</h2>
+    <pre><code>def ejemplo():
+    mensaje = "Hola"
+    print(mensaje)
+
+ejemplo()</code></pre>
+
+    <p>
+      <code>mensaje</code> existe dentro de la función.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>⚠️ Error típico: usar fuera una variable local</h2>
+    <pre><code>def ejemplo():
+    mensaje = "Hola"
+
+print(mensaje)</code></pre>
+
+    <p>
+      Esto falla porque <code>mensaje</code> no existe fuera del ámbito de la función.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Variables externas y parámetros</h2>
+    <p>
+      En lugar de depender de variables externas, normalmente conviene pasar datos como parámetros.
+    </p>
+
+    <pre><code>def saludar(nombre):
+    print("Hola", nombre)</code></pre>
+
+    <div class="callout">
+      Una función suele ser mejor cuando depende de sus parámetros y no de variables escondidas fuera.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Funciones pequeñas y claras</h2>
+    <p>
+      Una función no debería hacer demasiadas cosas a la vez.
+      Cuanto más concreta sea su responsabilidad, más fácil será entenderla y reutilizarla.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Nombres correctos</h2>
+    <pre><code>def calcular_descuento(precio):
+    return precio * 0.9</code></pre>
+
+    <p>
+      Este nombre deja bastante clara la intención.
+      En cambio, <code>def hacer_cosa(x):</code> no ayuda nada.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Evitar duplicación</h2>
+    <p>
+      Si descubres que repites el mismo bloque de código dos o más veces,
+      probablemente conviene convertirlo en función.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Separar cálculo de presentación</h2>
+    <p>
+      Una técnica profesional muy útil es separar la función que calcula de la que imprime.
+    </p>
+
+    <pre><code>def calcular_iva(precio):
+    return precio * 0.21
+
+precio = 100
+iva = calcular_iva(precio)
+print("IVA:", iva)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>💭 Piensa antes de ejecutar</h2>
+    <pre><code>def crear_mensaje(nombre):
+    texto = "Hola " + nombre
+    return texto
+
+resultado = crear_mensaje("Ana")
+print(resultado)</code></pre>
+
+    <ul>
+      <li>¿dónde existe la variable <code>texto</code>?</li>
+      <li>¿qué valor recibe <code>resultado</code>?</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Errores frecuentes</h2>
+    <ul>
+      <li>crear funciones demasiado largas</li>
+      <li>usar nombres poco descriptivos</li>
+      <li>depender demasiado de variables externas</li>
+      <li>mezclar cálculo, impresión y decisiones en una sola función</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto guiado</h2>
+    <p>
+      Crea una función <code>es_aprobado</code> que reciba una nota y devuelva <code>True</code> o <code>False</code>.
+    </p>
+
+    <pre><code>def es_aprobado(nota):
+    return nota >= 5
+
+print(es_aprobado(7))
+print(es_aprobado(3))</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Pregunta de entrevista</h2>
+    <p>
+      ¿Por qué conviene pasar datos por parámetros en lugar de depender de variables externas?
+    </p>
+
+    <p>
+      Respuesta sólida: porque la función queda más clara, más reutilizable, más fácil de probar y menos dependiente del contexto externo.
+    </p>
+  </section>
+
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./03-return.html">Anterior</a>
+    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('5.4')">Marcar como completado</button>
+
+  <script>
+  const TOPIC_ID = "5.4";
+const NEXT_URL = "./05-mini-retos.html";
+
+const API_URL = "http://localhost:3000/api/progress/python";
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+const nextBtn = document.getElementById("nextBtn");
+
+async function unlockNextIfCompleted() {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token || !nextBtn) return;
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    if (completed.includes(TOPIC_ID)) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error comprobando progreso:", error);
+  }
+}
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Tema completado 🎉");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error marcando tema como completado:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+
+unlockNextIfCompleted();
+  </script>
+
+</main>
+</body>
+</html>

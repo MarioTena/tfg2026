@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 2.1 – Condicionales en Python</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<header class="header">
+  <h1>Tema 2 · Python</h1>
+  <p>2.1 · Condicionales: enseñar al programa a decidir</p>
+</header>
+
+<main class="main-container single-column">
+
+  <section class="panel">
+    <h2>¿Qué es un condicional?</h2>
+    <p>
+      Un condicional es una estructura que permite que el programa elija entre distintos caminos.
+      Gracias a los condicionales, el programa puede hacer una cosa si se cumple una condición
+      y otra distinta si no se cumple.
+    </p>
+
+    <pre><code>edad = 20
+
+if edad >= 18:
+    print("Puedes entrar")</code></pre>
+
+    <p>
+      Aquí el programa se hace una pregunta: <code>¿edad es mayor o igual que 18?</code>
+      Si la respuesta es <code>True</code>, ejecuta el bloque.
+      Si la respuesta es <code>False</code>, lo salta.
+    </p>
+
+    <div class="callout">
+      Programar con condicionales es convertir reglas humanas en reglas exactas para una máquina.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>La estructura básica de un <code>if</code></h2>
+    <pre><code>if condicion:
+    instruccion</code></pre>
+
+    <p>
+      Todo <code>if</code> tiene estas piezas:
+    </p>
+
+    <ul>
+      <li>la palabra clave <code>if</code></li>
+      <li>una condición</li>
+      <li>dos puntos <code>:</code></li>
+      <li>un bloque indentado</li>
+    </ul>
+
+    <pre><code>temperatura = 33
+
+if temperatura > 30:
+    print("Hace calor")</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>La indentación en Python es obligatoria</h2>
+    <p>
+      En muchos lenguajes se usan llaves para definir bloques.
+      En Python, el bloque se define por la indentación.
+      Eso significa que los espacios al inicio de la línea tienen significado.
+    </p>
+
+    <pre><code>saldo = 100
+
+if saldo > 0:
+    print("Saldo disponible")
+    print("Puedes operar")
+
+print("Fin")</code></pre>
+
+    <p>
+      Las dos líneas indentadas pertenecen al <code>if</code>.
+      La última ya está fuera del bloque.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>⚠️ Error típico: dos puntos e indentación</h2>
+    <pre><code>edad = 20
+if edad >= 18
+print("Mayor de edad")</code></pre>
+
+    <p>Este código es incorrecto porque:</p>
+    <ul>
+      <li>falta el <code>:</code></li>
+      <li>el bloque no está indentado</li>
+    </ul>
+
+    <pre><code>edad = 20
+if edad >= 18:
+    print("Mayor de edad")</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2><code>if</code> + <code>else</code>: dos caminos posibles</h2>
+    <p>
+      Cuando quieres cubrir dos posibilidades opuestas, usas <code>if</code> y <code>else</code>.
+    </p>
+
+    <pre><code>edad = 16
+
+if edad >= 18:
+    print("Puedes votar")
+else:
+    print("No puedes votar")</code></pre>
+
+    <p>
+      Aquí siempre ocurrirá una de las dos opciones.
+      Nunca ambas.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2><code>elif</code>: varias decisiones encadenadas</h2>
+    <p>
+      <code>elif</code> sirve para comprobar condiciones adicionales cuando la anterior no se ha cumplido.
+      Es útil cuando hay más de dos posibilidades.
+    </p>
+
+    <pre><code>nota = 7
+
+if nota >= 9:
+    print("Sobresaliente")
+elif nota >= 7:
+    print("Notable")
+elif nota >= 5:
+    print("Aprobado")
+else:
+    print("Suspenso")</code></pre>
+
+    <p>
+      El orden importa. Python evalúa de arriba hacia abajo y se detiene en la primera condición verdadera.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>El orden de las condiciones importa mucho</h2>
+    <p>
+      Observa este ejemplo incorrecto:
+    </p>
+
+    <pre><code>nota = 9
+
+if nota >= 5:
+    print("Aprobado")
+elif nota >= 7:
+    print("Notable")
+elif nota >= 9:
+    print("Sobresaliente")</code></pre>
+
+    <p>
+      Aunque la nota sea 9, imprimirá <code>Aprobado</code>, porque la primera condición ya es verdadera.
+      Las demás ni siquiera se revisan.
+    </p>
+
+    <p>
+      La versión correcta es empezar por el caso más restrictivo o más alto.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Razonamiento correcto de rangos</h2>
+    <pre><code>edad = 15
+
+if edad < 12:
+    print("Niño")
+elif edad < 18:
+    print("Adolescente")
+else:
+    print("Adulto")</code></pre>
+
+    <p>
+      Este código funciona porque si llega al segundo bloque,
+      ya sabemos que <code>edad</code> no era menor que 12.
+      No hace falta repetirlo.
+    </p>
+
+    <div class="callout">
+      Una buena condición no repite información innecesaria.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Condicionales con texto</h2>
+    <pre><code>rol = "admin"
+
+if rol == "admin":
+    print("Acceso completo")
+else:
+    print("Acceso limitado")</code></pre>
+
+    <p>
+      Las cadenas de texto se comparan carácter por carácter.
+      Python diferencia mayúsculas y minúsculas.
+    </p>
+
+    <pre><code>print("admin" == "Admin")   # False</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Condicionales con booleanos</h2>
+    <pre><code>sesion_iniciada = True
+
+if sesion_iniciada:
+    print("Bienvenido")
+else:
+    print("Debes iniciar sesión")</code></pre>
+
+    <p>
+      Si una variable ya contiene <code>True</code> o <code>False</code>, puedes usarla directamente como condición.
+    </p>
+
+    <pre><code># Menos recomendable
+if sesion_iniciada == True:
+    print("Bienvenido")</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Condicionales anidados</h2>
+    <p>
+      Un condicional anidado es un <code>if</code> dentro de otro <code>if</code>.
+      Se usa cuando una decisión depende de otra previa.
+    </p>
+
+    <pre><code>edad = 20
+tiene_entrada = True
+
+if edad >= 18:
+    if tiene_entrada:
+        print("Puedes pasar")
+    else:
+        print("Eres mayor de edad, pero no tienes entrada")
+else:
+    print("No eres mayor de edad")</code></pre>
+
+    <p>
+      Aunque esto funciona, no siempre es la forma más clara.
+      Más adelante aprenderás a simplificar lógica combinando condiciones.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Errores conceptuales muy comunes</h2>
+    <ul>
+      <li>confundir <code>=</code> con <code>==</code></li>
+      <li>escribir mal el orden de los rangos</li>
+      <li>olvidar que Python para en la primera condición verdadera</li>
+      <li>pensar que dos <code>if</code> seguidos equivalen a <code>if / elif</code></li>
+      <li>usar variables sin haber pensado todos los casos posibles</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2><code>if</code> y <code>elif</code> no siempre son iguales que varios <code>if</code></h2>
+    <p>
+      Observa esta diferencia:
+    </p>
+
+    <pre><code>nota = 9
+
+if nota >= 5:
+    print("Aprobado")
+if nota >= 9:
+    print("Sobresaliente")</code></pre>
+
+    <p>
+      Aquí se imprimirán dos mensajes.
+      En cambio, con <code>if / elif</code>, solo uno.
+    </p>
+
+    <pre><code>nota = 9
+
+if nota >= 9:
+    print("Sobresaliente")
+elif nota >= 5:
+    print("Aprobado")</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>💭 Piensa antes de ejecutar</h2>
+    <pre><code>numero = 0
+
+if numero > 0:
+    print("Positivo")
+elif numero < 0:
+    print("Negativo")
+else:
+    print("Cero")</code></pre>
+
+    <ul>
+      <li>¿Qué muestra con <code>0</code>?</li>
+      <li>¿Qué muestra con <code>12</code>?</li>
+      <li>¿Qué muestra con <code>-8</code>?</li>
+      <li>¿Por qué solo se imprime un mensaje?</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Buenas prácticas al escribir condicionales</h2>
+    <ul>
+      <li>usa nombres claros: <code>edad</code>, <code>tiene_permiso</code>, <code>es_admin</code></li>
+      <li>ordena de forma lógica los casos</li>
+      <li>evita repetir condiciones innecesarias</li>
+      <li>prueba valores límite: 0, 1, 17, 18, 65...</li>
+      <li>si la lógica se complica mucho, descompón el problema</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto guiado</h2>
+    <p>
+      Crea un programa que clasifique una temperatura:
+    </p>
+
+    <ul>
+      <li>menor que 10 → hace frío</li>
+      <li>entre 10 y 24 → temperatura agradable</li>
+      <li>25 o más → hace calor</li>
+    </ul>
+
+    <pre><code>temperatura = 18
+
+if temperatura < 10:
+    print("Hace frío")
+elif temperatura < 25:
+    print("Temperatura agradable")
+else:
+    print("Hace calor")</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Reto de entrevista</h2>
+    <p>
+      Explica por qué este código está bien diseñado:
+    </p>
+
+    <pre><code>edad = 17
+
+if edad < 13:
+    print("Niño")
+elif edad < 18:
+    print("Adolescente")
+else:
+    print("Adulto")</code></pre>
+
+    <p>
+      Respuesta esperada: porque las condiciones están ordenadas, cubren todos los casos y no repiten lógica innecesaria.
+    </p>
+  </section>
+
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./index.html">Índice tema</a>
+    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('2.1')">Marcar como completado</button>
+
+  <script>
+const TOPIC_ID = "2.1";
+const NEXT_URL = "./02-comparaciones-booleanos.html";
+
+const API_URL = "http://localhost:3000/api/progress/python";
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+const nextBtn = document.getElementById("nextBtn");
+
+async function unlockNextIfCompleted() {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token || !nextBtn) return;
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    if (completed.includes(TOPIC_ID)) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error comprobando progreso:", error);
+  }
+}
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Tema completado 🎉");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error marcando tema como completado:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+
+unlockNextIfCompleted();
+</script>
+
+</main>
+</body>
+</html>

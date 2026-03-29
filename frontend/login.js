@@ -10,13 +10,7 @@ const passwordInput = document.getElementById("password");
 const loginBtn = document.getElementById("login-btn");
 const statusMsg = document.getElementById("status-msg");
 
-// Si ya hay token guardado, mando directo al playground
-(function autoRedirectIfLogged() {
-  const token = localStorage.getItem("token");
-  if (token) {
-    window.location.href = "./home.html";
-  }
-})();
+
 
 (function fillEmailFromQuery() {
   const params = new URLSearchParams(window.location.search);
@@ -68,7 +62,7 @@ async function doLogin() {
     }
 
     // ... redirige a la pantalla inicial (home)
-    window.location.href = "temas/tema-0/index.html";
+    window.location.href = "menu.html";
   } catch (err) {
     console.error("Login error:", err);
     statusMsg.textContent = "No se ha podido conectar con la API.";

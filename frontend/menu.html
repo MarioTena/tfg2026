@@ -2,49 +2,151 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Menú de temas</title>
+  <title>Menú de aprendizaje</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- ============================================================================
-       Cabecera
-       ============================================================================ -->
+
   <header class="header">
-    <h1>Plataforma de aprendizaje</h1>
-    <p>Selecciona un lenguaje y un tema para empezar.</p>
+    <span class="mission-tag">Plataforma de aprendizaje</span>
+    <h1>Empieza tu ruta de programación</h1>
+    <p>
+      Comienza con una introducción común para entender cómo se programa y después elige tu lenguaje.
+    </p>
+
+    <div class="progress-hero">
+      <div class="progress-hero-top">
+        <div>
+          <div class="progress-label">Recorrido recomendado</div>
+          <div class="mini-note">Tema 0 común → Ruta Python o futuras rutas</div>
+        </div>
+
+        <div class="badges">
+          <span class="badge blue">Desde cero</span>
+          <span class="badge green">Aprendizaje guiado</span>
+        </div>
+      </div>
+
+      <div class="progress-track">
+        <div class="progress-fill" style="width: 100%;"></div>
+      </div>
+    </div>
+
+    <div class="buttons-row">
+      <a class="btn btn-primary" href="temas/tema-0/index.html">Empezar por Tema 0</a>
+      <a class="btn btn-secondary" href="temas/python/index.html">Ir directo a Python</a>
+    </div>
   </header>
 
-  <!-- ============================================================================
-       Contenido principal: lista de temas
-       ============================================================================ -->
   <main class="main-container single-column">
-    <!-- Bloque Python -->
-    <section class="panel">
-      <h2>TEMAS PYTHON</h2>
-      <ul class="temas-list">
-        <li>
-          <a href="temas/python/py-tema1-introduccion.html">
-            Tema 1 (Python) – Introducción al lenguaje
-          </a>
-          <p>Conceptos básicos: qué es Python, variables, tipos, operaciones y primeros programas.</p>
-        </li>
 
-        <!-- Aquí podrás ir añadiendo más temas de Python (Tema 2, Tema 3, etc.) -->
-      </ul>
+    <section class="exercise-card">
+      <div class="exercise-header">
+        <div>
+          <h2 class="exercise-title">Cómo está organizada la plataforma</h2>
+          <p class="exercise-subtitle">
+            Primero entiendes cómo pensar como programador. Después avanzas por una ruta de lenguaje con teoría, mini-retos y ejercicios.
+          </p>
+        </div>
+
+        <div class="badges">
+          <span class="badge blue">Tema 0</span>
+          <span class="badge blue">Rutas</span>
+          <span class="badge green">Playground</span>
+        </div>
+      </div>
+
+      <div class="exercise-body">
+        <div class="exercise-block">
+          <h3>Orden recomendado</h3>
+          <ul>
+            <li>empieza por el Tema 0 común</li>
+            <li>elige después una ruta de lenguaje</li>
+            <li>avanza tema a tema</li>
+            <li>consolida con mini-retos y ejercicios</li>
+          </ul>
+        </div>
+
+        <div class="exercise-block">
+          <h3>Para quién está pensado</h3>
+          <div class="challenge">
+            Si partes desde cero, no empieces directamente por sintaxis. Empieza por entender qué significa programar y cómo aprender bien.
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Bloque C -->
     <section class="panel">
-      <h2>TEMAS C</h2>
-      <ul class="temas-list">
-        <li>
-          <a href="temas/c/c-tema1-introduccion.html">
-            Tema 1 (C) – Introducción al lenguaje
-          </a>
-          <p>(Pendiente de desarrollo) Conceptos básicos de C y primeros programas.</p>
-        </li>
-      </ul>
+      <h2>Punto de entrada recomendado</h2>
+
+      <div class="topic-roadmap">
+        <article class="roadmap-card available roadmap-core" onclick="window.location.href='temas/tema-0/index.html'">
+          <div class="roadmap-top">
+            <span class="mission-tag">Tema 0</span>
+            <span class="roadmap-state available">Recomendado</span>
+          </div>
+
+          <h3>Introducción a la programación</h3>
+
+          <div class="topic-meta">
+            <span class="topic-chip">Común</span>
+            <span class="topic-chip">Antes de lenguajes</span>
+            <span class="topic-chip">Base mental</span>
+          </div>
+
+          <p class="roadmap-cta">
+            Aprende qué es programar, cómo piensa un ordenador, cómo usar la plataforma y cómo enfrentarte a errores y ejercicios.
+          </p>
+        </article>
+      </div>
     </section>
+
+    <section class="panel">
+      <h2>Rutas de lenguaje</h2>
+
+      <div class="topic-roadmap">
+
+        <article class="roadmap-card available roadmap-base" onclick="window.location.href='temas/python/index.html'">
+          <div class="roadmap-top">
+            <span class="mission-tag">Ruta 1</span>
+            <span class="roadmap-state available">Disponible</span>
+          </div>
+
+          <h3>Python</h3>
+
+          <div class="topic-meta">
+            <span class="topic-chip">Desde cero</span>
+            <span class="topic-chip">10 temas</span>
+            <span class="topic-chip">Práctica guiada</span>
+          </div>
+
+          <p class="roadmap-cta">
+            Empieza con fundamentos, estructuras, funciones, archivos y control de errores en una ruta progresiva.
+          </p>
+        </article>
+
+        <article class="roadmap-card locked roadmap-advanced">
+          <div class="roadmap-top">
+            <span class="mission-tag">Ruta 2</span>
+            <span class="roadmap-state locked">Próximamente</span>
+          </div>
+
+          <h3>C</h3>
+
+          <div class="topic-meta">
+            <span class="topic-chip">Pendiente</span>
+            <span class="topic-chip">Bajo nivel</span>
+            <span class="topic-chip">Próxima ruta</span>
+          </div>
+
+          <p class="roadmap-cta">
+            Ruta reservada para aprender fundamentos de C y primeros programas cuando el contenido esté disponible.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
   </main>
 </body>
 </html>

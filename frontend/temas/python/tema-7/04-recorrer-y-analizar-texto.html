@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 7.4 – Recorrer y analizar texto</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<header class="header">
+  <h1>Tema 7 · Python</h1>
+  <p>7.4 · Recorrer y analizar texto: aplicar bucles y lógica sobre strings</p>
+</header>
+
+<main class="main-container single-column">
+
+  <section class="panel">
+    <h2>Recorrer un string con <code>for</code></h2>
+    <pre><code>texto = "Python"
+
+for letra in texto:
+    print(letra)</code></pre>
+
+    <p>
+      En cada iteración, la variable <code>letra</code> toma un carácter distinto.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Contar caracteres concretos</h2>
+    <pre><code>texto = "banana"
+contador = 0
+
+for letra in texto:
+    if letra == "a":
+        contador = contador + 1
+
+print(contador)</code></pre>
+
+    <p>
+      Esto cuenta cuántas veces aparece la letra <code>a</code>.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Buscar si existe un carácter o subcadena</h2>
+    <pre><code>texto = "programacion"
+
+if "gra" in texto:
+    print("Encontrado")</code></pre>
+
+    <p>
+      El operador <code>in</code> también funciona con strings.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Contar vocales</h2>
+    <pre><code>texto = "python es util"
+contador = 0
+
+for letra in texto:
+    if letra in "aeiou":
+        contador = contador + 1
+
+print(contador)</code></pre>
+
+    <p>
+      Este tipo de ejercicio es muy frecuente para aprender a combinar texto, bucles y condicionales.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Normalizar antes de analizar</h2>
+    <p>
+      A veces conviene transformar el texto antes de procesarlo.
+      Por ejemplo, pasar todo a minúsculas.
+    </p>
+
+    <pre><code>texto = "PyThOn"
+texto = texto.lower()
+
+for letra in texto:
+    print(letra)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Recorrer con índices</h2>
+    <pre><code>texto = "hola"
+
+for i in range(len(texto)):
+    print(i, texto[i])</code></pre>
+
+    <p>
+      Esto es útil cuando necesitas tanto posición como carácter.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Separar palabras y analizarlas</h2>
+    <pre><code>frase = "Python es muy potente"
+palabras = frase.split()
+
+for palabra in palabras:
+    print(palabra)</code></pre>
+
+    <p>
+      Así pasas de trabajar a nivel de carácter a trabajar a nivel de palabra.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>💭 Piensa antes de ejecutar</h2>
+    <pre><code>texto = "casa"
+contador = 0
+
+for letra in texto:
+    if letra == "a":
+        contador = contador + 1
+
+print(contador)</code></pre>
+
+    <ul>
+      <li>¿cuántas veces aparece la letra <code>a</code>?</li>
+      <li>¿qué ocurriría si el texto fuera <code>"Casa"</code>?</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Errores frecuentes</h2>
+    <ul>
+      <li>no normalizar mayúsculas/minúsculas antes de comparar</li>
+      <li>confundir contar caracteres con contar palabras</li>
+      <li>usar índices cuando no hacen falta</li>
+      <li>olvidar inicializar el contador antes del bucle</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto guiado</h2>
+    <p>
+      Cuenta cuántas letras <code>e</code> hay en una frase.
+    </p>
+
+    <pre><code>frase = "Este tema es interesante"
+contador = 0
+
+for letra in frase.lower():
+    if letra == "e":
+        contador = contador + 1
+
+print(contador)</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Pregunta de entrevista</h2>
+    <p>
+      ¿Por qué puede ser útil convertir un texto a minúsculas antes de analizarlo?
+    </p>
+
+    <p>
+      Respuesta sólida: porque así evitas que mayúsculas y minúsculas se traten como caracteres distintos cuando en la lógica del problema deberían considerarse iguales.
+    </p>
+  </section>
+
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./03-metodos-de-strings.html">Anterior</a>
+    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('7.4')">Marcar como completado</button>
+
+  <script>
+const TOPIC_ID = "7.4";
+const NEXT_URL = "./05-mini-retos.html";
+
+const API_URL = "http://localhost:3000/api/progress/python";
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+const nextBtn = document.getElementById("nextBtn");
+
+async function unlockNextIfCompleted() {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token || !nextBtn) return;
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    if (completed.includes(TOPIC_ID)) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error comprobando progreso:", error);
+  }
+}
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Tema completado 🎉");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error marcando tema como completado:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+
+unlockNextIfCompleted();
+</script>
+
+</main>
+</body>
+</html>

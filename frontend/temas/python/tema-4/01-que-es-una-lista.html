@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 4.1 – Qué es una lista</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<header class="header">
+  <span class="mission-tag">Misión 4.1</span>
+  <h1>Listas en Python</h1>
+  <p>Aprende a guardar varios datos en una sola variable y empieza a trabajar como en problemas reales.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 4 · Estructuras de datos</div>
+        <div class="mini-note">Nivel inicial · 10-15 min · Concepto clave</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Python</span>
+        <span class="badge green">Disponible</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 20%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
+</header>
+
+<main class="main-container single-column">
+
+  <!-- BLOQUE 1: RESUMEN ACCIONABLE -->
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué vas a entender hoy</h2>
+        <p class="exercise-subtitle">
+          Una lista permite guardar varios valores relacionados dentro de una sola variable, manteniendo el orden.
+        </p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Objetivo</span>
+        <span class="badge green">Base para bucles</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué problema resuelve</h3>
+        <p>
+          Hasta ahora has usado variables sueltas: una para el nombre, otra para la edad, otra para la nota.
+          Pero en programación real muchas veces necesitas trabajar con varios datos del mismo grupo.
+        </p>
+
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3>Ejemplo real</h3>
+            <p>Los nombres de varios alumnos.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Ejemplo real</h3>
+            <p>Los productos de un pedido.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Ejemplo real</h3>
+            <p>Las temperaturas de varios días.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Ejemplo real</h3>
+            <p>Los mensajes de un chat.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          Idea clave: una lista agrupa varios valores relacionados dentro de una sola estructura.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes recordar</h3>
+        <ul>
+          <li>se escribe entre <code>[]</code></li>
+          <li>los elementos van separados por comas</li>
+          <li>mantiene el orden</li>
+          <li>puede guardar varios elementos</li>
+        </ul>
+
+        <div class="challenge">
+          <strong>Piensa así:</strong><br />
+          una lista no es solo “muchos datos juntos”, sino “muchos datos juntos y ordenados”.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOQUE 2: EJEMPLO DIRECTO -->
+  <section class="panel">
+    <h2>Ejemplo rápido</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Lista de números</h3>
+        <pre><code>numeros = [10, 20, 30, 40]</code></pre>
+      </div>
+
+      <div class="theory-card">
+        <h3>Lista de nombres</h3>
+        <pre><code>nombres = ["Ana", "Luis", "Marta"]</code></pre>
+      </div>
+
+      <div class="theory-card">
+        <h3>Lista vacía</h3>
+        <pre><code>tareas = []</code></pre>
+      </div>
+
+      <div class="theory-card">
+        <h3>Lista con mezcla</h3>
+        <pre><code>mixta = ["Ana", 25, True]</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOQUE 3: MINI TEST MENTAL -->
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Piensa antes de ejecutar</h2>
+        <p class="exercise-subtitle">Antes de probar código, acostúmbrate a predecir qué va a pasar.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Código</h3>
+        <pre><code>colores = ["rojo", "verde", "azul"]
+print(colores)
+print(len(colores))</code></pre>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Preguntas</h3>
+        <ul>
+          <li>¿Qué se imprime en la primera línea?</li>
+          <li>¿Qué devuelve <code>len(colores)</code>?</li>
+        </ul>
+
+        <div class="mini-note">
+          Intenta responder antes de ir al playground.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOQUE 4: RETO -->
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto guiado</h2>
+        <p class="exercise-subtitle">Ahora toca hacer algo. La teoría ya es suficiente para empezar.</p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Reto</span>
+        <span class="badge green">Muy fácil</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Tu misión</h3>
+        <p>
+          Crea una lista con 5 ciudades y muestra:
+        </p>
+        <ul>
+          <li>la lista completa</li>
+          <li>su longitud con <code>len()</code></li>
+        </ul>
+
+        <div class="exercise-actions">
+          <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Resolver en playground</a>
+          <button class="btn btn-secondary btn-sm" type="button" onclick="document.getElementById('solucion-reto').open = true;">
+            Ver solución
+          </button>
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Pista</h3>
+        <p>
+          Empieza creando una variable llamada <code>ciudades</code> y guarda dentro varios nombres entre corchetes.
+        </p>
+
+        <details id="solucion-reto" class="theory-dropdown">
+          <summary>Mostrar solución</summary>
+          <div class="theory-dropdown-content">
+            <pre><code>ciudades = ["Madrid", "Sevilla", "Bilbao", "Valencia", "Málaga"]
+print(ciudades)
+print(len(ciudades))</code></pre>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOQUE 5: CONCEPTOS SECUNDARIOS -->
+  <section class="panel">
+    <h2>Conceptos clave del tema</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>El orden importa</h3>
+        <p>No es lo mismo <code>[10, 20, 30]</code> que <code>[30, 20, 10]</code>. En una lista, la posición cambia el significado.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Longitud</h3>
+        <p>Puedes saber cuántos elementos tiene una lista usando <code>len()</code>.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Uso real</h3>
+        <p>Las listas se usan muchísimo porque permiten recorrer, añadir, modificar y eliminar elementos.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Buena práctica</h3>
+        <p>Usa nombres claros como <code>nombres</code>, <code>precios</code> o <code>notas</code>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOQUE 6: ERRORES -->
+  <section class="panel">
+    <h2>Errores frecuentes</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Error 1</h3>
+        <p>Pensar que una lista es una sola cadena de texto.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Error 2</h3>
+        <p>Olvidar las comas entre elementos.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Error 3</h3>
+        <p>Confundir corchetes <code>[]</code> con paréntesis <code>()</code>.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Error 4</h3>
+        <p>No entender que el orden de los elementos importa.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOQUE 7: CIERRE -->
+  <section class="panel">
+    <h2>Pregunta típica de entrevista</h2>
+    <div class="challenge">
+      <p><strong>Pregunta:</strong> ¿Qué es una lista en Python?</p>
+      <p>
+        <strong>Respuesta sólida:</strong> una lista es una estructura de datos ordenada que permite guardar varios elementos en una sola variable.
+      </p>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Siguiente paso</h2>
+    <p>
+      Ya sabes qué es una lista. Lo siguiente es aprender a acceder a sus elementos y modificarlos.
+    </p>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./index.html">Índice tema</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <button class="btn btn-primary" onclick="completeTopic('4.1')">Marcar como completado</button>
+    </div>
+  </section>
+
+  <script>
+    const TOPIC_ID = "4.1";
+    const NEXT_URL = "./02-acceso-y-modificacion.html";
+
+    const API_URL = "http://localhost:3000/api/progress/python";
+    const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+    const nextBtn = document.getElementById("nextBtn");
+
+    async function unlockNextIfCompleted() {
+      try {
+        const token = localStorage.getItem("token");
+
+        if (!token || !nextBtn) return;
+
+        const res = await fetch(API_URL, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+
+        if (!res.ok) return;
+
+        const data = await res.json();
+        const completed = data?.progress?.completedTopics || [];
+
+        if (completed.includes(TOPIC_ID)) {
+          nextBtn.classList.remove("btn-disabled");
+          nextBtn.href = NEXT_URL;
+        }
+      } catch (error) {
+        console.error("Error comprobando progreso:", error);
+      }
+    }
+
+    async function completeTopic(topicId) {
+      try {
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+          alert("Debes iniciar sesión para guardar el progreso");
+          return;
+        }
+
+        const res = await fetch(COMPLETE_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify({ topic: topicId })
+        });
+
+        if (!res.ok) {
+          throw new Error(`Error HTTP: ${res.status}`);
+        }
+
+        alert("Tema completado 🎉");
+
+        if (nextBtn) {
+          nextBtn.classList.remove("btn-disabled");
+          nextBtn.href = NEXT_URL;
+        }
+      } catch (error) {
+        console.error("Error marcando tema como completado:", error);
+        alert("No se pudo guardar el progreso");
+      }
+    }
+
+    unlockNextIfCompleted();
+  </script>
+
+</main>
+</body>
+</html>

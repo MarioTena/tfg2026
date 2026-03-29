@@ -8,44 +8,149 @@
 <body>
 
 <header class="header">
+  <span class="mission-tag">Tema 0 · Bloque 2</span>
   <h1>Cómo piensa un ordenador</h1>
-  <p>No piensa como tú.</p>
+  <p>Un ordenador no entiende intenciones. Entiende instrucciones exactas.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Introducción a la programación</div>
+        <div class="mini-note">Paso 2 de 6 · Precisión y lógica</div>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Lógica</span>
+        <span class="badge green">Precisión</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 33%;"></div>
+    </div>
+  </div>
 </header>
 
 <main class="main-container single-column">
 
-  <section class="panel progress-grid">
-    <div class="progress-card">
-      <h3>Persona</h3>
-      <p>Entiende contexto.</p>
-      <p>Puede suponer lo que quieres decir.</p>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">La idea central</h2>
+        <p class="exercise-subtitle">
+          Un ordenador no “piensa” como una persona. No interpreta el contexto ni rellena huecos. Solo ejecuta lo que recibe.
+        </p>
+      </div>
     </div>
 
-    <div class="progress-card">
-      <h3>Ordenador</h3>
-      <p>Solo entiende instrucciones exactas.</p>
-      <p>Un error rompe todo.</p>
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>No entiende intenciones</h3>
+        <p>
+          Una persona puede deducir lo que querías decir aunque te expreses mal. Un ordenador no.
+        </p>
+        <p>
+          Si una instrucción está incompleta, mal ordenada o mal escrita, el resultado será incorrecto o directamente fallará.
+        </p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué significa esto</h3>
+        <ul>
+          <li>hay que ser preciso</li>
+          <li>cada paso importa</li>
+          <li>los detalles pequeños cambian el resultado</li>
+          <li>los errores no son aleatorios</li>
+        </ul>
+      </div>
     </div>
   </section>
 
   <section class="panel">
-    <pre>
-si edad > 18
-  permitir_entrada
-    </pre>
-    <p>
-      Para una persona se entiende.
-      Para un ordenador es un error.
-    </p>
-    <div class="callout">
-      Precisión absoluta.
+    <h2>Cómo funciona una máquina</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Recibe datos</h3>
+        <p>El programa parte de información de entrada: números, texto, opciones del usuario, etc.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Aplica instrucciones</h3>
+        <p>Sigue los pasos que has definido exactamente en el orden indicado.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Genera un resultado</h3>
+        <p>Devuelve una salida: un cálculo, un mensaje, un error o una acción concreta.</p>
+      </div>
     </div>
   </section>
 
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./01-que-es-programar.html">Anterior</a>
-    <a class="btn btn-primary" href="./03-lenguajes.html">Siguiente</a>
-  </div>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Ejemplo sencillo</h2>
+        <p class="exercise-subtitle">Piensa en una instrucción ambigua frente a una instrucción precisa.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Instrucción ambigua</h3>
+        <p>“Hazlo bien.”</p>
+        <div class="challenge">
+          Esto puede tener sentido entre personas, pero un ordenador no sabe qué significa exactamente “bien”.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Instrucción precisa</h3>
+        <p>“Suma 5 + 3 y muestra el resultado en pantalla.”</p>
+        <div class="callout">
+          Cuanto más concreta sea la instrucción, más fácil será obtener el resultado esperado.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Por qué ocurren tantos errores al empezar</h2>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Porque faltan pasos</h3>
+        <p>A veces sabes lo que quieres hacer, pero no has escrito todos los pasos necesarios.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Porque el orden no es correcto</h3>
+        <p>En programación, hacer algo antes o después cambia el resultado.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Porque una instrucción no es válida</h3>
+        <p>La máquina necesita una sintaxis concreta. Si te sales de ella, falla.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Mini reflexión</h2>
+    <div class="challenge">
+      <p><strong>Pregunta:</strong> ¿por qué una persona puede entender una explicación incompleta y un ordenador no?</p>
+      <p>La respuesta está en que la persona interpreta; la máquina ejecuta.</p>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Siguiente paso</h2>
+    <p>Ahora que entiendes por qué la precisión importa, vamos a ver por qué existen distintos lenguajes de programación.</p>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./01-que-es-programar.html">Anterior</a>
+      <a class="btn btn-primary" href="./03-lenguajes.html">Siguiente</a>
+    </div>
+  </section>
 
 </main>
 </body>

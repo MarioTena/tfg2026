@@ -2,33 +2,219 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>TFG - Temas Python</title>
+  <title>TFG · Ruta Python</title>
   <link rel="stylesheet" href="../../styles.css" />
 </head>
 <body>
   <header class="header">
-    <h1>Python</h1>
-    <p>Selecciona el tema que quieres estudiar.</p>
+    <span class="mission-tag">Ruta de aprendizaje</span>
+    <h1>Aprende Python paso a paso</h1>
+    <p>
+      Recorre los temas en orden, consolida con mini-retos y termina cada bloque con ejercicios prácticos.
+    </p>
+
+    <div class="progress-hero">
+      <div class="progress-hero-top">
+        <div>
+          <div class="progress-label">Ruta completa de Python</div>
+          <div class="mini-note">10 temas · de nivel inicial a fundamentos sólidos</div>
+        </div>
+
+        <div class="badges">
+          <span class="badge blue">Python</span>
+          <span class="badge green">Desde cero</span>
+        </div>
+      </div>
+
+      <div class="progress-track">
+        <div class="progress-fill" style="width: 100%;"></div>
+      </div>
+    </div>
+
+    <div class="buttons-row">
+      <a class="btn btn-primary" href="./tema-1/index.html">Empezar ruta</a>
+      <a class="btn btn-secondary" href="../../menu.html">Cambiar lenguaje</a>
+    </div>
   </header>
 
   <main class="main-container single-column">
+
+    <section class="exercise-card">
+      <div class="exercise-header">
+        <div>
+          <h2 class="exercise-title">Qué vas a trabajar en esta ruta</h2>
+          <p class="exercise-subtitle">
+            Esta ruta está pensada para que avances desde lo más básico hasta resolver problemas reales con soltura.
+          </p>
+        </div>
+
+        <div class="badges">
+          <span class="badge blue">Teoría</span>
+          <span class="badge blue">Mini-retos</span>
+          <span class="badge green">Ejercicios</span>
+        </div>
+      </div>
+
+      <div class="exercise-body">
+        <div class="exercise-block">
+          <h3>Objetivo</h3>
+          <ul>
+            <li>entender la sintaxis básica de Python</li>
+            <li>usar condicionales y bucles</li>
+            <li>trabajar con listas, funciones y diccionarios</li>
+            <li>manipular strings, archivos y errores</li>
+          </ul>
+        </div>
+
+        <div class="exercise-block">
+          <h3>Cómo avanzar</h3>
+          <ul>
+            <li>entra en cada tema en orden</li>
+            <li>completa mini-retos cuando aparezcan</li>
+            <li>usa el playground para practicar</li>
+          </ul>
+
+          <div class="challenge">
+            La forma rápida de aprender no es leer más, sino alternar concepto + prueba + corrección.
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="panel">
-      <h2>Temario Python</h2>
+      <h2>Mapa de temas</h2>
 
-      <ul class="temas-list">
-        <li>
-          <a href="./tema-1/index.html">
-            Tema 1 – Introducción al lenguaje
-          </a>
-          <p>Qué es Python, variables, tipos, operaciones y primeros programas.</p>
-        </li>
+      <div class="topic-roadmap">
+        <article class="roadmap-card available roadmap-base" onclick="window.location.href='./tema-1/index.html'">
+          <div class="roadmap-top">
+            <span class="mission-tag">Tema 1</span>
+            <span class="roadmap-state available">Inicio</span>
+          </div>
+          <h3>Introducción al lenguaje</h3>
+          <div class="topic-meta">
+            <span class="topic-chip">Base</span>
+            <span class="topic-chip">Primeros pasos</span>
+          </div>
+          <p class="roadmap-cta">Qué es Python, variables, tipos, operaciones y primeros programas.</p>
+        </article>
 
-        <!-- Añadir más temas aquí -->
-      </ul>
+        <article class="roadmap-card available roadmap-base" onclick="window.location.href='./tema-2/index.html'">
+          <div class="roadmap-top">
+            <span class="mission-tag">Tema 2</span>
+            <span class="roadmap-state available">Fundamental</span>
+          </div>
+          <h3>Condicionales</h3>
+          <div class="topic-meta">
+            <span class="topic-chip">Base</span>
+            <span class="topic-chip">if / else</span>
+          </div>
+          <p class="roadmap-cta">Condiciones, comparaciones, operadores lógicos y toma de decisiones.</p>
+        </article>
 
-      <p style="margin-top:16px;">
-        <a href="../../home.html">← Volver a elegir lenguaje</a>
-      </p>
+        <article class="roadmap-card available roadmap-base" onclick="window.location.href='./tema-3/index.html'">
+          <div class="roadmap-top">
+            <span class="mission-tag">Tema 3</span>
+            <span class="roadmap-state available">Fundamental</span>
+          </div>
+          <h3>Bucles</h3>
+          <div class="topic-meta">
+            <span class="topic-chip">Base</span>
+            <span class="topic-chip">for / while</span>
+          </div>
+          <p class="roadmap-cta">Repetición con for/while, control con break/continue y ejercicios.</p>
+        </article>
+
+        <article class="roadmap-card available roadmap-core" onclick="window.location.href='./tema-4/index.html'">
+          <div class="roadmap-top">
+            <span class="mission-tag">Tema 4</span>
+            <span class="roadmap-state available">Clave</span>
+          </div>
+          <h3>Listas</h3>
+          <div class="topic-meta">
+            <span class="topic-chip">Core</span>
+            <span class="topic-chip">Práctica</span>
+          </div>
+          <p class="roadmap-cta">Creación de listas, acceso, modificación, recorrido y métodos básicos.</p>
+        </article>
+
+        <article class="roadmap-card available roadmap-core" onclick="window.location.href='./tema-5/index.html'">
+          <div class="roadmap-top">
+            <span class="mission-tag">Tema 5</span>
+            <span class="roadmap-state available">Clave</span>
+          </div>
+          <h3>Funciones</h3>
+          <div class="topic-meta">
+            <span class="topic-chip">Core</span>
+            <span class="topic-chip">return</span>
+          </div>
+          <p class="roadmap-cta">Definición de funciones, parámetros, return, ámbito y reutilización de código.</p>
+        </article>
+
+        <article class="roadmap-card available roadmap-core" onclick="window.location.href='./tema-6/index.html'">
+          <div class="roadmap-top">
+            <span class="mission-tag">Tema 6</span>
+            <span class="roadmap-state available">Intermedio</span>
+          </div>
+          <h3>Diccionarios</h3>
+          <div class="topic-meta">
+            <span class="topic-chip">Core</span>
+            <span class="topic-chip">Datos</span>
+          </div>
+          <p class="roadmap-cta">Claves y valores, acceso, modificación, recorrido y métodos útiles.</p>
+        </article>
+
+        <article class="roadmap-card available roadmap-advanced" onclick="window.location.href='./tema-7/index.html'">
+          <div class="roadmap-top">
+            <span class="mission-tag">Tema 7</span>
+            <span class="roadmap-state available">Intermedio</span>
+          </div>
+          <h3>Strings intermedios</h3>
+          <div class="topic-meta">
+            <span class="topic-chip">Advanced</span>
+            <span class="topic-chip">Métodos</span>
+          </div>
+          <p class="roadmap-cta">Strings como secuencias, slicing, métodos y análisis de texto.</p>
+        </article>
+
+        <article class="roadmap-card available roadmap-advanced" onclick="window.location.href='./tema-8/index.html'">
+          <div class="roadmap-top">
+            <span class="mission-tag">Tema 8</span>
+            <span class="roadmap-state available">Intermedio</span>
+          </div>
+          <h3>Tuplas y sets</h3>
+          <div class="topic-meta">
+            <span class="topic-chip">Advanced</span>
+            <span class="topic-chip">Comparación</span>
+          </div>
+          <p class="roadmap-cta">Tuplas inmutables, sets sin duplicados y elección correcta de estructuras.</p>
+        </article>
+
+        <article class="roadmap-card available roadmap-advanced" onclick="window.location.href='./tema-9/index.html'">
+          <div class="roadmap-top">
+            <span class="mission-tag">Tema 9</span>
+            <span class="roadmap-state available">Aplicación</span>
+          </div>
+          <h3>Manejo de archivos</h3>
+          <div class="topic-meta">
+            <span class="topic-chip">Advanced</span>
+            <span class="topic-chip">Lectura / escritura</span>
+          </div>
+          <p class="roadmap-cta">Lectura, escritura, modos de apertura y trabajo básico con archivos.</p>
+        </article>
+
+        <article class="roadmap-card available roadmap-advanced" onclick="window.location.href='./tema-10/index.html'">
+          <div class="roadmap-top">
+            <span class="mission-tag">Tema 10</span>
+            <span class="roadmap-state available">Cierre</span>
+          </div>
+          <h3>Errores y excepciones</h3>
+          <div class="topic-meta">
+            <span class="topic-chip">Advanced</span>
+            <span class="topic-chip">try / except</span>
+          </div>
+          <p class="roadmap-cta">try/except, else/finally, raise, validaciones y control de errores.</p>
+        </article>
+      </div>
     </section>
   </main>
 </body>

@@ -14,16 +14,35 @@ const topics = [
 ];
 
 async function loadProgress() {
-  const res = await fetch(API_URL, {
-    headers: {
-      Authorization: `Bearer ${token}`
+  try {
+    if (!token) {
+      renderTopics([]);
+      return;
     }
-  });
 
-  const data = await res.json();
-  const completed = data.progress.completedTopics || [];
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
 
-  renderTopics(completed);
+    if (res.status === 401) {
+      renderTopics([]);
+      return;
+    }
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    renderTopics(completed);
+  } catch (error) {
+    console.error("Error cargando progreso:", error);
+    renderTopics([]);
+  }
 }
 
 function renderTopics(completed) {

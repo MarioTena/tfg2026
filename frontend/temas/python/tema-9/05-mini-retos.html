@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 9.5 – Mini retos</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+<header class="header">
+  <h1>Tema 9 · Python</h1>
+  <p>9.5 · Mini retos: integrar lectura y escritura de archivos</p>
+</header>
+
+<main class="main-container single-column">
+  <section class="panel">
+    <h2>Mini-reto 1 · Guardar saludo</h2>
+    <pre><code>with open("saludo.txt", "w") as archivo:
+    archivo.write("Hola Python")</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 2 · Añadir línea</h2>
+    <pre><code>with open("registro.txt", "a") as archivo:
+    archivo.write("Nueva entrada\n")</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 3 · Leer contenido</h2>
+    <pre><code>with open("registro.txt", "r") as archivo:
+    print(archivo.read())</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 4 · Leer línea a línea</h2>
+    <pre><code>with open("registro.txt", "r") as archivo:
+    for linea in archivo:
+        print(linea.strip())</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 5 · Elegir modo</h2>
+    <p>Indica si usarías <code>r</code>, <code>w</code> o <code>a</code> en varios casos prácticos.</p>
+  </section>
+
+  <div class="buttons-row">
+    <a class="btn btn-secondary" href="./04-buenas-practicas-y-errores.html">Anterior</a>
+    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Ejercicios Tema 9</a>
+  </div>
+
+  <button class="btn btn-primary" onclick="completeTopic('9.5')">Marcar como completado</button>
+  <script>
+const TOPIC_ID = "9.5";
+const NEXT_URL = "./py-tema9-ejercicios.html";
+
+const API_URL = "http://localhost:3000/api/progress/python";
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+const nextBtn = document.getElementById("nextBtn");
+
+async function unlockNextIfCompleted() {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token || !nextBtn) return;
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const completed = data?.progress?.completedTopics || [];
+
+    if (completed.includes(TOPIC_ID)) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error comprobando progreso:", error);
+  }
+}
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Tema completado 🎉");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("btn-disabled");
+      nextBtn.href = NEXT_URL;
+    }
+  } catch (error) {
+    console.error("Error marcando tema como completado:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+
+unlockNextIfCompleted();
+</script>
+
+</main>
+</body>
+</html>
