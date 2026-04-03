@@ -7,12 +7,136 @@
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 5 · Funciones</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 5 · Python</h1>
-  <p>5.2 · Parámetros y argumentos: hacer funciones flexibles</p>
+  <span class="mission-tag">Misión 5.2</span>
+  <h1>Parámetros y argumentos</h1>
+  <p>Aprende a hacer funciones flexibles para que puedan trabajar con distintos datos sin cambiar su lógica.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 5 · Funciones</div>
+        <div class="mini-note">Nivel inicial · 12-15 min · Flexibilidad y reutilización</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Parámetros</span>
+        <span class="badge green">Argumentos</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 40%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué vas a entender hoy</h2>
+        <p class="exercise-subtitle">
+          Una función fija sirve, pero una función realmente útil debe poder trabajar con datos distintos.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Objetivo</span>
+        <span class="badge green">Funciones flexibles</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué problema resuelve</h3>
+        <p>
+          Si una función siempre hace lo mismo con los mismos datos, sirve poco.
+          Los parámetros permiten reutilizar la misma lógica con valores diferentes.
+        </p>
+
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3>Saludos</h3>
+            <p>Mostrar mensajes a distintas personas sin escribir una función por cada una.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Cálculos</h3>
+            <p>Usar la misma función con números diferentes.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Reutilización</h3>
+            <p>Evitar cambiar el código interno cada vez que cambian los datos.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Claridad</h3>
+            <p>Separar la lógica de la función de los datos concretos que recibe.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          Idea clave: los parámetros hacen que una función sea reutilizable con valores distintos.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes vigilar</h3>
+        <ul>
+          <li>no confundir parámetro con argumento</li>
+          <li>respetar el número de argumentos esperados</li>
+          <li>usar nombres claros</li>
+          <li>entender que la lógica de la función no cambia, solo cambian los datos</li>
+        </ul>
+
+        <div class="challenge">
+          <strong>Piensa así:</strong><br />
+          una función con parámetros es como una plantilla: la estructura se mantiene, pero los valores pueden cambiar.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Dónde aparecen parámetros y argumentos en problemas reales</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Mensajes</h3>
+        <p>Enviar el mismo formato de saludo a diferentes usuarios.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Cálculos</h3>
+        <p>Aplicar una operación a distintos importes, notas o cantidades.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Procesos</h3>
+        <p>Reutilizar una función con entradas diferentes según el contexto.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Automatización</h3>
+        <p>Evitar crear una función nueva para cada caso concreto.</p>
+      </div>
+    </div>
+  </section>
 
   <section class="panel">
     <h2>¿Por qué hacen falta parámetros?</h2>
@@ -26,18 +150,29 @@
 
 saludar("Ana")
 saludar("Luis")</code></pre>
-
-    <div class="callout">
-      Los parámetros hacen que una misma función pueda reutilizarse con distintos valores.
-    </div>
   </section>
 
   <section class="panel">
     <h2>Diferencia entre parámetro y argumento</h2>
-    <ul>
-      <li><strong>parámetro</strong>: la variable que aparece en la definición</li>
-      <li><strong>argumento</strong>: el valor real que pasas al llamar a la función</li>
-    </ul>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Parámetro</h3>
+        <p>La variable que aparece en la definición de la función.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Argumento</h3>
+        <p>El valor real que pasas al llamar a la función.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Relación</h3>
+        <p>El argumento se asigna al parámetro cuando llamas a la función.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Idea práctica</h3>
+        <p>Uno define el hueco; el otro lo rellena.</p>
+      </div>
+    </div>
 
     <pre><code>def saludar(nombre):
     print("Hola", nombre)
@@ -63,7 +198,7 @@ presentar("Ana", 30)</code></pre>
   </section>
 
   <section class="panel">
-    <h2>⚠️ Error típico: número incorrecto de argumentos</h2>
+    <h2>Error típico: número incorrecto de argumentos</h2>
     <pre><code>def saludar(nombre):
     print("Hola", nombre)
 
@@ -126,60 +261,171 @@ saludar(usuario)</code></pre>
   </section>
 
   <section class="panel">
-    <h2>💭 Piensa antes de ejecutar</h2>
-    <pre><code>def multiplicar_por_tres(numero):
+    <h2>Cómo pensar una función con parámetros antes de escribirla</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Paso 1</h3>
+        <p>Identifica qué parte de la tarea siempre será igual.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 2</h3>
+        <p>Detecta qué datos van a cambiar entre una llamada y otra.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 3</h3>
+        <p>Convierte esos datos cambiantes en parámetros.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 4</h3>
+        <p>Pon nombres a los parámetros que indiquen bien qué representan.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      Si una función se repite cambiando solo algunos datos, probablemente necesita parámetros.
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Piensa antes de ejecutar</h2>
+        <p class="exercise-subtitle">Antes de probar, separa la lógica fija de los valores que cambian.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Código</h3>
+        <pre><code>def multiplicar_por_tres(numero):
     print(numero * 3)
 
 multiplicar_por_tres(4)
 multiplicar_por_tres(10)</code></pre>
+      </div>
 
-    <ul>
-      <li>¿qué se imprime en cada llamada?</li>
-      <li>¿la lógica de la función cambia o solo cambian los datos?</li>
-    </ul>
+      <div class="exercise-block">
+        <h3>Preguntas</h3>
+        <ul>
+          <li>¿qué se imprime en cada llamada?</li>
+          <li>¿la lógica de la función cambia o solo cambian los datos?</li>
+        </ul>
+
+        <div class="mini-note">
+          Pista: la función es la misma en ambos casos.
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section class="panel">
-    <h2>Errores frecuentes</h2>
-    <ul>
-      <li>confundir parámetro con argumento</li>
-      <li>pasar menos o más argumentos de los necesarios</li>
-      <li>usar nombres ambiguos</li>
-      <li>pensar que una función “recuerda” automáticamente valores externos</li>
-    </ul>
-  </section>
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto guiado</h2>
+        <p class="exercise-subtitle">Ahora toca hacer una función reutilizable con un dato que cambia.</p>
+      </div>
 
-  <section class="panel">
-    <h2>Mini-reto guiado</h2>
-    <p>
-      Crea una función que reciba una ciudad y muestre un mensaje de bienvenida.
-    </p>
+      <div class="badges">
+        <span class="badge blue">Reto</span>
+        <span class="badge green">Muy fácil</span>
+      </div>
+    </div>
 
-    <pre><code>def bienvenida_ciudad(ciudad):
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Tu misión</h3>
+        <p>
+          Crea una función que reciba una ciudad y muestre un mensaje de bienvenida.
+        </p>
+
+        <div class="exercise-actions">
+          <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Resolver en playground</a>
+          <button class="btn btn-secondary btn-sm" type="button" onclick="document.getElementById('solucion-reto').open = true;">
+            Ver solución
+          </button>
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Pista</h3>
+        <p>
+          Aquí la estructura del mensaje no cambia, solo cambia el valor de la ciudad.
+        </p>
+
+        <details id="solucion-reto" class="theory-dropdown">
+          <summary>Mostrar solución</summary>
+          <div class="theory-dropdown-content">
+            <pre><code>def bienvenida_ciudad(ciudad):
     print("Bienvenido a", ciudad)
 
 bienvenida_ciudad("Madrid")
 bienvenida_ciudad("Bilbao")</code></pre>
+          </div>
+        </details>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Pregunta de entrevista</h2>
-    <p>
-      ¿Qué diferencia hay entre parámetro y argumento?
-    </p>
+    <h2>Errores frecuentes</h2>
 
-    <p>
-      Respuesta sólida: el parámetro es la variable definida en la función; el argumento es el valor real que se pasa al llamarla.
-    </p>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Error 1</h3>
+        <p>Confundir parámetro con argumento.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 2</h3>
+        <p>Pasar menos o más argumentos de los necesarios.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 3</h3>
+        <p>Usar nombres demasiado ambiguos.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 4</h3>
+        <p>Pensar que una función “recuerda” automáticamente valores externos.</p>
+      </div>
+    </div>
   </section>
 
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./01-que-es-una-funcion.html">Anterior</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
+  <section class="panel">
+    <h2>Buenas prácticas</h2>
 
-  <button class="btn btn-primary" onclick="completeTopic('5.2')">Marcar como completado</button>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Parámetros claros</h3>
+        <p>Usa nombres que representen bien el dato recibido.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Lógica separada</h3>
+        <p>No mezcles la idea de la función con valores concretos del exterior.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Comprueba llamadas</h3>
+        <p>Revisa siempre si estás pasando el número correcto de argumentos.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Piensa en reutilización</h3>
+        <p>Diseña la función para que sirva con varios datos, no solo con un caso.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Siguiente paso</h2>
+    <p>
+      Ya sabes cómo hacer funciones más flexibles. Lo siguiente es aprender a devolver resultados con <code>return</code>.
+    </p>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./01-que-es-una-funcion.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <button class="btn btn-primary" onclick="completeTopic('5.2')">Marcar como completado</button>
+    </div>
+  </section>
 
 <script>
 const TOPIC_ID = "5.2";

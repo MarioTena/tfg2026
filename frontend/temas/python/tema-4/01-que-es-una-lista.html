@@ -7,6 +7,21 @@
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 4 · Listas</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
   <span class="mission-tag">Misión 4.1</span>
   <h1>Listas en Python</h1>
@@ -37,7 +52,6 @@
 
 <main class="main-container single-column">
 
-  <!-- BLOQUE 1: RESUMEN ACCIONABLE -->
   <section class="exercise-card">
     <div class="exercise-header">
       <div>
@@ -102,7 +116,62 @@
     </div>
   </section>
 
-  <!-- BLOQUE 2: EJEMPLO DIRECTO -->
+  <section class="panel">
+    <h2>Qué es una lista</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Definición</h3>
+        <p>Una lista es una estructura de datos que agrupa varios valores en una sola variable.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Orden</h3>
+        <p>Los elementos mantienen una posición concreta dentro de la lista.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Flexibilidad</h3>
+        <p>Puede contener uno, varios o ningún elemento.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Uso real</h3>
+        <p>Se usa cuando trabajas con grupos de datos relacionados.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Dónde aparecen las listas en problemas reales</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Alumnos</h3>
+        <p>Guardar varios nombres, notas o asistencias.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Compras</h3>
+        <p>Representar productos de un carrito o pedido.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Mensajes</h3>
+        <p>Gestionar varias entradas de un chat o notificaciones.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Datos repetidos</h3>
+        <p>Trabajar con varios valores del mismo tipo sin crear muchas variables sueltas.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      Cada vez que piensas “necesito guardar varios datos parecidos juntos”, probablemente necesitas una lista.
+    </div>
+  </section>
+
   <section class="panel">
     <h2>Ejemplo rápido</h2>
 
@@ -129,7 +198,62 @@
     </div>
   </section>
 
-  <!-- BLOQUE 3: MINI TEST MENTAL -->
+  <section class="panel">
+    <h2>Conceptos clave del tema</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>El orden importa</h3>
+        <p>No es lo mismo <code>[10, 20, 30]</code> que <code>[30, 20, 10]</code>. En una lista, la posición cambia el significado.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Longitud</h3>
+        <p>Puedes saber cuántos elementos tiene una lista usando <code>len()</code>.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Uso real</h3>
+        <p>Las listas se usan muchísimo porque permiten recorrer, añadir, modificar y eliminar elementos.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Buena práctica</h3>
+        <p>Usa nombres claros como <code>nombres</code>, <code>precios</code> o <code>notas</code>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Cómo pensar una lista antes de crearla</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Paso 1</h3>
+        <p>Pregúntate si realmente estás trabajando con varios valores relacionados.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Paso 2</h3>
+        <p>Decide si el orden de esos valores importa.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Paso 3</h3>
+        <p>Piensa si esos valores deberían estar juntos en vez de separados en muchas variables.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Paso 4</h3>
+        <p>Elige un nombre de lista que describa bien el grupo completo.</p>
+      </div>
+    </div>
+
+    <div class="challenge">
+      Muchos errores al principio vienen de no detectar cuándo necesitas una lista y cuándo solo necesitas una variable.
+    </div>
+  </section>
+
   <section class="exercise-card">
     <div class="exercise-header">
       <div>
@@ -160,7 +284,6 @@ print(len(colores))</code></pre>
     </div>
   </section>
 
-  <!-- BLOQUE 4: RETO -->
   <section id="reto" class="exercise-card">
     <div class="exercise-header">
       <div>
@@ -210,34 +333,6 @@ print(len(ciudades))</code></pre>
     </div>
   </section>
 
-  <!-- BLOQUE 5: CONCEPTOS SECUNDARIOS -->
-  <section class="panel">
-    <h2>Conceptos clave del tema</h2>
-
-    <div class="theory-grid">
-      <div class="theory-card">
-        <h3>El orden importa</h3>
-        <p>No es lo mismo <code>[10, 20, 30]</code> que <code>[30, 20, 10]</code>. En una lista, la posición cambia el significado.</p>
-      </div>
-
-      <div class="theory-card">
-        <h3>Longitud</h3>
-        <p>Puedes saber cuántos elementos tiene una lista usando <code>len()</code>.</p>
-      </div>
-
-      <div class="theory-card">
-        <h3>Uso real</h3>
-        <p>Las listas se usan muchísimo porque permiten recorrer, añadir, modificar y eliminar elementos.</p>
-      </div>
-
-      <div class="theory-card">
-        <h3>Buena práctica</h3>
-        <p>Usa nombres claros como <code>nombres</code>, <code>precios</code> o <code>notas</code>.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- BLOQUE 6: ERRORES -->
   <section class="panel">
     <h2>Errores frecuentes</h2>
 
@@ -264,14 +359,29 @@ print(len(ciudades))</code></pre>
     </div>
   </section>
 
-  <!-- BLOQUE 7: CIERRE -->
   <section class="panel">
-    <h2>Pregunta típica de entrevista</h2>
-    <div class="challenge">
-      <p><strong>Pregunta:</strong> ¿Qué es una lista en Python?</p>
-      <p>
-        <strong>Respuesta sólida:</strong> una lista es una estructura de datos ordenada que permite guardar varios elementos en una sola variable.
-      </p>
+    <h2>Buenas prácticas</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Nombres claros</h3>
+        <p>Usa nombres que representen el grupo completo: <code>nombres</code>, <code>productos</code>, <code>notas</code>.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Valores relacionados</h3>
+        <p>No metas en una misma lista cosas que no tengan relación entre sí salvo que sea deliberado.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Empieza simple</h3>
+        <p>Primero crea listas pequeñas y entiende bien cómo se representan.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Piensa en el orden</h3>
+        <p>Si el orden importa, la lista suele ser una buena opción.</p>
+      </div>
     </div>
   </section>
 

@@ -7,18 +7,34 @@
 </head>
 <body>
 
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-title">
+        <h1>Aprender a programar</h1>
+        <p>Navega entre rutas, progreso y práctica.</p>
+      </div>
+
+      <div class="topbar-actions">
+        <a class="btn btn-secondary btn-sm" href="menu.html">Menú</a>
+        <a class="btn btn-secondary btn-sm" href="progreso.html">Mi progreso</a>
+        <a class="btn btn-secondary btn-sm" href="temas/python/index.html">Ruta Python</a>
+        <a class="btn btn-secondary btn-sm" href="playground/index.html?lang=python">Playground</a>
+      </div>
+    </div>
+  </div>
+
   <header class="header">
     <span class="mission-tag">Plataforma de aprendizaje</span>
-    <h1>Empieza tu ruta de programación</h1>
+    <h1>Continúa tu ruta de programación</h1>
     <p>
-      Comienza con una introducción común para entender cómo se programa y después elige tu lenguaje.
+      Empieza por la base común, continúa con Python o vuelve directamente al siguiente bloque recomendado.
     </p>
 
     <div class="progress-hero">
       <div class="progress-hero-top">
         <div>
-          <div class="progress-label">Recorrido recomendado</div>
-          <div class="mini-note">Tema 0 común → Ruta Python o futuras rutas</div>
+          <div class="progress-label">Tu progreso general</div>
+          <div class="mini-note" id="menu-progress-copy">Cargando progreso...</div>
         </div>
 
         <div class="badges">
@@ -28,13 +44,15 @@
       </div>
 
       <div class="progress-track">
-        <div class="progress-fill" style="width: 100%;"></div>
+        <div id="menu-progress-fill" class="progress-fill" style="width: 0%;"></div>
       </div>
     </div>
 
     <div class="buttons-row">
-      <a class="btn btn-primary" href="temas/tema-0/index.html">Empezar por Tema 0</a>
-      <a class="btn btn-secondary" href="temas/python/index.html">Ir directo a Python</a>
+      <a id="continue-learning-btn" class="btn btn-primary" href="temas/tema-0/index.html">Continuar donde lo dejaste</a>
+      <a class="btn btn-secondary" href="temas/tema-0/index.html">Empezar por Tema 0</a>
+      <a class="btn btn-secondary" href="temas/python/index.html">Ir a Python</a>
+      <a class="btn btn-secondary" href="progreso.html">Ver mi progreso</a>
     </div>
   </header>
 
@@ -45,7 +63,7 @@
         <div>
           <h2 class="exercise-title">Cómo está organizada la plataforma</h2>
           <p class="exercise-subtitle">
-            Primero entiendes cómo pensar como programador. Después avanzas por una ruta de lenguaje con teoría, mini-retos y ejercicios.
+            Primero entiendes cómo pensar como programador. Después avanzas por una ruta de lenguaje con teoría, mini-retos, ejercicios y práctica en el playground.
           </p>
         </div>
 
@@ -68,11 +86,35 @@
         </div>
 
         <div class="exercise-block">
-          <h3>Para quién está pensado</h3>
+          <h3>Qué puedes hacer ahora</h3>
           <div class="challenge">
-            Si partes desde cero, no empieces directamente por sintaxis. Empieza por entender qué significa programar y cómo aprender bien.
+            Puedes seguir el recorrido recomendado o entrar directamente en el tema que necesites repasar.
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Tu siguiente paso recomendado</h2>
+
+      <div class="topic-roadmap">
+        <article id="recommended-card" class="roadmap-card current">
+          <div class="roadmap-top">
+            <span class="mission-tag" id="recommended-tag">Siguiente paso</span>
+            <span class="roadmap-state current">Sigue aquí</span>
+          </div>
+
+          <h3 id="recommended-title">Cargando recomendación...</h3>
+
+          <div class="topic-meta">
+            <span class="topic-chip" id="recommended-chip-1">Ruta</span>
+            <span class="topic-chip" id="recommended-chip-2">Progreso</span>
+          </div>
+
+          <p class="roadmap-cta" id="recommended-cta">
+            Estamos calculando el siguiente bloque recomendado para ti.
+          </p>
+        </article>
       </div>
     </section>
 
@@ -148,5 +190,7 @@
     </section>
 
   </main>
+
+  <script src="menu.js"></script>
 </body>
 </html>

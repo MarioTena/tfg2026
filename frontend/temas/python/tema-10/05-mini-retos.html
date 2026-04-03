@@ -6,53 +6,131 @@
   <link rel="stylesheet" href="../../../styles.css" />
 </head>
 <body>
+
 <header class="header">
-  <h1>Tema 10 · Python</h1>
-  <p>10.5 · Mini retos: integrar manejo de errores y validaciones</p>
+  <span class="mission-tag">Zona práctica 10.5</span>
+  <h1>Mini-retos de errores y excepciones</h1>
+  <p>Combina validaciones, control de errores y bloques de excepción para construir programas más robustos.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 10 · Errores y excepciones</div>
+        <div class="mini-note">6 mini-retos · práctica guiada · dificultad inicial-media</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Python</span>
+        <span class="badge green">Entrenamiento</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 82%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#retos">Empezar mini-retos</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
-  <section class="panel">
-    <h2>Mini-reto 1 · Conversión segura</h2>
-    <pre><code>texto = input("Escribe un número: ")
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué entrenas aquí</h2>
+        <p class="exercise-subtitle">
+          Aquí vas a practicar cómo se comporta un programa cuando algo falla y cómo responder de forma segura.
+        </p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">try / except</span>
+        <span class="badge blue">raise</span>
+        <span class="badge green">Validación</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Objetivo</h3>
+        <p>
+          Vas a empezar a controlar errores frecuentes y a validar datos para que el programa no dependa de que todo salga perfecto.
+        </p>
+
+        <div class="callout">
+          Idea clave: un programa robusto no ignora los errores; los anticipa y los gestiona.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Cómo usar esta pantalla</h3>
+        <ul>
+          <li>lee el reto</li>
+          <li>piensa qué puede fallar</li>
+          <li>decide qué excepción tiene sentido controlar</li>
+          <li>pruébalo en el playground y fuerza errores</li>
+        </ul>
+
+        <div class="challenge">
+          No uses excepciones solo porque sí. Piensa qué error real quieres controlar y qué comportamiento quieres ofrecer al usuario.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="retos" class="panel">
+    <h2>Misiones rápidas</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Mini-reto 1 · Conversión segura</h3>
+        <p>Controla el caso en el que la entrada no sea numérica.</p>
+        <pre><code>texto = input("Escribe un número: ")
 
 try:
     numero = int(texto)
     print("Número correcto")
 except ValueError:
     print("Entrada no válida")</code></pre>
-  </section>
+      </div>
 
-  <section class="panel">
-    <h2>Mini-reto 2 · División segura</h2>
-    <pre><code>try:
+      <div class="theory-card">
+        <h3>Mini-reto 2 · División segura</h3>
+        <p>Evita que el programa se rompa al dividir entre cero.</p>
+        <pre><code>try:
     a = 10
     b = 0
     print(a / b)
 except ZeroDivisionError:
     print("No se puede dividir entre cero")</code></pre>
-  </section>
+      </div>
 
-  <section class="panel">
-    <h2>Mini-reto 3 · Abrir archivo</h2>
-    <pre><code>try:
+      <div class="theory-card">
+        <h3>Mini-reto 3 · Abrir archivo</h3>
+        <p>Controla el caso en el que el archivo no exista.</p>
+        <pre><code>try:
     with open("datos.txt", "r") as archivo:
         print(archivo.read())
 except FileNotFoundError:
     print("Archivo no encontrado")</code></pre>
-  </section>
+      </div>
 
-  <section class="panel">
-    <h2>Mini-reto 4 · Validación con raise</h2>
-    <pre><code>def validar_nota(nota):
+      <div class="theory-card">
+        <h3>Mini-reto 4 · Validación con raise</h3>
+        <p>Lanza una excepción cuando el dato no cumple la regla.</p>
+        <pre><code>def validar_nota(nota):
     if nota < 0 or nota > 10:
         raise ValueError("Nota inválida")
     return nota</code></pre>
-  </section>
+      </div>
 
-  <section class="panel">
-    <h2>Mini-reto 5 · else y finally</h2>
-    <pre><code>try:
+      <div class="theory-card">
+        <h3>Mini-reto 5 · else y finally</h3>
+        <p>Distingue entre éxito, error y cierre del proceso.</p>
+        <pre><code>try:
     numero = int("7")
 except ValueError:
     print("Error")
@@ -60,86 +138,83 @@ else:
     print("Todo correcto")
 finally:
     print("Fin del proceso")</code></pre>
+      </div>
+
+      <div class="theory-card">
+        <h3>Mini-reto 6 · Capturar varias excepciones</h3>
+        <p>Distingue entre distintos tipos de fallo.</p>
+        <pre><code>try:
+    texto = "abc"
+    numero = int(texto)
+    print(10 / numero)
+except ValueError:
+    print("No era un número válido")
+except ZeroDivisionError:
+    print("No se puede dividir entre cero")</code></pre>
+      </div>
+    </div>
   </section>
 
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./04-raise-y-validaciones.html">Anterior</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Ejercicios Tema 10</a>
-  </div>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Cómo pensar este tipo de ejercicios</h2>
+        <p class="exercise-subtitle">Antes de escribir un <code>try</code>, identifica el fallo real que puede ocurrir.</p>
+      </div>
+    </div>
 
-  <button class="btn btn-primary" onclick="completeTopic('10.5')">Marcar como completado</button>
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Paso a paso</h3>
+        <ol>
+          <li>piensa qué puede fallar exactamente</li>
+          <li>controla la excepción adecuada</li>
+          <li>no mezcles errores distintos sin motivo</li>
+          <li>usa <code>raise</code> cuando quieras imponer una regla</li>
+          <li>usa <code>else</code> y <code>finally</code> cuando aporten claridad</li>
+        </ol>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Regla útil</h3>
+        <div class="challenge">
+          Controlar errores no consiste en taparlos, sino en reaccionar de forma útil y comprensible.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Pregunta típica de entrevista</h2>
+    <div class="challenge">
+      <p><strong>Pregunta:</strong> ¿Para qué sirve <code>raise</code> si ya existe <code>except</code>?</p>
+      <p><strong>Respuesta sólida:</strong> <code>raise</code> permite lanzar una excepción cuando detectas una regla inválida; <code>except</code> sirve para capturar y gestionar una excepción cuando ocurre.</p>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Siguiente paso</h2>
+    <p>Ya has combinado manejo de errores y validaciones. Ahora toca resolver ejercicios por tu cuenta.</p>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./04-raise-y-validaciones.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Ejercicios Tema 10</a>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
+    </div>
+  </section>
+
+  <script src="../topic-completion.js"></script>
   <script>
-const TOPIC_ID = "10.5";
-const NEXT_URL = "./py-tema10-ejercicios.html";
-
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
-
-const nextBtn = document.getElementById("nextBtn");
-
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
-
-    if (!token || !nextBtn) return;
-
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
+    const topicCompletion = initTopicCompletion({
+      topicId: "10.5",
+      nextUrl: "./py-tema10-ejercicios.html"
     });
 
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
-  }
-}
-
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
-    }
-
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
+    document.getElementById("completeBtn").addEventListener("click", () => {
+      topicCompletion.completeTopic();
     });
-
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
-    }
-
-    alert("Tema completado 🎉");
-
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
-  }
-}
-
-unlockNextIfCompleted();
-</script>
+  </script>
 
 </main>
 </body>

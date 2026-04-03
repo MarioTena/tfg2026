@@ -7,114 +7,287 @@
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 4 · Listas</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 4 · Python</h1>
-  <p>4.4 · Métodos de listas: añadir, eliminar y organizar elementos</p>
+  <span class="mission-tag">Misión 4.4</span>
+  <h1>Métodos de listas</h1>
+  <p>Aprende a añadir, eliminar, ordenar y consultar elementos dentro de una lista.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 4 · Listas en Python</div>
+        <div class="mini-note">Paso 4 del tema · 12-15 min · métodos más usados</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Python</span>
+        <span class="badge green">Herramientas prácticas</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 72%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
 
-  <section class="panel">
-    <h2>¿Qué es un método?</h2>
-    <p>
-      Un método es una acción que un objeto puede realizar.
-      Las listas tienen varios métodos muy útiles.
-    </p>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué vas a dominar hoy</h2>
+        <p class="exercise-subtitle">
+          Las listas no solo guardan elementos. También ofrecen métodos para modificarlas y consultar información sin tener que escribir todo manualmente.
+        </p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Añadir</span>
+        <span class="badge blue">Eliminar</span>
+        <span class="badge green">Organizar</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>¿Qué es un método?</h3>
+        <p>
+          Un método es una acción que un objeto puede realizar.
+          Las listas tienen varios métodos muy útiles.
+        </p>
+
+        <div class="callout">
+          Idea clave: un método te permite hacer algo con la lista sin tener que construir esa lógica desde cero.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes ser capaz de hacer</h3>
+        <ul>
+          <li>añadir elementos</li>
+          <li>insertarlos en una posición concreta</li>
+          <li>eliminar por valor o por posición</li>
+          <li>ordenar o invertir una lista</li>
+          <li>contar apariciones y localizar posiciones</li>
+        </ul>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2><code>append()</code>: añadir al final</h2>
-    <pre><code>tareas = ["estudiar", "practicar"]
+    <h2>Dónde aparecen los métodos de listas en problemas reales</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Compras</h3>
+        <p>Añadir y quitar productos de un carrito.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Tareas</h3>
+        <p>Actualizar una lista de pendientes según lo que se completa o cambia.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Ordenación</h3>
+        <p>Reorganizar datos alfabéticamente o por valor.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Consultas</h3>
+        <p>Saber cuántas veces aparece algo o dónde está por primera vez.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      Cuando una lista ya existe y quieres manipularla, los métodos aparecen constantemente.
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Métodos para añadir elementos</h2>
+        <p class="exercise-subtitle">No siempre quieres reemplazar un valor. A veces necesitas ampliar la lista.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3><code>append()</code> · añadir al final</h3>
+        <pre><code>tareas = ["estudiar", "practicar"]
 tareas.append("repasar")
 print(tareas)</code></pre>
 
-    <p>
-      Ahora la lista tendrá un elemento más al final.
-    </p>
-  </section>
+        <p>
+          Ahora la lista tendrá un elemento más al final.
+        </p>
 
-  <section class="panel">
-    <h2><code>insert()</code>: insertar en una posición</h2>
-    <pre><code>numeros = [10, 30, 40]
+        <div class="mini-note">
+          Es una de las formas más comunes de ampliar una lista.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3><code>insert()</code> · insertar en una posición</h3>
+        <pre><code>numeros = [10, 30, 40]
 numeros.insert(1, 20)
 print(numeros)</code></pre>
 
-    <p>
-      Inserta <code>20</code> en la posición 1.
-    </p>
+        <p>
+          Inserta <code>20</code> en la posición 1.
+        </p>
+
+        <div class="mini-note">
+          A diferencia de <code>append()</code>, aquí decides en qué lugar entra el nuevo elemento.
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section class="panel">
-    <h2><code>remove()</code>: eliminar por valor</h2>
-    <pre><code>frutas = ["manzana", "pera", "uva"]
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Métodos para eliminar elementos</h2>
+        <p class="exercise-subtitle">Aquí es muy importante distinguir entre eliminar por valor y eliminar por posición.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3><code>remove()</code> · eliminar por valor</h3>
+        <pre><code>frutas = ["manzana", "pera", "uva"]
 frutas.remove("pera")
 print(frutas)</code></pre>
 
-    <p>
-      Elimina la primera aparición de ese valor.
-    </p>
-  </section>
+        <p>
+          Elimina la primera aparición de ese valor.
+        </p>
 
-  <section class="panel">
-    <h2><code>pop()</code>: eliminar por posición</h2>
-    <pre><code>numeros = [10, 20, 30, 40]
+        <div class="mini-note">
+          Aquí no le pasas un índice: le pasas el valor que quieres quitar.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3><code>pop()</code> · eliminar por posición</h3>
+        <pre><code>numeros = [10, 20, 30, 40]
 numeros.pop(2)
 print(numeros)</code></pre>
 
-    <p>
-      Elimina el elemento de índice 2.
-    </p>
+        <p>
+          Elimina el elemento de índice 2.
+        </p>
 
-    <pre><code>nombres = ["Ana", "Luis", "Marta"]
+        <pre><code>nombres = ["Ana", "Luis", "Marta"]
 ultimo = nombres.pop()
 print(ultimo)
 print(nombres)</code></pre>
 
-    <p>
-      Si no indicas posición, elimina el último.
-    </p>
+        <p>
+          Si no indicas posición, elimina el último.
+        </p>
+      </div>
+    </div>
+
+    <div class="challenge">
+      <strong>Regla importante:</strong> <code>remove()</code> piensa en valores; <code>pop()</code> piensa en posiciones.
+    </div>
   </section>
 
-  <section class="panel">
-    <h2><code>sort()</code>: ordenar</h2>
-    <pre><code>numeros = [4, 1, 9, 2]
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Métodos para organizar y consultar</h2>
+        <p class="exercise-subtitle">Una vez tienes datos dentro de la lista, muchas veces necesitas ordenarlos o sacar información sobre ellos.</p>
+      </div>
+    </div>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3><code>sort()</code> · ordenar</h3>
+        <pre><code>numeros = [4, 1, 9, 2]
 numeros.sort()
 print(numeros)</code></pre>
+        <p>Ordena la lista de menor a mayor.</p>
+      </div>
 
-    <p>
-      Ordena la lista de menor a mayor.
-    </p>
-  </section>
-
-  <section class="panel">
-    <h2><code>reverse()</code>: invertir el orden</h2>
-    <pre><code>numeros = [1, 2, 3, 4]
+      <div class="theory-card">
+        <h3><code>reverse()</code> · invertir</h3>
+        <pre><code>numeros = [1, 2, 3, 4]
 numeros.reverse()
 print(numeros)</code></pre>
-  </section>
+        <p>Invierte el orden actual de la lista.</p>
+      </div>
 
-  <section class="panel">
-    <h2><code>count()</code>: contar apariciones</h2>
-    <pre><code>numeros = [1, 2, 2, 3, 2]
+      <div class="theory-card">
+        <h3><code>count()</code> · contar apariciones</h3>
+        <pre><code>numeros = [1, 2, 2, 3, 2]
 print(numeros.count(2))</code></pre>
+        <p>Devuelve cuántas veces aparece ese valor.</p>
+      </div>
 
-    <p>
-      Devuelve cuántas veces aparece ese valor.
-    </p>
-  </section>
-
-  <section class="panel">
-    <h2><code>index()</code>: encontrar la posición</h2>
-    <pre><code>frutas = ["manzana", "pera", "uva"]
+      <div class="theory-card">
+        <h3><code>index()</code> · encontrar la posición</h3>
+        <pre><code>frutas = ["manzana", "pera", "uva"]
 print(frutas.index("pera"))</code></pre>
-
-    <p>
-      Devuelve el índice de la primera aparición.
-    </p>
+        <p>Devuelve el índice de la primera aparición.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>⚠️ Error típico: pensar que un método crea otra lista automáticamente</h2>
+    <h2>Cómo pensar un método antes de usarlo</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Paso 1</h3>
+        <p>Pregúntate si quieres añadir, quitar, ordenar o consultar.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Paso 2</h3>
+        <p>Decide si vas a trabajar con un valor o con una posición.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Paso 3</h3>
+        <p>Comprueba si el método modifica la lista original.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Paso 4</h3>
+        <p>Piensa qué pasará con la lista después de aplicar el método.</p>
+      </div>
+    </div>
+
+    <div class="challenge">
+      Mucha confusión con los métodos viene de no distinguir bien si actúan sobre valores, índices o sobre la lista completa.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Error típico: pensar que un método crea otra lista automáticamente</h2>
     <p>
       Muchos métodos modifican la lista original.
       No siempre devuelven una nueva.
@@ -123,135 +296,229 @@ print(frutas.index("pera"))</code></pre>
     <pre><code>numeros = [3, 1, 2]
 numeros.sort()
 print(numeros)</code></pre>
+
+    <div class="callout">
+      Cuando uses métodos de listas, pregúntate siempre: “¿esto cambia la lista original o me devuelve otra cosa?”
+    </div>
   </section>
 
-  <section class="panel">
-    <h2>💭 Piensa antes de ejecutar</h2>
-    <pre><code>datos = [10, 20, 30]
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Piensa antes de ejecutar</h2>
+        <p class="exercise-subtitle">Observa cómo varios métodos pueden encadenar cambios sobre la misma lista.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Código</h3>
+        <pre><code>datos = [10, 20, 30]
 datos.append(40)
 datos.remove(20)
 print(datos)</code></pre>
+      </div>
 
-    <ul>
-      <li>¿qué lista queda al final?</li>
-      <li>¿en qué orden se aplican los cambios?</li>
-    </ul>
+      <div class="exercise-block">
+        <h3>Preguntas</h3>
+        <ul>
+          <li>¿qué lista queda al final?</li>
+          <li>¿en qué orden se aplican los cambios?</li>
+        </ul>
+
+        <div class="mini-note">
+          Pista: primero se añade el 40 y después se elimina el 20.
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section class="panel">
-    <h2>Errores frecuentes</h2>
-    <ul>
-      <li>usar <code>remove()</code> pensando en índices</li>
-      <li>usar <code>pop()</code> pensando en valores</li>
-      <li>olvidar que algunos métodos modifican la lista original</li>
-      <li>intentar eliminar valores que no existen</li>
-    </ul>
-  </section>
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto guiado</h2>
+        <p class="exercise-subtitle">Ahora toca usar varios métodos dentro de una misma situación.</p>
+      </div>
 
-  <section class="panel">
-    <h2>Mini-reto guiado</h2>
-    <p>
-      Crea una lista de compras, añade dos productos, elimina uno y ordénala alfabéticamente.
-    </p>
+      <div class="badges">
+        <span class="badge blue">Reto</span>
+        <span class="badge green">Muy fácil</span>
+      </div>
+    </div>
 
-    <pre><code>compras = ["pan", "leche"]
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Tu misión</h3>
+        <p>
+          Crea una lista de compras, añade dos productos, elimina uno y ordénala alfabéticamente.
+        </p>
+
+        <div class="exercise-actions">
+          <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Resolver en playground</a>
+          <button class="btn btn-secondary btn-sm" type="button" onclick="document.getElementById('solucion-reto').open = true;">
+            Ver solución
+          </button>
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Pista</h3>
+        <p>
+          Aquí vas a combinar varios métodos seguidos. Piensa qué hace cada uno sobre la misma lista.
+        </p>
+
+        <details id="solucion-reto" class="theory-dropdown">
+          <summary>Mostrar solución</summary>
+          <div class="theory-dropdown-content">
+            <pre><code>compras = ["pan", "leche"]
 compras.append("huevos")
 compras.append("arroz")
 compras.remove("leche")
 compras.sort()
 print(compras)</code></pre>
+          </div>
+        </details>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Pregunta de entrevista</h2>
-    <p>
-      ¿Qué diferencia hay entre <code>remove()</code> y <code>pop()</code>?
-    </p>
+    <h2>Errores frecuentes</h2>
 
-    <p>
-      Respuesta sólida: <code>remove()</code> elimina por valor; <code>pop()</code> elimina por posición, y si no se indica ninguna, elimina el último elemento.
-    </p>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Error 1</h3>
+        <p>Usar <code>remove()</code> pensando en índices.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Error 2</h3>
+        <p>Usar <code>pop()</code> pensando en valores.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Error 3</h3>
+        <p>Olvidar que algunos métodos modifican la lista original.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Error 4</h3>
+        <p>Intentar eliminar valores que no existen.</p>
+      </div>
+    </div>
   </section>
 
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./03-recorrer-listas.html">Anterior</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
+  <section class="panel">
+    <h2>Buenas prácticas</h2>
 
-  <button class="btn btn-primary" onclick="completeTopic('4.4')">Marcar como completado</button>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Piensa en la intención</h3>
+        <p>Antes de elegir un método, define bien qué quieres hacer con la lista.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Valor o posición</h3>
+        <p>Diferencia siempre si estás trabajando con el contenido o con el índice.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Comprueba el efecto</h3>
+        <p>Fíjate si el método cambia la lista original o no.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Haz pruebas pequeñas</h3>
+        <p>Mientras aprendes, prueba los métodos con listas cortas para ver su efecto real.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Siguiente paso</h2>
+    <p>
+      Ya sabes añadir, quitar, ordenar y consultar elementos. El siguiente bloque del tema es poner todo esto en práctica con mini-retos.
+    </p>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./03-recorrer-listas.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <button class="btn btn-primary" onclick="completeTopic('4.4')">Marcar como completado</button>
+    </div>
+  </section>
 
   <script>
-const TOPIC_ID = "4.4";
-const NEXT_URL = "./05-mini-retos.html";
+    const TOPIC_ID = "4.4";
+    const NEXT_URL = "./05-mini-retos.html";
 
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+    const API_URL = "http://localhost:3000/api/progress/python";
+    const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
 
-const nextBtn = document.getElementById("nextBtn");
+    const nextBtn = document.getElementById("nextBtn");
 
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
+    async function unlockNextIfCompleted() {
+      try {
+        const token = localStorage.getItem("token");
 
-    if (!token || !nextBtn) return;
+        if (!token || !nextBtn) return;
 
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
+        const res = await fetch(API_URL, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+
+        if (!res.ok) return;
+
+        const data = await res.json();
+        const completed = data?.progress?.completedTopics || [];
+
+        if (completed.includes(TOPIC_ID)) {
+          nextBtn.classList.remove("btn-disabled");
+          nextBtn.href = NEXT_URL;
+        }
+      } catch (error) {
+        console.error("Error comprobando progreso:", error);
       }
-    });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
-  }
-}
-
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
     }
 
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
-    });
+    async function completeTopic(topicId) {
+      try {
+        const token = localStorage.getItem("token");
 
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
+        if (!token) {
+          alert("Debes iniciar sesión para guardar el progreso");
+          return;
+        }
+
+        const res = await fetch(COMPLETE_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify({ topic: topicId })
+        });
+
+        if (!res.ok) {
+          throw new Error(`Error HTTP: ${res.status}`);
+        }
+
+        alert("Tema completado 🎉");
+
+        if (nextBtn) {
+          nextBtn.classList.remove("btn-disabled");
+          nextBtn.href = NEXT_URL;
+        }
+      } catch (error) {
+        console.error("Error marcando tema como completado:", error);
+        alert("No se pudo guardar el progreso");
+      }
     }
 
-    alert("Tema completado 🎉");
-
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
-  }
-}
-
-unlockNextIfCompleted();
-</script>
+    unlockNextIfCompleted();
+  </script>
 
 </main>
 </body>

@@ -8,32 +8,251 @@
 <body>
 
 <header class="header">
-  <h1>Tema 6 · Python</h1>
-  <p>Ejercicios para practicar diccionarios, acceso, modificación y recorrido.</p>
+  <span class="mission-tag">Practice mode</span>
+  <h1>Ejercicios de diccionarios</h1>
+  <p>Practica acceso, modificación, comprobación y recorrido de diccionarios resolviendo misiones en el playground.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 6 · Ruta de práctica</div>
+        <div class="mini-note">6 ejercicios + 1 reto final</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Python</span>
+        <span class="badge green">Hands-on</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 92%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#ejercicios">Ir a ejercicios</a>
+    <a class="btn btn-secondary" href="./index.html">Volver al tema</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
 
-  <section class="panel">
-    <h2>Cómo usar estos ejercicios</h2>
-    <p>
-      En este tema debes fijarte bien en la diferencia entre claves y valores.
-      Piensa siempre si necesitas acceder a una clave concreta, comprobar su existencia o recorrer el diccionario completo.
-    </p>
-    <div class="buttons-row">
-      <a class="btn btn-secondary" href="./index.html">Volver al Tema 6</a>
-      <a class="btn btn-secondary" href="../index.html">Volver a ruta Python</a>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Cómo trabajar esta pantalla</h2>
+        <p class="exercise-subtitle">
+          En este tema debes distinguir muy bien entre claves y valores, y decidir si necesitas acceder a una clave concreta, comprobar su existencia o recorrer el diccionario completo.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Claves</span>
+        <span class="badge blue">Valores</span>
+        <span class="badge green">Práctica guiada</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Recomendación</h3>
+        <ul>
+          <li>piensa qué representa cada clave</li>
+          <li>decide si necesitas leer, añadir o actualizar</li>
+          <li>si recorres el diccionario, fíjate en qué quieres mostrar</li>
+          <li>abre el playground y prueba varios casos</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Clave del tema</h3>
+        <div class="challenge">
+          Un diccionario no se trabaja por posición, sino por significado. La clave correcta importa tanto como el valor.
+        </div>
+
+        <div class="buttons-row">
+          <a class="btn btn-secondary btn-sm" href="./index.html">Volver al Tema 6</a>
+          <a class="btn btn-secondary btn-sm" href="../index.html">Volver a ruta Python</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="panel"><h2>Ejercicio 1 · Crear un diccionario</h2><p>Crea un diccionario que represente una película.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema6_ej1">Abrir en playground</a></div></section>
-  <section class="panel"><h2>Ejercicio 2 · Acceder por clave</h2><p>Muestra el valor de dos claves distintas.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema6_ej2">Abrir en playground</a></div></section>
-  <section class="panel"><h2>Ejercicio 3 · Añadir una clave</h2><p>Añade una clave nueva a un diccionario existente.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema6_ej3">Abrir en playground</a></div></section>
-  <section class="panel"><h2>Ejercicio 4 · Actualizar valor</h2><p>Cambia el precio de un producto en un diccionario.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema6_ej4">Abrir en playground</a></div></section>
-  <section class="panel"><h2>Ejercicio 5 · Comprobar si existe una clave</h2><p>Usa <code>in</code> para comprobar si un usuario tiene email.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema6_ej5">Abrir en playground</a></div></section>
-  <section class="panel"><h2>Ejercicio 6 · Recorrer claves y valores</h2><p>Muestra cada clave junto con su valor.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema6_ej6">Abrir en playground</a></div></section>
-  <section class="panel"><h2>Reto final · Ficha de producto</h2><p>Crea un diccionario de producto, actualiza datos, añade una clave y recórrelo completo.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema6_reto1">Abrir en playground</a></div></section>
+  <section id="ejercicios" class="panel">
+    <h2>Misiones disponibles</h2>
+
+    <div class="theory-grid exercise-grid">
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 1 · Crear un diccionario</h3>
+        <p>Crea un diccionario que represente una película.</p>
+        <div class="badges">
+          <span class="badge blue">Fácil</span>
+          <span class="badge">5 min</span>
+          <span class="badge">Crear</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema6_ej1">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 2 · Acceder por clave</h3>
+        <p>Muestra el valor de dos claves distintas.</p>
+        <div class="badges">
+          <span class="badge blue">Fácil</span>
+          <span class="badge">6 min</span>
+          <span class="badge">Acceso</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema6_ej2">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 3 · Añadir una clave</h3>
+        <p>Añade una clave nueva a un diccionario existente.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">7 min</span>
+          <span class="badge">Añadir</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema6_ej3">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 4 · Actualizar valor</h3>
+        <p>Cambia el precio de un producto en un diccionario.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">7 min</span>
+          <span class="badge">Modificar</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema6_ej4">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 5 · Comprobar si existe una clave</h3>
+        <p>Usa <code>in</code> para comprobar si un usuario tiene email.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">8 min</span>
+          <span class="badge">in</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema6_ej5">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 6 · Recorrer claves y valores</h3>
+        <p>Muestra cada clave junto con su valor.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">8 min</span>
+          <span class="badge">Recorrido</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema6_ej6">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-highlight theory-card-exercise">
+        <h3>Reto final · Ficha de producto</h3>
+        <p>Crea un diccionario de producto, actualiza datos, añade una clave y recórrelo completo.</p>
+        <div class="badges">
+          <span class="badge green">Reto final</span>
+          <span class="badge">12 min</span>
+          <span class="badge">Combinado</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema6_reto1">Abrir reto</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Cierre del tema 6</h2>
+        <p class="exercise-subtitle">
+          Cuando hayas practicado estos ejercicios, marca esta parte como completada para cerrar el bloque de diccionarios.
+        </p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Práctica</span>
+        <span class="badge green">Completar tema</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Antes de cerrar este bloque</h3>
+        <ul>
+          <li>distingues entre clave y valor</li>
+          <li>sabes añadir y actualizar información</li>
+          <li>puedes comprobar si una clave existe</li>
+          <li>has recorrido un diccionario completo</li>
+          <li>has probado varios ejercicios en el playground</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Última recomendación</h3>
+        <div class="challenge">
+          En diccionarios, el error típico no es de sintaxis, sino de pensar mal la estructura. Asegúrate de que cada clave tenga sentido.
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./05-mini-retos.html">Volver a mini-retos</a>
+      <a class="btn btn-secondary" href="./index.html">Volver al índice del tema</a>
+      <button class="btn btn-primary" onclick="completeTopic('6.ejercicios')">
+        Marcar ejercicios como completados
+      </button>
+    </div>
+  </section>
 
 </main>
+
+<script>
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Ejercicios completados 🎉");
+    window.location.href = "./index.html";
+  } catch (error) {
+    console.error("Error marcando ejercicios como completados:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+</script>
+
 </body>
 </html>

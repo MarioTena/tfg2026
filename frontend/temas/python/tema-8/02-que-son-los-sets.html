@@ -6,14 +6,117 @@
   <link rel="stylesheet" href="../../../styles.css" />
 </head>
 <body>
+
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 8 · Tuplas y sets</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 8 · Python</h1>
-  <p>8.2 · Qué son los sets: colecciones sin duplicados</p>
+  <span class="mission-tag">Misión 8.2</span>
+  <h1>Qué son los sets</h1>
+  <p>Aprende qué es un set y por qué es tan útil cuando quieres trabajar con elementos únicos sin duplicados.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 8 · Tuplas y sets</div>
+        <div class="mini-note">Nivel inicial · 10-15 min · Elementos únicos</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Sets</span>
+        <span class="badge green">Sin duplicados</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 40%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué vas a entender hoy</h2>
+        <p class="exercise-subtitle">
+          Un set es una colección de elementos únicos. No está pensado para posiciones, sino para pertenencia y ausencia de duplicados.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Objetivo</span>
+        <span class="badge green">Únicos</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué problema resuelve</h3>
+        <p>
+          Hay situaciones donde el orden no importa, pero sí importa mucho que no haya repetidos
+          o que puedas comprobar rápidamente si algo pertenece al grupo.
+        </p>
+
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3>Etiquetas</h3>
+            <p>Guardar tags sin repetirlos.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Emails únicos</h3>
+            <p>Evitar duplicados en una colección.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Pertenencia</h3>
+            <p>Comprobar rápido si un valor está o no está.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Limpieza</h3>
+            <p>Eliminar repetidos de forma sencilla.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          Idea clave: un set está pensado para trabajar con elementos únicos, no con posiciones.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes vigilar</h3>
+        <ul>
+          <li>un set no garantiza orden fijo</li>
+          <li>no admite duplicados</li>
+          <li>no se usa con índices como una lista</li>
+          <li>un set vacío se crea con <code>set()</code></li>
+        </ul>
+
+        <div class="challenge">
+          <strong>Piensa así:</strong><br />
+          si lo importante es que algo esté o no esté, y sin repetir, probablemente estés pensando en un set.
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="panel">
-    <h2>¿Qué es un set?</h2>
+    <h2>Qué es un set</h2>
     <p>
       Un set es una colección no ordenada de elementos únicos.
       Su característica más importante es que <strong>no admite duplicados</strong>.
@@ -39,10 +142,25 @@ print(valores)</code></pre>
 
   <section class="panel">
     <h2>Diferencia con una lista</h2>
-    <ul>
-      <li>la lista mantiene orden y duplicados</li>
-      <li>el set no garantiza orden y elimina duplicados</li>
-    </ul>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Lista</h3>
+        <p>Mantiene orden y puede tener duplicados.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Set</h3>
+        <p>No garantiza orden y elimina duplicados.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Lista</h3>
+        <p>Encaja si quieres recorrer posiciones.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Set</h3>
+        <p>Encaja si quieres pertenencia y unicidad.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
@@ -55,17 +173,25 @@ print(valores)</code></pre>
   </section>
 
   <section class="panel">
-    <h2>Añadir elementos con <code>add()</code></h2>
-    <pre><code>colores = {"rojo", "verde"}
+    <h2>Añadir y eliminar elementos</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3><code>add()</code></h3>
+        <pre><code>colores = {"rojo", "verde"}
 colores.add("azul")
 print(colores)</code></pre>
-  </section>
+        <p>Añade un nuevo elemento al set.</p>
+      </div>
 
-  <section class="panel">
-    <h2>Eliminar elementos</h2>
-    <pre><code>colores = {"rojo", "verde", "azul"}
+      <div class="theory-card">
+        <h3><code>remove()</code></h3>
+        <pre><code>colores = {"rojo", "verde", "azul"}
 colores.remove("verde")
 print(colores)</code></pre>
+        <p>Elimina un elemento existente.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
@@ -80,36 +206,163 @@ print(10 in numeros)</code></pre>
   </section>
 
   <section class="panel">
-    <h2>💭 Piensa antes de ejecutar</h2>
-    <pre><code>datos = {1, 2, 2, 3}
+    <h2>Cuándo pensar en un set</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Sin repetidos</h3>
+        <p>Cuando no quieres duplicados.</p>
+      </div>
+      <div class="theory-card">
+        <h3>No importa orden</h3>
+        <p>Cuando el orden no forma parte del problema.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Buscar rápido</h3>
+        <p>Cuando quieres comprobar pertenencia muchas veces.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Comparar grupos</h3>
+        <p>Cuando luego quieres intersectar o unir conjuntos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Piensa antes de ejecutar</h2>
+        <p class="exercise-subtitle">Antes de ejecutar, piensa qué elementos sobreviven y por qué algunos desaparecen.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Código</h3>
+        <pre><code>datos = {1, 2, 2, 3}
 datos.add(4)
 print(datos)</code></pre>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Preguntas</h3>
+        <ul>
+          <li>¿por qué el 2 no aparece repetido?</li>
+          <li>¿qué valores tendrá el set al final?</li>
+        </ul>
+
+        <div class="mini-note">
+          Pista: un set conserva valores únicos.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto guiado</h2>
+        <p class="exercise-subtitle">Ahora toca crear un set y comprobar cómo elimina elementos repetidos.</p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Reto</span>
+        <span class="badge green">Muy fácil</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Tu misión</h3>
+        <p>
+          Crea un set con varios números repetidos y muestra el resultado.
+        </p>
+
+        <div class="exercise-actions">
+          <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Resolver en playground</a>
+          <button class="btn btn-secondary btn-sm" type="button" onclick="document.getElementById('solucion-reto').open = true;">
+            Ver solución
+          </button>
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Pista</h3>
+        <p>
+          Mete varios repetidos a propósito y observa cómo el set conserva una sola copia de cada valor.
+        </p>
+
+        <details id="solucion-reto" class="theory-dropdown">
+          <summary>Mostrar solución</summary>
+          <div class="theory-dropdown-content">
+            <pre><code>numeros = {1, 1, 2, 2, 3, 4, 4}
+print(numeros)</code></pre>
+          </div>
+        </details>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
     <h2>Errores frecuentes</h2>
-    <ul>
-      <li>pensar que un set mantiene un orden fijo</li>
-      <li>esperar ver duplicados</li>
-      <li>crear un set vacío con <code>{}</code></li>
-    </ul>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Error 1</h3>
+        <p>Pensar que un set mantiene un orden fijo.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 2</h3>
+        <p>Esperar ver duplicados en el resultado.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 3</h3>
+        <p>Crear un set vacío con <code>{}</code>.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 4</h3>
+        <p>Intentar pensar en índices como si fuera una lista.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Mini-reto guiado</h2>
-    <p>Crea un set con varios números repetidos y muestra el resultado.</p>
+    <h2>Buenas prácticas</h2>
 
-    <pre><code>numeros = {1, 1, 2, 2, 3, 4, 4}
-print(numeros)</code></pre>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Úsalo con intención</h3>
+        <p>Elige set si de verdad necesitas unicidad.</p>
+      </div>
+      <div class="theory-card">
+        <h3>No asumas orden</h3>
+        <p>Un set no está diseñado para posiciones fijas.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Aprovéchalo</h3>
+        <p>Es muy útil para filtrar duplicados de forma simple.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Piensa en pertenencia</h3>
+        <p>Encaja bien cuando la pregunta clave es “¿está o no está?”.</p>
+      </div>
+    </div>
   </section>
 
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./01-que-son-las-tuplas.html">Anterior</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
+  <section class="panel">
+    <h2>Siguiente paso</h2>
+    <p>
+      Ya sabes qué son los sets. Lo siguiente es aprender sus operaciones más útiles, como unión, intersección y diferencia.
+    </p>
 
-  <button class="btn btn-primary" onclick="completeTopic('8.2')">Marcar como completado</button>
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./01-que-son-las-tuplas.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <button class="btn btn-primary" onclick="completeTopic('8.2')">Marcar como completado</button>
+    </div>
+  </section>
+
   <script>
 const TOPIC_ID = "8.2";
 const NEXT_URL = "./03-operaciones-con-sets.html";

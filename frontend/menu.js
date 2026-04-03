@@ -1,0 +1,139 @@
+const API_URL = "http://localhost:3000/api/progress/python";
+const token = localStorage.getItem("token");
+
+const menuProgressCopyEl = document.getElementById("menu-progress-copy");
+const menuProgressFillEl = document.getElementById("menu-progress-fill");
+const continueLearningBtn = document.getElementById("continue-learning-btn");
+
+const recommendedCard = document.getElementById("recommended-card");
+const recommendedTag = document.getElementById("recommended-tag");
+const recommendedTitle = document.getElementById("recommended-title");
+const recommendedChip1 = document.getElementById("recommended-chip-1");
+const recommendedChip2 = document.getElementById("recommended-chip-2");
+const recommendedCta = document.getElementById("recommended-cta");
+
+const pythonRoute = [
+  { id: "1", title: "Tema 1 · Introducción al lenguaje", file: "temas/python/tema-1/index.html", chip1: "Python", chip2: "Base", requiredTopics: ["1.1", "1.2", "1.3", "1.4", "1.5", "1.6", "1.7"] },
+  { id: "2", title: "Tema 2 · Condicionales", file: "temas/python/tema-2/index.html", chip1: "Python", chip2: "Base", requiredTopics: ["2.1", "2.2", "2.3", "2.4", "2.ejercicios"] },
+  { id: "3", title: "Tema 3 · Bucles", file: "temas/python/tema-3/index.html", chip1: "Python", chip2: "Base", requiredTopics: ["3.1", "3.2", "3.3", "3.4", "3.5", "3.ejercicios"] },
+  { id: "4", title: "Tema 4 · Listas", file: "temas/python/tema-4/index.html", chip1: "Python", chip2: "Core", requiredTopics: ["4.1", "4.2", "4.3", "4.4", "4.5", "4.ejercicios"] },
+  { id: "5", title: "Tema 5 · Funciones", file: "temas/python/tema-5/index.html", chip1: "Python", chip2: "Core", requiredTopics: ["5.1", "5.2", "5.3", "5.4", "5.5", "5.ejercicios"] },
+  { id: "6", title: "Tema 6 · Diccionarios", file: "temas/python/tema-6/index.html", chip1: "Python", chip2: "Core", requiredTopics: ["6.1", "6.2", "6.3", "6.4", "6.5", "6.ejercicios"] },
+  { id: "7", title: "Tema 7 · Strings intermedios", file: "temas/python/tema-7/index.html", chip1: "Python", chip2: "Advanced", requiredTopics: ["7.1", "7.2", "7.3", "7.4", "7.5", "7.ejercicios"] },
+  { id: "8", title: "Tema 8 · Tuplas y sets", file: "temas/python/tema-8/index.html", chip1: "Python", chip2: "Advanced", requiredTopics: ["8.1", "8.2", "8.3", "8.4", "8.5", "8.ejercicios"] },
+  { id: "9", title: "Tema 9 · Manejo de archivos", file: "temas/python/tema-9/index.html", chip1: "Python", chip2: "Advanced", requiredTopics: ["9.1", "9.2", "9.3", "9.4", "9.5", "9.ejercicios"] },
+  { id: "10", title: "Tema 10 · Errores y excepciones", file: "temas/python/tema-10/index.html", chip1: "Python", chip2: "Advanced", requiredTopics: ["10.1", "10.2", "10.3", "10.4", "10.5", "10.ejercicios"] }
+];
+
+function getThemeProgress(theme, completedTopics) {
+  const required = theme.requiredTopics || [];
+  const completedCount = required.filter(id => completedTopics.includes(id)).length;
+
+  return {
+    total: required.length,
+    completedCount,
+    started: completedCount > 0,
+    completed: required.length > 0 && completedCount === required.length
+  };
+}
+
+function getNextRecommendedTheme(completedTopics) {
+  return pythonRoute.find(theme => !getThemeProgress(theme, completedTopics).completed)
+    || pythonRoute[pythonRoute.length - 1];
+}
+
+function updateMenuProgress(completedTopics) {
+  const total = pythonRoute.length;
+  const done = pythonRoute.filter(theme => getThemeProgress(theme, completedTopics).completed).length;
+  const percent = Math.round((done / total) * 100);
+
+  if (menuProgressCopyEl) {
+    menuProgressCopyEl.textContent = `${done}/${total} temas completados en Python · ${percent}% de ruta`;
+  }
+
+  if (menuProgressFillEl) {
+    menuProgressFillEl.style.width = `${percent}%`;
+  }
+}
+
+function updateRecommendedBlock(nextTheme, completedTopics) {
+  if (!nextTheme) return;
+
+  const progress = getThemeProgress(nextTheme, completedTopics);
+
+  if (recommendedCard) {
+    recommendedCard.onclick = () => {
+      window.location.href = nextTheme.file;
+    };
+  }
+
+  if (recommendedTag) {
+    recommendedTag.textContent = progress.started ? "Retomar" : "Empieza aquí";
+  }
+
+  if (recommendedTitle) {
+    recommendedTitle.textContent = nextTheme.title;
+  }
+
+  if (recommendedChip1) {
+    recommendedChip1.textContent = nextTheme.chip1;
+  }
+
+  if (recommendedChip2) {
+    recommendedChip2.textContent = `${progress.completedCount}/${progress.total} bloques`;
+  }
+
+  if (recommendedCta) {
+    recommendedCta.textContent =
+      progress.started
+        ? "Este es el siguiente tema pendiente de completar según tu progreso actual."
+        : "Esta es la siguiente ruta recomendada para avanzar.";
+  }
+
+  if (continueLearningBtn) {
+    continueLearningBtn.href = nextTheme.file;
+    continueLearningBtn.textContent =
+      progress.started
+        ? `Retomar Tema ${nextTheme.id}`
+        : `Continuar con Tema ${nextTheme.id}`;
+  }
+}
+
+async function loadMenuProgress() {
+  try {
+    if (!token) {
+      updateMenuProgress([]);
+      updateRecommendedBlock(pythonRoute[0], []);
+      return;
+    }
+
+    const res = await fetch(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (res.status === 401) {
+      updateMenuProgress([]);
+      updateRecommendedBlock(pythonRoute[0], []);
+      return;
+    }
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    const data = await res.json();
+    const completedTopics = data?.progress?.completedTopics || [];
+    const nextTheme = getNextRecommendedTheme(completedTopics);
+
+    updateMenuProgress(completedTopics);
+    updateRecommendedBlock(nextTheme, completedTopics);
+  } catch (error) {
+    console.error("Error cargando progreso del menú:", error);
+    updateMenuProgress([]);
+    updateRecommendedBlock(pythonRoute[0], []);
+  }
+}
+
+loadMenuProgress();

@@ -7,12 +7,113 @@
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 6 · Diccionarios</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 6 · Python</h1>
-  <p>6.2 · Acceso y modificación: leer y actualizar valores por clave</p>
+  <span class="mission-tag">Misión 6.2</span>
+  <h1>Acceso y modificación</h1>
+  <p>Aprende a leer, actualizar, añadir y eliminar valores en un diccionario usando sus claves.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 6 · Diccionarios</div>
+        <div class="mini-note">Nivel inicial · 12-15 min · Lectura y actualización</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Claves</span>
+        <span class="badge green">Modificación</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 40%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
+
+<section class="exercise-card">
+  <div class="exercise-header">
+    <div>
+      <h2 class="exercise-title">Qué vas a entender hoy</h2>
+      <p class="exercise-subtitle">
+        Un diccionario no solo sirve para guardar datos: también tienes que saber acceder a ellos, cambiarlos y añadir información nueva.
+      </p>
+    </div>
+    <div class="badges">
+      <span class="badge blue">Objetivo</span>
+      <span class="badge green">Acceso y cambio</span>
+    </div>
+  </div>
+
+  <div class="exercise-body">
+    <div class="exercise-block">
+      <h3>Qué problema resuelve</h3>
+      <p>
+        Crear un diccionario es solo el primer paso. En programación real necesitas consultar un dato concreto,
+        actualizarlo cuando cambia o añadir nuevas claves cuando aparece más información.
+      </p>
+
+      <div class="theory-grid">
+        <div class="theory-card">
+          <h3>Leer datos</h3>
+          <p>Acceder a un valor usando su clave.</p>
+        </div>
+        <div class="theory-card">
+          <h3>Actualizar</h3>
+          <p>Cambiar el valor de una clave que ya existe.</p>
+        </div>
+        <div class="theory-card">
+          <h3>Añadir</h3>
+          <p>Crear una nueva clave con su valor asociado.</p>
+        </div>
+        <div class="theory-card">
+          <h3>Seguridad</h3>
+          <p>Evitar errores cuando una clave no existe.</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        Idea clave: trabajar con diccionarios significa moverte por claves, no por posiciones.
+      </div>
+    </div>
+
+    <div class="exercise-block">
+      <h3>Qué debes vigilar</h3>
+      <ul>
+        <li>escribir bien cada clave</li>
+        <li>distinguir entre actualizar y añadir</li>
+        <li>tener cuidado con claves que no existen</li>
+        <li>usar <code>get()</code> cuando necesites más seguridad</li>
+      </ul>
+
+      <div class="challenge">
+        <strong>Piensa así:</strong><br />
+        acceder a <code>diccionario["clave"]</code> es pedir un dato concreto por su nombre.
+      </div>
+    </div>
+  </div>
+</section>
 
   <section class="panel">
     <h2>Acceder a un valor por su clave</h2>
@@ -65,7 +166,30 @@ print(persona)</code></pre>
   </section>
 
   <section class="panel">
-    <h2>⚠️ Error típico: acceder a una clave inexistente</h2>
+    <h2>Dos ideas que debes distinguir</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Actualizar</h3>
+        <p>La clave ya existía y cambias su valor.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Añadir</h3>
+        <p>La clave no existía y pasa a formar parte del diccionario.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Misma sintaxis</h3>
+        <p>En ambos casos usas <code>diccionario[clave] = valor</code>.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Diferencia real</h3>
+        <p>Lo que cambia es si esa clave ya estaba o no.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Error típico: acceder a una clave inexistente</h2>
     <pre><code>producto = {
     "nombre": "Ratón",
     "precio": 25
@@ -121,7 +245,7 @@ print("email" in usuario)</code></pre>
     "ciudad": "Sevilla"
 }
 
- del datos["ciudad"]
+del datos["ciudad"]
 print(datos)</code></pre>
 
     <p>
@@ -130,8 +254,40 @@ print(datos)</code></pre>
   </section>
 
   <section class="panel">
-    <h2>💭 Piensa antes de ejecutar</h2>
-    <pre><code>alumno = {
+    <h2>Cómo pensar acceso y modificación antes de escribirlo</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Paso 1</h3>
+        <p>Identifica qué clave representa el dato que necesitas.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 2</h3>
+        <p>Decide si vas a leer, actualizar, añadir o eliminar.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 3</h3>
+        <p>Piensa si la clave puede no existir.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 4</h3>
+        <p>Si hay duda, usa <code>get()</code> o comprueba con <code>in</code>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Piensa antes de ejecutar</h2>
+        <p class="exercise-subtitle">Antes de lanzar el código, sigue mentalmente qué claves cambian y cuáles siguen igual.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Código</h3>
+        <pre><code>alumno = {
     "nombre": "Carlos",
     "nota": 8
 }
@@ -139,30 +295,59 @@ print(datos)</code></pre>
 alumno["nota"] = 9
 alumno["curso"] = "Python"
 print(alumno)</code></pre>
+      </div>
 
-    <ul>
-      <li>¿qué claves tiene el diccionario al final?</li>
-      <li>¿qué valor tiene <code>nota</code>?</li>
-    </ul>
+      <div class="exercise-block">
+        <h3>Preguntas</h3>
+        <ul>
+          <li>¿qué claves tiene el diccionario al final?</li>
+          <li>¿qué valor tiene <code>nota</code>?</li>
+        </ul>
+
+        <div class="mini-note">
+          Pista: una clave se actualiza y otra se añade nueva.
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section class="panel">
-    <h2>Errores frecuentes</h2>
-    <ul>
-      <li>escribir mal una clave</li>
-      <li>acceder a una clave que no existe</li>
-      <li>olvidar que las claves de texto deben ir entre comillas</li>
-      <li>confundir actualizar una clave con añadir una nueva</li>
-    </ul>
-  </section>
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto guiado</h2>
+        <p class="exercise-subtitle">Ahora toca modificar y ampliar un diccionario con intención.</p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Reto</span>
+        <span class="badge green">Muy fácil</span>
+      </div>
+    </div>
 
-  <section class="panel">
-    <h2>Mini-reto guiado</h2>
-    <p>
-      Crea un diccionario de producto, cambia el precio y añade una clave <code>stock</code>.
-    </p>
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Tu misión</h3>
+        <p>
+          Crea un diccionario de producto, cambia el precio y añade una clave <code>stock</code>.
+        </p>
 
-    <pre><code>producto = {
+        <div class="exercise-actions">
+          <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Resolver en playground</a>
+          <button class="btn btn-secondary btn-sm" type="button" onclick="document.getElementById('solucion-reto').open = true;">
+            Ver solución
+          </button>
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Pista</h3>
+        <p>
+          Si la clave ya existe, se actualiza. Si no existe, se crea.
+        </p>
+
+        <details id="solucion-reto" class="theory-dropdown">
+          <summary>Mostrar solución</summary>
+          <div class="theory-dropdown-content">
+            <pre><code>producto = {
     "nombre": "Monitor",
     "precio": 150
 }
@@ -170,26 +355,71 @@ print(alumno)</code></pre>
 producto["precio"] = 175
 producto["stock"] = 12
 print(producto)</code></pre>
+          </div>
+        </details>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Pregunta de entrevista</h2>
-    <p>
-      ¿Qué ventaja tiene <code>get()</code> frente a acceder directamente con <code>diccionario[clave]</code>?
-    </p>
+    <h2>Errores frecuentes</h2>
 
-    <p>
-      Respuesta sólida: <code>get()</code> permite recuperar un valor sin provocar error si la clave no existe, y además puede devolver un valor por defecto.
-    </p>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Error 1</h3>
+        <p>Escribir mal una clave.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 2</h3>
+        <p>Acceder a una clave que no existe.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 3</h3>
+        <p>Olvidar que las claves de texto deben ir entre comillas.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 4</h3>
+        <p>Confundir actualizar una clave con añadir una nueva.</p>
+      </div>
+    </div>
   </section>
 
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./01-que-es-un-diccionario.html">Anterior</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
+  <section class="panel">
+    <h2>Buenas prácticas</h2>
 
-  <button class="btn btn-primary" onclick="completeTopic('6.2')">Marcar como completado</button>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Claves consistentes</h3>
+        <p>Mantén siempre el mismo criterio de nombres.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Comprueba antes</h3>
+        <p>Si no estás seguro de una clave, usa <code>get()</code> o <code>in</code>.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Piensa en intención</h3>
+        <p>Diferencia leer, actualizar, crear o eliminar.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Evita suposiciones</h3>
+        <p>No des por hecho que todos los diccionarios tienen siempre las mismas claves.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Siguiente paso</h2>
+    <p>
+      Ya sabes leer y modificar datos de un diccionario. Lo siguiente es aprender a recorrerlo para trabajar con claves, valores o ambos.
+    </p>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./01-que-es-un-diccionario.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <button class="btn btn-primary" onclick="completeTopic('6.2')">Marcar como completado</button>
+    </div>
+  </section>
 
  <script>
 const TOPIC_ID = "6.2";

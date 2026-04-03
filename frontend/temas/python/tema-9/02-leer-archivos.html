@@ -6,18 +6,125 @@
   <link rel="stylesheet" href="../../../styles.css" />
 </head>
 <body>
+
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 9 · Archivos</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 9 · Python</h1>
-  <p>9.2 · Leer archivos: recuperar información guardada</p>
+  <span class="mission-tag">Misión 9.2</span>
+  <h1>Leer archivos</h1>
+  <p>Aprende a recuperar información guardada en archivos y a recorrer su contenido de forma segura.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 9 · Archivos</div>
+        <div class="mini-note">Nivel inicial · 10-15 min · Recuperar contenido</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Lectura</span>
+        <span class="badge green">with</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 40%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué vas a entender hoy</h2>
+        <p class="exercise-subtitle">
+          Leer un archivo significa abrirlo correctamente y recuperar su contenido completo o línea a línea según lo que necesites hacer.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Objetivo</span>
+        <span class="badge green">Leer contenido</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué problema resuelve</h3>
+        <p>
+          Guardar datos en un archivo no sirve de mucho si luego no sabes recuperarlos. Leer archivos
+          te permite reutilizar información guardada por ti o por otros programas.
+        </p>
+
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3>Notas</h3>
+            <p>Recuperar contenido escrito previamente.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Configuración</h3>
+            <p>Cargar valores que el programa necesita.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Listas de datos</h3>
+            <p>Leer registros línea a línea.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Procesamiento</h3>
+            <p>Usar el contenido leído para seguir trabajando.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          Idea clave: leer un archivo es recuperar información persistente para volver a usarla dentro del programa.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes vigilar</h3>
+        <ul>
+          <li>el archivo debe existir y estar bien nombrado</li>
+          <li>puedes leerlo completo o línea a línea</li>
+          <li><code>with</code> es la forma recomendada</li>
+          <li>la ruta incorrecta provoca error</li>
+        </ul>
+
+        <div class="challenge">
+          <strong>Piensa así:</strong><br />
+          leer un archivo es pedirle al programa que traiga a memoria información que estaba guardada fuera.
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="panel">
     <h2>Lectura completa</h2>
     <pre><code>archivo = open("datos.txt", "r")
 contenido = archivo.read()
 archivo.close()
 print(contenido)</code></pre>
+
+    <p>
+      Esto lee todo el contenido del archivo de una vez.
+    </p>
   </section>
 
   <section class="panel">
@@ -28,7 +135,7 @@ for linea in archivo:
 archivo.close()</code></pre>
 
     <p>
-      Muy útil cuando el archivo tiene varias líneas.
+      Es muy útil cuando el archivo tiene varias líneas y quieres procesarlas una a una.
     </p>
   </section>
 
@@ -44,24 +151,193 @@ archivo.close()</code></pre>
   </section>
 
   <section class="panel">
-    <h2>⚠️ Error típico: archivo no encontrado</h2>
+    <h2>Lectura completa o línea a línea</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Completa</h3>
+        <p>Útil si el archivo es pequeño y quieres todo su contenido de golpe.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Línea a línea</h3>
+        <p>Útil si el archivo tiene estructura por líneas o quieres procesarlo poco a poco.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Completa</h3>
+        <p>Encaja cuando solo quieres mostrar o guardar el texto entero.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Línea a línea</h3>
+        <p>Encaja cuando vas a contar, filtrar o limpiar líneas individualmente.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Error típico: archivo no encontrado</h2>
     <p>
-      Si la ruta o el nombre del archivo es incorrecto, el programa falla.
+      Si la ruta o el nombre del archivo es incorrecto, el programa falla porque no puede localizarlo.
     </p>
   </section>
 
   <section class="panel">
-    <h2>Mini-reto guiado</h2>
-    <p>Lee un archivo llamado <code>notas.txt</code> y muestra su contenido.</p>
+    <h2>Cómo pensar una lectura antes de escribirla</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Paso 1</h3>
+        <p>Comprueba que el archivo existe y el nombre es correcto.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 2</h3>
+        <p>Decide si quieres todo el contenido o línea a línea.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 3</h3>
+        <p>Usa <code>with</code> para evitar olvidos al cerrar.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 4</h3>
+        <p>Piensa qué harás con el contenido una vez leído.</p>
+      </div>
+    </div>
   </section>
 
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./01-que-es-un-archivo.html">Anterior</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Piensa antes de ejecutar</h2>
+        <p class="exercise-subtitle">Antes de escribir código, piensa qué forma de lectura encaja mejor con el contenido del archivo.</p>
+      </div>
+    </div>
 
-  <button class="btn btn-primary" onclick="completeTopic('9.2')">Marcar como completado</button>
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Situaciones</h3>
+        <ul>
+          <li>leer una nota corta completa</li>
+          <li>procesar un archivo con muchas líneas</li>
+          <li>evitar olvidarte de cerrar el archivo</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Preguntas</h3>
+        <ul>
+          <li>¿cuándo conviene <code>read()</code>?</li>
+          <li>¿cuándo conviene recorrer el archivo?</li>
+          <li>¿por qué <code>with</code> suele ser mejor?</li>
+        </ul>
+
+        <div class="mini-note">
+          Pista: piensa en cantidad de contenido y seguridad.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto guiado</h2>
+        <p class="exercise-subtitle">Ahora toca recuperar información guardada desde un archivo de texto.</p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Reto</span>
+        <span class="badge green">Muy fácil</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Tu misión</h3>
+        <p>
+          Lee un archivo llamado <code>notas.txt</code> y muestra su contenido.
+        </p>
+
+        <div class="exercise-actions">
+          <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Resolver en playground</a>
+          <button class="btn btn-secondary btn-sm" type="button" onclick="document.getElementById('solucion-reto').open = true;">
+            Ver solución
+          </button>
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Solución de referencia</h3>
+        <details id="solucion-reto" class="theory-dropdown">
+          <summary>Mostrar solución</summary>
+          <div class="theory-dropdown-content">
+            <pre><code>with open("notas.txt", "r") as archivo:
+    contenido = archivo.read()
+    print(contenido)</code></pre>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Errores frecuentes</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Error 1</h3>
+        <p>Usar un nombre o ruta incorrectos.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 2</h3>
+        <p>Olvidar cerrar el archivo cuando no usas <code>with</code>.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 3</h3>
+        <p>No distinguir entre leer completo y leer línea a línea.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 4</h3>
+        <p>Pensar que leer un archivo lo modifica.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Buenas prácticas</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Usa <code>with</code></h3>
+        <p>Te evita olvidos y hace el código más limpio.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Piensa la estrategia</h3>
+        <p>Lee completo o por líneas según el problema.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Comprueba nombres</h3>
+        <p>Muchos errores vienen de rutas mal escritas.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Lee con intención</h3>
+        <p>No leas por leer: piensa qué vas a hacer después con el contenido.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Siguiente paso</h2>
+    <p>
+      Ya sabes leer archivos. Lo siguiente es aprender a escribir en ellos para guardar resultados y datos generados por tu programa.
+    </p>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./01-que-es-un-archivo.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <button class="btn btn-primary" onclick="completeTopic('9.2')">Marcar como completado</button>
+    </div>
+  </section>
+
   <script>
 const TOPIC_ID = "9.2";
 const NEXT_URL = "./03-escribir-archivos.html";

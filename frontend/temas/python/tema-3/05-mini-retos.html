@@ -7,74 +7,150 @@
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 3 · Bucles</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 3 · Python</h1>
-  <p>3.5 · Mini-retos: integrar for, while, break y continue</p>
+  <span class="mission-tag">Zona práctica 3.5</span>
+  <h1>Mini-retos de bucles</h1>
+  <p>Combina <code>for</code>, <code>while</code>, <code>break</code> y <code>continue</code> para resolver pequeños problemas con iteraciones.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 3 · Bucles en Python</div>
+        <div class="mini-note">6 mini-retos · práctica guiada · dificultad inicial-media</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Python</span>
+        <span class="badge green">Entrenamiento</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 82%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#retos">Empezar mini-retos</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
 
-  <section class="panel">
-    <h2>Objetivo de esta parte</h2>
-    <p>
-      Aquí ya no se trata solo de entender la sintaxis.
-      Se trata de resolver pequeños problemas combinando ideas del tema.
-    </p>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué entrenas aquí</h2>
+        <p class="exercise-subtitle">
+          Aquí ya no se trata solo de entender la sintaxis. Se trata de repetir con lógica y controlar cuándo continúa o termina una iteración.
+        </p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">for</span>
+        <span class="badge blue">while</span>
+        <span class="badge green">Control</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Objetivo</h3>
+        <p>
+          Vas a empezar a usar bucles para resolver problemas pequeños pero muy típicos: contar, acumular, filtrar y validar.
+        </p>
+
+        <div class="callout">
+          Idea clave: en un bucle, lo importante no es repetir, sino entender qué cambia en cada vuelta.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Cómo usar esta pantalla</h3>
+        <ul>
+          <li>lee el reto</li>
+          <li>sigue mentalmente las iteraciones</li>
+          <li>comprueba qué variable cambia y cuándo termina</li>
+          <li>pruébalo en el playground y modifica casos</li>
+        </ul>
+
+        <div class="challenge">
+          Antes de ejecutar, intenta predecir cuántas iteraciones habrá y qué salida producirá el programa.
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section class="panel">
-    <h2>Mini-reto 1 · Contar hacia atrás</h2>
-    <p>
-      Muestra una cuenta atrás del 5 al 1.
-    </p>
+  <section id="retos" class="panel">
+    <h2>Misiones rápidas</h2>
 
-    <pre><code>for numero in range(5, 0, -1):
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Mini-reto 1 · Contar hacia atrás</h3>
+        <p>Muestra una cuenta atrás del 5 al 1.</p>
+        <pre><code>for numero in range(5, 0, -1):
     print(numero)</code></pre>
-  </section>
+      </div>
 
-  <section class="panel">
-    <h2>Mini-reto 2 · Sumar del 1 al 10</h2>
-    <pre><code>suma = 0
+      <div class="theory-card">
+        <h3>Mini-reto 2 · Sumar del 1 al 10</h3>
+        <p>Usa un acumulador para obtener el total.</p>
+        <pre><code>suma = 0
 
 for numero in range(1, 11):
     suma = suma + numero
 
 print(suma)</code></pre>
-  </section>
+      </div>
 
-  <section class="panel">
-    <h2>Mini-reto 3 · Mostrar solo impares</h2>
-    <pre><code>for numero in range(1, 11):
+      <div class="theory-card">
+        <h3>Mini-reto 3 · Mostrar solo impares</h3>
+        <p>Usa <code>continue</code> para saltar casos que no interesan.</p>
+        <pre><code>for numero in range(1, 11):
     if numero % 2 == 0:
         continue
     print(numero)</code></pre>
-  </section>
+      </div>
 
-  <section class="panel">
-    <h2>Mini-reto 4 · Detener al encontrar un valor</h2>
-    <pre><code>for letra in "programacion":
+      <div class="theory-card">
+        <h3>Mini-reto 4 · Detener al encontrar un valor</h3>
+        <p>Usa <code>break</code> cuando ya no tenga sentido seguir.</p>
+        <pre><code>for letra in "programacion":
     if letra == "g":
         break
     print(letra)</code></pre>
-  </section>
+      </div>
 
-  <section class="panel">
-    <h2>Mini-reto 5 · Validación con while</h2>
-    <p>
-      Repite hasta que el usuario escriba la palabra <code>python</code>.
-    </p>
-
-    <pre><code>texto = ""
+      <div class="theory-card">
+        <h3>Mini-reto 5 · Validación con while</h3>
+        <p>Repite hasta que el usuario escriba la palabra correcta.</p>
+        <pre><code>texto = ""
 
 while texto != "python":
     texto = input("Escribe python: ")
 
 print("Correcto")</code></pre>
-  </section>
+      </div>
 
-  <section class="panel">
-    <h2>Mini-reto 6 · Acumulación con while</h2>
-    <pre><code>contador = 1
+      <div class="theory-card">
+        <h3>Mini-reto 6 · Acumulación con while</h3>
+        <p>Haz que el contador y la suma evolucionen correctamente.</p>
+        <pre><code>contador = 1
 suma = 0
 
 while contador <= 5:
@@ -82,109 +158,63 @@ while contador <= 5:
     contador = contador + 1
 
 print(suma)</code></pre>
+      </div>
+    </div>
   </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Cómo pensar este tipo de ejercicios</h2>
+        <p class="exercise-subtitle">Antes de escribir, identifica bien el patrón de repetición.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Paso a paso</h3>
+        <ol>
+          <li>identifica qué se repite</li>
+          <li>decide si conviene <code>for</code> o <code>while</code></li>
+          <li>piensa qué variable cambia</li>
+          <li>define cuándo termina</li>
+          <li>si hace falta, añade <code>break</code> o <code>continue</code></li>
+        </ol>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Regla útil</h3>
+        <div class="challenge">
+          Si sabes cuántas repeticiones o qué secuencia recorres, suele encajar <code>for</code>. Si dependes de una condición abierta, suele encajar <code>while</code>.
+        </div>
+      </div>
+    </div>
+  </section>
+
 
   <section class="panel">
-    <h2>Cómo pensar estos ejercicios</h2>
-    <ol>
-      <li>identifica qué se repite</li>
-      <li>decide si conviene <code>for</code> o <code>while</code></li>
-      <li>piensa qué variable cambia</li>
-      <li>define cuándo termina</li>
-      <li>si hace falta, añade <code>break</code> o <code>continue</code></li>
-    </ol>
+    <h2>Siguiente paso</h2>
+    <p>Ya has combinado los tipos principales de bucles. Ahora toca resolver ejercicios por tu cuenta.</p>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./04-break-continue.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Ejercicios Tema 3</a>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
+    </div>
   </section>
 
-  <section class="panel">
-    <h2>Pregunta de entrevista</h2>
-    <p>
-      ¿Cómo decides si usar <code>for</code> o <code>while</code>?
-    </p>
-
-    <p>
-      Respuesta sólida: <code>for</code> cuando recorro una secuencia o una repetición estructurada; <code>while</code> cuando dependo de una condición que puede cambiar y no sé tan claramente cuántas iteraciones habrá.
-    </p>
-  </section>
-
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./04-break-continue.html">Anterior</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Ejercicios Tema 3</a>
-  </div>
-
-  <button class="btn btn-primary" onclick="completeTopic('3.5')">Marcar como completado</button>
-
+  <script src="../topic-completion.js"></script>
   <script>
-const TOPIC_ID = "3.5";
-const NEXT_URL = "./py-tema3-ejercicios.html";
-
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
-
-const nextBtn = document.getElementById("nextBtn");
-
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
-
-    if (!token || !nextBtn) return;
-
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
+    const topicCompletion = initTopicCompletion({
+      topicId: "3.5",
+      nextUrl: "./py-tema3-ejercicios.html"
     });
 
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
-  }
-}
-
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
-    }
-
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
+    document.getElementById("completeBtn").addEventListener("click", () => {
+      topicCompletion.completeTopic();
     });
-
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
-    }
-
-    alert("Tema completado 🎉");
-
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
-  }
-}
-
-unlockNextIfCompleted();
-</script>
+  </script>
 
 </main>
 </body>

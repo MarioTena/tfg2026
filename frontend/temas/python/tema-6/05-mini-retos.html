@@ -8,22 +8,87 @@
 <body>
 
 <header class="header">
-  <h1>Tema 6 · Python</h1>
-  <p>6.5 · Mini retos: integrar diccionarios, bucles y decisiones</p>
+  <span class="mission-tag">Zona práctica 6.5</span>
+  <h1>Mini-retos de diccionarios</h1>
+  <p>Combina diccionarios, bucles y acceso por clave para resolver pequeñas situaciones más realistas.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 6 · Diccionarios en Python</div>
+        <div class="mini-note">6 mini-retos · práctica guiada · dificultad inicial-media</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Python</span>
+        <span class="badge green">Entrenamiento</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 82%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#retos">Empezar mini-retos</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
 
-  <section class="panel">
-    <h2>Objetivo de esta parte</h2>
-    <p>
-      Ahora toca combinar lo aprendido para usar diccionarios en problemas más realistas.
-    </p>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué entrenas aquí</h2>
+        <p class="exercise-subtitle">
+          Ahora toca combinar lo aprendido para usar diccionarios en problemas más realistas.
+        </p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Diccionarios</span>
+        <span class="badge blue">Claves</span>
+        <span class="badge green">items()</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Objetivo</h3>
+        <p>
+          Vas a practicar cómo representar entidades, actualizar datos y recorrer información con significado.
+        </p>
+
+        <div class="callout">
+          Idea clave: con diccionarios trabajas con significado, no con posiciones.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Cómo usar esta pantalla</h3>
+        <ul>
+          <li>lee el reto</li>
+          <li>identifica qué representa cada clave</li>
+          <li>decide si necesitas una clave concreta o recorrer todo</li>
+          <li>pruébalo en el playground y cambia datos</li>
+        </ul>
+
+        <div class="challenge">
+          La pregunta importante aquí no es “cómo se escribe”, sino “qué datos tiene sentido guardar con nombre”.
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section class="panel">
-    <h2>Mini-reto 1 · Ficha de usuario</h2>
-    <pre><code>usuario = {
+  <section id="retos" class="panel">
+    <h2>Misiones rápidas</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Mini-reto 1 · Ficha de usuario</h3>
+        <p>Recorre un diccionario con claves y valores.</p>
+        <pre><code>usuario = {
     "nombre": "Ana",
     "edad": 30,
     "activo": True
@@ -31,42 +96,46 @@
 
 for clave, valor in usuario.items():
     print(clave, ":", valor)</code></pre>
-  </section>
+      </div>
 
-  <section class="panel">
-    <h2>Mini-reto 2 · Actualizar precio</h2>
-    <pre><code>producto = {
+      <div class="theory-card">
+        <h3>Mini-reto 2 · Actualizar precio</h3>
+        <p>Modifica un valor existente usando su clave.</p>
+        <pre><code>producto = {
     "nombre": "Teclado",
     "precio": 50
 }
 
 producto["precio"] = 45
 print(producto)</code></pre>
-  </section>
+      </div>
 
-  <section class="panel">
-    <h2>Mini-reto 3 · Comprobar clave</h2>
-    <pre><code>config = {
+      <div class="theory-card">
+        <h3>Mini-reto 3 · Comprobar clave</h3>
+        <p>Verifica si una clave existe antes de usarla.</p>
+        <pre><code>config = {
     "tema": "oscuro",
     "idioma": "es"
 }
 
 if "tema" in config:
     print("La clave existe")</code></pre>
-  </section>
+      </div>
 
-  <section class="panel">
-    <h2>Mini-reto 4 · Valor por defecto</h2>
-    <pre><code>usuario = {
+      <div class="theory-card">
+        <h3>Mini-reto 4 · Valor por defecto</h3>
+        <p>Usa <code>get()</code> cuando una clave puede no existir.</p>
+        <pre><code>usuario = {
     "nombre": "Luis"
 }
 
 print(usuario.get("email", "No informado"))</code></pre>
-  </section>
+      </div>
 
-  <section class="panel">
-    <h2>Mini-reto 5 · Recorrer solo valores</h2>
-    <pre><code>medidas = {
+      <div class="theory-card">
+        <h3>Mini-reto 5 · Recorrer solo valores</h3>
+        <p>Accede únicamente a los valores del diccionario.</p>
+        <pre><code>medidas = {
     "alto": 180,
     "ancho": 90,
     "profundo": 50
@@ -74,11 +143,12 @@ print(usuario.get("email", "No informado"))</code></pre>
 
 for valor in medidas.values():
     print(valor)</code></pre>
-  </section>
+      </div>
 
-  <section class="panel">
-    <h2>Mini-reto 6 · Eliminar una clave</h2>
-    <pre><code>alumno = {
+      <div class="theory-card">
+        <h3>Mini-reto 6 · Eliminar una clave</h3>
+        <p>Quita información que ya no necesitas.</p>
+        <pre><code>alumno = {
     "nombre": "Marta",
     "nota": 8,
     "curso": "Python"
@@ -86,109 +156,70 @@ for valor in medidas.values():
 
 alumno.pop("curso")
 print(alumno)</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Cómo pensar este tipo de ejercicios</h2>
+        <p class="exercise-subtitle">Antes de crear el diccionario, piensa en la entidad y sus atributos.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Paso a paso</h3>
+        <ol>
+          <li>decide qué representa el diccionario</li>
+          <li>piensa qué claves son necesarias</li>
+          <li>usa <code>items()</code> si necesitas clave y valor</li>
+          <li>usa <code>get()</code> si hay claves opcionales</li>
+          <li>evita mezclar información sin estructura</li>
+        </ol>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Regla útil</h3>
+        <div class="challenge">
+          Si cada dato tiene una etiqueta natural como nombre, precio, edad o estado, probablemente un diccionario encaja bien.
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Cómo pensar este tipo de ejercicios</h2>
-    <ol>
-      <li>decide qué representa el diccionario</li>
-      <li>piensa qué claves son necesarias</li>
-      <li>usa <code>items()</code> si necesitas clave y valor</li>
-      <li>usa <code>get()</code> si hay claves opcionales</li>
-      <li>evita mezclar información sin estructura</li>
-    </ol>
+    <h2>Pregunta típica de entrevista</h2>
+    <div class="challenge">
+      <p><strong>Pregunta:</strong> ¿Qué ventaja tiene un diccionario para representar una entidad como un producto o un usuario?</p>
+      <p><strong>Respuesta sólida:</strong> permite asociar cada dato a una clave con significado, haciendo el código más legible y fácil de mantener.</p>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Pregunta de entrevista</h2>
-    <p>
-      ¿Qué ventaja tiene un diccionario para representar una entidad como un producto o un usuario?
-    </p>
+    <h2>Siguiente paso</h2>
+    <p>Ya has combinado acceso, modificación y recorrido de diccionarios. Ahora toca resolver ejercicios por tu cuenta.</p>
 
-    <p>
-      Respuesta sólida: permite asociar cada dato a una clave con significado, haciendo el código más legible y fácil de mantener.
-    </p>
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./04-metodos-y-buenas-practicas.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Ejercicios Tema 6</a>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
+    </div>
   </section>
 
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./04-metodos-y-buenas-practicas.html">Anterior</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Ejercicios Tema 6</a>
-  </div>
-
-  <button class="btn btn-primary" onclick="completeTopic('6.5')">Marcar como completado</button>
-
+  <script src="../topic-completion.js"></script>
   <script>
-const TOPIC_ID = "6.5";
-const NEXT_URL = "py-tema6-ejercicios.html";
-
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
-
-const nextBtn = document.getElementById("nextBtn");
-
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
-
-    if (!token || !nextBtn) return;
-
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
+    const topicCompletion = initTopicCompletion({
+      topicId: "6.5",
+      nextUrl: "./py-tema6-ejercicios.html"
     });
 
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
-  }
-}
-
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
-    }
-
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
+    document.getElementById("completeBtn").addEventListener("click", () => {
+      topicCompletion.completeTopic();
     });
-
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
-    }
-
-    alert("Tema completado 🎉");
-
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
-  }
-}
-
-unlockNextIfCompleted();
-</script>
+  </script>
 
 </main>
 </body>

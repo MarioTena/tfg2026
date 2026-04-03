@@ -7,12 +7,113 @@
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 7 · Strings</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 7 · Python</h1>
-  <p>7.2 · Indexación y slicing: acceder a letras y fragmentos de texto</p>
+  <span class="mission-tag">Misión 7.2</span>
+  <h1>Indexación y slicing</h1>
+  <p>Aprende a acceder a letras concretas y a extraer fragmentos de texto con precisión.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 7 · Strings</div>
+        <div class="mini-note">Nivel inicial · 12-15 min · Posiciones y fragmentos</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Objetivo</span>
+        <span class="badge green">Índices</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 40%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué vas a entender hoy</h2>
+        <p class="exercise-subtitle">
+          Si un string es una secuencia, entonces puedes acceder a posiciones concretas y extraer partes del texto igual que hacías con otras estructuras.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Objetivo</span>
+        <span class="badge green">Slicing</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué problema resuelve</h3>
+        <p>
+          Muchas veces no necesitas todo el texto, sino una letra concreta, el último carácter o un fragmento.
+          La indexación y el slicing sirven para eso.
+        </p>
+
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3>Primera letra</h3>
+            <p>Acceder a una posición concreta.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Última letra</h3>
+            <p>Acceder usando índices negativos.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Fragmento</h3>
+            <p>Extraer una parte del texto con slicing.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Control</h3>
+            <p>Trabajar con el texto con más precisión.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          Idea clave: acceder a una posición y extraer un fragmento no son exactamente la misma operación.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes vigilar</h3>
+        <ul>
+          <li>los índices empiezan en 0</li>
+          <li>los índices negativos cuentan desde el final</li>
+          <li>el slicing no incluye el límite final</li>
+          <li>un índice fuera de rango provoca error</li>
+        </ul>
+
+        <div class="challenge">
+          <strong>Piensa así:</strong><br />
+          acceder es pedir una posición exacta; hacer slicing es pedir un tramo del texto.
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section class="panel">
     <h2>Acceder a una posición concreta</h2>
@@ -46,7 +147,7 @@ print(texto[-2])</code></pre>
   </section>
 
   <section class="panel">
-    <h2>⚠️ Error típico: índice fuera de rango</h2>
+    <h2>Error típico: índice fuera de rango</h2>
     <pre><code>texto = "sol"
 print(texto[3])</code></pre>
 
@@ -112,63 +213,146 @@ print(texto[::-1])</code></pre>
   </section>
 
   <section class="panel">
-    <h2>💭 Piensa antes de ejecutar</h2>
-    <pre><code>palabra = "programa"
+    <h2>Cómo pensar indexación y slicing antes de escribirlos</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Paso 1</h3>
+        <p>Decide si quieres un carácter o un fragmento.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 2</h3>
+        <p>Si quieres una posición exacta, usa un índice.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 3</h3>
+        <p>Si quieres un tramo, usa slicing.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 4</h3>
+        <p>Recuerda que el límite final del slicing no se incluye.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Piensa antes de ejecutar</h2>
+        <p class="exercise-subtitle">Antes de lanzar el código, sigue mentalmente qué devuelve cada acceso.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Código</h3>
+        <pre><code>palabra = "programa"
 print(palabra[0])
 print(palabra[-1])
 print(palabra[2:6])</code></pre>
+      </div>
 
-    <ul>
-      <li>¿qué devuelve cada línea?</li>
-      <li>¿por qué el límite final no se incluye?</li>
-    </ul>
+      <div class="exercise-block">
+        <h3>Preguntas</h3>
+        <ul>
+          <li>¿qué devuelve cada línea?</li>
+          <li>¿por qué el límite final no se incluye?</li>
+        </ul>
+
+        <div class="mini-note">
+          Pista: <code>[2:6]</code> empieza en 2 y llega solo hasta antes de 6.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto guiado</h2>
+        <p class="exercise-subtitle">Ahora toca combinar acceso a posiciones y extracción de fragmentos.</p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Reto</span>
+        <span class="badge green">Muy fácil</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Tu misión</h3>
+        <p>
+          Guarda tu nombre en una variable y muestra:
+        </p>
+        <ul>
+          <li>la primera letra</li>
+          <li>la última letra</li>
+          <li>las tres primeras letras</li>
+        </ul>
+
+        <div class="exercise-actions">
+          <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Resolver en playground</a>
+          <button class="btn btn-secondary btn-sm" type="button" onclick="document.getElementById('solucion-reto').open = true;">
+            Ver solución
+          </button>
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Pista</h3>
+        <p>
+          La primera y la última letra se obtienen con índices; el fragmento inicial se obtiene con slicing.
+        </p>
+
+        <details id="solucion-reto" class="theory-dropdown">
+          <summary>Mostrar solución</summary>
+          <div class="theory-dropdown-content">
+            <pre><code>nombre = "Carlos"
+print(nombre[0])
+print(nombre[-1])
+print(nombre[:3])</code></pre>
+          </div>
+        </details>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
     <h2>Errores frecuentes</h2>
-    <ul>
-      <li>pensar que el primer índice es 1</li>
-      <li>olvidar que el slicing no incluye el final</li>
-      <li>usar índices fuera de rango</li>
-      <li>confundir un carácter con una subcadena</li>
-    </ul>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Error 1</h3>
+        <p>Pensar que el primer índice es 1.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 2</h3>
+        <p>Olvidar que el slicing no incluye el final.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 3</h3>
+        <p>Usar índices fuera de rango.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 4</h3>
+        <p>Confundir un carácter con una subcadena.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Mini-reto guiado</h2>
+    <h2>Siguiente paso</h2>
     <p>
-      Guarda tu nombre en una variable y muestra:
+      Ya sabes acceder a posiciones y fragmentos. Lo siguiente es usar métodos de strings para transformar y analizar texto.
     </p>
-    <ul>
-      <li>la primera letra</li>
-      <li>la última letra</li>
-      <li>las tres primeras letras</li>
-    </ul>
 
-    <pre><code>nombre = "Carlos"
-print(nombre[0])
-print(nombre[-1])
-print(nombre[:3])</code></pre>
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./01-strings-como-secuencias.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <button class="btn btn-primary" onclick="completeTopic('7.2')">Marcar como completado</button>
+    </div>
   </section>
-
-  <section class="panel">
-    <h2>Pregunta de entrevista</h2>
-    <p>
-      ¿Qué diferencia hay entre <code>texto[2]</code> y <code>texto[2:3]</code>?
-    </p>
-
-    <p>
-      Respuesta sólida: ambos apuntan a la misma posición, pero el primero devuelve un carácter y el segundo devuelve una subcadena de longitud 1.
-    </p>
-  </section>
-
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./01-strings-como-secuencias.html">Anterior</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
-
-  <button class="btn btn-primary" onclick="completeTopic('7.2')">Marcar como completado</button>
 
   <script>
 const TOPIC_ID = "7.2";

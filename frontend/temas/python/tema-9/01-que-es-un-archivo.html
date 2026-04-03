@@ -6,32 +6,136 @@
   <link rel="stylesheet" href="../../../styles.css" />
 </head>
 <body>
+
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 9 · Archivos</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 9 · Python</h1>
-  <p>9.1 · Qué es un archivo: guardar datos fuera del programa</p>
+  <span class="mission-tag">Misión 9.1</span>
+  <h1>Qué es un archivo</h1>
+  <p>Aprende por qué los archivos permiten guardar información fuera del programa y reutilizarla más tarde.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 9 · Archivos</div>
+        <div class="mini-note">Nivel inicial · 10-15 min · Persistencia de datos</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Archivos</span>
+        <span class="badge green">Persistencia</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 20%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
-  <section class="panel">
-    <h2>¿Qué problema resuelven los archivos?</h2>
-    <p>
-      Hasta ahora, los datos vivían en variables mientras el programa se ejecutaba.
-      Pero cuando el programa termina, esas variables desaparecen.
-    </p>
 
-    <div class="callout">
-      Un archivo permite guardar información de forma persistente para reutilizarla más tarde.
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué vas a entender hoy</h2>
+        <p class="exercise-subtitle">
+          Un archivo permite guardar datos fuera del programa para que no desaparezcan cuando termina la ejecución.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Objetivo</span>
+        <span class="badge green">Guardar fuera</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué problema resuelve</h3>
+        <p>
+          Hasta ahora los datos vivían en variables temporales. Cuando el programa se cerraba,
+          toda esa información desaparecía. Los archivos permiten conservarla para usarla después.
+        </p>
+
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3>Notas</h3>
+            <p>Guardar resultados o apuntes en texto.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Configuración</h3>
+            <p>Leer opciones que el programa necesita al arrancar.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Historial</h3>
+            <p>Registrar acciones o eventos importantes.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Resultados</h3>
+            <p>Conservar la salida de un programa para reutilizarla.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          Idea clave: una variable dura mientras el programa vive; un archivo puede durar mucho más.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes vigilar</h3>
+        <ul>
+          <li>un archivo guarda datos fuera de la memoria del programa</li>
+          <li>para trabajar con él debes abrirlo</li>
+          <li>después debes leer o escribir</li>
+          <li>al terminar, conviene cerrarlo correctamente</li>
+        </ul>
+
+        <div class="challenge">
+          <strong>Piensa así:</strong><br />
+          trabajar con archivos es hacer que los datos sobrevivan al final del programa.
+        </div>
+      </div>
     </div>
   </section>
 
   <section class="panel">
     <h2>Ejemplos reales</h2>
-    <ul>
-      <li>guardar notas en un archivo de texto</li>
-      <li>leer configuraciones</li>
-      <li>registrar logs</li>
-      <li>guardar resultados de un programa</li>
-    </ul>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Guardar notas</h3>
+        <p>Escribir resultados en un archivo de texto.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Leer configuración</h3>
+        <p>Cargar idioma, tema u otras opciones.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Registrar logs</h3>
+        <p>Conservar eventos o mensajes del sistema.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Exportar resultados</h3>
+        <p>Guardar información para usarla más tarde.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
@@ -39,11 +143,16 @@
     <p>
       Para trabajar con archivos, normalmente sigues este patrón:
     </p>
+
     <ol>
       <li>abrir el archivo</li>
-      <li>leer o escribir</li>
-      <li>cerrarlo</li>
+      <li>leer o escribir en él</li>
+      <li>cerrarlo correctamente</li>
     </ol>
+
+    <div class="callout">
+      Es un flujo muy repetido: abrir → trabajar → cerrar.
+    </div>
   </section>
 
   <section class="panel">
@@ -53,36 +162,192 @@
     <p>
       Esto abre el archivo en modo lectura.
     </p>
+
+    <p>
+      El primer dato es el nombre o ruta del archivo. El segundo indica el modo en que quieres abrirlo.
+    </p>
   </section>
 
   <section class="panel">
     <h2>Modos habituales</h2>
-    <ul>
-      <li><code>"r"</code> leer</li>
-      <li><code>"w"</code> escribir sobrescribiendo</li>
-      <li><code>"a"</code> añadir al final</li>
-    </ul>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3><code>"r"</code></h3>
+        <p>Leer el contenido.</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>"w"</code></h3>
+        <p>Escribir sobrescribiendo lo anterior.</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>"a"</code></h3>
+        <p>Añadir contenido al final.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Elección correcta</h3>
+        <p>Elegir mal el modo puede hacer que pierdas datos.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Mini-reto guiado</h2>
-    <p>
-      Identifica qué modo usarías en cada caso:
-    </p>
-    <ul>
-      <li>leer una lista de tareas</li>
-      <li>crear un informe nuevo</li>
-      <li>añadir una línea al historial</li>
-    </ul>
+    <h2>Cómo pensar el modo correcto antes de abrir un archivo</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Paso 1</h3>
+        <p>Pregúntate si solo quieres leer.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 2</h3>
+        <p>Pregúntate si quieres crear un contenido nuevo.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 3</h3>
+        <p>Pregúntate si debes conservar lo anterior.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 4</h3>
+        <p>Elige entre <code>r</code>, <code>w</code> o <code>a</code> según esa intención.</p>
+      </div>
+    </div>
   </section>
 
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./index.html">Índice tema</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Piensa antes de ejecutar</h2>
+        <p class="exercise-subtitle">Aquí la clave no es la sintaxis, sino entender qué quieres hacer con el archivo antes de abrirlo.</p>
+      </div>
+    </div>
 
-  <button class="btn btn-primary" onclick="completeTopic('9.1')">Marcar como completado</button>
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Situaciones</h3>
+        <ul>
+          <li>leer una lista de tareas</li>
+          <li>crear un informe nuevo</li>
+          <li>añadir una línea al historial</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Preguntas</h3>
+        <ul>
+          <li>¿en cuál usarías <code>r</code>?</li>
+          <li>¿en cuál usarías <code>w</code>?</li>
+          <li>¿en cuál usarías <code>a</code>?</li>
+        </ul>
+
+        <div class="mini-note">
+          Pista: piensa si quieres leer, reemplazar o añadir.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto guiado</h2>
+        <p class="exercise-subtitle">Ahora toca asociar cada necesidad con el modo de apertura correcto.</p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Reto</span>
+        <span class="badge green">Muy fácil</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Tu misión</h3>
+        <p>
+          Identifica qué modo usarías en cada caso:
+        </p>
+        <ul>
+          <li>leer una lista de tareas</li>
+          <li>crear un informe nuevo</li>
+          <li>añadir una línea al historial</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Solución razonada</h3>
+        <ul>
+          <li><strong>leer una lista de tareas</strong> → <code>"r"</code></li>
+          <li><strong>crear un informe nuevo</strong> → <code>"w"</code></li>
+          <li><strong>añadir una línea al historial</strong> → <code>"a"</code></li>
+        </ul>
+
+        <div class="callout">
+          La clave está en pensar si quieres leer, reemplazar o conservar lo que ya había.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Errores frecuentes</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Error 1</h3>
+        <p>Pensar que los datos de variables duran para siempre.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 2</h3>
+        <p>No distinguir entre leer y escribir.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 3</h3>
+        <p>Elegir un modo incorrecto al abrir el archivo.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 4</h3>
+        <p>No entender que el archivo vive fuera del programa.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Buenas prácticas</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Piensa antes de abrir</h3>
+        <p>Define bien si vas a leer, crear o añadir.</p>
+      </div>
+      <div class="theory-card">
+        <h3>No abras por rutina</h3>
+        <p>El modo correcto depende del objetivo.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Trata el archivo con cuidado</h3>
+        <p>Puede contener información importante que no quieres perder.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Entiende la persistencia</h3>
+        <p>Ese es el valor real de trabajar con archivos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Siguiente paso</h2>
+    <p>
+      Ya sabes qué es un archivo y para qué sirve. Lo siguiente es aprender a leer su contenido correctamente.
+    </p>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./index.html">Índice tema</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <button class="btn btn-primary" onclick="completeTopic('9.1')">Marcar como completado</button>
+    </div>
+  </section>
+
   <script>
 const TOPIC_ID = "9.1";
 const NEXT_URL = "./02-leer-archivos.html";

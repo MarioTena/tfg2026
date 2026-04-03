@@ -7,29 +7,132 @@
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 3 · Bucles</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 3 · Python</h1>
-  <p>3.3 · Bucle while: repetir mientras una condición sea verdadera</p>
+  <span class="mission-tag">Misión 3.3</span>
+  <h1>Bucle while</h1>
+  <p>Aprende a repetir un bloque de código mientras una condición siga siendo verdadera.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 3 · Bucles</div>
+        <div class="mini-note">Nivel inicial · 15-18 min · Repetición por condición</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">while</span>
+        <span class="badge green">Condición</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 60%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
 
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué vas a entender hoy</h2>
+        <p class="exercise-subtitle">
+          El bucle <code>while</code> repite código mientras una condición sea verdadera.
+          Se usa cuando lo importante no es recorrer una secuencia, sino seguir mientras ocurra algo.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Objetivo</span>
+        <span class="badge green">Control</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué problema resuelve</h3>
+        <p>
+          A veces no sabes exactamente cuántas repeticiones habrá.
+          Lo que sí sabes es que el proceso debe continuar mientras se cumpla una condición.
+        </p>
+
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3>Contador</h3>
+            <p>Seguir mientras un valor no supere un límite.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Validación</h3>
+            <p>Repetir hasta que el usuario escriba una respuesta válida.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Espera</h3>
+            <p>Continuar hasta que ocurra un evento o cambie un estado.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Condición</h3>
+            <p>El bucle depende de una pregunta lógica, no de una secuencia prefijada.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          Idea clave: <code>while</code> no piensa en “cuántas veces”, sino en “mientras esto siga siendo cierto”.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes vigilar</h3>
+        <ul>
+          <li>cuál es la condición del bucle</li>
+          <li>qué variable cambia dentro</li>
+          <li>cómo se alcanza la salida</li>
+          <li>si existe riesgo de bucle infinito</li>
+        </ul>
+
+        <div class="challenge">
+          <strong>Piensa así:</strong><br />
+          casi todo <code>while</code> necesita algo que cambie en cada vuelta. Si nada cambia, no terminará.
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="panel">
-    <h2>¿Qué hace un <code>while</code>?</h2>
-    <p>
-      El bucle <code>while</code> repite un bloque de código mientras una condición sea verdadera.
-      Se usa cuando no piensas tanto en “recorrer una secuencia”, sino en “seguir mientras ocurra algo”.
-    </p>
+    <h2>Qué hace un <code>while</code></h2>
 
     <pre><code>contador = 1
 
 while contador <= 5:
     print(contador)
     contador = contador + 1</code></pre>
+
+    <p>
+      El bloque se repite mientras <code>contador <= 5</code> siga siendo verdadero.
+    </p>
   </section>
 
   <section class="panel">
     <h2>Sintaxis básica</h2>
+
     <pre><code>while condicion:
     bloque</code></pre>
 
@@ -39,19 +142,54 @@ while contador <= 5:
   </section>
 
   <section class="panel">
-    <h2>La idea crítica del <code>while</code></h2>
-    <p>
-      En casi todo <code>while</code> debe existir algo que cambie durante el bucle.
-      Si nada cambia y la condición sigue siendo verdadera, el bucle no termina.
-    </p>
+    <h2>Dónde aparece <code>while</code> en problemas reales</h2>
 
-    <div class="callout">
-      El mayor peligro de <code>while</code> es el bucle infinito.
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Validación</h3>
+        <p>Repetir hasta que el usuario introduzca un dato correcto.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Esperas</h3>
+        <p>Seguir hasta que ocurra un evento o cambie una condición.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Contadores</h3>
+        <p>Avanzar mientras no se alcance un límite.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Procesos abiertos</h3>
+        <p>Casos donde no sabes exactamente cuántas iteraciones habrá.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>La idea crítica del <code>while</code></h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Condición</h3>
+        <p>El bucle sigue mientras la condición sea <code>True</code>.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Cambio</h3>
+        <p>Dentro del bucle suele haber una variable que cambia.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Salida</h3>
+        <p>Ese cambio debe acabar haciendo que la condición sea falsa.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Peligro</h3>
+        <p>Si no ocurre ese cambio, puedes crear un bucle infinito.</p>
+      </div>
     </div>
   </section>
 
   <section class="panel">
     <h2>Ejemplo paso a paso</h2>
+
     <pre><code>contador = 1
 
 while contador <= 3:
@@ -61,25 +199,39 @@ while contador <= 3:
 print("Fin")</code></pre>
 
     <p>
-      Iteración 1: contador vale 1.
-      Iteración 2: contador vale 2.
-      Iteración 3: contador vale 3.
+      Iteración 1: contador vale 1.<br />
+      Iteración 2: contador vale 2.<br />
+      Iteración 3: contador vale 3.<br />
       Después pasa a 4, la condición deja de cumplirse y el bucle termina.
     </p>
   </section>
 
   <section class="panel">
     <h2>Cuándo usar <code>while</code></h2>
-    <ul>
-      <li>cuando no sabes cuántas repeticiones habrá</li>
-      <li>cuando dependes de una condición cambiante</li>
-      <li>cuando validas entradas</li>
-      <li>cuando esperas a que ocurra algo</li>
-    </ul>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Repeticiones no cerradas</h3>
+        <p>Cuando no sabes de antemano cuántas vueltas habrá.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Dependencia de estado</h3>
+        <p>Cuando repites mientras algo siga pasando.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Validación</h3>
+        <p>Cuando pides datos hasta que la respuesta sea correcta.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Esperas</h3>
+        <p>Cuando el proceso continúa hasta que cambie una condición.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
     <h2>Ejemplo clásico: pedir hasta que sea válido</h2>
+
     <pre><code>respuesta = ""
 
 while respuesta != "si":
@@ -93,29 +245,7 @@ print("Continuamos")</code></pre>
   </section>
 
   <section class="panel">
-    <h2>⚠️ Bucle infinito</h2>
-    <pre><code>contador = 1
-
-while contador <= 5:
-    print(contador)</code></pre>
-
-    <p>
-      Este código nunca actualiza <code>contador</code>.
-      Como la condición sigue siendo verdadera, el bucle no termina.
-    </p>
-
-    <pre><code>contador = 1
-
-while contador <= 5:
-    print(contador)
-    contador = contador + 1</code></pre>
-  </section>
-
-  <section class="panel">
     <h2>Contadores y acumuladores en <code>while</code></h2>
-    <p>
-      Igual que en <code>for</code>, puedes usar variables que cuentan o acumulan información.
-    </p>
 
     <pre><code>contador = 1
 suma = 0
@@ -125,162 +255,279 @@ while contador <= 4:
     contador = contador + 1
 
 print(suma)</code></pre>
+
+    <p>
+      Igual que en <code>for</code>, aquí puedes contar, sumar o construir resultados paso a paso.
+    </p>
   </section>
 
   <section class="panel">
     <h2><code>for</code> vs <code>while</code></h2>
-    <ul>
-      <li><code>for</code>: cuando recorres algo o tienes una repetición más estructurada</li>
-      <li><code>while</code>: cuando dependes de una condición y el número de iteraciones no está tan claro</li>
-    </ul>
 
-    <p>
-      Ambos pueden resolver algunos problemas similares, pero no siempre tienen la misma claridad.
-    </p>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3><code>for</code></h3>
+        <p>Mejor cuando recorres algo o tienes una repetición más estructurada.</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>while</code></h3>
+        <p>Mejor cuando dependes de una condición cambiante.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Idea práctica</h3>
+        <p>A veces ambos sirven, pero uno puede ser más claro que el otro.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>💭 Piensa antes de ejecutar</h2>
-    <pre><code>contador = 3
+    <h2>Cómo pensar un <code>while</code> antes de escribirlo</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Paso 1</h3>
+        <p>Define la condición que mantiene vivo el bucle.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 2</h3>
+        <p>Identifica qué variable o estado cambia dentro.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 3</h3>
+        <p>Comprueba cómo se alcanza la salida.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 4</h3>
+        <p>Pregúntate si puede quedarse infinito por error.</p>
+      </div>
+    </div>
+
+    <div class="challenge">
+      Si no puedes explicar por qué el <code>while</code> termina, no deberías ejecutarlo todavía.
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Piensa antes de ejecutar</h2>
+        <p class="exercise-subtitle">Visualiza el contador y la condición en cada vuelta.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Código</h3>
+        <pre><code>contador = 3
 
 while contador > 0:
     print(contador)
     contador = contador - 1</code></pre>
+      </div>
 
-    <ul>
-      <li>¿qué imprime?</li>
-      <li>¿cuántas iteraciones hace?</li>
-      <li>¿cuál es el valor final de <code>contador</code>?</li>
-    </ul>
+      <div class="exercise-block">
+        <h3>Preguntas</h3>
+        <ul>
+          <li>¿qué imprime?</li>
+          <li>¿cuántas iteraciones hace?</li>
+          <li>¿cuál es el valor final de <code>contador</code>?</li>
+        </ul>
+
+        <div class="mini-note">
+          En <code>while</code>, seguir la variable de control es obligatorio para no perderte.
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section class="panel">
-    <h2>Errores frecuentes</h2>
-    <ul>
-      <li>olvidar actualizar la variable de control</li>
-      <li>escribir una condición que nunca deja de cumplirse</li>
-      <li>cambiar la variable equivocada</li>
-      <li>no pensar en el valor final del contador</li>
-    </ul>
-  </section>
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto guiado</h2>
+        <p class="exercise-subtitle">Usa <code>while</code> para generar una secuencia controlada.</p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Reto</span>
+        <span class="badge green">Fácil</span>
+      </div>
+    </div>
 
-  <section class="panel">
-    <h2>Buenas prácticas con <code>while</code></h2>
-    <ul>
-      <li>deja clara la condición</li>
-      <li>asegúrate de que algo cambia dentro del bucle</li>
-      <li>prueba el caso de salida</li>
-      <li>si el bucle es complejo, añade mensajes de seguimiento mientras aprendes</li>
-    </ul>
-  </section>
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Tu misión</h3>
+        <p>
+          Imprime los números pares del 2 al 10 usando <code>while</code>.
+        </p>
 
-  <section class="panel">
-    <h2>Mini-reto guiado</h2>
-    <p>
-      Imprime los números pares del 2 al 10 usando <code>while</code>.
-    </p>
+        <div class="exercise-actions">
+          <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Resolver en playground</a>
+          <button class="btn btn-secondary btn-sm" type="button" onclick="document.getElementById('solucion-reto').open = true;">
+            Ver solución
+          </button>
+        </div>
+      </div>
 
-    <pre><code>numero = 2
+      <div class="exercise-block">
+        <h3>Pista</h3>
+        <p>
+          Empieza por 2 y ve sumando 2 en cada iteración.
+        </p>
+
+        <details id="solucion-reto" class="theory-dropdown">
+          <summary>Mostrar solución</summary>
+          <div class="theory-dropdown-content">
+            <pre><code>numero = 2
 
 while numero <= 10:
     print(numero)
     numero = numero + 2</code></pre>
+          </div>
+        </details>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Reto de entrevista</h2>
-    <p>
-      ¿Por qué este código entra en un bucle infinito?
-    </p>
+    <h2>Errores frecuentes</h2>
 
-    <pre><code>x = 1
-while x < 5:
-    print(x)</code></pre>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Error 1</h3>
+        <p>Olvidar actualizar la variable de control.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 2</h3>
+        <p>Escribir una condición que nunca deja de cumplirse.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 3</h3>
+        <p>Cambiar la variable equivocada dentro del bucle.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 4</h3>
+        <p>No pensar en el valor final del contador.</p>
+      </div>
+    </div>
+
+    <pre><code>contador = 1
+
+while contador <= 5:
+    print(contador)</code></pre>
 
     <p>
-      Respuesta sólida: porque <code>x</code> nunca cambia; por tanto la condición <code>x &lt; 5</code> siempre sigue siendo verdadera.
+      Este código entra en bucle infinito porque <code>contador</code> nunca cambia.
     </p>
   </section>
 
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./02-for.html">Anterior</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
+  <section class="panel">
+    <h2>Buenas prácticas</h2>
 
-  <button class="btn btn-primary" onclick="completeTopic('3.3')">Marcar como completado</button>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Condición clara</h3>
+        <p>La salida del bucle debe ser comprensible a simple vista.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Cambio real</h3>
+        <p>Asegúrate de que algo cambie dentro del bucle.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Prueba la salida</h3>
+        <p>Comprueba el momento en el que la condición deja de cumplirse.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Depuración</h3>
+        <p>Mientras aprendes, imprime valores intermedios si el comportamiento no te cuadra.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="panel">
+    <h2>Siguiente paso</h2>
+    <p>
+      Ya entiendes <code>while</code>. Lo siguiente es aprender a controlar mejor el flujo con <code>break</code> y <code>continue</code>.
+    </p>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./02-for.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <button class="btn btn-primary" onclick="completeTopic('3.3')">Marcar como completado</button>
+    </div>
+  </section>
 
   <script>
-const TOPIC_ID = "3.3";
-const NEXT_URL = "./04-break-continue.html";
+    const TOPIC_ID = "3.3";
+    const NEXT_URL = "./04-break-continue.html";
 
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+    const API_URL = "http://localhost:3000/api/progress/python";
+    const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
 
-const nextBtn = document.getElementById("nextBtn");
+    const nextBtn = document.getElementById("nextBtn");
 
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
+    async function unlockNextIfCompleted() {
+      try {
+        const token = localStorage.getItem("token");
 
-    if (!token || !nextBtn) return;
+        if (!token || !nextBtn) return;
 
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
+        const res = await fetch(API_URL, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+
+        if (!res.ok) return;
+
+        const data = await res.json();
+        const completed = data?.progress?.completedTopics || [];
+
+        if (completed.includes(TOPIC_ID)) {
+          nextBtn.classList.remove("btn-disabled");
+          nextBtn.href = NEXT_URL;
+        }
+      } catch (error) {
+        console.error("Error comprobando progreso:", error);
       }
-    });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
-  }
-}
-
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
     }
 
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
-    });
+    async function completeTopic(topicId) {
+      try {
+        const token = localStorage.getItem("token");
 
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
+        if (!token) {
+          alert("Debes iniciar sesión para guardar el progreso");
+          return;
+        }
+
+        const res = await fetch(COMPLETE_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify({ topic: topicId })
+        });
+
+        if (!res.ok) {
+          throw new Error(`Error HTTP: ${res.status}`);
+        }
+
+        alert("Tema completado 🎉");
+
+        if (nextBtn) {
+          nextBtn.classList.remove("btn-disabled");
+          nextBtn.href = NEXT_URL;
+        }
+      } catch (error) {
+        console.error("Error marcando tema como completado:", error);
+        alert("No se pudo guardar el progreso");
+      }
     }
 
-    alert("Tema completado 🎉");
-
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
-  }
-}
-
-unlockNextIfCompleted();
-</script>
+    unlockNextIfCompleted();
+  </script>
 
 </main>
 </body>

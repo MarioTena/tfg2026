@@ -8,42 +8,110 @@
 <body>
 
 <header class="header">
-  <h1>Tema 7 · Python</h1>
-  <p>7.5 · Mini retos: integrar strings, bucles y métodos</p>
+  <span class="mission-tag">Zona práctica 7.5</span>
+  <h1>Mini-retos de strings</h1>
+  <p>Combina strings, bucles y métodos para trabajar con texto de una forma mucho más útil y precisa.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 7 · Strings intermedios</div>
+        <div class="mini-note">6 mini-retos · práctica guiada · dificultad inicial-media</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Python</span>
+        <span class="badge green">Entrenamiento</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 82%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#retos">Empezar mini-retos</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
 
-  <section class="panel">
-    <h2>Objetivo de esta parte</h2>
-    <p>
-      Aquí vas a combinar indexación, slicing, métodos y recorridos para resolver problemas pequeños pero útiles.
-    </p>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué entrenas aquí</h2>
+        <p class="exercise-subtitle">
+          Aquí vas a combinar indexación, slicing, métodos y recorridos para resolver problemas pequeños pero útiles.
+        </p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Texto</span>
+        <span class="badge blue">Slicing</span>
+        <span class="badge green">Métodos</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Objetivo</h3>
+        <p>
+          Vas a practicar cómo transformar, limpiar, dividir y analizar texto según el problema.
+        </p>
+
+        <div class="callout">
+          Idea clave: no siempre trabajas con texto entero; a veces trabajas con caracteres, otras con palabras y otras con fragmentos.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Cómo usar esta pantalla</h3>
+        <ul>
+          <li>lee el reto</li>
+          <li>decide si necesitas carácter, palabra o fragmento</li>
+          <li>identifica si te conviene un método o un bucle</li>
+          <li>pruébalo en el playground y cambia textos</li>
+        </ul>
+
+        <div class="challenge">
+          Antes de escribir, pregúntate: ¿quiero extraer, transformar, contar o dividir el texto?
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section class="panel">
-    <h2>Mini-reto 1 · Primera y última letra</h2>
-    <pre><code>palabra = "programa"
+  <section id="retos" class="panel">
+    <h2>Misiones rápidas</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Mini-reto 1 · Primera y última letra</h3>
+        <p>Accede a posiciones concretas del texto.</p>
+        <pre><code>palabra = "programa"
 print(palabra[0])
 print(palabra[-1])</code></pre>
-  </section>
+      </div>
 
-  <section class="panel">
-    <h2>Mini-reto 2 · Texto invertido</h2>
-    <pre><code>texto = "python"
+      <div class="theory-card">
+        <h3>Mini-reto 2 · Texto invertido</h3>
+        <p>Usa slicing para cambiar el orden.</p>
+        <pre><code>texto = "python"
 print(texto[::-1])</code></pre>
-  </section>
+      </div>
 
-  <section class="panel">
-    <h2>Mini-reto 3 · Normalizar nombre</h2>
-    <pre><code>nombre = "   ANA   "
+      <div class="theory-card">
+        <h3>Mini-reto 3 · Normalizar nombre</h3>
+        <p>Limpia espacios y unifica mayúsculas/minúsculas.</p>
+        <pre><code>nombre = "   ANA   "
 nombre = nombre.strip().lower()
 print(nombre)</code></pre>
-  </section>
+      </div>
 
-  <section class="panel">
-    <h2>Mini-reto 4 · Contar vocales</h2>
-    <pre><code>texto = "Programacion"
+      <div class="theory-card">
+        <h3>Mini-reto 4 · Contar vocales</h3>
+        <p>Combina recorrido y condición sobre texto.</p>
+        <pre><code>texto = "Programacion"
 contador = 0
 
 for letra in texto.lower():
@@ -51,123 +119,87 @@ for letra in texto.lower():
         contador = contador + 1
 
 print(contador)</code></pre>
-  </section>
+      </div>
 
-  <section class="panel">
-    <h2>Mini-reto 5 · Separar palabras</h2>
-    <pre><code>frase = "Python es muy util"
+      <div class="theory-card">
+        <h3>Mini-reto 5 · Separar palabras</h3>
+        <p>Divide una frase en una lista de palabras.</p>
+        <pre><code>frase = "Python es muy util"
 palabras = frase.split()
 print(palabras)</code></pre>
-  </section>
+      </div>
 
-  <section class="panel">
-    <h2>Mini-reto 6 · Reemplazar texto</h2>
-    <pre><code>frase = "Me gusta Java"
+      <div class="theory-card">
+        <h3>Mini-reto 6 · Reemplazar texto</h3>
+        <p>Transforma una parte concreta del mensaje.</p>
+        <pre><code>frase = "Me gusta Java"
 frase = frase.replace("Java", "Python")
 print(frase)</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Cómo pensar este tipo de ejercicios</h2>
+        <p class="exercise-subtitle">Antes de escribir, decide bien el nivel al que vas a trabajar el texto.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Paso a paso</h3>
+        <ol>
+          <li>decide si trabajas a nivel de carácter o de palabra</li>
+          <li>si el texto es irregular, normalízalo primero</li>
+          <li>si necesitas contar, crea un acumulador</li>
+          <li>si necesitas extraer una parte, piensa en slicing</li>
+          <li>si necesitas transformar, revisa si ya existe un método adecuado</li>
+        </ol>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Regla útil</h3>
+        <div class="challenge">
+          Si Python ya trae un método que resuelve parte del problema, úsalo antes de complicarte con lógica innecesaria.
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Cómo pensar este tipo de ejercicios</h2>
-    <ol>
-      <li>decide si trabajas a nivel de carácter o de palabra</li>
-      <li>si el texto es irregular, normalízalo primero</li>
-      <li>si necesitas contar, crea un acumulador</li>
-      <li>si necesitas extraer una parte, piensa en slicing</li>
-      <li>si necesitas transformar, revisa si ya existe un método adecuado</li>
-    </ol>
+    <h2>Pregunta típica de entrevista</h2>
+    <div class="challenge">
+      <p><strong>Pregunta:</strong> ¿Qué diferencia hay entre recorrer un string carácter a carácter y usar <code>split()</code>?</p>
+      <p><strong>Respuesta sólida:</strong> recorrer un string trabaja a nivel de caracteres; <code>split()</code> lo divide en partes, normalmente palabras, y permite analizarlo a otro nivel.</p>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Pregunta de entrevista</h2>
-    <p>
-      ¿Qué diferencia hay entre recorrer un string carácter a carácter y usar <code>split()</code>?
-    </p>
+    <h2>Siguiente paso</h2>
+    <p>Ya has combinado slicing, métodos y análisis de texto. Ahora toca resolver ejercicios por tu cuenta.</p>
 
-    <p>
-      Respuesta sólida: recorrer un string trabaja a nivel de caracteres; <code>split()</code> lo divide en partes, normalmente palabras, y permite analizarlo a otro nivel.
-    </p>
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./04-recorrer-y-analizar-texto.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Ejercicios Tema 7</a>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
+    </div>
   </section>
 
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./04-recorrer-y-analizar-texto.html">Anterior</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Ejercicios Tema 7</a>
-  </div>
-
-  <button class="btn btn-primary" onclick="completeTopic('7.5')">Marcar como completado</button>
-
+  <script src="../topic-completion.js"></script>
   <script>
-const TOPIC_ID = "7.5";
-const NEXT_URL = "./py-tema7-ejercicios.html";
-
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
-
-const nextBtn = document.getElementById("nextBtn");
-
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
-
-    if (!token || !nextBtn) return;
-
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
+    const topicCompletion = initTopicCompletion({
+      topicId: "7.5",
+      nextUrl: "./py-tema7-ejercicios.html"
     });
 
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
-  }
-}
-
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
-    }
-
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
+    document.getElementById("completeBtn").addEventListener("click", () => {
+      topicCompletion.completeTopic();
     });
+  </script>
 
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
-    }
-
-    alert("Tema completado 🎉");
-
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
-  }
-}
-
-unlockNextIfCompleted();
-</script>
 </main>
 </body>
 </html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 2.4 – Mini retos</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 2 · Condicionales</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
+<header class="header">
+  <span class="mission-tag">Zona práctica 2.4</span>
+  <h1>Mini-retos de condicionales</h1>
+  <p>Combina comparaciones, booleanos y operadores lógicos para tomar decisiones claras en situaciones distintas.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 2 · Condicionales en Python</div>
+        <div class="mini-note">6 mini-retos · práctica guiada · dificultad inicial</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Python</span>
+        <span class="badge green">Entrenamiento</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 80%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#retos">Empezar mini-retos</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
+</header>
+
+<main class="main-container single-column">
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué entrenas aquí</h2>
+        <p class="exercise-subtitle">
+          Aquí dejas de usar condiciones aisladas y empiezas a construir lógica completa y ordenada.
+        </p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">if / elif / else</span>
+        <span class="badge blue">Booleanos</span>
+        <span class="badge green">Lógica</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Objetivo</h3>
+        <p>
+          Estos retos te ayudan a decidir bien qué condición va primero, cómo combinar reglas y cómo separar decisiones distintas.
+        </p>
+
+        <div class="callout">
+          Idea clave: en un condicional, el orden influye directamente en el resultado.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Cómo usar esta pantalla</h3>
+        <ul>
+          <li>lee el reto</li>
+          <li>identifica qué se está decidiendo</li>
+          <li>piensa qué caso es más específico</li>
+          <li>pruébalo en el playground con distintos valores</li>
+        </ul>
+
+        <div class="challenge">
+          No basta con que “entre por algún sitio”. La lógica debe ser clara, ordenada y predecible.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="retos" class="panel">
+    <h2>Misiones rápidas</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Mini-reto 1 · Mayor o menor de edad</h3>
+        <p>Decide qué mensaje mostrar según la edad.</p>
+        <pre><code>edad = 17
+
+if edad >= 18:
+    print("Mayor de edad")
+else:
+    print("Menor de edad")</code></pre>
+      </div>
+
+      <div class="theory-card">
+        <h3>Mini-reto 2 · Nota aprobada</h3>
+        <p>Comprueba si una nota supera el mínimo.</p>
+        <pre><code>nota = 6
+
+if nota >= 5:
+    print("Aprobado")
+else:
+    print("Suspenso")</code></pre>
+      </div>
+
+      <div class="theory-card">
+        <h3>Mini-reto 3 · Acceso administrador</h3>
+        <p>Usa una comparación con texto.</p>
+        <pre><code>usuario = "admin"
+
+if usuario == "admin":
+    print("Acceso total")
+else:
+    print("Acceso limitado")</code></pre>
+      </div>
+
+      <div class="theory-card">
+        <h3>Mini-reto 4 · Descuento por edad o estudio</h3>
+        <p>Combina dos condiciones con <code>or</code>.</p>
+        <pre><code>edad = 22
+es_estudiante = False
+
+if edad < 25 or es_estudiante:
+    print("Tiene descuento")
+else:
+    print("No tiene descuento")</code></pre>
+      </div>
+
+      <div class="theory-card">
+        <h3>Mini-reto 5 · Acceso seguro</h3>
+        <p>Combina dos requisitos con <code>and</code>.</p>
+        <pre><code>password_correcta = True
+cuenta_activa = True
+
+if password_correcta and cuenta_activa:
+    print("Acceso permitido")
+else:
+    print("Acceso denegado")</code></pre>
+      </div>
+
+      <div class="theory-card">
+        <h3>Mini-reto 6 · Clasificación de edad</h3>
+        <p>Ordena bien varias condiciones con <code>elif</code>.</p>
+        <pre><code>edad = 16
+
+if edad < 12:
+    print("Niño")
+elif edad < 18:
+    print("Adolescente")
+else:
+    print("Adulto")</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Cómo pensar este tipo de ejercicios</h2>
+        <p class="exercise-subtitle">Antes de escribir condiciones, define bien la decisión que quieres tomar.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Paso a paso</h3>
+        <ol>
+          <li>identifica qué pregunta responde el programa</li>
+          <li>ordena de lo más específico a lo más general</li>
+          <li>si hay varias reglas, sepáralas mentalmente</li>
+          <li>usa <code>and</code> y <code>or</code> solo cuando hagan falta</li>
+          <li>prueba siempre casos límite</li>
+        </ol>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Regla útil</h3>
+        <div class="challenge">
+          Si una condición general va antes que una específica, puede impedir que la específica llegue a evaluarse.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Siguiente paso</h2>
+    <p>Ya has combinado comparaciones, booleanos y lógica. Ahora toca resolver ejercicios por tu cuenta.</p>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./03-operadores-logicos.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Ejercicios Tema 2</a>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
+    </div>
+  </section>
+
+  <script src="../topic-completion.js"></script>
+  <script>
+    const topicCompletion = initTopicCompletion({
+      topicId: "2.4",
+      nextUrl: "./py-tema2-ejercicios.html"
+    });
+
+    document.getElementById("completeBtn").addEventListener("click", () => {
+      topicCompletion.completeTopic();
+    });
+  </script>
+
+</main>
+</body>
+</html>

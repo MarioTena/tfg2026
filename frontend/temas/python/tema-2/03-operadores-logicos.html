@@ -7,44 +7,218 @@
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 2 · Condicionales</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 2 · Python</h1>
-  <p>2.3 · Operadores lógicos: combinar condiciones de forma correcta</p>
+  <span class="mission-tag">Misión 2.3</span>
+  <h1>Operadores lógicos</h1>
+  <p>Aprende a combinar condiciones correctamente con <code>and</code>, <code>or</code> y <code>not</code>.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 2 · Condicionales</div>
+        <div class="mini-note">Nivel inicial · 12-15 min · Lógica compuesta</div>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">and / or / not</span>
+        <span class="badge green">Combinación</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 75%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
 
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué vas a entender hoy</h2>
+        <p class="exercise-subtitle">
+          Muchas decisiones reales no dependen de una sola condición. En este bloque aprendes a combinar reglas.
+        </p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Condiciones</span>
+        <span class="badge green">Lógica compuesta</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué problema resuelve</h3>
+        <p>
+          En la vida real, casi nunca basta una sola pregunta. A menudo necesitas comprobar dos cosas a la vez,
+          aceptar varias posibilidades o negar una situación.
+        </p>
+
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3>Acceso</h3>
+            <p>Entrar solo si la contraseña es correcta y la cuenta está activa.</p>
+          </div>
+
+          <div class="theory-card">
+            <h3>Promoción</h3>
+            <p>Aplicar descuento si es estudiante o tiene menos de 25 años.</p>
+          </div>
+
+          <div class="theory-card">
+            <h3>Bloqueo</h3>
+            <p>Mostrar error si no hay stock o el producto está inactivo.</p>
+          </div>
+
+          <div class="theory-card">
+            <h3>Control</h3>
+            <p>Negar acceso si no ha iniciado sesión.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          Idea clave: en problemas reales, lo habitual no es una sola condición, sino varias condiciones combinadas.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes vigilar</h3>
+        <ul>
+          <li>si deben cumplirse todas las reglas o solo una</li>
+          <li>que cada parte del <code>or</code> sea una comparación completa</li>
+          <li>la prioridad entre operadores</li>
+          <li>la legibilidad de la expresión</li>
+        </ul>
+
+        <div class="challenge">
+          <strong>Piensa así:</strong><br />
+          una condición larga pero mal planteada vale menos que una condición simple y clara.
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="panel">
-    <h2>¿Por qué hacen falta operadores lógicos?</h2>
-    <p>
-      En problemas reales, una decisión rara vez depende de una sola regla.
-      Normalmente necesitas combinar varias condiciones.
-    </p>
+    <h2>Por qué hacen falta operadores lógicos</h2>
 
     <p>
-      Ejemplos reales:
+      Una sola condición suele quedarse corta. Los operadores lógicos permiten unir preguntas pequeñas
+      para construir una decisión más completa.
     </p>
 
-    <ul>
-      <li>un usuario puede entrar si la contraseña es correcta <strong>y</strong> su cuenta está activa</li>
-      <li>un cliente recibe descuento si es estudiante <strong>o</strong> tiene menos de 25 años</li>
-      <li>se muestra un error si el pedido no está pagado <strong>o</strong> el stock es insuficiente</li>
-      <li>se bloquea el acceso si <strong>no</strong> ha iniciado sesión</li>
-    </ul>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Reglas simultáneas</h3>
+        <p>Necesitas que se cumplan varias cosas a la vez.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Opciones alternativas</h3>
+        <p>Te vale cualquiera de varias condiciones posibles.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Negación</h3>
+        <p>Quieres detectar que algo no ocurre o no se cumple.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Casos reales</h3>
+        <p>Login, permisos, promociones, validaciones y filtros usan esta lógica constantemente.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
     <h2>Los tres operadores lógicos</h2>
-    <ul>
-      <li><code>and</code>: ambas condiciones deben ser verdaderas</li>
-      <li><code>or</code>: basta con que una sea verdadera</li>
-      <li><code>not</code>: invierte el valor lógico</li>
-    </ul>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3><code>and</code></h3>
+        <p>Ambas condiciones deben ser verdaderas.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3><code>or</code></h3>
+        <p>Basta con que una de las condiciones sea verdadera.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3><code>not</code></h3>
+        <p>Invierte el valor lógico.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Resumen práctico</h3>
+        <p><code>and</code> exige más, <code>or</code> permite más, <code>not</code> niega.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2><code>and</code></h2>
-    <pre><code>edad = 20
+    <h2>Dónde aparecen <code>and</code>, <code>or</code> y <code>not</code> en problemas reales</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Login</h3>
+        <p>Contraseña correcta y cuenta activa.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Promociones</h3>
+        <p>Descuento por edad o por ser estudiante.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Bloqueos</h3>
+        <p>Error por falta de stock o producto inactivo.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Permisos</h3>
+        <p>Acceso permitido si es admin o tiene un permiso especial.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      Cuando una decisión depende de varias reglas al mismo tiempo, aparecen los operadores lógicos.
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Los tres bloques clave</h2>
+        <p class="exercise-subtitle">Entiende qué exige cada operador antes de usarlo.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3><code>and</code></h3>
+        <pre><code>edad = 20
 tiene_entrada = True
 
 if edad >= 18 and tiene_entrada:
@@ -52,15 +226,14 @@ if edad >= 18 and tiene_entrada:
 else:
     print("No puedes pasar")</code></pre>
 
-    <p>
-      Para que el resultado sea verdadero, deben cumplirse ambas condiciones.
-      Si falla una, falla todo el bloque.
-    </p>
-  </section>
+        <p>
+          Para que el resultado sea verdadero, deben cumplirse las dos condiciones.
+        </p>
+      </div>
 
-  <section class="panel">
-    <h2><code>or</code></h2>
-    <pre><code>es_admin = False
+      <div class="exercise-block">
+        <h3><code>or</code></h3>
+        <pre><code>es_admin = False
 es_supervisor = True
 
 if es_admin or es_supervisor:
@@ -68,13 +241,16 @@ if es_admin or es_supervisor:
 else:
     print("Acceso denegado")</code></pre>
 
-    <p>
-      Con <code>or</code> basta con una condición verdadera.
-    </p>
+        <p>
+          Con <code>or</code>, basta con que una de las condiciones sea verdadera.
+        </p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
     <h2><code>not</code></h2>
+
     <pre><code>cuenta_activa = False
 
 if not cuenta_activa:
@@ -83,260 +259,438 @@ if not cuenta_activa:
     <p>
       <code>not</code> invierte el valor lógico: convierte <code>True</code> en <code>False</code> y viceversa.
     </p>
+
+    <div class="callout">
+      Es útil cuando quieres expresar que algo no se cumple.
+    </div>
   </section>
 
   <section class="panel">
     <h2>Tabla mental rápida</h2>
-    <ul>
-      <li><code>True and True</code> → <code>True</code></li>
-      <li><code>True and False</code> → <code>False</code></li>
-      <li><code>False and True</code> → <code>False</code></li>
-      <li><code>False and False</code> → <code>False</code></li>
-      <li><code>True or False</code> → <code>True</code></li>
-      <li><code>False or False</code> → <code>False</code></li>
-      <li><code>not True</code> → <code>False</code></li>
-      <li><code>not False</code> → <code>True</code></li>
-    </ul>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3><code>and</code></h3>
+        <p><code>True and True</code> → <code>True</code></p>
+        <p><code>True and False</code> → <code>False</code></p>
+        <p><code>False and True</code> → <code>False</code></p>
+        <p><code>False and False</code> → <code>False</code></p>
+      </div>
+
+      <div class="theory-card">
+        <h3><code>or</code></h3>
+        <p><code>True or False</code> → <code>True</code></p>
+        <p><code>False or True</code> → <code>True</code></p>
+        <p><code>False or False</code> → <code>False</code></p>
+      </div>
+
+      <div class="theory-card">
+        <h3><code>not</code></h3>
+        <p><code>not True</code> → <code>False</code></p>
+        <p><code>not False</code> → <code>True</code></p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Lectura rápida</h3>
+        <p><code>and</code> pide todo, <code>or</code> acepta una opción, <code>not</code> niega.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
     <h2>Combinar comparaciones</h2>
+
     <pre><code>edad = 25
 
 if edad >= 18 and edad <= 30:
     print("Está dentro del rango")</code></pre>
 
     <p>
-      Esta lógica es muy común: comprobar intervalos, permisos múltiples o reglas simultáneas.
+      Este tipo de lógica es muy común para validar intervalos, permisos y reglas simultáneas.
     </p>
   </section>
 
   <section class="panel">
     <h2>Forma corta para rangos</h2>
+
     <pre><code>edad = 25
 
 if 18 <= edad <= 30:
     print("Está dentro del rango")</code></pre>
 
     <p>
-      Esta forma es más idiomática en Python y suele ser más legible.
+      Esta forma es más idiomática en Python y suele ser más fácil de leer.
     </p>
   </section>
 
-  <section class="panel">
-    <h2>⚠️ Error muy común con <code>or</code></h2>
-    <pre><code>color = "rojo"
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Dónde se cometen más errores</h2>
+        <p class="exercise-subtitle">Las condiciones compuestas fallan sobre todo por planteamiento.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Error muy común con <code>or</code></h3>
+        <pre><code>color = "rojo"
 
 if color == "rojo" or "azul":
     print("Color permitido")</code></pre>
 
-    <p>
-      Esto está mal planteado. La segunda parte no es una comparación completa.
-    </p>
+        <p>
+          Está mal planteado porque la segunda parte no es una comparación completa.
+        </p>
 
-    <pre><code>color = "rojo"
+        <pre><code>color = "rojo"
 
 if color == "rojo" or color == "azul":
     print("Color permitido")</code></pre>
 
-    <div class="callout">
-      Cada lado del <code>or</code> debe ser una condición completa.
-    </div>
-  </section>
+        <div class="callout">
+          Cada lado del <code>or</code> debe ser una condición completa.
+        </div>
+      </div>
 
-  <section class="panel">
-    <h2>Prioridad de operadores</h2>
-    <p>
-      Python no evalúa todo al azar. Hay una prioridad lógica:
-    </p>
+      <div class="exercise-block">
+        <h3>Prioridad de operadores</h3>
+        <p>
+          Python sigue un orden:
+        </p>
 
-    <ol>
-      <li><code>not</code></li>
-      <li><code>and</code></li>
-      <li><code>or</code></li>
-    </ol>
+        <ol>
+          <li><code>not</code></li>
+          <li><code>and</code></li>
+          <li><code>or</code></li>
+        </ol>
 
-    <p>
-      Si la expresión es compleja, usa paréntesis para dejar clara tu intención.
-    </p>
+        <p>
+          Si la expresión es compleja, usa paréntesis para dejar clara tu intención.
+        </p>
 
-    <pre><code>edad = 20
+        <pre><code>edad = 20
 es_socio = False
 
 if edad >= 18 and (es_socio or edad > 65):
     print("Condición cumplida")</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Cómo leer una condición larga sin equivocarte</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Paso 1</h3>
+        <p>Divide la expresión en partes pequeñas.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Paso 2</h3>
+        <p>Evalúa cada comparación por separado.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Paso 3</h3>
+        <p>Mira si están unidas por <code>and</code> o <code>or</code>.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Paso 4</h3>
+        <p>Fíjate si hay paréntesis.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Paso 5</h3>
+        <p>Decide el resultado final solo al final del proceso.</p>
+      </div>
+    </div>
+
+    <pre><code>edad = 20
+es_socio = False
+es_vip = True
+
+if edad >= 18 and (es_socio or es_vip):
+    print("Acceso especial")</code></pre>
   </section>
 
   <section class="panel">
     <h2>Razonar una condición paso a paso</h2>
+
     <pre><code>edad = 17
 tiene_permiso = True
 
 if edad >= 16 and tiene_permiso:
     print("Puede participar")</code></pre>
 
-    <p>
-      Preguntas mentales correctas:
-    </p>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Pregunta 1</h3>
+        <p>¿<code>edad >= 16</code>? Sí.</p>
+      </div>
 
-    <ul>
-      <li>¿edad es mayor o igual que 16? → sí</li>
-      <li>¿tiene_permiso es verdadero? → sí</li>
-      <li>¿ambas se cumplen? → sí</li>
-      <li>resultado final → entra en el bloque</li>
-    </ul>
+      <div class="theory-card">
+        <h3>Pregunta 2</h3>
+        <p>¿<code>tiene_permiso</code> es verdadero? Sí.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pregunta 3</h3>
+        <p>¿Ambas se cumplen al mismo tiempo? Sí.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Resultado</h3>
+        <p>La condición completa es verdadera y entra en el bloque.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Cómo pensar una condición compuesta antes de escribirla</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Paso 1</h3>
+        <p>Define qué decisión quieres tomar.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Paso 2</h3>
+        <p>Enumera las reglas que deben cumplirse.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Paso 3</h3>
+        <p>Decide si deben cumplirse todas o basta con una.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Paso 4</h3>
+        <p>Usa paréntesis si la expresión puede prestarse a confusión.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Paso 5</h3>
+        <p>Prueba la lógica con varios casos reales y casos límite.</p>
+      </div>
+    </div>
+
+    <div class="challenge">
+      Si no puedes explicar la condición en lenguaje normal antes de escribirla, probablemente aún no está bien pensada.
+    </div>
   </section>
 
   <section class="panel">
     <h2>Casos reales típicos</h2>
-    <ul>
-      <li>login correcto y cuenta activa</li>
-      <li>descuento por edad o por ser estudiante</li>
-      <li>bloqueo por falta de stock o producto inactivo</li>
-      <li>acceso permitido si es admin o tiene permiso especial</li>
-    </ul>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Login</h3>
+        <p>Contraseña correcta y cuenta activa.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Promoción</h3>
+        <p>Descuento por edad o por ser estudiante.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Bloqueo</h3>
+        <p>Error por falta de stock o producto inactivo.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Permisos</h3>
+        <p>Acceso permitido si es admin o tiene permiso especial.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Formularios</h3>
+        <p>Validar solo si todos los campos obligatorios están completos.</p>
+      </div>
+    </div>
   </section>
 
-  <section class="panel">
-    <h2>Errores frecuentes</h2>
-    <ul>
-      <li>usar <code>or</code> cuando en realidad se necesita <code>and</code></li>
-      <li>escribir comparaciones incompletas</li>
-      <li>olvidar los paréntesis en expresiones complejas</li>
-      <li>no pensar en todos los casos posibles</li>
-      <li>hacer lógica tan larga que deja de ser legible</li>
-    </ul>
-  </section>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Piensa antes de ejecutar</h2>
+        <p class="exercise-subtitle">Predice el resultado antes de lanzar el código.</p>
+      </div>
+    </div>
 
-  <section class="panel">
-    <h2>💭 Piensa antes de ejecutar</h2>
-    <pre><code>llueve = True
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Código</h3>
+        <pre><code>llueve = True
 tengo_paraguas = False
 
 if llueve and tengo_paraguas:
     print("Puedo salir tranquilo")
 else:
     print("No puedo salir tranquilo")</code></pre>
+      </div>
 
-    <ul>
-      <li>¿Qué ocurre con estos valores?</li>
-      <li>¿Qué cambia si <code>tengo_paraguas = True</code>?</li>
-      <li>¿Qué cambia si <code>llueve = False</code>?</li>
-    </ul>
+      <div class="exercise-block">
+        <h3>Preguntas</h3>
+        <ul>
+          <li>¿Qué ocurre con estos valores?</li>
+          <li>¿Qué cambia si <code>tengo_paraguas = True</code>?</li>
+          <li>¿Qué cambia si <code>llueve = False</code>?</li>
+        </ul>
+
+        <div class="mini-note">
+          Si puedes explicarlo mentalmente, es que estás entendiendo la lógica.
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section class="panel">
-    <h2>Mini-reto guiado</h2>
-    <p>
-      Un usuario puede beneficiarse de una promoción si:
-    </p>
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto guiado</h2>
+        <p class="exercise-subtitle">Combina reglas con intención, no por intuición.</p>
+      </div>
 
-    <ul>
-      <li>es estudiante, o</li>
-      <li>tiene menos de 25 años</li>
-    </ul>
+      <div class="badges">
+        <span class="badge blue">Reto</span>
+        <span class="badge green">Muy fácil</span>
+      </div>
+    </div>
 
-    <pre><code>es_estudiante = False
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Tu misión</h3>
+        <p>
+          Un usuario puede beneficiarse de una promoción si:
+        </p>
+
+        <ul>
+          <li>es estudiante, o</li>
+          <li>tiene menos de 25 años</li>
+        </ul>
+
+        <div class="exercise-actions">
+          <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Resolver en playground</a>
+          <button class="btn btn-secondary btn-sm" type="button" onclick="document.getElementById('solucion-reto').open = true;">
+            Ver solución
+          </button>
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Pista</h3>
+        <p>
+          Pregúntate si la promoción exige las dos condiciones a la vez o si basta con una de ellas.
+        </p>
+
+        <details id="solucion-reto" class="theory-dropdown">
+          <summary>Mostrar solución</summary>
+          <div class="theory-dropdown-content">
+            <pre><code>es_estudiante = False
 edad = 22
 
 if es_estudiante or edad < 25:
     print("Tiene promoción")
 else:
     print("No tiene promoción")</code></pre>
+          </div>
+        </details>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Reto de entrevista</h2>
-    <p>
-      Explica por qué esta condición está bien escrita:
-    </p>
+    <h2>Errores frecuentes</h2>
 
-    <pre><code>if edad >= 18 and tiene_entrada:</code></pre>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Error 1</h3>
+        <p>Usar <code>or</code> cuando en realidad se necesita <code>and</code>.</p>
+      </div>
 
-    <p>
-      Respuesta correcta: porque expresa de forma directa dos requisitos obligatorios que deben cumplirse al mismo tiempo.
-    </p>
+      <div class="theory-card">
+        <h3>Error 2</h3>
+        <p>Escribir comparaciones incompletas.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Error 3</h3>
+        <p>Olvidar los paréntesis en expresiones complejas.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Error 4</h3>
+        <p>No pensar en todos los casos posibles.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Error 5</h3>
+        <p>Hacer una lógica tan larga que deja de ser legible.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Error 6</h3>
+        <p>Confiar en la intuición sin evaluar paso a paso.</p>
+      </div>
+    </div>
   </section>
 
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./02-comparaciones-booleanos.html">Anterior</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
+  <section class="panel">
+    <h2>Buenas prácticas</h2>
 
-  <button class="btn btn-primary" onclick="completeTopic('2.3')">Marcar como completado</button>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Condiciones completas</h3>
+        <p>Cada parte de <code>and</code> o <code>or</code> debe ser una comparación clara.</p>
+      </div>
 
+      <div class="theory-card">
+        <h3>Paréntesis cuando ayuden</h3>
+        <p>Úsalos si mejoran la lectura o evitan ambigüedades.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Prueba varios casos</h3>
+        <p>No te quedes con un solo ejemplo que sale bien por casualidad.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Explica la lógica</h3>
+        <p>Si puedes decirla en voz alta con claridad, suele estar mejor construida.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Siguiente paso</h2>
+    <p>
+      Ya sabes combinar condiciones. El siguiente bloque del tema pasa a retos integradores.
+    </p>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./02-comparaciones-booleanos.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
+    </div>
+  </section>
+
+  <script src="../topic-completion.js"></script>
   <script>
-const TOPIC_ID = "2.3";
-const NEXT_URL = "./04-mini-reto.html";
-
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
-
-const nextBtn = document.getElementById("nextBtn");
-
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
-
-    if (!token || !nextBtn) return;
-
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
+    const topicCompletion = initTopicCompletion({
+      topicId: "2.3",
+      nextUrl: "./04-mini-retos.html"
     });
 
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
-  }
-}
-
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
-    }
-
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
+    document.getElementById("completeBtn").addEventListener("click", () => {
+      topicCompletion.completeTopic();
     });
-
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
-    }
-
-    alert("Tema completado 🎉");
-
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
-  }
-}
-
-unlockNextIfCompleted();
-</script>
+  </script>
 
 </main>
 </body>

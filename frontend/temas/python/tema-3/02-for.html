@@ -7,57 +7,179 @@
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 3 · Bucles</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 3 · Python</h1>
-  <p>3.2 · Bucle for: recorrer y repetir con precisión</p>
+  <span class="mission-tag">Misión 3.2</span>
+  <h1>Bucle for</h1>
+  <p>Aprende a recorrer secuencias y repetir acciones con precisión usando <code>for</code> y <code>range()</code>.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 3 · Bucles</div>
+        <div class="mini-note">Nivel inicial · 15-18 min · Recorrer y contar</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">for</span>
+        <span class="badge green">range()</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 40%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
 
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué vas a entender hoy</h2>
+        <p class="exercise-subtitle">
+          El bucle <code>for</code> sirve para recorrer una secuencia y ejecutar un bloque de código en cada paso.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Objetivo</span>
+        <span class="badge green">Recorrido</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué problema resuelve</h3>
+        <p>
+          Muchas veces necesitas recorrer números, letras o valores uno a uno.
+          <code>for</code> te permite hacerlo de forma ordenada y clara.
+        </p>
+
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3>Números</h3>
+            <p>Mostrar del 1 al 10.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Texto</h3>
+            <p>Recorrer palabra por palabra o letra por letra.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Cálculo</h3>
+            <p>Multiplicar, sumar o transformar cada valor.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Acumulación</h3>
+            <p>Ir construyendo un resultado paso a paso.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          Idea clave: <code>for</code> no repite “porque sí”; repite recorriendo una secuencia concreta.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes vigilar</h3>
+        <ul>
+          <li>qué secuencia estás recorriendo</li>
+          <li>qué valor toma la variable en cada iteración</li>
+          <li>si el rango empieza donde tú crees</li>
+          <li>si el límite final se incluye o no</li>
+        </ul>
+
+        <div class="challenge">
+          <strong>Piensa así:</strong><br />
+          la clave del <code>for</code> no es repetir, sino recorrer con orden.
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="panel">
-    <h2>¿Qué hace un <code>for</code>?</h2>
-    <p>
-      El bucle <code>for</code> recorre una secuencia elemento a elemento.
-      En cada iteración, una variable toma el siguiente valor de esa secuencia.
-    </p>
+    <h2>Qué hace un <code>for</code></h2>
 
     <pre><code>for numero in range(5):
     print(numero)</code></pre>
 
     <p>
-      Aquí Python toma valores de <code>range(5)</code> y los va asignando a <code>numero</code>.
+      Python toma valores de <code>range(5)</code> y los va asignando a <code>numero</code> uno a uno.
     </p>
   </section>
 
   <section class="panel">
     <h2>Sintaxis básica</h2>
+
     <pre><code>for variable in secuencia:
     bloque</code></pre>
 
-    <p>
-      Las piezas importantes son:
-    </p>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3><code>for</code></h3>
+        <p>La palabra clave que inicia el bucle.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Variable</h3>
+        <p>Cambia en cada iteración.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Secuencia</h3>
+        <p>Es el conjunto de valores que vas a recorrer.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Bloque</h3>
+        <p>Es el código indentado que se ejecuta en cada vuelta.</p>
+      </div>
+    </div>
+  </section>
 
-    <ul>
-      <li><code>for</code></li>
-      <li>una variable que cambia en cada iteración</li>
-      <li>una secuencia o conjunto de valores</li>
-      <li>un bloque indentado</li>
-    </ul>
+  <section class="panel">
+    <h2>Dónde aparece <code>for</code> en problemas reales</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Recorrer texto</h3>
+        <p>Analizar letra a letra una palabra o una frase.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Secuencias numéricas</h3>
+        <p>Generar series, tablas o conteos.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Informes</h3>
+        <p>Mostrar varios resultados de forma repetida.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Cálculos</h3>
+        <p>Sumar o transformar varios valores de manera ordenada.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
     <h2><code>range()</code>: herramienta fundamental</h2>
-    <p>
-      <code>range()</code> genera una secuencia de números muy útil para los bucles.
-    </p>
 
     <pre><code>for numero in range(5):
     print(numero)</code></pre>
-
-    <p>
-      Esto imprime:
-    </p>
 
     <pre><code>0
 1
@@ -73,54 +195,51 @@
   <section class="panel">
     <h2>Variantes de <code>range()</code></h2>
 
-    <h3><code>range(fin)</code></h3>
-    <pre><code>range(5)</code></pre>
-    <p>Genera: 0, 1, 2, 3, 4</p>
-
-    <h3><code>range(inicio, fin)</code></h3>
-    <pre><code>range(2, 6)</code></pre>
-    <p>Genera: 2, 3, 4, 5</p>
-
-    <h3><code>range(inicio, fin, salto)</code></h3>
-    <pre><code>range(0, 10, 2)</code></pre>
-    <p>Genera: 0, 2, 4, 6, 8</p>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3><code>range(fin)</code></h3>
+        <p>Ejemplo: <code>range(5)</code> → 0, 1, 2, 3, 4</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>range(inicio, fin)</code></h3>
+        <p>Ejemplo: <code>range(2, 6)</code> → 2, 3, 4, 5</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>range(inicio, fin, salto)</code></h3>
+        <p>Ejemplo: <code>range(0, 10, 2)</code> → 0, 2, 4, 6, 8</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Mostrar números en secuencia</h2>
-    <pre><code>for numero in range(1, 6):
+    <h2>Usos típicos de <code>for</code></h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Mostrar números</h3>
+        <pre><code>for numero in range(1, 6):
     print(numero)</code></pre>
+      </div>
 
-    <p>
-      Muy útil para tablas, repeticiones contadas y patrones numéricos.
-    </p>
-  </section>
-
-  <section class="panel">
-    <h2>Recorrer texto</h2>
-    <pre><code>for letra in "python":
+      <div class="theory-card">
+        <h3>Recorrer texto</h3>
+        <pre><code>for letra in "python":
     print(letra)</code></pre>
+      </div>
 
-    <p>
-      Un <code>for</code> no solo sirve con números. También puede recorrer cadenas carácter a carácter.
-    </p>
-  </section>
-
-  <section class="panel">
-    <h2>Usar el valor del bucle para calcular</h2>
-    <pre><code>for numero in range(1, 6):
+      <div class="theory-card">
+        <h3>Calcular</h3>
+        <pre><code>for numero in range(1, 6):
     print(numero * 2)</code></pre>
-
-    <p>
-      En cada iteración puedes operar con la variable y producir resultados nuevos.
-    </p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
     <h2>Acumular resultados</h2>
+
     <p>
-      Muchos problemas con bucles consisten en acumular información.
-      Por ejemplo, sumar números.
+      Muchos ejercicios con bucles consisten en ir guardando un resultado que cambia en cada iteración.
     </p>
 
     <pre><code>suma = 0
@@ -131,15 +250,12 @@ for numero in range(1, 6):
 print(suma)</code></pre>
 
     <p>
-      Aquí <code>suma</code> va cambiando en cada iteración.
+      Aquí <code>suma</code> va creciendo vuelta a vuelta.
     </p>
   </section>
 
   <section class="panel">
     <h2>Seguir mentalmente una variable acumuladora</h2>
-    <p>
-      Una de las habilidades más importantes es simular cómo cambia una variable.
-    </p>
 
     <pre><code>suma = 0
 
@@ -148,165 +264,249 @@ for numero in range(1, 4):
     print("numero:", numero, "suma:", suma)</code></pre>
 
     <p>
-      Esto te enseña a pensar el estado del programa durante el bucle.
+      Esto te obliga a pensar cómo cambia el estado del programa en cada iteración.
     </p>
   </section>
 
   <section class="panel">
-    <h2>⚠️ Error típico: pensar que el límite final se incluye</h2>
+    <h2>Cómo pensar un <code>for</code> antes de escribirlo</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Paso 1</h3>
+        <p>Decide qué secuencia vas a recorrer.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 2</h3>
+        <p>Piensa qué valor tomará la variable en cada iteración.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 3</h3>
+        <p>Comprueba si el final se incluye o no.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 4</h3>
+        <p>Revisa si necesitas inicio, fin y salto.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      Con <code>for</code>, muchos fallos vienen de entender mal el rango, no del bucle en sí.
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Piensa antes de ejecutar</h2>
+        <p class="exercise-subtitle">Haz una simulación mental del rango antes de probarlo.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Código</h3>
+        <pre><code>for numero in range(2, 8, 2):
+    print(numero)</code></pre>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Preguntas</h3>
+        <ul>
+          <li>¿qué números aparecen?</li>
+          <li>¿cuántas iteraciones hay?</li>
+          <li>¿por qué no aparece el 8?</li>
+        </ul>
+
+        <div class="mini-note">
+          En <code>range()</code>, el final sigue sin incluirse aunque haya salto.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto guiado</h2>
+        <p class="exercise-subtitle">Controla un rango en sentido descendente.</p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Reto</span>
+        <span class="badge green">Fácil</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Tu misión</h3>
+        <p>
+          Muestra los números del 10 al 1 en orden descendente.
+        </p>
+
+        <div class="exercise-actions">
+          <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Resolver en playground</a>
+          <button class="btn btn-secondary btn-sm" type="button" onclick="document.getElementById('solucion-reto').open = true;">
+            Ver solución
+          </button>
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Pista</h3>
+        <p>
+          Si quieres bajar, el salto debe ser negativo.
+        </p>
+
+        <details id="solucion-reto" class="theory-dropdown">
+          <summary>Mostrar solución</summary>
+          <div class="theory-dropdown-content">
+            <pre><code>for numero in range(10, 0, -1):
+    print(numero)</code></pre>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Errores frecuentes</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Error 1</h3>
+        <p>Pensar que el límite final sí se incluye.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 2</h3>
+        <p>Querer del 1 al 10 y escribir <code>range(10)</code>.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 3</h3>
+        <p>No entender qué valores produce el salto.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 4</h3>
+        <p>Olvidar inicializar una variable acumuladora antes del bucle.</p>
+      </div>
+    </div>
+
     <pre><code>for numero in range(1, 5):
     print(numero)</code></pre>
 
     <p>
       Esto imprime 1, 2, 3 y 4. No imprime 5.
-      Este error aparece continuamente al empezar.
     </p>
   </section>
 
   <section class="panel">
-    <h2>⚠️ Error típico: cambiar mal la intención del rango</h2>
-    <p>
-      A veces alguien quiere imprimir del 1 al 10 y escribe esto:
-    </p>
+    <h2>Buenas prácticas</h2>
 
-    <pre><code>for numero in range(10):
-    print(numero)</code></pre>
-
-    <p>
-      Eso imprime del 0 al 9. Si quieres del 1 al 10, debes ajustar el rango.
-    </p>
-
-    <pre><code>for numero in range(1, 11):
-    print(numero)</code></pre>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Nombres claros</h3>
+        <p>Usa <code>numero</code>, <code>letra</code> o <code>contador</code> si describen bien la iteración.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Bloque limpio</h3>
+        <p>No mezcles demasiadas cosas dentro del mismo bucle al principio.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Acumuladores</h3>
+        <p>Inicialízalos antes del bucle, no dentro.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Comprueba el rango</h3>
+        <p>Revisa siempre inicio, fin y salto antes de ejecutar.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>💭 Piensa antes de ejecutar</h2>
-    <pre><code>for numero in range(2, 8, 2):
-    print(numero)</code></pre>
-
-    <ul>
-      <li>¿qué números aparecen?</li>
-      <li>¿cuántas iteraciones hay?</li>
-      <li>¿por qué no aparece el 8?</li>
-    </ul>
-  </section>
-
-  <section class="panel">
-    <h2>Buenas prácticas con <code>for</code></h2>
-    <ul>
-      <li>usa nombres claros: <code>numero</code>, <code>letra</code>, <code>contador</code></li>
-      <li>no compliques innecesariamente el bloque interno</li>
-      <li>si acumulas algo, inicializa la variable antes del bucle</li>
-      <li>comprueba siempre inicio, final y salto</li>
-    </ul>
-  </section>
-
-  <section class="panel">
-    <h2>Mini-reto guiado</h2>
+    <h2>Siguiente paso</h2>
     <p>
-      Muestra los números del 10 al 1 en orden descendente.
+      Ya sabes usar <code>for</code>. Ahora toca el otro gran tipo de bucle: <code>while</code>.
     </p>
 
-    <pre><code>for numero in range(10, 0, -1):
-    print(numero)</code></pre>
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./01-que-es-un-bucle.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <button class="btn btn-primary" onclick="completeTopic('3.2')">Marcar como completado</button>
+    </div>
   </section>
-
-  <section class="panel">
-    <h2>Reto de entrevista</h2>
-    <p>
-      Explica qué hace este código:
-    </p>
-
-    <pre><code>total = 0
-for numero in range(1, 4):
-    total = total + numero
-print(total)</code></pre>
-
-    <p>
-      Respuesta sólida: suma 1 + 2 + 3 y muestra 6. La variable <code>total</code> acumula el resultado iteración a iteración.
-    </p>
-  </section>
-
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./01-que-es-un-bucle.html">Anterior</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
-
-  <button class="btn btn-primary" onclick="completeTopic('3.2')">Marcar como completado</button>
 
   <script>
-const TOPIC_ID = "3.2";
-const NEXT_URL = "./03-while.html";
+    const TOPIC_ID = "3.2";
+    const NEXT_URL = "./03-while.html";
 
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+    const API_URL = "http://localhost:3000/api/progress/python";
+    const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
 
-const nextBtn = document.getElementById("nextBtn");
+    const nextBtn = document.getElementById("nextBtn");
 
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
+    async function unlockNextIfCompleted() {
+      try {
+        const token = localStorage.getItem("token");
 
-    if (!token || !nextBtn) return;
+        if (!token || !nextBtn) return;
 
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
+        const res = await fetch(API_URL, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+
+        if (!res.ok) return;
+
+        const data = await res.json();
+        const completed = data?.progress?.completedTopics || [];
+
+        if (completed.includes(TOPIC_ID)) {
+          nextBtn.classList.remove("btn-disabled");
+          nextBtn.href = NEXT_URL;
+        }
+      } catch (error) {
+        console.error("Error comprobando progreso:", error);
       }
-    });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
-  }
-}
-
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
     }
 
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
-    });
+    async function completeTopic(topicId) {
+      try {
+        const token = localStorage.getItem("token");
 
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
+        if (!token) {
+          alert("Debes iniciar sesión para guardar el progreso");
+          return;
+        }
+
+        const res = await fetch(COMPLETE_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify({ topic: topicId })
+        });
+
+        if (!res.ok) {
+          throw new Error(`Error HTTP: ${res.status}`);
+        }
+
+        alert("Tema completado 🎉");
+
+        if (nextBtn) {
+          nextBtn.classList.remove("btn-disabled");
+          nextBtn.href = NEXT_URL;
+        }
+      } catch (error) {
+        console.error("Error marcando tema como completado:", error);
+        alert("No se pudo guardar el progreso");
+      }
     }
 
-    alert("Tema completado 🎉");
-
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
-  }
-}
-
-unlockNextIfCompleted();
-</script>
+    unlockNextIfCompleted();
+  </script>
 
 </main>
 </body>

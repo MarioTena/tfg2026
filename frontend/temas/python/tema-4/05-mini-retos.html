@@ -7,6 +7,21 @@
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 4 · Listas</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
   <span class="mission-tag">Zona práctica 4.5</span>
   <h1>Mini-retos de listas</h1>
@@ -179,16 +194,6 @@ for numero in numeros:
   </section>
 
   <section class="panel">
-    <h2>Pregunta típica de entrevista</h2>
-    <div class="challenge">
-      <p><strong>Pregunta:</strong> ¿Qué operaciones son muy habituales al trabajar con listas?</p>
-      <p>
-        <strong>Respuesta sólida:</strong> acceder a elementos, modificar posiciones, recorrer la lista, añadir valores, eliminar valores, ordenar y contar o buscar elementos.
-      </p>
-    </div>
-  </section>
-
-  <section class="panel">
     <h2>Siguiente paso</h2>
     <p>Ya has visto cómo se combinan listas y bucles. Ahora toca resolver ejercicios por tu cuenta.</p>
 
@@ -196,80 +201,20 @@ for numero in numeros:
       <a class="btn btn-secondary" href="./04-metodos-listas.html">Anterior</a>
       <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
       <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Ejercicios Tema 4</a>
-      <button class="btn btn-primary" onclick="completeTopic('4.5')">Marcar como completado</button>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
     </div>
   </section>
 
+  <script src="../topic-completion.js"></script>
   <script>
-    const TOPIC_ID = "4.5";
-    const NEXT_URL = "./py-tema4-ejercicios.html";
+    const topicCompletion = initTopicCompletion({
+      topicId: "4.5",
+      nextUrl: "./py-tema4-ejercicios.html"
+    });
 
-    const API_URL = "http://localhost:3000/api/progress/python";
-    const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
-
-    const nextBtn = document.getElementById("nextBtn");
-
-    async function unlockNextIfCompleted() {
-      try {
-        const token = localStorage.getItem("token");
-
-        if (!token || !nextBtn) return;
-
-        const res = await fetch(API_URL, {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        });
-
-        if (!res.ok) return;
-
-        const data = await res.json();
-        const completed = data?.progress?.completedTopics || [];
-
-        if (completed.includes(TOPIC_ID)) {
-          nextBtn.classList.remove("btn-disabled");
-          nextBtn.href = NEXT_URL;
-        }
-      } catch (error) {
-        console.error("Error comprobando progreso:", error);
-      }
-    }
-
-    async function completeTopic(topicId) {
-      try {
-        const token = localStorage.getItem("token");
-
-        if (!token) {
-          alert("Debes iniciar sesión para guardar el progreso");
-          return;
-        }
-
-        const res = await fetch(COMPLETE_URL, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-          },
-          body: JSON.stringify({ topic: topicId })
-        });
-
-        if (!res.ok) {
-          throw new Error(`Error HTTP: ${res.status}`);
-        }
-
-        alert("Tema completado 🎉");
-
-        if (nextBtn) {
-          nextBtn.classList.remove("btn-disabled");
-          nextBtn.href = NEXT_URL;
-        }
-      } catch (error) {
-        console.error("Error marcando tema como completado:", error);
-        alert("No se pudo guardar el progreso");
-      }
-    }
-
-    unlockNextIfCompleted();
+    document.getElementById("completeBtn").addEventListener("click", () => {
+      topicCompletion.completeTopic();
+    });
   </script>
 
 </main>

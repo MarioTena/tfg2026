@@ -7,12 +7,136 @@
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 5 · Funciones</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 5 · Python</h1>
-  <p>5.3 · return: devolver resultados en lugar de solo imprimir</p>
+  <span class="mission-tag">Misión 5.3</span>
+  <h1>return</h1>
+  <p>Aprende a devolver resultados desde una función en lugar de limitarte a imprimirlos.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 5 · Funciones</div>
+        <div class="mini-note">Nivel inicial · 12-15 min · Resultados reutilizables</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">return</span>
+        <span class="badge green">Concepto clave</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 60%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué vas a entender hoy</h2>
+        <p class="exercise-subtitle">
+          Imprimir y devolver no son lo mismo. <code>return</code> hace que una función produzca un resultado reutilizable.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Objetivo</span>
+        <span class="badge green">Resultados</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué problema resuelve</h3>
+        <p>
+          Si una función solo imprime, muestra algo por pantalla, pero no te deja trabajar después con ese valor.
+          Con <code>return</code>, puedes guardar el resultado, reutilizarlo y combinarlo.
+        </p>
+
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3>Cálculos</h3>
+            <p>Guardar el resultado de una suma o de un IVA.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Reutilización</h3>
+            <p>Usar el resultado dentro de otras operaciones.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Decisiones</h3>
+            <p>Devolver <code>True</code> o <code>False</code> desde una función.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Composición</h3>
+            <p>Encadenar funciones y trabajar con sus resultados.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          Idea clave: <code>return</code> convierte a la función en una herramienta que produce un valor utilizable.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes vigilar</h3>
+        <ul>
+          <li>imprimir no es devolver</li>
+          <li><code>return</code> termina la función</li>
+          <li>el valor devuelto puede guardarse en una variable</li>
+          <li>si no devuelves nada, el resultado será <code>None</code></li>
+        </ul>
+
+        <div class="challenge">
+          <strong>Piensa así:</strong><br />
+          <code>print()</code> enseña algo; <code>return</code> entrega algo.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Dónde aparece <code>return</code> en problemas reales</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Cálculos</h3>
+        <p>Devolver importes, descuentos, medias o resultados numéricos.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Mensajes</h3>
+        <p>Construir texto y usarlo más adelante en otra parte del programa.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Validaciones</h3>
+        <p>Devolver booleanos como <code>True</code> o <code>False</code>.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Funciones encadenadas</h3>
+        <p>Usar el resultado de una función dentro de otra operación.</p>
+      </div>
+    </div>
+  </section>
 
   <section class="panel">
     <h2>Imprimir no es lo mismo que devolver</h2>
@@ -45,18 +169,29 @@ print(resultado)</code></pre>
     <p>
       Ahora el valor devuelto puede guardarse, reutilizarse o combinarse con otras operaciones.
     </p>
-
-    <div class="callout">
-      <code>return</code> convierte a la función en una herramienta que produce un resultado reutilizable.
-    </div>
   </section>
 
   <section class="panel">
     <h2>Qué hace exactamente <code>return</code></h2>
-    <ul>
-      <li>termina la ejecución de la función</li>
-      <li>envía un valor al lugar donde la función fue llamada</li>
-    </ul>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Termina la función</h3>
+        <p>En cuanto se ejecuta, la función deja de seguir leyendo líneas.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Envía un valor</h3>
+        <p>Devuelve un resultado al lugar donde se llamó a la función.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Permite reutilizar</h3>
+        <p>Ese valor puede guardarse, imprimirse o usarse en otra operación.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Mejora diseño</h3>
+        <p>Hace que la función sea más útil y más flexible.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
@@ -70,7 +205,7 @@ print(resultado + 10)</code></pre>
   </section>
 
   <section class="panel">
-    <h2>⚠️ Error típico: creer que <code>print</code> sustituye a <code>return</code></h2>
+    <h2>Error típico: creer que <code>print</code> sustituye a <code>return</code></h2>
     <pre><code>def sumar(a, b):
     print(a + b)
 
@@ -119,60 +254,171 @@ print(es_mayor_de_edad(15))</code></pre>
   </section>
 
   <section class="panel">
-    <h2>💭 Piensa antes de ejecutar</h2>
-    <pre><code>def doble(numero):
+    <h2>Cómo pensar un <code>return</code> antes de escribirlo</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Paso 1</h3>
+        <p>Pregúntate si la función debe mostrar algo o producir un valor.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 2</h3>
+        <p>Si el resultado debe usarse fuera, probablemente necesitas <code>return</code>.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 3</h3>
+        <p>Decide qué valor concreto va a devolver la función.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 4</h3>
+        <p>Piensa qué parte del programa usará ese resultado después.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      Si el resultado de una función debe seguir vivo fuera de ella, necesitas devolverlo.
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Piensa antes de ejecutar</h2>
+        <p class="exercise-subtitle">Antes de probar, sigue el valor que sale de la función.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Código</h3>
+        <pre><code>def doble(numero):
     return numero * 2
 
 valor = doble(5)
 print(valor)
 print(doble(3) + 1)</code></pre>
+      </div>
 
-    <ul>
-      <li>¿qué vale <code>valor</code>?</li>
-      <li>¿qué imprime la última línea?</li>
-    </ul>
+      <div class="exercise-block">
+        <h3>Preguntas</h3>
+        <ul>
+          <li>¿qué vale <code>valor</code>?</li>
+          <li>¿qué imprime la última línea?</li>
+        </ul>
+
+        <div class="mini-note">
+          Pista: la función devuelve un valor, no lo imprime sola.
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section class="panel">
-    <h2>Errores frecuentes</h2>
-    <ul>
-      <li>confundir imprimir con devolver</li>
-      <li>olvidar guardar el resultado devuelto</li>
-      <li>escribir código después de un <code>return</code> pensando que seguirá ejecutándose</li>
-    </ul>
-  </section>
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto guiado</h2>
+        <p class="exercise-subtitle">Ahora toca crear una función que produzca un resultado reutilizable.</p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Reto</span>
+        <span class="badge green">Muy fácil</span>
+      </div>
+    </div>
 
-  <section class="panel">
-    <h2>Mini-reto guiado</h2>
-    <p>
-      Crea una función que reciba un precio y devuelva el precio con IVA del 21%.
-    </p>
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Tu misión</h3>
+        <p>
+          Crea una función que reciba un precio y devuelva el precio con IVA del 21%.
+        </p>
 
-    <pre><code>def precio_con_iva(precio):
+        <div class="exercise-actions">
+          <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Resolver en playground</a>
+          <button class="btn btn-secondary btn-sm" type="button" onclick="document.getElementById('solucion-reto').open = true;">
+            Ver solución
+          </button>
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Pista</h3>
+        <p>
+          Aquí no quieres solo mostrar el resultado. Quieres poder usarlo después.
+        </p>
+
+        <details id="solucion-reto" class="theory-dropdown">
+          <summary>Mostrar solución</summary>
+          <div class="theory-dropdown-content">
+            <pre><code>def precio_con_iva(precio):
     return precio * 1.21
 
 final = precio_con_iva(100)
 print(final)</code></pre>
+          </div>
+        </details>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Pregunta de entrevista</h2>
-    <p>
-      ¿Qué diferencia hay entre <code>print()</code> y <code>return</code> dentro de una función?
-    </p>
+    <h2>Errores frecuentes</h2>
 
-    <p>
-      Respuesta sólida: <code>print()</code> muestra información por pantalla; <code>return</code> devuelve un valor para seguir utilizándolo fuera de la función.
-    </p>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Error 1</h3>
+        <p>Confundir imprimir con devolver.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 2</h3>
+        <p>Olvidar guardar o usar el resultado devuelto.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 3</h3>
+        <p>Escribir código después de un <code>return</code> pensando que seguirá ejecutándose.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 4</h3>
+        <p>No entender por qué aparece <code>None</code> cuando la función no devuelve nada.</p>
+      </div>
+    </div>
   </section>
 
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./02-parametros-y-argumentos.html">Anterior</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
+  <section class="panel">
+    <h2>Buenas prácticas</h2>
 
-  <button class="btn btn-primary" onclick="completeTopic('5.3')">Marcar como completado</button>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Separa mostrar y calcular</h3>
+        <p>Una función puede calcular y otra parte del programa puede imprimir.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Devuelve valores útiles</h3>
+        <p>No uses <code>return</code> “porque sí”; úsalo cuando el resultado deba reutilizarse.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Piensa en el flujo</h3>
+        <p>Recuerda que la función termina justo en el <code>return</code>.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Comprueba el resultado</h3>
+        <p>Haz pruebas guardando el valor devuelto en variables para entenderlo mejor.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Siguiente paso</h2>
+    <p>
+      Ya sabes devolver resultados. Lo siguiente es entender el ámbito de las variables y cómo escribir funciones más limpias.
+    </p>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./02-parametros-y-argumentos.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <button class="btn btn-primary" onclick="completeTopic('5.3')">Marcar como completado</button>
+    </div>
+  </section>
 
   <script>
 const TOPIC_ID = "5.3";

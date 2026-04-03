@@ -200,6 +200,84 @@
     </div>
   </section>
 
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Cierre del tema 4</h2>
+        <p class="exercise-subtitle">
+          Cuando hayas practicado estos ejercicios, marca esta parte como completada para cerrar el bloque de listas.
+        </p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Práctica</span>
+        <span class="badge green">Completar tema</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Antes de cerrar este bloque</h3>
+        <ul>
+          <li>has creado listas sin errores de sintaxis</li>
+          <li>sabes acceder por índice y modificar posiciones</li>
+          <li>puedes recorrer una lista con <code>for</code></li>
+          <li>entiendes cuándo usar acumuladores, contadores y búsqueda</li>
+          <li>has probado al menos varios ejercicios en el playground</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Última recomendación</h3>
+        <div class="challenge">
+          No hace falta que todo salga perfecto a la primera. Lo importante es haber practicado de verdad y entender dónde te equivocas.
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./05-mini-retos.html">Volver a mini-retos</a>
+      <a class="btn btn-secondary" href="./index.html">Volver al índice del tema</a>
+      <button class="btn btn-primary" onclick="completeTopic('4.ejercicios')">
+        Marcar ejercicios como completados
+      </button>
+    </div>
+  </section>
+  
+<script>
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Ejercicios completados 🎉");
+    window.location.href = "./index.html";
+  } catch (error) {
+    console.error("Error marcando ejercicios como completados:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+</script>
+
 </main>
 </body>
 </html>

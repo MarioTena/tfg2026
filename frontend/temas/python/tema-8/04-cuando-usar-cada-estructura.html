@@ -6,16 +6,120 @@
   <link rel="stylesheet" href="../../../styles.css" />
 </head>
 <body>
+
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 8 · Tuplas y sets</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 8 · Python</h1>
-  <p>8.4 · Cuándo usar listas, tuplas o sets</p>
+  <span class="mission-tag">Misión 8.4</span>
+  <h1>Cuándo usar cada estructura</h1>
+  <p>Aprende a elegir entre lista, tupla o set según lo que el problema realmente necesita representar.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 8 · Tuplas y sets</div>
+        <div class="mini-note">Nivel inicial · 12-15 min · Elegir la estructura correcta</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Lista</span>
+        <span class="badge green">Tupla / Set</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 80%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué vas a entender hoy</h2>
+        <p class="exercise-subtitle">
+          Elegir bien entre lista, tupla o set no es un detalle menor: cambia cómo representas el problema y cómo se entiende tu código.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Objetivo</span>
+        <span class="badge green">Elegir bien</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué problema resuelve</h3>
+        <p>
+          No basta con que el programa funcione. También importa que la estructura elegida represente bien
+          lo que estás modelando: datos ordenados, fijos, únicos o modificables.
+        </p>
+
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3>Lista</h3>
+            <p>Para secuencias ordenadas que pueden cambiar.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Tupla</h3>
+            <p>Para grupos ordenados que deben mantenerse estables.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Set</h3>
+            <p>Para valores únicos donde el orden no importa.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Claridad</h3>
+            <p>Elegir bien mejora la legibilidad y la intención del código.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          Idea clave: la estructura correcta no se elige por costumbre, sino por la naturaleza del problema.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes vigilar</h3>
+        <ul>
+          <li>si importa el orden</li>
+          <li>si puede haber duplicados</li>
+          <li>si los datos van a cambiar</li>
+          <li>si lo importante es pertenencia o acceso por posición</li>
+        </ul>
+
+        <div class="challenge">
+          <strong>Piensa así:</strong><br />
+          antes de escribir código, pregúntate qué representa mejor tus datos en el mundo real.
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="panel">
     <h2>La decisión correcta importa</h2>
     <p>
-      Elegir bien la estructura de datos es una habilidad importante. No se trata solo de que el programa funcione, sino de que represente bien el problema.
+      Elegir bien la estructura de datos es una habilidad importante. No se trata solo de que el programa funcione,
+      sino de que represente bien el problema.
     </p>
   </section>
 
@@ -26,6 +130,8 @@
       <li>admites duplicados</li>
       <li>vas a modificar elementos</li>
     </ul>
+
+    <pre><code>tareas = ["estudiar", "practicar", "repasar"]</code></pre>
   </section>
 
   <section class="panel">
@@ -35,6 +141,8 @@
       <li>no quieres cambios</li>
       <li>el conjunto de datos es fijo</li>
     </ul>
+
+    <pre><code>coordenada = (40.4, -3.7)</code></pre>
   </section>
 
   <section class="panel">
@@ -44,46 +152,191 @@
       <li>la pertenencia es importante</li>
       <li>quieres comparar grupos de elementos</li>
     </ul>
+
+    <pre><code>categorias = {"python", "web", "datos"}</code></pre>
   </section>
 
   <section class="panel">
     <h2>Ejemplos rápidos</h2>
-    <ul>
-      <li>lista: tareas pendientes en orden</li>
-      <li>tupla: coordenadas (x, y)</li>
-      <li>set: etiquetas únicas</li>
-    </ul>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Lista</h3>
+        <p>Tareas pendientes en orden.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Tupla</h3>
+        <p>Coordenadas <code>(x, y)</code>.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Set</h3>
+        <p>Etiquetas únicas sin repetir.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Regla general</h3>
+        <p>La estructura debe ajustarse a la lógica del dato.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>💭 Piensa antes de ejecutar</h2>
+    <h2>Cómo decidir correctamente</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Paso 1</h3>
+        <p>Pregunta si el orden forma parte del problema.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 2</h3>
+        <p>Pregunta si puede haber duplicados.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 3</h3>
+        <p>Pregunta si esos datos deben cambiar después.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 4</h3>
+        <p>Elige la estructura que mejor represente esas respuestas.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Piensa antes de ejecutar</h2>
+        <p class="exercise-subtitle">Aquí no se trata de ejecutar código, sino de razonar qué estructura encaja mejor en cada caso.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Situaciones</h3>
+        <ul>
+          <li>notas de una clase</li>
+          <li>posición GPS</li>
+          <li>emails únicos recibidos</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Preguntas</h3>
+        <ul>
+          <li>¿en cuáles importa el orden?</li>
+          <li>¿en cuáles quieres evitar duplicados?</li>
+          <li>¿cuál representa mejor datos fijos?</li>
+        </ul>
+
+        <div class="mini-note">
+          Pista: piensa primero en la naturaleza del dato, no en la sintaxis.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto guiado</h2>
+        <p class="exercise-subtitle">Ahora toca elegir la estructura más adecuada según el caso.</p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Reto</span>
+        <span class="badge green">Muy fácil</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Tu misión</h3>
+        <p>
+          Indica qué estructura usarías para cada situación:
+        </p>
+
+        <ul>
+          <li>productos en carrito</li>
+          <li>fecha fija</li>
+          <li>categorías sin repetir</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Solución razonada</h3>
+        <ul>
+          <li><strong>productos en carrito</strong> → lista</li>
+          <li><strong>fecha fija</strong> → tupla</li>
+          <li><strong>categorías sin repetir</strong> → set</li>
+        </ul>
+
+        <div class="callout">
+          La clave no es memorizar, sino justificar por qué esa estructura encaja mejor.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Errores frecuentes</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Error 1</h3>
+        <p>Elegir siempre lista por costumbre.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 2</h3>
+        <p>No pensar si los datos cambiarán o no.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 3</h3>
+        <p>Usar set cuando realmente necesitas orden fijo.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 4</h3>
+        <p>Usar tupla cuando luego quieres modificar los datos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Buenas prácticas</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Representa bien el dato</h3>
+        <p>La estructura debe reflejar la lógica del problema.</p>
+      </div>
+      <div class="theory-card">
+        <h3>No uses una sola por costumbre</h3>
+        <p>Cada estructura resuelve necesidades distintas.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Piensa antes de programar</h3>
+        <p>Una buena elección simplifica el código posterior.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Hazlo legible</h3>
+        <p>La estructura correcta también ayuda a otros a entender tu intención.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Siguiente paso</h2>
     <p>
-      ¿Qué usarías en cada caso?
+      Ya sabes cuándo conviene usar listas, tuplas o sets. El siguiente bloque del tema puede centrarse en mini-retos para consolidar todas estas estructuras.
     </p>
-    <ul>
-      <li>notas de una clase</li>
-      <li>posición GPS</li>
-      <li>emails únicos recibidos</li>
-    </ul>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./03-operaciones-con-sets.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <button class="btn btn-primary" onclick="completeTopic('8.4')">Marcar como completado</button>
+    </div>
   </section>
 
-  <section class="panel">
-    <h2>Mini-reto guiado</h2>
-    <p>Indica la estructura correcta para cada situación:</p>
-    <ul>
-      <li>productos en carrito</li>
-      <li>fecha fija</li>
-      <li>categorías sin repetir</li>
-    </ul>
-  </section>
-
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./03-operaciones-con-sets.html">Anterior</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
-
-  <button class="btn btn-primary" onclick="completeTopic('8.4')">Marcar como completado</button>
   <script>
 const TOPIC_ID = "8.4";
 const NEXT_URL = "./05-mini-retos.html";

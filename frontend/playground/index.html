@@ -14,11 +14,14 @@
   <div class="topbar-inner">
     <div class="topbar-title">
       <h1>Playground</h1>
-      <p id="topbar-sub">Resuelve ejercicios, prueba ideas y ejecuta tu código.</p>
+      <p id="topbar-sub">Practica, ejecuta código y revisa el feedback.</p>
     </div>
 
     <div class="topbar-actions">
-      <a class="btn btn-secondary btn-sm" id="back-btn" href="../index.html">Volver</a>
+      <a class="btn btn-secondary btn-sm" href="../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../temas/python/index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" id="back-btn" href="../temas/python/index.html">Volver al tema</a>
       <button class="btn btn-secondary btn-sm" id="logout-btn" type="button">Salir</button>
     </div>
   </div>
@@ -26,9 +29,21 @@
 
 <main class="main-container playground-layout">
 
-  <!-- COLUMNA IZQUIERDA -->
   <section class="panel panel-input">
-    <h2>Tu misión</h2>
+    <div class="playground-hero">
+      <div>
+        <span class="mission-tag">Zona de práctica</span>
+        <h2 class="playground-title">Entrena tu código</h2>
+        <p class="playground-subtitle">
+          Usa el editor para probar ideas, resolver ejercicios y revisar la salida paso a paso.
+        </p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue" id="playground-mode-badge">Modo práctica</span>
+        <span class="badge green" id="playground-lang-badge">Python</span>
+      </div>
+    </div>
 
     <div class="field">
       <label for="user">Usuario</label>
@@ -43,8 +58,7 @@
       </select>
     </div>
 
-    <!-- Tarjeta de ejercicio -->
-    <section id="exercise-panel" class="exercise-card exercise-panel-hero" style="display:none;">
+    <section id="exercise-panel" class="exercise-card" style="display:none; margin-bottom: 12px;">
       <div class="exercise-header">
         <div>
           <h3 id="exercise-title" class="exercise-title" style="margin-top:0;">Ejercicio</h3>
@@ -53,14 +67,11 @@
 
         <div class="badges">
           <span class="badge blue" id="exercise-badge-lang">Lenguaje: -</span>
-          <span class="badge green" id="exercise-badge-type">Modo: práctica</span>
+          <span class="badge blue" id="exercise-badge-type">Modo: -</span>
+          <span class="badge blue" id="exercise-badge-difficulty">Dificultad: -</span>
+          <span class="badge blue" id="exercise-badge-time">Tiempo: -</span>
+          <span class="badge green" id="exercise-badge-skill">Skill: -</span>
         </div>
-      </div>
-
-      <div class="exercise-meta-row">
-        <span class="mission-tag" id="exercise-badge-difficulty">Dificultad: -</span>
-        <span class="mission-tag" id="exercise-badge-time">Tiempo: -</span>
-        <span class="mission-tag" id="exercise-badge-skill">Skill: -</span>
       </div>
 
       <div class="exercise-body">
@@ -70,7 +81,7 @@
         </div>
 
         <div class="exercise-block">
-          <h3>Acciones rápidas</h3>
+          <h3>Acciones</h3>
           <div class="exercise-actions">
             <button class="btn btn-secondary btn-sm" id="btn-reset-template" type="button">
               Reiniciar plantilla
@@ -93,13 +104,17 @@
       <textarea id="code">print("Hola desde el playground")</textarea>
     </div>
 
-    <div class="buttons-row playground-actions">
+    <div class="playground-actions">
       <button id="run-btn" class="btn btn-primary" type="button">Ejecutar código</button>
-      <button id="ai-hint-btn" class="btn btn-secondary" type="button">Pedir pista con IA</button>
-      <span id="ai-credits" class="mission-tag">Créditos IA: -</span>
+      <span id="status-msg" class="playground-status">Listo para practicar.</span>
     </div>
 
-    <p id="status-msg" class="status-msg"></p>
+    <div class="buttons-row" style="margin-top: 12px;">
+      <button id="ai-hint-btn" class="btn btn-secondary" type="button">
+        Pedir pista con IA
+      </button>
+      <span id="ai-credits" class="mission-tag">Créditos IA: -</span>
+    </div>
 
     <div class="output-block" style="margin-top: 12px;">
       <h3>Pista IA</h3>
@@ -107,29 +122,28 @@
     </div>
   </section>
 
-  <!-- COLUMNA DERECHA -->
   <section class="panel panel-output">
-    <h2>Resultado</h2>
+    <h2>Salida</h2>
+
+    <div class="playground-summary-grid">
+      <div class="summary-card">
+        <span class="label">Estado</span>
+        <strong id="run-status">-</strong>
+      </div>
+      <div class="summary-card">
+        <span class="label">Tiempo</span>
+        <strong id="run-time">-</strong>
+      </div>
+    </div>
 
     <div class="output-block">
-      <h3>Salida correcta (stdout)</h3>
+      <h3>stdout</h3>
       <pre id="stdout"></pre>
     </div>
 
     <div class="output-block">
-      <h3>Errores (stderr)</h3>
+      <h3>stderr</h3>
       <pre id="stderr"></pre>
-    </div>
-
-    <div class="output-inline">
-      <div>
-        <span class="label">Estado:</span>
-        <span id="run-status">-</span>
-      </div>
-      <div>
-        <span class="label">Tiempo:</span>
-        <span id="run-time">-</span>
-      </div>
     </div>
 
     <div class="output-block">
@@ -140,7 +154,10 @@
 </main>
 
 <section class="history">
-  <h2>Historial de intentos (últimos 5)</h2>
+  <div class="history-header">
+    <h2>Historial de intentos</h2>
+    <a class="btn btn-secondary btn-sm" href="../progreso.html">Ver progreso</a>
+  </div>
   <ul id="attempts-list"></ul>
 </section>
 

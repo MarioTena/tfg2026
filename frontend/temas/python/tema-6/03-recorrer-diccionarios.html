@@ -7,15 +7,116 @@
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 6 · Diccionarios</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 6 · Python</h1>
-  <p>6.3 · Recorrer diccionarios: trabajar con claves, valores y pares</p>
+  <span class="mission-tag">Misión 6.3</span>
+  <h1>Recorrer diccionarios</h1>
+  <p>Aprende a trabajar con claves, valores y parejas clave-valor usando bucles de forma clara y útil.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 6 · Diccionarios</div>
+        <div class="mini-note">Nivel inicial · 12-15 min · Claves, valores e items</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">for</span>
+        <span class="badge green">Recorridos</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 60%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
 
+<section class="exercise-card">
+  <div class="exercise-header">
+    <div>
+      <h2 class="exercise-title">Qué vas a entender hoy</h2>
+      <p class="exercise-subtitle">
+        Recorrer un diccionario significa pasar por sus claves, sus valores o ambas cosas a la vez según lo que necesites hacer.
+      </p>
+    </div>
+    <div class="badges">
+      <span class="badge blue">Objetivo</span>
+      <span class="badge green">Recorridos</span>
+    </div>
+  </div>
+
+  <div class="exercise-body">
+    <div class="exercise-block">
+      <h3>Qué problema resuelve</h3>
+      <p>
+        Cuando un diccionario tiene varios datos, muchas veces no quieres mirar una sola clave,
+        sino revisarlos todos: mostrarlos, validarlos o procesarlos dentro de un bucle.
+      </p>
+
+      <div class="theory-grid">
+        <div class="theory-card">
+          <h3>Claves</h3>
+          <p>Recorrer los nombres de los datos guardados.</p>
+        </div>
+        <div class="theory-card">
+          <h3>Valores</h3>
+          <p>Procesar directamente la información almacenada.</p>
+        </div>
+        <div class="theory-card">
+          <h3>Clave y valor</h3>
+          <p>Trabajar con ambos a la vez dentro del bucle.</p>
+        </div>
+        <div class="theory-card">
+          <h3>Uso real</h3>
+          <p>Mostrar fichas, revisar configuraciones o validar datos.</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        Idea clave: un diccionario puede recorrerse por claves, por valores o por parejas clave-valor.
+      </div>
+    </div>
+
+    <div class="exercise-block">
+      <h3>Qué debes vigilar</h3>
+      <ul>
+        <li>recorrer directamente un diccionario da sus claves</li>
+        <li><code>values()</code> devuelve valores</li>
+        <li><code>items()</code> devuelve parejas clave-valor</li>
+        <li>debes elegir el patrón según tu objetivo</li>
+      </ul>
+
+      <div class="challenge">
+        <strong>Piensa así:</strong><br />
+        la pregunta importante no es solo “cómo recorro”, sino “qué necesito recorrer exactamente”.
+      </div>
+    </div>
+  </div>
+</section>
+
   <section class="panel">
-    <h2>¿Qué significa recorrer un diccionario?</h2>
+    <h2>Qué significa recorrer un diccionario</h2>
     <p>
       Igual que recorrías listas para procesar varios elementos, puedes recorrer un diccionario
       para trabajar con sus claves, sus valores o ambos.
@@ -64,6 +165,10 @@ for clave in persona:
 
 for valor in producto.values():
     print(valor)</code></pre>
+
+    <p>
+      Este patrón es útil cuando el nombre de la clave no importa para la tarea.
+    </p>
   </section>
 
   <section class="panel">
@@ -82,23 +187,91 @@ for clave, valor in producto.items():
     </p>
 
     <div class="callout">
-      <code>items()</code> es muy útil porque te evita escribir <code>diccionario[clave]</code> dentro del bucle.
+      <code>items()</code> evita tener que escribir <code>diccionario[clave]</code> dentro del bucle.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Cómo decidir qué recorrido usar</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Solo claves</h3>
+        <p>Cuando quieres saber qué campos existen.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Solo valores</h3>
+        <p>Cuando los nombres no importan.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Clave y valor</h3>
+        <p>Cuando quieres mostrar o usar ambas cosas a la vez.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Idea práctica</h3>
+        <p>Primero decide qué necesitas y luego elige el método.</p>
+      </div>
     </div>
   </section>
 
   <section class="panel">
     <h2>Casos reales</h2>
-    <ul>
-      <li>mostrar la ficha de un usuario</li>
-      <li>recorrer configuraciones</li>
-      <li>validar datos obligatorios</li>
-      <li>imprimir informes simples de clave y valor</li>
-    </ul>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Ficha de usuario</h3>
+        <p>Mostrar todos sus datos de forma clara.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Configuración</h3>
+        <p>Revisar opciones activadas o guardadas.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Validación</h3>
+        <p>Comprobar si hay datos obligatorios y qué valor tienen.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Informes</h3>
+        <p>Imprimir resúmenes simples de clave y valor.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>💭 Piensa antes de ejecutar</h2>
-    <pre><code>alumno = {
+    <h2>Cómo pensar un recorrido antes de escribirlo</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Paso 1</h3>
+        <p>Decide si necesitas claves, valores o ambas cosas.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 2</h3>
+        <p>Elige <code>for clave in diccionario</code>, <code>values()</code> o <code>items()</code>.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 3</h3>
+        <p>Piensa qué vas a hacer dentro del bucle.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 4</h3>
+        <p>Usa nombres claros como <code>clave</code> y <code>valor</code>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Piensa antes de ejecutar</h2>
+        <p class="exercise-subtitle">Antes de probar el bucle, piensa qué representa cada vuelta.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Código</h3>
+        <pre><code>alumno = {
     "nombre": "Lucía",
     "nota": 9,
     "activo": True
@@ -106,15 +279,24 @@ for clave, valor in producto.items():
 
 for clave, valor in alumno.items():
     print(clave, valor)</code></pre>
+      </div>
 
-    <ul>
-      <li>¿cuántas iteraciones habrá?</li>
-      <li>¿qué representa cada pareja <code>clave, valor</code>?</li>
-    </ul>
+      <div class="exercise-block">
+        <h3>Preguntas</h3>
+        <ul>
+          <li>¿cuántas iteraciones habrá?</li>
+          <li>¿qué representa cada pareja <code>clave, valor</code>?</li>
+        </ul>
+
+        <div class="mini-note">
+          Pista: cada iteración procesa un par del diccionario.
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>⚠️ Error típico: confundir recorrer claves con recorrer valores</h2>
+    <h2>Error típico: confundir recorrer claves con recorrer valores</h2>
     <pre><code>persona = {
     "nombre": "Ana",
     "edad": 30
@@ -129,22 +311,43 @@ for dato in persona:
     </p>
   </section>
 
-  <section class="panel">
-    <h2>Buenas prácticas</h2>
-    <ul>
-      <li>usa nombres claros como <code>clave</code> y <code>valor</code></li>
-      <li>elige <code>items()</code> cuando realmente necesitas ambos</li>
-      <li>evita lógica confusa dentro del bucle</li>
-    </ul>
-  </section>
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto guiado</h2>
+        <p class="exercise-subtitle">Ahora toca recorrer un diccionario mostrando cada dato con claridad.</p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Reto</span>
+        <span class="badge green">Muy fácil</span>
+      </div>
+    </div>
 
-  <section class="panel">
-    <h2>Mini-reto guiado</h2>
-    <p>
-      Recorre un diccionario de película y muestra cada clave con su valor.
-    </p>
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Tu misión</h3>
+        <p>
+          Recorre un diccionario de película y muestra cada clave con su valor.
+        </p>
 
-    <pre><code>pelicula = {
+        <div class="exercise-actions">
+          <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Resolver en playground</a>
+          <button class="btn btn-secondary btn-sm" type="button" onclick="document.getElementById('solucion-reto').open = true;">
+            Ver solución
+          </button>
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Pista</h3>
+        <p>
+          Si necesitas mostrar clave y valor a la vez, la forma más directa suele ser <code>items()</code>.
+        </p>
+
+        <details id="solucion-reto" class="theory-dropdown">
+          <summary>Mostrar solución</summary>
+          <div class="theory-dropdown-content">
+            <pre><code>pelicula = {
     "titulo": "Interstellar",
     "anio": 2014,
     "director": "Christopher Nolan"
@@ -152,30 +355,75 @@ for dato in persona:
 
 for clave, valor in pelicula.items():
     print(clave, ":", valor)</code></pre>
+          </div>
+        </details>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Pregunta de entrevista</h2>
-    <p>
-      ¿Qué devuelve un bucle <code>for</code> si recorres directamente un diccionario?
-    </p>
+    <h2>Errores frecuentes</h2>
 
-    <p>
-      Respuesta sólida: recorre sus claves.
-    </p>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Error 1</h3>
+        <p>Confundir claves con valores al recorrer.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 2</h3>
+        <p>Usar <code>items()</code> cuando solo necesitabas claves o valores.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 3</h3>
+        <p>Elegir nombres poco claros dentro del bucle.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 4</h3>
+        <p>Hacer demasiado trabajo dentro del bucle sin necesidad.</p>
+      </div>
+    </div>
   </section>
 
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./02-acceso-y-modificacion.html">Anterior</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
+  <section class="panel">
+    <h2>Buenas prácticas</h2>
 
-  <button class="btn btn-primary" onclick="completeTopic('6.3')">Marcar como completado</button>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Nombres claros</h3>
+        <p>Usa <code>clave</code> y <code>valor</code> cuando tenga sentido.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Elige bien</h3>
+        <p>Usa <code>items()</code> solo si realmente necesitas ambos.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Recorridos simples</h3>
+        <p>Evita lógica confusa dentro del bucle mientras aprendes.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Piensa en el objetivo</h3>
+        <p>El recorrido debe responder a una necesidad concreta.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Siguiente paso</h2>
+    <p>
+      Ya sabes recorrer diccionarios. Lo siguiente es aprender sus métodos más útiles y afinar cuándo conviene usar uno frente a otra estructura.
+    </p>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./02-acceso-y-modificacion.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <button class="btn btn-primary" onclick="completeTopic('6.3')">Marcar como completado</button>
+    </div>
+  </section>
 
  <script>
 const TOPIC_ID = "6.3";
-const NEXT_URL = "./04-metodos-y-beunas-practicas.html";
+const NEXT_URL = "./04-metodos-y-buenas-practicas.html";
 
 const API_URL = "http://localhost:3000/api/progress/python";
 const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";

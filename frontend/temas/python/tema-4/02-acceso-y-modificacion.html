@@ -7,12 +7,136 @@
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 4 · Listas</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 4 · Python</h1>
-  <p>4.2 · Acceso y modificación: trabajar con posiciones dentro de una lista</p>
+  <span class="mission-tag">Misión 4.2</span>
+  <h1>Acceso y modificación</h1>
+  <p>Aprende a trabajar con posiciones dentro de una lista: acceder, cambiar valores y evitar errores típicos.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 4 · Listas en Python</div>
+        <div class="mini-note">Paso 2 del tema · 10-15 min · índices, mutabilidad y slicing</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Python</span>
+        <span class="badge green">Concepto clave</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 38%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué vas a dominar hoy</h2>
+        <p class="exercise-subtitle">
+          Una lista no solo guarda datos: también te permite entrar en posiciones concretas, cambiar valores y extraer partes.
+        </p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Índices</span>
+        <span class="badge blue">Mutabilidad</span>
+        <span class="badge green">Slicing</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué debes ser capaz de hacer</h3>
+        <ul>
+          <li>leer un valor por su posición</li>
+          <li>cambiar un elemento existente</li>
+          <li>usar índices negativos</li>
+          <li>razonar cuándo un índice es válido</li>
+          <li>obtener una parte de la lista</li>
+        </ul>
+
+        <div class="callout">
+          Idea clave: moverte dentro de una lista es tan importante como crearla.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Movimientos básicos con listas</h3>
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3>Leer</h3>
+            <p>Acceder a un valor por su índice.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Modificar</h3>
+            <p>Cambiar un elemento ya existente.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Mirar desde el final</h3>
+            <p>Usar índices negativos como <code>-1</code>.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Cortar una parte</h3>
+            <p>Obtener un tramo con slicing.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Dónde aparece esto en problemas reales</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Listados</h3>
+        <p>Leer el primer, último o penúltimo elemento de un grupo de datos.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Edición</h3>
+        <p>Actualizar un valor concreto dentro de una colección.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Interfaces</h3>
+        <p>Mostrar solo una parte de una lista de elementos o mensajes.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Procesamiento</h3>
+        <p>Trabajar con posiciones para reorganizar o revisar datos.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      Cuando una lista ya existe, el siguiente paso natural es saber entrar en ella y modificar partes concretas.
+    </div>
+  </section>
 
   <section class="panel">
     <h2>Acceder a un elemento</h2>
@@ -35,223 +159,425 @@ print(frutas[2])</code></pre>
     </div>
   </section>
 
-  <section class="panel">
-    <h2>¿Por qué empieza en 0?</h2>
-    <p>
-      Es una convención muy común en programación.
-      Cuesta un poco al principio, pero después se vuelve natural.
-      Debes asumirlo cuanto antes porque aparece constantemente.
-    </p>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">La lógica de los índices</h2>
+        <p class="exercise-subtitle">Al principio cuesta, pero aquí está una de las bases que más vas a usar.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>¿Por qué empieza en 0?</h3>
+        <p>
+          Es una convención muy común en programación.
+          Cuesta un poco al principio, pero después se vuelve natural.
+          Debes asumirlo cuanto antes porque aparece constantemente.
+        </p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes interiorizar</h3>
+        <ul>
+          <li>si una lista tiene 3 elementos, sus índices son 0, 1 y 2</li>
+          <li>la longitud no coincide con el último índice</li>
+          <li>el índice representa posición, no cantidad total</li>
+        </ul>
+      </div>
+    </div>
   </section>
 
-  <section class="panel">
-    <h2>Modificar un elemento</h2>
-    <p>
-      Las listas en Python son <strong>mutables</strong>, lo que significa que sus elementos se pueden cambiar.
-    </p>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Trabajar con posiciones dentro de una lista</h2>
+        <p class="exercise-subtitle">
+          Una vez sabes acceder por índice, puedes modificar valores, mirar desde el final y recuperar elementos clave.
+        </p>
+      </div>
 
-    <pre><code>frutas = ["manzana", "pera", "uva"]
+      <div class="badges">
+        <span class="badge blue">Modificar</span>
+        <span class="badge blue">Índices negativos</span>
+        <span class="badge green">Uso frecuente</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>1. Modificar un elemento</h3>
+        <p>
+          Las listas en Python son <strong>mutables</strong>, lo que significa que sus elementos se pueden cambiar después de crear la lista.
+        </p>
+
+        <pre><code>frutas = ["manzana", "pera", "uva"]
 frutas[1] = "plátano"
 print(frutas)</code></pre>
 
-    <p>
-      Ahora la lista será <code>["manzana", "plátano", "uva"]</code>.
-    </p>
-  </section>
+        <p>
+          Ahora la lista será <code>["manzana", "plátano", "uva"]</code>.
+        </p>
 
-  <section class="panel">
-    <h2>Índices negativos</h2>
-    <p>
-      Python también permite acceder desde el final de la lista usando índices negativos.
-    </p>
+        <div class="mini-note">
+          Ojo: aquí no estás añadiendo un nuevo elemento, estás sustituyendo uno que ya existía.
+        </div>
+      </div>
 
-    <pre><code>numeros = [10, 20, 30, 40]
+      <div class="exercise-block">
+        <h3>2. Acceder desde el final</h3>
+        <p>
+          Python también permite acceder desde el final de la lista usando índices negativos.
+          Esto es muy útil cuando no quieres contar todas las posiciones a mano.
+        </p>
+
+        <pre><code>numeros = [10, 20, 30, 40]
 print(numeros[-1])
 print(numeros[-2])</code></pre>
 
-    <ul>
-      <li><code>-1</code> es el último elemento</li>
-      <li><code>-2</code> es el penúltimo</li>
-    </ul>
-  </section>
+        <ul>
+          <li><code>-1</code> es el último elemento</li>
+          <li><code>-2</code> es el penúltimo</li>
+        </ul>
+      </div>
+    </div>
 
-  <section class="panel">
-    <h2>⚠️ Error típico: índice fuera de rango</h2>
-    <pre><code>frutas = ["manzana", "pera", "uva"]
-print(frutas[3])</code></pre>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Primer elemento</h3>
+        <pre><code>numeros[0]</code></pre>
+        <p>Se usa muchísimo para acceder al inicio de la lista.</p>
+      </div>
 
-    <p>
-      Este código da error porque esa lista tiene índices 0, 1 y 2.
-      El índice 3 no existe.
-    </p>
+      <div class="theory-card">
+        <h3>Último elemento</h3>
+        <pre><code>numeros[-1]</code></pre>
+        <p>Es una de las formas más prácticas de trabajar con listas.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Ejemplo directo</h3>
+        <pre><code>numeros = [5, 8, 12, 20]
+print(numeros[0])
+print(numeros[-1])</code></pre>
+        <p>Aquí obtienes el primer y el último valor de la lista.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Idea útil</h3>
+        <p>
+          Cuando trabajas con listas, preguntar por “el primero”, “el último” o “cambiar uno concreto” es de lo más habitual.
+        </p>
+      </div>
+    </div>
 
     <div class="callout">
-      Si una lista tiene longitud 3, su último índice positivo es 2.
+      Idea práctica: si conoces bien los índices, puedes leer, cambiar y localizar datos dentro de una lista con mucha rapidez.
     </div>
   </section>
 
   <section class="panel">
-    <h2>Usar <code>len()</code> para razonar índices</h2>
-    <pre><code>frutas = ["manzana", "pera", "uva"]
+    <h2>Obtener una parte de la lista</h2>
+
+    <p>
+      A veces no quieres un solo elemento, sino un tramo de la lista.
+      Para eso puedes usar <strong>slicing</strong>.
+    </p>
+
+    <pre><code>animales = ["gato", "perro", "loro", "pez"]
+print(animales[1:3])</code></pre>
+
+    <p>
+      Esto devuelve <code>["perro", "loro"]</code>.
+    </p>
+
+    <div class="callout">
+      En slicing, se empieza en el primer índice y se llega solo hasta antes del segundo.
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Cómo razonar si un índice es válido</h2>
+        <p class="exercise-subtitle">Aquí es donde mucha gente se equivoca al principio.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Error típico: índice fuera de rango</h3>
+        <pre><code>frutas = ["manzana", "pera", "uva"]
+print(frutas[3])</code></pre>
+
+        <p>
+          Este código da error porque esa lista tiene índices 0, 1 y 2.
+          El índice 3 no existe.
+        </p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Usar <code>len()</code> para pensar mejor</h3>
+        <pre><code>frutas = ["manzana", "pera", "uva"]
 print(len(frutas))</code></pre>
 
-    <p>
-      Si la longitud es 3, los índices válidos van de 0 a 2.
-    </p>
+        <p>
+          Si la longitud es 3, los índices válidos van de 0 a 2.
+        </p>
+
+        <div class="callout">
+          Si una lista tiene longitud 3, su último índice positivo es 2.
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Acceder al primer y último elemento</h2>
-    <pre><code>numeros = [5, 8, 12, 20]
-print(numeros[0])
-print(numeros[-1])</code></pre>
+    <h2>Cómo pensar acceso y modificación antes de escribirlo</h2>
 
-    <p>
-      Esta es una operación muy común.
-    </p>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Paso 1</h3>
+        <p>Decide si necesitas un valor concreto, el primero, el último o un tramo.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Paso 2</h3>
+        <p>Comprueba si vas a leer un valor o a cambiarlo.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Paso 3</h3>
+        <p>Piensa si el índice que vas a usar existe de verdad.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Paso 4</h3>
+        <p>Si dudas, usa <code>len()</code> para razonar mejor la longitud y las posiciones.</p>
+      </div>
+    </div>
+
+    <div class="challenge">
+      Gran parte de los fallos aquí no vienen del código, sino de pensar mal qué posición estás usando.
+    </div>
   </section>
 
-  <section class="panel">
-    <h2>Rebanado básico o slicing</h2>
-    <p>
-      También puedes obtener una parte de la lista.
-    </p>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Piensa antes de ejecutar</h2>
+        <p class="exercise-subtitle">Antes de lanzar código, acostúmbrate a predecir qué hará cada línea.</p>
+      </div>
+    </div>
 
-    <pre><code>numeros = [10, 20, 30, 40, 50]
-print(numeros[1:4])</code></pre>
-
-    <p>
-      Esto devuelve <code>[20, 30, 40]</code>.
-      Empieza en el índice 1 y llega hasta antes del 4.
-    </p>
-  </section>
-
-  <section class="panel">
-    <h2>💭 Piensa antes de ejecutar</h2>
-    <pre><code>animales = ["gato", "perro", "loro", "pez"]
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Código</h3>
+        <pre><code>animales = ["gato", "perro", "loro", "pez"]
 print(animales[0])
 print(animales[-1])
 print(animales[1:3])</code></pre>
+      </div>
 
-    <ul>
-      <li>¿qué imprime cada línea?</li>
-      <li>¿por qué el último valor no sale en el slicing?</li>
-    </ul>
+      <div class="exercise-block">
+        <h3>Preguntas</h3>
+        <ul>
+          <li>¿qué imprime cada línea?</li>
+          <li>¿por qué el último valor no sale en el slicing?</li>
+        </ul>
+
+        <div class="mini-note">
+          Pista: en <code>[1:3]</code> se empieza en 1, pero se llega solo hasta antes de 3.
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section class="panel">
-    <h2>Errores frecuentes</h2>
-    <ul>
-      <li>pensar que el primer índice es 1</li>
-      <li>usar índices fuera del rango</li>
-      <li>confundir modificar un elemento con añadir uno nuevo</li>
-      <li>no entender que el slicing no incluye el límite final</li>
-    </ul>
-  </section>
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto guiado</h2>
+        <p class="exercise-subtitle">Ahora toca aplicar acceso, modificación y razonamiento sobre posiciones.</p>
+      </div>
 
-  <section class="panel">
-    <h2>Mini-reto guiado</h2>
-    <p>
-      Crea una lista con 4 asignaturas, muestra la primera y la última, y cambia la segunda por otra nueva.
-    </p>
+      <div class="badges">
+        <span class="badge blue">Reto</span>
+        <span class="badge green">Muy fácil</span>
+      </div>
+    </div>
 
-    <pre><code>asignaturas = ["Matemáticas", "Historia", "Física", "Lengua"]
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Tu misión</h3>
+        <p>
+          Crea una lista con 4 asignaturas, muestra la primera y la última, y cambia la segunda por otra nueva.
+        </p>
+
+        <div class="exercise-actions">
+          <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Resolver en playground</a>
+          <button class="btn btn-secondary btn-sm" type="button" onclick="document.getElementById('solucion-reto').open = true;">
+            Ver solución
+          </button>
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Pista</h3>
+        <p>
+          Usa <code>[0]</code> para el primero, <code>[-1]</code> para el último y recuerda que modificar no es lo mismo que añadir.
+        </p>
+
+        <details id="solucion-reto" class="theory-dropdown">
+          <summary>Mostrar solución</summary>
+          <div class="theory-dropdown-content">
+            <pre><code>asignaturas = ["Matemáticas", "Historia", "Física", "Lengua"]
 print(asignaturas[0])
 print(asignaturas[-1])
 asignaturas[1] = "Programación"
 print(asignaturas)</code></pre>
+          </div>
+        </details>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Pregunta de entrevista</h2>
-    <p>
-      ¿Qué significa que una lista sea mutable?
-    </p>
+    <h2>Errores frecuentes</h2>
 
-    <p>
-      Respuesta sólida: significa que sus elementos se pueden modificar después de crear la lista.
-    </p>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Error 1</h3>
+        <p>Pensar que el primer índice es 1.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Error 2</h3>
+        <p>Usar índices fuera del rango.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Error 3</h3>
+        <p>Confundir modificar un elemento con añadir uno nuevo.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Error 4</h3>
+        <p>No entender que el slicing no incluye el límite final.</p>
+      </div>
+    </div>
   </section>
 
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./01-que-es-una-lista.html">Anterior</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
+  <section class="panel">
+    <h2>Buenas prácticas</h2>
 
-  <button class="btn btn-primary" onclick="completeTopic('4.2')">Marcar como completado</button>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Piensa en posiciones</h3>
+        <p>Antes de escribir, identifica qué índice necesitas realmente.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Usa índices negativos con intención</h3>
+        <p>Son muy útiles cuando necesitas el final sin contar toda la lista.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Comprueba el rango</h3>
+        <p>Si dudas, razona con <code>len()</code> antes de ejecutar.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Diferencia acciones</h3>
+        <p>No confundas leer, modificar y cortar una parte: son operaciones distintas.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Siguiente paso</h2>
+    <p>
+      Ya sabes acceder a posiciones y modificar elementos. Lo siguiente es aprender a recorrer listas completas con bucles.
+    </p>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./01-que-es-una-lista.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <button class="btn btn-primary" onclick="completeTopic('4.2')">Marcar como completado</button>
+    </div>
+  </section>
 
   <script>
-const TOPIC_ID = "4.2";
-const NEXT_URL = "./03-recorrer-listas.html";
+    const TOPIC_ID = "4.2";
+    const NEXT_URL = "./03-recorrer-listas.html";
 
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+    const API_URL = "http://localhost:3000/api/progress/python";
+    const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
 
-const nextBtn = document.getElementById("nextBtn");
+    const nextBtn = document.getElementById("nextBtn");
 
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
+    async function unlockNextIfCompleted() {
+      try {
+        const token = localStorage.getItem("token");
 
-    if (!token || !nextBtn) return;
+        if (!token || !nextBtn) return;
 
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
+        const res = await fetch(API_URL, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+
+        if (!res.ok) return;
+
+        const data = await res.json();
+        const completed = data?.progress?.completedTopics || [];
+
+        if (completed.includes(TOPIC_ID)) {
+          nextBtn.classList.remove("btn-disabled");
+          nextBtn.href = NEXT_URL;
+        }
+      } catch (error) {
+        console.error("Error comprobando progreso:", error);
       }
-    });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
-  }
-}
-
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
     }
 
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
-    });
+    async function completeTopic(topicId) {
+      try {
+        const token = localStorage.getItem("token");
 
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
+        if (!token) {
+          alert("Debes iniciar sesión para guardar el progreso");
+          return;
+        }
+
+        const res = await fetch(COMPLETE_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify({ topic: topicId })
+        });
+
+        if (!res.ok) {
+          throw new Error(`Error HTTP: ${res.status}`);
+        }
+
+        alert("Tema completado 🎉");
+
+        if (nextBtn) {
+          nextBtn.classList.remove("btn-disabled");
+          nextBtn.href = NEXT_URL;
+        }
+      } catch (error) {
+        console.error("Error marcando tema como completado:", error);
+        alert("No se pudo guardar el progreso");
+      }
     }
 
-    alert("Tema completado 🎉");
-
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
-  }
-}
-
-unlockNextIfCompleted();
-</script>
+    unlockNextIfCompleted();
+  </script>
 
 </main>
 </body>

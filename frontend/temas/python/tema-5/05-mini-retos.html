@@ -8,39 +8,105 @@
 <body>
 
 <header class="header">
-  <h1>Tema 5 · Python</h1>
-  <p>5.5 · Mini retos: integrar funciones, parámetros y return</p>
+  <span class="mission-tag">Zona práctica 5.5</span>
+  <h1>Mini-retos de funciones</h1>
+  <p>Combina funciones, parámetros y <code>return</code> para empezar a diseñar piezas reutilizables de código.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 5 · Funciones en Python</div>
+        <div class="mini-note">6 mini-retos · práctica guiada · dificultad inicial-media</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Python</span>
+        <span class="badge green">Entrenamiento</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 82%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#retos">Empezar mini-retos</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
 
-  <section class="panel">
-    <h2>Objetivo de esta parte</h2>
-    <p>
-      Aquí vas a combinar lo aprendido para empezar a diseñar funciones útiles,
-      no solo ejemplos aislados.
-    </p>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué entrenas aquí</h2>
+        <p class="exercise-subtitle">
+          Aquí vas a combinar lo aprendido para empezar a diseñar funciones útiles, no solo ejemplos aislados.
+        </p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Funciones</span>
+        <span class="badge blue">Parámetros</span>
+        <span class="badge green">return</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Objetivo</h3>
+        <p>
+          El objetivo es que entiendas qué tarea cumple una función, qué recibe y qué devuelve.
+        </p>
+
+        <div class="callout">
+          Idea clave: una buena función hace una tarea concreta y se entiende con solo leer su nombre.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Cómo usar esta pantalla</h3>
+        <ul>
+          <li>lee el reto</li>
+          <li>identifica qué debe hacer la función</li>
+          <li>decide si debe imprimir o devolver</li>
+          <li>pruébalo en el playground y cambia entradas</li>
+        </ul>
+
+        <div class="challenge">
+          No confundas mostrar un resultado con devolverlo. Esa diferencia cambia totalmente cómo reutilizas una función.
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section class="panel">
-    <h2>Mini-reto 1 · Función que saluda</h2>
-    <pre><code>def saludar(nombre):
+  <section id="retos" class="panel">
+    <h2>Misiones rápidas</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Mini-reto 1 · Función que saluda</h3>
+        <p>Crea una función simple que use un parámetro.</p>
+        <pre><code>def saludar(nombre):
     print("Hola", nombre)
 
 saludar("Ana")</code></pre>
-  </section>
+      </div>
 
-  <section class="panel">
-    <h2>Mini-reto 2 · Función que devuelve el doble</h2>
-    <pre><code>def doble(numero):
+      <div class="theory-card">
+        <h3>Mini-reto 2 · Función que devuelve el doble</h3>
+        <p>Devuelve un valor para poder reutilizarlo.</p>
+        <pre><code>def doble(numero):
     return numero * 2
 
 print(doble(8))</code></pre>
-  </section>
+      </div>
 
-  <section class="panel">
-    <h2>Mini-reto 3 · Función que clasifica edad</h2>
-    <pre><code>def clasificar_edad(edad):
+      <div class="theory-card">
+        <h3>Mini-reto 3 · Función que clasifica edad</h3>
+        <p>Combina condicionales dentro de una función.</p>
+        <pre><code>def clasificar_edad(edad):
     if edad < 12:
         return "niño"
     if edad < 18:
@@ -48,137 +114,101 @@ print(doble(8))</code></pre>
     return "adulto"
 
 print(clasificar_edad(15))</code></pre>
-  </section>
+      </div>
 
-  <section class="panel">
-    <h2>Mini-reto 4 · Función que calcula IVA</h2>
-    <pre><code>def calcular_total(precio):
+      <div class="theory-card">
+        <h3>Mini-reto 4 · Función que calcula IVA</h3>
+        <p>Encapsula una operación en una función clara.</p>
+        <pre><code>def calcular_total(precio):
     return precio * 1.21
 
 print(calcular_total(50))</code></pre>
-  </section>
+      </div>
 
-  <section class="panel">
-    <h2>Mini-reto 5 · Función booleana</h2>
-    <pre><code>def es_par(numero):
+      <div class="theory-card">
+        <h3>Mini-reto 5 · Función booleana</h3>
+        <p>Devuelve <code>True</code> o <code>False</code> según una regla.</p>
+        <pre><code>def es_par(numero):
     return numero % 2 == 0
 
 print(es_par(8))
 print(es_par(5))</code></pre>
-  </section>
+      </div>
 
-  <section class="panel">
-    <h2>Mini-reto 6 · Reutilizar funciones</h2>
-    <pre><code>def cuadrado(numero):
+      <div class="theory-card">
+        <h3>Mini-reto 6 · Reutilizar funciones</h3>
+        <p>Llama varias veces a la misma función con distintos datos.</p>
+        <pre><code>def cuadrado(numero):
     return numero * numero
 
 resultado1 = cuadrado(3)
 resultado2 = cuadrado(5)
 print(resultado1)
 print(resultado2)</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Cómo pensar este tipo de ejercicios</h2>
+        <p class="exercise-subtitle">Antes de escribir una función, define bien su contrato.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Paso a paso</h3>
+        <ol>
+          <li>define claramente la tarea de la función</li>
+          <li>decide qué datos necesita recibir</li>
+          <li>decide si debe imprimir o devolver</li>
+          <li>elige un nombre claro</li>
+          <li>prueba varios casos</li>
+        </ol>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Regla útil</h3>
+        <div class="challenge">
+          Si quieres reutilizar el resultado después, normalmente necesitas <code>return</code>, no <code>print</code>.
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Cómo pensar este tipo de ejercicios</h2>
-    <ol>
-      <li>define claramente la tarea de la función</li>
-      <li>decide qué datos necesita recibir</li>
-      <li>decide si debe imprimir o devolver</li>
-      <li>elige un nombre claro</li>
-      <li>prueba varios casos</li>
-    </ol>
+    <h2>Pregunta típica de entrevista</h2>
+    <div class="challenge">
+      <p><strong>Pregunta:</strong> ¿Cuándo es preferible usar <code>return</code> en lugar de <code>print</code>?</p>
+      <p><strong>Respuesta sólida:</strong> cuando quieres reutilizar el resultado de la función en otras operaciones, almacenarlo o tomar decisiones con él.</p>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Pregunta de entrevista</h2>
-    <p>
-      ¿Cuándo es preferible usar <code>return</code> en lugar de <code>print</code>?
-    </p>
+    <h2>Siguiente paso</h2>
+    <p>Ya has combinado funciones, parámetros y retornos. Ahora toca resolver ejercicios por tu cuenta.</p>
 
-    <p>
-      Respuesta sólida: cuando quieres reutilizar el resultado de la función en otras operaciones, almacenarlo o tomar decisiones con él.
-    </p>
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./04-ambito-y-buenas-practicas.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Ejercicios Tema 5</a>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
+    </div>
   </section>
 
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./04-ambito-y-buenas-practicas.html">Anterior</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Ejercicios Tema 5</a>
-  </div>
-
-  <button class="btn btn-primary" onclick="completeTopic('5.5')">Marcar como completado</button>
-
-<script>
-const TOPIC_ID = "5.5";
-const NEXT_URL = "./py-tema5-ejercicios.html";
-
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
-
-const nextBtn = document.getElementById("nextBtn");
-
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
-
-    if (!token || !nextBtn) return;
-
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
+  <script src="../topic-completion.js"></script>
+  <script>
+    const topicCompletion = initTopicCompletion({
+      topicId: "5.5",
+      nextUrl: "./py-tema5-ejercicios.html"
     });
 
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
-  }
-}
-
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
-    }
-
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
+    document.getElementById("completeBtn").addEventListener("click", () => {
+      topicCompletion.completeTopic();
     });
-
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
-    }
-
-    alert("Tema completado 🎉");
-
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
-  }
-}
-
-unlockNextIfCompleted();
-</script>
+  </script>
 
 </main>
 </body>

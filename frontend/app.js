@@ -50,6 +50,9 @@ const aiHintBtn = document.getElementById("ai-hint-btn");
 const aiCreditsEl = document.getElementById("ai-credits");
 const aiFeedbackEl = document.getElementById("ai-feedback");
 
+const playgroundLangBadgeEl = document.getElementById("playground-lang-badge");
+const playgroundModeBadgeEl = document.getElementById("playground-mode-badge");
+
 // ============================================================================
 // Editor
 // ============================================================================
@@ -101,12 +104,11 @@ function getEditorCode() {
 // Helpers visuales
 // ============================================================================
 function resetOutput() {
-  stdoutEl.textContent = "";
-  stderrEl.textContent = "";
-  runStatusEl.textContent = "-";
-  runTimeEl.textContent = "-";
-  statusMsg.textContent = "";
-
+  if (stdoutEl) stdoutEl.textContent = "";
+  if (stderrEl) stderrEl.textContent = "";
+  if (runStatusEl) runStatusEl.textContent = "-";
+  if (runTimeEl) runTimeEl.textContent = "-";
+  if (statusMsg) statusMsg.textContent = "Listo para ejecutar.";
   if (feedbackEl) feedbackEl.textContent = "";
 }
 
@@ -119,7 +121,7 @@ function formatTopicLabel(topic) {
 }
 
 function getTopicPageFromExercise(ex) {
-  if (!ex?.topic) return "../home.html";
+  if (!ex?.topic) return "../menu.html";
 
   const topicMap = {
     "python/tema-1": "../temas/python/tema-1/index.html",
@@ -134,7 +136,42 @@ function getTopicPageFromExercise(ex) {
     "python/tema-10": "../temas/python/tema-10/index.html",
   };
 
-  return topicMap[ex.topic] || "../home.html";
+  return topicMap[ex.topic] || "../menu.html";
+}
+
+function updatePlaygroundHeader(exercise) {
+  const language = languageSelect?.value || "python";
+  const langLabel = language.charAt(0).toUpperCase() + language.slice(1);
+
+  if (playgroundLangBadgeEl) {
+    playgroundLangBadgeEl.textContent = langLabel;
+  }
+
+  if (playgroundModeBadgeEl) {
+    playgroundModeBadgeEl.textContent = exercise ? "Modo ejercicio" : "Modo libre";
+  }
+
+  if (editorMetaEl) {
+    if (exercise) {
+      const type = exercise.type || "Práctica";
+      const estimatedTime = exercise.estimatedTime || "-";
+      editorMetaEl.textContent = `${langLabel} · ${type} · ${estimatedTime}`;
+    } else {
+      editorMetaEl.textContent = `${langLabel} · Modo libre`;
+    }
+  }
+
+  if (editorTitleEl) {
+    editorTitleEl.textContent = exercise?.title
+      ? `Resolviendo: ${exercise.title}`
+      : "Editor de código";
+  }
+
+  if (topbarSubEl) {
+    topbarSubEl.textContent = exercise
+      ? `Trabajando: ${exercise.title || "Ejercicio"}`
+      : "Ejecuta código y prueba ideas libremente.";
+  }
 }
 
 function updateExerciseUI(ex, lang) {
@@ -143,9 +180,10 @@ function updateExerciseUI(ex, lang) {
   const difficulty = ex?.difficulty || "-";
   const estimatedTime = ex?.estimatedTime || "-";
   const skill = ex?.skill || "-";
+  const langLabel = lang || ex?.language || "python";
 
   if (exerciseBadgeLangEl) {
-    exerciseBadgeLangEl.textContent = `Lenguaje: ${lang || ex?.language || "-"}`;
+    exerciseBadgeLangEl.textContent = `Lenguaje: ${langLabel}`;
   }
 
   if (exerciseBadgeTypeEl) {
@@ -164,21 +202,12 @@ function updateExerciseUI(ex, lang) {
     exerciseBadgeSkillEl.textContent = `Skill: ${skill}`;
   }
 
-  if (topbarSubEl) {
-    topbarSubEl.textContent = `${topicLabel} · ${type} · ${difficulty}`;
-  }
-
-  if (editorMetaEl) {
-    editorMetaEl.textContent = `${lang || ex?.language || "python"} · ${type} · ${estimatedTime}`;
-  }
-
-  if (editorTitleEl) {
-    editorTitleEl.textContent = ex?.title ? `Resolviendo: ${ex.title}` : "Editor de código";
-  }
 
   if (backBtn) {
     backBtn.href = getTopicPageFromExercise(ex);
   }
+
+  updatePlaygroundHeader(ex);
 }
 
 // ============================================================================
@@ -189,29 +218,40 @@ function loadExerciseFromURL() {
   const lang = params.get("lang");
   const exerciseId = params.get("exerciseId");
 
-  if (lang) languageSelect.value = lang;
+  if (lang && languageSelect) {
+    languageSelect.value = lang;
+  }
 
+  const catalog = window.EXERCISE_CATALOG || {};
+
+  // Caso 1: modo libre
   if (!exerciseId) {
     currentExerciseId = null;
 
-    if (exercisePanelEl) exercisePanelEl.style.display = "none";
-    if (topbarSubEl) topbarSubEl.textContent = "Explora, prueba ideas y ejecuta tu código.";
-    if (editorMetaEl) editorMetaEl.textContent = `${languageSelect.value || "python"} · Modo libre`;
-    if (editorTitleEl) editorTitleEl.textContent = "Editor de código";
+    if (exercisePanelEl) {
+      exercisePanelEl.style.display = "none";
+    }
 
+    updatePlaygroundHeader(null);
     return;
   }
 
   currentExerciseId = exerciseId;
-
-  const catalog = window.EXERCISE_CATALOG || {};
   const ex = catalog[exerciseId];
 
-  if (exercisePanelEl) exercisePanelEl.style.display = "block";
+  if (exercisePanelEl) {
+    exercisePanelEl.style.display = "block";
+  }
 
+  // Caso 2: ejercicio encontrado
   if (ex) {
-    if (exerciseTitleEl) exerciseTitleEl.textContent = ex.title || `Ejercicio: ${exerciseId}`;
-    if (exerciseStatementEl) exerciseStatementEl.textContent = ex.statement || "";
+    if (exerciseTitleEl) {
+      exerciseTitleEl.textContent = ex.title || `Ejercicio: ${exerciseId}`;
+    }
+
+    if (exerciseStatementEl) {
+      exerciseStatementEl.textContent = ex.statement || "";
+    }
 
     if (exerciseHintsEl) {
       exerciseHintsEl.innerHTML = "";
@@ -231,8 +271,12 @@ function loadExerciseFromURL() {
     const resetBtn = document.getElementById("btn-reset-template");
     if (resetBtn) {
       resetBtn.onclick = () => {
-        if (ex.starterCode) setEditorCode(ex.starterCode);
-        statusMsg.textContent = "Plantilla reiniciada.";
+        if (ex.starterCode) {
+          setEditorCode(ex.starterCode);
+        }
+        if (statusMsg) {
+          statusMsg.textContent = "Plantilla reiniciada.";
+        }
       };
     }
 
@@ -242,9 +286,13 @@ function loadExerciseFromURL() {
         const txt = (ex.hints || []).join("\n- ");
         try {
           await navigator.clipboard.writeText("- " + txt);
-          statusMsg.textContent = "Pistas copiadas al portapapeles.";
+          if (statusMsg) {
+            statusMsg.textContent = "Pistas copiadas al portapapeles.";
+          }
         } catch {
-          statusMsg.textContent = "No se pudo copiar (permiso del navegador).";
+          if (statusMsg) {
+            statusMsg.textContent = "No se pudo copiar (permiso del navegador).";
+          }
         }
       };
     }
@@ -252,7 +300,11 @@ function loadExerciseFromURL() {
     return;
   }
 
-  if (exerciseTitleEl) exerciseTitleEl.textContent = `Ejercicio: ${exerciseId}`;
+  // Caso 3: viene exerciseId pero no existe en catálogo
+  if (exerciseTitleEl) {
+    exerciseTitleEl.textContent = `Ejercicio: ${exerciseId}`;
+  }
+
   if (exerciseStatementEl) {
     exerciseStatementEl.textContent = "Este ejercicio no está en el catálogo todavía.";
   }
@@ -264,14 +316,22 @@ function loadExerciseFromURL() {
     exerciseHintsEl.appendChild(li);
   }
 
-  if (topbarSubEl) topbarSubEl.textContent = "Ejercicio no encontrado en catálogo.";
+  updatePlaygroundHeader({
+    title: `Ejercicio: ${exerciseId}`
+  });
+
+  if (topbarSubEl) {
+    topbarSubEl.textContent = "Ejercicio no encontrado en catálogo.";
+  }
 }
 
 // ============================================================================
 // Historial
 // ============================================================================
 async function loadAttempts() {
-  const url = `http://localhost:3000/api/attempts?limit=5`;
+  if (!attemptsListEl) return;
+
+  const url = "http://localhost:3000/api/attempts?limit=5";
   const token = localStorage.getItem("token");
   attemptsListEl.innerHTML = "";
 
@@ -410,12 +470,12 @@ async function requestAiHint() {
   const token = localStorage.getItem("token");
 
   if (!token) {
-    statusMsg.textContent = "Debes iniciar sesión para usar la IA.";
+    if (statusMsg) statusMsg.textContent = "Debes iniciar sesión para usar la IA.";
     return;
   }
 
   if (!currentExerciseId) {
-    statusMsg.textContent = "La IA solo está disponible dentro de un ejercicio.";
+    if (statusMsg) statusMsg.textContent = "La IA solo está disponible dentro de un ejercicio.";
     return;
   }
 
@@ -439,13 +499,13 @@ async function requestAiHint() {
       title: ex.title,
       statement: ex.statement,
       hints: ex.hints || [],
-      language: languageSelect.value || "python",
+      language: languageSelect?.value || "python",
       code: getEditorCode(),
-      stdout: stdoutEl.textContent || "",
-      stderr: stderrEl.textContent || "",
-      status: runStatusEl.textContent || "unknown",
+      stdout: stdoutEl?.textContent || "",
+      stderr: stderrEl?.textContent || "",
+      status: runStatusEl?.textContent || "unknown",
       timeMs: (() => {
-        const raw = runTimeEl.textContent || "";
+        const raw = runTimeEl?.textContent || "";
         const match = raw.match(/(\d+)/);
         return match ? Number(match[1]) : undefined;
       })(),
@@ -506,17 +566,17 @@ async function requestAiHint() {
 async function runCode() {
   resetOutput();
 
-  const user = userInput.value.trim() || "alumno1";
-  const language = languageSelect.value;
+  const user = userInput?.value.trim() || "alumno1";
+  const language = languageSelect?.value || "python";
   const code = getEditorCode();
 
   if (!code.trim()) {
-    statusMsg.textContent = "Escribe algún código antes de ejecutar.";
+    if (statusMsg) statusMsg.textContent = "Escribe algún código antes de ejecutar.";
     return;
   }
 
-  statusMsg.textContent = "Ejecutando código...";
-  runButton.disabled = true;
+  if (statusMsg) statusMsg.textContent = "Ejecutando código...";
+  if (runButton) runButton.disabled = true;
 
   try {
     const body = { language, code, exerciseId: currentExerciseId, user };
@@ -533,18 +593,20 @@ async function runCode() {
     const data = await response.json();
 
     if (!response.ok || !data.ok) {
-      statusMsg.textContent = data.error || "Error al ejecutar el código.";
-      runStatusEl.textContent = "error";
+      if (statusMsg) statusMsg.textContent = data.error || "Error al ejecutar el código.";
+      if (runStatusEl) runStatusEl.textContent = "error";
       return;
     }
 
     const run = data.run || {};
 
-    stdoutEl.textContent = run.stdout || "";
-    stderrEl.textContent = run.stderr || "";
-    runStatusEl.textContent = run.status || "-";
-    runTimeEl.textContent =
-      typeof run.timeMs === "number" ? `${run.timeMs} ms` : "-";
+    if (stdoutEl) stdoutEl.textContent = run.stdout || "";
+    if (stderrEl) stderrEl.textContent = run.stderr || "";
+    if (runStatusEl) runStatusEl.textContent = run.status || "-";
+    if (runTimeEl) {
+      runTimeEl.textContent =
+        typeof run.timeMs === "number" ? `${run.timeMs} ms` : "-";
+    }
 
     if (feedbackEl) {
       const fb = data.feedback;
@@ -553,19 +615,21 @@ async function runCode() {
 
     await loadAttempts();
 
-    if (run.status === "success") {
-      statusMsg.textContent = "Ejecución completada correctamente.";
-    } else if (run.status === "timeout") {
-      statusMsg.textContent = "La ejecución ha superado el tiempo límite.";
-    } else {
-      statusMsg.textContent = "La ejecución ha devuelto un error.";
+    if (statusMsg) {
+      if (run.status === "success") {
+        statusMsg.textContent = "Ejecución completada correctamente.";
+      } else if (run.status === "timeout") {
+        statusMsg.textContent = "La ejecución ha superado el tiempo límite.";
+      } else {
+        statusMsg.textContent = "La ejecución ha devuelto un error.";
+      }
     }
   } catch (err) {
     console.error("Error llamando a /api/run:", err);
-    statusMsg.textContent = "No se ha podido conectar con la API.";
-    runStatusEl.textContent = "error";
+    if (statusMsg) statusMsg.textContent = "No se ha podido conectar con la API.";
+    if (runStatusEl) runStatusEl.textContent = "error";
   } finally {
-    runButton.disabled = false;
+    if (runButton) runButton.disabled = false;
   }
 }
 
@@ -585,6 +649,19 @@ if (logoutBtn) {
 // Init
 // ============================================================================
 initCodeEditor();
+
+if (languageSelect) {
+  languageSelect.addEventListener("change", () => {
+    const catalog = window.EXERCISE_CATALOG || {};
+    const currentExercise = currentExerciseId ? catalog[currentExerciseId] : null;
+
+    if (currentExercise) {
+      updateExerciseUI(currentExercise, languageSelect.value);
+    } else {
+      updatePlaygroundHeader(null);
+    }
+  });
+}
 
 if (runButton) {
   runButton.addEventListener("click", runCode);

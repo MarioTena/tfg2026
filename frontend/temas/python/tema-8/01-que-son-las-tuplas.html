@@ -6,14 +6,117 @@
   <link rel="stylesheet" href="../../../styles.css" />
 </head>
 <body>
+
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 8 · Tuplas y sets</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 8 · Python</h1>
-  <p>8.1 · Qué son las tuplas: secuencias ordenadas e inmutables</p>
+  <span class="mission-tag">Misión 8.1</span>
+  <h1>Qué son las tuplas</h1>
+  <p>Aprende qué son las tuplas y por qué se usan para representar datos ordenados que no deben cambiar.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 8 · Tuplas y sets</div>
+        <div class="mini-note">Nivel inicial · 10-15 min · Secuencias inmutables</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Tuplas</span>
+        <span class="badge green">Inmutables</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 20%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué vas a entender hoy</h2>
+        <p class="exercise-subtitle">
+          Una tupla es una secuencia ordenada, parecida a una lista, pero pensada para datos que no deben modificarse.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Objetivo</span>
+        <span class="badge green">Orden + estabilidad</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué problema resuelve</h3>
+        <p>
+          A veces necesitas guardar varios datos juntos, manteniendo el orden, pero dejando claro que
+          no deberían cambiar durante la ejecución del programa.
+        </p>
+
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3>Coordenadas</h3>
+            <p>Guardar una posición fija como <code>(x, y)</code>.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Fechas</h3>
+            <p>Representar día, mes y año en un mismo grupo.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Datos fijos</h3>
+            <p>Dejar claro que no quieres modificaciones accidentales.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Funciones</h3>
+            <p>Devolver varios valores al mismo tiempo.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          Idea clave: una tupla se parece a una lista, pero comunica que sus datos no deberían cambiar.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes vigilar</h3>
+        <ul>
+          <li>una tupla usa paréntesis <code>()</code></li>
+          <li>mantiene el orden de los elementos</li>
+          <li>permite indexación y slicing</li>
+          <li>no se puede modificar directamente</li>
+        </ul>
+
+        <div class="challenge">
+          <strong>Piensa así:</strong><br />
+          una lista suele representar datos flexibles; una tupla, datos ordenados que quieres mantener estables.
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="panel">
-    <h2>¿Qué es una tupla?</h2>
+    <h2>Qué es una tupla</h2>
     <p>
       Una tupla es una estructura de datos ordenada, parecida a una lista, pero con una diferencia fundamental:
       <strong>no se puede modificar después de crearla</strong>.
@@ -21,20 +124,29 @@
 
     <pre><code>coordenada = (10, 20)
 colores = ("rojo", "verde", "azul")</code></pre>
-
-    <div class="callout">
-      Una tupla es útil cuando quieres dejar claro que esos datos no deben cambiar.
-    </div>
   </section>
 
   <section class="panel">
     <h2>Tupla vs lista</h2>
-    <ul>
-      <li>ambas son secuencias ordenadas</li>
-      <li>ambas permiten indexación y slicing</li>
-      <li>la lista es mutable</li>
-      <li>la tupla es inmutable</li>
-    </ul>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Ambas</h3>
+        <p>Son secuencias ordenadas.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Ambas</h3>
+        <p>Permiten indexación y slicing.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Lista</h3>
+        <p>Es mutable y se puede cambiar.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Tupla</h3>
+        <p>Es inmutable y no se modifica directamente.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
@@ -47,6 +159,10 @@ datos = ("Ana", 30, True)</code></pre>
     </p>
 
     <pre><code>una_tupla = (5,)</code></pre>
+
+    <div class="callout">
+      Sin la coma, Python no lo interpreta como tupla de un elemento.
+    </div>
   </section>
 
   <section class="panel">
@@ -54,10 +170,37 @@ datos = ("Ana", 30, True)</code></pre>
     <pre><code>colores = ("rojo", "verde", "azul")
 print(colores[0])
 print(colores[-1])</code></pre>
+
+    <p>
+      Igual que en listas y strings, puedes acceder por índice positivo o negativo.
+    </p>
   </section>
 
   <section class="panel">
-    <h2>⚠️ Error típico: intentar modificar una tupla</h2>
+    <h2>Cuándo usar tuplas</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Coordenadas</h3>
+        <p><code>(x, y)</code> o <code>(latitud, longitud)</code>.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Fechas simples</h3>
+        <p>Un grupo fijo de valores relacionados.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Datos que no cambian</h3>
+        <p>Cuando quieres transmitir estabilidad.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Varios retornos</h3>
+        <p>Al devolver varios resultados desde una función.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Error típico: intentar modificar una tupla</h2>
     <pre><code>colores = ("rojo", "verde", "azul")
 colores[1] = "amarillo"</code></pre>
 
@@ -67,39 +210,165 @@ colores[1] = "amarillo"</code></pre>
   </section>
 
   <section class="panel">
-    <h2>Cuándo usar tuplas</h2>
-    <ul>
-      <li>coordenadas</li>
-      <li>fechas simples</li>
-      <li>datos fijos que no deben cambiar</li>
-      <li>devolver varios valores desde una función</li>
-    </ul>
+    <h2>Cómo pensar una tupla antes de usarla</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Paso 1</h3>
+        <p>Pregúntate si el orden importa.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 2</h3>
+        <p>Pregúntate si esos datos deberían cambiar.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 3</h3>
+        <p>Si el grupo es fijo, una tupla suele encajar bien.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 4</h3>
+        <p>Si necesitas cambios frecuentes, probablemente quieras una lista.</p>
+      </div>
+    </div>
   </section>
 
-  <section class="panel">
-    <h2>💭 Piensa antes de ejecutar</h2>
-    <pre><code>punto = (3, 7)
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Piensa antes de ejecutar</h2>
+        <p class="exercise-subtitle">Antes de lanzar el código, piensa qué representa cada posición y por qué una tupla encaja en este caso.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Código</h3>
+        <pre><code>punto = (3, 7)
 print(punto[0])
 print(len(punto))</code></pre>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Preguntas</h3>
+        <ul>
+          <li>¿qué devuelve <code>punto[0]</code>?</li>
+          <li>¿qué representa <code>len(punto)</code>?</li>
+        </ul>
+
+        <div class="mini-note">
+          Pista: una tupla también tiene longitud y posiciones.
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section class="panel">
-    <h2>Mini-reto guiado</h2>
-    <p>Crea una tupla con día, mes y año y muestra cada valor.</p>
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto guiado</h2>
+        <p class="exercise-subtitle">Ahora toca representar un grupo fijo de datos con una tupla.</p>
+      </div>
 
-    <pre><code>fecha = (14, 3, 2026)
+      <div class="badges">
+        <span class="badge blue">Reto</span>
+        <span class="badge green">Muy fácil</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Tu misión</h3>
+        <p>
+          Crea una tupla con día, mes y año y muestra cada valor por separado.
+        </p>
+
+        <div class="exercise-actions">
+          <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Resolver en playground</a>
+          <button class="btn btn-secondary btn-sm" type="button" onclick="document.getElementById('solucion-reto').open = true;">
+            Ver solución
+          </button>
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Pista</h3>
+        <p>
+          Piensa en la fecha como un conjunto ordenado de datos que no debería cambiar carácter a carácter.
+        </p>
+
+        <details id="solucion-reto" class="theory-dropdown">
+          <summary>Mostrar solución</summary>
+          <div class="theory-dropdown-content">
+            <pre><code>fecha = (14, 3, 2026)
 print(fecha[0])
 print(fecha[1])
 print(fecha[2])</code></pre>
+          </div>
+        </details>
+      </div>
+    </div>
   </section>
 
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./index.html">Índice tema</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
+  <section class="panel">
+    <h2>Errores frecuentes</h2>
 
-  <button class="btn btn-primary" onclick="completeTopic('8.1')">Marcar como completado</button>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Error 1</h3>
+        <p>Confundir una tupla con una lista.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 2</h3>
+        <p>Olvidar la coma en una tupla de un solo elemento.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 3</h3>
+        <p>Intentar modificar un valor de la tupla.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 4</h3>
+        <p>Usar tupla cuando en realidad necesitas una estructura mutable.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Buenas prácticas</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Usa tupla si es fijo</h3>
+        <p>Te ayuda a comunicar intención en el código.</p>
+      </div>
+      <div class="theory-card">
+        <h3>No la fuerces</h3>
+        <p>Si vas a modificar datos, usa lista.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Nombra bien</h3>
+        <p>Variables como <code>coordenada</code> o <code>fecha</code> ayudan a entender la estructura.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Piensa en estabilidad</h3>
+        <p>La tupla encaja bien cuando el grupo de valores representa algo estable.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Siguiente paso</h2>
+    <p>
+      Ya sabes qué son las tuplas. Lo siguiente es entender los sets, otra estructura útil cuando lo importante no es el orden, sino evitar duplicados.
+    </p>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./index.html">Índice tema</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <button class="btn btn-primary" onclick="completeTopic('8.1')">Marcar como completado</button>
+    </div>
+  </section>
+
   <script>
 const TOPIC_ID = "8.1";
 const NEXT_URL = "./02-que-son-los-sets.html";

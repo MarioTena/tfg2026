@@ -7,18 +7,120 @@
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 6 · Diccionarios</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 6 · Python</h1>
-  <p>6.4 · Métodos y buenas prácticas: trabajar mejor con diccionarios</p>
+  <span class="mission-tag">Misión 6.4</span>
+  <h1>Métodos y buenas prácticas</h1>
+  <p>Aprende a trabajar mejor con diccionarios usando sus métodos más útiles y eligiendo bien la estructura de datos.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 6 · Diccionarios</div>
+        <div class="mini-note">Nivel inicial · 12-15 min · Métodos útiles y criterio</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">keys()</span>
+        <span class="badge blue">items()</span>
+        <span class="badge green">Buenas prácticas</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 80%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
+
+  <section class="exercise-card">
+  <div class="exercise-header">
+    <div>
+      <h2 class="exercise-title">Qué vas a entender hoy</h2>
+      <p class="exercise-subtitle">
+        Los diccionarios tienen métodos muy útiles para consultar, actualizar y organizar datos de forma más clara y práctica.
+      </p>
+    </div>
+    <div class="badges">
+      <span class="badge blue">Objetivo</span>
+      <span class="badge green">Métodos útiles</span>
+    </div>
+  </div>
+
+  <div class="exercise-body">
+    <div class="exercise-block">
+      <h3>Qué problema resuelve</h3>
+      <p>
+        Trabajar con diccionarios de forma básica está bien, pero sus métodos permiten hacerlo mejor:
+        consultar datos, actualizarlos, eliminarlos o revisar la estructura con menos código y más claridad.
+      </p>
+
+      <div class="theory-grid">
+        <div class="theory-card">
+          <h3>Consultar</h3>
+          <p>Ver claves, valores o parejas completas.</p>
+        </div>
+        <div class="theory-card">
+          <h3>Actualizar</h3>
+          <p>Cambiar varias claves de una sola vez.</p>
+        </div>
+        <div class="theory-card">
+          <h3>Eliminar</h3>
+          <p>Quitar claves que ya no necesitas.</p>
+        </div>
+        <div class="theory-card">
+          <h3>Criterio</h3>
+          <p>Entender cuándo conviene usar diccionario y cuándo lista.</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        Idea clave: dominar una estructura de datos también significa saber usar bien sus métodos.
+      </div>
+    </div>
+
+    <div class="exercise-block">
+      <h3>Qué debes vigilar</h3>
+      <ul>
+        <li>no todos los métodos hacen lo mismo</li>
+        <li>algunos consultan y otros modifican</li>
+        <li><code>get()</code>, <code>pop()</code> y <code>update()</code> tienen funciones distintas</li>
+        <li>también debes saber cuándo usar lista y cuándo diccionario</li>
+      </ul>
+
+      <div class="challenge">
+        <strong>Piensa así:</strong><br />
+        elegir bien el método correcto también es parte de programar bien.
+      </div>
+    </div>
+  </div>
+</section>
 
   <section class="panel">
     <h2>Métodos fundamentales</h2>
     <p>
       Hay varios métodos muy útiles al trabajar con diccionarios.
-      En este tema vamos a centrarnos en los más prácticos para una base sólida.
+      En este bloque vas a centrarte en los más prácticos para una base sólida.
     </p>
   </section>
 
@@ -104,31 +206,90 @@ print(producto)</code></pre>
   </section>
 
   <section class="panel">
-    <h2>Buenas prácticas</h2>
-    <ul>
-      <li>usa claves claras y coherentes</li>
-      <li>mantén un mismo criterio de nombres</li>
-      <li>no mezcles datos sin relación en el mismo diccionario</li>
-      <li>usa <code>get()</code> si no estás seguro de que la clave exista</li>
-      <li>piensa si realmente necesitas lista o diccionario</li>
-    </ul>
-  </section>
+    <h2>Qué hace cada método en la práctica</h2>
 
-  <section class="panel">
-    <h2>Lista o diccionario: criterio correcto</h2>
-    <ul>
-      <li>usa lista cuando importa el orden o la secuencia</li>
-      <li>usa diccionario cuando importa el significado de cada dato</li>
-    </ul>
-
-    <div class="callout">
-      Elegir bien la estructura de datos ya es una habilidad de programador serio.
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3><code>keys()</code></h3>
+        <p>Te ayuda a ver qué datos existen.</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>values()</code></h3>
+        <p>Sirve cuando te interesan los datos pero no sus nombres.</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>get()</code></h3>
+        <p>Es útil cuando una clave puede faltar.</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>update()</code></h3>
+        <p>Va bien para varios cambios seguidos sin repetir muchas líneas.</p>
+      </div>
     </div>
   </section>
 
   <section class="panel">
-    <h2>💭 Piensa antes de ejecutar</h2>
-    <pre><code>usuario = {
+    <h2>Lista o diccionario: criterio correcto</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Usa lista</h3>
+        <p>Cuando importa el orden o la secuencia.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Usa diccionario</h3>
+        <p>Cuando importa el significado de cada dato.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Piensa en acceso</h3>
+        <p>Si vas a pedir datos por nombre, suele encajar mejor un diccionario.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Piensa en estructura</h3>
+        <p>Elegir bien la estructura también es programar bien.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      Elegir bien la estructura de datos ya es una habilidad importante de programación.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Cómo pensar qué método necesitas</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Paso 1</h3>
+        <p>Pregúntate si solo quieres consultar o también modificar.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 2</h3>
+        <p>Decide si necesitas claves, valores o pares completos.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 3</h3>
+        <p>Si una clave puede faltar, prioriza <code>get()</code>.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 4</h3>
+        <p>Si quieres cambiar varias cosas a la vez, piensa en <code>update()</code>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Piensa antes de ejecutar</h2>
+        <p class="exercise-subtitle">Antes de lanzar el código, piensa qué método consulta y cuál modifica.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Código</h3>
+        <pre><code>usuario = {
     "nombre": "Luis",
     "edad": 35
 }
@@ -136,30 +297,59 @@ print(producto)</code></pre>
 usuario.update({"edad": 36, "activo": True})
 print(usuario.get("activo"))
 print(usuario)</code></pre>
+      </div>
 
-    <ul>
-      <li>¿qué cambia con <code>update()</code>?</li>
-      <li>¿qué devuelve <code>get("activo")</code>?</li>
-    </ul>
+      <div class="exercise-block">
+        <h3>Preguntas</h3>
+        <ul>
+          <li>¿qué cambia con <code>update()</code>?</li>
+          <li>¿qué devuelve <code>get("activo")</code>?</li>
+        </ul>
+
+        <div class="mini-note">
+          Pista: un método modifica y el otro consulta.
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section class="panel">
-    <h2>Errores frecuentes</h2>
-    <ul>
-      <li>usar una lista donde un diccionario sería más claro</li>
-      <li>acceder a claves sin verificar si existen</li>
-      <li>usar nombres de claves inconsistentes</li>
-      <li>pensar que <code>keys()</code> o <code>values()</code> devuelven listas normales siempre</li>
-    </ul>
-  </section>
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto guiado</h2>
+        <p class="exercise-subtitle">Ahora toca combinar varios métodos sobre un mismo diccionario.</p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Reto</span>
+        <span class="badge green">Muy fácil</span>
+      </div>
+    </div>
 
-  <section class="panel">
-    <h2>Mini-reto guiado</h2>
-    <p>
-      Crea un diccionario de configuración, actualiza varias claves y elimina una de ellas.
-    </p>
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Tu misión</h3>
+        <p>
+          Crea un diccionario de configuración, actualiza varias claves y elimina una de ellas.
+        </p>
 
-    <pre><code>config = {
+        <div class="exercise-actions">
+          <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Resolver en playground</a>
+          <button class="btn btn-secondary btn-sm" type="button" onclick="document.getElementById('solucion-reto').open = true;">
+            Ver solución
+          </button>
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Pista</h3>
+        <p>
+          Usa <code>update()</code> para varios cambios y <code>pop()</code> si quieres eliminar una clave concreta.
+        </p>
+
+        <details id="solucion-reto" class="theory-dropdown">
+          <summary>Mostrar solución</summary>
+          <div class="theory-dropdown-content">
+            <pre><code>config = {
     "tema": "claro",
     "idioma": "es",
     "notificaciones": True
@@ -172,26 +362,71 @@ config.update({
 
 config.pop("notificaciones")
 print(config)</code></pre>
+          </div>
+        </details>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Pregunta de entrevista</h2>
-    <p>
-      ¿Cuándo usarías un diccionario en vez de una lista?
-    </p>
+    <h2>Errores frecuentes</h2>
 
-    <p>
-      Respuesta sólida: cuando los datos tienen nombres o claves con significado y quiero acceder a ellos de forma explícita en lugar de depender de posiciones.
-    </p>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Error 1</h3>
+        <p>Usar una lista donde un diccionario sería más claro.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 2</h3>
+        <p>Acceder a claves sin verificar si existen.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 3</h3>
+        <p>Usar nombres de claves inconsistentes.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 4</h3>
+        <p>Pensar que <code>keys()</code> o <code>values()</code> son siempre listas normales.</p>
+      </div>
+    </div>
   </section>
 
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./03-recorrer-diccionarios.html">Anterior</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
+  <section class="panel">
+    <h2>Buenas prácticas</h2>
 
-  <button class="btn btn-primary" onclick="completeTopic('6.4')">Marcar como completado</button>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Claves coherentes</h3>
+        <p>Usa un criterio uniforme al nombrar datos.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Estructura correcta</h3>
+        <p>No metas en un diccionario cosas que se entenderían mejor como lista.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Método adecuado</h3>
+        <p>Elige el método según la tarea, no por costumbre.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Seguridad</h3>
+        <p>Usa <code>get()</code> cuando no estés seguro de una clave.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Siguiente paso</h2>
+    <p>
+      Ya sabes trabajar mejor con diccionarios. El siguiente bloque del tema puede centrarse en mini-retos integradores para consolidar todo.
+    </p>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./03-recorrer-diccionarios.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <button class="btn btn-primary" onclick="completeTopic('6.4')">Marcar como completado</button>
+    </div>
+  </section>
 
   <script>
 const TOPIC_ID = "6.4";

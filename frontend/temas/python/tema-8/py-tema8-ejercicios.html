@@ -8,31 +8,238 @@
 <body>
 
 <header class="header">
-  <h1>Tema 8 · Python</h1>
-  <p>Ejercicios para practicar tuplas, sets y elección de estructuras.</p>
+  <span class="mission-tag">Practice mode</span>
+  <h1>Ejercicios de tuplas y sets</h1>
+  <p>Practica estructuras, duplicados y elección correcta de tipos resolviendo misiones en el playground.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 8 · Ruta de práctica</div>
+        <div class="mini-note">5 ejercicios + 1 reto final</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Python</span>
+        <span class="badge green">Hands-on</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 92%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#ejercicios">Ir a ejercicios</a>
+    <a class="btn btn-secondary" href="./index.html">Volver al tema</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
 
-  <section class="panel">
-    <h2>Cómo usar estos ejercicios</h2>
-    <p>
-      En este tema importa mucho la decisión de diseño: no solo resolver el ejercicio, sino entender por qué una estructura encaja mejor que otra.
-      Fíjate especialmente en orden, duplicados y mutabilidad.
-    </p>
-    <div class="buttons-row">
-      <a class="btn btn-secondary" href="./index.html">Volver al Tema 8</a>
-      <a class="btn btn-secondary" href="../index.html">Volver a ruta Python</a>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Cómo trabajar esta pantalla</h2>
+        <p class="exercise-subtitle">
+          En este tema importa mucho la decisión de diseño: no solo resolver el ejercicio, sino entender por qué una estructura encaja mejor que otra.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Tuplas</span>
+        <span class="badge blue">Sets</span>
+        <span class="badge green">Diseño</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Recomendación</h3>
+        <ul>
+          <li>pregúntate si el orden importa</li>
+          <li>piensa si puede haber duplicados</li>
+          <li>decide si la estructura debe poder modificarse</li>
+          <li>abre el playground y comprueba el comportamiento real</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Clave del tema</h3>
+        <div class="challenge">
+          La mejor estructura no siempre es la más conocida. Lo importante es elegir la que resuelve mejor el problema.
+        </div>
+
+        <div class="buttons-row">
+          <a class="btn btn-secondary btn-sm" href="./index.html">Volver al Tema 8</a>
+          <a class="btn btn-secondary btn-sm" href="../index.html">Volver a ruta Python</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="panel"><h2>Ejercicio 1 · Crear una tupla</h2><p>Crea una tupla con tres colores y muestra el segundo.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema8_ej1">Abrir en playground</a></div></section>
-  <section class="panel"><h2>Ejercicio 2 · Tupla de un elemento</h2><p>Crea correctamente una tupla con un solo número.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema8_ej2">Abrir en playground</a></div></section>
-  <section class="panel"><h2>Ejercicio 3 · Crear un set</h2><p>Crea un set con números repetidos y observa el resultado.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema8_ej3">Abrir en playground</a></div></section>
-  <section class="panel"><h2>Ejercicio 4 · Añadir y eliminar en un set</h2><p>Añade un elemento y elimina otro de un set.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema8_ej4">Abrir en playground</a></div></section>
-  <section class="panel"><h2>Ejercicio 5 · Unión e intersección</h2><p>Calcula la unión y la intersección entre dos sets.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema8_ej5">Abrir en playground</a></div></section>
-  <section class="panel"><h2>Reto final · Elegir estructura</h2><p>Decide si usarías lista, tupla o set según varios casos y justifica tu elección.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema8_reto1">Abrir en playground</a></div></section>
+  <section id="ejercicios" class="panel">
+    <h2>Misiones disponibles</h2>
+
+    <div class="theory-grid exercise-grid">
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 1 · Crear una tupla</h3>
+        <p>Crea una tupla con tres colores y muestra el segundo.</p>
+        <div class="badges">
+          <span class="badge blue">Fácil</span>
+          <span class="badge">5 min</span>
+          <span class="badge">Tuplas</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema8_ej1">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 2 · Tupla de un elemento</h3>
+        <p>Crea correctamente una tupla con un solo número.</p>
+        <div class="badges">
+          <span class="badge blue">Fácil</span>
+          <span class="badge">5 min</span>
+          <span class="badge">Sintaxis</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema8_ej2">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 3 · Crear un set</h3>
+        <p>Crea un set con números repetidos y observa el resultado.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">6 min</span>
+          <span class="badge">Duplicados</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema8_ej3">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 4 · Añadir y eliminar en un set</h3>
+        <p>Añade un elemento y elimina otro de un set.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">7 min</span>
+          <span class="badge">Modificar</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema8_ej4">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 5 · Unión e intersección</h3>
+        <p>Calcula la unión y la intersección entre dos sets.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">8 min</span>
+          <span class="badge">Operaciones</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema8_ej5">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-highlight theory-card-exercise">
+        <h3>Reto final · Elegir estructura</h3>
+        <p>Decide si usarías lista, tupla o set según varios casos y justifica tu elección.</p>
+        <div class="badges">
+          <span class="badge green">Reto final</span>
+          <span class="badge">12 min</span>
+          <span class="badge">Diseño</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema8_reto1">Abrir reto</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Cierre del tema 8</h2>
+        <p class="exercise-subtitle">
+          Cuando hayas practicado estos ejercicios, marca esta parte como completada para cerrar el bloque de tuplas y sets.
+        </p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Práctica</span>
+        <span class="badge green">Completar tema</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Antes de cerrar este bloque</h3>
+        <ul>
+          <li>distingues entre lista, tupla y set</li>
+          <li>entiendes cuándo hay duplicados y cuándo no</li>
+          <li>sabes hacer operaciones básicas con sets</li>
+          <li>has probado varios ejercicios en el playground</li>
+          <li>puedes justificar por qué eliges una estructura y no otra</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Última recomendación</h3>
+        <div class="challenge">
+          Este tema no va solo de sintaxis. Va sobre pensar mejor qué estructura usar según el problema.
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./05-mini-retos.html">Volver a mini-retos</a>
+      <a class="btn btn-secondary" href="./index.html">Volver al índice del tema</a>
+      <button class="btn btn-primary" onclick="completeTopic('8.ejercicios')">
+        Marcar ejercicios como completados
+      </button>
+    </div>
+  </section>
 
 </main>
+
+<script>
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Ejercicios completados 🎉");
+    window.location.href = "./index.html";
+  } catch (error) {
+    console.error("Error marcando ejercicios como completados:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+</script>
+
 </body>
 </html>

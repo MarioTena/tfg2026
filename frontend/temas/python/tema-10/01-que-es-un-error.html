@@ -6,12 +6,116 @@
   <link rel="stylesheet" href="../../../styles.css" />
 </head>
 <body>
+
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 10 · Errores y excepciones</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 10 · Python</h1>
-  <p>10.1 · Qué es un error: entender por qué fallan los programas</p>
+  <span class="mission-tag">Misión 10.1</span>
+  <h1>Qué es un error</h1>
+  <p>Aprende a entender por qué fallan los programas y por qué detectar bien el tipo de error es una habilidad fundamental.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 10 · Errores y excepciones</div>
+        <div class="mini-note">Nivel inicial · 12-15 min · Entender fallos</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Errores</span>
+        <span class="badge green">Base mental</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 20%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué vas a entender hoy</h2>
+        <p class="exercise-subtitle">
+          Un error no es solo “algo que sale mal”: es una señal que te dice en qué parte del programa hay un problema y de qué tipo es.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Objetivo</span>
+        <span class="badge green">Entender fallos</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué problema resuelve</h3>
+        <p>
+          Hasta ahora has trabajado sobre todo en situaciones donde el programa funcionaba bien.
+          Pero en la práctica real también hay conversiones inválidas, archivos que no existen,
+          índices incorrectos o reglas mal planteadas.
+        </p>
+
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3>Entradas inválidas</h3>
+            <p>Un usuario puede escribir algo inesperado.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Archivos ausentes</h3>
+            <p>El programa puede intentar abrir algo que no existe.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Índices erróneos</h3>
+            <p>Puedes intentar acceder a una posición que no existe.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Lógica incorrecta</h3>
+            <p>El programa puede funcionar, pero devolver un resultado mal planteado.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          Idea clave: no todos los errores son iguales. Entender su tipo cambia completamente la forma de corregirlos.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes vigilar</h3>
+        <ul>
+          <li>no todos los fallos son errores de sintaxis</li>
+          <li>algunos aparecen al ejecutar, no al escribir</li>
+          <li>otros no rompen el programa, pero producen resultados incorrectos</li>
+          <li>leer bien el tipo de error ayuda mucho más que asustarse</li>
+        </ul>
+
+        <div class="challenge">
+          <strong>Piensa así:</strong><br />
+          un mensaje de error no es un ataque: es información útil que te ayuda a localizar el problema.
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="panel">
     <h2>Por qué este tema importa de verdad</h2>
     <p>
@@ -25,20 +129,38 @@
   </section>
 
   <section class="panel">
-    <h2>¿Qué es un error?</h2>
+    <h2>Qué es un error</h2>
     <p>
-      Un error es una situación en la que el programa no puede continuar normalmente.
+      Un error es una situación en la que el programa no puede continuar normalmente
+      o no produce el comportamiento correcto que se esperaba.
+    </p>
+
+    <p>
       Puede deberse a código incorrecto, datos no válidos, archivos ausentes o conversiones imposibles.
     </p>
   </section>
 
   <section class="panel">
     <h2>Tipos generales de problemas</h2>
-    <ul>
-      <li><strong>errores de sintaxis</strong>: el programa ni siquiera puede interpretarse</li>
-      <li><strong>errores en tiempo de ejecución</strong>: aparecen mientras el programa corre</li>
-      <li><strong>errores lógicos</strong>: el programa no falla, pero hace algo incorrecto</li>
-    </ul>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Error de sintaxis</h3>
+        <p>El programa ni siquiera puede interpretarse.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error en ejecución</h3>
+        <p>Aparece mientras el programa ya está corriendo.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error lógico</h3>
+        <p>El programa corre, pero hace algo incorrecto.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Lectura correcta</h3>
+        <p>No todos se corrigen del mismo modo.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
@@ -74,14 +196,33 @@ print(final)</code></pre>
 
   <section class="panel">
     <h2>Algunos errores muy comunes en Python</h2>
-    <ul>
-      <li><code>ValueError</code></li>
-      <li><code>TypeError</code></li>
-      <li><code>NameError</code></li>
-      <li><code>IndexError</code></li>
-      <li><code>KeyError</code></li>
-      <li><code>FileNotFoundError</code></li>
-    </ul>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3><code>ValueError</code></h3>
+        <p>El valor tiene un formato inválido.</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>TypeError</code></h3>
+        <p>Estás mezclando tipos incompatibles.</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>NameError</code></h3>
+        <p>La variable no existe.</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>IndexError</code></h3>
+        <p>El índice está fuera del rango válido.</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>KeyError</code></h3>
+        <p>La clave no existe en el diccionario.</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>FileNotFoundError</code></h3>
+        <p>El archivo que intentas abrir no existe.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
@@ -90,48 +231,165 @@ print(final)</code></pre>
       Gestionar errores significa detectar situaciones problemáticas y responder de forma controlada,
       en lugar de dejar que el programa se rompa sin más.
     </p>
+
+    <div class="callout">
+      La gestión de errores no elimina todos los problemas, pero evita que el programa reaccione de forma brusca o confusa.
+    </div>
   </section>
 
   <section class="panel">
-    <h2>💭 Piensa antes de ejecutar</h2>
-    <pre><code>edad = int("veinte")</code></pre>
+    <h2>Cómo pensar un error antes de corregirlo</h2>
 
-    <ul>
-      <li>¿funcionará?</li>
-      <li>¿qué tipo de error provocará?</li>
-      <li>¿por qué?</li>
-    </ul>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Paso 1</h3>
+        <p>Mira si el programa ni siquiera arranca.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 2</h3>
+        <p>Si arranca, revisa en qué línea falla.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 3</h3>
+        <p>Lee el tipo de error antes de tocar el código.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 4</h3>
+        <p>Piensa si el fallo es técnico o lógico.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Piensa antes de ejecutar</h2>
+        <p class="exercise-subtitle">Antes de lanzar el código, intenta clasificar el problema en tu cabeza.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Código</h3>
+        <pre><code>edad = int("veinte")</code></pre>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Preguntas</h3>
+        <ul>
+          <li>¿funcionará?</li>
+          <li>¿qué tipo de error provocará?</li>
+          <li>¿por qué no puede hacerse esa conversión?</li>
+        </ul>
+
+        <div class="mini-note">
+          Pista: el problema no está en la sintaxis, sino en el valor usado.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto guiado</h2>
+        <p class="exercise-subtitle">Ahora toca distinguir correctamente varios tipos de fallo.</p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Reto</span>
+        <span class="badge green">Muy fácil</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Tu misión</h3>
+        <p>
+          Clasifica estos casos como error de sintaxis, tiempo de ejecución o lógico:
+        </p>
+        <ul>
+          <li>usar una variable que no existe</li>
+          <li>olvidar un paréntesis</li>
+          <li>calcular mal una fórmula aunque el programa corra</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Solución razonada</h3>
+        <ul>
+          <li><strong>usar una variable que no existe</strong> → error en tiempo de ejecución</li>
+          <li><strong>olvidar un paréntesis</strong> → error de sintaxis</li>
+          <li><strong>calcular mal una fórmula aunque el programa corra</strong> → error lógico</li>
+        </ul>
+
+        <div class="callout">
+          Clasificar bien el fallo te ahorra mucho tiempo al corregirlo.
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
     <h2>Errores frecuentes al aprender</h2>
-    <ul>
-      <li>asustarse al ver el mensaje de error</li>
-      <li>no leer el tipo de excepción</li>
-      <li>tratar todos los errores como si fueran iguales</li>
-      <li>pensar que si el programa falla “Python va mal”</li>
-    </ul>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Error 1</h3>
+        <p>Asustarse al ver el mensaje de error.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 2</h3>
+        <p>No leer el tipo de excepción.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 3</h3>
+        <p>Tratar todos los errores como si fueran iguales.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 4</h3>
+        <p>Pensar que si el programa falla “Python va mal”.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Mini-reto guiado</h2>
-    <p>
-      Clasifica estos casos como error de sintaxis, tiempo de ejecución o lógico:
-    </p>
-    <ul>
-      <li>usar una variable que no existe</li>
-      <li>olvidar un paréntesis</li>
-      <li>calcular mal una fórmula aunque el programa corra</li>
-    </ul>
+    <h2>Buenas prácticas</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Lee el error</h3>
+        <p>El mensaje ya te da mucha información.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Diferencia tipos</h3>
+        <p>No se corrige igual una sintaxis rota que una lógica mal planteada.</p>
+      </div>
+      <div class="theory-card">
+        <h3>No improvises</h3>
+        <p>Entiende primero el fallo y luego cambia el código.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Piensa en causas</h3>
+        <p>No te quedes solo con el síntoma visible.</p>
+      </div>
+    </div>
   </section>
 
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./index.html">Índice tema</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
+  <section class="panel">
+    <h2>Siguiente paso</h2>
+    <p>
+      Ya sabes distinguir tipos de errores. Lo siguiente es aprender a controlarlos con <code>try</code> y <code>except</code>.
+    </p>
 
-  <button class="btn btn-primary" onclick="completeTopic('10.1')">Marcar como completado</button>
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./index.html">Índice tema</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <button class="btn btn-primary" onclick="completeTopic('10.1')">Marcar como completado</button>
+    </div>
+  </section>
+
   <script>
 const TOPIC_ID = "10.1";
 const NEXT_URL = "./02-try-except.html";

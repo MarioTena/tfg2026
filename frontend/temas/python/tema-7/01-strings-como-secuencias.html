@@ -7,18 +7,119 @@
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 7 · Strings</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 7 · Python</h1>
-  <p>7.1 · Strings como secuencias: entender el texto como una estructura recorrible</p>
+  <span class="mission-tag">Misión 7.1</span>
+  <h1>Strings como secuencias</h1>
+  <p>Aprende a ver el texto no solo como palabras, sino como una estructura ordenada de caracteres que se puede recorrer y analizar.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 7 · Strings</div>
+        <div class="mini-note">Nivel inicial · 12-15 min · Texto como estructura</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Objetivo</span>
+        <span class="badge green">Secuencias</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 20%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué vas a entender hoy</h2>
+        <p class="exercise-subtitle">
+          Un string no es solo texto. En Python también es una secuencia ordenada de caracteres sobre la que puedes contar, recorrer y operar.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Objetivo</span>
+        <span class="badge green">Texto estructurado</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué problema resuelve</h3>
+        <p>
+          En el tema 1 viste que un string era texto. Ahora das un paso más: entenderlo como secuencia te permite
+          tratar cada carácter como parte de una estructura más grande.
+        </p>
+
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3>Contar</h3>
+            <p>Saber cuántos caracteres tiene un texto.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Recorrer</h3>
+            <p>Analizar el texto letra a letra.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Cortar</h3>
+            <p>Extraer una parte concreta del texto.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Validar</h3>
+            <p>Comprobar formatos y patrones simples.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          Idea clave: pensar un string como secuencia te permite trabajar con el texto de forma mucho más potente.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes vigilar</h3>
+        <ul>
+          <li>un string está formado por caracteres ordenados</li>
+          <li>los espacios también cuentan como caracteres</li>
+          <li>se puede medir con <code>len()</code></li>
+          <li>un string es inmutable</li>
+        </ul>
+
+        <div class="challenge">
+          <strong>Piensa así:</strong><br />
+          un string no es una “masa de texto”, sino una secuencia ordenada de caracteres.
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section class="panel">
     <h2>Qué cambia respecto al tema 1</h2>
     <p>
       En el tema 1 viste que un string es texto, por ejemplo <code>"Hola"</code>.
-      Ahora vamos a dar un paso más importante: en Python, un string no es solo texto,
+      Ahora vas a dar un paso más importante: en Python, un string no es solo texto,
       sino también una <strong>secuencia de caracteres</strong>.
     </p>
 
@@ -82,82 +183,184 @@ print(len(frase))</code></pre>
 
   <section class="panel">
     <h2>Diferencia con una lista</h2>
-    <p>
-      Ambos son secuencias, pero hay una diferencia muy importante:
-    </p>
 
-    <ul>
-      <li>una lista es mutable</li>
-      <li>un string es inmutable</li>
-    </ul>
-
-    <p>
-      Esta diferencia aparecerá mucho al programar.
-    </p>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Lista</h3>
+        <p>Es una secuencia mutable.</p>
+      </div>
+      <div class="theory-card">
+        <h3>String</h3>
+        <p>Es una secuencia inmutable.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Orden</h3>
+        <p>En ambos casos el orden de los elementos importa.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Uso</h3>
+        <p>Uno guarda elementos generales y el otro guarda caracteres.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
     <h2>Cuándo es importante ver un string como secuencia</h2>
-    <ul>
-      <li>cuando quieres contar letras</li>
-      <li>cuando quieres recorrer carácter a carácter</li>
-      <li>cuando quieres extraer una parte del texto</li>
-      <li>cuando necesitas validar formato</li>
-      <li>cuando buscas patrones simples</li>
-    </ul>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Contar letras</h3>
+        <p>Medir longitud o repeticiones.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Recorrer</h3>
+        <p>Procesar carácter a carácter.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Extraer partes</h3>
+        <p>Tomar fragmentos del texto.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Analizar</h3>
+        <p>Buscar patrones y validar formatos simples.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>💭 Piensa antes de ejecutar</h2>
-    <pre><code>palabra = "sol"
+    <h2>Cómo pensar un string antes de trabajar con él</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Paso 1</h3>
+        <p>Piensa en el texto como caracteres ordenados.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 2</h3>
+        <p>Comprueba si te importa la longitud, una posición o un fragmento.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 3</h3>
+        <p>Recuerda que los espacios también forman parte del texto.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 4</h3>
+        <p>No pienses en modificar letras directamente como si fuera una lista.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Piensa antes de ejecutar</h2>
+        <p class="exercise-subtitle">Antes de probar el código, piensa qué representa la longitud de un texto.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Código</h3>
+        <pre><code>palabra = "sol"
 print(palabra)
 print(len(palabra))</code></pre>
+      </div>
 
-    <ul>
-      <li>¿qué representa <code>len(palabra)</code>?</li>
-      <li>¿qué pasaría si la palabra fuera <code>"sol brillante"</code>?</li>
-    </ul>
+      <div class="exercise-block">
+        <h3>Preguntas</h3>
+        <ul>
+          <li>¿qué representa <code>len(palabra)</code>?</li>
+          <li>¿qué pasaría si la palabra fuera <code>"sol brillante"</code>?</li>
+        </ul>
+
+        <div class="mini-note">
+          Pista: la longitud cuenta todos los caracteres, incluidos los espacios.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto guiado</h2>
+        <p class="exercise-subtitle">Ahora toca tratar una frase como una secuencia real de caracteres.</p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Reto</span>
+        <span class="badge green">Muy fácil</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Tu misión</h3>
+        <p>
+          Crea una variable <code>frase</code>, guárdale una frase corta y muestra su longitud.
+        </p>
+
+        <div class="exercise-actions">
+          <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Resolver en playground</a>
+          <button class="btn btn-secondary btn-sm" type="button" onclick="document.getElementById('solucion-reto').open = true;">
+            Ver solución
+          </button>
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Pista</h3>
+        <p>
+          Usa <code>len()</code> igual que lo hacías con listas: ahora también estás contando elementos, pero aquí son caracteres.
+        </p>
+
+        <details id="solucion-reto" class="theory-dropdown">
+          <summary>Mostrar solución</summary>
+          <div class="theory-dropdown-content">
+            <pre><code>frase = "Aprender Python"
+print(frase)
+print(len(frase))</code></pre>
+          </div>
+        </details>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
     <h2>Errores frecuentes</h2>
-    <ul>
-      <li>pensar que un string es indivisible</li>
-      <li>olvidar que los espacios cuentan</li>
-      <li>no distinguir entre string y lista</li>
-      <li>no entender la idea de inmutabilidad</li>
-    </ul>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Error 1</h3>
+        <p>Pensar que un string es indivisible.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 2</h3>
+        <p>Olvidar que los espacios cuentan.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 3</h3>
+        <p>No distinguir entre string y lista.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 4</h3>
+        <p>No entender la idea de inmutabilidad.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Mini-reto guiado</h2>
+    <h2>Siguiente paso</h2>
     <p>
-      Crea una variable <code>frase</code>, guárdale una frase corta y muestra su longitud.
+      Ya sabes pensar un string como secuencia. Lo siguiente es acceder a posiciones concretas y extraer fragmentos con indexación y slicing.
     </p>
 
-    <pre><code>frase = "Aprender Python"
-print(frase)
-print(len(frase))</code></pre>
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./index.html">Índice tema</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <button class="btn btn-primary" onclick="completeTopic('7.1')">Marcar como completado</button>
+    </div>
   </section>
-
-  <section class="panel">
-    <h2>Pregunta de entrevista</h2>
-    <p>
-      ¿Por qué puede decirse que un string es una secuencia?
-    </p>
-
-    <p>
-      Respuesta sólida: porque está formado por caracteres ordenados sobre los que se puede acceder, recorrer y operar como elementos individuales.
-    </p>
-  </section>
-
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./index.html">Índice tema</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
-
-  <button class="btn btn-primary" onclick="completeTopic('7.1')">Marcar como completado</button>
 
   <script>
 const TOPIC_ID = "7.1";

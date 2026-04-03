@@ -6,12 +6,115 @@
   <link rel="stylesheet" href="../../../styles.css" />
 </head>
 <body>
+
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 8 · Tuplas y sets</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 8 · Python</h1>
-  <p>8.3 · Operaciones con sets: unión, intersección y diferencia</p>
+  <span class="mission-tag">Misión 8.3</span>
+  <h1>Operaciones con sets</h1>
+  <p>Aprende a usar unión, intersección y diferencia para comparar grupos de elementos de forma natural.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 8 · Tuplas y sets</div>
+        <div class="mini-note">Nivel inicial · 12-15 min · Comparar conjuntos</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Unión</span>
+        <span class="badge green">Intersección</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 60%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué vas a entender hoy</h2>
+        <p class="exercise-subtitle">
+          Los sets no solo sirven para evitar duplicados: también permiten comparar grupos de elementos con operaciones muy expresivas.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Objetivo</span>
+        <span class="badge green">Comparar grupos</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué problema resuelve</h3>
+        <p>
+          Muchas veces necesitas saber qué elementos aparecen en ambos grupos, cuáles son exclusivos
+          o qué conjunto resulta de unirlos sin repetir.
+        </p>
+
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3>Usuarios comunes</h3>
+            <p>Saber quién está en dos grupos a la vez.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Elementos únicos</h3>
+            <p>Unir conjuntos sin duplicados.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Diferencias</h3>
+            <p>Detectar qué hay en un grupo pero no en otro.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Comparaciones reales</h3>
+            <p>Hobbies comunes, tags compartidos o catálogos distintos.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          Idea clave: los sets permiten expresar comparaciones entre grupos con operaciones muy limpias.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes vigilar</h3>
+        <ul>
+          <li>la unión junta todo sin repetir</li>
+          <li>la intersección se queda con lo común</li>
+          <li>la diferencia conserva lo exclusivo</li>
+          <li>la diferencia simétrica se queda con lo no compartido</li>
+        </ul>
+
+        <div class="challenge">
+          <strong>Piensa así:</strong><br />
+          cada operación responde a una pregunta distinta sobre dos grupos de elementos.
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="panel">
     <h2>Por qué son interesantes los sets</h2>
     <p>
@@ -64,38 +167,187 @@ print(a ^ b)</code></pre>
   </section>
 
   <section class="panel">
-    <h2>Casos reales</h2>
-    <ul>
-      <li>usuarios comunes entre dos grupos</li>
-      <li>productos únicos de dos catálogos</li>
-      <li>tags compartidos entre documentos</li>
-      <li>elementos repetidos vs exclusivos</li>
-    </ul>
+    <h2>Cómo leer cada operación mentalmente</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3><code>a | b</code></h3>
+        <p>“Todo lo que haya en cualquiera de los dos”.</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>a & b</code></h3>
+        <p>“Solo lo que comparten”.</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>a - b</code></h3>
+        <p>“Lo que está en A pero no en B”.</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>a ^ b</code></h3>
+        <p>“Lo que no está repetido entre ambos”.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>💭 Piensa antes de ejecutar</h2>
-    <pre><code>grupo_a = {"Ana", "Luis", "Marta"}
+    <h2>Casos reales</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Usuarios comunes</h3>
+        <p>Encontrar coincidencias entre dos grupos.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Productos exclusivos</h3>
+        <p>Ver qué catálogo tiene elementos que otro no tiene.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Tags compartidos</h3>
+        <p>Comparar etiquetas entre documentos o contenidos.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Hobbies</h3>
+        <p>Detectar intereses comunes o no compartidos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Piensa antes de ejecutar</h2>
+        <p class="exercise-subtitle">Antes de ejecutar, piensa qué elementos aparecen en ambos grupos y cuáles no.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Código</h3>
+        <pre><code>grupo_a = {"Ana", "Luis", "Marta"}
 grupo_b = {"Luis", "Carlos", "Marta"}
 print(grupo_a & grupo_b)</code></pre>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Preguntas</h3>
+        <ul>
+          <li>¿qué nombres aparecen en los dos sets?</li>
+          <li>¿por qué <code>Ana</code> y <code>Carlos</code> no salen?</li>
+        </ul>
+
+        <div class="mini-note">
+          Pista: la intersección solo conserva elementos comunes.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto guiado</h2>
+        <p class="exercise-subtitle">Ahora toca comparar dos grupos usando intersección.</p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Reto</span>
+        <span class="badge green">Muy fácil</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Tu misión</h3>
+        <p>
+          Crea dos sets de hobbies y muestra cuáles coinciden.
+        </p>
+
+        <div class="exercise-actions">
+          <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Resolver en playground</a>
+          <button class="btn btn-secondary btn-sm" type="button" onclick="document.getElementById('solucion-reto').open = true;">
+            Ver solución
+          </button>
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Pista</h3>
+        <p>
+          Si quieres solo lo que ambos tienen en común, necesitas una intersección.
+        </p>
+
+        <details id="solucion-reto" class="theory-dropdown">
+          <summary>Mostrar solución</summary>
+          <div class="theory-dropdown-content">
+            <pre><code>persona1 = {"leer", "cine", "viajar"}
+persona2 = {"cine", "deporte", "viajar"}
+print(persona1 & persona2)</code></pre>
+          </div>
+        </details>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Mini-reto guiado</h2>
-    <p>Crea dos sets de hobbies y muestra cuáles coinciden.</p>
+    <h2>Errores frecuentes</h2>
 
-    <pre><code>persona1 = {"leer", "cine", "viajar"}
-persona2 = {"cine", "deporte", "viajar"}
-print(persona1 & persona2)</code></pre>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Error 1</h3>
+        <p>Confundir unión con intersección.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 2</h3>
+        <p>No pensar qué pregunta responde cada operación.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 3</h3>
+        <p>Usar listas cuando el problema realmente es de conjuntos.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 4</h3>
+        <p>Esperar duplicados en el resultado.</p>
+      </div>
+    </div>
   </section>
 
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./02-que-son-los-sets.html">Anterior</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
+  <section class="panel">
+    <h2>Buenas prácticas</h2>
 
-  <button class="btn btn-primary" onclick="completeTopic('8.3')">Marcar como completado</button>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Piensa la pregunta</h3>
+        <p>Antes de operar, formula qué quieres comparar exactamente.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Usa nombres claros</h3>
+        <p>Sets como <code>grupo_a</code> y <code>grupo_b</code> ayudan a leer mejor la lógica.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Elige set si comparas grupos</h3>
+        <p>Es la estructura más natural para estas operaciones.</p>
+      </div>
+      <div class="theory-card">
+        <h3>No pienses en orden</h3>
+        <p>Las operaciones de sets van de pertenencia, no de posiciones.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Siguiente paso</h2>
+    <p>
+      Ya sabes comparar sets. Lo siguiente es consolidar cuándo conviene usar listas, tuplas o sets según el problema.
+    </p>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./02-que-son-los-sets.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <button class="btn btn-primary" onclick="completeTopic('8.3')">Marcar como completado</button>
+    </div>
+  </section>
+
   <script>
 const TOPIC_ID = "8.3";
 const NEXT_URL = "./04-cuando-usar-cada-estructura.html";

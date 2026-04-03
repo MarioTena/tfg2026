@@ -8,33 +8,264 @@
 <body>
 
 <header class="header">
-  <h1>Tema 7 · Python</h1>
-  <p>Ejercicios para practicar strings, slicing, métodos y análisis de texto.</p>
+  <span class="mission-tag">Practice mode</span>
+  <h1>Ejercicios de strings</h1>
+  <p>Practica slicing, métodos y análisis de texto resolviendo misiones en el playground.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 7 · Ruta de práctica</div>
+        <div class="mini-note">7 ejercicios + 1 reto final</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Python</span>
+        <span class="badge green">Hands-on</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 92%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#ejercicios">Ir a ejercicios</a>
+    <a class="btn btn-secondary" href="./index.html">Volver al tema</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
 
-  <section class="panel">
-    <h2>Cómo usar estos ejercicios</h2>
-    <p>
-      En estos ejercicios es importante que decidas si trabajas a nivel de carácter, subcadena o palabra.
-      Piensa siempre si necesitas indexación, un método del string o un bucle.
-    </p>
-    <div class="buttons-row">
-      <a class="btn btn-secondary" href="./index.html">Volver al Tema 7</a>
-      <a class="btn btn-secondary" href="../index.html">Volver a ruta Python</a>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Cómo trabajar esta pantalla</h2>
+        <p class="exercise-subtitle">
+          En estos ejercicios es importante decidir si trabajas a nivel de carácter, subcadena o palabra. Piensa si necesitas indexación, un método del string o un bucle.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Slicing</span>
+        <span class="badge blue">Métodos</span>
+        <span class="badge green">Práctica guiada</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Recomendación</h3>
+        <ul>
+          <li>piensa si necesitas una posición concreta o un fragmento</li>
+          <li>decide si conviene usar método o recorrido</li>
+          <li>fíjate en mayúsculas, espacios y repeticiones</li>
+          <li>abre el playground y prueba distintos textos</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Clave del tema</h3>
+        <div class="challenge">
+          Un string no es solo texto: también es una secuencia. Eso te permite acceder, cortar, recorrer y analizar.
+        </div>
+
+        <div class="buttons-row">
+          <a class="btn btn-secondary btn-sm" href="./index.html">Volver al Tema 7</a>
+          <a class="btn btn-secondary btn-sm" href="../index.html">Volver a ruta Python</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="panel"><h2>Ejercicio 1 · Primera y última letra</h2><p>Muestra la primera y la última letra de una palabra.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema7_ej1">Abrir en playground</a></div></section>
-  <section class="panel"><h2>Ejercicio 2 · Tres primeras letras</h2><p>Extrae las tres primeras letras de un texto.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema7_ej2">Abrir en playground</a></div></section>
-  <section class="panel"><h2>Ejercicio 3 · Invertir texto</h2><p>Muestra un string al revés usando slicing.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema7_ej3">Abrir en playground</a></div></section>
-  <section class="panel"><h2>Ejercicio 4 · Pasar a minúsculas</h2><p>Convierte un texto a minúsculas.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema7_ej4">Abrir en playground</a></div></section>
-  <section class="panel"><h2>Ejercicio 5 · Limpiar espacios</h2><p>Elimina espacios al principio y al final de un texto.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema7_ej5">Abrir en playground</a></div></section>
-  <section class="panel"><h2>Ejercicio 6 · Contar una letra</h2><p>Cuenta cuántas veces aparece una letra en un texto.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema7_ej6">Abrir en playground</a></div></section>
-  <section class="panel"><h2>Ejercicio 7 · Separar palabras</h2><p>Convierte una frase en una lista de palabras usando <code>split()</code>.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema7_ej7">Abrir en playground</a></div></section>
-  <section class="panel"><h2>Reto final · Analizar frase</h2><p>Limpia una frase, pásala a minúsculas, cuenta vocales y cuenta palabras.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema7_reto1">Abrir en playground</a></div></section>
+  <section id="ejercicios" class="panel">
+    <h2>Misiones disponibles</h2>
+
+    <div class="theory-grid exercise-grid">
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 1 · Primera y última letra</h3>
+        <p>Muestra la primera y la última letra de una palabra.</p>
+        <div class="badges">
+          <span class="badge blue">Fácil</span>
+          <span class="badge">5 min</span>
+          <span class="badge">Índices</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema7_ej1">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 2 · Tres primeras letras</h3>
+        <p>Extrae las tres primeras letras de un texto.</p>
+        <div class="badges">
+          <span class="badge blue">Fácil</span>
+          <span class="badge">5 min</span>
+          <span class="badge">Slicing</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema7_ej2">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 3 · Invertir texto</h3>
+        <p>Muestra un string al revés usando slicing.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">6 min</span>
+          <span class="badge">[::-1]</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema7_ej3">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 4 · Pasar a minúsculas</h3>
+        <p>Convierte un texto a minúsculas.</p>
+        <div class="badges">
+          <span class="badge blue">Fácil</span>
+          <span class="badge">5 min</span>
+          <span class="badge">lower()</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema7_ej4">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 5 · Limpiar espacios</h3>
+        <p>Elimina espacios al principio y al final de un texto.</p>
+        <div class="badges">
+          <span class="badge blue">Fácil</span>
+          <span class="badge">5 min</span>
+          <span class="badge">strip()</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema7_ej5">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 6 · Contar una letra</h3>
+        <p>Cuenta cuántas veces aparece una letra en un texto.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">7 min</span>
+          <span class="badge">count()</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema7_ej6">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 7 · Separar palabras</h3>
+        <p>Convierte una frase en una lista de palabras usando <code>split()</code>.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">7 min</span>
+          <span class="badge">split()</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema7_ej7">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-highlight theory-card-exercise">
+        <h3>Reto final · Analizar frase</h3>
+        <p>Limpia una frase, pásala a minúsculas, cuenta vocales y cuenta palabras.</p>
+        <div class="badges">
+          <span class="badge green">Reto final</span>
+          <span class="badge">12 min</span>
+          <span class="badge">Combinado</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema7_reto1">Abrir reto</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Cierre del tema 7</h2>
+        <p class="exercise-subtitle">
+          Cuando hayas practicado estos ejercicios, marca esta parte como completada para cerrar el bloque de strings.
+        </p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Práctica</span>
+        <span class="badge green">Completar tema</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Antes de cerrar este bloque</h3>
+        <ul>
+          <li>puedes acceder y cortar un string</li>
+          <li>sabes aplicar métodos útiles de texto</li>
+          <li>puedes contar y separar información</li>
+          <li>has probado varios ejercicios en el playground</li>
+          <li>distingues entre carácter, palabra y subcadena</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Última recomendación</h3>
+        <div class="challenge">
+          En strings, los errores suelen venir de no tener claro qué fragmento estás manipulando. Piensa siempre qué sale exactamente.
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./05-mini-retos.html">Volver a mini-retos</a>
+      <a class="btn btn-secondary" href="./index.html">Volver al índice del tema</a>
+      <button class="btn btn-primary" onclick="completeTopic('7.ejercicios')">
+        Marcar ejercicios como completados
+      </button>
+    </div>
+  </section>
 
 </main>
+
+<script>
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Ejercicios completados 🎉");
+    window.location.href = "./index.html";
+  } catch (error) {
+    console.error("Error marcando ejercicios como completados:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+</script>
+
 </body>
 </html>

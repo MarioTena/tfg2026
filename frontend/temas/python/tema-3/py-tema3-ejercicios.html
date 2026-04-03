@@ -8,33 +8,264 @@
 <body>
 
 <header class="header">
-  <h1>Tema 3 · Python</h1>
-  <p>Ejercicios para practicar bucles, acumulación y control de iteraciones.</p>
+  <span class="mission-tag">Practice mode</span>
+  <h1>Ejercicios de bucles</h1>
+  <p>Practica iteraciones, acumulación y control de flujo resolviendo misiones en el playground.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 3 · Ruta de práctica</div>
+        <div class="mini-note">7 ejercicios + 1 reto final</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Python</span>
+        <span class="badge green">Hands-on</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 92%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#ejercicios">Ir a ejercicios</a>
+    <a class="btn btn-secondary" href="./index.html">Volver al tema</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
 
-  <section class="panel">
-    <h2>Cómo usar estos ejercicios</h2>
-    <p>
-      Abre cada ejercicio en el playground. Tendrás una plantilla inicial y pistas.
-      La clave aquí es seguir cada iteración mentalmente antes de ejecutar.
-    </p>
-    <div class="buttons-row">
-      <a class="btn btn-secondary" href="./index.html">Volver al Tema 3</a>
-      <a class="btn btn-secondary" href="../index.html">Volver a ruta Python</a>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Cómo trabajar esta pantalla</h2>
+        <p class="exercise-subtitle">
+          La clave aquí no es solo escribir el bucle, sino seguir mentalmente cada iteración antes de ejecutar.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">for</span>
+        <span class="badge blue">while</span>
+        <span class="badge green">Práctica guiada</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Recomendación</h3>
+        <ul>
+          <li>piensa cuántas iteraciones habrá</li>
+          <li>fíjate en cómo cambia la variable de control</li>
+          <li>distingue entre recorrer, contar y acumular</li>
+          <li>abre el playground y comprueba tu razonamiento</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Clave del tema</h3>
+        <div class="challenge">
+          Un bucle no es repetir “porque sí”. Es repetir con una lógica clara, controlando cuándo empieza, qué hace y cuándo termina.
+        </div>
+
+        <div class="buttons-row">
+          <a class="btn btn-secondary btn-sm" href="./index.html">Volver al Tema 3</a>
+          <a class="btn btn-secondary btn-sm" href="../index.html">Volver a ruta Python</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="panel"><h2>Ejercicio 1 · Del 1 al 5</h2><p>Muestra los números del 1 al 5 usando <code>for</code>.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema3_ej1">Abrir en playground</a></div></section>
-  <section class="panel"><h2>Ejercicio 2 · Cuenta atrás</h2><p>Muestra los números del 10 al 1 en orden descendente.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema3_ej2">Abrir en playground</a></div></section>
-  <section class="panel"><h2>Ejercicio 3 · Números pares</h2><p>Muestra los números pares del 2 al 20.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema3_ej3">Abrir en playground</a></div></section>
-  <section class="panel"><h2>Ejercicio 4 · Recorrer palabra</h2><p>Muestra una letra por línea de la palabra <code>python</code>.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema3_ej4">Abrir en playground</a></div></section>
-  <section class="panel"><h2>Ejercicio 5 · Suma del 1 al 10</h2><p>Suma los números del 1 al 10 usando un acumulador.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema3_ej5">Abrir en playground</a></div></section>
-  <section class="panel"><h2>Ejercicio 6 · While del 1 al 5</h2><p>Muestra del 1 al 5 usando <code>while</code>.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema3_ej6">Abrir en playground</a></div></section>
-  <section class="panel"><h2>Ejercicio 7 · Saltar pares</h2><p>Muestra del 1 al 10 saltando los números pares.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema3_ej7">Abrir en playground</a></div></section>
-  <section class="panel"><h2>Reto final · Sumar hasta 0</h2><p>Pide números al usuario, súmalos y termina cuando escriba <code>0</code>.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema3_reto1">Abrir en playground</a></div></section>
+  <section id="ejercicios" class="panel">
+    <h2>Misiones disponibles</h2>
+
+    <div class="theory-grid exercise-grid">
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 1 · Del 1 al 5</h3>
+        <p>Muestra los números del 1 al 5 usando <code>for</code>.</p>
+        <div class="badges">
+          <span class="badge blue">Fácil</span>
+          <span class="badge">5 min</span>
+          <span class="badge">for</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema3_ej1">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 2 · Cuenta atrás</h3>
+        <p>Muestra los números del 10 al 1 en orden descendente.</p>
+        <div class="badges">
+          <span class="badge blue">Fácil</span>
+          <span class="badge">6 min</span>
+          <span class="badge">range</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema3_ej2">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 3 · Números pares</h3>
+        <p>Muestra los números pares del 2 al 20.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">7 min</span>
+          <span class="badge">Condición</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema3_ej3">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 4 · Recorrer palabra</h3>
+        <p>Muestra una letra por línea de la palabra <code>python</code>.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">7 min</span>
+          <span class="badge">Recorrido</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema3_ej4">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 5 · Suma del 1 al 10</h3>
+        <p>Suma los números del 1 al 10 usando un acumulador.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">8 min</span>
+          <span class="badge">Acumulador</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema3_ej5">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 6 · While del 1 al 5</h3>
+        <p>Muestra del 1 al 5 usando <code>while</code>.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">8 min</span>
+          <span class="badge">while</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema3_ej6">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 7 · Saltar pares</h3>
+        <p>Muestra del 1 al 10 saltando los números pares.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">8 min</span>
+          <span class="badge">continue</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema3_ej7">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-highlight theory-card-exercise">
+        <h3>Reto final · Sumar hasta 0</h3>
+        <p>Pide números al usuario, súmalos y termina cuando escriba <code>0</code>.</p>
+        <div class="badges">
+          <span class="badge green">Reto final</span>
+          <span class="badge">12 min</span>
+          <span class="badge">Combinado</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema3_reto1">Abrir reto</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Cierre del tema 3</h2>
+        <p class="exercise-subtitle">
+          Cuando hayas practicado estos ejercicios, marca esta parte como completada para cerrar el bloque de bucles.
+        </p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Práctica</span>
+        <span class="badge green">Completar tema</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Antes de cerrar este bloque</h3>
+        <ul>
+          <li>entiendes cómo funciona un <code>for</code> y un <code>while</code></li>
+          <li>puedes seguir una iteración paso a paso</li>
+          <li>sabes usar acumuladores y contadores</li>
+          <li>has probado varios ejercicios en el playground</li>
+          <li>distingues entre repetir, contar, sumar y filtrar</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Última recomendación</h3>
+        <div class="challenge">
+          Si un bucle te falla, no corrijas a ciegas. Mira qué valor tiene cada variable en cada vuelta y razona el problema.
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./05-mini-retos.html">Volver a mini-retos</a>
+      <a class="btn btn-secondary" href="./index.html">Volver al índice del tema</a>
+      <button class="btn btn-primary" onclick="completeTopic('3.ejercicios')">
+        Marcar ejercicios como completados
+      </button>
+    </div>
+  </section>
 
 </main>
+
+<script>
+const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+
+async function completeTopic(topicId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para guardar el progreso");
+      return;
+    }
+
+    const res = await fetch(COMPLETE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ topic: topicId })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error HTTP: ${res.status}`);
+    }
+
+    alert("Ejercicios completados 🎉");
+    window.location.href = "./index.html";
+  } catch (error) {
+    console.error("Error marcando ejercicios como completados:", error);
+    alert("No se pudo guardar el progreso");
+  }
+}
+</script>
+
 </body>
 </html>

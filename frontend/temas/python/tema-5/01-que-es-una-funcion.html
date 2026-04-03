@@ -7,34 +7,146 @@
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 5 · Funciones</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 5 · Python</h1>
-  <p>5.1 · Qué es una función: reutilizar lógica y escribir código profesional</p>
+  <span class="mission-tag">Misión 5.1</span>
+  <h1>Qué es una función</h1>
+  <p>Aprende a reutilizar lógica, evitar repeticiones y escribir código más limpio y profesional.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 5 · Funciones</div>
+        <div class="mini-note">Nivel inicial · 12-15 min · Reutilización de código</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">def</span>
+        <span class="badge green">Base esencial</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 20%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
 
-  <section class="panel">
-    <h2>¿Qué problema resuelven las funciones?</h2>
-    <p>
-      A medida que los programas crecen, empiezan a aparecer bloques de código que se repiten.
-      Copiar y pegar puede parecer rápido al principio, pero empeora el código:
-    </p>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué vas a entender hoy</h2>
+        <p class="exercise-subtitle">
+          Una función permite encapsular una tarea concreta en un bloque reutilizable con nombre propio.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Objetivo</span>
+        <span class="badge green">Reutilización</span>
+      </div>
+    </div>
 
-    <ul>
-      <li>duplica lógica</li>
-      <li>dificulta el mantenimiento</li>
-      <li>aumenta errores</li>
-      <li>hace el programa más difícil de leer</li>
-    </ul>
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué problema resuelve</h3>
+        <p>
+          A medida que los programas crecen, empiezan a aparecer bloques de código que se repiten.
+          Copiar y pegar puede parecer rápido al principio, pero empeora el código.
+        </p>
 
-    <div class="callout">
-      Una función permite encapsular una tarea en un bloque reutilizable con nombre propio.
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3>Duplicación</h3>
+            <p>Copiar lógica varias veces hace el código más difícil de mantener.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Errores</h3>
+            <p>Si cambias una parte y olvidas otra, aparecen inconsistencias.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Lectura</h3>
+            <p>El programa se vuelve más largo y menos claro.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Organización</h3>
+            <p>Las funciones ayudan a dividir un problema grande en piezas pequeñas.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          Idea clave: una función te permite definir una tarea una vez y usarla tantas veces como necesites.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes vigilar</h3>
+        <ul>
+          <li>definir no es lo mismo que ejecutar</li>
+          <li>los paréntesis son obligatorios</li>
+          <li>la indentación sigue siendo esencial</li>
+          <li>el nombre debe describir bien la tarea</li>
+        </ul>
+
+        <div class="challenge">
+          <strong>Piensa así:</strong><br />
+          una función es como una herramienta con nombre: la creas una vez y la usas cuando la necesitas.
+        </div>
+      </div>
     </div>
   </section>
 
   <section class="panel">
-    <h2>¿Qué es una función?</h2>
+    <h2>Dónde aparecen las funciones en problemas reales</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Validaciones</h3>
+        <p>Comprobar varias veces una misma regla sin copiar código.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Cálculos</h3>
+        <p>Repetir operaciones como descuentos, impuestos o medias.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Interfaces</h3>
+        <p>Mostrar menús, mensajes o bloques reutilizables.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Programas grandes</h3>
+        <p>Separar el código por tareas para que sea más fácil de entender.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      En software real, casi todo está organizado en funciones.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Qué es una función</h2>
     <p>
       Una función es un bloque de código que realiza una tarea concreta.
       Se define una vez y puede ejecutarse tantas veces como sea necesario.
@@ -66,27 +178,50 @@ saludar()</code></pre>
     <pre><code>def nombre_funcion():
     bloque</code></pre>
 
-    <p>
-      Elementos importantes:
-    </p>
-
-    <ul>
-      <li><code>def</code> indica que vas a definir una función</li>
-      <li>el nombre describe la tarea</li>
-      <li>los paréntesis son obligatorios</li>
-      <li>el bloque va indentado</li>
-    </ul>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3><code>def</code></h3>
+        <p>Indica que vas a definir una función.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Nombre</h3>
+        <p>Debe describir la tarea que realiza.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paréntesis</h3>
+        <p>Son obligatorios aunque no haya parámetros todavía.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Bloque</h3>
+        <p>El código interior va indentado, igual que en otras estructuras.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
     <h2>Por qué las funciones son tan importantes</h2>
-    <ul>
-      <li>permiten reutilizar código</li>
-      <li>dividen problemas grandes en partes pequeñas</li>
-      <li>mejoran la legibilidad</li>
-      <li>facilitan probar y depurar</li>
-      <li>son una base esencial para escribir software real</li>
-    </ul>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Reutilizan código</h3>
+        <p>Evitan repetir la misma lógica muchas veces.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Dividen problemas</h3>
+        <p>Permiten separar tareas complejas en partes más pequeñas.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Mejoran la lectura</h3>
+        <p>Un buen nombre hace que el código se entienda mejor.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Facilitan pruebas</h3>
+        <p>Es más fácil revisar una función pequeña que un bloque enorme.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
@@ -98,7 +233,7 @@ print("Hola Luis")
 print("Bienvenido al sistema")</code></pre>
 
     <p>
-      Aquí hay repetición. La estructura es la misma.
+      Aquí hay repetición. La estructura es la misma, aunque cambien algunos datos.
     </p>
   </section>
 
@@ -126,70 +261,174 @@ len([1, 2, 3])</code></pre>
   </section>
 
   <section class="panel">
-    <h2>💭 Piensa antes de ejecutar</h2>
-    <pre><code>def mostrar_mensaje():
+    <h2>Cómo pensar una función antes de escribirla</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Paso 1</h3>
+        <p>Identifica una tarea que se repite o que merece tener nombre propio.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Paso 2</h3>
+        <p>Define claramente qué hace esa tarea y qué no hace.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Paso 3</h3>
+        <p>Asigna un nombre que describa una acción.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Paso 4</h3>
+        <p>Decide cuándo se llamará dentro del programa.</p>
+      </div>
+    </div>
+
+    <div class="challenge">
+      Muchas veces una buena función nace de detectar una repetición o una tarea demasiado larga.
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Piensa antes de ejecutar</h2>
+        <p class="exercise-subtitle">Antes de probar el código, intenta seguir el flujo del programa.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Código</h3>
+        <pre><code>def mostrar_mensaje():
     print("Estoy dentro de la función")
 
 print("Antes")
 mostrar_mensaje()
 print("Después")</code></pre>
+      </div>
 
-    <ul>
-      <li>¿qué se imprime primero?</li>
-      <li>¿qué línea provoca la ejecución de la función?</li>
-    </ul>
+      <div class="exercise-block">
+        <h3>Preguntas</h3>
+        <ul>
+          <li>¿qué se imprime primero?</li>
+          <li>¿qué línea provoca la ejecución de la función?</li>
+        </ul>
+
+        <div class="mini-note">
+          Pista: definir una función no la ejecuta todavía.
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section class="panel">
-    <h2>Errores frecuentes</h2>
-    <ul>
-      <li>olvidar los paréntesis al llamar a la función</li>
-      <li>pensar que definir una función la ejecuta automáticamente</li>
-      <li>poner mal la indentación</li>
-      <li>elegir nombres poco claros</li>
-    </ul>
-  </section>
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto guiado</h2>
+        <p class="exercise-subtitle">Ahora toca encapsular una tarea sencilla en una función propia.</p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Reto</span>
+        <span class="badge green">Muy fácil</span>
+      </div>
+    </div>
 
-  <section class="panel">
-    <h2>Buenas prácticas</h2>
-    <ul>
-      <li>usa nombres que indiquen acción: <code>saludar</code>, <code>calcular_total</code>, <code>mostrar_menu</code></li>
-      <li>haz que cada función tenga una responsabilidad clara</li>
-      <li>evita funciones demasiado largas al empezar</li>
-    </ul>
-  </section>
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Tu misión</h3>
+        <p>
+          Crea una función llamada <code>mostrar_bienvenida</code> que imprima dos líneas de saludo.
+        </p>
 
-  <section class="panel">
-    <h2>Mini-reto guiado</h2>
-    <p>
-      Crea una función llamada <code>mostrar_bienvenida</code> que imprima dos líneas de saludo.
-    </p>
+        <div class="exercise-actions">
+          <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Resolver en playground</a>
+          <button class="btn btn-secondary btn-sm" type="button" onclick="document.getElementById('solucion-reto').open = true;">
+            Ver solución
+          </button>
+        </div>
+      </div>
 
-    <pre><code>def mostrar_bienvenida():
+      <div class="exercise-block">
+        <h3>Pista</h3>
+        <p>
+          Primero define la función con <code>def</code> y después llámala con su nombre y paréntesis.
+        </p>
+
+        <details id="solucion-reto" class="theory-dropdown">
+          <summary>Mostrar solución</summary>
+          <div class="theory-dropdown-content">
+            <pre><code>def mostrar_bienvenida():
     print("Bienvenido")
     print("Vamos a aprender funciones")
 
 mostrar_bienvenida()</code></pre>
+          </div>
+        </details>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Pregunta de entrevista</h2>
-    <p>
-      ¿Qué es una función y para qué sirve?
-    </p>
+    <h2>Errores frecuentes</h2>
 
-    <p>
-      Respuesta sólida: una función es un bloque de código reutilizable que encapsula una tarea concreta y ayuda a organizar mejor el programa.
-    </p>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Error 1</h3>
+        <p>Olvidar los paréntesis al llamar a la función.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 2</h3>
+        <p>Pensar que definir una función la ejecuta automáticamente.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 3</h3>
+        <p>Poner mal la indentación del bloque.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 4</h3>
+        <p>Elegir nombres demasiado ambiguos.</p>
+      </div>
+    </div>
   </section>
 
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./index.html">Índice tema</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
+  <section class="panel">
+    <h2>Buenas prácticas</h2>
 
-  <button class="btn btn-primary" onclick="completeTopic('5.1')">Marcar como completado</button>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Nombres con acción</h3>
+        <p>Usa nombres como <code>saludar</code>, <code>calcular_total</code> o <code>mostrar_menu</code>.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Una responsabilidad</h3>
+        <p>Haz que cada función tenga una tarea clara y concreta.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Tamaño razonable</h3>
+        <p>Evita funciones demasiado largas al empezar.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Piensa antes de crear</h3>
+        <p>No conviertas cualquier línea en función: hazlo cuando aporte claridad o reutilización.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Siguiente paso</h2>
+    <p>
+      Ya sabes qué es una función. Lo siguiente es hacerla flexible usando parámetros y argumentos.
+    </p>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./index.html">Índice tema</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <button class="btn btn-primary" onclick="completeTopic('5.1')">Marcar como completado</button>
+    </div>
+  </section>
 
   <script>
 const TOPIC_ID = "5.1";
