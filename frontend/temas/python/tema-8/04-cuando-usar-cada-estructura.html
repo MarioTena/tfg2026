@@ -77,19 +77,19 @@
         <div class="theory-grid">
           <div class="theory-card">
             <h3>Lista</h3>
-            <p>Para secuencias ordenadas que pueden cambiar.</p>
+            <p>Para secuencias ordenadas que pueden cambiar y admitir repetidos.</p>
           </div>
           <div class="theory-card">
             <h3>Tupla</h3>
-            <p>Para grupos ordenados que deben mantenerse estables.</p>
+            <p>Para grupos ordenados que deberían mantenerse estables.</p>
           </div>
           <div class="theory-card">
             <h3>Set</h3>
-            <p>Para valores únicos donde el orden no importa.</p>
+            <p>Para valores únicos donde importa la pertenencia, no la posición.</p>
           </div>
           <div class="theory-card">
-            <h3>Claridad</h3>
-            <p>Elegir bien mejora la legibilidad y la intención del código.</p>
+            <h3>Diseño</h3>
+            <p>Elegir bien mejora claridad, intención y mantenimiento del código.</p>
           </div>
         </div>
 
@@ -101,20 +101,48 @@
       <div class="exercise-block">
         <h3>Qué debes vigilar</h3>
         <ul>
-          <li>si importa el orden</li>
+          <li>si el orden importa</li>
           <li>si puede haber duplicados</li>
           <li>si los datos van a cambiar</li>
           <li>si lo importante es pertenencia o acceso por posición</li>
         </ul>
 
         <div class="challenge">
-          <strong>Piensa así:</strong><br />
-          antes de escribir código, pregúntate qué representa mejor tus datos en el mundo real.
+          Piensa así: antes de escribir código, pregúntate qué representa mejor tus datos en el mundo real.
         </div>
       </div>
     </div>
   </section>
 
+  <section class="panel">
+    <h2>Dónde aparece elegir estructuras en problemas reales</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Pedidos</h3>
+        <p>Usar lista si importa el orden y puede haber productos repetidos.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Coordenadas</h3>
+        <p>Usar tupla cuando el grupo es fijo y no debería cambiar.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Etiquetas</h3>
+        <p>Usar set si lo importante es evitar duplicados y comprobar pertenencia.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Diseño real</h3>
+        <p>Elegir bien la estructura hace el código más claro y representa mejor el problema.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      En problemas reales no eliges una estructura porque “sirve”, sino porque representa mejor lo que necesitas modelar.
+    </div>
+  </section>
   <section class="panel">
     <h2>La decisión correcta importa</h2>
     <p>
@@ -128,7 +156,8 @@
     <ul>
       <li>importa el orden</li>
       <li>admites duplicados</li>
-      <li>vas a modificar elementos</li>
+      <li>vas a modificar, añadir o eliminar con frecuencia</li>
+      <li>la posición forma parte del problema</li>
     </ul>
 
     <pre><code>tareas = ["estudiar", "practicar", "repasar"]</code></pre>
@@ -138,8 +167,9 @@
     <h2>Usa tupla cuando...</h2>
     <ul>
       <li>importa el orden</li>
-      <li>no quieres cambios</li>
-      <li>el conjunto de datos es fijo</li>
+      <li>el grupo de datos es fijo o estable</li>
+      <li>no quieres expresar cambios frecuentes</li>
+      <li>cada posición tiene un significado estable</li>
     </ul>
 
     <pre><code>coordenada = (40.4, -3.7)</code></pre>
@@ -149,7 +179,8 @@
     <h2>Usa set cuando...</h2>
     <ul>
       <li>no quieres duplicados</li>
-      <li>la pertenencia es importante</li>
+      <li>el orden no importa para el problema</li>
+      <li>quieres comprobar pertenencia</li>
       <li>quieres comparar grupos de elementos</li>
     </ul>
 
@@ -157,25 +188,83 @@
   </section>
 
   <section class="panel">
-    <h2>Ejemplos rápidos</h2>
+    <h2>Comparación rápida</h2>
 
     <div class="theory-grid">
       <div class="theory-card">
         <h3>Lista</h3>
-        <p>Tareas pendientes en orden.</p>
+        <p>Orden + cambios + repetidos posibles.</p>
       </div>
       <div class="theory-card">
         <h3>Tupla</h3>
-        <p>Coordenadas <code>(x, y)</code>.</p>
+        <p>Orden + estabilidad.</p>
       </div>
       <div class="theory-card">
         <h3>Set</h3>
-        <p>Etiquetas únicas sin repetir.</p>
+        <p>Unicidad + pertenencia.</p>
       </div>
       <div class="theory-card">
-        <h3>Regla general</h3>
-        <p>La estructura debe ajustarse a la lógica del dato.</p>
+        <h3>Regla útil</h3>
+        <p>No empieces por la sintaxis: empieza por el comportamiento que necesitas.</p>
       </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Casos comparativos claros</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Notas de una clase</h3>
+        <p>Suele encajar mejor una lista si importa el orden o puede haber repetidos.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Latitud y longitud</h3>
+        <p>Suele encajar mejor una tupla porque es un par fijo y ordenado.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Usuarios únicos conectados</h3>
+        <p>Suele encajar mejor un set porque no quieres duplicados y te importa la pertenencia.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Idea clave</h3>
+        <p>No todas las colecciones resuelven igual de bien el mismo caso.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Casos ambiguos donde hay que pensar mejor</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Asientos numerados</h3>
+        <p>¿Te importa el orden y la posición? Entonces un set no suele ser buena idea.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Etiquetas de un artículo</h3>
+        <p>Si no quieres repetidos, un set suele representar mejor el problema que una lista.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Horario fijo de apertura y cierre</h3>
+        <p>Una tupla puede expresar bien un par estable de datos.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Lista de compra editable</h3>
+        <p>Una lista suele encajar mejor si vas a cambiar elementos y el orden importa.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Cuando una estructura “funciona” pero representa peor</h2>
+    <p>
+      A veces puedes usar una lista donde una tupla sería más expresiva, o una lista donde un set modelaría mejor el problema.
+      Que el código funcione no significa que sea la mejor elección.
+    </p>
+
+    <div class="callout">
+      Elegir bien la estructura ya forma parte del diseño del programa.
     </div>
   </section>
 
@@ -197,7 +286,7 @@
       </div>
       <div class="theory-card">
         <h3>Paso 4</h3>
-        <p>Elige la estructura que mejor represente esas respuestas.</p>
+        <p>Pregunta si lo importante es la pertenencia o la posición.</p>
       </div>
     </div>
   </section>
@@ -217,6 +306,7 @@
           <li>notas de una clase</li>
           <li>posición GPS</li>
           <li>emails únicos recibidos</li>
+          <li>lista de tareas editable</li>
         </ul>
       </div>
 
@@ -226,11 +316,8 @@
           <li>¿en cuáles importa el orden?</li>
           <li>¿en cuáles quieres evitar duplicados?</li>
           <li>¿cuál representa mejor datos fijos?</li>
+          <li>¿en cuál la pertenencia importa más que la posición?</li>
         </ul>
-
-        <div class="mini-note">
-          Pista: piensa primero en la naturaleza del dato, no en la sintaxis.
-        </div>
       </div>
     </div>
   </section>
@@ -238,87 +325,70 @@
   <section id="reto" class="exercise-card">
     <div class="exercise-header">
       <div>
-        <h2 class="exercise-title">Mini-reto guiado</h2>
-        <p class="exercise-subtitle">Ahora toca elegir la estructura más adecuada según el caso.</p>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
+        <p class="exercise-subtitle">Ahora toca justificar la elección de estructura, no solo usarla.</p>
       </div>
 
       <div class="badges">
-        <span class="badge blue">Reto</span>
-        <span class="badge green">Muy fácil</span>
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">8.4</span>
       </div>
     </div>
 
     <div class="exercise-body">
       <div class="exercise-block">
-        <h3>Tu misión</h3>
+        <h3>Enunciado</h3>
         <p>
-          Indica qué estructura usarías para cada situación:
+          Decide qué estructura usarías para estos tres casos y justifícalo con una frase en comentarios:
         </p>
-
         <ul>
-          <li>productos en carrito</li>
-          <li>fecha fija</li>
-          <li>categorías sin repetir</li>
+          <li>coordenadas de un punto</li>
+          <li>usuarios únicos conectados</li>
+          <li>lista ordenada de tareas</li>
         </ul>
       </div>
 
       <div class="exercise-block">
-        <h3>Solución razonada</h3>
+        <h3>Qué debes practicar</h3>
         <ul>
-          <li><strong>productos en carrito</strong> → lista</li>
-          <li><strong>fecha fija</strong> → tupla</li>
-          <li><strong>categorías sin repetir</strong> → set</li>
+          <li>pensar antes en el problema que en la sintaxis</li>
+          <li>justificar por qué una estructura encaja mejor</li>
+          <li>comparar lista, tupla y set con criterio</li>
         </ul>
 
-        <div class="callout">
-          La clave no es memorizar, sino justificar por qué esa estructura encaja mejor.
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-8%2F04-cuando-usar-cada-estructura.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="panel">
-    <h2>Errores frecuentes</h2>
-
-    <div class="theory-grid">
-      <div class="theory-card">
-        <h3>Error 1</h3>
-        <p>Elegir siempre lista por costumbre.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Error 2</h3>
-        <p>No pensar si los datos cambiarán o no.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Error 3</h3>
-        <p>Usar set cuando realmente necesitas orden fijo.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Error 4</h3>
-        <p>Usar tupla cuando luego quieres modificar los datos.</p>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Resumen mental del subtema</h2>
+        <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
       </div>
     </div>
-  </section>
 
-  <section class="panel">
-    <h2>Buenas prácticas</h2>
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Ideas clave</h3>
+        <ul>
+          <li>lista: orden y cambios</li>
+          <li>tupla: orden y estabilidad</li>
+          <li>set: unicidad y pertenencia</li>
+          <li>elegir bien la estructura forma parte del diseño</li>
+          <li>que una estructura funcione no significa que represente mejor el problema</li>
+        </ul>
+      </div>
 
-    <div class="theory-grid">
-      <div class="theory-card">
-        <h3>Representa bien el dato</h3>
-        <p>La estructura debe reflejar la lógica del problema.</p>
-      </div>
-      <div class="theory-card">
-        <h3>No uses una sola por costumbre</h3>
-        <p>Cada estructura resuelve necesidades distintas.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Piensa antes de programar</h3>
-        <p>Una buena elección simplifica el código posterior.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Hazlo legible</h3>
-        <p>La estructura correcta también ayuda a otros a entender tu intención.</p>
+      <div class="exercise-block">
+        <h3>Puente con el siguiente bloque</h3>
+        <div class="challenge">
+          Ya tienes la teoría importante. Ahora toca razonar sobre estructuras, comparar elecciones y detectar errores típicos.
+        </div>
       </div>
     </div>
   </section>
@@ -326,87 +396,137 @@
   <section class="panel">
     <h2>Siguiente paso</h2>
     <p>
-      Ya sabes cuándo conviene usar listas, tuplas o sets. El siguiente bloque del tema puede centrarse en mini-retos para consolidar todas estas estructuras.
+      Ya tienes la teoría importante. Ahora toca razonar y practicar estas estructuras antes de pasar a los ejercicios finales.
     </p>
 
     <div class="buttons-row">
       <a class="btn btn-secondary" href="./03-operaciones-con-sets.html">Anterior</a>
       <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
       <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-      <button class="btn btn-primary" onclick="completeTopic('8.4')">Marcar como completado</button>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
     </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
   </section>
 
-  <script>
-const TOPIC_ID = "8.4";
-const NEXT_URL = "./05-mini-retos.html";
+  <script src="../topic-completion.js"></script>
+<script>
+  const subtopicCompletion = initTopicCompletion({
+    topicId: "8.4",
+    nextUrl: "./05-mini-retos.html"
+  });
 
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+  const miniRetoCompletion = initTopicCompletion({
+    topicId: "8.4.mini"
+  });
 
-const nextBtn = document.getElementById("nextBtn");
+  const completeBtn = document.getElementById("completeBtn");
+  const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+  const completionMessage = document.getElementById("completionMessage");
 
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
+  function showCompletionMessage(text) {
+    if (!completionMessage) return;
+    completionMessage.textContent = text;
+    completionMessage.style.display = "block";
+  }
 
-    if (!token || !nextBtn) return;
+  function showCompletedState() {
+    if (!completeBtn) return;
 
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
+    completeBtn.style.display = "none";
+
+    if (!document.getElementById("completedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "completedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Subtema completado ✅";
+      completeBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  function showMiniCompletedState() {
+    if (!miniCompleteBtn) return;
+
+    miniCompleteBtn.style.display = "none";
+
+    if (!document.getElementById("miniCompletedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "miniCompletedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Mini-reto completado ✅";
+      miniCompleteBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  async function syncCompletionUI() {
+    try {
+      const subtopicDone = await subtopicCompletion.isCompleted();
+      const miniDone = await miniRetoCompletion.isCompleted();
+
+      if (subtopicDone) {
+        showCompletedState();
+      }
+
+      if (miniDone) {
+        showMiniCompletedState();
+      }
+
+      if (subtopicDone && miniDone) {
+        showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+      } else if (subtopicDone) {
+        showCompletionMessage("Este subtema ya estaba marcado como completado.");
+      } else if (miniDone) {
+        showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+      }
+    } catch (error) {
+      console.error("Error comprobando estado del subtema:", error);
+    }
+  }
+
+  if (completeBtn) {
+    completeBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
+
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
+
+        await subtopicCompletion.completeTopic();
+
+        showCompletedState();
+        showCompletionMessage("Has marcado este subtema como completado.");
+      } catch (error) {
+        console.error("Error al completar el subtema:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso.");
       }
     });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
   }
-}
 
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
+  if (miniCompleteBtn) {
+    miniCompleteBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
 
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
-    }
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
 
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
+        await miniRetoCompletion.completeTopic();
+
+        showMiniCompletedState();
+        showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+      } catch (error) {
+        console.error("Error al completar el mini-reto:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+      }
     });
-
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
-    }
-
-    alert("Tema completado 🎉");
-
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
   }
-}
 
-unlockNextIfCompleted();
+  syncCompletionUI();
 </script>
 
 </main>

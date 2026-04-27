@@ -51,14 +51,15 @@
   </div>
 </header>
 
-<main class="main-container single-column">
+<main class="main-container single-column" id="bloque-principal">
 
   <section class="exercise-card">
     <div class="exercise-header">
       <div>
         <h2 class="exercise-title">Qué vas a entender hoy</h2>
         <p class="exercise-subtitle">
-          Muchas decisiones reales no dependen de una sola condición. En este bloque aprendes a combinar reglas.
+          Muchas decisiones reales no dependen de una sola condición.
+          En este bloque aprendes a combinar reglas de forma clara.
         </p>
       </div>
 
@@ -72,7 +73,7 @@
       <div class="exercise-block">
         <h3>Qué problema resuelve</h3>
         <p>
-          En la vida real, casi nunca basta una sola pregunta. A menudo necesitas comprobar dos cosas a la vez,
+          En problemas reales casi nunca basta una sola pregunta. A veces necesitas comprobar dos cosas a la vez,
           aceptar varias posibilidades o negar una situación.
         </p>
 
@@ -84,7 +85,7 @@
 
           <div class="theory-card">
             <h3>Promoción</h3>
-            <p>Aplicar descuento si es estudiante o tiene menos de 25 años.</p>
+            <p>Aplicar descuento si es estudiante o si tiene menos de 25 años.</p>
           </div>
 
           <div class="theory-card">
@@ -99,7 +100,7 @@
         </div>
 
         <div class="callout">
-          Idea clave: en problemas reales, lo habitual no es una sola condición, sino varias condiciones combinadas.
+          Idea clave: en muchos problemas reales la decisión depende de varias reglas al mismo tiempo.
         </div>
       </div>
 
@@ -113,8 +114,7 @@
         </ul>
 
         <div class="challenge">
-          <strong>Piensa así:</strong><br />
-          una condición larga pero mal planteada vale menos que una condición simple y clara.
+          Una condición larga pero mal pensada vale menos que una condición simple y clara.
         </div>
       </div>
     </div>
@@ -315,7 +315,7 @@ if edad >= 18 and edad <= 30:
 
     <pre><code>edad = 25
 
-if 18 <= edad <= 30:
+if 18 &lt;= edad &lt;= 30:
     print("Está dentro del rango")</code></pre>
 
     <p>
@@ -355,9 +355,7 @@ if color == "rojo" or color == "azul":
 
       <div class="exercise-block">
         <h3>Prioridad de operadores</h3>
-        <p>
-          Python sigue un orden:
-        </p>
+        <p>Python sigue este orden:</p>
 
         <ol>
           <li><code>not</code></li>
@@ -379,172 +377,27 @@ if edad >= 18 and (es_socio or edad > 65):
   </section>
 
   <section class="panel">
-    <h2>Cómo leer una condición larga sin equivocarte</h2>
+    <h2>Buenas prácticas</h2>
 
     <div class="theory-grid">
       <div class="theory-card">
-        <h3>Paso 1</h3>
-        <p>Divide la expresión en partes pequeñas.</p>
+        <h3>Condiciones completas</h3>
+        <p>No dejes medias comparaciones dentro de <code>or</code> o <code>and</code>.</p>
       </div>
 
       <div class="theory-card">
-        <h3>Paso 2</h3>
-        <p>Evalúa cada comparación por separado.</p>
+        <h3>Legibilidad</h3>
+        <p>Si una condición es difícil de leer, divídela o usa paréntesis.</p>
       </div>
 
       <div class="theory-card">
-        <h3>Paso 3</h3>
-        <p>Mira si están unidas por <code>and</code> o <code>or</code>.</p>
+        <h3>Pruebas</h3>
+        <p>Comprueba casos donde se cumple todo, parte y nada.</p>
       </div>
 
       <div class="theory-card">
-        <h3>Paso 4</h3>
-        <p>Fíjate si hay paréntesis.</p>
-      </div>
-
-      <div class="theory-card">
-        <h3>Paso 5</h3>
-        <p>Decide el resultado final solo al final del proceso.</p>
-      </div>
-    </div>
-
-    <pre><code>edad = 20
-es_socio = False
-es_vip = True
-
-if edad >= 18 and (es_socio or es_vip):
-    print("Acceso especial")</code></pre>
-  </section>
-
-  <section class="panel">
-    <h2>Razonar una condición paso a paso</h2>
-
-    <pre><code>edad = 17
-tiene_permiso = True
-
-if edad >= 16 and tiene_permiso:
-    print("Puede participar")</code></pre>
-
-    <div class="theory-grid">
-      <div class="theory-card">
-        <h3>Pregunta 1</h3>
-        <p>¿<code>edad >= 16</code>? Sí.</p>
-      </div>
-
-      <div class="theory-card">
-        <h3>Pregunta 2</h3>
-        <p>¿<code>tiene_permiso</code> es verdadero? Sí.</p>
-      </div>
-
-      <div class="theory-card">
-        <h3>Pregunta 3</h3>
-        <p>¿Ambas se cumplen al mismo tiempo? Sí.</p>
-      </div>
-
-      <div class="theory-card">
-        <h3>Resultado</h3>
-        <p>La condición completa es verdadera y entra en el bloque.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="panel">
-    <h2>Cómo pensar una condición compuesta antes de escribirla</h2>
-
-    <div class="theory-grid">
-      <div class="theory-card">
-        <h3>Paso 1</h3>
-        <p>Define qué decisión quieres tomar.</p>
-      </div>
-
-      <div class="theory-card">
-        <h3>Paso 2</h3>
-        <p>Enumera las reglas que deben cumplirse.</p>
-      </div>
-
-      <div class="theory-card">
-        <h3>Paso 3</h3>
-        <p>Decide si deben cumplirse todas o basta con una.</p>
-      </div>
-
-      <div class="theory-card">
-        <h3>Paso 4</h3>
-        <p>Usa paréntesis si la expresión puede prestarse a confusión.</p>
-      </div>
-
-      <div class="theory-card">
-        <h3>Paso 5</h3>
-        <p>Prueba la lógica con varios casos reales y casos límite.</p>
-      </div>
-    </div>
-
-    <div class="challenge">
-      Si no puedes explicar la condición en lenguaje normal antes de escribirla, probablemente aún no está bien pensada.
-    </div>
-  </section>
-
-  <section class="panel">
-    <h2>Casos reales típicos</h2>
-
-    <div class="theory-grid">
-      <div class="theory-card">
-        <h3>Login</h3>
-        <p>Contraseña correcta y cuenta activa.</p>
-      </div>
-
-      <div class="theory-card">
-        <h3>Promoción</h3>
-        <p>Descuento por edad o por ser estudiante.</p>
-      </div>
-
-      <div class="theory-card">
-        <h3>Bloqueo</h3>
-        <p>Error por falta de stock o producto inactivo.</p>
-      </div>
-
-      <div class="theory-card">
-        <h3>Permisos</h3>
-        <p>Acceso permitido si es admin o tiene permiso especial.</p>
-      </div>
-
-      <div class="theory-card">
-        <h3>Formularios</h3>
-        <p>Validar solo si todos los campos obligatorios están completos.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="exercise-card">
-    <div class="exercise-header">
-      <div>
-        <h2 class="exercise-title">Piensa antes de ejecutar</h2>
-        <p class="exercise-subtitle">Predice el resultado antes de lanzar el código.</p>
-      </div>
-    </div>
-
-    <div class="exercise-body">
-      <div class="exercise-block">
-        <h3>Código</h3>
-        <pre><code>llueve = True
-tengo_paraguas = False
-
-if llueve and tengo_paraguas:
-    print("Puedo salir tranquilo")
-else:
-    print("No puedo salir tranquilo")</code></pre>
-      </div>
-
-      <div class="exercise-block">
-        <h3>Preguntas</h3>
-        <ul>
-          <li>¿Qué ocurre con estos valores?</li>
-          <li>¿Qué cambia si <code>tengo_paraguas = True</code>?</li>
-          <li>¿Qué cambia si <code>llueve = False</code>?</li>
-        </ul>
-
-        <div class="mini-note">
-          Si puedes explicarlo mentalmente, es que estás entendiendo la lógica.
-        </div>
+        <h3>Intención clara</h3>
+        <p>Tu objetivo no es solo que funcione, sino que se entienda.</p>
       </div>
     </div>
   </section>
@@ -552,124 +405,78 @@ else:
   <section id="reto" class="exercise-card">
     <div class="exercise-header">
       <div>
-        <h2 class="exercise-title">Mini-reto guiado</h2>
-        <p class="exercise-subtitle">Combina reglas con intención, no por intuición.</p>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
+        <p class="exercise-subtitle">Combina dos condiciones con <code>and</code>.</p>
       </div>
 
       <div class="badges">
-        <span class="badge blue">Reto</span>
-        <span class="badge green">Muy fácil</span>
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">2.3</span>
       </div>
     </div>
 
     <div class="exercise-body">
       <div class="exercise-block">
-        <h3>Tu misión</h3>
+        <h3>Enunciado</h3>
         <p>
-          Un usuario puede beneficiarse de una promoción si:
+          Guarda dos variables: <code>edad</code> y <code>tiene_entrada</code>.  
+          Si la persona tiene 18 o más y además tiene entrada, imprime <code>"Puede pasar"</code>.  
+          Si no, imprime <code>"No puede pasar"</code>.
         </p>
-
-        <ul>
-          <li>es estudiante, o</li>
-          <li>tiene menos de 25 años</li>
-        </ul>
-
-        <div class="exercise-actions">
-          <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Resolver en playground</a>
-          <button class="btn btn-secondary btn-sm" type="button" onclick="document.getElementById('solucion-reto').open = true;">
-            Ver solución
-          </button>
-        </div>
       </div>
 
       <div class="exercise-block">
-        <h3>Pista</h3>
-        <p>
-          Pregúntate si la promoción exige las dos condiciones a la vez o si basta con una de ellas.
-        </p>
+        <h3>Qué debes practicar</h3>
+        <ul>
+          <li>usar <code>and</code></li>
+          <li>comprobar cuándo deben cumplirse ambas condiciones</li>
+          <li>probar casos que cumplan una, las dos o ninguna</li>
+        </ul>
 
-        <details id="solucion-reto" class="theory-dropdown">
-          <summary>Mostrar solución</summary>
-          <div class="theory-dropdown-content">
-            <pre><code>es_estudiante = False
-edad = 22
-
-if es_estudiante or edad < 25:
-    print("Tiene promoción")
-else:
-    print("No tiene promoción")</code></pre>
-          </div>
-        </details>
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-2%2F03-operadores-logicos.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
+        </div>
       </div>
     </div>
   </section>
+  
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Resumen mental del subtema</h2>
+        <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
+      </div>
+    </div>
 
-  <section class="panel">
-    <h2>Errores frecuentes</h2>
-
-    <div class="theory-grid">
-      <div class="theory-card">
-        <h3>Error 1</h3>
-        <p>Usar <code>or</code> cuando en realidad se necesita <code>and</code>.</p>
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Ideas clave</h3>
+        <ul>
+          <li><code>and</code> exige que todo se cumpla</li>
+          <li><code>or</code> acepta varias opciones</li>
+          <li><code>not</code> niega una condición</li>
+          <li>cada lado de una condición compuesta debe estar bien escrito</li>
+          <li>si una expresión es confusa, usa paréntesis</li>
+        </ul>
       </div>
 
-      <div class="theory-card">
-        <h3>Error 2</h3>
-        <p>Escribir comparaciones incompletas.</p>
-      </div>
-
-      <div class="theory-card">
-        <h3>Error 3</h3>
-        <p>Olvidar los paréntesis en expresiones complejas.</p>
-      </div>
-
-      <div class="theory-card">
-        <h3>Error 4</h3>
-        <p>No pensar en todos los casos posibles.</p>
-      </div>
-
-      <div class="theory-card">
-        <h3>Error 5</h3>
-        <p>Hacer una lógica tan larga que deja de ser legible.</p>
-      </div>
-
-      <div class="theory-card">
-        <h3>Error 6</h3>
-        <p>Confiar en la intuición sin evaluar paso a paso.</p>
+      <div class="exercise-block">
+        <h3>Puente con el siguiente bloque</h3>
+        <div class="challenge">
+          Ya sabes construir condiciones más completas. Ahora toca leerlas mejor, detectar fallos
+          y comprobar los casos donde más suelen romperse.
+        </div>
       </div>
     </div>
   </section>
-
-  <section class="panel">
-    <h2>Buenas prácticas</h2>
-
-    <div class="theory-grid">
-      <div class="theory-card">
-        <h3>Condiciones completas</h3>
-        <p>Cada parte de <code>and</code> o <code>or</code> debe ser una comparación clara.</p>
-      </div>
-
-      <div class="theory-card">
-        <h3>Paréntesis cuando ayuden</h3>
-        <p>Úsalos si mejoran la lectura o evitan ambigüedades.</p>
-      </div>
-
-      <div class="theory-card">
-        <h3>Prueba varios casos</h3>
-        <p>No te quedes con un solo ejemplo que sale bien por casualidad.</p>
-      </div>
-
-      <div class="theory-card">
-        <h3>Explica la lógica</h3>
-        <p>Si puedes decirla en voz alta con claridad, suele estar mejor construida.</p>
-      </div>
-    </div>
-  </section>
-
+ 
+  
   <section class="panel">
     <h2>Siguiente paso</h2>
     <p>
-      Ya sabes combinar condiciones. El siguiente bloque del tema pasa a retos integradores.
+      Ya sabes combinar condiciones. Ahora toca practicar la lectura de código,
+      los errores típicos y los valores frontera.
     </p>
 
     <div class="buttons-row">
@@ -678,19 +485,129 @@ else:
       <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
       <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
     </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
   </section>
 
-  <script src="../topic-completion.js"></script>
-  <script>
-    const topicCompletion = initTopicCompletion({
-      topicId: "2.3",
-      nextUrl: "./04-mini-retos.html"
-    });
+<script src="../topic-completion.js"></script>
+<script>
+  const subtopicCompletion = initTopicCompletion({
+    topicId: "2.3",
+    nextUrl: "./04-mini-retos.html"
+  });
 
-    document.getElementById("completeBtn").addEventListener("click", () => {
-      topicCompletion.completeTopic();
+  const miniRetoCompletion = initTopicCompletion({
+    topicId: "2.3.mini"
+  });
+
+  const completeBtn = document.getElementById("completeBtn");
+  const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+  const completionMessage = document.getElementById("completionMessage");
+
+  function showCompletionMessage(text) {
+    if (!completionMessage) return;
+    completionMessage.textContent = text;
+    completionMessage.style.display = "block";
+  }
+
+  function showCompletedState() {
+    if (!completeBtn) return;
+
+    completeBtn.style.display = "none";
+
+    if (!document.getElementById("completedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "completedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Subtema completado ✅";
+      completeBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  function showMiniCompletedState() {
+    if (!miniCompleteBtn) return;
+
+    miniCompleteBtn.style.display = "none";
+
+    if (!document.getElementById("miniCompletedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "miniCompletedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Mini-reto completado ✅";
+      miniCompleteBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  async function syncCompletionUI() {
+    try {
+      const subtopicDone = await subtopicCompletion.isCompleted();
+      const miniDone = await miniRetoCompletion.isCompleted();
+
+      if (subtopicDone) {
+        showCompletedState();
+      }
+
+      if (miniDone) {
+        showMiniCompletedState();
+      }
+
+      if (subtopicDone && miniDone) {
+        showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+      } else if (subtopicDone) {
+        showCompletionMessage("Este subtema ya estaba marcado como completado.");
+      } else if (miniDone) {
+        showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+      }
+    } catch (error) {
+      console.error("Error comprobando estado del subtema:", error);
+    }
+  }
+
+  if (completeBtn) {
+    completeBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
+
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
+
+        await subtopicCompletion.completeTopic();
+
+        showCompletedState();
+        showCompletionMessage("Has marcado este subtema como completado.");
+      } catch (error) {
+        console.error("Error al completar el subtema:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso.");
+      }
     });
-  </script>
+  }
+
+  if (miniCompleteBtn) {
+    miniCompleteBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
+
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
+
+        await miniRetoCompletion.completeTopic();
+
+        showMiniCompletedState();
+        showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+      } catch (error) {
+        console.error("Error al completar el mini-reto:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+      }
+    });
+  }
+
+  syncCompletionUI();
+</script>
 
 </main>
 </body>

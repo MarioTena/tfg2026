@@ -40,7 +40,7 @@
     </div>
 
     <div class="progress-track">
-      <div class="progress-fill" style="width: 40%;"></div>
+      <div class="progress-fill" style="width: 33%;"></div>
     </div>
   </div>
 
@@ -108,8 +108,7 @@
         </ul>
 
         <div class="challenge">
-          <strong>Piensa así:</strong><br />
-          la clave del <code>for</code> no es repetir, sino recorrer con orden.
+          La clave del <code>for</code> no es repetir, sino recorrer con orden.
         </div>
       </div>
     </div>
@@ -269,155 +268,104 @@ for numero in range(1, 4):
   </section>
 
   <section class="panel">
-    <h2>Cómo pensar un <code>for</code> antes de escribirlo</h2>
+    <h2>Errores frecuentes con <code>for</code></h2>
 
     <div class="theory-grid">
       <div class="theory-card">
-        <h3>Paso 1</h3>
-        <p>Decide qué secuencia vas a recorrer.</p>
+        <h3>Error 1</h3>
+        <p>Pensar que el valor final de <code>range()</code> sí se incluye.</p>
       </div>
       <div class="theory-card">
-        <h3>Paso 2</h3>
-        <p>Piensa qué valor tomará la variable en cada iteración.</p>
+        <h3>Error 2</h3>
+        <p>No entender qué toma la variable en cada vuelta.</p>
       </div>
       <div class="theory-card">
-        <h3>Paso 3</h3>
-        <p>Comprueba si el final se incluye o no.</p>
+        <h3>Error 3</h3>
+        <p>Usar mal el salto en un rango descendente.</p>
       </div>
       <div class="theory-card">
-        <h3>Paso 4</h3>
-        <p>Revisa si necesitas inicio, fin y salto.</p>
+        <h3>Error 4</h3>
+        <p>No inicializar bien una variable acumuladora.</p>
       </div>
-    </div>
-
-    <div class="callout">
-      Con <code>for</code>, muchos fallos vienen de entender mal el rango, no del bucle en sí.
     </div>
   </section>
 
-  <section class="exercise-card">
-    <div class="exercise-header">
-      <div>
-        <h2 class="exercise-title">Piensa antes de ejecutar</h2>
-        <p class="exercise-subtitle">Haz una simulación mental del rango antes de probarlo.</p>
-      </div>
-    </div>
+  <section class="panel">
+    <h2>Casos frontera con <code>range()</code></h2>
 
-    <div class="exercise-body">
-      <div class="exercise-block">
-        <h3>Código</h3>
-        <pre><code>for numero in range(2, 8, 2):
+    <pre><code>for numero in range(1, 6):
     print(numero)</code></pre>
-      </div>
 
-      <div class="exercise-block">
-        <h3>Preguntas</h3>
-        <ul>
-          <li>¿qué números aparecen?</li>
-          <li>¿cuántas iteraciones hay?</li>
-          <li>¿por qué no aparece el 8?</li>
-        </ul>
+    <p>
+      Este bucle imprime del 1 al 5. Si quisieras llegar al 6, tendrías que poner <code>range(1, 7)</code>.
+    </p>
 
-        <div class="mini-note">
-          En <code>range()</code>, el final sigue sin incluirse aunque haya salto.
-        </div>
-      </div>
+    <div class="callout">
+      En <code>range()</code>, el valor más importante no es solo el inicio. Es entender qué valor final queda fuera.
     </div>
   </section>
 
   <section id="reto" class="exercise-card">
     <div class="exercise-header">
       <div>
-        <h2 class="exercise-title">Mini-reto guiado</h2>
-        <p class="exercise-subtitle">Controla un rango en sentido descendente.</p>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
+        <p class="exercise-subtitle">Practica recorrido, rango y límite superior.</p>
       </div>
+
       <div class="badges">
-        <span class="badge blue">Reto</span>
-        <span class="badge green">Fácil</span>
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">3.2</span>
       </div>
     </div>
 
     <div class="exercise-body">
       <div class="exercise-block">
-        <h3>Tu misión</h3>
+        <h3>Enunciado</h3>
         <p>
-          Muestra los números del 10 al 1 en orden descendente.
+          Usa un <code>for</code> para mostrar los números del 2 al 6.
         </p>
-
-        <div class="exercise-actions">
-          <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Resolver en playground</a>
-          <button class="btn btn-secondary btn-sm" type="button" onclick="document.getElementById('solucion-reto').open = true;">
-            Ver solución
-          </button>
-        </div>
       </div>
 
       <div class="exercise-block">
-        <h3>Pista</h3>
-        <p>
-          Si quieres bajar, el salto debe ser negativo.
-        </p>
+        <h3>Qué debes practicar</h3>
+        <ul>
+          <li>usar <code>range(inicio, fin)</code></li>
+          <li>recordar que el final no se incluye</li>
+          <li>probar mentalmente el rango antes de ejecutar</li>
+        </ul>
 
-        <details id="solucion-reto" class="theory-dropdown">
-          <summary>Mostrar solución</summary>
-          <div class="theory-dropdown-content">
-            <pre><code>for numero in range(10, 0, -1):
-    print(numero)</code></pre>
-          </div>
-        </details>
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-3%2F02-for.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="panel">
-    <h2>Errores frecuentes</h2>
-
-    <div class="theory-grid">
-      <div class="theory-card">
-        <h3>Error 1</h3>
-        <p>Pensar que el límite final sí se incluye.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Error 2</h3>
-        <p>Querer del 1 al 10 y escribir <code>range(10)</code>.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Error 3</h3>
-        <p>No entender qué valores produce el salto.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Error 4</h3>
-        <p>Olvidar inicializar una variable acumuladora antes del bucle.</p>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Resumen mental del subtema</h2>
+        <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
       </div>
     </div>
 
-    <pre><code>for numero in range(1, 5):
-    print(numero)</code></pre>
-
-    <p>
-      Esto imprime 1, 2, 3 y 4. No imprime 5.
-    </p>
-  </section>
-
-  <section class="panel">
-    <h2>Buenas prácticas</h2>
-
-    <div class="theory-grid">
-      <div class="theory-card">
-        <h3>Nombres claros</h3>
-        <p>Usa <code>numero</code>, <code>letra</code> o <code>contador</code> si describen bien la iteración.</p>
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Ideas clave</h3>
+        <ul>
+          <li><code>for</code> recorre una secuencia</li>
+          <li><code>range()</code> no incluye el límite superior</li>
+          <li>la variable del bucle cambia en cada iteración</li>
+          <li>muchos problemas de <code>for</code> consisten en contar, recorrer o acumular</li>
+        </ul>
       </div>
-      <div class="theory-card">
-        <h3>Bloque limpio</h3>
-        <p>No mezcles demasiadas cosas dentro del mismo bucle al principio.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Acumuladores</h3>
-        <p>Inicialízalos antes del bucle, no dentro.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Comprueba el rango</h3>
-        <p>Revisa siempre inicio, fin y salto antes de ejecutar.</p>
+
+      <div class="exercise-block">
+        <h3>Puente con el siguiente bloque</h3>
+        <div class="challenge">
+          Ya sabes recorrer con <code>for</code>. Ahora toca el otro gran tipo de bucle: <code>while</code>, donde lo importante es una condición.
+        </div>
       </div>
     </div>
   </section>
@@ -432,80 +380,130 @@ for numero in range(1, 4):
       <a class="btn btn-secondary" href="./01-que-es-un-bucle.html">Anterior</a>
       <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
       <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-      <button class="btn btn-primary" onclick="completeTopic('3.2')">Marcar como completado</button>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
     </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
   </section>
 
+  <script src="../topic-completion.js"></script>
   <script>
-    const TOPIC_ID = "3.2";
-    const NEXT_URL = "./03-while.html";
+    const subtopicCompletion = initTopicCompletion({
+      topicId: "3.2",
+      nextUrl: "./03-while.html"
+    });
 
-    const API_URL = "http://localhost:3000/api/progress/python";
-    const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+    const miniRetoCompletion = initTopicCompletion({
+      topicId: "3.2.mini"
+    });
 
-    const nextBtn = document.getElementById("nextBtn");
+    const completeBtn = document.getElementById("completeBtn");
+    const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+    const completionMessage = document.getElementById("completionMessage");
 
-    async function unlockNextIfCompleted() {
-      try {
-        const token = localStorage.getItem("token");
+    function showCompletionMessage(text) {
+      if (!completionMessage) return;
+      completionMessage.textContent = text;
+      completionMessage.style.display = "block";
+    }
 
-        if (!token || !nextBtn) return;
+    function showCompletedState() {
+      if (!completeBtn) return;
 
-        const res = await fetch(API_URL, {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        });
+      completeBtn.style.display = "none";
 
-        if (!res.ok) return;
-
-        const data = await res.json();
-        const completed = data?.progress?.completedTopics || [];
-
-        if (completed.includes(TOPIC_ID)) {
-          nextBtn.classList.remove("btn-disabled");
-          nextBtn.href = NEXT_URL;
-        }
-      } catch (error) {
-        console.error("Error comprobando progreso:", error);
+      if (!document.getElementById("completedBadge")) {
+        const badge = document.createElement("span");
+        badge.id = "completedBadge";
+        badge.className = "btn btn-secondary";
+        badge.textContent = "Subtema completado ✅";
+        completeBtn.parentNode.appendChild(badge);
       }
     }
 
-    async function completeTopic(topicId) {
-      try {
-        const token = localStorage.getItem("token");
+    function showMiniCompletedState() {
+      if (!miniCompleteBtn) return;
 
-        if (!token) {
-          alert("Debes iniciar sesión para guardar el progreso");
-          return;
-        }
+      miniCompleteBtn.style.display = "none";
 
-        const res = await fetch(COMPLETE_URL, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-          },
-          body: JSON.stringify({ topic: topicId })
-        });
-
-        if (!res.ok) {
-          throw new Error(`Error HTTP: ${res.status}`);
-        }
-
-        alert("Tema completado 🎉");
-
-        if (nextBtn) {
-          nextBtn.classList.remove("btn-disabled");
-          nextBtn.href = NEXT_URL;
-        }
-      } catch (error) {
-        console.error("Error marcando tema como completado:", error);
-        alert("No se pudo guardar el progreso");
+      if (!document.getElementById("miniCompletedBadge")) {
+        const badge = document.createElement("span");
+        badge.id = "miniCompletedBadge";
+        badge.className = "btn btn-secondary";
+        badge.textContent = "Mini-reto completado ✅";
+        miniCompleteBtn.parentNode.appendChild(badge);
       }
     }
 
-    unlockNextIfCompleted();
+    async function syncCompletionUI() {
+      try {
+        const subtopicDone = await subtopicCompletion.isCompleted();
+        const miniDone = await miniRetoCompletion.isCompleted();
+
+        if (subtopicDone) {
+          showCompletedState();
+        }
+
+        if (miniDone) {
+          showMiniCompletedState();
+        }
+
+        if (subtopicDone && miniDone) {
+          showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+        } else if (subtopicDone) {
+          showCompletionMessage("Este subtema ya estaba marcado como completado.");
+        } else if (miniDone) {
+          showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+        }
+      } catch (error) {
+        console.error("Error comprobando estado del subtema:", error);
+      }
+    }
+
+    if (completeBtn) {
+      completeBtn.addEventListener("click", async (e) => {
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
+
+        try {
+          btn.disabled = true;
+          btn.textContent = "Guardando...";
+
+          await subtopicCompletion.completeTopic();
+
+          showCompletedState();
+          showCompletionMessage("Has marcado este subtema como completado.");
+        } catch (error) {
+          console.error("Error al completar el subtema:", error);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          showCompletionMessage(error.message || "No se pudo guardar el progreso.");
+        }
+      });
+    }
+
+    if (miniCompleteBtn) {
+      miniCompleteBtn.addEventListener("click", async (e) => {
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
+
+        try {
+          btn.disabled = true;
+          btn.textContent = "Guardando...";
+
+          await miniRetoCompletion.completeTopic();
+
+          showMiniCompletedState();
+          showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+        } catch (error) {
+          console.error("Error al completar el mini-reto:", error);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+        }
+      });
+    }
+
+    syncCompletionUI();
   </script>
 
 </main>

@@ -31,7 +31,7 @@
     <div class="progress-hero-top">
       <div>
         <div class="progress-label">Tema 2 · Condicionales</div>
-        <div class="mini-note">Nivel inicial · 15-20 min · Primeras decisiones en código</div>
+        <div class="mini-note">Nivel inicial · 15-18 min · Primeras decisiones en código</div>
       </div>
       <div class="badges">
         <span class="badge blue">if / elif / else</span>
@@ -40,7 +40,7 @@
     </div>
 
     <div class="progress-track">
-      <div class="progress-fill" style="width: 25%;"></div>
+      <div class="progress-fill" style="width: 33%;"></div>
     </div>
   </div>
 
@@ -50,7 +50,7 @@
   </div>
 </header>
 
-<main class="main-container single-column">
+<main class="main-container single-column" id="bloque-principal">
 
   <section class="exercise-card">
     <div class="exercise-header">
@@ -90,12 +90,12 @@
 
           <div class="theory-card">
             <h3>Validación</h3>
-            <p>Comprobar si un dato es correcto antes de continuar con el programa.</p>
+            <p>Comprobar si un dato es correcto antes de continuar.</p>
           </div>
 
           <div class="theory-card">
             <h3>Decisiones reales</h3>
-            <p>Aplicar descuentos, activar alertas o cambiar opciones según reglas.</p>
+            <p>Aplicar reglas distintas según lo que ocurra en cada caso.</p>
           </div>
         </div>
 
@@ -114,9 +114,8 @@
         </ul>
 
         <div class="challenge">
-          <strong>Piensa así:</strong><br />
-          en condicionales no basta con que la lógica “suene bien”. Tiene que estar escrita exactamente
-          en el orden en que Python la va a evaluar.
+          En condicionales no basta con que la lógica “suene bien”.
+          Tiene que estar escrita exactamente en el orden en que Python la va a evaluar.
         </div>
       </div>
     </div>
@@ -173,7 +172,7 @@ if edad >= 18:
 
       <div class="theory-card">
         <h3>Promociones</h3>
-        <p>Aplicar descuentos solo si se cumplen ciertas reglas.</p>
+        <p>Aplicar una regla u otra según un valor.</p>
       </div>
 
       <div class="theory-card">
@@ -389,246 +388,65 @@ else:
   </section>
 
   <section class="panel">
-    <h2>Condicionales con texto y booleanos</h2>
+    <h2>Primer contacto con <code>input()</code></h2>
 
-    <div class="theory-grid">
-      <div class="theory-card">
-        <h3>Con texto</h3>
-        <p>Puedes comparar cadenas como <code>"admin"</code> o <code>"usuario"</code>.</p>
-      </div>
-
-      <div class="theory-card">
-        <h3>Importante</h3>
-        <p>Python diferencia mayúsculas y minúsculas.</p>
-      </div>
-
-      <div class="theory-card">
-        <h3>Con booleanos</h3>
-        <p>Si una variable ya es <code>True</code> o <code>False</code>, úsala directamente.</p>
-      </div>
-
-      <div class="theory-card">
-        <h3>Idea práctica</h3>
-        <p>La condición debe responder a una pregunta concreta y clara.</p>
-      </div>
-    </div>
-
-    <h3>Con texto</h3>
-    <pre><code>rol = "admin"
-
-if rol == "admin":
-    print("Acceso completo")
-else:
-    print("Acceso limitado")</code></pre>
-
-    <pre><code>print("admin" == "Admin")   # False</code></pre>
-
-    <h3>Con booleanos</h3>
-    <pre><code>sesion_iniciada = True
-
-if sesion_iniciada:
-    print("Bienvenido")
-else:
-    print("Debes iniciar sesión")</code></pre>
-
-    <pre><code># Menos recomendable
-if sesion_iniciada == True:
-    print("Bienvenido")</code></pre>
-  </section>
-
-  <section class="panel">
-    <h2>Condicionales anidados</h2>
     <p>
-      Un condicional anidado es un <code>if</code> dentro de otro <code>if</code>.
-      Se usa cuando una decisión depende de una decisión previa.
+      Un programa real no siempre trabaja con variables ya escritas. Muchas veces recibe datos del usuario.
     </p>
 
-    <pre><code>edad = 20
-tiene_entrada = True
+    <pre><code>edad = int(input("Introduce tu edad: "))
 
 if edad >= 18:
-    if tiene_entrada:
-        print("Puedes pasar")
-    else:
-        print("Eres mayor de edad, pero no tienes entrada")
+    print("Mayor de edad")
 else:
-    print("No eres mayor de edad")</code></pre>
-
-    <div class="challenge">
-      Funciona, pero no siempre es la forma más limpia. Más adelante verás cómo simplificar lógica combinando condiciones.
-    </div>
-  </section>
-
-  <section class="panel">
-    <h2>Cómo pensar un condicional antes de escribirlo</h2>
-
-    <div class="theory-grid">
-      <div class="theory-card">
-        <h3>Paso 1</h3>
-        <p>Define qué decisión quieres tomar.</p>
-      </div>
-
-      <div class="theory-card">
-        <h3>Paso 2</h3>
-        <p>Enumera todos los casos posibles.</p>
-      </div>
-
-      <div class="theory-card">
-        <h3>Paso 3</h3>
-        <p>Ordénalos de más específico a más general.</p>
-      </div>
-
-      <div class="theory-card">
-        <h3>Paso 4</h3>
-        <p>Comprueba si todos los casos quedan cubiertos.</p>
-      </div>
-
-      <div class="theory-card">
-        <h3>Paso 5</h3>
-        <p>Prueba valores límite como 0, 1, 17, 18 o 65.</p>
-      </div>
-    </div>
+    print("Menor de edad")</code></pre>
 
     <div class="callout">
-      Muchos fallos vienen de pensar mal la lógica antes de escribir el código.
+      Aquí el programa primero pide un dato, lo convierte a número con <code>int()</code>
+      y después decide qué mensaje mostrar.
     </div>
   </section>
 
   <section class="panel">
-    <h2><code>if</code> y <code>elif</code> no equivalen a varios <code>if</code></h2>
+    <h2>Casos frontera que debes probar</h2>
 
     <div class="theory-grid">
       <div class="theory-card">
-        <h3>Varios <code>if</code></h3>
-        <p>Python puede ejecutar más de un bloque si varias condiciones son verdaderas.</p>
+        <h3>Edad mínima</h3>
+        <p>Si la regla es <code>edad >= 18</code>, el valor 18 es el primer caso válido.</p>
       </div>
 
       <div class="theory-card">
-        <h3><code>if / elif</code></h3>
-        <p>Solo se ejecuta el primer bloque cuya condición se cumple.</p>
+        <h3>Nota mínima</h3>
+        <p>Si la regla es <code>nota >= 5</code>, el valor 5 ya cuenta como aprobado.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Cero</h3>
+        <p>En muchas clasificaciones, el 0 merece comprobarse aparte.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Cambio de bloque</h3>
+        <p>Los valores frontera son los que hacen que el programa pase de una rama a otra.</p>
       </div>
     </div>
 
-    <pre><code>nota = 9
+    <pre><code>edad = 18
 
-if nota >= 5:
-    print("Aprobado")
-if nota >= 9:
-    print("Sobresaliente")</code></pre>
-
-    <p>Aquí se imprimen dos mensajes.</p>
-
-    <pre><code>nota = 9
-
-if nota >= 9:
-    print("Sobresaliente")
-elif nota >= 5:
-    print("Aprobado")</code></pre>
-
-    <p>Aquí solo se imprime uno.</p>
-  </section>
-
-  <section class="exercise-card">
-    <div class="exercise-header">
-      <div>
-        <h2 class="exercise-title">Piensa antes de ejecutar</h2>
-        <p class="exercise-subtitle">Antes de probar código, intenta predecir el resultado.</p>
-      </div>
-    </div>
-
-    <div class="exercise-body">
-      <div class="exercise-block">
-        <h3>Código</h3>
-        <pre><code>numero = 0
-
-if numero > 0:
-    print("Positivo")
-elif numero < 0:
-    print("Negativo")
+if edad >= 18:
+    print("Puede entrar")
 else:
-    print("Cero")</code></pre>
-      </div>
-
-      <div class="exercise-block">
-        <h3>Preguntas</h3>
-        <ul>
-          <li>¿Qué muestra con <code>0</code>?</li>
-          <li>¿Qué muestra con <code>12</code>?</li>
-          <li>¿Qué muestra con <code>-8</code>?</li>
-          <li>¿Por qué solo se imprime un mensaje?</li>
-        </ul>
-
-        <div class="mini-note">
-          Acostúmbrate a razonar antes de ejecutar. Eso te hace programar mejor.
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="reto" class="exercise-card">
-    <div class="exercise-header">
-      <div>
-        <h2 class="exercise-title">Mini-reto guiado</h2>
-        <p class="exercise-subtitle">Ahora toca aplicar la lógica con un caso sencillo y realista.</p>
-      </div>
-      <div class="badges">
-        <span class="badge blue">Reto</span>
-        <span class="badge green">Muy fácil</span>
-      </div>
-    </div>
-
-    <div class="exercise-body">
-      <div class="exercise-block">
-        <h3>Tu misión</h3>
-        <p>
-          Crea un programa que clasifique una temperatura:
-        </p>
-
-        <ul>
-          <li>menor que 10 → <code>Hace frío</code></li>
-          <li>entre 10 y 24 → <code>Temperatura agradable</code></li>
-          <li>25 o más → <code>Hace calor</code></li>
-        </ul>
-
-        <div class="exercise-actions">
-          <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Resolver en playground</a>
-          <button class="btn btn-secondary btn-sm" type="button" onclick="document.getElementById('solucion-reto').open = true;">
-            Ver solución
-          </button>
-        </div>
-      </div>
-
-      <div class="exercise-block">
-        <h3>Pista</h3>
-        <p>
-          Empieza pensando qué caso debe ir primero. Si ordenas mal los rangos,
-          el resultado será incorrecto aunque la sintaxis esté bien.
-        </p>
-
-        <details id="solucion-reto" class="theory-dropdown">
-          <summary>Mostrar solución</summary>
-          <div class="theory-dropdown-content">
-            <pre><code>temperatura = 18
-
-if temperatura < 10:
-    print("Hace frío")
-elif temperatura < 25:
-    print("Temperatura agradable")
-else:
-    print("Hace calor")</code></pre>
-          </div>
-        </details>
-      </div>
-    </div>
+    print("No puede entrar")</code></pre>
   </section>
 
   <section class="panel">
-    <h2>Errores frecuentes</h2>
+    <h2>Errores frecuentes del bloque</h2>
 
     <div class="theory-grid">
       <div class="theory-card">
         <h3>Error 1</h3>
-        <p>Confundir <code>=</code> con <code>==</code>.</p>
+        <p>Confundir una buena idea con una condición bien escrita.</p>
       </div>
 
       <div class="theory-card">
@@ -684,12 +502,80 @@ else:
     </div>
   </section>
 
+   <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
+        <p class="exercise-subtitle">Aplica un condicional básico con <code>if</code> y <code>else</code>.</p>
+      </div>
 
+      <div class="badges">
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">2.1</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Enunciado</h3>
+        <p>
+          Guarda una variable llamada <code>temperatura</code>.  
+          Si es mayor que 30, imprime <code>"Hace calor"</code>.  
+          Si no, imprime <code>"No hace calor"</code>.
+        </p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes practicar</h3>
+        <ul>
+          <li>escribir una condición simple</li>
+          <li>usar <code>if</code> y <code>else</code></li>
+          <li>probar al menos dos valores distintos</li>
+        </ul>
+
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-2%2F01-condicionales.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Resumen mental del subtema</h2>
+        <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Ideas clave</h3>
+        <ul>
+          <li>un condicional permite elegir entre caminos distintos según una condición</li>
+          <li><code>if</code> comprueba una posibilidad, <code>elif</code> añade alternativas y <code>else</code> cubre el caso restante</li>
+          <li>la condición debe dar como resultado <code>True</code> o <code>False</code></li>
+          <li>la indentación y los dos puntos <code>:</code> forman parte de la sintaxis y no son opcionales</li>
+          <li>programar con condicionales consiste en traducir decisiones humanas a reglas claras y exactas</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Puente con el siguiente bloque</h3>
+        <div class="challenge">
+          Ya sabes cómo hacer que el programa tome decisiones. El siguiente paso es entender mejor qué tipo de preguntas puede evaluar Python y cómo se representan con comparaciones y valores booleanos.
+        </div>
+      </div>
+    </div>
+  </section>
+
+ 
   <section class="panel">
     <h2>Siguiente paso</h2>
     <p>
-      Ya sabes cómo decide un programa. Lo siguiente es entender mejor las comparaciones booleanas
-      y cómo se construyen las condiciones.
+      Ya sabes cómo decide un programa. Lo siguiente es entender mejor las comparaciones,
+      los booleanos y cómo se construyen las condiciones.
     </p>
 
     <div class="buttons-row">
@@ -698,18 +584,128 @@ else:
       <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
       <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
     </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
   </section>
 
   <script src="../topic-completion.js"></script>
   <script>
-    const topicCompletion = initTopicCompletion({
+    const subtopicCompletion = initTopicCompletion({
       topicId: "2.1",
       nextUrl: "./02-comparaciones-booleanos.html"
     });
 
-    document.getElementById("completeBtn").addEventListener("click", () => {
-      topicCompletion.completeTopic();
+    const miniRetoCompletion = initTopicCompletion({
+      topicId: "2.1.mini"
     });
+
+    const completeBtn = document.getElementById("completeBtn");
+    const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+    const completionMessage = document.getElementById("completionMessage");
+
+    function showCompletionMessage(text) {
+      if (!completionMessage) return;
+      completionMessage.textContent = text;
+      completionMessage.style.display = "block";
+    }
+
+    function showCompletedState() {
+      if (!completeBtn) return;
+
+      completeBtn.style.display = "none";
+
+      if (!document.getElementById("completedBadge")) {
+        const badge = document.createElement("span");
+        badge.id = "completedBadge";
+        badge.className = "btn btn-secondary";
+        badge.textContent = "Subtema completado ✅";
+        completeBtn.parentNode.appendChild(badge);
+      }
+    }
+
+    function showMiniCompletedState() {
+      if (!miniCompleteBtn) return;
+
+      miniCompleteBtn.style.display = "none";
+
+      if (!document.getElementById("miniCompletedBadge")) {
+        const badge = document.createElement("span");
+        badge.id = "miniCompletedBadge";
+        badge.className = "btn btn-secondary";
+        badge.textContent = "Mini-reto completado ✅";
+        miniCompleteBtn.parentNode.appendChild(badge);
+      }
+    }
+
+    async function syncCompletionUI() {
+      try {
+        const subtopicDone = await subtopicCompletion.isCompleted();
+        const miniDone = await miniRetoCompletion.isCompleted();
+
+        if (subtopicDone) {
+          showCompletedState();
+        }
+
+        if (miniDone) {
+          showMiniCompletedState();
+        }
+
+        if (subtopicDone && miniDone) {
+          showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+        } else if (subtopicDone) {
+          showCompletionMessage("Este subtema ya estaba marcado como completado.");
+        } else if (miniDone) {
+          showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+        }
+      } catch (error) {
+        console.error("Error comprobando estado del subtema:", error);
+      }
+    }
+
+    if (completeBtn) {
+      completeBtn.addEventListener("click", async (e) => {
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
+
+        try {
+          btn.disabled = true;
+          btn.textContent = "Guardando...";
+
+          await subtopicCompletion.completeTopic();
+
+          showCompletedState();
+          showCompletionMessage("Has marcado este subtema como completado.");
+        } catch (error) {
+          console.error("Error al completar el subtema:", error);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          showCompletionMessage(error.message || "No se pudo guardar el progreso.");
+        }
+      });
+    }
+
+    if (miniCompleteBtn) {
+      miniCompleteBtn.addEventListener("click", async (e) => {
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
+
+        try {
+          btn.disabled = true;
+          btn.textContent = "Guardando...";
+
+          await miniRetoCompletion.completeTopic();
+
+          showMiniCompletedState();
+          showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+        } catch (error) {
+          console.error("Error al completar el mini-reto:", error);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+        }
+      });
+    }
+
+    syncCompletionUI();
   </script>
 
 </main>

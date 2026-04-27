@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Tema 4.5 – Mini retos</title>
+  <title>Tema 4.5 – Razonar y practicar listas</title>
   <link rel="stylesheet" href="../../../styles.css" />
 </head>
 <body>
@@ -23,19 +23,20 @@
 </nav>
 
 <header class="header">
-  <span class="mission-tag">Zona práctica 4.5</span>
-  <h1>Mini-retos de listas</h1>
-  <p>Combina listas, bucles y métodos con retos cortos para empezar a resolver problemas reales.</p>
+  <span class="mission-tag">Misión 4.5</span>
+  <h1>Razonar y practicar listas</h1>
+  <p>Aprende a leer operaciones sobre listas, prever resultados, detectar errores y justificar qué cambia realmente dentro de la estructura.</p>
 
   <div class="progress-hero">
     <div class="progress-hero-top">
       <div>
         <div class="progress-label">Tema 4 · Listas en Python</div>
-        <div class="mini-note">6 mini-retos · práctica guiada · dificultad inicial</div>
+        <div class="mini-note">Práctica guiada · 8 retos de razonamiento · dificultad inicial-media</div>
       </div>
       <div class="badges">
-        <span class="badge blue">Python</span>
-        <span class="badge green">Entrenamiento</span>
+        <span class="badge blue">Lectura</span>
+        <span class="badge blue">Depuración</span>
+        <span class="badge green">Posiciones y métodos</span>
       </div>
     </div>
 
@@ -45,7 +46,7 @@
   </div>
 
   <div class="buttons-row">
-    <a class="btn btn-primary" href="#retos">Empezar mini-retos</a>
+    <a class="btn btn-primary" href="#retos">Empezar práctica guiada</a>
     <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
   </div>
 </header>
@@ -57,14 +58,14 @@
       <div>
         <h2 class="exercise-title">Qué entrenas aquí</h2>
         <p class="exercise-subtitle">
-          Ahora toca combinar lo aprendido: crear listas, acceder a elementos, recorrerlas y usar métodos.
+          En este bloque no solo usas listas. Aprendes a leerlas, prever cómo cambian, detectar errores y justificar si una operación trabaja por valor o por posición.
         </p>
       </div>
 
       <div class="badges">
-        <span class="badge blue">Listas</span>
-        <span class="badge blue">Bucles</span>
-        <span class="badge green">Métodos</span>
+        <span class="badge blue">Lectura</span>
+        <span class="badge blue">Depuración</span>
+        <span class="badge green">Práctica guiada</span>
       </div>
     </div>
 
@@ -72,38 +73,111 @@
       <div class="exercise-block">
         <h3>Objetivo</h3>
         <p>
-          Los problemas reales casi nunca usan una sola idea aislada. Aquí empiezas a combinar varias piezas a la vez.
+          Estos retos te ayudan a entender mejor qué representa una lista y qué ocurre realmente cuando accedes, modificas, recorres o aplicas métodos.
         </p>
 
         <div class="callout">
-          Idea clave: no solo importa saber qué es una lista, sino qué puedes hacer con ella.
+          Idea clave: una operación sobre listas no consiste solo en “que funcione”, sino en saber qué parte de la estructura cambia y por qué.
         </div>
       </div>
 
       <div class="exercise-block">
         <h3>Cómo usar esta pantalla</h3>
         <ul>
-          <li>lee el reto</li>
-          <li>entiende qué hace el código</li>
-          <li>pruébalo en el playground</li>
-          <li>cámbialo tú para comprobar que lo controlas</li>
+          <li>lee el código antes de ejecutarlo</li>
+          <li>predice qué se imprime o cómo queda la lista</li>
+          <li>distingue entre posición, valor y tramo</li>
+          <li>detecta si hay error de lógica o de índice</li>
         </ul>
 
         <div class="challenge">
-          No memorices el código. Intenta explicar qué recorre el bucle, qué se modifica y qué se imprime.
+          Si no puedes explicar qué representa la lista y qué cambia tras una línea de código, todavía no controlas del todo la estructura.
         </div>
       </div>
     </div>
   </section>
 
   <section id="retos" class="panel">
-    <h2>Misiones rápidas</h2>
+    <h2>Reto 1 · ¿Qué imprime?</h2>
 
     <div class="theory-grid">
       <div class="theory-card">
-        <h3>Mini-reto 1 · Suma de una lista</h3>
-        <p>Recorre una lista y acumula el total.</p>
-        <pre><code>numeros = [5, 10, 15, 20]
+        <h3>Código</h3>
+        <pre><code>frutas = ["manzana", "pera", "uva"]
+print(frutas[0])
+print(frutas[-1])</code></pre>
+      </div>
+
+      <div class="theory-card">
+        <h3>Qué debes pensar</h3>
+        <p>¿Qué valor representa el índice 0? ¿Y cuál representa el índice -1?</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Reto 2 · Detecta el error de índice</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Código incorrecto</h3>
+        <pre><code>numeros = [10, 20, 30]
+print(numeros[3])</code></pre>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pregunta</h3>
+        <p>¿Por qué falla ese acceso? ¿Qué índices son realmente válidos en esa lista?</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      La longitud de una lista no coincide con su último índice.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Reto 3 · Modificar una posición</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Código</h3>
+        <pre><code>colores = ["rojo", "verde", "azul"]
+colores[1] = "amarillo"
+print(colores)</code></pre>
+      </div>
+
+      <div class="theory-card">
+        <h3>Qué debes pensar</h3>
+        <p>¿Se ha añadido un elemento nuevo o se ha sustituido uno que ya existía?</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Reto 4 · Slicing</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Código</h3>
+        <pre><code>numeros = [10, 20, 30, 40, 50]
+print(numeros[1:4])</code></pre>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pregunta</h3>
+        <p>¿Qué elementos devuelve? ¿Por qué aparece 40 pero no aparece 50?</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Reto 5 · Recorrer y acumular</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Código</h3>
+        <pre><code>numeros = [5, 10, 15]
 suma = 0
 
 for numero in numeros:
@@ -113,53 +187,68 @@ print(suma)</code></pre>
       </div>
 
       <div class="theory-card">
-        <h3>Mini-reto 2 · Contar aprobados</h3>
-        <p>Cuenta cuántas notas son mayores o iguales que 5.</p>
-        <pre><code>notas = [3, 7, 5, 2, 9, 6]
-contador = 0
+        <h3>Qué entrenas</h3>
+        <p>Seguir cómo cambia un acumulador mientras se recorren los elementos de la lista.</p>
+      </div>
+    </div>
+  </section>
 
-for nota in notas:
-    if nota >= 5:
-        contador = contador + 1
+  <section class="panel">
+    <h2>Reto 6 · remove() o pop()</h2>
 
-print(contador)</code></pre>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Código A</h3>
+        <pre><code>frutas = ["manzana", "pera", "uva"]
+frutas.remove("pera")</code></pre>
       </div>
 
       <div class="theory-card">
-        <h3>Mini-reto 3 · Buscar un nombre</h3>
-        <p>Recorre la lista y detente cuando encuentres el valor buscado.</p>
-        <pre><code>nombres = ["Ana", "Luis", "Marta", "Carlos"]
-
-for nombre in nombres:
-    if nombre == "Marta":
-        print("Encontrado")
-        break</code></pre>
+        <h3>Código B</h3>
+        <pre><code>frutas = ["manzana", "pera", "uva"]
+frutas.pop(1)</code></pre>
       </div>
+    </div>
 
-      <div class="theory-card">
-        <h3>Mini-reto 4 · Modificar un elemento</h3>
-        <p>Cambia un valor concreto usando su posición.</p>
-        <pre><code>colores = ["rojo", "verde", "azul"]
-colores[1] = "amarillo"
-print(colores)</code></pre>
-      </div>
+    <div class="callout">
+      Los dos eliminan el mismo elemento en este caso, pero no piensan igual: uno trabaja por valor y el otro por posición.
+    </div>
+  </section>
 
+  <section class="panel">
+    <h2>Reto 7 · Ordenar una lista</h2>
+
+    <div class="theory-grid">
       <div class="theory-card">
-        <h3>Mini-reto 5 · Lista ordenada</h3>
-        <p>Usa un método para ordenar los elementos.</p>
+        <h3>Código</h3>
         <pre><code>numeros = [8, 3, 1, 9, 4]
 numeros.sort()
 print(numeros)</code></pre>
       </div>
 
       <div class="theory-card">
-        <h3>Mini-reto 6 · Filtrar pares</h3>
-        <p>Recorre la lista e imprime solo los valores que cumplen una condición.</p>
-        <pre><code>numeros = [1, 2, 3, 4, 5, 6]
+        <h3>Pregunta</h3>
+        <p>¿Qué imprime? ¿La lista original se mantiene igual o cambia después de usar <code>sort()</code>?</p>
+      </div>
+    </div>
+  </section>
 
-for numero in numeros:
-    if numero % 2 == 0:
-        print(numero)</code></pre>
+  <section class="panel">
+    <h2>Reto 8 · Buscar un valor</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Código</h3>
+        <pre><code>nombres = ["Ana", "Luis", "Marta"]
+
+for nombre in nombres:
+    if nombre == "Marta":
+        print("Encontrado")</code></pre>
+      </div>
+
+      <div class="theory-card">
+        <h3>Prueba obligatoria</h3>
+        <p>Piensa qué ocurre si el valor está una vez, varias veces o no está.</p>
       </div>
     </div>
   </section>
@@ -167,8 +256,8 @@ for numero in numeros:
   <section class="exercise-card">
     <div class="exercise-header">
       <div>
-        <h2 class="exercise-title">Cómo pensar este tipo de ejercicios</h2>
-        <p class="exercise-subtitle">Antes de escribir o modificar código, estructura el problema.</p>
+        <h2 class="exercise-title">Método rápido para comprobar una operación sobre listas</h2>
+        <p class="exercise-subtitle">Qué hacer antes de dar un ejercicio por terminado.</p>
       </div>
     </div>
 
@@ -177,17 +266,17 @@ for numero in numeros:
         <h3>Paso a paso</h3>
         <ol>
           <li>identifica qué representa la lista</li>
-          <li>decide si necesitas valor, índice o ambos</li>
-          <li>si hay que acumular o contar, crea la variable antes del bucle</li>
-          <li>si hay que buscar, piensa si conviene usar <code>break</code></li>
-          <li>si modificas la lista, asegúrate de entender qué cambia exactamente</li>
+          <li>distingue si trabajas con posición o valor</li>
+          <li>pregúntate si el código lee, modifica o corta una parte</li>
+          <li>simula el resultado final</li>
+          <li>comprueba si hay riesgo de índice incorrecto</li>
         </ol>
       </div>
 
       <div class="exercise-block">
         <h3>Regla útil</h3>
         <div class="challenge">
-          Cuando trabajas con listas, casi siempre estás haciendo una de estas cosas: recorrer, buscar, contar, modificar, añadir, eliminar u ordenar.
+          Cuando trabajas con listas, casi siempre estás haciendo una de estas cosas: crear, acceder, modificar, recorrer, buscar, contar, añadir, eliminar u ordenar.
         </div>
       </div>
     </div>
@@ -195,7 +284,7 @@ for numero in numeros:
 
   <section class="panel">
     <h2>Siguiente paso</h2>
-    <p>Ya has visto cómo se combinan listas y bucles. Ahora toca resolver ejercicios por tu cuenta.</p>
+    <p>Ya has trabajado lectura, depuración y razonamiento sobre listas. Ahora toca resolver ejercicios por tu cuenta.</p>
 
     <div class="buttons-row">
       <a class="btn btn-secondary" href="./04-metodos-listas.html">Anterior</a>
@@ -203,18 +292,75 @@ for numero in numeros:
       <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Ejercicios Tema 4</a>
       <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
     </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
   </section>
 
   <script src="../topic-completion.js"></script>
   <script>
-    const topicCompletion = initTopicCompletion({
+    const missionCompletion = initTopicCompletion({
       topicId: "4.5",
       nextUrl: "./py-tema4-ejercicios.html"
     });
 
-    document.getElementById("completeBtn").addEventListener("click", () => {
-      topicCompletion.completeTopic();
-    });
+    const completeBtn = document.getElementById("completeBtn");
+    const completionMessage = document.getElementById("completionMessage");
+
+    function showCompletionMessage(text) {
+      if (!completionMessage) return;
+      completionMessage.textContent = text;
+      completionMessage.style.display = "block";
+    }
+
+    function showMissionCompletedState() {
+      if (!completeBtn) return;
+
+      completeBtn.style.display = "none";
+
+      if (!document.getElementById("completedBadge")) {
+        const badge = document.createElement("span");
+        badge.id = "completedBadge";
+        badge.className = "btn btn-secondary";
+        badge.textContent = "Misión completada ✅";
+        completeBtn.parentNode.appendChild(badge);
+      }
+    }
+
+    async function syncCompletionUI() {
+      try {
+        const completed = await missionCompletion.isCompleted();
+
+        if (completed) {
+          showMissionCompletedState();
+          showCompletionMessage("Esta misión ya estaba marcada como completada.");
+        }
+      } catch (error) {
+        console.error("Error comprobando estado de la misión:", error);
+      }
+    }
+
+    if (completeBtn) {
+      completeBtn.addEventListener("click", async (e) => {
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
+
+        try {
+          btn.disabled = true;
+          btn.textContent = "Guardando...";
+
+          await missionCompletion.completeTopic();
+
+          showMissionCompletedState();
+          showCompletionMessage("Has marcado esta misión como completada.");
+        } catch (error) {
+          console.error("Error al completar la misión:", error);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          showCompletionMessage(error.message || "No se pudo guardar el progreso.");
+        }
+      });
+    }
+
+    syncCompletionUI();
   </script>
 
 </main>

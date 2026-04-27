@@ -31,7 +31,7 @@
     <div class="progress-hero-top">
       <div>
         <div class="progress-label">Tema 9 · Archivos</div>
-        <div class="mini-note">Nivel inicial · 10-15 min · Recuperar contenido</div>
+        <div class="mini-note">Nivel inicial · 12-15 min · Recuperar contenido</div>
       </div>
       <div class="badges">
         <span class="badge blue">Lectura</span>
@@ -108,10 +108,39 @@
         </ul>
 
         <div class="challenge">
-          <strong>Piensa así:</strong><br />
-          leer un archivo es pedirle al programa que traiga a memoria información que estaba guardada fuera.
+          Piensa así: leer un archivo es pedirle al programa que traiga a memoria información que estaba guardada fuera.
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Dónde aparece leer archivos en problemas reales</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Configuración</h3>
+        <p>Cargar valores que el programa necesita al arrancar.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Listas de datos</h3>
+        <p>Leer registros, tareas o nombres guardados previamente.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Procesamiento</h3>
+        <p>Recuperar información para analizarla o recorrerla línea a línea.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Persistencia útil</h3>
+        <p>Volver a usar contenido que no vive ya en variables temporales.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      Leer archivos aparece cuando el programa necesita recuperar información guardada fuera de la ejecución actual.
     </div>
   </section>
 
@@ -151,6 +180,29 @@ archivo.close()</code></pre>
   </section>
 
   <section class="panel">
+    <h2>Por qué <code>with</code> no es solo “más bonito”</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Más seguro</h3>
+        <p>Evita olvidos al cerrar el archivo.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Más limpio</h3>
+        <p>Reduce pasos repetitivos en el código.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Más claro</h3>
+        <p>Deja ver mejor dónde empieza y termina el trabajo con el archivo.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Mejor hábito</h3>
+        <p>Es el patrón que conviene interiorizar desde el principio.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
     <h2>Lectura completa o línea a línea</h2>
 
     <div class="theory-grid">
@@ -174,10 +226,75 @@ archivo.close()</code></pre>
   </section>
 
   <section class="panel">
+    <h2>Leer no es lo mismo que procesar</h2>
+    <p>
+      Leer un archivo solo trae el contenido a tu programa. Después puedes:
+    </p>
+
+    <ul>
+      <li>mostrarlo</li>
+      <li>contar líneas</li>
+      <li>buscar palabras</li>
+      <li>limpiar espacios o saltos</li>
+      <li>quedarte solo con parte de la información</li>
+    </ul>
+
+    <div class="callout">
+      Primero recuperas el contenido. Después decides qué hacer con él.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Las líneas suelen traer salto de línea</h2>
+    <pre><code>with open("datos.txt", "r") as archivo:
+    for linea in archivo:
+        print(linea)</code></pre>
+
+    <p>
+      Muchas veces cada línea ya incluye su propio salto de línea al final.
+      Por eso, al imprimir directamente, el resultado puede verse con espacios o líneas extrañas.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Limpiar con <code>strip()</code></h2>
+    <pre><code>with open("datos.txt", "r") as archivo:
+    for linea in archivo:
+        print(linea.strip())</code></pre>
+
+    <p>
+      Esto ayuda a mostrar cada línea de forma más limpia cuando no quieres espacios o saltos sobrantes.
+    </p>
+  </section>
+
+  <section class="panel">
     <h2>Error típico: archivo no encontrado</h2>
     <p>
       Si la ruta o el nombre del archivo es incorrecto, el programa falla porque no puede localizarlo.
     </p>
+  </section>
+
+  <section class="panel">
+    <h2>Casos frontera útiles</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Archivo vacío</h3>
+        <p><code>read()</code> devuelve texto vacío.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Una sola línea</h3>
+        <p>Puedes leerlo completo o recorrerlo, según tu objetivo.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Muchas líneas</h3>
+        <p>Suele tener más sentido procesar poco a poco.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Líneas “sucias”</h3>
+        <p>Puede que necesites <code>strip()</code> para mostrarlas como quieres.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
@@ -239,87 +356,65 @@ archivo.close()</code></pre>
   <section id="reto" class="exercise-card">
     <div class="exercise-header">
       <div>
-        <h2 class="exercise-title">Mini-reto guiado</h2>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
         <p class="exercise-subtitle">Ahora toca recuperar información guardada desde un archivo de texto.</p>
       </div>
 
       <div class="badges">
-        <span class="badge blue">Reto</span>
-        <span class="badge green">Muy fácil</span>
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">9.2</span>
       </div>
     </div>
 
     <div class="exercise-body">
       <div class="exercise-block">
-        <h3>Tu misión</h3>
+        <h3>Enunciado</h3>
         <p>
-          Lee un archivo llamado <code>notas.txt</code> y muestra su contenido.
+          Escribe un ejemplo con <code>with</code> para abrir un archivo en modo lectura y mostrarlo línea a línea,
+          limpiando cada línea con <code>strip()</code>.
         </p>
-
-        <div class="exercise-actions">
-          <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Resolver en playground</a>
-          <button class="btn btn-secondary btn-sm" type="button" onclick="document.getElementById('solucion-reto').open = true;">
-            Ver solución
-          </button>
-        </div>
       </div>
 
       <div class="exercise-block">
-        <h3>Solución de referencia</h3>
-        <details id="solucion-reto" class="theory-dropdown">
-          <summary>Mostrar solución</summary>
-          <div class="theory-dropdown-content">
-            <pre><code>with open("notas.txt", "r") as archivo:
-    contenido = archivo.read()
-    print(contenido)</code></pre>
-          </div>
-        </details>
+        <h3>Qué debes practicar</h3>
+        <ul>
+          <li>usar <code>with</code> como patrón seguro</li>
+          <li>recorrer el archivo línea a línea</li>
+          <li>limpiar la salida con <code>strip()</code></li>
+        </ul>
+
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-9%2F02-leer-archivos.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="panel">
-    <h2>Errores frecuentes</h2>
-
-    <div class="theory-grid">
-      <div class="theory-card">
-        <h3>Error 1</h3>
-        <p>Usar un nombre o ruta incorrectos.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Error 2</h3>
-        <p>Olvidar cerrar el archivo cuando no usas <code>with</code>.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Error 3</h3>
-        <p>No distinguir entre leer completo y leer línea a línea.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Error 4</h3>
-        <p>Pensar que leer un archivo lo modifica.</p>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Resumen mental del subtema</h2>
+        <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
       </div>
     </div>
-  </section>
 
-  <section class="panel">
-    <h2>Buenas prácticas</h2>
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Ideas clave</h3>
+        <ul>
+          <li>puedes leer un archivo completo o línea a línea</li>
+          <li><code>with</code> es el patrón recomendado</li>
+          <li>leer es recuperar contenido; procesar es trabajar con él después</li>
+          <li>las líneas suelen venir con saltos y a veces conviene usar <code>strip()</code></li>
+        </ul>
+      </div>
 
-    <div class="theory-grid">
-      <div class="theory-card">
-        <h3>Usa <code>with</code></h3>
-        <p>Te evita olvidos y hace el código más limpio.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Piensa la estrategia</h3>
-        <p>Lee completo o por líneas según el problema.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Comprueba nombres</h3>
-        <p>Muchos errores vienen de rutas mal escritas.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Lee con intención</h3>
-        <p>No leas por leer: piensa qué vas a hacer después con el contenido.</p>
+      <div class="exercise-block">
+        <h3>Puente con el siguiente bloque</h3>
+        <div class="challenge">
+          Ya sabes recuperar información. Ahora toca guardarla de forma controlada y entender qué pasa con lo que ya había en el archivo.
+        </div>
       </div>
     </div>
   </section>
@@ -327,87 +422,137 @@ archivo.close()</code></pre>
   <section class="panel">
     <h2>Siguiente paso</h2>
     <p>
-      Ya sabes leer archivos. Lo siguiente es aprender a escribir en ellos para guardar resultados y datos generados por tu programa.
+      Ya sabes leer archivos. Lo siguiente es aprender a escribir en ellos y a decidir si quieres sobrescribir o conservar lo anterior.
     </p>
 
     <div class="buttons-row">
       <a class="btn btn-secondary" href="./01-que-es-un-archivo.html">Anterior</a>
       <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
       <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-      <button class="btn btn-primary" onclick="completeTopic('9.2')">Marcar como completado</button>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
     </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
   </section>
 
-  <script>
-const TOPIC_ID = "9.2";
-const NEXT_URL = "./03-escribir-archivos.html";
+  <script src="../topic-completion.js"></script>
+<script>
+  const subtopicCompletion = initTopicCompletion({
+    topicId: "9.2",
+    nextUrl: "./03-escribir-archivos.html"
+  });
 
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+  const miniRetoCompletion = initTopicCompletion({
+    topicId: "9.2.mini"
+  });
 
-const nextBtn = document.getElementById("nextBtn");
+  const completeBtn = document.getElementById("completeBtn");
+  const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+  const completionMessage = document.getElementById("completionMessage");
 
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
+  function showCompletionMessage(text) {
+    if (!completionMessage) return;
+    completionMessage.textContent = text;
+    completionMessage.style.display = "block";
+  }
 
-    if (!token || !nextBtn) return;
+  function showCompletedState() {
+    if (!completeBtn) return;
 
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
+    completeBtn.style.display = "none";
+
+    if (!document.getElementById("completedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "completedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Subtema completado ✅";
+      completeBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  function showMiniCompletedState() {
+    if (!miniCompleteBtn) return;
+
+    miniCompleteBtn.style.display = "none";
+
+    if (!document.getElementById("miniCompletedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "miniCompletedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Mini-reto completado ✅";
+      miniCompleteBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  async function syncCompletionUI() {
+    try {
+      const subtopicDone = await subtopicCompletion.isCompleted();
+      const miniDone = await miniRetoCompletion.isCompleted();
+
+      if (subtopicDone) {
+        showCompletedState();
+      }
+
+      if (miniDone) {
+        showMiniCompletedState();
+      }
+
+      if (subtopicDone && miniDone) {
+        showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+      } else if (subtopicDone) {
+        showCompletionMessage("Este subtema ya estaba marcado como completado.");
+      } else if (miniDone) {
+        showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+      }
+    } catch (error) {
+      console.error("Error comprobando estado del subtema:", error);
+    }
+  }
+
+  if (completeBtn) {
+    completeBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
+
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
+
+        await subtopicCompletion.completeTopic();
+
+        showCompletedState();
+        showCompletionMessage("Has marcado este subtema como completado.");
+      } catch (error) {
+        console.error("Error al completar el subtema:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso.");
       }
     });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
   }
-}
 
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
+  if (miniCompleteBtn) {
+    miniCompleteBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
 
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
-    }
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
 
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
+        await miniRetoCompletion.completeTopic();
+
+        showMiniCompletedState();
+        showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+      } catch (error) {
+        console.error("Error al completar el mini-reto:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+      }
     });
-
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
-    }
-
-    alert("Tema completado 🎉");
-
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
   }
-}
 
-unlockNextIfCompleted();
+  syncCompletionUI();
 </script>
 
 </main>

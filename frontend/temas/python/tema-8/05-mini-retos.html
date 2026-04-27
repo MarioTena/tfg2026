@@ -2,25 +2,41 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Tema 8.5 – Mini retos</title>
+  <title>Tema 8.5 – Razonar y practicar estructuras</title>
   <link rel="stylesheet" href="../../../styles.css" />
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 8 · Tuplas y sets</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <span class="mission-tag">Zona práctica 8.5</span>
-  <h1>Mini-retos de tuplas y sets</h1>
-  <p>Combina estructuras para decidir cuándo importa el orden, la unicidad o la inmutabilidad.</p>
+  <span class="mission-tag">Misión 8.5</span>
+  <h1>Razonar y practicar estructuras</h1>
+  <p>Combina tuplas, sets y criterio de diseño para decidir cuándo importa el orden, la unicidad o la estabilidad.</p>
 
   <div class="progress-hero">
     <div class="progress-hero-top">
       <div>
         <div class="progress-label">Tema 8 · Tuplas y sets</div>
-        <div class="mini-note">6 mini-retos · práctica guiada · dificultad inicial-media</div>
+        <div class="mini-note">Práctica guiada · 8 retos de razonamiento · dificultad inicial-media</div>
       </div>
       <div class="badges">
-        <span class="badge blue">Python</span>
-        <span class="badge green">Entrenamiento</span>
+        <span class="badge blue">Tuplas</span>
+        <span class="badge blue">Sets</span>
+        <span class="badge green">Diseño</span>
       </div>
     </div>
 
@@ -30,7 +46,7 @@
   </div>
 
   <div class="buttons-row">
-    <a class="btn btn-primary" href="#retos">Empezar mini-retos</a>
+    <a class="btn btn-primary" href="#retos">Empezar práctica guiada</a>
     <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
   </div>
 </header>
@@ -42,14 +58,14 @@
       <div>
         <h2 class="exercise-title">Qué entrenas aquí</h2>
         <p class="exercise-subtitle">
-          Aquí vas a comparar estructuras y a pensar no solo en sintaxis, sino en la decisión de diseño.
+          Aquí no solo practicas sintaxis. Aprendes a decidir mejor qué estructura encaja con cada situación y por qué.
         </p>
       </div>
 
       <div class="badges">
-        <span class="badge blue">Tuplas</span>
-        <span class="badge blue">Sets</span>
-        <span class="badge green">Diseño</span>
+        <span class="badge blue">Comparación</span>
+        <span class="badge blue">Criterio</span>
+        <span class="badge green">Práctica guiada</span>
       </div>
     </div>
 
@@ -57,84 +73,167 @@
       <div class="exercise-block">
         <h3>Objetivo</h3>
         <p>
-          Vas a practicar cómo usar tuplas y sets y, sobre todo, cuándo conviene elegir una estructura u otra.
+          Vas a practicar cómo usar tuplas y sets y, sobre todo, cómo justificar su elección frente a una lista u otra alternativa.
         </p>
 
         <div class="callout">
-          Idea clave: una estructura buena no es la más conocida, sino la que mejor encaja con el problema.
+          Idea clave: una estructura buena no es la más conocida, sino la que representa mejor el caso real.
         </div>
       </div>
 
       <div class="exercise-block">
         <h3>Cómo usar esta pantalla</h3>
         <ul>
-          <li>lee el reto</li>
-          <li>identifica si importa orden, repetición o cambio</li>
-          <li>decide si usar tupla, set o incluso otra estructura</li>
-          <li>pruébalo en el playground y justifica tu elección</li>
+          <li>lee la situación o el código</li>
+          <li>identifica si importa orden, repetición, pertenencia o cambio</li>
+          <li>decide si usarías lista, tupla o set</li>
+          <li>intenta justificarlo con una frase clara</li>
         </ul>
 
         <div class="challenge">
-          No te quedes solo en “funciona”. Intenta explicar por qué esa estructura representa mejor el caso.
+          No te quedes en “funciona”. Intenta explicar por qué esa estructura modela mejor el problema.
         </div>
       </div>
     </div>
   </section>
 
   <section id="retos" class="panel">
-    <h2>Misiones rápidas</h2>
+    <h2>Reto 1 · Tupla o lista</h2>
 
     <div class="theory-grid">
       <div class="theory-card">
-        <h3>Mini-reto 1 · Coordenada</h3>
-        <p>Usa una tupla para representar datos fijos.</p>
-        <pre><code>punto = (4, 9)
-print(punto[0])
-print(punto[1])</code></pre>
+        <h3>Situación</h3>
+        <p>Quieres representar una coordenada GPS con latitud y longitud.</p>
       </div>
 
       <div class="theory-card">
-        <h3>Mini-reto 2 · Eliminar duplicados</h3>
-        <p>Convierte una lista en set para quedarte con valores únicos.</p>
-        <pre><code>numeros = [1, 2, 2, 3, 4, 4, 5]
-unicos = set(numeros)
-print(unicos)</code></pre>
+        <h3>Qué debes pensar</h3>
+        <p>¿Te conviene más una lista o una tupla? ¿Qué transmite mejor que esos dos valores forman un par estable?</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Reto 2 · El error de la tupla de un elemento</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Código</h3>
+        <pre><code>dato = (7)</code></pre>
       </div>
 
       <div class="theory-card">
-        <h3>Mini-reto 3 · Elementos comunes</h3>
-        <p>Trabaja con la intersección entre sets.</p>
-        <pre><code>a = {1, 2, 3, 4}
-b = {3, 4, 5, 6}
-print(a & b)</code></pre>
+        <h3>Pregunta</h3>
+        <p>¿Por qué esto no representa bien una tupla de un elemento? ¿Qué falta exactamente?</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      Este es uno de los errores clásicos del tema: olvidar la coma en la tupla de un solo elemento.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Reto 3 · Set o lista con repetidos</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Situación</h3>
+        <p>Tienes una colección de etiquetas y no quieres que ninguna se repita.</p>
       </div>
 
       <div class="theory-card">
-        <h3>Mini-reto 4 · Añadir a set</h3>
-        <p>Modifica un conjunto sin duplicados.</p>
-        <pre><code>tags = {"python", "html"}
-tags.add("css")
-print(tags)</code></pre>
+        <h3>Pregunta</h3>
+        <p>¿Qué problema tendrías si usaras una lista? ¿Por qué un set suele representar mejor este caso?</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Reto 4 · El set no es una secuencia</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Código incorrecto</h3>
+        <pre><code>colores = {"rojo", "verde", "azul"}
+print(colores[0])</code></pre>
       </div>
 
       <div class="theory-card">
-        <h3>Mini-reto 5 · Unión de conjuntos</h3>
-        <p>Combina dos sets para obtener todos los elementos distintos.</p>
-        <pre><code>grupo_a = {"Ana", "Luis"}
-grupo_b = {"Luis", "Marta"}
+        <h3>Pregunta</h3>
+        <p>¿Por qué este planteamiento es incorrecto? ¿Qué idea de fondo está fallando aquí?</p>
+      </div>
+    </div>
+  </section>
 
-todos = grupo_a | grupo_b
-print(todos)</code></pre>
+  <section class="panel">
+    <h2>Reto 5 · Dirección de la diferencia</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Código</h3>
+        <pre><code>a = {1, 2, 3}
+b = {3, 4, 5}
+
+print(a - b)
+print(b - a)</code></pre>
       </div>
 
       <div class="theory-card">
-        <h3>Mini-reto 6 · Elegir estructura</h3>
-        <p>Decide si usarías lista, tupla o set para:</p>
-        <ul>
-          <li>asientos numerados</li>
-          <li>latitud y longitud</li>
-          <li>usuarios únicos conectados</li>
-        </ul>
+        <h3>Qué entrenas</h3>
+        <p>¿Por qué no devuelven lo mismo? Explica qué pregunta responde cada una.</p>
+      </div>
+    </div>
+
+    <div class="challenge">
+      La diferencia es una de las operaciones donde más se nota que el orden de los operandos sí importa.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Reto 6 · Elegir la estructura menos adecuada</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Situación</h3>
+        <p>Quieres guardar una lista editable de tareas en el orden en que deben hacerse.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pregunta</h3>
+        <p>¿Cuál sería la peor elección entre lista, tupla y set? ¿Por qué?</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Reto 7 · Funciona, pero modela peor</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Situación</h3>
+        <p>Guardas una coordenada <code>[40.4, -3.7]</code> en una lista.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pregunta</h3>
+        <p>¿Podría funcionar? Sí. ¿Pero qué estructura podría representar mejor la intención del problema y por qué?</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Reto 8 · Qué harías con este caso</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Situación</h3>
+        <p>Quieres saber qué alumnos aparecen en dos listas de asistencia distintas sin repetir nombres.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Prueba obligatoria</h3>
+        <p>¿Qué estructura y qué operación usarías? Explica por qué el enfoque encaja con la pregunta.</p>
       </div>
     </div>
   </section>
@@ -142,8 +241,8 @@ print(todos)</code></pre>
   <section class="exercise-card">
     <div class="exercise-header">
       <div>
-        <h2 class="exercise-title">Cómo pensar este tipo de ejercicios</h2>
-        <p class="exercise-subtitle">Antes de escribir, pregúntate qué propiedad manda en el problema.</p>
+        <h2 class="exercise-title">Método rápido para elegir estructura</h2>
+        <p class="exercise-subtitle">Qué hacer antes de decidir entre lista, tupla o set.</p>
       </div>
     </div>
 
@@ -151,34 +250,26 @@ print(todos)</code></pre>
       <div class="exercise-block">
         <h3>Paso a paso</h3>
         <ol>
-          <li>piensa si el orden importa</li>
-          <li>piensa si puede haber duplicados</li>
-          <li>piensa si el valor debería cambiar o no</li>
-          <li>elige estructura antes de escribir código</li>
-          <li>justifica por qué esa estructura encaja mejor</li>
+          <li>pregunta si importa el orden</li>
+          <li>pregunta si puede haber duplicados</li>
+          <li>pregunta si el grupo debería cambiar</li>
+          <li>pregunta si te importa la pertenencia más que la posición</li>
+          <li>elige la estructura que mejor responda a esas condiciones</li>
         </ol>
       </div>
 
       <div class="exercise-block">
         <h3>Regla útil</h3>
         <div class="challenge">
-          Si los datos son fijos, una tupla suele tener sentido. Si quieres unicidad, un set suele ser mejor opción.
+          Si una estructura “sirve” pero obliga a pensar el problema de forma menos natural, probablemente no sea la mejor.
         </div>
       </div>
     </div>
   </section>
 
   <section class="panel">
-    <h2>Pregunta típica de entrevista</h2>
-    <div class="challenge">
-      <p><strong>Pregunta:</strong> ¿Cuándo usarías un set en lugar de una lista?</p>
-      <p><strong>Respuesta sólida:</strong> cuando quiero evitar duplicados o hacer operaciones de pertenencia y conjunto de manera más natural.</p>
-    </div>
-  </section>
-
-  <section class="panel">
     <h2>Siguiente paso</h2>
-    <p>Ya has comparado estructuras y entendido sus diferencias. Ahora toca resolver ejercicios por tu cuenta.</p>
+    <p>Ya has trabajado la comparación, la depuración y el razonamiento sobre estas estructuras. Ahora toca resolver ejercicios por tu cuenta.</p>
 
     <div class="buttons-row">
       <a class="btn btn-secondary" href="./04-cuando-usar-cada-estructura.html">Anterior</a>
@@ -188,17 +279,73 @@ print(todos)</code></pre>
     </div>
   </section>
 
-  <script src="../topic-completion.js"></script>
-  <script>
-    const topicCompletion = initTopicCompletion({
-      topicId: "8.5",
-      nextUrl: "./py-tema8-ejercicios.html"
-    });
+<script src="../topic-completion.js"></script>
+<script>
+  const missionCompletion = initTopicCompletion({
+    topicId: "8.5",
+    nextUrl: "./py-tema8-ejercicios.html"
+  });
 
-    document.getElementById("completeBtn").addEventListener("click", () => {
-      topicCompletion.completeTopic();
+  const completeBtn = document.getElementById("completeBtn");
+  const completionMessage = document.getElementById("completionMessage");
+
+  function showCompletionMessage(text) {
+    if (!completionMessage) return;
+    completionMessage.textContent = text;
+    completionMessage.style.display = "block";
+  }
+
+  function showMissionCompletedState() {
+    if (!completeBtn) return;
+
+    completeBtn.style.display = "none";
+
+    if (!document.getElementById("completedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "completedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Misión completada ✅";
+      completeBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  async function syncCompletionUI() {
+    try {
+      const completed = await missionCompletion.isCompleted();
+
+      if (completed) {
+        showMissionCompletedState();
+        showCompletionMessage("Esta misión ya estaba marcada como completada.");
+      }
+    } catch (error) {
+      console.error("Error comprobando estado de la misión:", error);
+    }
+  }
+
+  if (completeBtn) {
+    completeBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
+
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
+
+        await missionCompletion.completeTopic();
+
+        showMissionCompletedState();
+        showCompletionMessage("Has marcado esta misión como completada.");
+      } catch (error) {
+        console.error("Error al completar la misión:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso.");
+      }
     });
-  </script>
+  }
+
+  syncCompletionUI();
+</script>
 
 </main>
 </body>

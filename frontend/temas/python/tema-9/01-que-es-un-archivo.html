@@ -25,13 +25,13 @@
 <header class="header">
   <span class="mission-tag">Misión 9.1</span>
   <h1>Qué es un archivo</h1>
-  <p>Aprende por qué los archivos permiten guardar información fuera del programa y reutilizarla más tarde.</p>
+  <p>Aprende por qué los archivos permiten guardar información fuera del programa y reutilizarla mucho después de que termine la ejecución.</p>
 
   <div class="progress-hero">
     <div class="progress-hero-top">
       <div>
         <div class="progress-label">Tema 9 · Archivos</div>
-        <div class="mini-note">Nivel inicial · 10-15 min · Persistencia de datos</div>
+        <div class="mini-note">Nivel inicial · 12-15 min · Persistencia de datos</div>
       </div>
       <div class="badges">
         <span class="badge blue">Archivos</span>
@@ -108,10 +108,75 @@
         </ul>
 
         <div class="challenge">
-          <strong>Piensa así:</strong><br />
-          trabajar con archivos es hacer que los datos sobrevivan al final del programa.
+          Piensa así: trabajar con archivos es hacer que los datos sobrevivan al final del programa.
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Dónde aparecen los archivos en problemas reales</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Notas</h3>
+        <p>Guardar resultados, apuntes o texto que no quieres perder al cerrar el programa.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Configuración</h3>
+        <p>Leer opciones que el programa necesita al arrancar.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Historial</h3>
+        <p>Registrar acciones, eventos o cambios para revisarlos después.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Resultados</h3>
+        <p>Conservar la salida de un programa para reutilizarla más adelante.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      Los archivos aparecen cuando necesitas que la información sobreviva más allá de una ejecución concreta del programa.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Variable frente a archivo</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Variable</h3>
+        <p>Vive en memoria mientras el programa se está ejecutando.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Archivo</h3>
+        <p>Permanece guardado fuera del programa y puede abrirse más tarde.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Variable</h3>
+        <p>Desaparece al cerrar el programa.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Archivo</h3>
+        <p>Puede seguir existiendo mañana, otro día o incluso después de reiniciar el equipo.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>El archivo es una fuente externa de datos</h2>
+    <p>
+      Un archivo no vive “dentro” de tu código. Está fuera, en una ruta del sistema.
+      Por eso trabajar con archivos también implica aceptar que algo externo puede fallar:
+      el archivo puede no existir, tener otro nombre o estar en otra ubicación.
+    </p>
+
+    <div class="callout">
+      Esto hace que trabajar con archivos sea distinto a trabajar solo con variables.
     </div>
   </section>
 
@@ -192,6 +257,21 @@
   </section>
 
   <section class="panel">
+    <h2>Nombre y ruta del archivo</h2>
+    <p>
+      Para abrir un archivo necesitas indicar su nombre o ruta.
+      Si el programa no lo encuentra exactamente donde espera, la operación fallará.
+    </p>
+
+    <pre><code>open("notas.txt", "r")
+open("carpeta/notas.txt", "r")</code></pre>
+
+    <p>
+      No hace falta profundizar mucho todavía, pero sí entender que el nombre y la ubicación importan.
+    </p>
+  </section>
+
+  <section class="panel">
     <h2>Cómo pensar el modo correcto antes de abrir un archivo</h2>
 
     <div class="theory-grid">
@@ -250,86 +330,65 @@
   <section id="reto" class="exercise-card">
     <div class="exercise-header">
       <div>
-        <h2 class="exercise-title">Mini-reto guiado</h2>
-        <p class="exercise-subtitle">Ahora toca asociar cada necesidad con el modo de apertura correcto.</p>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
+        <p class="exercise-subtitle">Empieza a pensar los archivos como información que sobrevive fuera del programa.</p>
       </div>
 
       <div class="badges">
-        <span class="badge blue">Reto</span>
-        <span class="badge green">Muy fácil</span>
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">9.1</span>
       </div>
     </div>
 
     <div class="exercise-body">
       <div class="exercise-block">
-        <h3>Tu misión</h3>
+        <h3>Enunciado</h3>
         <p>
-          Identifica qué modo usarías en cada caso:
+          Escribe en comentarios tres ejemplos de datos que tendría sentido guardar en un archivo
+          en lugar de dejarlos solo en variables temporales.
         </p>
-        <ul>
-          <li>leer una lista de tareas</li>
-          <li>crear un informe nuevo</li>
-          <li>añadir una línea al historial</li>
-        </ul>
       </div>
 
       <div class="exercise-block">
-        <h3>Solución razonada</h3>
+        <h3>Qué debes practicar</h3>
         <ul>
-          <li><strong>leer una lista de tareas</strong> → <code>"r"</code></li>
-          <li><strong>crear un informe nuevo</strong> → <code>"w"</code></li>
-          <li><strong>añadir una línea al historial</strong> → <code>"a"</code></li>
+          <li>entender la idea de persistencia</li>
+          <li>distinguir memoria temporal y almacenamiento externo</li>
+          <li>pensar en usos reales antes de ver más sintaxis</li>
         </ul>
 
-        <div class="callout">
-          La clave está en pensar si quieres leer, reemplazar o conservar lo que ya había.
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-9%2F01-que-es-un-archivo.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="panel">
-    <h2>Errores frecuentes</h2>
-
-    <div class="theory-grid">
-      <div class="theory-card">
-        <h3>Error 1</h3>
-        <p>Pensar que los datos de variables duran para siempre.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Error 2</h3>
-        <p>No distinguir entre leer y escribir.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Error 3</h3>
-        <p>Elegir un modo incorrecto al abrir el archivo.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Error 4</h3>
-        <p>No entender que el archivo vive fuera del programa.</p>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Resumen mental del subtema</h2>
+        <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
       </div>
     </div>
-  </section>
 
-  <section class="panel">
-    <h2>Buenas prácticas</h2>
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Ideas clave</h3>
+        <ul>
+          <li>una variable es temporal; un archivo puede permanecer</li>
+          <li>un archivo es una fuente externa de datos</li>
+          <li>para trabajar con él debes abrirlo con una intención clara</li>
+          <li>esa intención se refleja en el modo de apertura</li>
+        </ul>
+      </div>
 
-    <div class="theory-grid">
-      <div class="theory-card">
-        <h3>Piensa antes de abrir</h3>
-        <p>Define bien si vas a leer, crear o añadir.</p>
-      </div>
-      <div class="theory-card">
-        <h3>No abras por rutina</h3>
-        <p>El modo correcto depende del objetivo.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Trata el archivo con cuidado</h3>
-        <p>Puede contener información importante que no quieres perder.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Entiende la persistencia</h3>
-        <p>Ese es el valor real de trabajar con archivos.</p>
+      <div class="exercise-block">
+        <h3>Puente con el siguiente bloque</h3>
+        <div class="challenge">
+          Ya entiendes qué es un archivo. Ahora toca recuperar su contenido de forma segura y con criterio.
+        </div>
       </div>
     </div>
   </section>
@@ -337,87 +396,136 @@
   <section class="panel">
     <h2>Siguiente paso</h2>
     <p>
-      Ya sabes qué es un archivo y para qué sirve. Lo siguiente es aprender a leer su contenido correctamente.
+      Ya entiendes qué es un archivo. Lo siguiente es aprender a leerlo completo o línea a línea según lo que necesites hacer.
     </p>
 
     <div class="buttons-row">
-      <a class="btn btn-secondary" href="./index.html">Índice tema</a>
       <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
       <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-      <button class="btn btn-primary" onclick="completeTopic('9.1')">Marcar como completado</button>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
     </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
   </section>
 
-  <script>
-const TOPIC_ID = "9.1";
-const NEXT_URL = "./02-leer-archivos.html";
+<script src="../topic-completion.js"></script>
+<script>
+  const subtopicCompletion = initTopicCompletion({
+    topicId: "9.1",
+    nextUrl: "./02-leer-archivos.html"
+  });
 
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+  const miniRetoCompletion = initTopicCompletion({
+    topicId: "9.1.mini"
+  });
 
-const nextBtn = document.getElementById("nextBtn");
+  const completeBtn = document.getElementById("completeBtn");
+  const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+  const completionMessage = document.getElementById("completionMessage");
 
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
+  function showCompletionMessage(text) {
+    if (!completionMessage) return;
+    completionMessage.textContent = text;
+    completionMessage.style.display = "block";
+  }
 
-    if (!token || !nextBtn) return;
+  function showCompletedState() {
+    if (!completeBtn) return;
 
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
+    completeBtn.style.display = "none";
+
+    if (!document.getElementById("completedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "completedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Subtema completado ✅";
+      completeBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  function showMiniCompletedState() {
+    if (!miniCompleteBtn) return;
+
+    miniCompleteBtn.style.display = "none";
+
+    if (!document.getElementById("miniCompletedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "miniCompletedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Mini-reto completado ✅";
+      miniCompleteBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  async function syncCompletionUI() {
+    try {
+      const subtopicDone = await subtopicCompletion.isCompleted();
+      const miniDone = await miniRetoCompletion.isCompleted();
+
+      if (subtopicDone) {
+        showCompletedState();
+      }
+
+      if (miniDone) {
+        showMiniCompletedState();
+      }
+
+      if (subtopicDone && miniDone) {
+        showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+      } else if (subtopicDone) {
+        showCompletionMessage("Este subtema ya estaba marcado como completado.");
+      } else if (miniDone) {
+        showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+      }
+    } catch (error) {
+      console.error("Error comprobando estado del subtema:", error);
+    }
+  }
+
+  if (completeBtn) {
+    completeBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
+
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
+
+        await subtopicCompletion.completeTopic();
+
+        showCompletedState();
+        showCompletionMessage("Has marcado este subtema como completado.");
+      } catch (error) {
+        console.error("Error al completar el subtema:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso.");
       }
     });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
   }
-}
 
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
+  if (miniCompleteBtn) {
+    miniCompleteBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
 
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
-    }
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
 
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
+        await miniRetoCompletion.completeTopic();
+
+        showMiniCompletedState();
+        showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+      } catch (error) {
+        console.error("Error al completar el mini-reto:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+      }
     });
-
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
-    }
-
-    alert("Tema completado 🎉");
-
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
   }
-}
 
-unlockNextIfCompleted();
+  syncCompletionUI();
 </script>
 
 </main>

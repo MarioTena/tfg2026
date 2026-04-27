@@ -5,14 +5,14 @@ initThemeProgress({
       title: "¿Qué es una lista?",
       file: "01-que-es-una-lista.html",
       type: "Concepto",
-      time: "10 min"
+      time: "10-12 min"
     },
     {
       id: "4.2",
       title: "Acceso y modificación",
       file: "02-acceso-y-modificacion.html",
       type: "Concepto",
-      time: "10-15 min"
+      time: "12-15 min"
     },
     {
       id: "4.3",
@@ -30,18 +30,17 @@ initThemeProgress({
     },
     {
       id: "4.5",
-      title: "Mini retos",
+      title: "Razonar y practicar listas",
       file: "05-mini-retos.html",
-      type: "Práctica",
-      time: "12 min"
+      type: "Práctica guiada",
+      time: "12-15 min"
     },
     {
       id: "4.ejercicios",
       title: "Ejercicios del tema 4",
       file: "py-tema4-ejercicios.html",
       type: "Reto final",
-      time: "20 min"
+      time: "25-30 min"
     }
   ]
 });
-

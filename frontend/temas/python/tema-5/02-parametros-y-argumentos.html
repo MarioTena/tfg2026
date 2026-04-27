@@ -108,8 +108,7 @@
         </ul>
 
         <div class="challenge">
-          <strong>Piensa así:</strong><br />
-          una función con parámetros es como una plantilla: la estructura se mantiene, pero los valores pueden cambiar.
+          Piensa así: una función con parámetros es como una plantilla. La estructura se mantiene, pero los valores pueden cambiar.
         </div>
       </div>
     </div>
@@ -198,6 +197,20 @@ presentar("Ana", 30)</code></pre>
   </section>
 
   <section class="panel">
+    <h2>Función sin parámetros vs función con parámetros</h2>
+
+    <pre><code>def saludar_fijo():
+    print("Hola Ana")
+
+def saludar(nombre):
+    print("Hola", nombre)</code></pre>
+
+    <p>
+      La primera es rígida. La segunda es flexible porque la misma lógica sirve para muchos casos.
+    </p>
+  </section>
+
+  <section class="panel">
     <h2>Error típico: número incorrecto de argumentos</h2>
     <pre><code>def saludar(nombre):
     print("Hola", nombre)
@@ -220,6 +233,29 @@ saludar(nombre_usuario)</code></pre>
     <p>
       El argumento se asigna al parámetro interno al llamar a la función.
     </p>
+  </section>
+
+  <section class="panel">
+    <h2>Parámetros como contrato</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Qué espera</h3>
+        <p>La función define cuántos datos necesita para trabajar.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Qué recibe</h3>
+        <p>La llamada debe respetar ese número de argumentos.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Qué no cambia</h3>
+        <p>La lógica interna de la función sigue siendo la misma.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Qué sí cambia</h3>
+        <p>Los valores concretos con los que la función trabaja.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
@@ -266,55 +302,19 @@ saludar(usuario)</code></pre>
     <div class="theory-grid">
       <div class="theory-card">
         <h3>Paso 1</h3>
-        <p>Identifica qué parte de la tarea siempre será igual.</p>
+        <p>Identifica qué parte de la lógica es fija.</p>
       </div>
       <div class="theory-card">
         <h3>Paso 2</h3>
-        <p>Detecta qué datos van a cambiar entre una llamada y otra.</p>
+        <p>Detecta qué dato cambia de un caso a otro.</p>
       </div>
       <div class="theory-card">
         <h3>Paso 3</h3>
-        <p>Convierte esos datos cambiantes en parámetros.</p>
+        <p>Convierte ese dato cambiante en parámetro.</p>
       </div>
       <div class="theory-card">
         <h3>Paso 4</h3>
-        <p>Pon nombres a los parámetros que indiquen bien qué representan.</p>
-      </div>
-    </div>
-
-    <div class="callout">
-      Si una función se repite cambiando solo algunos datos, probablemente necesita parámetros.
-    </div>
-  </section>
-
-  <section class="exercise-card">
-    <div class="exercise-header">
-      <div>
-        <h2 class="exercise-title">Piensa antes de ejecutar</h2>
-        <p class="exercise-subtitle">Antes de probar, separa la lógica fija de los valores que cambian.</p>
-      </div>
-    </div>
-
-    <div class="exercise-body">
-      <div class="exercise-block">
-        <h3>Código</h3>
-        <pre><code>def multiplicar_por_tres(numero):
-    print(numero * 3)
-
-multiplicar_por_tres(4)
-multiplicar_por_tres(10)</code></pre>
-      </div>
-
-      <div class="exercise-block">
-        <h3>Preguntas</h3>
-        <ul>
-          <li>¿qué se imprime en cada llamada?</li>
-          <li>¿la lógica de la función cambia o solo cambian los datos?</li>
-        </ul>
-
-        <div class="mini-note">
-          Pista: la función es la misma en ambos casos.
-        </div>
+        <p>Llama a la función con distintos argumentos para comprobarla.</p>
       </div>
     </div>
   </section>
@@ -322,93 +322,66 @@ multiplicar_por_tres(10)</code></pre>
   <section id="reto" class="exercise-card">
     <div class="exercise-header">
       <div>
-        <h2 class="exercise-title">Mini-reto guiado</h2>
-        <p class="exercise-subtitle">Ahora toca hacer una función reutilizable con un dato que cambia.</p>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
+        <p class="exercise-subtitle">Haz una función flexible que funcione con distintos datos.</p>
       </div>
 
       <div class="badges">
-        <span class="badge blue">Reto</span>
-        <span class="badge green">Muy fácil</span>
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">5.2</span>
       </div>
     </div>
 
     <div class="exercise-body">
       <div class="exercise-block">
-        <h3>Tu misión</h3>
+        <h3>Enunciado</h3>
         <p>
-          Crea una función que reciba una ciudad y muestre un mensaje de bienvenida.
+          Crea una función <code>mostrar_ciudad(ciudad, pais)</code> que imprima una frase como:
+          <code>"Madrid está en España"</code>.
+          Después llámala dos veces con datos distintos.
         </p>
-
-        <div class="exercise-actions">
-          <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Resolver en playground</a>
-          <button class="btn btn-secondary btn-sm" type="button" onclick="document.getElementById('solucion-reto').open = true;">
-            Ver solución
-          </button>
-        </div>
       </div>
 
       <div class="exercise-block">
-        <h3>Pista</h3>
-        <p>
-          Aquí la estructura del mensaje no cambia, solo cambia el valor de la ciudad.
-        </p>
+        <h3>Qué debes practicar</h3>
+        <ul>
+          <li>usar dos parámetros</li>
+          <li>respetar el orden de los argumentos</li>
+          <li>reutilizar la misma función con distintos valores</li>
+        </ul>
 
-        <details id="solucion-reto" class="theory-dropdown">
-          <summary>Mostrar solución</summary>
-          <div class="theory-dropdown-content">
-            <pre><code>def bienvenida_ciudad(ciudad):
-    print("Bienvenido a", ciudad)
-
-bienvenida_ciudad("Madrid")
-bienvenida_ciudad("Bilbao")</code></pre>
-          </div>
-        </details>
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-5%2F02-parametros-y-argumentos.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="panel">
-    <h2>Errores frecuentes</h2>
-
-    <div class="theory-grid">
-      <div class="theory-card">
-        <h3>Error 1</h3>
-        <p>Confundir parámetro con argumento.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Error 2</h3>
-        <p>Pasar menos o más argumentos de los necesarios.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Error 3</h3>
-        <p>Usar nombres demasiado ambiguos.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Error 4</h3>
-        <p>Pensar que una función “recuerda” automáticamente valores externos.</p>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Resumen mental del subtema</h2>
+        <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
       </div>
     </div>
-  </section>
 
-  <section class="panel">
-    <h2>Buenas prácticas</h2>
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Ideas clave</h3>
+        <ul>
+          <li>el parámetro aparece en la definición</li>
+          <li>el argumento se pasa al llamar</li>
+          <li>la lógica de la función no cambia; cambian los datos</li>
+          <li>el orden importa cuando llamas por posición</li>
+        </ul>
+      </div>
 
-    <div class="theory-grid">
-      <div class="theory-card">
-        <h3>Parámetros claros</h3>
-        <p>Usa nombres que representen bien el dato recibido.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Lógica separada</h3>
-        <p>No mezcles la idea de la función con valores concretos del exterior.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Comprueba llamadas</h3>
-        <p>Revisa siempre si estás pasando el número correcto de argumentos.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Piensa en reutilización</h3>
-        <p>Diseña la función para que sirva con varios datos, no solo con un caso.</p>
+      <div class="exercise-block">
+        <h3>Puente con el siguiente bloque</h3>
+        <div class="challenge">
+          Ya sabes pasar datos a una función. Ahora toca aprender a devolver resultados útiles con <code>return</code>.
+        </div>
       </div>
     </div>
   </section>
@@ -423,80 +396,130 @@ bienvenida_ciudad("Bilbao")</code></pre>
       <a class="btn btn-secondary" href="./01-que-es-una-funcion.html">Anterior</a>
       <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
       <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-      <button class="btn btn-primary" onclick="completeTopic('5.2')">Marcar como completado</button>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
     </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
   </section>
 
+<script src="../topic-completion.js"></script>
 <script>
-const TOPIC_ID = "5.2";
-const NEXT_URL = "./03-return.html";
+  const subtopicCompletion = initTopicCompletion({
+    topicId: "5.2",
+    nextUrl: "./03-return.html"
+  });
 
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+  const miniRetoCompletion = initTopicCompletion({
+    topicId: "5.2.mini"
+  });
 
-const nextBtn = document.getElementById("nextBtn");
+  const completeBtn = document.getElementById("completeBtn");
+  const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+  const completionMessage = document.getElementById("completionMessage");
 
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
+  function showCompletionMessage(text) {
+    if (!completionMessage) return;
+    completionMessage.textContent = text;
+    completionMessage.style.display = "block";
+  }
 
-    if (!token || !nextBtn) return;
+  function showCompletedState() {
+    if (!completeBtn) return;
 
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
+    completeBtn.style.display = "none";
+
+    if (!document.getElementById("completedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "completedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Subtema completado ✅";
+      completeBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  function showMiniCompletedState() {
+    if (!miniCompleteBtn) return;
+
+    miniCompleteBtn.style.display = "none";
+
+    if (!document.getElementById("miniCompletedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "miniCompletedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Mini-reto completado ✅";
+      miniCompleteBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  async function syncCompletionUI() {
+    try {
+      const subtopicDone = await subtopicCompletion.isCompleted();
+      const miniDone = await miniRetoCompletion.isCompleted();
+
+      if (subtopicDone) {
+        showCompletedState();
+      }
+
+      if (miniDone) {
+        showMiniCompletedState();
+      }
+
+      if (subtopicDone && miniDone) {
+        showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+      } else if (subtopicDone) {
+        showCompletionMessage("Este subtema ya estaba marcado como completado.");
+      } else if (miniDone) {
+        showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+      }
+    } catch (error) {
+      console.error("Error comprobando estado del subtema:", error);
+    }
+  }
+
+  if (completeBtn) {
+    completeBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
+
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
+
+        await subtopicCompletion.completeTopic();
+
+        showCompletedState();
+        showCompletionMessage("Has marcado este subtema como completado.");
+      } catch (error) {
+        console.error("Error al completar el subtema:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso.");
       }
     });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
   }
-}
 
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
+  if (miniCompleteBtn) {
+    miniCompleteBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
 
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
-    }
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
 
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
+        await miniRetoCompletion.completeTopic();
+
+        showMiniCompletedState();
+        showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+      } catch (error) {
+        console.error("Error al completar el mini-reto:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+      }
     });
-
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
-    }
-
-    alert("Tema completado 🎉");
-
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
   }
-}
 
-unlockNextIfCompleted();
+  syncCompletionUI();
 </script>
 
 </main>

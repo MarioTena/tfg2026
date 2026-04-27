@@ -26,7 +26,7 @@
   <header class="header">
     <span class="mission-tag">Ruta de aprendizaje</span>
     <h1>Tema 10 · Errores y excepciones</h1>
-    <p>Aprende a controlar fallos, validar entradas y hacer programas más robustos usando manejo de excepciones.</p>
+    <p>Aprende a detectar fallos, reaccionar mejor cuando algo sale mal y construir programas más robustos usando excepciones y validaciones.</p>
 
     <div class="progress-hero">
       <div class="progress-hero-top">
@@ -59,7 +59,7 @@
         <div>
           <h2 class="exercise-title">Qué vas a dominar en este tema</h2>
           <p class="exercise-subtitle">
-            Este bloque te enseña a detectar problemas, reaccionar bien cuando algo falla y construir programas más seguros.
+            Este bloque te enseña a entender por qué fallan los programas, cuándo conviene prevenir un problema, cuándo capturarlo y cuándo lanzar tú mismo una excepción.
           </p>
         </div>
 
@@ -74,11 +74,13 @@
         <div class="exercise-block">
           <h3>Habilidades que entrenas</h3>
           <ul>
-            <li>entender qué es un error y por qué ocurre</li>
-            <li>usar <code>try</code> y <code>except</code></li>
+            <li>entender qué es un error y qué es una excepción</li>
+            <li>distinguir entre error de sintaxis, error en ejecución y error lógico</li>
+            <li>usar <code>try</code> y <code>except</code> con más criterio</li>
             <li>trabajar con <code>else</code> y <code>finally</code></li>
             <li>lanzar excepciones con <code>raise</code></li>
             <li>validar datos antes de seguir</li>
+            <li>distinguir entre prevenir, capturar y lanzar errores</li>
           </ul>
         </div>
 
@@ -87,11 +89,12 @@
           <ul>
             <li>completa los conceptos en orden</li>
             <li>piensa qué puede fallar en cada caso</li>
+            <li>decide si conviene validarlo antes o capturarlo después</li>
             <li>usa mini-retos y ejercicios para consolidar</li>
           </ul>
 
           <div class="challenge">
-            Un buen programa no solo funciona cuando todo va bien. También sabe comportarse correctamente cuando algo falla.
+            Un buen programa no solo funciona cuando todo va bien: también sabe reaccionar con sentido cuando algo falla.
           </div>
         </div>
       </div>
@@ -102,8 +105,45 @@
       <div id="topics" class="topic-roadmap"></div>
     </section>
 
+    <section class="panel">
+      <h2>Resumen del recorrido</h2>
+
+      <div class="theory-grid">
+        <div class="theory-card">
+          <h3>10.1 · Qué es un error</h3>
+          <p>Aprendes a distinguir distintos tipos de fallos y por qué leer bien un error importa tanto.</p>
+        </div>
+
+        <div class="theory-card">
+          <h3>10.2 · try y except</h3>
+          <p>Aprendes a capturar errores previsibles y a responder de forma más controlada.</p>
+        </div>
+
+        <div class="theory-card">
+          <h3>10.3 · else, finally y errores comunes</h3>
+          <p>Entiendes mejor el flujo completo del manejo de excepciones y varios fallos frecuentes.</p>
+        </div>
+
+        <div class="theory-card">
+          <h3>10.4 · raise y validaciones</h3>
+          <p>Aprendes a lanzar tú mismo una excepción cuando un dato no cumple las reglas del programa.</p>
+        </div>
+
+        <div class="theory-card">
+          <h3>10.5 · Práctica guiada</h3>
+          <p>Lees situaciones reales y decides si conviene prevenir, capturar o lanzar una excepción.</p>
+        </div>
+
+        <div class="theory-card">
+          <h3>Reto final</h3>
+          <p>Consolidas el tema resolviendo ejercicios donde debes combinar varias piezas a la vez.</p>
+        </div>
+      </div>
+    </section>
+
   </main>
- <script src="../theme-progress-base.js"></script>
- <script src="progress.js"></script>
+
+  <script src="../theme-progress-base.js"></script>
+  <script src="progress.js"></script>
 </body>
 </html>

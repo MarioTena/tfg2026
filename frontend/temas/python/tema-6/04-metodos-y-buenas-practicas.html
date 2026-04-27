@@ -34,8 +34,8 @@
         <div class="mini-note">Nivel inicial · 12-15 min · Métodos útiles y criterio</div>
       </div>
       <div class="badges">
-        <span class="badge blue">keys()</span>
-        <span class="badge blue">items()</span>
+        <span class="badge blue">get()</span>
+        <span class="badge blue">update()</span>
         <span class="badge green">Buenas prácticas</span>
       </div>
     </div>
@@ -109,12 +109,41 @@
       </ul>
 
       <div class="challenge">
-        <strong>Piensa así:</strong><br />
-        elegir bien el método correcto también es parte de programar bien.
+        Pensar bien el método correcto también forma parte de programar bien.
       </div>
     </div>
   </div>
 </section>
+
+  <section class="panel">
+    <h2>Dónde aparecen los métodos de diccionarios en problemas reales</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Consultas</h3>
+        <p>Obtener claves, valores o pares completos según lo que necesites revisar.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Actualizaciones</h3>
+        <p>Cambiar varios datos de una sola vez con métodos más cómodos.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Limpieza</h3>
+        <p>Eliminar claves o reorganizar mejor la información almacenada.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Criterio</h3>
+        <p>Elegir mejor cuándo usar diccionario y cómo trabajar con él de forma más segura.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      Los métodos de diccionarios aparecen cuando ya no solo quieres guardar datos, sino manipularlos con más claridad y menos código.
+    </div>
+  </section>
 
   <section class="panel">
     <h2>Métodos fundamentales</h2>
@@ -206,6 +235,29 @@ print(producto)</code></pre>
   </section>
 
   <section class="panel">
+    <h2>Consultar no es modificar</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Consultan</h3>
+        <p><code>keys()</code>, <code>values()</code>, <code>items()</code>, <code>get()</code></p>
+      </div>
+      <div class="theory-card">
+        <h3>Modifican</h3>
+        <p><code>pop()</code>, <code>update()</code>, asignación por clave</p>
+      </div>
+      <div class="theory-card">
+        <h3>Idea útil</h3>
+        <p>Primero decide si solo quieres mirar o también cambiar el diccionario.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Importancia</h3>
+        <p>Evita tocar la estructura por accidente.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
     <h2>Qué hace cada método en la práctica</h2>
 
     <div class="theory-grid">
@@ -224,6 +276,29 @@ print(producto)</code></pre>
       <div class="theory-card">
         <h3><code>update()</code></h3>
         <p>Va bien para varios cambios seguidos sin repetir muchas líneas.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Casos importantes de <code>pop()</code> y <code>update()</code></h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3><code>pop()</code></h3>
+        <p>No solo elimina: también devuelve el valor que quita.</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>update()</code> clave existente</h3>
+        <p>Si la clave ya estaba, su valor se actualiza.</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>update()</code> clave nueva</h3>
+        <p>Si la clave no estaba, se añade.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Idea práctica</h3>
+        <p>Un mismo método puede servir para dos efectos distintos según el estado del diccionario.</p>
       </div>
     </div>
   </section>
@@ -256,6 +331,29 @@ print(producto)</code></pre>
   </section>
 
   <section class="panel">
+    <h2>Errores frecuentes</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Error 1</h3>
+        <p>Usar acceso directo cuando la clave puede no existir.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 2</h3>
+        <p>Olvidar que <code>pop()</code> modifica el diccionario.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 3</h3>
+        <p>No entender si <code>update()</code> está actualizando o añadiendo.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 4</h3>
+        <p>Elegir diccionario cuando en realidad solo necesitabas una secuencia simple.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
     <h2>Cómo pensar qué método necesitas</h2>
 
     <div class="theory-grid">
@@ -265,50 +363,15 @@ print(producto)</code></pre>
       </div>
       <div class="theory-card">
         <h3>Paso 2</h3>
-        <p>Decide si necesitas claves, valores o pares completos.</p>
+        <p>Decide si necesitas claves, valores o ambas cosas.</p>
       </div>
       <div class="theory-card">
         <h3>Paso 3</h3>
-        <p>Si una clave puede faltar, prioriza <code>get()</code>.</p>
+        <p>Si la clave puede faltar, considera <code>get()</code> o una comprobación con <code>in</code>.</p>
       </div>
       <div class="theory-card">
         <h3>Paso 4</h3>
-        <p>Si quieres cambiar varias cosas a la vez, piensa en <code>update()</code>.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="exercise-card">
-    <div class="exercise-header">
-      <div>
-        <h2 class="exercise-title">Piensa antes de ejecutar</h2>
-        <p class="exercise-subtitle">Antes de lanzar el código, piensa qué método consulta y cuál modifica.</p>
-      </div>
-    </div>
-
-    <div class="exercise-body">
-      <div class="exercise-block">
-        <h3>Código</h3>
-        <pre><code>usuario = {
-    "nombre": "Luis",
-    "edad": 35
-}
-
-usuario.update({"edad": 36, "activo": True})
-print(usuario.get("activo"))
-print(usuario)</code></pre>
-      </div>
-
-      <div class="exercise-block">
-        <h3>Preguntas</h3>
-        <ul>
-          <li>¿qué cambia con <code>update()</code>?</li>
-          <li>¿qué devuelve <code>get("activo")</code>?</li>
-        </ul>
-
-        <div class="mini-note">
-          Pista: un método modifica y el otro consulta.
-        </div>
+        <p>Si necesitas cambiar varias cosas, piensa si <code>update()</code> encaja mejor.</p>
       </div>
     </div>
   </section>
@@ -316,100 +379,70 @@ print(usuario)</code></pre>
   <section id="reto" class="exercise-card">
     <div class="exercise-header">
       <div>
-        <h2 class="exercise-title">Mini-reto guiado</h2>
-        <p class="exercise-subtitle">Ahora toca combinar varios métodos sobre un mismo diccionario.</p>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
+        <p class="exercise-subtitle">Combina métodos útiles y criterio de acceso más seguro.</p>
       </div>
+
       <div class="badges">
-        <span class="badge blue">Reto</span>
-        <span class="badge green">Muy fácil</span>
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">6.4</span>
       </div>
     </div>
 
     <div class="exercise-body">
       <div class="exercise-block">
-        <h3>Tu misión</h3>
+        <h3>Enunciado</h3>
         <p>
-          Crea un diccionario de configuración, actualiza varias claves y elimina una de ellas.
+          Crea un diccionario <code>config</code> con la clave <code>tema</code>. Después:
         </p>
-
-        <div class="exercise-actions">
-          <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Resolver en playground</a>
-          <button class="btn btn-secondary btn-sm" type="button" onclick="document.getElementById('solucion-reto').open = true;">
-            Ver solución
-          </button>
-        </div>
+        <ul>
+          <li>usa <code>get()</code> para leer <code>idioma</code> con valor por defecto</li>
+          <li>usa <code>update()</code> para añadir <code>idioma</code> y <code>notificaciones</code></li>
+          <li>usa <code>pop()</code> para eliminar una clave</li>
+        </ul>
       </div>
 
       <div class="exercise-block">
-        <h3>Pista</h3>
-        <p>
-          Usa <code>update()</code> para varios cambios y <code>pop()</code> si quieres eliminar una clave concreta.
-        </p>
+        <h3>Qué debes practicar</h3>
+        <ul>
+          <li>distinguir métodos que consultan de métodos que modifican</li>
+          <li>pensar mejor cuándo usar cada uno</li>
+          <li>ver el efecto final sobre la estructura</li>
+        </ul>
 
-        <details id="solucion-reto" class="theory-dropdown">
-          <summary>Mostrar solución</summary>
-          <div class="theory-dropdown-content">
-            <pre><code>config = {
-    "tema": "claro",
-    "idioma": "es",
-    "notificaciones": True
-}
-
-config.update({
-    "tema": "oscuro",
-    "fuente": "grande"
-})
-
-config.pop("notificaciones")
-print(config)</code></pre>
-          </div>
-        </details>
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-6%2F04-metodos-y-buenas-practicas.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="panel">
-    <h2>Errores frecuentes</h2>
-
-    <div class="theory-grid">
-      <div class="theory-card">
-        <h3>Error 1</h3>
-        <p>Usar una lista donde un diccionario sería más claro.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Error 2</h3>
-        <p>Acceder a claves sin verificar si existen.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Error 3</h3>
-        <p>Usar nombres de claves inconsistentes.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Error 4</h3>
-        <p>Pensar que <code>keys()</code> o <code>values()</code> son siempre listas normales.</p>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Resumen mental del subtema</h2>
+        <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
       </div>
     </div>
-  </section>
 
-  <section class="panel">
-    <h2>Buenas prácticas</h2>
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Ideas clave</h3>
+        <ul>
+          <li>no todos los métodos hacen lo mismo</li>
+          <li>algunos consultan y otros modifican</li>
+          <li><code>pop()</code> elimina y devuelve</li>
+          <li><code>update()</code> puede actualizar y añadir a la vez</li>
+          <li>elegir lista o diccionario también forma parte del diseño</li>
+        </ul>
+      </div>
 
-    <div class="theory-grid">
-      <div class="theory-card">
-        <h3>Claves coherentes</h3>
-        <p>Usa un criterio uniforme al nombrar datos.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Estructura correcta</h3>
-        <p>No metas en un diccionario cosas que se entenderían mejor como lista.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Método adecuado</h3>
-        <p>Elige el método según la tarea, no por costumbre.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Seguridad</h3>
-        <p>Usa <code>get()</code> cuando no estés seguro de una clave.</p>
+      <div class="exercise-block">
+        <h3>Puente con el siguiente bloque</h3>
+        <div class="challenge">
+          Ya dominas bastante la teoría. Ahora toca razonar mejor sobre diccionarios, detectar errores y decidir cuándo usarlos.
+        </div>
       </div>
     </div>
   </section>
@@ -417,87 +450,137 @@ print(config)</code></pre>
   <section class="panel">
     <h2>Siguiente paso</h2>
     <p>
-      Ya sabes trabajar mejor con diccionarios. El siguiente bloque del tema puede centrarse en mini-retos integradores para consolidar todo.
+      Ya dominas bastante la teoría. Ahora toca razonar mejor sobre diccionarios antes de pasar a los ejercicios finales.
     </p>
 
     <div class="buttons-row">
       <a class="btn btn-secondary" href="./03-recorrer-diccionarios.html">Anterior</a>
       <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
       <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-      <button class="btn btn-primary" onclick="completeTopic('6.4')">Marcar como completado</button>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
     </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
   </section>
 
-  <script>
-const TOPIC_ID = "6.4";
-const NEXT_URL = "./05-mini-retos.html";
+  <script src="../topic-completion.js"></script>
+<script>
+  const subtopicCompletion = initTopicCompletion({
+    topicId: "6.4",
+    nextUrl: "./05-mini-retos.html"
+  });
 
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+  const miniRetoCompletion = initTopicCompletion({
+    topicId: "6.4.mini"
+  });
 
-const nextBtn = document.getElementById("nextBtn");
+  const completeBtn = document.getElementById("completeBtn");
+  const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+  const completionMessage = document.getElementById("completionMessage");
 
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
+  function showCompletionMessage(text) {
+    if (!completionMessage) return;
+    completionMessage.textContent = text;
+    completionMessage.style.display = "block";
+  }
 
-    if (!token || !nextBtn) return;
+  function showCompletedState() {
+    if (!completeBtn) return;
 
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
+    completeBtn.style.display = "none";
+
+    if (!document.getElementById("completedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "completedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Subtema completado ✅";
+      completeBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  function showMiniCompletedState() {
+    if (!miniCompleteBtn) return;
+
+    miniCompleteBtn.style.display = "none";
+
+    if (!document.getElementById("miniCompletedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "miniCompletedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Mini-reto completado ✅";
+      miniCompleteBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  async function syncCompletionUI() {
+    try {
+      const subtopicDone = await subtopicCompletion.isCompleted();
+      const miniDone = await miniRetoCompletion.isCompleted();
+
+      if (subtopicDone) {
+        showCompletedState();
+      }
+
+      if (miniDone) {
+        showMiniCompletedState();
+      }
+
+      if (subtopicDone && miniDone) {
+        showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+      } else if (subtopicDone) {
+        showCompletionMessage("Este subtema ya estaba marcado como completado.");
+      } else if (miniDone) {
+        showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+      }
+    } catch (error) {
+      console.error("Error comprobando estado del subtema:", error);
+    }
+  }
+
+  if (completeBtn) {
+    completeBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
+
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
+
+        await subtopicCompletion.completeTopic();
+
+        showCompletedState();
+        showCompletionMessage("Has marcado este subtema como completado.");
+      } catch (error) {
+        console.error("Error al completar el subtema:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso.");
       }
     });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
   }
-}
 
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
+  if (miniCompleteBtn) {
+    miniCompleteBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
 
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
-    }
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
 
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
+        await miniRetoCompletion.completeTopic();
+
+        showMiniCompletedState();
+        showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+      } catch (error) {
+        console.error("Error al completar el mini-reto:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+      }
     });
-
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
-    }
-
-    alert("Tema completado 🎉");
-
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
   }
-}
 
-unlockNextIfCompleted();
+  syncCompletionUI();
 </script>
 
 </main>

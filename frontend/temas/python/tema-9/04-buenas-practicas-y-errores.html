@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 9.4 – Buenas prácticas y errores</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 9 · Archivos</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+     </div>
+  </div>
+</nav>
+
+<header class="header">
+  <span class="mission-tag">Misión 9.4</span>
+  <h1>Buenas prácticas y errores</h1>
+  <p>Aprende a trabajar con archivos de forma más segura, limpia y predecible.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 9 · Archivos</div>
+        <div class="mini-note">Nivel inicial · 12-15 min · Seguridad y limpieza</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Buenas prácticas</span>
+        <span class="badge green">Errores comunes</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 80%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
+</header>
+
+<main class="main-container single-column">
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué vas a entender hoy</h2>
+        <p class="exercise-subtitle">
+          Trabajar con archivos no consiste solo en que el código funcione, sino en evitar errores frecuentes y usar patrones más seguros.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Objetivo</span>
+        <span class="badge green">Seguridad</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué problema resuelve</h3>
+        <p>
+          Cuando trabajas con archivos, pequeños descuidos pueden provocar errores o pérdida de información.
+          Por eso conviene adquirir buenos hábitos desde el principio.
+        </p>
+
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3><code>with</code></h3>
+            <p>Cerrar automáticamente el archivo.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Modo correcto</h3>
+            <p>Evitar sobrescribir sin querer.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Limpieza</h3>
+            <p>Quitar espacios o saltos sobrantes al leer.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Prevención</h3>
+            <p>Evitar errores típicos antes de que aparezcan.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          Idea clave: trabajar bien con archivos es tan importante como saber abrirlos o escribir en ellos.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes vigilar</h3>
+        <ul>
+          <li>usar <code>with</code> siempre que puedas</li>
+          <li>pensar bien el modo de apertura</li>
+          <li>recordar que <code>w</code> sobrescribe</li>
+          <li>limpiar líneas cuando el formato lo requiera</li>
+        </ul>
+
+        <div class="challenge">
+          Piensa así: con archivos, muchos fallos no vienen de la sintaxis, sino de no anticipar sus efectos.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Dónde aparecen las buenas prácticas con archivos en problemas reales</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Lectura segura</h3>
+        <p>Usar <code>with</code> para no dejar archivos abiertos sin querer.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Protección de contenido</h3>
+        <p>Elegir bien entre <code>r</code>, <code>w</code> y <code>a</code> para no borrar información importante.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Salida limpia</h3>
+        <p>Usar <code>strip()</code> al leer líneas cuando el formato lo necesita.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Prevención</h3>
+        <p>Evitar errores antes de ejecutar en lugar de corregirlos tarde.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      En archivos, muchos problemas reales no vienen de la sintaxis, sino de no anticipar bien los efectos de cada decisión.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Usa siempre <code>with</code> cuando puedas</h2>
+    <pre><code>with open("datos.txt", "r") as archivo:
+    contenido = archivo.read()</code></pre>
+
+    <p>
+      Es más seguro y evita olvidos al cerrar.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Piensa bien el modo de apertura</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3><code>r</code></h3>
+        <p>Leer</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>w</code></h3>
+        <p>Escribir borrando lo anterior</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>a</code></h3>
+        <p>Añadir sin borrar</p>
+      </div>
+      <div class="theory-card">
+        <h3>Elección</h3>
+        <p>Escoger bien el modo evita problemas innecesarios.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Leer y procesar líneas</h2>
+    <pre><code>with open("datos.txt", "r") as archivo:
+    for linea in archivo:
+        print(linea.strip())</code></pre>
+
+    <p>
+      <code>strip()</code> es útil para limpiar saltos o espacios al leer.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Qué errores conviene prevenir antes de empezar</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Ruta incorrecta</h3>
+        <p>El archivo no se encuentra.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Modo equivocado</h3>
+        <p>Se pierde contenido sin querer.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Formato sucio</h3>
+        <p>Las líneas salen con espacios o saltos inesperados.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Cierre deficiente</h3>
+        <p>Problemas por no gestionar bien el archivo.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Errores típicos más concretos</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Error 1</h3>
+        <p>Usar <code>w</code> cuando querías conservar lo anterior.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 2</h3>
+        <p>Olvidar <code>\n</code> al escribir varias líneas.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 3</h3>
+        <p>Imprimir líneas sin limpiar y ver la salida rara.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 4</h3>
+        <p>Asumir que el archivo siempre existe o siempre está donde crees.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Código que funciona vs código más seguro</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Funciona</h3>
+        <p>Abrir y cerrar manualmente puede funcionar.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Más seguro</h3>
+        <p>Usar <code>with</code> reduce olvidos y deja la intención más clara.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Funciona</h3>
+        <p>Imprimir líneas tal cual puede servir.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Más limpio</h3>
+        <p>Usar <code>strip()</code> puede mejorar mucho la salida.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Cómo pensar un trabajo con archivos antes de escribirlo</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Paso 1</h3>
+        <p>Define si vas a leer, escribir o añadir.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 2</h3>
+        <p>Comprueba que la ruta y el nombre tienen sentido.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 3</h3>
+        <p>Usa <code>with</code> para trabajar con más seguridad.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 4</h3>
+        <p>Piensa si necesitarás limpiar el texto al leerlo.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Piensa antes de ejecutar</h2>
+        <p class="exercise-subtitle">Antes de escribir el código, intenta prever qué problemas podrías evitar con mejores hábitos.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Situaciones</h3>
+        <ul>
+          <li>leer un archivo sin olvidar cerrarlo</li>
+          <li>evitar borrar un contenido importante</li>
+          <li>mostrar cada línea sin espacios laterales</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Preguntas</h3>
+        <ul>
+          <li>¿qué ventaja aporta <code>with</code>?</li>
+          <li>¿qué riesgo tiene <code>w</code>?</li>
+          <li>¿por qué puede ser útil <code>strip()</code>?</li>
+        </ul>
+
+        <div class="mini-note">
+          Pista: aquí lo importante es prevenir errores, no solo reaccionar a ellos.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
+        <p class="exercise-subtitle">Ahora toca leer un archivo línea a línea y mostrarlo de forma más limpia.</p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">9.4</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Enunciado</h3>
+        <p>
+          Escribe un ejemplo que abra un archivo en modo lectura con <code>with</code>,
+          recorra sus líneas e imprima cada una limpiándola con <code>strip()</code>.
+        </p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes practicar</h3>
+        <ul>
+          <li>usar el patrón más seguro</li>
+          <li>evitar una salida sucia al mostrar líneas</li>
+          <li>pensar en prevención, no solo en ejecución</li>
+        </ul>
+
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-9%2F04-buenas-practicas-y-errores.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Resumen mental del subtema</h2>
+        <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Ideas clave</h3>
+        <ul>
+          <li><code>with</code> es el patrón más recomendable</li>
+          <li>elegir mal el modo puede provocar problemas reales</li>
+          <li><code>strip()</code> ayuda a mostrar líneas de forma limpia</li>
+          <li>conviene anticipar errores antes de ejecutar</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Puente con el siguiente bloque</h3>
+        <div class="challenge">
+          Ya tienes la teoría importante. Ahora toca razonar mejor sobre archivos, comparar decisiones y practicar casos más completos.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Siguiente paso</h2>
+    <p>
+      Ya tienes la teoría importante. Ahora toca razonar y practicar archivos antes de pasar a los ejercicios finales.
+    </p>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./03-escribir-archivos.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
+    </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
+  </section>
+
+  <script src="../topic-completion.js"></script>
+<script>
+  const subtopicCompletion = initTopicCompletion({
+    topicId: "9.4",
+    nextUrl: "./05-mini-retos.html"
+  });
+
+  const miniRetoCompletion = initTopicCompletion({
+    topicId: "9.4.mini"
+  });
+
+  const completeBtn = document.getElementById("completeBtn");
+  const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+  const completionMessage = document.getElementById("completionMessage");
+
+  function showCompletionMessage(text) {
+    if (!completionMessage) return;
+    completionMessage.textContent = text;
+    completionMessage.style.display = "block";
+  }
+
+  function showCompletedState() {
+    if (!completeBtn) return;
+
+    completeBtn.style.display = "none";
+
+    if (!document.getElementById("completedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "completedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Subtema completado ✅";
+      completeBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  function showMiniCompletedState() {
+    if (!miniCompleteBtn) return;
+
+    miniCompleteBtn.style.display = "none";
+
+    if (!document.getElementById("miniCompletedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "miniCompletedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Mini-reto completado ✅";
+      miniCompleteBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  async function syncCompletionUI() {
+    try {
+      const subtopicDone = await subtopicCompletion.isCompleted();
+      const miniDone = await miniRetoCompletion.isCompleted();
+
+      if (subtopicDone) {
+        showCompletedState();
+      }
+
+      if (miniDone) {
+        showMiniCompletedState();
+      }
+
+      if (subtopicDone && miniDone) {
+        showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+      } else if (subtopicDone) {
+        showCompletionMessage("Este subtema ya estaba marcado como completado.");
+      } else if (miniDone) {
+        showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+      }
+    } catch (error) {
+      console.error("Error comprobando estado del subtema:", error);
+    }
+  }
+
+  if (completeBtn) {
+    completeBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
+
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
+
+        await subtopicCompletion.completeTopic();
+
+        showCompletedState();
+        showCompletionMessage("Has marcado este subtema como completado.");
+      } catch (error) {
+        console.error("Error al completar el subtema:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso.");
+      }
+    });
+  }
+
+  if (miniCompleteBtn) {
+    miniCompleteBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
+
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
+
+        await miniRetoCompletion.completeTopic();
+
+        showMiniCompletedState();
+        showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+      } catch (error) {
+        console.error("Error al completar el mini-reto:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+      }
+    });
+  }
+
+  syncCompletionUI();
+</script>
+
+</main>
+</body>
+</html>

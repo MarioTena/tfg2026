@@ -25,7 +25,7 @@
 <header class="header">
   <span class="mission-tag">Misión 7.4</span>
   <h1>Recorrer y analizar texto</h1>
-  <p>Aprende a aplicar bucles y lógica sobre strings para contar, buscar y procesar información útil.</p>
+  <p>Aprende a aplicar bucles y lógica sobre strings para contar, buscar, validar y procesar información útil.</p>
 
   <div class="progress-hero">
     <div class="progress-hero-top">
@@ -108,10 +108,39 @@
         </ul>
 
         <div class="challenge">
-          <strong>Piensa así:</strong><br />
-          analizar texto consiste en dividir un problema grande en pequeñas comprobaciones repetidas.
+          Piensa así: analizar texto consiste en dividir un problema grande en pequeñas comprobaciones repetidas.
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Dónde aparece recorrer y analizar texto en problemas reales</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Contadores</h3>
+        <p>Calcular cuántas veces aparece una letra o una palabra.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Búsqueda</h3>
+        <p>Comprobar si un texto contiene un patrón o carácter concreto.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Normalización</h3>
+        <p>Preparar el texto antes de compararlo o validarlo.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Procesamiento</h3>
+        <p>Recorrer carácter a carácter para analizar o transformar información.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      Recorrer y analizar texto aparece cuando necesitas dividir un problema textual en comprobaciones pequeñas y repetidas.
     </div>
   </section>
 
@@ -214,6 +243,75 @@ for palabra in palabras:
   </section>
 
   <section class="panel">
+    <h2>Carácter, palabra o subcadena: decide el nivel</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Carácter</h3>
+        <p>Cuando analizas letra a letra, como en conteos simples.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Palabra</h3>
+        <p>Cuando primero separas con <code>split()</code>.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Subcadena</h3>
+        <p>Cuando buscas grupos de caracteres como <code>"gra"</code> o <code>".csv"</code>.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Idea útil</h3>
+        <p>Antes de escribir, decide bien a qué nivel quieres trabajar el texto.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Método o bucle: ¿qué conviene?</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Método</h3>
+        <p>Cuando Python ya tiene una herramienta clara para esa tarea, como <code>split()</code> o <code>count()</code>.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Bucle</h3>
+        <p>Cuando necesitas una lógica más personalizada o varias comprobaciones a la vez.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Criterio</h3>
+        <p>No siempre hay una única forma correcta, pero sí una más cómoda o más clara.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Pregunta útil</h3>
+        <p>¿Ya existe un método que haga esto, o necesito controlar el proceso paso a paso?</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Casos reales de análisis</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Contar</h3>
+        <p>Cuántas vocales hay en una frase.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Validar</h3>
+        <p>Si un archivo termina en <code>.csv</code>.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Buscar</h3>
+        <p>Si una palabra o fragmento aparece en el texto.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Separar</h3>
+        <p>Cuántas palabras contiene una frase.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
     <h2>Cómo pensar un análisis de texto antes de escribirlo</h2>
 
     <div class="theory-grid">
@@ -261,12 +359,9 @@ print(contador)</code></pre>
         <h3>Preguntas</h3>
         <ul>
           <li>¿cuántas veces aparece la letra <code>a</code>?</li>
-          <li>¿qué ocurriría si el texto fuera <code>"Casa"</code>?</li>
+          <li>¿en qué iteraciones cambia el contador?</li>
+          <li>¿qué pasaría si normalizaras el texto antes?</li>
         </ul>
-
-        <div class="mini-note">
-          Pista: mayúsculas y minúsculas no son lo mismo si no normalizas antes.
-        </div>
       </div>
     </div>
   </section>
@@ -274,96 +369,65 @@ print(contador)</code></pre>
   <section id="reto" class="exercise-card">
     <div class="exercise-header">
       <div>
-        <h2 class="exercise-title">Mini-reto guiado</h2>
-        <p class="exercise-subtitle">Ahora toca combinar texto, recorrido y contador en un caso práctico.</p>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
+        <p class="exercise-subtitle">Ahora toca combinar texto, normalización y recorrido con intención.</p>
       </div>
 
       <div class="badges">
-        <span class="badge blue">Reto</span>
-        <span class="badge green">Muy fácil</span>
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">7.4</span>
       </div>
     </div>
 
     <div class="exercise-body">
       <div class="exercise-block">
-        <h3>Tu misión</h3>
+        <h3>Enunciado</h3>
         <p>
-          Cuenta cuántas letras <code>e</code> hay en una frase.
+          Crea una frase con mayúsculas y minúsculas mezcladas.
+          Después normalízala a minúsculas y cuenta cuántas veces aparece la letra <code>a</code>.
         </p>
-
-        <div class="exercise-actions">
-          <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Resolver en playground</a>
-          <button class="btn btn-secondary btn-sm" type="button" onclick="document.getElementById('solucion-reto').open = true;">
-            Ver solución
-          </button>
-        </div>
       </div>
 
       <div class="exercise-block">
-        <h3>Pista</h3>
-        <p>
-          Conviene pasar la frase a minúsculas antes de recorrerla si no quieres diferenciar entre <code>E</code> y <code>e</code>.
-        </p>
+        <h3>Qué debes practicar</h3>
+        <ul>
+          <li>normalizar antes de analizar</li>
+          <li>recorrer carácter a carácter</li>
+          <li>usar un contador correctamente</li>
+        </ul>
 
-        <details id="solucion-reto" class="theory-dropdown">
-          <summary>Mostrar solución</summary>
-          <div class="theory-dropdown-content">
-            <pre><code>frase = "Este tema es interesante"
-contador = 0
-
-for letra in frase.lower():
-    if letra == "e":
-        contador = contador + 1
-
-print(contador)</code></pre>
-          </div>
-        </details>
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-7%2F04-recorrer-y-analizar-texto.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="panel">
-    <h2>Errores frecuentes</h2>
-
-    <div class="theory-grid">
-      <div class="theory-card">
-        <h3>Error 1</h3>
-        <p>No normalizar mayúsculas y minúsculas antes de comparar.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Error 2</h3>
-        <p>Confundir contar caracteres con contar palabras.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Error 3</h3>
-        <p>Usar índices cuando no hacen falta.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Error 4</h3>
-        <p>Olvidar inicializar el contador antes del bucle.</p>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Resumen mental del subtema</h2>
+        <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
       </div>
     </div>
-  </section>
 
-  <section class="panel">
-    <h2>Buenas prácticas</h2>
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Ideas clave</h3>
+        <ul>
+          <li>puedes recorrer un string carácter a carácter</li>
+          <li>antes de analizar, a veces conviene normalizar el texto</li>
+          <li>no siempre trabajas al mismo nivel: a veces son caracteres, a veces palabras</li>
+          <li>a veces conviene un método y otras un bucle</li>
+        </ul>
+      </div>
 
-    <div class="theory-grid">
-      <div class="theory-card">
-        <h3>Normaliza antes</h3>
-        <p>Facilita comparaciones más limpias.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Cuenta con claridad</h3>
-        <p>Usa contadores con nombres que expliquen qué estás midiendo.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Elige bien el nivel</h3>
-        <p>Decide si trabajas por carácter o por palabra.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Hazlo simple</h3>
-        <p>Un bucle claro con una sola condición suele ser mejor para empezar.</p>
+      <div class="exercise-block">
+        <h3>Puente con el siguiente bloque</h3>
+        <div class="challenge">
+          Ya dominas bastante la teoría. Ahora toca razonar mejor sobre strings, detectar errores y elegir la herramienta adecuada.
+        </div>
       </div>
     </div>
   </section>
@@ -371,87 +435,137 @@ print(contador)</code></pre>
   <section class="panel">
     <h2>Siguiente paso</h2>
     <p>
-      Ya sabes recorrer y analizar texto. El siguiente bloque del tema puede centrarse en retos integradores para consolidar todo lo aprendido con strings.
+      Ya dominas bastante la teoría. Ahora toca razonar mejor sobre strings antes de pasar a los ejercicios finales.
     </p>
 
     <div class="buttons-row">
       <a class="btn btn-secondary" href="./03-metodos-de-strings.html">Anterior</a>
       <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
       <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-      <button class="btn btn-primary" onclick="completeTopic('7.4')">Marcar como completado</button>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
     </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
   </section>
 
-  <script>
-const TOPIC_ID = "7.4";
-const NEXT_URL = "./05-mini-retos.html";
+<script src="../topic-completion.js"></script>
+<script>
+  const subtopicCompletion = initTopicCompletion({
+    topicId: "7.4",
+    nextUrl: "./05-mini-retos.html"
+  });
 
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+  const miniRetoCompletion = initTopicCompletion({
+    topicId: "7.4.mini"
+  });
 
-const nextBtn = document.getElementById("nextBtn");
+  const completeBtn = document.getElementById("completeBtn");
+  const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+  const completionMessage = document.getElementById("completionMessage");
 
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
+  function showCompletionMessage(text) {
+    if (!completionMessage) return;
+    completionMessage.textContent = text;
+    completionMessage.style.display = "block";
+  }
 
-    if (!token || !nextBtn) return;
+  function showCompletedState() {
+    if (!completeBtn) return;
 
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
+    completeBtn.style.display = "none";
+
+    if (!document.getElementById("completedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "completedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Subtema completado ✅";
+      completeBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  function showMiniCompletedState() {
+    if (!miniCompleteBtn) return;
+
+    miniCompleteBtn.style.display = "none";
+
+    if (!document.getElementById("miniCompletedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "miniCompletedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Mini-reto completado ✅";
+      miniCompleteBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  async function syncCompletionUI() {
+    try {
+      const subtopicDone = await subtopicCompletion.isCompleted();
+      const miniDone = await miniRetoCompletion.isCompleted();
+
+      if (subtopicDone) {
+        showCompletedState();
+      }
+
+      if (miniDone) {
+        showMiniCompletedState();
+      }
+
+      if (subtopicDone && miniDone) {
+        showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+      } else if (subtopicDone) {
+        showCompletionMessage("Este subtema ya estaba marcado como completado.");
+      } else if (miniDone) {
+        showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+      }
+    } catch (error) {
+      console.error("Error comprobando estado del subtema:", error);
+    }
+  }
+
+  if (completeBtn) {
+    completeBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
+
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
+
+        await subtopicCompletion.completeTopic();
+
+        showCompletedState();
+        showCompletionMessage("Has marcado este subtema como completado.");
+      } catch (error) {
+        console.error("Error al completar el subtema:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso.");
       }
     });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
   }
-}
 
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
+  if (miniCompleteBtn) {
+    miniCompleteBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
 
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
-    }
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
 
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
+        await miniRetoCompletion.completeTopic();
+
+        showMiniCompletedState();
+        showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+      } catch (error) {
+        console.error("Error al completar el mini-reto:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+      }
     });
-
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
-    }
-
-    alert("Tema completado 🎉");
-
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
   }
-}
 
-unlockNextIfCompleted();
+  syncCompletionUI();
 </script>
 
 </main>

@@ -95,14 +95,29 @@
       </div>
     </section>
 
-    <div class="editor-shell">
-      <div class="editor-toolbar">
-        <h3 id="editor-title">Editor de código</h3>
-        <span class="editor-meta" id="editor-meta">Python · Modo práctica</span>
-      </div>
+<div class="editor-shell">
+  <div class="editor-toolbar">
+    <h3 id="editor-title">Editor de código</h3>
+    <span class="editor-meta" id="editor-meta">Python · Modo práctica</span>
+  </div>
 
-      <textarea id="code">print("Hola desde el playground")</textarea>
-    </div>
+  <textarea id="code">print("Hola desde el playground")</textarea>
+</div>
+
+<div class="field" style="margin-top: 12px;">
+  <label for="stdin">Entrada del programa</label>
+  <textarea
+    id="stdin"
+    rows="5"
+    placeholder="Escribe aquí lo que introducirías por consola.&#10;Cada línea equivale a una llamada a input().&#10;&#10;Ejemplo:&#10;7&#10;Ana"
+    style="width: 100%; resize: vertical;"
+  ></textarea>
+  <p class="mini-note" style="margin-top: 8px;">
+    Cada línea se enviará como entrada estándar del programa.
+  </p>
+</div>
+
+<div class="playground-actions">
 
     <div class="playground-actions">
       <button id="run-btn" class="btn btn-primary" type="button">Ejecutar código</button>
@@ -136,6 +151,12 @@
       </div>
     </div>
 
+    <div class="output-block">
+      <h3>Consola</h3>
+      <pre id="console-output"></pre>
+    </div>
+
+    
     <div class="output-block">
       <h3>stdout</h3>
       <pre id="stdout"></pre>
@@ -178,6 +199,8 @@
 <script src="../exercises/python-tema8.catalog.js"></script>
 <script src="../exercises/python-tema9.catalog.js"></script>
 <script src="../exercises/python-tema10.catalog.js"></script>
+<script src="../exercises/python-proyectos.catalog.js"></script>
+<script src="../exercises/python-retos.catalog.js"></script>
 
 <script src="../app.js"></script>
 </body>

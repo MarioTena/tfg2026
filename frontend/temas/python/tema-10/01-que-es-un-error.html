@@ -25,7 +25,7 @@
 <header class="header">
   <span class="mission-tag">Misión 10.1</span>
   <h1>Qué es un error</h1>
-  <p>Aprende a entender por qué fallan los programas y por qué detectar bien el tipo de error es una habilidad fundamental.</p>
+  <p>Aprende a entender por qué fallan los programas y por qué detectar bien el tipo de problema es una habilidad fundamental.</p>
 
   <div class="progress-hero">
     <div class="progress-hero-top">
@@ -70,9 +70,8 @@
       <div class="exercise-block">
         <h3>Qué problema resuelve</h3>
         <p>
-          Hasta ahora has trabajado sobre todo en situaciones donde el programa funcionaba bien.
-          Pero en la práctica real también hay conversiones inválidas, archivos que no existen,
-          índices incorrectos o reglas mal planteadas.
+          Hasta ahora has trabajado muchas veces en condiciones normales. Pero en la práctica real
+          también hay conversiones inválidas, archivos que no existen, divisiones imposibles o reglas mal planteadas.
         </p>
 
         <div class="theory-grid">
@@ -85,34 +84,63 @@
             <p>El programa puede intentar abrir algo que no existe.</p>
           </div>
           <div class="theory-card">
-            <h3>Índices erróneos</h3>
+            <h3>Índices incorrectos</h3>
             <p>Puedes intentar acceder a una posición que no existe.</p>
           </div>
           <div class="theory-card">
-            <h3>Lógica incorrecta</h3>
+            <h3>Lógica errónea</h3>
             <p>El programa puede funcionar, pero devolver un resultado mal planteado.</p>
           </div>
         </div>
 
         <div class="callout">
-          Idea clave: no todos los errores son iguales. Entender su tipo cambia completamente la forma de corregirlos.
+          Idea clave: no todos los fallos son iguales. Entender su tipo cambia la forma de corregirlos.
         </div>
       </div>
 
       <div class="exercise-block">
         <h3>Qué debes vigilar</h3>
         <ul>
-          <li>no todos los fallos son errores de sintaxis</li>
+          <li>no todos los fallos son de sintaxis</li>
           <li>algunos aparecen al ejecutar, no al escribir</li>
           <li>otros no rompen el programa, pero producen resultados incorrectos</li>
-          <li>leer bien el tipo de error ayuda mucho más que asustarse</li>
+          <li>leer bien el mensaje de error ayuda mucho más que asustarse</li>
         </ul>
 
         <div class="challenge">
-          <strong>Piensa así:</strong><br />
-          un mensaje de error no es un ataque: es información útil que te ayuda a localizar el problema.
+          Piensa así: un mensaje de error no es un ataque, es información útil para localizar el problema.
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Dónde aparecen los errores en problemas reales</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Entradas inválidas</h3>
+        <p>Un usuario puede escribir algo distinto de lo esperado.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Archivos ausentes</h3>
+        <p>El programa puede intentar abrir algo que no existe.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Índices o claves incorrectas</h3>
+        <p>Puedes intentar acceder a datos que no están disponibles.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Lógica mal planteada</h3>
+        <p>El programa puede ejecutarse, pero producir un resultado incorrecto.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      Los errores aparecen en problemas reales porque los datos, las condiciones y el entorno no siempre son perfectos.
     </div>
   </section>
 
@@ -124,7 +152,7 @@
     </p>
 
     <div class="callout">
-      Un programador principiante intenta que nunca haya errores. Un programador sólido asume que algunos errores ocurrirán y diseña cómo responder a ellos.
+      Un principiante intenta que nunca haya errores. Un programador más sólido asume que algunos fallos ocurrirán y aprende a interpretarlos y gestionarlos.
     </div>
   </section>
 
@@ -136,8 +164,20 @@
     </p>
 
     <p>
-      Puede deberse a código incorrecto, datos no válidos, archivos ausentes o conversiones imposibles.
+      Puede deberse a código incorrecto, datos no válidos, archivos ausentes o lógica mal planteada.
     </p>
+  </section>
+
+  <section class="panel">
+    <h2>Error general y excepción</h2>
+    <p>
+      En este tema hablarás mucho de <strong>excepciones</strong>.
+      Una excepción es un tipo de error que aparece durante la ejecución del programa y que Python puede señalar con un nombre concreto, como <code>ValueError</code> o <code>FileNotFoundError</code>.
+    </p>
+
+    <div class="callout">
+      Regla mental útil: “error” es la idea general; “excepción” es el problema concreto que Python detecta mientras ejecuta el programa.
+    </div>
   </section>
 
   <section class="panel">
@@ -195,7 +235,30 @@ print(final)</code></pre>
   </section>
 
   <section class="panel">
-    <h2>Algunos errores muy comunes en Python</h2>
+    <h2>Error del programador frente a datos externos</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Error del programador</h3>
+        <p>Una variable mal escrita o una sintaxis incorrecta.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Dato externo problemático</h3>
+        <p>El usuario escribe algo inválido o el archivo no existe.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error lógico</h3>
+        <p>La fórmula o la decisión están mal pensadas.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Importancia</h3>
+        <p>No todos se resuelven igual: a veces corriges código y otras controlas entradas.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Algunas excepciones muy comunes en Python</h2>
 
     <div class="theory-grid">
       <div class="theory-card">
@@ -222,18 +285,26 @@ print(final)</code></pre>
         <h3><code>FileNotFoundError</code></h3>
         <p>El archivo que intentas abrir no existe.</p>
       </div>
+      <div class="theory-card">
+        <h3><code>ZeroDivisionError</code></h3>
+        <p>Intentas dividir entre cero.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Idea útil</h3>
+        <p>El nombre de la excepción ya te da una pista fuerte sobre el problema.</p>
+      </div>
     </div>
   </section>
 
   <section class="panel">
-    <h2>Qué significa gestionar errores</h2>
+    <h2>Gestionar errores no es lo mismo que ignorarlos</h2>
     <p>
       Gestionar errores significa detectar situaciones problemáticas y responder de forma controlada,
       en lugar de dejar que el programa se rompa sin más.
     </p>
 
     <div class="callout">
-      La gestión de errores no elimina todos los problemas, pero evita que el programa reaccione de forma brusca o confusa.
+      La gestión de errores no elimina todos los problemas, pero evita respuestas bruscas, confusas o poco útiles.
     </div>
   </section>
 
@@ -255,7 +326,7 @@ print(final)</code></pre>
       </div>
       <div class="theory-card">
         <h3>Paso 4</h3>
-        <p>Piensa si el fallo es técnico o lógico.</p>
+        <p>Piensa si el fallo es técnico, de entrada o lógico.</p>
       </div>
     </div>
   </section>
@@ -278,12 +349,12 @@ print(final)</code></pre>
         <h3>Preguntas</h3>
         <ul>
           <li>¿funcionará?</li>
-          <li>¿qué tipo de error provocará?</li>
-          <li>¿por qué no puede hacerse esa conversión?</li>
+          <li>¿qué tipo de problema provoca?</li>
+          <li>¿por qué esa conversión no puede hacerse?</li>
         </ul>
 
         <div class="mini-note">
-          Pista: el problema no está en la sintaxis, sino en el valor usado.
+          Pista: aquí el programa sí arranca, pero falla al ejecutar una conversión concreta.
         </div>
       </div>
     </div>
@@ -292,86 +363,69 @@ print(final)</code></pre>
   <section id="reto" class="exercise-card">
     <div class="exercise-header">
       <div>
-        <h2 class="exercise-title">Mini-reto guiado</h2>
-        <p class="exercise-subtitle">Ahora toca distinguir correctamente varios tipos de fallo.</p>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
+        <p class="exercise-subtitle">Empieza a clasificar fallos antes de intentar controlarlos.</p>
       </div>
 
       <div class="badges">
-        <span class="badge blue">Reto</span>
-        <span class="badge green">Muy fácil</span>
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">10.1</span>
       </div>
     </div>
 
     <div class="exercise-body">
       <div class="exercise-block">
-        <h3>Tu misión</h3>
+        <h3>Enunciado</h3>
         <p>
-          Clasifica estos casos como error de sintaxis, tiempo de ejecución o lógico:
+          Escribe en comentarios tres ejemplos:
         </p>
         <ul>
-          <li>usar una variable que no existe</li>
-          <li>olvidar un paréntesis</li>
-          <li>calcular mal una fórmula aunque el programa corra</li>
+          <li>un error de sintaxis</li>
+          <li>un error en tiempo de ejecución</li>
+          <li>un error lógico</li>
         </ul>
       </div>
 
       <div class="exercise-block">
-        <h3>Solución razonada</h3>
+        <h3>Qué debes practicar</h3>
         <ul>
-          <li><strong>usar una variable que no existe</strong> → error en tiempo de ejecución</li>
-          <li><strong>olvidar un paréntesis</strong> → error de sintaxis</li>
-          <li><strong>calcular mal una fórmula aunque el programa corra</strong> → error lógico</li>
+          <li>distinguir tipos de fallos</li>
+          <li>leer un error como información útil</li>
+          <li>entender que no todos los problemas se resuelven igual</li>
         </ul>
 
-        <div class="callout">
-          Clasificar bien el fallo te ahorra mucho tiempo al corregirlo.
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-10%2F01-que-es-un-error.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="panel">
-    <h2>Errores frecuentes al aprender</h2>
-
-    <div class="theory-grid">
-      <div class="theory-card">
-        <h3>Error 1</h3>
-        <p>Asustarse al ver el mensaje de error.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Error 2</h3>
-        <p>No leer el tipo de excepción.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Error 3</h3>
-        <p>Tratar todos los errores como si fueran iguales.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Error 4</h3>
-        <p>Pensar que si el programa falla “Python va mal”.</p>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Resumen mental del subtema</h2>
+        <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
       </div>
     </div>
-  </section>
 
-  <section class="panel">
-    <h2>Buenas prácticas</h2>
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Ideas clave</h3>
+        <ul>
+          <li>un error no siempre es del mismo tipo</li>
+          <li>una excepción es un fallo concreto que aparece durante la ejecución</li>
+          <li>el nombre de la excepción ayuda a diagnosticar</li>
+          <li>gestionar errores no significa ignorarlos</li>
+        </ul>
+      </div>
 
-    <div class="theory-grid">
-      <div class="theory-card">
-        <h3>Lee el error</h3>
-        <p>El mensaje ya te da mucha información.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Diferencia tipos</h3>
-        <p>No se corrige igual una sintaxis rota que una lógica mal planteada.</p>
-      </div>
-      <div class="theory-card">
-        <h3>No improvises</h3>
-        <p>Entiende primero el fallo y luego cambia el código.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Piensa en causas</h3>
-        <p>No te quedes solo con el síntoma visible.</p>
+      <div class="exercise-block">
+        <h3>Puente con el siguiente bloque</h3>
+        <div class="challenge">
+          Ya entiendes qué es fallar. Ahora toca aprender a capturar errores previsibles con <code>try</code> y <code>except</code>.
+        </div>
       </div>
     </div>
   </section>
@@ -379,88 +433,137 @@ print(final)</code></pre>
   <section class="panel">
     <h2>Siguiente paso</h2>
     <p>
-      Ya sabes distinguir tipos de errores. Lo siguiente es aprender a controlarlos con <code>try</code> y <code>except</code>.
+      Ya entiendes qué es un error. Lo siguiente es aprender a reaccionar mejor cuando una excepción aparece durante la ejecución.
     </p>
 
     <div class="buttons-row">
-      <a class="btn btn-secondary" href="./index.html">Índice tema</a>
       <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
       <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-      <button class="btn btn-primary" onclick="completeTopic('10.1')">Marcar como completado</button>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
     </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
   </section>
 
+  <script src="../topic-completion.js"></script>
   <script>
-const TOPIC_ID = "10.1";
-const NEXT_URL = "./02-try-except.html";
+    const subtopicCompletion = initTopicCompletion({
+      topicId: "10.1",
+      nextUrl: "./02-try-except.html"
+    });
 
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+    const miniRetoCompletion = initTopicCompletion({
+      topicId: "10.1.mini"
+    });
 
-const nextBtn = document.getElementById("nextBtn");
+    const completeBtn = document.getElementById("completeBtn");
+    const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+    const completionMessage = document.getElementById("completionMessage");
 
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
+    function showCompletionMessage(text) {
+      if (!completionMessage) return;
+      completionMessage.textContent = text;
+      completionMessage.style.display = "block";
+    }
 
-    if (!token || !nextBtn) return;
+    function showCompletedState() {
+      if (!completeBtn) return;
 
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
+      completeBtn.style.display = "none";
+
+      if (!document.getElementById("completedBadge")) {
+        const badge = document.createElement("span");
+        badge.id = "completedBadge";
+        badge.className = "btn btn-secondary";
+        badge.textContent = "Subtema completado ✅";
+        completeBtn.parentNode.appendChild(badge);
       }
-    });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
-  }
-}
-
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
     }
 
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
-    });
+    function showMiniCompletedState() {
+      if (!miniCompleteBtn) return;
 
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
+      miniCompleteBtn.style.display = "none";
+
+      if (!document.getElementById("miniCompletedBadge")) {
+        const badge = document.createElement("span");
+        badge.id = "miniCompletedBadge";
+        badge.className = "btn btn-secondary";
+        badge.textContent = "Mini-reto completado ✅";
+        miniCompleteBtn.parentNode.appendChild(badge);
+      }
     }
 
-    alert("Tema completado 🎉");
+    async function syncCompletionUI() {
+      try {
+        const subtopicDone = await subtopicCompletion.isCompleted();
+        const miniDone = await miniRetoCompletion.isCompleted();
 
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
+        if (subtopicDone) {
+          showCompletedState();
+        }
+
+        if (miniDone) {
+          showMiniCompletedState();
+        }
+
+        if (subtopicDone && miniDone) {
+          showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+        } else if (subtopicDone) {
+          showCompletionMessage("Este subtema ya estaba marcado como completado.");
+        } else if (miniDone) {
+          showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+        }
+      } catch (error) {
+        console.error("Error comprobando estado del subtema:", error);
+      }
     }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
-  }
-}
 
-unlockNextIfCompleted();
-</script>
+    if (completeBtn) {
+      completeBtn.addEventListener("click", async (e) => {
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
+
+        try {
+          btn.disabled = true;
+          btn.textContent = "Guardando...";
+
+          await subtopicCompletion.completeTopic();
+
+          showCompletedState();
+          showCompletionMessage("Has marcado este subtema como completado.");
+        } catch (error) {
+          console.error("Error al completar el subtema:", error);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          showCompletionMessage(error.message || "No se pudo guardar el progreso.");
+        }
+      });
+    }
+
+    if (miniCompleteBtn) {
+      miniCompleteBtn.addEventListener("click", async (e) => {
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
+
+        try {
+          btn.disabled = true;
+          btn.textContent = "Guardando...";
+
+          await miniRetoCompletion.completeTopic();
+
+          showMiniCompletedState();
+          showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+        } catch (error) {
+          console.error("Error al completar el mini-reto:", error);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+        }
+      });
+    }
+
+    syncCompletionUI();
+  </script>
 
 </main>
 </body>

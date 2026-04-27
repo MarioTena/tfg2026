@@ -12,7 +12,6 @@ const mongoose = require("mongoose"); //conexion mongodb
 
 const Attempt = require("./models/Attempt"); //guardar intentos
 const { runCodeInDocker } = require("./utils/dockerRunner"); //ejecutar codigo en Docker
-const { generateFeedbackForAttempt } = require("./services/aiFeedback"); //feedback IA
 const authRoutes = require("./routes/authRoutes"); //rutas de registro/login
 const { requireAuth } = require("./middleware/requireAuth"); //middleware para proteger endpoints
 const progressRoutes = require("./routes/progressRoutes");
@@ -167,7 +166,7 @@ app.get("/api/attempts", requireAuth, async (req, res) => {
 // ============================================================================
 app.post("/api/run", requireAuth, async (req, res) => {
   try {
-    const { language, code, exerciseId } = req.body || {};
+    const { language, code, stdin = "", exerciseId, topic } = req.body || {};
 
     if (!language || !code) {
       return res.status(400).json({
@@ -184,40 +183,27 @@ app.post("/api/run", requireAuth, async (req, res) => {
       });
     }
 
-    // 1) Ejecutar código
-    const result = await runCodeInDocker(language, code);
+    const result = await runCodeInDocker(language, code, stdin);
 
-    // 2) Crear intento asociado al usuario del token
     const attempt = new Attempt({
       userId: req.user.id,
       language,
+      topic: topic || null,
+      exerciseId: exerciseId || null,
       code,
+      stdin: stdin || "",
       stdout: result.stdout,
       stderr: result.stderr,
       status: result.status,
       timeMs: result.timeMs,
     });
 
-    // 3) Generar feedback automático (de momento lo de chatgpt, luego sera un botón que se conectará a una ia)
-    const feedback = await generateFeedbackForAttempt(attempt, { exerciseId });
-
-    // 4) Guardar feedback dentro del intento
-    attempt.aiFeedback = {
-      message: feedback.message,
-      level: feedback.level,
-      createdAt: new Date(),
-      exerciseId: exerciseId || null,
-    };
-
-    // 5) Guardar en Mongo
     const saved = await attempt.save();
 
-    // 6) Responder
     return res.json({
       ok: true,
       run: result,
       attemptId: saved._id,
-      feedback,
     });
   } catch (e) {
     console.error("❌ Error en /api/run:", e);
@@ -228,7 +214,6 @@ app.post("/api/run", requireAuth, async (req, res) => {
     });
   }
 });
-
 
 // ============================================================================
 // Arranque del servidor

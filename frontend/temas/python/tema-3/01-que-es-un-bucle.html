@@ -40,7 +40,7 @@
     </div>
 
     <div class="progress-track">
-      <div class="progress-fill" style="width: 20%;"></div>
+      <div class="progress-fill" style="width: 16%;"></div>
     </div>
   </div>
 
@@ -71,8 +71,8 @@
       <div class="exercise-block">
         <h3>Qué problema resuelve</h3>
         <p>
-          Sin bucles, tendrías que copiar muchas veces la misma instrucción.
-          Con un bucle, escribes la lógica una sola vez y dejas que Python la repita.
+          Sin bucles, tendrías que copiar muchas veces la misma instrucción. Con un bucle,
+          escribes la lógica una sola vez y dejas que Python la repita.
         </p>
 
         <div class="theory-grid">
@@ -109,8 +109,7 @@
         </ul>
 
         <div class="challenge">
-          <strong>Piensa así:</strong><br />
-          si no sabes cuándo empieza y cuándo termina un bucle, todavía no lo has entendido bien.
+          Si no sabes cuándo empieza y cuándo termina un bucle, todavía no lo has entendido bien.
         </div>
       </div>
     </div>
@@ -148,7 +147,7 @@ print(5)</code></pre>
       </div>
       <div class="theory-card">
         <h3>Pregunta 2</h3>
-        <p>¿Cuándo debe seguir repitiéndose?</p>
+        <p>¿Qué cambia en cada iteración?</p>
       </div>
       <div class="theory-card">
         <h3>Pregunta 3</h3>
@@ -234,16 +233,14 @@ print(5)</code></pre>
     </div>
 
     <div class="callout">
-      Más adelante verás que ambos pueden resolver algunos problemas parecidos, pero no siempre con la misma claridad.
+      Ambos repiten, pero no piensan igual: <code>for</code> recorre; <code>while</code> continúa mientras una condición siga viva.
     </div>
   </section>
 
   <section class="panel">
     <h2>Qué significa iteración</h2>
 
-    <p>
-      Cada vuelta de un bucle se llama <strong>iteración</strong>.
-    </p>
+    <p>Cada vuelta de un bucle se llama <strong>iteración</strong>.</p>
 
     <pre><code>for numero in range(3):
     print("Iteración")
@@ -257,9 +254,7 @@ print(5)</code></pre>
   <section class="panel">
     <h2>Qué suele cambiar en cada iteración</h2>
 
-    <p>
-      En muchos bucles hay una variable que va cambiando y guía el proceso.
-    </p>
+    <p>En muchos bucles hay una variable que va cambiando y guía el proceso.</p>
 
     <pre><code>for letra in "sol":
     print(letra)</code></pre>
@@ -270,58 +265,24 @@ print(5)</code></pre>
   </section>
 
   <section class="panel">
-    <h2>Cómo pensar un bucle antes de escribirlo</h2>
+    <h2>Patrones mentales que verás en este tema</h2>
 
     <div class="theory-grid">
       <div class="theory-card">
-        <h3>Paso 1</h3>
-        <p>Define qué bloque quieres repetir.</p>
+        <h3>Contar</h3>
+        <p>Mostrar una secuencia de números.</p>
       </div>
       <div class="theory-card">
-        <h3>Paso 2</h3>
-        <p>Decide qué cambia en cada vuelta.</p>
+        <h3>Recorrer</h3>
+        <p>Pasar por letras, números o elementos uno a uno.</p>
       </div>
       <div class="theory-card">
-        <h3>Paso 3</h3>
-        <p>Piensa cuándo debe terminar.</p>
+        <h3>Acumular</h3>
+        <p>Ir construyendo una suma, un total o un contador.</p>
       </div>
       <div class="theory-card">
-        <h3>Paso 4</h3>
-        <p>Prueba con pocos casos antes de ampliarlo.</p>
-      </div>
-    </div>
-
-    <div class="challenge">
-      Muchos errores con bucles no vienen de la sintaxis, sino de no haber pensado bien la repetición antes.
-    </div>
-  </section>
-
-  <section class="exercise-card">
-    <div class="exercise-header">
-      <div>
-        <h2 class="exercise-title">Piensa antes de ejecutar</h2>
-        <p class="exercise-subtitle">Antes de lanzar el código, intenta visualizar las vueltas del bucle.</p>
-      </div>
-    </div>
-
-    <div class="exercise-body">
-      <div class="exercise-block">
-        <h3>Código</h3>
-        <pre><code>for numero in range(4):
-    print(numero)</code></pre>
-      </div>
-
-      <div class="exercise-block">
-        <h3>Preguntas</h3>
-        <ul>
-          <li>¿qué valor toma <code>numero</code> en la primera vuelta?</li>
-          <li>¿qué valor toma en la última?</li>
-          <li>¿cuántas líneas se imprimen?</li>
-        </ul>
-
-        <div class="mini-note">
-          Si puedes imaginar el recorrido antes de ejecutarlo, estás entendiendo el bucle.
-        </div>
+        <h3>Validar</h3>
+        <p>Repetir hasta obtener una condición correcta.</p>
       </div>
     </div>
   </section>
@@ -329,89 +290,64 @@ print(5)</code></pre>
   <section id="reto" class="exercise-card">
     <div class="exercise-header">
       <div>
-        <h2 class="exercise-title">Mini-reto guiado</h2>
-        <p class="exercise-subtitle">Haz tu primera repetición controlada.</p>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
+        <p class="exercise-subtitle">Empieza a pensar en repetición con un ejemplo muy simple.</p>
       </div>
+
       <div class="badges">
-        <span class="badge blue">Reto</span>
-        <span class="badge green">Muy fácil</span>
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">3.1</span>
       </div>
     </div>
 
     <div class="exercise-body">
       <div class="exercise-block">
-        <h3>Tu misión</h3>
+        <h3>Enunciado</h3>
         <p>
-          Escribe un bucle que muestre los números del 1 al 5.
+          Usa un bucle para imprimir la palabra <code>"Hola"</code> tres veces.
         </p>
-
-        <div class="exercise-actions">
-          <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Resolver en playground</a>
-          <button class="btn btn-secondary btn-sm" type="button" onclick="document.getElementById('solucion-reto').open = true;">
-            Ver solución
-          </button>
-        </div>
       </div>
 
       <div class="exercise-block">
-        <h3>Pista</h3>
-        <p>
-          Usa <code>range()</code> y recuerda que el límite superior no se incluye.
-        </p>
+        <h3>Qué debes practicar</h3>
+        <ul>
+          <li>identificar qué se repite</li>
+          <li>usar un bucle sencillo</li>
+          <li>evitar copiar la misma línea varias veces</li>
+        </ul>
 
-        <details id="solucion-reto" class="theory-dropdown">
-          <summary>Mostrar solución</summary>
-          <div class="theory-dropdown-content">
-            <pre><code>for numero in range(1, 6):
-    print(numero)</code></pre>
-          </div>
-        </details>
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-3%2F01-que-es-un-bucle.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="panel">
-    <h2>Errores frecuentes</h2>
-
-    <div class="theory-grid">
-      <div class="theory-card">
-        <h3>Error 1</h3>
-        <p>Pensar que el bucle “se ejecuta entero de una vez”.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Error 2</h3>
-        <p>No distinguir entre el bloque repetido y el código que queda fuera.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Error 3</h3>
-        <p>No entender qué variable cambia en cada iteración.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Error 4</h3>
-        <p>No prever cuándo termina el bucle.</p>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Resumen mental del subtema</h2>
+        <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
       </div>
     </div>
-  </section>
 
-  <section class="panel">
-    <h2>Buenas prácticas</h2>
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Ideas clave</h3>
+        <ul>
+          <li>un bucle repite una lógica, no una ocurrencia aislada</li>
+          <li>cada vuelta es una iteración</li>
+          <li>siempre debes saber qué cambia y cuándo acaba</li>
+          <li><code>for</code> y <code>while</code> repiten, pero no se piensan igual</li>
+        </ul>
+      </div>
 
-    <div class="theory-grid">
-      <div class="theory-card">
-        <h3>Nombres claros</h3>
-        <p>Usa variables como <code>numero</code> o <code>letra</code> si describen bien el recorrido.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Bloque simple</h3>
-        <p>No compliques demasiado la lógica interna al principio.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Inicio y final</h3>
-        <p>Piensa siempre cómo empieza y cómo acaba la repetición.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Pruebas pequeñas</h3>
-        <p>Prueba primero con secuencias cortas antes de hacer algo más grande.</p>
+      <div class="exercise-block">
+        <h3>Puente con el siguiente bloque</h3>
+        <div class="challenge">
+          Ahora que ya entiendes qué es repetir en programación, toca aprender el primer tipo de bucle en detalle: <code>for</code>.
+        </div>
       </div>
     </div>
   </section>
@@ -419,87 +355,136 @@ print(5)</code></pre>
   <section class="panel">
     <h2>Siguiente paso</h2>
     <p>
-      Ya entiendes qué hace un bucle. Lo siguiente es aprender a usar bien el <code>for</code>.
+      Ya entiendes la idea general de bucle. Lo siguiente es usar <code>for</code> para recorrer secuencias y contar con precisión.
     </p>
 
     <div class="buttons-row">
-      <a class="btn btn-secondary" href="./index.html">Índice tema</a>
       <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
       <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-      <button class="btn btn-primary" onclick="completeTopic('3.1')">Marcar como completado</button>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
     </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
   </section>
 
+  <script src="../topic-completion.js"></script>
   <script>
-    const TOPIC_ID = "3.1";
-    const NEXT_URL = "./02-for.html";
+    const subtopicCompletion = initTopicCompletion({
+      topicId: "3.1",
+      nextUrl: "./02-for.html"
+    });
 
-    const API_URL = "http://localhost:3000/api/progress/python";
-    const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+    const miniRetoCompletion = initTopicCompletion({
+      topicId: "3.1.mini"
+    });
 
-    const nextBtn = document.getElementById("nextBtn");
+    const completeBtn = document.getElementById("completeBtn");
+    const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+    const completionMessage = document.getElementById("completionMessage");
 
-    async function unlockNextIfCompleted() {
-      try {
-        const token = localStorage.getItem("token");
+    function showCompletionMessage(text) {
+      if (!completionMessage) return;
+      completionMessage.textContent = text;
+      completionMessage.style.display = "block";
+    }
 
-        if (!token || !nextBtn) return;
+    function showCompletedState() {
+      if (!completeBtn) return;
 
-        const res = await fetch(API_URL, {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        });
+      completeBtn.style.display = "none";
 
-        if (!res.ok) return;
-
-        const data = await res.json();
-        const completed = data?.progress?.completedTopics || [];
-
-        if (completed.includes(TOPIC_ID)) {
-          nextBtn.classList.remove("btn-disabled");
-          nextBtn.href = NEXT_URL;
-        }
-      } catch (error) {
-        console.error("Error comprobando progreso:", error);
+      if (!document.getElementById("completedBadge")) {
+        const badge = document.createElement("span");
+        badge.id = "completedBadge";
+        badge.className = "btn btn-secondary";
+        badge.textContent = "Subtema completado ✅";
+        completeBtn.parentNode.appendChild(badge);
       }
     }
 
-    async function completeTopic(topicId) {
-      try {
-        const token = localStorage.getItem("token");
+    function showMiniCompletedState() {
+      if (!miniCompleteBtn) return;
 
-        if (!token) {
-          alert("Debes iniciar sesión para guardar el progreso");
-          return;
-        }
+      miniCompleteBtn.style.display = "none";
 
-        const res = await fetch(COMPLETE_URL, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-          },
-          body: JSON.stringify({ topic: topicId })
-        });
-
-        if (!res.ok) {
-          throw new Error(`Error HTTP: ${res.status}`);
-        }
-
-        alert("Tema completado 🎉");
-
-        if (nextBtn) {
-          nextBtn.classList.remove("btn-disabled");
-          nextBtn.href = NEXT_URL;
-        }
-      } catch (error) {
-        console.error("Error marcando tema como completado:", error);
-        alert("No se pudo guardar el progreso");
+      if (!document.getElementById("miniCompletedBadge")) {
+        const badge = document.createElement("span");
+        badge.id = "miniCompletedBadge";
+        badge.className = "btn btn-secondary";
+        badge.textContent = "Mini-reto completado ✅";
+        miniCompleteBtn.parentNode.appendChild(badge);
       }
     }
 
-    unlockNextIfCompleted();
+    async function syncCompletionUI() {
+      try {
+        const subtopicDone = await subtopicCompletion.isCompleted();
+        const miniDone = await miniRetoCompletion.isCompleted();
+
+        if (subtopicDone) {
+          showCompletedState();
+        }
+
+        if (miniDone) {
+          showMiniCompletedState();
+        }
+
+        if (subtopicDone && miniDone) {
+          showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+        } else if (subtopicDone) {
+          showCompletionMessage("Este subtema ya estaba marcado como completado.");
+        } else if (miniDone) {
+          showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+        }
+      } catch (error) {
+        console.error("Error comprobando estado del subtema:", error);
+      }
+    }
+
+    if (completeBtn) {
+      completeBtn.addEventListener("click", async (e) => {
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
+
+        try {
+          btn.disabled = true;
+          btn.textContent = "Guardando...";
+
+          await subtopicCompletion.completeTopic();
+
+          showCompletedState();
+          showCompletionMessage("Has marcado este subtema como completado.");
+        } catch (error) {
+          console.error("Error al completar el subtema:", error);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          showCompletionMessage(error.message || "No se pudo guardar el progreso.");
+        }
+      });
+    }
+
+    if (miniCompleteBtn) {
+      miniCompleteBtn.addEventListener("click", async (e) => {
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
+
+        try {
+          btn.disabled = true;
+          btn.textContent = "Guardando...";
+
+          await miniRetoCompletion.completeTopic();
+
+          showMiniCompletedState();
+          showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+        } catch (error) {
+          console.error("Error al completar el mini-reto:", error);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+        }
+      });
+    }
+
+    syncCompletionUI();
   </script>
 
 </main>

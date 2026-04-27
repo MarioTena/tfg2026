@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Proyecto integrador 2 · Registro de notas de alumnos</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Proyecto integrador 2 · Registro de notas de alumnos</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_proyecto2_registro_notas">Playground</a>
+    </div>
+  </div>
+</nav>
+
+<header class="header">
+  <span class="mission-tag">Proyecto integrador</span>
+  <h1>Proyecto 2 · Registro de notas de alumnos</h1>
+  <p>Construye un programa que permita guardar alumnos con sus notas, calcular medias y consultar información de forma estructurada.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Proyecto de datos estructurados</div>
+        <div class="mini-note">Nivel intermedio · 35-50 min · Diccionarios, funciones y validación</div>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Diccionarios</span>
+        <span class="badge blue">Funciones</span>
+        <span class="badge green">Proyecto real</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 100%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#objetivo">Empezar proyecto</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python&exerciseId=py_proyecto2_registro_notas">Abrir en playground</a>
+  </div>
+</header>
+
+<main class="main-container single-column">
+
+  <section class="exercise-card" id="objetivo">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué entrenas aquí</h2>
+        <p class="exercise-subtitle">
+          En este proyecto empiezas a trabajar con información más rica y organizada. Ya no basta con guardar textos sueltos: ahora debes relacionar nombres y notas.
+        </p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Datos</span>
+        <span class="badge blue">Búsqueda</span>
+        <span class="badge green">Integración</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Objetivo</h3>
+        <p>
+          Vas a crear un programa que permita registrar alumnos y sus notas, mostrarlos, calcular medias y consultar información concreta.
+        </p>
+
+        <div class="callout">
+          Idea clave: este proyecto te obliga a representar datos de forma más estructurada y a consultarlos con criterio.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué conceptos estás combinando</h3>
+        <ul>
+          <li>diccionarios</li>
+          <li>listas, si decides guardar varias notas</li>
+          <li>funciones</li>
+          <li>condicionales</li>
+          <li>bucles</li>
+          <li>validación de rangos</li>
+          <li>búsqueda por nombre</li>
+          <li>cálculo de medias</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Situación</h2>
+    <p>
+      Imagina que quieres un programa sencillo para registrar alumnos y consultar sus notas.
+      El usuario debería poder añadir alumnos, guardar sus notas y obtener información útil rápidamente.
+    </p>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Registrar</h3>
+        <p>Guardar nombre y nota de un alumno.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Consultar</h3>
+        <p>Ver todos los alumnos guardados.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Calcular</h3>
+        <p>Obtener media general de las notas.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Buscar</h3>
+        <p>Encontrar un alumno concreto por nombre.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Requisitos mínimos</h2>
+    <ul>
+      <li>debes usar un diccionario para guardar alumnos y notas</li>
+      <li>debes mostrar un menú dentro de un bucle <code>while</code></li>
+      <li>debes usar funciones para organizar el programa</li>
+      <li>el programa debe permitir añadir un alumno con su nota</li>
+      <li>el programa debe permitir mostrar todos los alumnos</li>
+      <li>el programa debe permitir buscar un alumno por nombre</li>
+      <li>el programa debe calcular la media general</li>
+      <li>debe validar que la nota esté entre 0 y 10</li>
+      <li>debe permitir salir</li>
+    </ul>
+
+    <div class="challenge">
+      Aquí ya importa mucho más cómo estructuras la información, no solo que el programa “funcione”.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Estructura de datos recomendada</h2>
+    <p>
+      La forma más sencilla de plantearlo en este nivel es un diccionario donde:
+    </p>
+
+    <ul>
+      <li>la clave sea el nombre del alumno</li>
+      <li>el valor sea su nota</li>
+    </ul>
+
+    <pre><code>alumnos = {
+    "Ana": 8.5,
+    "Luis": 6,
+    "Marta": 9
+}</code></pre>
+
+    <div class="callout">
+      Esta estructura encaja muy bien porque permite buscar por nombre de forma natural.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Diseño recomendado</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Función 1</h3>
+        <p>Mostrar el menú principal.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Función 2</h3>
+        <p>Añadir alumno y nota.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Función 3</h3>
+        <p>Mostrar todos los alumnos.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Función 4</h3>
+        <p>Buscar un alumno.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Función 5</h3>
+        <p>Calcular la media general.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Bucle principal</h3>
+        <p>Controlar el menú y la navegación del programa.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Fases del proyecto</h2>
+        <p class="exercise-subtitle">Construirlo por fases te ayudará a no bloquearte.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Fase 1</h3>
+        <p>Crea el menú y haz que el programa pueda salir.</p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Fase 2</h3>
+        <p>Añade la opción de guardar un alumno con su nota.</p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Fase 3</h3>
+        <p>Muestra todos los alumnos con sus notas.</p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Fase 4</h3>
+        <p>Implementa la búsqueda de un alumno por nombre.</p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Fase 5</h3>
+        <p>Calcula la media general de las notas.</p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Fase 6</h3>
+        <p>Mejora las validaciones y los mensajes.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Pistas opcionales</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Pista 1</h3>
+        <p>Usa un diccionario llamado <code>alumnos</code>.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pista 2</h3>
+        <p>Antes de guardar la nota, conviértela a número y valida que esté entre 0 y 10.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pista 3</h3>
+        <p>Puedes recorrer el diccionario con <code>for nombre, nota in alumnos.items()</code>.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pista 4</h3>
+        <p>Para calcular la media, suma todas las notas y divide entre el número de alumnos.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pista 5</h3>
+        <p>Antes de calcular la media, comprueba que haya al menos un alumno guardado.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pista 6</h3>
+        <p>Para buscar por nombre, comprueba si la clave existe en el diccionario.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Versión ampliada</h2>
+    <p>Si terminas la versión principal, puedes añadir mejoras como estas:</p>
+
+    <ul>
+      <li>mostrar aprobados y suspensos por separado</li>
+      <li>mostrar la nota más alta y la más baja</li>
+      <li>permitir modificar la nota de un alumno</li>
+      <li>permitir borrar un alumno</li>
+      <li>guardar varias notas por alumno usando listas</li>
+    </ul>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué deberías haber conseguido al terminar</h2>
+        <p class="exercise-subtitle">Este proyecto marca un paso importante hacia programas más organizados.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Competencias que consolidan</h3>
+        <ul>
+          <li>usar diccionarios para representar datos estructurados</li>
+          <li>organizar un programa con funciones</li>
+          <li>recorrer y consultar información guardada</li>
+          <li>validar datos antes de usarlos</li>
+          <li>calcular resultados a partir de datos almacenados</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Cierre didáctico</h3>
+        <div class="challenge">
+          Aquí ya no solo guardas elementos: empiezas a representar información con relaciones y a trabajar con ella de forma útil.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Resolver en playground</h2>
+    <p>
+      Abre este proyecto en el playground para resolverlo con una plantilla inicial y probar diferentes casos.
+    </p>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./index.html">Volver a proyectos</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_proyecto2_registro_notas">Abrir proyecto en playground</a>
+    </div>
+  </section>
+
+</main>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const returnTo = params.get("returnTo");
+
+  const btnVolver = document.getElementById("btn-volver-ejercicios");
+
+  if (returnTo && btnVolver) {
+    btnVolver.href = returnTo;
+    btnVolver.style.display = "inline-flex";
+  }
+
+  if (returnTo) {
+    const playgroundLinks = document.querySelectorAll('a[href*="playground/index.html"]');
+
+    playgroundLinks.forEach((link) => {
+      const rawHref = link.getAttribute("href");
+      const url = new URL(rawHref, window.location.href);
+
+      if (!url.searchParams.get("returnTo")) {
+        url.searchParams.set("returnTo", returnTo);
+      }
+
+      link.setAttribute("href", url.pathname + url.search);
+    });
+  }
+</script>
+</body>
+</html>

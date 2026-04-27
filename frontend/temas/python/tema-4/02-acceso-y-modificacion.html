@@ -70,14 +70,30 @@
 
     <div class="exercise-body">
       <div class="exercise-block">
-        <h3>Qué debes ser capaz de hacer</h3>
-        <ul>
-          <li>leer un valor por su posición</li>
-          <li>cambiar un elemento existente</li>
-          <li>usar índices negativos</li>
-          <li>razonar cuándo un índice es válido</li>
-          <li>obtener una parte de la lista</li>
-        </ul>
+        <h3>Qué problema resuelve</h3>
+        <p>
+          Crear una lista es solo el primer paso. En programación real necesitas consultar elementos concretos,
+          cambiar valores, recuperar el final de una colección o trabajar solo con una parte.
+        </p>
+
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3>Leer</h3>
+            <p>Acceder a un valor concreto por su posición.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Modificar</h3>
+            <p>Cambiar un elemento ya existente dentro de la lista.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Últimos elementos</h3>
+            <p>Usar índices negativos para mirar desde el final.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Recortar</h3>
+            <p>Obtener solo una parte con slicing.</p>
+          </div>
+        </div>
 
         <div class="callout">
           Idea clave: moverte dentro de una lista es tan importante como crearla.
@@ -85,31 +101,23 @@
       </div>
 
       <div class="exercise-block">
-        <h3>Movimientos básicos con listas</h3>
-        <div class="theory-grid">
-          <div class="theory-card">
-            <h3>Leer</h3>
-            <p>Acceder a un valor por su índice.</p>
-          </div>
-          <div class="theory-card">
-            <h3>Modificar</h3>
-            <p>Cambiar un elemento ya existente.</p>
-          </div>
-          <div class="theory-card">
-            <h3>Mirar desde el final</h3>
-            <p>Usar índices negativos como <code>-1</code>.</p>
-          </div>
-          <div class="theory-card">
-            <h3>Cortar una parte</h3>
-            <p>Obtener un tramo con slicing.</p>
-          </div>
+        <h3>Qué debes recordar</h3>
+        <ul>
+          <li>los índices empiezan en 0</li>
+          <li>puedes leer y modificar por posición</li>
+          <li>los índices negativos miran desde el final</li>
+          <li>el slicing devuelve una parte de la lista</li>
+        </ul>
+
+        <div class="challenge">
+          No confundas acceder, modificar y cortar una lista: son acciones distintas.
         </div>
       </div>
     </div>
   </section>
 
   <section class="panel">
-    <h2>Dónde aparece esto en problemas reales</h2>
+    <h2>Dónde aparecen el acceso y la modificación de listas en problemas reales</h2>
 
     <div class="theory-grid">
       <div class="theory-card">
@@ -220,7 +228,7 @@ print(frutas)</code></pre>
         </p>
 
         <div class="mini-note">
-          Ojo: aquí no estás añadiendo un nuevo elemento, estás sustituyendo uno que ya existía.
+          Aquí no estás añadiendo un nuevo elemento, estás sustituyendo uno que ya existía.
         </div>
       </div>
 
@@ -260,187 +268,73 @@ print(numeros[-2])</code></pre>
         <pre><code>numeros = [5, 8, 12, 20]
 print(numeros[0])
 print(numeros[-1])</code></pre>
-        <p>Aquí obtienes el primer y el último valor de la lista.</p>
+        <p>Aquí obtienes el primer y el último valor.</p>
       </div>
 
       <div class="theory-card">
         <h3>Idea útil</h3>
-        <p>
-          Cuando trabajas con listas, preguntar por “el primero”, “el último” o “cambiar uno concreto” es de lo más habitual.
-        </p>
-      </div>
-    </div>
-
-    <div class="callout">
-      Idea práctica: si conoces bien los índices, puedes leer, cambiar y localizar datos dentro de una lista con mucha rapidez.
-    </div>
-  </section>
-
-  <section class="panel">
-    <h2>Obtener una parte de la lista</h2>
-
-    <p>
-      A veces no quieres un solo elemento, sino un tramo de la lista.
-      Para eso puedes usar <strong>slicing</strong>.
-    </p>
-
-    <pre><code>animales = ["gato", "perro", "loro", "pez"]
-print(animales[1:3])</code></pre>
-
-    <p>
-      Esto devuelve <code>["perro", "loro"]</code>.
-    </p>
-
-    <div class="callout">
-      En slicing, se empieza en el primer índice y se llega solo hasta antes del segundo.
-    </div>
-  </section>
-
-  <section class="exercise-card">
-    <div class="exercise-header">
-      <div>
-        <h2 class="exercise-title">Cómo razonar si un índice es válido</h2>
-        <p class="exercise-subtitle">Aquí es donde mucha gente se equivoca al principio.</p>
-      </div>
-    </div>
-
-    <div class="exercise-body">
-      <div class="exercise-block">
-        <h3>Error típico: índice fuera de rango</h3>
-        <pre><code>frutas = ["manzana", "pera", "uva"]
-print(frutas[3])</code></pre>
-
-        <p>
-          Este código da error porque esa lista tiene índices 0, 1 y 2.
-          El índice 3 no existe.
-        </p>
-      </div>
-
-      <div class="exercise-block">
-        <h3>Usar <code>len()</code> para pensar mejor</h3>
-        <pre><code>frutas = ["manzana", "pera", "uva"]
-print(len(frutas))</code></pre>
-
-        <p>
-          Si la longitud es 3, los índices válidos van de 0 a 2.
-        </p>
-
-        <div class="callout">
-          Si una lista tiene longitud 3, su último índice positivo es 2.
-        </div>
+        <p>Los índices negativos te ahorran contar posiciones cuando solo te interesa el final.</p>
       </div>
     </div>
   </section>
 
   <section class="panel">
-    <h2>Cómo pensar acceso y modificación antes de escribirlo</h2>
+    <h2>Índices fuera de rango</h2>
+
+    <pre><code>numeros = [10, 20, 30]
+print(numeros[3])</code></pre>
+
+    <p>
+      Esto falla porque la lista tiene 3 elementos, pero sus índices válidos son 0, 1 y 2.
+    </p>
+
+    <div class="callout">
+      Si dudas, razona primero con <code>len(lista)</code> antes de acceder a una posición.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Slicing: extraer una parte</h2>
+
+    <pre><code>numeros = [10, 20, 30, 40, 50]
+print(numeros[1:4])</code></pre>
+
+    <p>
+      Esto devuelve <code>[20, 30, 40]</code>.
+    </p>
+
+    <div class="callout">
+      En slicing, el límite final no se incluye.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Acceder, modificar y añadir no son lo mismo</h2>
 
     <div class="theory-grid">
       <div class="theory-card">
-        <h3>Paso 1</h3>
-        <p>Decide si necesitas un valor concreto, el primero, el último o un tramo.</p>
+        <h3>Leer</h3>
+        <p><code>lista[1]</code> accede al valor.</p>
       </div>
 
       <div class="theory-card">
-        <h3>Paso 2</h3>
-        <p>Comprueba si vas a leer un valor o a cambiarlo.</p>
+        <h3>Modificar</h3>
+        <p><code>lista[1] = "nuevo"</code> sustituye un valor existente.</p>
       </div>
 
       <div class="theory-card">
-        <h3>Paso 3</h3>
-        <p>Piensa si el índice que vas a usar existe de verdad.</p>
+        <h3>Añadir</h3>
+        <p>Para añadir nuevos elementos necesitarás métodos, no sustitución por índice.</p>
       </div>
 
       <div class="theory-card">
-        <h3>Paso 4</h3>
-        <p>Si dudas, usa <code>len()</code> para razonar mejor la longitud y las posiciones.</p>
-      </div>
-    </div>
-
-    <div class="challenge">
-      Gran parte de los fallos aquí no vienen del código, sino de pensar mal qué posición estás usando.
-    </div>
-  </section>
-
-  <section class="exercise-card">
-    <div class="exercise-header">
-      <div>
-        <h2 class="exercise-title">Piensa antes de ejecutar</h2>
-        <p class="exercise-subtitle">Antes de lanzar código, acostúmbrate a predecir qué hará cada línea.</p>
-      </div>
-    </div>
-
-    <div class="exercise-body">
-      <div class="exercise-block">
-        <h3>Código</h3>
-        <pre><code>animales = ["gato", "perro", "loro", "pez"]
-print(animales[0])
-print(animales[-1])
-print(animales[1:3])</code></pre>
-      </div>
-
-      <div class="exercise-block">
-        <h3>Preguntas</h3>
-        <ul>
-          <li>¿qué imprime cada línea?</li>
-          <li>¿por qué el último valor no sale en el slicing?</li>
-        </ul>
-
-        <div class="mini-note">
-          Pista: en <code>[1:3]</code> se empieza en 1, pero se llega solo hasta antes de 3.
-        </div>
+        <h3>Idea clave</h3>
+        <p>No confundas “cambiar una posición” con “hacer crecer la lista”.</p>
       </div>
     </div>
   </section>
 
-  <section id="reto" class="exercise-card">
-    <div class="exercise-header">
-      <div>
-        <h2 class="exercise-title">Mini-reto guiado</h2>
-        <p class="exercise-subtitle">Ahora toca aplicar acceso, modificación y razonamiento sobre posiciones.</p>
-      </div>
-
-      <div class="badges">
-        <span class="badge blue">Reto</span>
-        <span class="badge green">Muy fácil</span>
-      </div>
-    </div>
-
-    <div class="exercise-body">
-      <div class="exercise-block">
-        <h3>Tu misión</h3>
-        <p>
-          Crea una lista con 4 asignaturas, muestra la primera y la última, y cambia la segunda por otra nueva.
-        </p>
-
-        <div class="exercise-actions">
-          <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Resolver en playground</a>
-          <button class="btn btn-secondary btn-sm" type="button" onclick="document.getElementById('solucion-reto').open = true;">
-            Ver solución
-          </button>
-        </div>
-      </div>
-
-      <div class="exercise-block">
-        <h3>Pista</h3>
-        <p>
-          Usa <code>[0]</code> para el primero, <code>[-1]</code> para el último y recuerda que modificar no es lo mismo que añadir.
-        </p>
-
-        <details id="solucion-reto" class="theory-dropdown">
-          <summary>Mostrar solución</summary>
-          <div class="theory-dropdown-content">
-            <pre><code>asignaturas = ["Matemáticas", "Historia", "Física", "Lengua"]
-print(asignaturas[0])
-print(asignaturas[-1])
-asignaturas[1] = "Programación"
-print(asignaturas)</code></pre>
-          </div>
-        </details>
-      </div>
-    </div>
-  </section>
-
+  
   <section class="panel">
     <h2>Errores frecuentes</h2>
 
@@ -493,6 +387,72 @@ print(asignaturas)</code></pre>
     </div>
   </section>
 
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
+        <p class="exercise-subtitle">Practica lectura, modificación e índices negativos.</p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">4.2</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Enunciado</h3>
+        <p>
+          Crea una lista con 4 colores, muestra el primero y el último, cambia el segundo por otro valor y vuelve a imprimir la lista completa.
+        </p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes practicar</h3>
+        <ul>
+          <li>usar índices positivos y negativos</li>
+          <li>distinguir entre leer y modificar</li>
+          <li>entender qué parte de la lista cambia y cuál no</li>
+        </ul>
+
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-4%2F02-acceso-y-modificacion.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Resumen mental del subtema</h2>
+        <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Ideas clave</h3>
+        <ul>
+          <li>cada elemento de una lista tiene una posición llamada índice</li>
+          <li>los índices empiezan en 0, no en 1</li>
+          <li>puedes acceder a un valor, modificarlo o extraer una parte de la lista</li>
+          <li>los índices negativos permiten mirar desde el final</li>
+          <li>leer, modificar y hacer slicing no son la misma operación</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Puente con el siguiente bloque</h3>
+        <div class="challenge">
+          Ya sabes moverte dentro de una lista. El siguiente paso es recorrerla completa con bucles para mostrar, sumar, contar o buscar elementos.
+        </div>
+      </div>
+    </div>
+    </section>
+
   <section class="panel">
     <h2>Siguiente paso</h2>
     <p>
@@ -503,80 +463,130 @@ print(asignaturas)</code></pre>
       <a class="btn btn-secondary" href="./01-que-es-una-lista.html">Anterior</a>
       <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
       <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-      <button class="btn btn-primary" onclick="completeTopic('4.2')">Marcar como completado</button>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
     </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
   </section>
 
+  <script src="../topic-completion.js"></script>
   <script>
-    const TOPIC_ID = "4.2";
-    const NEXT_URL = "./03-recorrer-listas.html";
+    const subtopicCompletion = initTopicCompletion({
+      topicId: "4.2",
+      nextUrl: "./03-recorrer-listas.html"
+    });
 
-    const API_URL = "http://localhost:3000/api/progress/python";
-    const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+    const miniRetoCompletion = initTopicCompletion({
+      topicId: "4.2.mini"
+    });
 
-    const nextBtn = document.getElementById("nextBtn");
+    const completeBtn = document.getElementById("completeBtn");
+    const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+    const completionMessage = document.getElementById("completionMessage");
 
-    async function unlockNextIfCompleted() {
-      try {
-        const token = localStorage.getItem("token");
+    function showCompletionMessage(text) {
+      if (!completionMessage) return;
+      completionMessage.textContent = text;
+      completionMessage.style.display = "block";
+    }
 
-        if (!token || !nextBtn) return;
+    function showCompletedState() {
+      if (!completeBtn) return;
 
-        const res = await fetch(API_URL, {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        });
+      completeBtn.style.display = "none";
 
-        if (!res.ok) return;
-
-        const data = await res.json();
-        const completed = data?.progress?.completedTopics || [];
-
-        if (completed.includes(TOPIC_ID)) {
-          nextBtn.classList.remove("btn-disabled");
-          nextBtn.href = NEXT_URL;
-        }
-      } catch (error) {
-        console.error("Error comprobando progreso:", error);
+      if (!document.getElementById("completedBadge")) {
+        const badge = document.createElement("span");
+        badge.id = "completedBadge";
+        badge.className = "btn btn-secondary";
+        badge.textContent = "Subtema completado ✅";
+        completeBtn.parentNode.appendChild(badge);
       }
     }
 
-    async function completeTopic(topicId) {
-      try {
-        const token = localStorage.getItem("token");
+    function showMiniCompletedState() {
+      if (!miniCompleteBtn) return;
 
-        if (!token) {
-          alert("Debes iniciar sesión para guardar el progreso");
-          return;
-        }
+      miniCompleteBtn.style.display = "none";
 
-        const res = await fetch(COMPLETE_URL, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-          },
-          body: JSON.stringify({ topic: topicId })
-        });
-
-        if (!res.ok) {
-          throw new Error(`Error HTTP: ${res.status}`);
-        }
-
-        alert("Tema completado 🎉");
-
-        if (nextBtn) {
-          nextBtn.classList.remove("btn-disabled");
-          nextBtn.href = NEXT_URL;
-        }
-      } catch (error) {
-        console.error("Error marcando tema como completado:", error);
-        alert("No se pudo guardar el progreso");
+      if (!document.getElementById("miniCompletedBadge")) {
+        const badge = document.createElement("span");
+        badge.id = "miniCompletedBadge";
+        badge.className = "btn btn-secondary";
+        badge.textContent = "Mini-reto completado ✅";
+        miniCompleteBtn.parentNode.appendChild(badge);
       }
     }
 
-    unlockNextIfCompleted();
+    async function syncCompletionUI() {
+      try {
+        const subtopicDone = await subtopicCompletion.isCompleted();
+        const miniDone = await miniRetoCompletion.isCompleted();
+
+        if (subtopicDone) {
+          showCompletedState();
+        }
+
+        if (miniDone) {
+          showMiniCompletedState();
+        }
+
+        if (subtopicDone && miniDone) {
+          showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+        } else if (subtopicDone) {
+          showCompletionMessage("Este subtema ya estaba marcado como completado.");
+        } else if (miniDone) {
+          showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+        }
+      } catch (error) {
+        console.error("Error comprobando estado del subtema:", error);
+      }
+    }
+
+    if (completeBtn) {
+      completeBtn.addEventListener("click", async (e) => {
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
+
+        try {
+          btn.disabled = true;
+          btn.textContent = "Guardando...";
+
+          await subtopicCompletion.completeTopic();
+
+          showCompletedState();
+          showCompletionMessage("Has marcado este subtema como completado.");
+        } catch (error) {
+          console.error("Error al completar el subtema:", error);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          showCompletionMessage(error.message || "No se pudo guardar el progreso.");
+        }
+      });
+    }
+
+    if (miniCompleteBtn) {
+      miniCompleteBtn.addEventListener("click", async (e) => {
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
+
+        try {
+          btn.disabled = true;
+          btn.textContent = "Guardando...";
+
+          await miniRetoCompletion.completeTopic();
+
+          showMiniCompletedState();
+          showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+        } catch (error) {
+          console.error("Error al completar el mini-reto:", error);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+        }
+      });
+    }
+
+    syncCompletionUI();
   </script>
 
 </main>

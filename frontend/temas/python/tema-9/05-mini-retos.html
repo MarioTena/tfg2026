@@ -2,25 +2,41 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Tema 9.5 – Mini retos</title>
+  <title>Tema 9.5 – Razonar y practicar archivos</title>
   <link rel="stylesheet" href="../../../styles.css" />
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 9 · Manejo de archivos</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <span class="mission-tag">Zona práctica 9.5</span>
-  <h1>Mini-retos de archivos</h1>
-  <p>Combina lectura, escritura y modos de apertura para entender cómo guardar y recuperar información correctamente.</p>
+  <span class="mission-tag">Misión 9.5</span>
+  <h1>Razonar y practicar archivos</h1>
+  <p>Combina lectura, escritura y modos de apertura para entender qué pasará con el contenido antes de ejecutar el código.</p>
 
   <div class="progress-hero">
     <div class="progress-hero-top">
       <div>
         <div class="progress-label">Tema 9 · Manejo de archivos</div>
-        <div class="mini-note">6 mini-retos · práctica guiada · dificultad inicial-media</div>
+        <div class="mini-note">Práctica guiada · 8 retos de razonamiento · dificultad inicial-media</div>
       </div>
       <div class="badges">
-        <span class="badge blue">Python</span>
-        <span class="badge green">Entrenamiento</span>
+        <span class="badge blue">r / w / a</span>
+        <span class="badge blue">with</span>
+        <span class="badge green">Diseño</span>
       </div>
     </div>
 
@@ -30,7 +46,7 @@
   </div>
 
   <div class="buttons-row">
-    <a class="btn btn-primary" href="#retos">Empezar mini-retos</a>
+    <a class="btn btn-primary" href="#retos">Empezar práctica guiada</a>
     <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
   </div>
 </header>
@@ -42,14 +58,14 @@
       <div>
         <h2 class="exercise-title">Qué entrenas aquí</h2>
         <p class="exercise-subtitle">
-          Aquí vas a practicar lectura y escritura entendiendo qué efecto tiene cada modo de apertura.
+          Aquí vas a practicar lectura y escritura entendiendo qué efecto tiene cada modo de apertura y qué resultado deberías esperar.
         </p>
       </div>
 
       <div class="badges">
-        <span class="badge blue">r / w / a</span>
         <span class="badge blue">Lectura</span>
-        <span class="badge green">Escritura</span>
+        <span class="badge blue">Escritura</span>
+        <span class="badge green">Práctica guiada</span>
       </div>
     </div>
 
@@ -57,81 +73,166 @@
       <div class="exercise-block">
         <h3>Objetivo</h3>
         <p>
-          Vas a empezar a tratar archivos como algo vivo: crear, añadir contenido, leer y decidir el modo correcto según el caso.
+          Vas a dejar de ver los archivos como solo “código con open” y empezar a razonar qué pasará con el contenido antes de escribir una sola línea.
         </p>
 
         <div class="callout">
-          Idea clave: abrir un archivo con el modo equivocado puede borrar información o impedir leerla.
+          Idea clave: abrir un archivo con el modo equivocado puede borrar información o impedir leerla como esperabas.
         </div>
       </div>
 
       <div class="exercise-block">
         <h3>Cómo usar esta pantalla</h3>
         <ul>
-          <li>lee el reto</li>
+          <li>lee la situación o el código</li>
           <li>piensa si quieres leer, sobrescribir o añadir</li>
-          <li>elige el modo de apertura antes de escribir código</li>
-          <li>pruébalo en el playground y cambia escenarios</li>
+          <li>decide si conviene procesar todo o línea a línea</li>
+          <li>anticipa qué se verá en pantalla o qué quedará guardado</li>
         </ul>
 
         <div class="challenge">
-          En este tema, entender el efecto del modo de apertura es más importante que memorizar una línea concreta.
+          En este tema, entender el efecto del modo de apertura es más importante que memorizar una línea exacta.
         </div>
       </div>
     </div>
   </section>
 
   <section id="retos" class="panel">
-    <h2>Misiones rápidas</h2>
+    <h2>Reto 1 · ¿Qué modo conviene?</h2>
 
     <div class="theory-grid">
       <div class="theory-card">
-        <h3>Mini-reto 1 · Guardar saludo</h3>
-        <p>Escribe contenido nuevo en un archivo.</p>
-        <pre><code>with open("saludo.txt", "w") as archivo:
-    archivo.write("Hola Python")</code></pre>
+        <h3>Situación</h3>
+        <p>Quieres leer una lista de tareas ya existente.</p>
       </div>
 
       <div class="theory-card">
-        <h3>Mini-reto 2 · Añadir línea</h3>
-        <p>Agrega información sin borrar lo que ya había.</p>
-        <pre><code>with open("registro.txt", "a") as archivo:
-    archivo.write("Nueva entrada\n")</code></pre>
+        <h3>Qué debes pensar</h3>
+        <p>¿Usarías <code>r</code>, <code>w</code> o <code>a</code>? ¿Por qué uno encaja y los otros no?</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Reto 2 · Riesgo real de <code>w</code></h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Situación</h3>
+        <p>Tienes un archivo con contenido importante y lo abres con <code>w</code>.</p>
       </div>
 
       <div class="theory-card">
-        <h3>Mini-reto 3 · Leer contenido</h3>
-        <p>Recupera todo el contenido de un archivo.</p>
-        <pre><code>with open("registro.txt", "r") as archivo:
-    print(archivo.read())</code></pre>
+        <h3>Pregunta</h3>
+        <p>¿Qué riesgo tiene esa decisión? ¿Qué ocurrirá con el contenido anterior?</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      Este es uno de los errores clásicos del tema: usar <code>w</code> sin pensar que sobrescribe el contenido.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Reto 3 · ¿Leer todo o línea a línea?</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Situación</h3>
+        <p>Tienes un archivo muy largo con una línea por tarea.</p>
       </div>
 
       <div class="theory-card">
-        <h3>Mini-reto 4 · Leer línea a línea</h3>
-        <p>Procesa el contenido de forma más controlada.</p>
-        <pre><code>with open("registro.txt", "r") as archivo:
+        <h3>Pregunta</h3>
+        <p>¿Te conviene <code>read()</code> o recorrerlo línea a línea? ¿Por qué?</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Reto 4 · Salida rara</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Código</h3>
+        <pre><code>with open("datos.txt", "r") as archivo:
     for linea in archivo:
-        print(linea.strip())</code></pre>
+        print(linea)</code></pre>
       </div>
 
       <div class="theory-card">
-        <h3>Mini-reto 5 · Escribir varias líneas</h3>
-        <p>Guarda varias entradas seguidas en un archivo.</p>
+        <h3>Pregunta</h3>
+        <p>¿Por qué la salida puede verse rara? ¿Qué harías para mostrarla más limpia?</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Reto 5 · Varias líneas sin <code>\n</code></h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Código</h3>
         <pre><code>with open("tareas.txt", "w") as archivo:
-    archivo.write("Estudiar\n")
-    archivo.write("Practicar\n")
-    archivo.write("Repasar\n")</code></pre>
+    archivo.write("Estudiar")
+    archivo.write("Practicar")</code></pre>
       </div>
 
       <div class="theory-card">
-        <h3>Mini-reto 6 · Buscar una palabra en un archivo</h3>
-        <p>Lee un archivo e imprime solo las líneas que contienen una palabra concreta.</p>
-        <pre><code>palabra_buscada = "Python"
+        <h3>Qué entrenas</h3>
+        <p>¿Cómo quedará el contenido final? ¿Qué falta para que aparezca una línea debajo de la otra?</p>
+      </div>
+    </div>
 
-      with open("registro.txt", "r") as archivo:
-          for linea in archivo:
-              if palabra_buscada in linea:
-                  print(linea.strip())</code></pre>
+    <div class="challenge">
+      Uno de los errores más comunes con archivos es pensar que cada <code>write()</code> baja automáticamente de línea.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Reto 6 · Escribir y luego leer</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Situación</h3>
+        <p>Quieres crear un archivo nuevo y después comprobar su contenido.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pregunta</h3>
+        <p>¿Qué dos pasos harías y con qué modos de apertura?</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Reto 7 · Archivo que no existe</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Situación</h3>
+        <p>Intentas leer un archivo con nombre incorrecto.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pregunta</h3>
+        <p>¿Qué problema aparecerá? ¿Qué deberías revisar primero antes de pensar en otra solución?</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Reto 8 · Añadir sin borrar</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Situación</h3>
+        <p>Quieres conservar un historial y sumar una nueva línea cada vez que ocurre algo.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Prueba obligatoria</h3>
+        <p>¿Qué modo usarías y por qué encaja mejor que <code>w</code>?</p>
       </div>
     </div>
   </section>
@@ -139,8 +240,8 @@
   <section class="exercise-card">
     <div class="exercise-header">
       <div>
-        <h2 class="exercise-title">Cómo pensar este tipo de ejercicios</h2>
-        <p class="exercise-subtitle">Antes de abrir un archivo, decide qué quieres que ocurra con su contenido.</p>
+        <h2 class="exercise-title">Método rápido para decidir antes de abrir un archivo</h2>
+        <p class="exercise-subtitle">Qué pensar antes de escribir el código.</p>
       </div>
     </div>
 
@@ -148,34 +249,26 @@
       <div class="exercise-block">
         <h3>Paso a paso</h3>
         <ol>
-          <li>si quieres leer, piensa en <code>r</code></li>
-          <li>si quieres crear o sobrescribir, piensa en <code>w</code></li>
-          <li>si quieres añadir sin borrar, piensa en <code>a</code></li>
-          <li>si procesas líneas, usa un bucle</li>
-          <li>si solo necesitas todo el contenido, puede bastar <code>read()</code></li>
+          <li>pregunta si quieres leer o escribir</li>
+          <li>si escribes, decide si quieres reemplazar o conservar lo anterior</li>
+          <li>si lees, decide si quieres todo o línea a línea</li>
+          <li>pregunta cómo quieres ver o guardar el formato final</li>
+          <li>elige <code>with</code> como patrón base</li>
         </ol>
       </div>
 
       <div class="exercise-block">
         <h3>Regla útil</h3>
         <div class="challenge">
-          Antes de escribir <code>open()</code>, hazte esta pregunta: ¿quiero conservar lo que ya había o no?
+          Si no sabes qué pasará con el contenido anterior del archivo, todavía no deberías escribir el código.
         </div>
       </div>
     </div>
   </section>
 
   <section class="panel">
-    <h2>Pregunta típica de entrevista</h2>
-    <div class="challenge">
-      <p><strong>Pregunta:</strong> ¿Qué diferencia práctica hay entre abrir un archivo en modo <code>w</code> y en modo <code>a</code>?</p>
-      <p><strong>Respuesta sólida:</strong> <code>w</code> sobrescribe el contenido; <code>a</code> añade nuevo contenido al final conservando lo anterior.</p>
-    </div>
-  </section>
-
-  <section class="panel">
     <h2>Siguiente paso</h2>
-    <p>Ya has combinado lectura, escritura y modos de apertura. Ahora toca resolver ejercicios por tu cuenta.</p>
+    <p>Ya has trabajado la lectura, la escritura y el razonamiento sobre modos de apertura. Ahora toca resolver ejercicios por tu cuenta.</p>
 
     <div class="buttons-row">
       <a class="btn btn-secondary" href="./04-buenas-practicas-y-errores.html">Anterior</a>
@@ -183,19 +276,77 @@
       <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Ejercicios Tema 9</a>
       <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
     </div>
+
+    <p id="completionMessage" class="mini-note" style="display:none;"></p>
   </section>
 
-  <script src="../topic-completion.js"></script>
-  <script>
-    const topicCompletion = initTopicCompletion({
-      topicId: "9.5",
-      nextUrl: "./py-tema9-ejercicios.html"
-    });
+<script src="../topic-completion.js"></script>
+<script>
+  const missionCompletion = initTopicCompletion({
+    topicId: "9.5",
+    nextUrl: "./py-tema9-ejercicios.html"
+  });
 
-    document.getElementById("completeBtn").addEventListener("click", () => {
-      topicCompletion.completeTopic();
+  const completeBtn = document.getElementById("completeBtn");
+  const completionMessage = document.getElementById("completionMessage");
+
+  function showCompletionMessage(text) {
+    if (!completionMessage) return;
+    completionMessage.textContent = text;
+    completionMessage.style.display = "block";
+  }
+
+  function showMissionCompletedState() {
+    if (!completeBtn) return;
+
+    completeBtn.style.display = "none";
+
+    if (!document.getElementById("completedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "completedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Misión completada ✅";
+      completeBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  async function syncCompletionUI() {
+    try {
+      const completed = await missionCompletion.isCompleted();
+
+      if (completed) {
+        showMissionCompletedState();
+        showCompletionMessage("Esta misión ya estaba marcada como completada.");
+      }
+    } catch (error) {
+      console.error("Error comprobando estado de la misión:", error);
+    }
+  }
+
+  if (completeBtn) {
+    completeBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
+
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
+
+        await missionCompletion.completeTopic();
+
+        showMissionCompletedState();
+        showCompletionMessage("Has marcado esta misión como completada.");
+      } catch (error) {
+        console.error("Error al completar la misión:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso.");
+      }
     });
-  </script>
+  }
+
+  syncCompletionUI();
+</script>
 
 </main>
 </body>

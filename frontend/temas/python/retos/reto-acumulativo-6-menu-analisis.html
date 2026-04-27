@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reto acumulativo 6 · Menú de análisis simple</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Reto acumulativo 3 · Menú de análisis simple</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_reto_acumulativo_6_menu">Playground</a>
+    </div>
+  </div>
+</nav>
+
+<header class="header">
+  <span class="mission-tag">Reto acumulativo</span>
+  <h1>Reto acumulativo 3 · Menú de análisis simple</h1>
+  <p>Combina menús, listas, funciones y validación de opciones para construir un pequeño programa interactivo.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Práctica de integración</div>
+        <div class="mini-note">Nivel intermedio · 25-35 min · Menú y organización</div>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">menú</span>
+        <span class="badge blue">funciones</span>
+        <span class="badge green">flujo completo</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 100%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#objetivo">Empezar reto</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python&exerciseId=py_reto_acumulativo_6_menu">Abrir en playground</a>
+  </div>
+</header>
+
+<main class="main-container single-column">
+
+  <section class="exercise-card" id="objetivo">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué entrenas aquí</h2>
+        <p class="exercise-subtitle">
+          Este reto sirve como puente entre retos y proyectos: te obliga a organizar un programa pequeño con menú y varias acciones.
+        </p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Menú</span>
+        <span class="badge blue">Funciones</span>
+        <span class="badge green">Organización</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Objetivo</h3>
+        <p>
+          Vas a crear un programa con menú donde el usuario pueda introducir datos, ver un resumen y salir.
+        </p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué conceptos estás combinando</h3>
+        <ul>
+          <li><code>while</code></li>
+          <li><code>if / elif / else</code></li>
+          <li>funciones</li>
+          <li>listas</li>
+          <li>validación de opción</li>
+          <li>menús</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Enunciado</h2>
+    <p>
+      Crea un programa con menú que permita:
+    </p>
+
+    <ul>
+      <li>añadir un dato a una lista</li>
+      <li>mostrar los datos guardados</li>
+      <li>mostrar un resumen simple</li>
+      <li>salir</li>
+    </ul>
+
+    <p>
+      El programa debe seguir funcionando hasta que el usuario elija salir.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Pistas opcionales</h2>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Pista 1</h3>
+        <p>Usa un <code>while True</code> para mantener el menú activo.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Pista 2</h3>
+        <p>Crea una función para mostrar el menú.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Pista 3</h3>
+        <p>Valida las opciones con <code>if / elif / else</code>.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Pista 4</h3>
+        <p>Haz primero una versión mínima con solo dos opciones.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Versión ampliada</h2>
+    <ul>
+      <li>permitir borrar un dato</li>
+      <li>mostrar el número total de elementos</li>
+      <li>evitar entradas vacías</li>
+      <li>separar cada acción en una función distinta</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Resolver en playground</h2>
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./index.html">Volver a retos</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_reto_acumulativo_6_menu">Abrir reto en playground</a>
+    </div>
+  </section>
+
+</main>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const returnTo = params.get("returnTo");
+
+  const btnVolver = document.getElementById("btn-volver-ejercicios");
+
+  if (returnTo && btnVolver) {
+    btnVolver.href = returnTo;
+    btnVolver.style.display = "inline-flex";
+  }
+
+  if (returnTo) {
+    const playgroundLinks = document.querySelectorAll('a[href*="playground/index.html"]');
+
+    playgroundLinks.forEach((link) => {
+      const rawHref = link.getAttribute("href");
+      const url = new URL(rawHref, window.location.href);
+
+      if (!url.searchParams.get("returnTo")) {
+        url.searchParams.set("returnTo", returnTo);
+      }
+
+      link.setAttribute("href", url.pathname + url.search);
+    });
+  }
+</script>
+</body>
+</html>

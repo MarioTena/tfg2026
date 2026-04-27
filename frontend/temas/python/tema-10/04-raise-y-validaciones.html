@@ -6,27 +6,154 @@
   <link rel="stylesheet" href="../../../styles.css" />
 </head>
 <body>
+
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 10 · Errores y excepciones</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 10 · Python</h1>
-  <p>10.4 · raise y validaciones: provocar errores de forma intencional cuando los datos no cumplen reglas</p>
+  <span class="mission-tag">Misión 10.4</span>
+  <h1>raise y validaciones</h1>
+  <p>Aprende a provocar errores de forma intencional cuando los datos no cumplen las reglas del programa.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 10 · Errores y excepciones</div>
+        <div class="mini-note">Nivel inicial · 12-15 min · Validar antes de seguir</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">raise</span>
+        <span class="badge green">Validaciones</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 80%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué vas a entender hoy</h2>
+        <p class="exercise-subtitle">
+          A veces no esperas simplemente una excepción de Python: quieres indicar tú mismo que un dato no es válido y que el programa no debería seguir por ese camino.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Objetivo</span>
+        <span class="badge green">Reglas del programa</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué problema resuelve</h3>
+        <p>
+          Hay entradas que quizá no provocan una excepción automática de Python, pero sí rompen las reglas de tu programa:
+          edades negativas, notas fuera de rango, precios imposibles o divisores no permitidos.
+        </p>
+
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3>Rangos</h3>
+            <p>Notas entre 0 y 10, edades razonables, precios válidos.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Texto vacío</h3>
+            <p>Datos obligatorios que no deberían venir vacíos.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Reglas de negocio</h3>
+            <p>Condiciones que tu programa decide imponer.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Funciones seguras</h3>
+            <p>Validar antes de calcular o continuar.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          Idea clave: <code>raise</code> te permite señalar explícitamente que algo no cumple las reglas del programa.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes vigilar</h3>
+        <ul>
+          <li><code>raise</code> sirve para lanzar una excepción</li>
+          <li>se usa cuando detectas un dato inválido</li>
+          <li>el mensaje debe explicar bien el problema</li>
+          <li>validar no es lo mismo que capturar una excepción ya ocurrida</li>
+        </ul>
+
+        <div class="challenge">
+          Piensa así: con <code>raise</code> no reaccionas a un fallo externo, sino que decides frenar tú mismo un caso inválido.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Dónde aparecen <code>raise</code> y las validaciones en problemas reales</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Rangos inválidos</h3>
+        <p>Notas fuera de rango, edades negativas o precios imposibles.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Campos obligatorios</h3>
+        <p>Datos vacíos que no deberían aceptarse.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Reglas del negocio</h3>
+        <p>Condiciones que tu programa quiere imponer aunque Python no falle por sí solo.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Funciones seguras</h3>
+        <p>Validar antes de calcular o continuar con datos incorrectos.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <code>raise</code> y las validaciones aparecen cuando quieres señalar de forma explícita que un dato incumple las reglas del programa.
+    </div>
+  </section>
+
   <section class="panel">
     <h2>¿Qué es <code>raise</code>?</h2>
     <p>
-      A veces no esperas simplemente un error de Python: quieres indicar tú mismo que un dato no es válido.
-      Para eso existe <code>raise</code>.
+      <code>raise</code> sirve para lanzar una excepción de forma intencional cuando detectas que un dato no cumple una regla.
     </p>
 
     <pre><code>edad = -5
 
 if edad < 0:
     raise ValueError("La edad no puede ser negativa")</code></pre>
-
-    <div class="callout">
-      <code>raise</code> te permite señalar explícitamente que algo no cumple las reglas del programa.
-    </div>
   </section>
 
   <section class="panel">
@@ -40,11 +167,87 @@ if edad < 0:
   </section>
 
   <section class="panel">
+    <h2>Capturar una excepción vs lanzarla</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Capturar</h3>
+        <p>Reaccionas a una excepción que ya ha aparecido, usando <code>except</code>.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Lanzar</h3>
+        <p>Provocas tú mismo una excepción con <code>raise</code> al detectar un dato inválido.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Capturar</h3>
+        <p>Piensas “si esto falla, ¿qué hago?”.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Lanzar</h3>
+        <p>Piensas “si esto incumple mi regla, no debería continuar”.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
     <h2>Validar antes de continuar</h2>
     <pre><code>nota = 15
 
 if nota < 0 or nota > 10:
     raise ValueError("La nota debe estar entre 0 y 10")</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Más casos de validación útiles</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Texto vacío</h3>
+        <pre><code>if nombre == "":
+    raise ValueError("El nombre no puede estar vacío")</code></pre>
+      </div>
+
+      <div class="theory-card">
+        <h3>Divisor inválido</h3>
+        <pre><code>if b == 0:
+    raise ValueError("El divisor no puede ser cero")</code></pre>
+      </div>
+
+      <div class="theory-card">
+        <h3>Valor no permitido</h3>
+        <pre><code>if opcion not in ["A", "B", "C"]:
+    raise ValueError("Opción no permitida")</code></pre>
+      </div>
+
+      <div class="theory-card">
+        <h3>Rango</h3>
+        <pre><code>if edad < 0 or edad > 120:
+    raise ValueError("Edad fuera de rango")</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Mensajes de error buenos y malos</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Mensaje vago</h3>
+        <p><code>"Error"</code></p>
+      </div>
+      <div class="theory-card">
+        <h3>Mensaje útil</h3>
+        <p><code>"La nota debe estar entre 0 y 10"</code></p>
+      </div>
+      <div class="theory-card">
+        <h3>Regla útil</h3>
+        <p>El mensaje debería explicar qué regla se ha incumplido.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Objetivo</h3>
+        <p>Que quien lea el error entienda el problema sin adivinar.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
@@ -60,6 +263,14 @@ if nota < 0 or nota > 10:
   </section>
 
   <section class="panel">
+    <h2>Funciones más seguras gracias a la validación</h2>
+    <p>
+      Cuando validas dentro de una función, dejas más claro qué espera esa función y qué casos no acepta.
+      Eso hace el código más robusto y más fácil de reutilizar.
+    </p>
+  </section>
+
+  <section class="panel">
     <h2>Capturar un error provocado con <code>raise</code></h2>
     <pre><code>try:
     edad = -1
@@ -70,18 +281,79 @@ except ValueError as error:
   </section>
 
   <section class="panel">
-    <h2>💭 Piensa antes de ejecutar</h2>
-    <pre><code>def validar_precio(precio):
+    <h2>Prevenir, capturar o lanzar</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Prevenir</h3>
+        <p>Validas una condición con <code>if</code> antes de que aparezca un problema.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Capturar</h3>
+        <p>Usas <code>except</code> cuando una excepción puede aparecer al ejecutar.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Lanzar</h3>
+        <p>Usas <code>raise</code> cuando tú decides que un dato incumple una regla.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Idea clave</h3>
+        <p>No son lo mismo y conviene saber cuándo usar cada enfoque.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Cómo pensar una validación con <code>raise</code></h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Paso 1</h3>
+        <p>Define qué datos son válidos.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 2</h3>
+        <p>Escribe la condición que detecta lo inválido.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 3</h3>
+        <p>Lanza una excepción clara si esa regla se rompe.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 4</h3>
+        <p>Solo continúa si los datos cumplen la regla.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Piensa antes de ejecutar</h2>
+        <p class="exercise-subtitle">Antes de lanzar el programa, decide si el dato cumple la regla o debería provocar un error.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Código</h3>
+        <pre><code>def validar_precio(precio):
     if precio < 0:
         raise ValueError("Precio inválido")
     return precio
 
 print(validar_precio(10))</code></pre>
+      </div>
 
-    <ul>
-      <li>¿qué pasa con 10?</li>
-      <li>¿qué pasaría con -3?</li>
-    </ul>
+      <div class="exercise-block">
+        <h3>Preguntas</h3>
+        <ul>
+          <li>¿qué pasa con 10?</li>
+          <li>¿qué pasaría con -3?</li>
+          <li>¿por qué aquí tiene sentido frenar el proceso?</li>
+        </ul>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
@@ -90,99 +362,235 @@ print(validar_precio(10))</code></pre>
       <li>usar <code>raise</code> sin pensar qué regla se está validando</li>
       <li>no elegir un mensaje claro</li>
       <li>seguir el programa con datos incorrectos cuando deberías frenarlo</li>
+      <li>confundir lanzar una excepción con capturarla</li>
     </ul>
   </section>
 
   <section class="panel">
-    <h2>Mini-reto guiado</h2>
-    <p>
-      Crea una función que reciba una edad y lance un error si es negativa o mayor que 120.
-    </p>
+    <h2>Buenas prácticas</h2>
 
-    <pre><code>def validar_edad(edad):
-    if edad < 0 or edad > 120:
-        raise ValueError("Edad fuera de rango")
-    return edad</code></pre>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Valida con intención</h3>
+        <p>No lances errores por costumbre, sino porque una regla real se incumple.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Usa mensajes útiles</h3>
+        <p>Explican claramente qué condición no se ha cumplido.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Hazlo pronto</h3>
+        <p>Conviene validar antes de seguir calculando con datos inválidos.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Piénsalo en funciones</h3>
+        <p>Hace que las funciones sean más seguras y explícitas.</p>
+      </div>
+    </div>
   </section>
 
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./03-else-finally-y-errores-comunes.html">Anterior</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
+    <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
+        <p class="exercise-subtitle">Ahora toca validar un dato usando una regla más clara y más útil.</p>
+      </div>
 
-  <button class="btn btn-primary" onclick="completeTopic('10.4')">Marcar como completado</button>
+      <div class="badges">
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">10.4</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Enunciado</h3>
+        <p>
+          Crea una función que reciba una edad y lance un error si es negativa o mayor que 120.
+          Si la edad es válida, debe devolverla.
+        </p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes practicar</h3>
+        <ul>
+          <li>usar <code>raise</code> con una regla de rango</li>
+          <li>escribir un mensaje claro</li>
+          <li>dejar claro cuándo una función debe continuar y cuándo no</li>
+        </ul>
+
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-10%2F04-raise-y-validaciones.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Resumen mental del subtema</h2>
+        <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Ideas clave</h3>
+        <ul>
+          <li><code>raise</code> sirve para lanzar una excepción de forma intencional</li>
+          <li>validar significa comprobar si los datos cumplen las reglas antes de seguir</li>
+          <li>no todos los errores vienen de Python: algunos los define tu propio programa</li>
+          <li>un buen mensaje de error ayuda a entender qué regla se ha incumplido</li>
+          <li>validar no es lo mismo que capturar una excepción que ya ha ocurrido</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Puente con el siguiente bloque</h3>
+        <div class="challenge">
+          Ya sabes diferenciar entre reaccionar a un error y provocar una excepción cuando una regla no se cumple. El siguiente paso es combinar prevención, captura y validación en mini-retos y ejercicios más completos.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Siguiente paso</h2>
+    <p>
+      Ya sabes usar <code>raise</code> y validar datos. Lo siguiente es practicar situaciones donde debes decidir si conviene prevenir, capturar o lanzar una excepción.
+    </p>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./03-else-finally-y-errores-comunes.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
+    </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
+  </section>
+
+  <script src="../topic-completion.js"></script>
   <script>
-const TOPIC_ID = "10.4";
-const NEXT_URL = "./05-mini-retos.html";
+    const subtopicCompletion = initTopicCompletion({
+      topicId: "10.4",
+      nextUrl: "./05-mini-retos.html"
+    });
 
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+    const miniRetoCompletion = initTopicCompletion({
+      topicId: "10.4.mini"
+    });
 
-const nextBtn = document.getElementById("nextBtn");
+    const completeBtn = document.getElementById("completeBtn");
+    const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+    const completionMessage = document.getElementById("completionMessage");
 
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
+    function showCompletionMessage(text) {
+      if (!completionMessage) return;
+      completionMessage.textContent = text;
+      completionMessage.style.display = "block";
+    }
 
-    if (!token || !nextBtn) return;
+    function showCompletedState() {
+      if (!completeBtn) return;
 
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
+      completeBtn.style.display = "none";
+
+      if (!document.getElementById("completedBadge")) {
+        const badge = document.createElement("span");
+        badge.id = "completedBadge";
+        badge.className = "btn btn-secondary";
+        badge.textContent = "Subtema completado ✅";
+        completeBtn.parentNode.appendChild(badge);
       }
-    });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
-  }
-}
-
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
     }
 
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
-    });
+    function showMiniCompletedState() {
+      if (!miniCompleteBtn) return;
 
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
+      miniCompleteBtn.style.display = "none";
+
+      if (!document.getElementById("miniCompletedBadge")) {
+        const badge = document.createElement("span");
+        badge.id = "miniCompletedBadge";
+        badge.className = "btn btn-secondary";
+        badge.textContent = "Mini-reto completado ✅";
+        miniCompleteBtn.parentNode.appendChild(badge);
+      }
     }
 
-    alert("Tema completado 🎉");
+    async function syncCompletionUI() {
+      try {
+        const subtopicDone = await subtopicCompletion.isCompleted();
+        const miniDone = await miniRetoCompletion.isCompleted();
 
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
+        if (subtopicDone) {
+          showCompletedState();
+        }
+
+        if (miniDone) {
+          showMiniCompletedState();
+        }
+
+        if (subtopicDone && miniDone) {
+          showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+        } else if (subtopicDone) {
+          showCompletionMessage("Este subtema ya estaba marcado como completado.");
+        } else if (miniDone) {
+          showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+        }
+      } catch (error) {
+        console.error("Error comprobando estado del subtema:", error);
+      }
     }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
-  }
-}
 
-unlockNextIfCompleted();
-</script>
+    if (completeBtn) {
+      completeBtn.addEventListener("click", async (e) => {
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
+
+        try {
+          btn.disabled = true;
+          btn.textContent = "Guardando...";
+
+          await subtopicCompletion.completeTopic();
+
+          showCompletedState();
+          showCompletionMessage("Has marcado este subtema como completado.");
+        } catch (error) {
+          console.error("Error al completar el subtema:", error);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          showCompletionMessage(error.message || "No se pudo guardar el progreso.");
+        }
+      });
+    }
+
+    if (miniCompleteBtn) {
+      miniCompleteBtn.addEventListener("click", async (e) => {
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
+
+        try {
+          btn.disabled = true;
+          btn.textContent = "Guardando...";
+
+          await miniRetoCompletion.completeTopic();
+
+          showMiniCompletedState();
+          showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+        } catch (error) {
+          console.error("Error al completar el mini-reto:", error);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+        }
+      });
+    }
+
+    syncCompletionUI();
+  </script>
 
 </main>
 </body>

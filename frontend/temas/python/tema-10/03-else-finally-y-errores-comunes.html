@@ -108,10 +108,39 @@
         </ul>
 
         <div class="challenge">
-          <strong>Piensa así:</strong><br />
-          un bloque de excepciones bien escrito no solo controla errores: también deja claro el recorrido normal y el recorrido excepcional.
+          Piensa así: un bloque de excepciones bien escrito no solo controla errores, también deja claro el recorrido normal y el recorrido excepcional.
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Dónde aparecen <code>else</code> y <code>finally</code> en problemas reales</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Éxito claro</h3>
+        <p>Usar <code>else</code> cuando una acción solo debe ocurrir si no hubo error.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Cierre garantizado</h3>
+        <p>Usar <code>finally</code> cuando algo debe ejecutarse pase lo que pase.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Limpieza</h3>
+        <p>Dejar el proceso en un estado coherente al terminar.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Flujo legible</h3>
+        <p>Separar claramente error, éxito y cierre para entender mejor el programa.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <code>else</code> y <code>finally</code> aparecen cuando no solo quieres controlar el error, sino también dejar claro qué pasa si todo sale bien y qué debe ejecutarse siempre al final.
     </div>
   </section>
 
@@ -127,6 +156,18 @@ except ValueError:
     print("No válido")
 else:
     print("Conversión correcta")</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Por qué <code>else</code> aporta claridad</h2>
+    <p>
+      <code>else</code> te permite separar claramente el camino donde todo salió bien
+      del camino donde hubo error. Eso hace el código más legible.
+    </p>
+
+    <div class="callout">
+      Regla útil: si algo debe ocurrir solo cuando no hubo excepción, <code>else</code> suele ser un buen sitio para ponerlo.
+    </div>
   </section>
 
   <section class="panel">
@@ -148,6 +189,29 @@ finally:
   </section>
 
   <section class="panel">
+    <h2>Cuándo tiene sentido real usar <code>finally</code></h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Cierre</h3>
+        <p>Acciones que deben ocurrir siempre al final.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Limpieza</h3>
+        <p>Dejar el proceso en un estado coherente.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Mensajes finales</h3>
+        <p>Indicar que el intento terminó, con o sin error.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Idea útil</h3>
+        <p>No es un adorno: tiene sentido cuando algo debe ejecutarse siempre.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
     <h2>Estructura completa</h2>
     <pre><code>try:
     numero = int("5")
@@ -157,6 +221,29 @@ else:
     print("Todo bien")
 finally:
     print("Bloque final")</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Cómo leer el flujo completo</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3><code>try</code></h3>
+        <p>Contiene el intento principal.</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>except</code></h3>
+        <p>Se activa si ocurre un error capturado.</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>else</code></h3>
+        <p>Solo corre si no hubo error.</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>finally</code></h3>
+        <p>Siempre corre al final.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
@@ -191,6 +278,10 @@ finally:
         <h3><code>ZeroDivisionError</code></h3>
         <p>División entre cero.</p>
       </div>
+      <div class="theory-card">
+        <h3>Importancia</h3>
+        <p>Conocer nombres comunes te ayuda a interpretar fallos reales con más rapidez.</p>
+      </div>
     </div>
   </section>
 
@@ -203,24 +294,24 @@ except ZeroDivisionError:
   </section>
 
   <section class="panel">
-    <h2>Cómo leer el flujo completo</h2>
+    <h2>Qué debería ir en cada bloque</h2>
 
     <div class="theory-grid">
       <div class="theory-card">
-        <h3><code>try</code></h3>
-        <p>Contiene el intento principal.</p>
+        <h3>En <code>try</code></h3>
+        <p>La operación que podría fallar.</p>
       </div>
       <div class="theory-card">
-        <h3><code>except</code></h3>
-        <p>Se activa si ocurre un error capturado.</p>
+        <h3>En <code>except</code></h3>
+        <p>La respuesta al error capturado.</p>
       </div>
       <div class="theory-card">
-        <h3><code>else</code></h3>
-        <p>Solo corre si no hubo error.</p>
+        <h3>En <code>else</code></h3>
+        <p>Lo que solo tiene sentido si todo fue bien.</p>
       </div>
       <div class="theory-card">
-        <h3><code>finally</code></h3>
-        <p>Siempre corre al final.</p>
+        <h3>En <code>finally</code></h3>
+        <p>Lo que debe ocurrir siempre al final.</p>
       </div>
     </div>
   </section>
@@ -261,52 +352,17 @@ finally:
     </div>
   </section>
 
-  <section id="reto" class="exercise-card">
-    <div class="exercise-header">
-      <div>
-        <h2 class="exercise-title">Mini-reto guiado</h2>
-        <p class="exercise-subtitle">Ahora toca usar éxito, error y cierre en una misma estructura.</p>
-      </div>
-
-      <div class="badges">
-        <span class="badge blue">Reto</span>
-        <span class="badge green">Muy fácil</span>
-      </div>
-    </div>
-
-    <div class="exercise-body">
-      <div class="exercise-block">
-        <h3>Tu misión</h3>
-        <p>
-          Haz un programa que intente abrir un archivo. Si existe, muestre un mensaje en <code>else</code>. Al final, siempre debe mostrar un mensaje final con <code>finally</code>.
-        </p>
-      </div>
-
-      <div class="exercise-block">
-        <h3>Ejemplo de referencia</h3>
-        <pre><code>try:
-    archivo = open("datos.txt", "r")
-except FileNotFoundError:
-    print("El archivo no existe")
-else:
-    print("Archivo abierto correctamente")
-finally:
-    print("Fin del proceso")</code></pre>
-      </div>
-    </div>
-  </section>
-
   <section class="panel">
     <h2>Errores frecuentes</h2>
 
     <div class="theory-grid">
       <div class="theory-card">
         <h3>Error 1</h3>
-        <p>Pensar que <code>else</code> se ejecuta aunque haya error.</p>
+        <p>No distinguir bien qué debe ir en <code>else</code>.</p>
       </div>
       <div class="theory-card">
         <h3>Error 2</h3>
-        <p>No entender que <code>finally</code> aparece siempre.</p>
+        <p>Usar <code>finally</code> sin saber qué papel cumple.</p>
       </div>
       <div class="theory-card">
         <h3>Error 3</h3>
@@ -342,6 +398,73 @@ finally:
     </div>
   </section>
 
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
+        <p class="exercise-subtitle">Ahora toca usar éxito, error y cierre de forma diferenciada.</p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">10.3</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Enunciado</h3>
+        <p>
+          Escribe un ejemplo con <code>try</code>, <code>except</code>, <code>else</code> y <code>finally</code>
+          donde una conversión correcta ejecute <code>else</code> y <code>finally</code> se ejecute siempre.
+        </p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes practicar</h3>
+        <ul>
+          <li>distinguir éxito y error</li>
+          <li>dar a <code>else</code> y <code>finally</code> un papel claro</li>
+          <li>leer el flujo completo del bloque</li>
+        </ul>
+
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-10%2F03-else-finally-y-errores-comunes.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Resumen mental del subtema</h2>
+        <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Ideas clave</h3>
+        <ul>
+          <li><code>else</code> se ejecuta solo si no hubo excepción</li>
+          <li><code>finally</code> se ejecuta siempre, haya o no haya error</li>
+          <li><code>except</code>, <code>else</code> y <code>finally</code> cumplen papeles distintos dentro del flujo</li>
+          <li>muchos errores comunes vienen de capturar demasiado, poner demasiado código en <code>try</code> o no distinguir bien qué puede fallar</li>
+          <li>controlar bien el flujo hace el programa más claro y más fácil de mantener</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Puente con el siguiente bloque</h3>
+        <div class="challenge">
+          Ya sabes describir mejor el flujo de éxito, error y cierre. El siguiente paso es usar <code>raise</code> para señalar tú mismo que un dato no cumple las reglas del programa.
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="panel">
     <h2>Siguiente paso</h2>
     <p>
@@ -352,81 +475,131 @@ finally:
       <a class="btn btn-secondary" href="./02-try-except.html">Anterior</a>
       <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
       <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-      <button class="btn btn-primary" onclick="completeTopic('10.3')">Marcar como completado</button>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
     </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
   </section>
 
+  <script src="../topic-completion.js"></script>
   <script>
-const TOPIC_ID = "10.3";
-const NEXT_URL = "./04-raise-y-validaciones.html";
+    const subtopicCompletion = initTopicCompletion({
+      topicId: "10.3",
+      nextUrl: "./04-raise-y-validaciones.html"
+    });
 
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+    const miniRetoCompletion = initTopicCompletion({
+      topicId: "10.3.mini"
+    });
 
-const nextBtn = document.getElementById("nextBtn");
+    const completeBtn = document.getElementById("completeBtn");
+    const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+    const completionMessage = document.getElementById("completionMessage");
 
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
+    function showCompletionMessage(text) {
+      if (!completionMessage) return;
+      completionMessage.textContent = text;
+      completionMessage.style.display = "block";
+    }
 
-    if (!token || !nextBtn) return;
+    function showCompletedState() {
+      if (!completeBtn) return;
 
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
+      completeBtn.style.display = "none";
+
+      if (!document.getElementById("completedBadge")) {
+        const badge = document.createElement("span");
+        badge.id = "completedBadge";
+        badge.className = "btn btn-secondary";
+        badge.textContent = "Subtema completado ✅";
+        completeBtn.parentNode.appendChild(badge);
       }
-    });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
-  }
-}
-
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
     }
 
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
-    });
+    function showMiniCompletedState() {
+      if (!miniCompleteBtn) return;
 
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
+      miniCompleteBtn.style.display = "none";
+
+      if (!document.getElementById("miniCompletedBadge")) {
+        const badge = document.createElement("span");
+        badge.id = "miniCompletedBadge";
+        badge.className = "btn btn-secondary";
+        badge.textContent = "Mini-reto completado ✅";
+        miniCompleteBtn.parentNode.appendChild(badge);
+      }
     }
 
-    alert("Tema completado 🎉");
+    async function syncCompletionUI() {
+      try {
+        const subtopicDone = await subtopicCompletion.isCompleted();
+        const miniDone = await miniRetoCompletion.isCompleted();
 
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
+        if (subtopicDone) {
+          showCompletedState();
+        }
+
+        if (miniDone) {
+          showMiniCompletedState();
+        }
+
+        if (subtopicDone && miniDone) {
+          showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+        } else if (subtopicDone) {
+          showCompletionMessage("Este subtema ya estaba marcado como completado.");
+        } else if (miniDone) {
+          showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+        }
+      } catch (error) {
+        console.error("Error comprobando estado del subtema:", error);
+      }
     }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
-  }
-}
 
-unlockNextIfCompleted();
-</script>
+    if (completeBtn) {
+      completeBtn.addEventListener("click", async (e) => {
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
+
+        try {
+          btn.disabled = true;
+          btn.textContent = "Guardando...";
+
+          await subtopicCompletion.completeTopic();
+
+          showCompletedState();
+          showCompletionMessage("Has marcado este subtema como completado.");
+        } catch (error) {
+          console.error("Error al completar el subtema:", error);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          showCompletionMessage(error.message || "No se pudo guardar el progreso.");
+        }
+      });
+    }
+
+    if (miniCompleteBtn) {
+      miniCompleteBtn.addEventListener("click", async (e) => {
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
+
+        try {
+          btn.disabled = true;
+          btn.textContent = "Guardando...";
+
+          await miniRetoCompletion.completeTopic();
+
+          showMiniCompletedState();
+          showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+        } catch (error) {
+          console.error("Error al completar el mini-reto:", error);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+        }
+      });
+    }
+
+    syncCompletionUI();
+  </script>
 
 </main>
 </body>

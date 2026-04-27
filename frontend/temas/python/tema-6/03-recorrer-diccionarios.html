@@ -108,12 +108,41 @@
       </ul>
 
       <div class="challenge">
-        <strong>Piensa así:</strong><br />
-        la pregunta importante no es solo “cómo recorro”, sino “qué necesito recorrer exactamente”.
+        La pregunta importante no es solo “cómo recorro”, sino “qué necesito recorrer exactamente”.
       </div>
     </div>
   </div>
 </section>
+
+  <section class="panel">
+    <h2>Dónde aparece recorrer diccionarios en problemas reales</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Listados</h3>
+        <p>Mostrar todas las claves o todos los valores guardados.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Informes</h3>
+        <p>Recorrer pares clave-valor para presentar resultados de forma legible.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Validación</h3>
+        <p>Revisar si todos los datos cumplen una condición.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Procesamiento</h3>
+        <p>Aplicar una acción a cada elemento del diccionario dentro de un bucle.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      Recorrer diccionarios aparece cuando no basta con mirar una clave aislada y necesitas procesar toda la estructura.
+    </div>
+  </section>
 
   <section class="panel">
     <h2>Qué significa recorrer un diccionario</h2>
@@ -215,6 +244,29 @@ for clave, valor in producto.items():
   </section>
 
   <section class="panel">
+    <h2>Recorrer no siempre es imprimir</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Mostrar ficha</h3>
+        <p>Imprimir todos los datos de una entidad.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Validar</h3>
+        <p>Comprobar si algún campo tiene un valor problemático.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Buscar</h3>
+        <p>Revisar si una clave o valor concreto está presente.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Resumir</h3>
+        <p>Construir una vista más clara del contenido.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
     <h2>Casos reales</h2>
 
     <div class="theory-grid">
@@ -238,6 +290,29 @@ for clave, valor in producto.items():
   </section>
 
   <section class="panel">
+    <h2>Errores frecuentes al recorrer</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Error 1</h3>
+        <p>No tener claro si necesitas claves, valores o ambos.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 2</h3>
+        <p>Recorrer claves y luego olvidar acceder al valor.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 3</h3>
+        <p>Usar <code>values()</code> cuando en realidad necesitabas mostrar la clave también.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 4</h3>
+        <p>Recorrer sin haber decidido antes para qué sirve el recorrido.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
     <h2>Cómo pensar un recorrido antes de escribirlo</h2>
 
     <div class="theory-grid">
@@ -255,7 +330,44 @@ for clave, valor in producto.items():
       </div>
       <div class="theory-card">
         <h3>Paso 4</h3>
-        <p>Usa nombres claros como <code>clave</code> y <code>valor</code>.</p>
+        <p>Usa nombres claros como <code>clave</code>, <code>valor</code> o ambos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
+        <p class="exercise-subtitle">Practica el recorrido más útil cuando necesitas mostrar toda la información.</p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">6.3</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Enunciado</h3>
+        <p>
+          Crea un diccionario <code>alumno</code> con tres claves y recórrelo mostrando cada clave junto con su valor.
+        </p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes practicar</h3>
+        <ul>
+          <li>usar <code>items()</code></li>
+          <li>mostrar información completa con sentido</li>
+          <li>pensar qué patrón de recorrido conviene más</li>
+        </ul>
+
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-6%2F03-recorrer-diccionarios.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
+        </div>
       </div>
     </div>
   </section>
@@ -263,146 +375,27 @@ for clave, valor in producto.items():
   <section class="exercise-card">
     <div class="exercise-header">
       <div>
-        <h2 class="exercise-title">Piensa antes de ejecutar</h2>
-        <p class="exercise-subtitle">Antes de probar el bucle, piensa qué representa cada vuelta.</p>
+        <h2 class="exercise-title">Resumen mental del subtema</h2>
+        <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
       </div>
     </div>
 
     <div class="exercise-body">
       <div class="exercise-block">
-        <h3>Código</h3>
-        <pre><code>alumno = {
-    "nombre": "Lucía",
-    "nota": 9,
-    "activo": True
-}
-
-for clave, valor in alumno.items():
-    print(clave, valor)</code></pre>
-      </div>
-
-      <div class="exercise-block">
-        <h3>Preguntas</h3>
+        <h3>Ideas clave</h3>
         <ul>
-          <li>¿cuántas iteraciones habrá?</li>
-          <li>¿qué representa cada pareja <code>clave, valor</code>?</li>
+          <li>recorrer directamente un diccionario da claves</li>
+          <li><code>values()</code> sirve cuando solo importan los valores</li>
+          <li><code>items()</code> suele ser la opción más cómoda cuando necesitas clave y valor</li>
+          <li>primero decides qué necesitas y luego eliges el patrón</li>
         </ul>
-
-        <div class="mini-note">
-          Pista: cada iteración procesa un par del diccionario.
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="panel">
-    <h2>Error típico: confundir recorrer claves con recorrer valores</h2>
-    <pre><code>persona = {
-    "nombre": "Ana",
-    "edad": 30
-}
-
-for dato in persona:
-    print(dato)</code></pre>
-
-    <p>
-      Esto imprime las claves, no los valores.
-      Si quieres valores, necesitas <code>values()</code> o acceder usando la clave.
-    </p>
-  </section>
-
-  <section id="reto" class="exercise-card">
-    <div class="exercise-header">
-      <div>
-        <h2 class="exercise-title">Mini-reto guiado</h2>
-        <p class="exercise-subtitle">Ahora toca recorrer un diccionario mostrando cada dato con claridad.</p>
-      </div>
-      <div class="badges">
-        <span class="badge blue">Reto</span>
-        <span class="badge green">Muy fácil</span>
-      </div>
-    </div>
-
-    <div class="exercise-body">
-      <div class="exercise-block">
-        <h3>Tu misión</h3>
-        <p>
-          Recorre un diccionario de película y muestra cada clave con su valor.
-        </p>
-
-        <div class="exercise-actions">
-          <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Resolver en playground</a>
-          <button class="btn btn-secondary btn-sm" type="button" onclick="document.getElementById('solucion-reto').open = true;">
-            Ver solución
-          </button>
-        </div>
       </div>
 
       <div class="exercise-block">
-        <h3>Pista</h3>
-        <p>
-          Si necesitas mostrar clave y valor a la vez, la forma más directa suele ser <code>items()</code>.
-        </p>
-
-        <details id="solucion-reto" class="theory-dropdown">
-          <summary>Mostrar solución</summary>
-          <div class="theory-dropdown-content">
-            <pre><code>pelicula = {
-    "titulo": "Interstellar",
-    "anio": 2014,
-    "director": "Christopher Nolan"
-}
-
-for clave, valor in pelicula.items():
-    print(clave, ":", valor)</code></pre>
-          </div>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <section class="panel">
-    <h2>Errores frecuentes</h2>
-
-    <div class="theory-grid">
-      <div class="theory-card">
-        <h3>Error 1</h3>
-        <p>Confundir claves con valores al recorrer.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Error 2</h3>
-        <p>Usar <code>items()</code> cuando solo necesitabas claves o valores.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Error 3</h3>
-        <p>Elegir nombres poco claros dentro del bucle.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Error 4</h3>
-        <p>Hacer demasiado trabajo dentro del bucle sin necesidad.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="panel">
-    <h2>Buenas prácticas</h2>
-
-    <div class="theory-grid">
-      <div class="theory-card">
-        <h3>Nombres claros</h3>
-        <p>Usa <code>clave</code> y <code>valor</code> cuando tenga sentido.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Elige bien</h3>
-        <p>Usa <code>items()</code> solo si realmente necesitas ambos.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Recorridos simples</h3>
-        <p>Evita lógica confusa dentro del bucle mientras aprendes.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Piensa en el objetivo</h3>
-        <p>El recorrido debe responder a una necesidad concreta.</p>
+        <h3>Puente con el siguiente bloque</h3>
+        <div class="challenge">
+          Ya sabes recorrer diccionarios. Ahora toca dominar mejor sus métodos y decidir con más criterio cuándo conviene usar esta estructura.
+        </div>
       </div>
     </div>
   </section>
@@ -410,87 +403,137 @@ for clave, valor in pelicula.items():
   <section class="panel">
     <h2>Siguiente paso</h2>
     <p>
-      Ya sabes recorrer diccionarios. Lo siguiente es aprender sus métodos más útiles y afinar cuándo conviene usar uno frente a otra estructura.
+      Ya sabes recorrer diccionarios. Lo siguiente es usar mejor sus métodos y entender con más criterio cuándo conviene esta estructura.
     </p>
 
     <div class="buttons-row">
       <a class="btn btn-secondary" href="./02-acceso-y-modificacion.html">Anterior</a>
       <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
       <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-      <button class="btn btn-primary" onclick="completeTopic('6.3')">Marcar como completado</button>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
     </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
   </section>
 
- <script>
-const TOPIC_ID = "6.3";
-const NEXT_URL = "./04-metodos-y-buenas-practicas.html";
+  <script src="../topic-completion.js"></script>
+<script>
+  const subtopicCompletion = initTopicCompletion({
+    topicId: "6.3",
+    nextUrl: "./04-metodos-y-buenas-practicas.html"
+  });
 
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+  const miniRetoCompletion = initTopicCompletion({
+    topicId: "6.3.mini"
+  });
 
-const nextBtn = document.getElementById("nextBtn");
+  const completeBtn = document.getElementById("completeBtn");
+  const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+  const completionMessage = document.getElementById("completionMessage");
 
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
+  function showCompletionMessage(text) {
+    if (!completionMessage) return;
+    completionMessage.textContent = text;
+    completionMessage.style.display = "block";
+  }
 
-    if (!token || !nextBtn) return;
+  function showCompletedState() {
+    if (!completeBtn) return;
 
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
+    completeBtn.style.display = "none";
+
+    if (!document.getElementById("completedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "completedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Subtema completado ✅";
+      completeBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  function showMiniCompletedState() {
+    if (!miniCompleteBtn) return;
+
+    miniCompleteBtn.style.display = "none";
+
+    if (!document.getElementById("miniCompletedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "miniCompletedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Mini-reto completado ✅";
+      miniCompleteBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  async function syncCompletionUI() {
+    try {
+      const subtopicDone = await subtopicCompletion.isCompleted();
+      const miniDone = await miniRetoCompletion.isCompleted();
+
+      if (subtopicDone) {
+        showCompletedState();
+      }
+
+      if (miniDone) {
+        showMiniCompletedState();
+      }
+
+      if (subtopicDone && miniDone) {
+        showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+      } else if (subtopicDone) {
+        showCompletionMessage("Este subtema ya estaba marcado como completado.");
+      } else if (miniDone) {
+        showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+      }
+    } catch (error) {
+      console.error("Error comprobando estado del subtema:", error);
+    }
+  }
+
+  if (completeBtn) {
+    completeBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
+
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
+
+        await subtopicCompletion.completeTopic();
+
+        showCompletedState();
+        showCompletionMessage("Has marcado este subtema como completado.");
+      } catch (error) {
+        console.error("Error al completar el subtema:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso.");
       }
     });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
   }
-}
 
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
+  if (miniCompleteBtn) {
+    miniCompleteBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
 
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
-    }
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
 
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
+        await miniRetoCompletion.completeTopic();
+
+        showMiniCompletedState();
+        showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+      } catch (error) {
+        console.error("Error al completar el mini-reto:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+      }
     });
-
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
-    }
-
-    alert("Tema completado 🎉");
-
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
   }
-}
 
-unlockNextIfCompleted();
+  syncCompletionUI();
 </script>
 
 </main>

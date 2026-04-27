@@ -108,8 +108,7 @@
         </ul>
 
         <div class="challenge">
-          <strong>Piensa así:</strong><br />
-          una función es como una herramienta con nombre: la creas una vez y la usas cuando la necesitas.
+          Piensa así: una función es una herramienta con nombre. La construyes una vez y la usas cuando la necesitas.
         </div>
       </div>
     </div>
@@ -156,8 +155,7 @@
     print("Hola")</code></pre>
 
     <p>
-      Aquí hemos definido una función llamada <code>saludar</code>.
-      Pero definirla no significa ejecutarla.
+      Aquí hemos definido una función llamada <code>saludar</code>. Pero definirla no significa ejecutarla.
     </p>
   </section>
 
@@ -238,11 +236,15 @@ print("Bienvenido al sistema")</code></pre>
   </section>
 
   <section class="panel">
-    <h2>Idea de función como herramienta reutilizable</h2>
+    <h2>La función como pieza con responsabilidad concreta</h2>
     <p>
-      Piensa en una función como una pequeña máquina: le das un nombre, sabes qué hace,
-      y la usas cuando la necesitas.
+      Una buena función no intenta hacer demasiadas cosas. Tiene una tarea clara:
+      saludar, calcular, validar, clasificar o construir un resultado.
     </p>
+
+    <div class="callout">
+      Cuanto más concreta sea la responsabilidad de una función, más fácil será entenderla y reutilizarla.
+    </div>
   </section>
 
   <section class="panel">
@@ -266,59 +268,19 @@ len([1, 2, 3])</code></pre>
     <div class="theory-grid">
       <div class="theory-card">
         <h3>Paso 1</h3>
-        <p>Identifica una tarea que se repite o que merece tener nombre propio.</p>
+        <p>Define qué tarea exacta resuelve.</p>
       </div>
-
       <div class="theory-card">
         <h3>Paso 2</h3>
-        <p>Define claramente qué hace esa tarea y qué no hace.</p>
+        <p>Piensa si necesitará datos de entrada más adelante.</p>
       </div>
-
       <div class="theory-card">
         <h3>Paso 3</h3>
-        <p>Asigna un nombre que describa una acción.</p>
+        <p>Elige un nombre que exprese bien su intención.</p>
       </div>
-
       <div class="theory-card">
         <h3>Paso 4</h3>
-        <p>Decide cuándo se llamará dentro del programa.</p>
-      </div>
-    </div>
-
-    <div class="challenge">
-      Muchas veces una buena función nace de detectar una repetición o una tarea demasiado larga.
-    </div>
-  </section>
-
-  <section class="exercise-card">
-    <div class="exercise-header">
-      <div>
-        <h2 class="exercise-title">Piensa antes de ejecutar</h2>
-        <p class="exercise-subtitle">Antes de probar el código, intenta seguir el flujo del programa.</p>
-      </div>
-    </div>
-
-    <div class="exercise-body">
-      <div class="exercise-block">
-        <h3>Código</h3>
-        <pre><code>def mostrar_mensaje():
-    print("Estoy dentro de la función")
-
-print("Antes")
-mostrar_mensaje()
-print("Después")</code></pre>
-      </div>
-
-      <div class="exercise-block">
-        <h3>Preguntas</h3>
-        <ul>
-          <li>¿qué se imprime primero?</li>
-          <li>¿qué línea provoca la ejecución de la función?</li>
-        </ul>
-
-        <div class="mini-note">
-          Pista: definir una función no la ejecuta todavía.
-        </div>
+        <p>Recuerda que definirla no basta: luego tendrás que llamarla.</p>
       </div>
     </div>
   </section>
@@ -326,92 +288,66 @@ print("Después")</code></pre>
   <section id="reto" class="exercise-card">
     <div class="exercise-header">
       <div>
-        <h2 class="exercise-title">Mini-reto guiado</h2>
-        <p class="exercise-subtitle">Ahora toca encapsular una tarea sencilla en una función propia.</p>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
+        <p class="exercise-subtitle">Empieza a pensar en una función como bloque reutilizable.</p>
       </div>
+
       <div class="badges">
-        <span class="badge blue">Reto</span>
-        <span class="badge green">Muy fácil</span>
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">5.1</span>
       </div>
     </div>
 
     <div class="exercise-body">
       <div class="exercise-block">
-        <h3>Tu misión</h3>
+        <h3>Enunciado</h3>
         <p>
-          Crea una función llamada <code>mostrar_bienvenida</code> que imprima dos líneas de saludo.
+          Crea una función llamada <code>presentar_app</code> que imprima dos líneas:
+          <code>"Bienvenido"</code> y <code>"Vamos a aprender Python"</code>.
+          Después llámala.
         </p>
-
-        <div class="exercise-actions">
-          <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Resolver en playground</a>
-          <button class="btn btn-secondary btn-sm" type="button" onclick="document.getElementById('solucion-reto').open = true;">
-            Ver solución
-          </button>
-        </div>
       </div>
 
       <div class="exercise-block">
-        <h3>Pista</h3>
-        <p>
-          Primero define la función con <code>def</code> y después llámala con su nombre y paréntesis.
-        </p>
+        <h3>Qué debes practicar</h3>
+        <ul>
+          <li>usar <code>def</code></li>
+          <li>indentación correcta</li>
+          <li>distinguir entre definir y llamar</li>
+        </ul>
 
-        <details id="solucion-reto" class="theory-dropdown">
-          <summary>Mostrar solución</summary>
-          <div class="theory-dropdown-content">
-            <pre><code>def mostrar_bienvenida():
-    print("Bienvenido")
-    print("Vamos a aprender funciones")
-
-mostrar_bienvenida()</code></pre>
-          </div>
-        </details>
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-5%2F01-que-es-una-funcion.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="panel">
-    <h2>Errores frecuentes</h2>
-
-    <div class="theory-grid">
-      <div class="theory-card">
-        <h3>Error 1</h3>
-        <p>Olvidar los paréntesis al llamar a la función.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Error 2</h3>
-        <p>Pensar que definir una función la ejecuta automáticamente.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Error 3</h3>
-        <p>Poner mal la indentación del bloque.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Error 4</h3>
-        <p>Elegir nombres demasiado ambiguos.</p>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Resumen mental del subtema</h2>
+        <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
       </div>
     </div>
-  </section>
 
-  <section class="panel">
-    <h2>Buenas prácticas</h2>
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Ideas clave</h3>
+        <ul>
+          <li>una función agrupa una tarea concreta</li>
+          <li>definir y llamar no son lo mismo</li>
+          <li>el nombre importa porque comunica intención</li>
+          <li>las funciones sirven para evitar repeticiones y ordenar mejor el programa</li>
+        </ul>
+      </div>
 
-    <div class="theory-grid">
-      <div class="theory-card">
-        <h3>Nombres con acción</h3>
-        <p>Usa nombres como <code>saludar</code>, <code>calcular_total</code> o <code>mostrar_menu</code>.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Una responsabilidad</h3>
-        <p>Haz que cada función tenga una tarea clara y concreta.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Tamaño razonable</h3>
-        <p>Evita funciones demasiado largas al empezar.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Piensa antes de crear</h3>
-        <p>No conviertas cualquier línea en función: hazlo cuando aporte claridad o reutilización.</p>
+      <div class="exercise-block">
+        <h3>Puente con el siguiente bloque</h3>
+        <div class="challenge">
+          Ya entiendes qué es una función. Ahora toca aprender a hacerla flexible con parámetros y argumentos.
+        </div>
       </div>
     </div>
   </section>
@@ -419,88 +355,138 @@ mostrar_bienvenida()</code></pre>
   <section class="panel">
     <h2>Siguiente paso</h2>
     <p>
-      Ya sabes qué es una función. Lo siguiente es hacerla flexible usando parámetros y argumentos.
+      Ya entiendes la idea general de función. Lo siguiente es aprender a pasarle datos para que no sea rígida.
     </p>
 
     <div class="buttons-row">
-      <a class="btn btn-secondary" href="./index.html">Índice tema</a>
       <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
       <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-      <button class="btn btn-primary" onclick="completeTopic('5.1')">Marcar como completado</button>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
     </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
   </section>
 
-  <script>
-const TOPIC_ID = "5.1";
-const NEXT_URL = "./02-parametros-y-argumentos.html";
+<script src="../topic-completion.js"></script>
+<script>
+  const subtopicCompletion = initTopicCompletion({
+    topicId: "5.1",
+    nextUrl: "./02-parametros-y-argumentos.html"
+  });
 
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+  const miniRetoCompletion = initTopicCompletion({
+    topicId: "5.1.mini"
+  });
 
-const nextBtn = document.getElementById("nextBtn");
+  const completeBtn = document.getElementById("completeBtn");
+  const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+  const completionMessage = document.getElementById("completionMessage");
 
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
+  function showCompletionMessage(text) {
+    if (!completionMessage) return;
+    completionMessage.textContent = text;
+    completionMessage.style.display = "block";
+  }
 
-    if (!token || !nextBtn) return;
+  function showCompletedState() {
+    if (!completeBtn) return;
 
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
+    completeBtn.style.display = "none";
+
+    if (!document.getElementById("completedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "completedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Subtema completado ✅";
+      completeBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  function showMiniCompletedState() {
+    if (!miniCompleteBtn) return;
+
+    miniCompleteBtn.style.display = "none";
+
+    if (!document.getElementById("miniCompletedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "miniCompletedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Mini-reto completado ✅";
+      miniCompleteBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  async function syncCompletionUI() {
+    try {
+      const subtopicDone = await subtopicCompletion.isCompleted();
+      const miniDone = await miniRetoCompletion.isCompleted();
+
+      if (subtopicDone) {
+        showCompletedState();
+      }
+
+      if (miniDone) {
+        showMiniCompletedState();
+      }
+
+      if (subtopicDone && miniDone) {
+        showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+      } else if (subtopicDone) {
+        showCompletionMessage("Este subtema ya estaba marcado como completado.");
+      } else if (miniDone) {
+        showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+      }
+    } catch (error) {
+      console.error("Error comprobando estado del subtema:", error);
+    }
+  }
+
+  if (completeBtn) {
+    completeBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
+
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
+
+        await subtopicCompletion.completeTopic();
+
+        showCompletedState();
+        showCompletionMessage("Has marcado este subtema como completado.");
+      } catch (error) {
+        console.error("Error al completar el subtema:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso.");
       }
     });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
   }
-}
 
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
+  if (miniCompleteBtn) {
+    miniCompleteBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
 
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
-    }
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
 
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
+        await miniRetoCompletion.completeTopic();
+
+        showMiniCompletedState();
+        showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+      } catch (error) {
+        console.error("Error al completar el mini-reto:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+      }
     });
-
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
-    }
-
-    alert("Tema completado 🎉");
-
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
   }
-}
 
-unlockNextIfCompleted();
+  syncCompletionUI();
 </script>
+
 
 </main>
 </body>

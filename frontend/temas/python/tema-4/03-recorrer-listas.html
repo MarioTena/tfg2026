@@ -70,10 +70,30 @@
 
     <div class="exercise-body">
       <div class="exercise-block">
-        <h3>Por qué es importante</h3>
+        <h3>Qué problema resuelve</h3>
         <p>
-          Esta es una habilidad central en programación. Muchas tareas reales consisten en repetir una misma operación sobre varios datos.
+          Muchas tareas reales no consisten en trabajar con un solo dato, sino en repetir una acción sobre varios:
+          mostrar, sumar, buscar, contar o transformar elementos de una colección.
         </p>
+
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3>Mostrar</h3>
+            <p>Ver todos los elementos de una lista uno a uno.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Sumar</h3>
+            <p>Acumular valores a medida que avanzas por la lista.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Contar</h3>
+            <p>Comprobar cuántos cumplen una condición.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Buscar</h3>
+            <p>Revisar si un valor aparece dentro de la colección.</p>
+          </div>
+        </div>
 
         <div class="callout">
           Idea clave: cuando tienes varios elementos, casi siempre aparece la necesidad de recorrerlos.
@@ -81,14 +101,17 @@
       </div>
 
       <div class="exercise-block">
-        <h3>Qué debes ser capaz de hacer</h3>
+        <h3>Qué debes recordar</h3>
         <ul>
-          <li>mostrar todos los elementos</li>
-          <li>sumar valores</li>
-          <li>contar cuántos cumplen una condición</li>
-          <li>buscar un valor concreto</li>
-          <li>decidir si necesitas elemento o índice</li>
+          <li>un <code>for</code> recorre la lista elemento a elemento</li>
+          <li>puedes usarlo para mostrar, sumar, contar o buscar</li>
+          <li>si no necesitas posición, no necesitas índices</li>
+          <li>el patrón del bucle es parecido; cambia lo que haces dentro</li>
         </ul>
+
+        <div class="challenge">
+          Recorrer una lista no es un objetivo en sí: es el medio para resolver una tarea concreta.
+        </div>
       </div>
     </div>
   </section>
@@ -261,200 +284,34 @@ for nombre in nombres:
         <ul>
           <li>en todos recorres la lista elemento a elemento</li>
           <li>lo que cambia no es el bucle, sino lo que haces dentro</li>
-          <li>la pregunta importante es: ¿quieres sumar, contar o buscar?</li>
+          <li>la lista es la estructura; el patrón lo marca tu objetivo</li>
         </ul>
-
-        <div class="challenge">
-          Cuando entiendes este patrón, empiezas a ver que muchos ejercicios cambian de enunciado, pero comparten la misma estructura mental.
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="exercise-card">
-    <div class="exercise-header">
-      <div>
-        <h2 class="exercise-title">Elemento o índice: elegir bien</h2>
-        <p class="exercise-subtitle">Esta decisión aparece muchas veces y conviene entenderla bien.</p>
-      </div>
-    </div>
-
-    <div class="exercise-body">
-      <div class="exercise-block">
-        <h3>Cuando solo necesitas el valor</h3>
-        <p>
-          Usa <code>for elemento in lista</code>. Es la opción más simple y legible.
-        </p>
-
-        <div class="challenge">
-          No uses índices por costumbre si no los necesitas. Complica la lectura sin aportar valor.
-        </div>
-      </div>
-
-      <div class="exercise-block">
-        <h3>Cuando necesitas la posición</h3>
-        <p>
-          A veces sí necesitas saber en qué posición está cada elemento. En esos casos puedes usar <code>range(len(lista))</code>.
-        </p>
-
-        <pre><code>frutas = ["manzana", "pera", "uva"]
-
-for i in range(len(frutas)):
-    print(i, frutas[i])</code></pre>
-
-        <p>
-          Esto muestra el índice y el valor.
-        </p>
       </div>
     </div>
   </section>
 
   <section class="panel">
-    <h2>Cómo pensar un recorrido antes de escribirlo</h2>
+    <h2>¿Recorrer elementos o índices?</h2>
 
     <div class="theory-grid">
       <div class="theory-card">
-        <h3>Paso 1</h3>
-        <p>Pregúntate qué quieres hacer con cada elemento: mostrar, sumar, contar o buscar.</p>
+        <h3>Elementos directos</h3>
+        <p>Es la forma más simple cuando solo necesitas el valor.</p>
       </div>
 
       <div class="theory-card">
-        <h3>Paso 2</h3>
-        <p>Decide si necesitas el valor directamente o también su posición.</p>
+        <h3>Índices</h3>
+        <p>Son útiles cuando también necesitas saber la posición que ocupa cada elemento.</p>
       </div>
 
       <div class="theory-card">
-        <h3>Paso 3</h3>
-        <p>Elige si necesitas un acumulador, un contador o solo recorrer.</p>
+        <h3>Regla práctica</h3>
+        <p>Si no necesitas posición, recorre directamente los elementos.</p>
       </div>
 
       <div class="theory-card">
-        <h3>Paso 4</h3>
-        <p>Revisa cuántas iteraciones habrá: una por cada elemento de la lista.</p>
-      </div>
-    </div>
-
-    <div class="callout">
-      Antes de escribir un bucle, identifica el patrón. Eso reduce muchísimo los errores.
-    </div>
-  </section>
-
-  <section class="exercise-card">
-    <div class="exercise-header">
-      <div>
-        <h2 class="exercise-title">Piensa antes de ejecutar</h2>
-        <p class="exercise-subtitle">Antes de lanzar el código, intenta seguir mentalmente el recorrido del bucle.</p>
-      </div>
-    </div>
-
-    <div class="exercise-body">
-      <div class="exercise-block">
-        <h3>Código</h3>
-        <pre><code>numeros = [3, 6, 9]
-
-for numero in numeros:
-    print(numero * 2)</code></pre>
-      </div>
-
-      <div class="exercise-block">
-        <h3>Preguntas</h3>
-        <ul>
-          <li>¿qué se imprime en cada iteración?</li>
-          <li>¿cuántas iteraciones hay?</li>
-        </ul>
-
-        <div class="mini-note">
-          Pista: hay tantas iteraciones como elementos tenga la lista.
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="panel">
-    <h2>Error típico: confundir el elemento con el índice</h2>
-    <pre><code>frutas = ["manzana", "pera", "uva"]
-
-for fruta in frutas:
-    print(frutas[fruta])</code></pre>
-
-    <p>
-      Esto está mal, porque <code>fruta</code> contiene valores como <code>"manzana"</code>, no índices numéricos.
-    </p>
-
-    <div class="callout">
-      Si recorres directamente una lista con <code>for fruta in frutas</code>, la variable contiene el valor, no la posición.
-    </div>
-  </section>
-
-  <section id="reto" class="exercise-card">
-    <div class="exercise-header">
-      <div>
-        <h2 class="exercise-title">Mini-reto guiado</h2>
-        <p class="exercise-subtitle">Ahora toca aplicar el patrón de recorrido a una situación práctica.</p>
-      </div>
-
-      <div class="badges">
-        <span class="badge blue">Reto</span>
-        <span class="badge green">Muy fácil</span>
-      </div>
-    </div>
-
-    <div class="exercise-body">
-      <div class="exercise-block">
-        <h3>Tu misión</h3>
-        <p>
-          Recorre una lista de precios y muestra cada precio con IVA calculado al 21%.
-        </p>
-
-        <div class="exercise-actions">
-          <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Resolver en playground</a>
-          <button class="btn btn-secondary btn-sm" type="button" onclick="document.getElementById('solucion-reto').open = true;">
-            Ver solución
-          </button>
-        </div>
-      </div>
-
-      <div class="exercise-block">
-        <h3>Pista</h3>
-        <p>
-          Aquí no necesitas posiciones, solo el valor de cada precio.
-        </p>
-
-        <details id="solucion-reto" class="theory-dropdown">
-          <summary>Mostrar solución</summary>
-          <div class="theory-dropdown-content">
-            <pre><code>precios = [10, 20, 30]
-
-for precio in precios:
-    print(precio * 1.21)</code></pre>
-          </div>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <section class="panel">
-    <h2>Errores frecuentes</h2>
-
-    <div class="theory-grid">
-      <div class="theory-card">
-        <h3>Error 1</h3>
-        <p>Confundir el elemento con el índice.</p>
-      </div>
-
-      <div class="theory-card">
-        <h3>Error 2</h3>
-        <p>No inicializar un acumulador o contador antes del bucle.</p>
-      </div>
-
-      <div class="theory-card">
-        <h3>Error 3</h3>
-        <p>Usar índices cuando no hacen falta.</p>
-      </div>
-
-      <div class="theory-card">
-        <h3>Error 4</h3>
-        <p>No entender qué hace el bloque dentro de cada iteración.</p>
+        <h3>Precaución</h3>
+        <p>No compliques un recorrido si el problema no te pide trabajar con índices.</p>
       </div>
     </div>
   </section>
@@ -465,12 +322,7 @@ for precio in precios:
     <div class="theory-grid">
       <div class="theory-card">
         <h3>Nombres claros</h3>
-        <p>Si recorres notas, usa <code>nota</code>, no <code>x</code>.</p>
-      </div>
-
-      <div class="theory-card">
-        <h3>Separa roles</h3>
-        <p>Diferencia claramente acumuladores, contadores y variables del bucle.</p>
+        <p>Elige nombres que reflejen bien la lista, los acumuladores y las variables del bucle.</p>
       </div>
 
       <div class="theory-card">
@@ -481,6 +333,92 @@ for precio in precios:
       <div class="theory-card">
         <h3>Lee el patrón</h3>
         <p>Antes de escribir, piensa si vas a mostrar, sumar, contar o buscar.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Simula iteraciones</h3>
+        <p>Si dudas, sigue a mano qué valores van tomando tus variables.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Seguir mentalmente una iteración</h2>
+
+    <pre><code>numeros = [3, 6, 9]
+suma = 0
+
+for numero in numeros:
+    suma = suma + numero
+    print("numero:", numero, "suma:", suma)</code></pre>
+
+    <p>
+      Este tipo de trazado te ayuda a entender cómo cambia el estado del programa en cada vuelta.
+    </p>
+  </section>
+
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
+        <p class="exercise-subtitle">Combina recorrido y acumulación en un caso básico.</p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">4.3</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Enunciado</h3>
+        <p>
+          Recorre una lista de números y muestra la suma total de todos sus elementos.
+        </p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes practicar</h3>
+        <ul>
+          <li>usar un <code>for</code> sobre la lista</li>
+          <li>crear un acumulador antes del bucle</li>
+          <li>entender qué cambia en cada iteración</li>
+        </ul>
+
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-4%2F03-recorrer-listas.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Resumen mental del subtema</h2>
+        <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Ideas clave</h3>
+        <ul>
+          <li>recorrer una lista es pasar por sus elementos uno a uno</li>
+          <li>un <code>for</code> permite mostrar, sumar, contar o buscar dentro de una colección</li>
+          <li>si no necesitas posición, suele ser mejor recorrer directamente los elementos</li>
+          <li>un acumulador guarda resultados; un contador aumenta cuando se cumple algo</li>
+          <li>el bucle es parecido, pero lo que haces dentro cambia según el objetivo</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Puente con el siguiente bloque</h3>
+        <div class="challenge">
+          Ya sabes recorrer listas para resolver tareas reales. El siguiente paso es usar métodos para añadir, eliminar, ordenar y consultar elementos con más comodidad.
+        </div>
       </div>
     </div>
   </section>
@@ -495,81 +433,131 @@ for precio in precios:
       <a class="btn btn-secondary" href="./02-acceso-y-modificacion.html">Anterior</a>
       <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
       <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-      <button class="btn btn-primary" onclick="completeTopic('4.3')">Marcar como completado</button>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
     </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
   </section>
 
-  <script>
-    const TOPIC_ID = "4.3";
-    const NEXT_URL = "./04-metodos-listas.html";
+  <script src="../topic-completion.js"></script>
+<script>
+  const subtopicCompletion = initTopicCompletion({
+    topicId: "4.3",
+    nextUrl: "./04-metodos-listas.html"
+  });
 
-    const API_URL = "http://localhost:3000/api/progress/python";
-    const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+  const miniRetoCompletion = initTopicCompletion({
+    topicId: "4.3.mini"
+  });
 
-    const nextBtn = document.getElementById("nextBtn");
+  const completeBtn = document.getElementById("completeBtn");
+  const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+  const completionMessage = document.getElementById("completionMessage");
 
-    async function unlockNextIfCompleted() {
-      try {
-        const token = localStorage.getItem("token");
+  function showCompletionMessage(text) {
+    if (!completionMessage) return;
+    completionMessage.textContent = text;
+    completionMessage.style.display = "block";
+  }
 
-        if (!token || !nextBtn) return;
+  function showCompletedState() {
+    if (!completeBtn) return;
 
-        const res = await fetch(API_URL, {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        });
+    completeBtn.style.display = "none";
 
-        if (!res.ok) return;
-
-        const data = await res.json();
-        const completed = data?.progress?.completedTopics || [];
-
-        if (completed.includes(TOPIC_ID)) {
-          nextBtn.classList.remove("btn-disabled");
-          nextBtn.href = NEXT_URL;
-        }
-      } catch (error) {
-        console.error("Error comprobando progreso:", error);
-      }
+    if (!document.getElementById("completedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "completedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Subtema completado ✅";
+      completeBtn.parentNode.appendChild(badge);
     }
+  }
 
-    async function completeTopic(topicId) {
-      try {
-        const token = localStorage.getItem("token");
+  function showMiniCompletedState() {
+    if (!miniCompleteBtn) return;
 
-        if (!token) {
-          alert("Debes iniciar sesión para guardar el progreso");
-          return;
-        }
+    miniCompleteBtn.style.display = "none";
 
-        const res = await fetch(COMPLETE_URL, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-          },
-          body: JSON.stringify({ topic: topicId })
-        });
-
-        if (!res.ok) {
-          throw new Error(`Error HTTP: ${res.status}`);
-        }
-
-        alert("Tema completado 🎉");
-
-        if (nextBtn) {
-          nextBtn.classList.remove("btn-disabled");
-          nextBtn.href = NEXT_URL;
-        }
-      } catch (error) {
-        console.error("Error marcando tema como completado:", error);
-        alert("No se pudo guardar el progreso");
-      }
+    if (!document.getElementById("miniCompletedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "miniCompletedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Mini-reto completado ✅";
+      miniCompleteBtn.parentNode.appendChild(badge);
     }
+  }
 
-    unlockNextIfCompleted();
-  </script>
+  async function syncCompletionUI() {
+    try {
+      const subtopicDone = await subtopicCompletion.isCompleted();
+      const miniDone = await miniRetoCompletion.isCompleted();
+
+      if (subtopicDone) {
+        showCompletedState();
+      }
+
+      if (miniDone) {
+        showMiniCompletedState();
+      }
+
+      if (subtopicDone && miniDone) {
+        showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+      } else if (subtopicDone) {
+        showCompletionMessage("Este subtema ya estaba marcado como completado.");
+      } else if (miniDone) {
+        showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+      }
+    } catch (error) {
+      console.error("Error comprobando estado del subtema:", error);
+    }
+  }
+
+  if (completeBtn) {
+    completeBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
+
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
+
+        await subtopicCompletion.completeTopic();
+
+        showCompletedState();
+        showCompletionMessage("Has marcado este subtema como completado.");
+      } catch (error) {
+        console.error("Error al completar el subtema:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso.");
+      }
+    });
+  }
+
+  if (miniCompleteBtn) {
+    miniCompleteBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
+
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
+
+        await miniRetoCompletion.completeTopic();
+
+        showMiniCompletedState();
+        showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+      } catch (error) {
+        console.error("Error al completar el mini-reto:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+      }
+    });
+  }
+
+  syncCompletionUI();
+</script>
 
 </main>
 </body>

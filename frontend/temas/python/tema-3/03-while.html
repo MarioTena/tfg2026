@@ -40,7 +40,7 @@
     </div>
 
     <div class="progress-track">
-      <div class="progress-fill" style="width: 60%;"></div>
+      <div class="progress-fill" style="width: 50%;"></div>
     </div>
   </div>
 
@@ -109,8 +109,7 @@
         </ul>
 
         <div class="challenge">
-          <strong>Piensa así:</strong><br />
-          casi todo <code>while</code> necesita algo que cambie en cada vuelta. Si nada cambia, no terminará.
+          Casi todo <code>while</code> necesita algo que cambie en cada vuelta. Si nada cambia, no terminará.
         </div>
       </div>
     </div>
@@ -173,8 +172,8 @@ while contador <= 5:
         <p>El bucle sigue mientras la condición sea <code>True</code>.</p>
       </div>
       <div class="theory-card">
-        <h3>Cambio</h3>
-        <p>Dentro del bucle suele haber una variable que cambia.</p>
+        <h3>Variable de control</h3>
+        <p>Suele haber una variable que cambia y empuja al bucle hacia su final.</p>
       </div>
       <div class="theory-card">
         <h3>Salida</h3>
@@ -262,6 +261,43 @@ print(suma)</code></pre>
   </section>
 
   <section class="panel">
+    <h2>Qué cambia en cada vuelta</h2>
+
+    <pre><code>numero = 2
+
+while numero <= 10:
+    print(numero)
+    numero = numero + 2</code></pre>
+
+    <p>
+      Aquí la variable de control es <code>numero</code>. Empieza en 2, luego vale 4, luego 6, luego 8 y luego 10.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Variable de control: dónde falla más la gente</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Demasiado pronto</h3>
+        <p>Si actualizas antes de tiempo, puedes saltarte el primer valor útil.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Demasiado tarde</h3>
+        <p>Si actualizas mal, la condición puede evaluarse con un valor inesperado.</p>
+      </div>
+      <div class="theory-card">
+        <h3>En la dirección incorrecta</h3>
+        <p>Si el contador se mueve al revés, quizá nunca alcances la salida.</p>
+      </div>
+      <div class="theory-card">
+        <h3>No cambia</h3>
+        <p>Ese es el origen clásico del bucle infinito.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
     <h2><code>for</code> vs <code>while</code></h2>
 
     <div class="theory-grid">
@@ -275,114 +311,11 @@ print(suma)</code></pre>
       </div>
       <div class="theory-card">
         <h3>Idea práctica</h3>
-        <p>A veces ambos sirven, pero uno puede ser más claro que el otro.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="panel">
-    <h2>Cómo pensar un <code>while</code> antes de escribirlo</h2>
-
-    <div class="theory-grid">
-      <div class="theory-card">
-        <h3>Paso 1</h3>
-        <p>Define la condición que mantiene vivo el bucle.</p>
+        <p>A veces ambos sirven, pero uno suele expresar mejor la intención.</p>
       </div>
       <div class="theory-card">
-        <h3>Paso 2</h3>
-        <p>Identifica qué variable o estado cambia dentro.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Paso 3</h3>
-        <p>Comprueba cómo se alcanza la salida.</p>
-      </div>
-      <div class="theory-card">
-        <h3>Paso 4</h3>
-        <p>Pregúntate si puede quedarse infinito por error.</p>
-      </div>
-    </div>
-
-    <div class="challenge">
-      Si no puedes explicar por qué el <code>while</code> termina, no deberías ejecutarlo todavía.
-    </div>
-  </section>
-
-  <section class="exercise-card">
-    <div class="exercise-header">
-      <div>
-        <h2 class="exercise-title">Piensa antes de ejecutar</h2>
-        <p class="exercise-subtitle">Visualiza el contador y la condición en cada vuelta.</p>
-      </div>
-    </div>
-
-    <div class="exercise-body">
-      <div class="exercise-block">
-        <h3>Código</h3>
-        <pre><code>contador = 3
-
-while contador > 0:
-    print(contador)
-    contador = contador - 1</code></pre>
-      </div>
-
-      <div class="exercise-block">
-        <h3>Preguntas</h3>
-        <ul>
-          <li>¿qué imprime?</li>
-          <li>¿cuántas iteraciones hace?</li>
-          <li>¿cuál es el valor final de <code>contador</code>?</li>
-        </ul>
-
-        <div class="mini-note">
-          En <code>while</code>, seguir la variable de control es obligatorio para no perderte.
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="reto" class="exercise-card">
-    <div class="exercise-header">
-      <div>
-        <h2 class="exercise-title">Mini-reto guiado</h2>
-        <p class="exercise-subtitle">Usa <code>while</code> para generar una secuencia controlada.</p>
-      </div>
-      <div class="badges">
-        <span class="badge blue">Reto</span>
-        <span class="badge green">Fácil</span>
-      </div>
-    </div>
-
-    <div class="exercise-body">
-      <div class="exercise-block">
-        <h3>Tu misión</h3>
-        <p>
-          Imprime los números pares del 2 al 10 usando <code>while</code>.
-        </p>
-
-        <div class="exercise-actions">
-          <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Resolver en playground</a>
-          <button class="btn btn-secondary btn-sm" type="button" onclick="document.getElementById('solucion-reto').open = true;">
-            Ver solución
-          </button>
-        </div>
-      </div>
-
-      <div class="exercise-block">
-        <h3>Pista</h3>
-        <p>
-          Empieza por 2 y ve sumando 2 en cada iteración.
-        </p>
-
-        <details id="solucion-reto" class="theory-dropdown">
-          <summary>Mostrar solución</summary>
-          <div class="theory-dropdown-content">
-            <pre><code>numero = 2
-
-while numero <= 10:
-    print(numero)
-    numero = numero + 2</code></pre>
-          </div>
-        </details>
+        <h3>Decisión</h3>
+        <p>Si lo piensas como “mientras pase esto”, suele encajar mejor <code>while</code>.</p>
       </div>
     </div>
   </section>
@@ -420,28 +353,99 @@ while contador <= 5:
   </section>
 
   <section class="panel">
-    <h2>Buenas prácticas</h2>
+    <h2>Cómo depurar un <code>while</code></h2>
 
-    <div class="theory-grid">
-      <div class="theory-card">
-        <h3>Condición clara</h3>
-        <p>La salida del bucle debe ser comprensible a simple vista.</p>
+    <pre><code>contador = 1
+
+while contador <= 3:
+    print("Antes de sumar:", contador)
+    contador = contador + 1
+    print("Después de sumar:", contador)</code></pre>
+
+    <p>
+      Cuando un <code>while</code> no se comporta como esperas, imprimir valores intermedios suele ayudarte a entender qué está pasando.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Patrón de validación con <code>input()</code></h2>
+
+    <pre><code>numero = -1
+
+while numero < 0:
+    numero = int(input("Introduce un número positivo: "))
+
+print("Número válido")</code></pre>
+
+    <p>
+      Este patrón es muy útil cuando el programa debe seguir preguntando hasta que el usuario dé una respuesta aceptable.
+    </p>
+  </section>
+
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
+        <p class="exercise-subtitle">Ahora toca controlar una repetición por condición con intención.</p>
       </div>
-      <div class="theory-card">
-        <h3>Cambio real</h3>
-        <p>Asegúrate de que algo cambie dentro del bucle.</p>
+
+      <div class="badges">
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">3.3</span>
       </div>
-      <div class="theory-card">
-        <h3>Prueba la salida</h3>
-        <p>Comprueba el momento en el que la condición deja de cumplirse.</p>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Enunciado</h3>
+        <p>
+          Usa un bucle <code>while</code> para imprimir los números pares del 2 al 10.
+        </p>
       </div>
-      <div class="theory-card">
-        <h3>Depuración</h3>
-        <p>Mientras aprendes, imprime valores intermedios si el comportamiento no te cuadra.</p>
+
+      <div class="exercise-block">
+        <h3>Qué debes practicar</h3>
+        <ul>
+          <li>usar una variable de control</li>
+          <li>cambiar esa variable en cada iteración</li>
+          <li>entender cuándo termina el bucle</li>
+        </ul>
+
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-3%2F03-while.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
+        </div>
       </div>
     </div>
   </section>
 
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Resumen mental del subtema</h2>
+        <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Ideas clave</h3>
+        <ul>
+          <li><code>while</code> repite mientras una condición siga siendo verdadera</li>
+          <li>dentro del bucle suele haber una variable de control</li>
+          <li>esa variable debe cambiar para que el bucle termine</li>
+          <li>muchos usos reales de <code>while</code> tienen que ver con validación o espera</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Puente con el siguiente bloque</h3>
+        <div class="challenge">
+          Ya entiendes <code>while</code>. Lo siguiente es aprender a controlar mejor el flujo con <code>break</code> y <code>continue</code>.
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section class="panel">
     <h2>Siguiente paso</h2>
@@ -453,80 +457,130 @@ while contador <= 5:
       <a class="btn btn-secondary" href="./02-for.html">Anterior</a>
       <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
       <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-      <button class="btn btn-primary" onclick="completeTopic('3.3')">Marcar como completado</button>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
     </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
   </section>
 
+  <script src="../topic-completion.js"></script>
   <script>
-    const TOPIC_ID = "3.3";
-    const NEXT_URL = "./04-break-continue.html";
+    const subtopicCompletion = initTopicCompletion({
+      topicId: "3.3",
+      nextUrl: "./04-break-continue.html"
+    });
 
-    const API_URL = "http://localhost:3000/api/progress/python";
-    const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+    const miniRetoCompletion = initTopicCompletion({
+      topicId: "3.3.mini"
+    });
 
-    const nextBtn = document.getElementById("nextBtn");
+    const completeBtn = document.getElementById("completeBtn");
+    const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+    const completionMessage = document.getElementById("completionMessage");
 
-    async function unlockNextIfCompleted() {
-      try {
-        const token = localStorage.getItem("token");
+    function showCompletionMessage(text) {
+      if (!completionMessage) return;
+      completionMessage.textContent = text;
+      completionMessage.style.display = "block";
+    }
 
-        if (!token || !nextBtn) return;
+    function showCompletedState() {
+      if (!completeBtn) return;
 
-        const res = await fetch(API_URL, {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        });
+      completeBtn.style.display = "none";
 
-        if (!res.ok) return;
-
-        const data = await res.json();
-        const completed = data?.progress?.completedTopics || [];
-
-        if (completed.includes(TOPIC_ID)) {
-          nextBtn.classList.remove("btn-disabled");
-          nextBtn.href = NEXT_URL;
-        }
-      } catch (error) {
-        console.error("Error comprobando progreso:", error);
+      if (!document.getElementById("completedBadge")) {
+        const badge = document.createElement("span");
+        badge.id = "completedBadge";
+        badge.className = "btn btn-secondary";
+        badge.textContent = "Subtema completado ✅";
+        completeBtn.parentNode.appendChild(badge);
       }
     }
 
-    async function completeTopic(topicId) {
-      try {
-        const token = localStorage.getItem("token");
+    function showMiniCompletedState() {
+      if (!miniCompleteBtn) return;
 
-        if (!token) {
-          alert("Debes iniciar sesión para guardar el progreso");
-          return;
-        }
+      miniCompleteBtn.style.display = "none";
 
-        const res = await fetch(COMPLETE_URL, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-          },
-          body: JSON.stringify({ topic: topicId })
-        });
-
-        if (!res.ok) {
-          throw new Error(`Error HTTP: ${res.status}`);
-        }
-
-        alert("Tema completado 🎉");
-
-        if (nextBtn) {
-          nextBtn.classList.remove("btn-disabled");
-          nextBtn.href = NEXT_URL;
-        }
-      } catch (error) {
-        console.error("Error marcando tema como completado:", error);
-        alert("No se pudo guardar el progreso");
+      if (!document.getElementById("miniCompletedBadge")) {
+        const badge = document.createElement("span");
+        badge.id = "miniCompletedBadge";
+        badge.className = "btn btn-secondary";
+        badge.textContent = "Mini-reto completado ✅";
+        miniCompleteBtn.parentNode.appendChild(badge);
       }
     }
 
-    unlockNextIfCompleted();
+    async function syncCompletionUI() {
+      try {
+        const subtopicDone = await subtopicCompletion.isCompleted();
+        const miniDone = await miniRetoCompletion.isCompleted();
+
+        if (subtopicDone) {
+          showCompletedState();
+        }
+
+        if (miniDone) {
+          showMiniCompletedState();
+        }
+
+        if (subtopicDone && miniDone) {
+          showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+        } else if (subtopicDone) {
+          showCompletionMessage("Este subtema ya estaba marcado como completado.");
+        } else if (miniDone) {
+          showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+        }
+      } catch (error) {
+        console.error("Error comprobando estado del subtema:", error);
+      }
+    }
+
+    if (completeBtn) {
+      completeBtn.addEventListener("click", async (e) => {
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
+
+        try {
+          btn.disabled = true;
+          btn.textContent = "Guardando...";
+
+          await subtopicCompletion.completeTopic();
+
+          showCompletedState();
+          showCompletionMessage("Has marcado este subtema como completado.");
+        } catch (error) {
+          console.error("Error al completar el subtema:", error);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          showCompletionMessage(error.message || "No se pudo guardar el progreso.");
+        }
+      });
+    }
+
+    if (miniCompleteBtn) {
+      miniCompleteBtn.addEventListener("click", async (e) => {
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
+
+        try {
+          btn.disabled = true;
+          btn.textContent = "Guardando...";
+
+          await miniRetoCompletion.completeTopic();
+
+          showMiniCompletedState();
+          showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+        } catch (error) {
+          console.error("Error al completar el mini-reto:", error);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+        }
+      });
+    }
+
+    syncCompletionUI();
   </script>
 
 </main>

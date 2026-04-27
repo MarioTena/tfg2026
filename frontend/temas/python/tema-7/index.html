@@ -26,7 +26,7 @@
   <header class="header">
     <span class="mission-tag">Ruta de aprendizaje</span>
     <h1>Tema 7 · Strings intermedios</h1>
-    <p>Aprende a tratar el texto como una secuencia: acceder a partes, transformarlo, recorrerlo y analizarlo.</p>
+    <p>Aprende a tratar el texto como una secuencia: acceder a partes, transformarlo, recorrerlo y analizarlo con más precisión.</p>
 
     <div class="progress-hero">
       <div class="progress-hero-top">
@@ -59,7 +59,8 @@
         <div>
           <h2 class="exercise-title">Qué vas a dominar en este tema</h2>
           <p class="exercise-subtitle">
-            Este bloque te enseña a trabajar con cadenas de texto con más precisión: cortar, transformar, recorrer y analizar contenido.
+            Este bloque te enseña a trabajar con texto de forma mucho más precisa: acceder a posiciones, extraer fragmentos,
+            transformar cadenas, recorrerlas y analizarlas con criterio.
           </p>
         </div>
 
@@ -74,11 +75,13 @@
         <div class="exercise-block">
           <h3>Habilidades que entrenas</h3>
           <ul>
-            <li>usar indexación y slicing</li>
-            <li>aplicar métodos de strings</li>
-            <li>recorrer y analizar texto</li>
-            <li>contar y separar información</li>
-            <li>pensar si trabajas con carácter, palabra o fragmento</li>
+            <li>entender un string como secuencia de caracteres</li>
+            <li>usar indexación y slicing con seguridad</li>
+            <li>aplicar métodos útiles como <code>lower()</code>, <code>strip()</code>, <code>replace()</code>, <code>split()</code> o <code>join()</code></li>
+            <li>distinguir entre carácter, fragmento, subcadena y palabra</li>
+            <li>recorrer y analizar texto con bucles</li>
+            <li>elegir si conviene un índice, un método o un bucle</li>
+            <li>entender la inmutabilidad de los strings en situaciones reales</li>
           </ul>
         </div>
 
@@ -86,12 +89,13 @@
           <h3>Cómo avanzar</h3>
           <ul>
             <li>completa los conceptos en orden</li>
-            <li>prueba distintos textos y observa el resultado</li>
+            <li>prueba distintos textos y observa qué cambia</li>
+            <li>fíjate siempre en qué devuelve cada operación</li>
             <li>usa mini-retos y ejercicios para consolidar</li>
           </ul>
 
           <div class="challenge">
-            En strings, un pequeño cambio de índice o de método puede cambiar totalmente el resultado.
+            En strings, muchos errores no vienen de la sintaxis, sino de no tener claro qué sale exactamente de cada acceso, método o recorrido.
           </div>
         </div>
       </div>
@@ -102,7 +106,44 @@
       <div id="topics" class="topic-roadmap"></div>
     </section>
 
+    <section class="panel">
+      <h2>Resumen del recorrido</h2>
+
+      <div class="theory-grid">
+        <div class="theory-card">
+          <h3>7.1 · Strings como secuencias</h3>
+          <p>Aprendes a ver el texto como una secuencia ordenada de caracteres, no solo como “algo que se imprime”.</p>
+        </div>
+
+        <div class="theory-card">
+          <h3>7.2 · Indexación y slicing</h3>
+          <p>Trabajas posiciones concretas y fragmentos de texto con índices positivos, negativos y cortes más precisos.</p>
+        </div>
+
+        <div class="theory-card">
+          <h3>7.3 · Métodos de strings</h3>
+          <p>Aprendes a transformar, limpiar, buscar, dividir y unir texto con herramientas ya preparadas por Python.</p>
+        </div>
+
+        <div class="theory-card">
+          <h3>7.4 · Recorrer y analizar texto</h3>
+          <p>Combinas strings, bucles y lógica para contar, buscar, validar y analizar información útil del texto.</p>
+        </div>
+
+        <div class="theory-card">
+          <h3>7.5 · Práctica guiada</h3>
+          <p>Lees, razonas y detectas errores para elegir mejor entre slicing, métodos y bucles.</p>
+        </div>
+
+        <div class="theory-card">
+          <h3>Reto final</h3>
+          <p>Consolidas el tema resolviendo problemas más completos de texto, limpieza, análisis y transformación.</p>
+        </div>
+      </div>
+    </section>
+
   </main>
+
   <script src="../theme-progress-base.js"></script>
   <script src="progress.js"></script>
 </body>
