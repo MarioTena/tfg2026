@@ -516,6 +516,7 @@ Reglas del formato:
 - No uses bloques de código.
 - No menciones funciones concretas, índices concretos, expresiones concretas ni líneas concretas.
 - No escribas la solución literal.
+- No señales líneas concretas, posiciones concretas ni una zona exacta del código; orienta solo por bloque o concepto.
 
 Datos del ejercicio:
 Título: ${title}
@@ -637,6 +638,10 @@ function looksTooSolutionLike(text) {
     "por ejemplo usando",
     "haz un ",
     "cambia a ",
+    "revisa la línea donde",
+    "la línea donde",
+    "la anterior inmediata",
+    "la línea anterior",
   ];
 
   const directCodeHits = directCodePatterns.filter((p) => lower.includes(p)).length;

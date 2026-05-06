@@ -4,9 +4,10 @@
 // ============================================================================
 
 //Infrestructura de API
+const dotenv = require("dotenv");
 const express = require("express");
 const cors = require("cors");
-const dotenv = require("dotenv");
+
 
 const mongoose = require("mongoose"); //conexion mongodb
 
@@ -218,6 +219,121 @@ app.post("/api/run", requireAuth, async (req, res) => {
 // ============================================================================
 // Arranque del servidor
 // ============================================================================
-app.listen(PORT, () => {
+const http = require("http");
+const { Server } = require("socket.io");
+const jwt = require("jsonwebtoken");
+const {
+  startInteractivePythonSession,
+  sendInputToSession,
+  stopSession,
+  stopAllUserSessions
+} = require("./utils/interactiveRunner");
+
+const server = http.createServer(app);
+
+const io = new Server(server, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"]
+  }
+});
+
+io.use((socket, next) => {
+  try {
+    const token = socket.handshake.auth?.token;
+
+    if (!token) {
+      return next(new Error("Token no proporcionado"));
+    }
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+    const normalizedUserId =
+      decoded.id ||
+      decoded._id ||
+      decoded.userId ||
+      decoded.sub ||
+      decoded.user?._id ||
+      decoded.user?.id ||
+      null;
+
+    if (!normalizedUserId) {
+      return next(new Error("Token válido pero sin identificador de usuario"));
+    }
+
+    socket.user = {
+      ...decoded,
+      id: normalizedUserId,
+    };
+
+    next();
+  } catch (error) {
+    next(new Error("Token inválido"));
+  }
+});
+
+io.on("connection", (socket) => {
+  socket.on("console:start", async ({ language, code, exerciseId, topic }) => {
+    try {
+      if (language !== "python") {
+        socket.emit("console:error", {
+          message: "La consola interactiva solo está disponible para Python."
+        });
+        return;
+      }
+
+      if (!code || !code.trim()) {
+        socket.emit("console:error", {
+          message: "No hay código para ejecutar."
+        });
+        return;
+      }
+
+      const result = await startInteractivePythonSession({
+        code,
+        language,
+        exerciseId: exerciseId || null,
+        topic: topic || null,
+        userId: socket.user.id,
+        socket,
+        io
+      });
+
+      socket.emit("console:started", result);
+    } catch (error) {
+      socket.emit("console:error", {
+        message: error.message || "No se pudo iniciar la consola interactiva."
+      });
+    }
+  });
+
+  socket.on("console:input", ({ sessionId, input }) => {
+    try {
+      sendInputToSession({
+        sessionId,
+        input,
+        userId: socket.user.id
+      });
+    } catch (error) {
+      socket.emit("console:error", {
+        sessionId,
+        message: error.message || "No se pudo enviar la entrada."
+      });
+    }
+  });
+
+  socket.on("console:stop", async ({ sessionId }) => {
+    await stopSession({
+      sessionId,
+      userId: socket.user.id
+    });
+  });
+
+  socket.on("disconnect", async () => {
+    await stopAllUserSessions(socket.user.id);
+  });
+});
+
+server.listen(PORT, () => {
   console.log(`🚀 API escuchando en http://localhost:${PORT}`);
 });
