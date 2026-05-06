@@ -1,21 +1,149 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Python - Temas</title>
-<link rel="stylesheet" href="../../../styles.css">
+  <meta charset="UTF-8">
+  <title>Python · Tema 3</title>
+  <link rel="stylesheet" href="../../../styles.css">
 </head>
 <body>
 
-<header class="header">
-  <h1>Ruta Python</h1>
-  <p>Completa los temas en orden para desbloquear los siguientes.</p>
-</header>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-title">
+        <h1>Tema 3 · Bucles</h1>
+        <p>Progreso del tema y acceso rápido a la ruta.</p>
+      </div>
 
-<main class="main-container single-column">
-  <div id="topics" class="progress-grid"></div>
-</main>
+      <div class="topbar-actions">
+        <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+        <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+        <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+        <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+      </div>
+    </div>
+  </div>
 
-<script src="progress.js"></script>
+  <header class="header">
+    <span class="mission-tag">Ruta de aprendizaje</span>
+    <h1>Tema 3 · Bucles en Python</h1>
+    <p>Aprende a repetir instrucciones con <code>for</code> y <code>while</code>, controlar iteraciones y resolver problemas con acumuladores, validaciones y control de flujo.</p>
+
+    <div class="progress-hero">
+      <div class="progress-hero-top">
+        <div>
+          <div class="progress-label">Progreso del tema</div>
+          <div class="mini-note" id="topic-progress-copy">Cargando progreso...</div>
+        </div>
+
+        <div class="badges">
+          <span class="badge blue">Python</span>
+          <span class="badge green">Tema 3</span>
+        </div>
+      </div>
+
+      <div class="progress-track">
+        <div id="topic-progress-fill" class="progress-fill" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <div class="buttons-row">
+      <a id="continue-btn" class="btn btn-primary" href="javascript:void(0)">Continuar ruta</a>
+      <a class="btn btn-secondary" href="../index.html">Volver a Python</a>
+    </div>
+  </header>
+
+  <main class="main-container single-column">
+
+    <section class="exercise-card">
+      <div class="exercise-header">
+        <div>
+          <h2 class="exercise-title">Qué vas a dominar en este tema</h2>
+          <p class="exercise-subtitle">
+            Este bloque te enseña a repetir acciones con lógica, controlar cuántas veces ocurre algo y seguir la evolución de una variable paso a paso.
+          </p>
+        </div>
+
+        <div class="badges">
+          <span class="badge blue">Fundamentos</span>
+          <span class="badge blue">Iteración</span>
+          <span class="badge green">Práctica final</span>
+        </div>
+      </div>
+
+      <div class="exercise-body">
+        <div class="exercise-block">
+          <h3>Habilidades que entrenas</h3>
+          <ul>
+            <li>usar bucles <code>for</code> y <code>while</code></li>
+            <li>entender cómo cambia una variable en cada iteración</li>
+            <li>usar contadores y acumuladores</li>
+            <li>controlar un bucle con <code>break</code> y <code>continue</code></li>
+            <li>validar datos con repetición</li>
+            <li>razonar el comportamiento del programa antes de ejecutarlo</li>
+            <li>evitar errores como bucles infinitos o límites mal definidos</li>
+          </ul>
+        </div>
+
+        <div class="exercise-block">
+          <h3>Cómo avanzar</h3>
+          <ul>
+            <li>completa los conceptos en orden</li>
+            <li>sigue mentalmente cada iteración antes de ejecutar</li>
+            <li>identifica qué cambia en cada vuelta</li>
+            <li>usa mini-retos y ejercicios para consolidar</li>
+          </ul>
+
+          <div class="challenge">
+            El error típico en bucles no es solo de sintaxis: es no entender qué valor tiene cada variable en cada vuelta y cuándo se detiene el proceso.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Ruta del tema</h2>
+      <div id="topics" class="topic-roadmap"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Resumen del recorrido</h2>
+
+      <div class="theory-grid">
+        <div class="theory-card">
+          <h3>3.1 · Qué es un bucle</h3>
+          <p>Aprendes qué significa repetir una lógica y cómo pensar el inicio, la evolución y el final de una iteración.</p>
+        </div>
+
+        <div class="theory-card">
+          <h3>3.2 · Bucle for</h3>
+          <p>Trabajas recorridos, secuencias, <code>range()</code>, acumuladores y trazado mental de iteraciones.</p>
+        </div>
+
+        <div class="theory-card">
+          <h3>3.3 · Bucle while</h3>
+          <p>Aprendes a repetir mientras una condición siga siendo verdadera, con especial atención a validaciones y bucles infinitos.</p>
+        </div>
+
+        <div class="theory-card">
+          <h3>3.4 · break y continue</h3>
+          <p>Descubres cómo detener un bucle antes de tiempo o saltar iteraciones sin romper toda la lógica.</p>
+        </div>
+
+        <div class="theory-card">
+          <h3>3.5 · Práctica guiada</h3>
+          <p>Combinas los conceptos del tema en mini-retos cortos antes del bloque de ejercicios finales.</p>
+        </div>
+
+        <div class="theory-card">
+          <h3>Reto final</h3>
+          <p>Consolidas el tema resolviendo ejercicios variados con recorrido, acumulación, validación, corte y filtrado.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="../theme-progress-base.js"></script>
+  <script src="progress.js"></script>
 </body>
 </html>

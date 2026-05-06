@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 2.4 – Razonar condicionales y casos frontera</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 2 · Condicionales</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
+<header class="header">
+  <span class="mission-tag">Misión 2.4</span>
+  <h1>Razonar condicionales y casos frontera</h1>
+  <p>Aprende a leer condicionales, detectar errores lógicos y probar los valores donde más suelen fallar.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 2 · Condicionales en Python</div>
+        <div class="mini-note">Práctica guiada · 8 retos de razonamiento · dificultad inicial-media</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Lectura</span>
+        <span class="badge blue">Depuración</span>
+        <span class="badge green">Casos frontera</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 90%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#retos">Empezar práctica guiada</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
+</header>
+
+<main class="main-container single-column">
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué entrenas aquí</h2>
+        <p class="exercise-subtitle">
+          En este bloque no solo escribes condiciones. Aprendes a leerlas, prever el resultado,
+          corregir errores y comprobar los valores donde más suele romperse la lógica.
+        </p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Lectura</span>
+        <span class="badge blue">Depuración</span>
+        <span class="badge green">Práctica guiada</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Objetivo</h3>
+        <p>
+          Estos retos te ayudan a entender por qué un condicional entra en un bloque y no en otro,
+          y a detectar errores antes de que se conviertan en malos hábitos.
+        </p>
+
+        <div class="callout">
+          Idea clave: un condicional correcto no solo ejecuta algo. También se entiende y se puede justificar.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Cómo usar esta pantalla</h3>
+        <ul>
+          <li>lee el código antes de ejecutarlo</li>
+          <li>intenta adivinar la salida</li>
+          <li>detecta si hay error de sintaxis o de lógica</li>
+          <li>prueba el valor frontera cuando exista</li>
+        </ul>
+
+        <div class="challenge">
+          Si no puedes explicar por qué sale un resultado, todavía no controlas del todo la condición.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="retos" class="panel">
+    <h2>Reto 1 · ¿Qué imprime?</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Código</h3>
+        <pre><code>edad = 18
+
+if edad >= 18:
+    print("Mayor de edad")
+else:
+    print("Menor de edad")</code></pre>
+      </div>
+
+      <div class="theory-card">
+        <h3>Qué debes pensar</h3>
+        <p>¿El 18 entra o no entra en la condición? Ese es el caso frontera.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Reto 2 · Detecta el error</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Código incorrecto</h3>
+        <pre><code>nota = 7
+
+if nota >= 5
+    print("Aprobado")</code></pre>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pregunta</h3>
+        <p>¿Qué falta exactamente para que ese código funcione?</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      No basta con decir “está mal”. Debes identificar por qué está mal.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Reto 3 · Indentación</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Código incorrecto</h3>
+        <pre><code>saldo = 100
+
+if saldo > 0:
+print("Saldo positivo")</code></pre>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pregunta</h3>
+        <p>¿Qué línea debería estar dentro del bloque? ¿Cómo debe quedar escrita?</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Reto 4 · Orden de casos</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Código</h3>
+        <pre><code>nota = 9
+
+if nota >= 5:
+    print("Aprobado")
+elif nota >= 7:
+    print("Notable")
+elif nota >= 9:
+    print("Sobresaliente")</code></pre>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pregunta</h3>
+        <p>¿Qué imprime realmente? ¿Por qué no llega al último caso?</p>
+      </div>
+    </div>
+
+    <div class="challenge">
+      Un condicional puede estar bien escrito y aun así estar mal planteado.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Reto 5 · Positivo, negativo o cero</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Código</h3>
+        <pre><code>numero = 0
+
+if numero > 0:
+    print("Positivo")
+elif numero < 0:
+    print("Negativo")
+else:
+    print("Cero")</code></pre>
+      </div>
+
+      <div class="theory-card">
+        <h3>Qué entrenas</h3>
+        <p>Comprobar si la lógica cubre todos los casos, incluido el valor frontera más importante: el 0.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Reto 6 · Comparación con texto</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Código</h3>
+        <pre><code>usuario = "Ana"
+
+if usuario == "ana":
+    print("Acceso permitido")
+else:
+    print("Acceso denegado")</code></pre>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pregunta</h3>
+        <p>¿Qué imprime? ¿Cuál es el detalle que hace que falle la comparación?</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Reto 7 · Lógica con <code>or</code></h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Código</h3>
+        <pre><code>edad = 22
+es_estudiante = False
+
+if edad < 25 or es_estudiante:
+    print("Tiene descuento")
+else:
+    print("No tiene descuento")</code></pre>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pregunta</h3>
+        <p>¿Por qué entra en el bloque si solo una parte es verdadera?</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Reto 8 · Input y frontera</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Código</h3>
+        <pre><code>edad = int(input("Edad: "))
+
+if edad >= 18:
+    print("Puede entrar")
+else:
+    print("No puede entrar")</code></pre>
+      </div>
+
+      <div class="theory-card">
+        <h3>Prueba obligatoria</h3>
+        <p>Ejecuta el programa con 17, 18 y 19. No te quedes con una sola prueba.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Método rápido para probar un condicional</h2>
+        <p class="exercise-subtitle">Qué hacer antes de dar un ejercicio por terminado.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Paso a paso</h3>
+        <ol>
+          <li>identifica qué pregunta responde el programa</li>
+          <li>localiza el valor frontera</li>
+          <li>prueba un caso por debajo</li>
+          <li>prueba el valor exacto</li>
+          <li>prueba un caso por encima</li>
+        </ol>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Regla útil</h3>
+        <div class="challenge">
+          Si solo pruebas un valor cómodo, puedes pensar que el programa funciona cuando todavía falla justo en el límite.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Siguiente paso</h2>
+    <p>Ya has trabajado la lectura, la depuración y los valores frontera. Ahora toca resolver ejercicios por tu cuenta.</p>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./03-operadores-logicos.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Ejercicios Tema 2</a>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
+    </div>
+  </section>
+
+  <script src="../topic-completion.js"></script>
+  <script>
+    const missionCompletion = initTopicCompletion({
+      topicId: "2.4",
+      nextUrl: "./py-tema2-ejercicios.html"
+    });
+
+    const completeBtn = document.getElementById("completeBtn");
+    const completionMessage = document.getElementById("completionMessage");
+
+    function showCompletionMessage(text) {
+      if (!completionMessage) return;
+      completionMessage.textContent = text;
+      completionMessage.style.display = "block";
+    }
+
+    function showMissionCompletedState() {
+      if (!completeBtn) return;
+
+      completeBtn.style.display = "none";
+
+      if (!document.getElementById("completedBadge")) {
+        const badge = document.createElement("span");
+        badge.id = "completedBadge";
+        badge.className = "btn btn-secondary";
+        badge.textContent = "Misión completada ✅";
+        completeBtn.parentNode.appendChild(badge);
+      }
+    }
+
+    async function syncCompletionUI() {
+      try {
+        const completed = await missionCompletion.isCompleted();
+
+        if (completed) {
+          showMissionCompletedState();
+          showCompletionMessage("Esta misión ya estaba marcada como completada.");
+        }
+      } catch (error) {
+        console.error("Error comprobando estado de la misión:", error);
+      }
+    }
+
+    if (completeBtn) {
+      completeBtn.addEventListener("click", async (e) => {
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
+
+        try {
+          btn.disabled = true;
+          btn.textContent = "Guardando...";
+
+          await missionCompletion.completeTopic();
+
+          showMissionCompletedState();
+          showCompletionMessage("Has marcado esta misión como completada.");
+        } catch (error) {
+          console.error("Error al completar la misión:", error);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          showCompletionMessage(error.message || "No se pudo guardar el progreso.");
+        }
+      });
+    }
+
+    syncCompletionUI();
+  </script>
+
+</main>
+</body>
+</html>

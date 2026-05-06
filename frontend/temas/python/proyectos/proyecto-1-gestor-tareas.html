@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Proyecto integrador 1 · Gestor básico de tareas</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Proyecto integrador 1 · Gestor básico de tareas</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_proyecto1_gestor_tareas">Playground</a>
+    </div>
+  </div>
+</nav>
+
+<header class="header">
+  <span class="mission-tag">Proyecto integrador</span>
+  <h1>Proyecto 1 · Gestor básico de tareas</h1>
+  <p>Construye un programa real en consola que permita añadir, ver, eliminar y completar tareas usando menús, listas, funciones y validación.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Proyecto de aplicación real</div>
+        <div class="mini-note">Nivel inicial-intermedio · 30-45 min · Integración de contenidos</div>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Listas</span>
+        <span class="badge blue">Funciones</span>
+        <span class="badge green">Proyecto real</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 100%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#objetivo">Empezar proyecto</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python&exerciseId=py_proyecto1_gestor_tareas">Abrir en playground</a>
+  </div>
+</header>
+
+<main class="main-container single-column">
+
+  <section class="exercise-card" id="objetivo">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué entrenas aquí</h2>
+        <p class="exercise-subtitle">
+          En este proyecto ya no practicas una sola instrucción. Combinas varias piezas del lenguaje para construir un programa completo con menú, funciones y estado.
+        </p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Integración</span>
+        <span class="badge blue">Consola</span>
+        <span class="badge green">Programa completo</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Objetivo</h3>
+        <p>
+          Vas a crear un gestor de tareas en consola. El usuario podrá interactuar con el programa mediante un menú y realizar acciones sobre una lista de tareas.
+        </p>
+
+        <div class="callout">
+          Idea clave: este proyecto te obliga a usar juntas varias cosas que hasta ahora habías practicado por separado.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué conceptos estás combinando</h3>
+        <ul>
+          <li><code>input</code> y <code>print</code></li>
+          <li><code>if / elif / else</code></li>
+          <li><code>while</code></li>
+          <li>listas</li>
+          <li>funciones</li>
+          <li>recorrido con <code>for</code> y <code>enumerate()</code></li>
+          <li>validación básica de entradas</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Situación</h2>
+    <p>
+      Imagina que quieres crear un programa sencillo para organizar tareas del día a día.
+      El usuario debe poder añadir tareas, verlas, eliminarlas y marcar cuáles ya están hechas.
+    </p>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Ver tareas</h3>
+        <p>Consultar qué tareas hay actualmente guardadas.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Añadir</h3>
+        <p>Guardar una nueva tarea escrita por el usuario.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Eliminar</h3>
+        <p>Borrar una tarea por su número.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Completar</h3>
+        <p>Marcar una tarea como realizada de forma visible.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Requisitos mínimos</h2>
+    <ul>
+      <li>debes usar una lista para guardar tareas</li>
+      <li>debes mostrar un menú dentro de un bucle <code>while</code></li>
+      <li>debes usar funciones para organizar el código</li>
+      <li>el programa debe permitir ver tareas</li>
+      <li>el programa debe permitir añadir una tarea</li>
+      <li>el programa debe permitir eliminar una tarea</li>
+      <li>el programa debe permitir marcar una tarea como completada</li>
+      <li>el programa debe permitir salir</li>
+      <li>no debes aceptar tareas vacías</li>
+      <li>si la opción del menú es incorrecta, debes avisarlo</li>
+    </ul>
+
+    <div class="challenge">
+      No hace falta que tu programa sea perfecto. Sí hace falta que sea claro, usable y que combine correctamente los conceptos.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Cómo puedes representarlo</h2>
+    <p>
+      Para este nivel, la forma más sencilla es guardar las tareas como textos dentro de una lista.
+      Cuando una tarea se complete, puedes añadir <code>"✅ "</code> al principio del texto.
+    </p>
+
+    <pre><code>tareas = [
+    "Estudiar Python",
+    "✅ Comprar pan",
+    "Hacer ejercicio"
+]</code></pre>
+
+    <div class="callout">
+      No es la solución más avanzada, pero sí una muy buena solución para este momento de aprendizaje.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Diseño recomendado</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Función 1</h3>
+        <p>Mostrar el menú principal.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Función 2</h3>
+        <p>Ver tareas guardadas.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Función 3</h3>
+        <p>Añadir tarea nueva.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Función 4</h3>
+        <p>Eliminar tarea.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Función 5</h3>
+        <p>Marcar tarea como completada.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Bucle principal</h3>
+        <p>Controlar el programa hasta que el usuario decida salir.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Fases del proyecto</h2>
+        <p class="exercise-subtitle">Te conviene construirlo por partes, no intentar hacerlo entero de golpe.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Fase 1</h3>
+        <p>Crea el menú y haz que el programa pueda salir correctamente.</p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Fase 2</h3>
+        <p>Añade la opción de guardar tareas nuevas en la lista.</p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Fase 3</h3>
+        <p>Muestra las tareas numeradas con <code>enumerate()</code>.</p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Fase 4</h3>
+        <p>Permite eliminar una tarea por su número.</p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Fase 5</h3>
+        <p>Permite marcar una tarea como completada.</p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Fase 6</h3>
+        <p>Mejora la validación de opciones y de entradas.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Pistas opcionales</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Pista 1</h3>
+        <p>Usa un <code>while True</code> para mantener el menú activo.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pista 2</h3>
+        <p>Usa <code>break</code> cuando el usuario elija salir.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pista 3</h3>
+        <p>Para mostrar tareas numeradas, usa <code>enumerate(tareas, start=1)</code>.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pista 4</h3>
+        <p>Antes de eliminar o completar, comprueba que el número esté dentro del rango válido.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pista 5</h3>
+        <p>Usa <code>.strip()</code> para detectar tareas vacías.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pista 6</h3>
+        <p>Para marcar completada, puedes comprobar si el texto empieza por <code>"✅ "</code>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Versión ampliada</h2>
+    <p>Si terminas la versión principal, puedes añadir mejoras opcionales como estas:</p>
+
+    <ul>
+      <li>no permitir completar una tarea ya completada</li>
+      <li>mostrar cuántas tareas hay en total</li>
+      <li>mostrar cuántas están completadas</li>
+      <li>permitir editar una tarea</li>
+      <li>mostrar tareas pendientes y completadas por separado</li>
+    </ul>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué deberías haber conseguido al terminar</h2>
+        <p class="exercise-subtitle">Este proyecto marca un salto importante respecto a los ejercicios sueltos.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Competencias que consolidan</h3>
+        <ul>
+          <li>mantener datos en una lista</li>
+          <li>usar funciones para dividir un problema</li>
+          <li>controlar un programa mediante un menú</li>
+          <li>modificar información ya guardada</li>
+          <li>validar entradas del usuario</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Cierre didáctico</h3>
+        <div class="challenge">
+          Aquí ya no has usado un concepto aislado. Has construido un programa donde varias piezas del lenguaje trabajan juntas.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Resolver en playground</h2>
+    <p>
+      Abre este proyecto en el playground para trabajar con la plantilla inicial y probarlo paso a paso.
+      Recuerda que ahora ya puedes usar entrada por consola simulada en el bloque de entrada del programa.
+    </p>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="../index.html">Volver a ruta Python</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_proyecto1_gestor_tareas">Abrir proyecto en playground</a>
+    </div>
+  </section>
+
+</main>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const returnTo = params.get("returnTo");
+
+  const btnVolver = document.getElementById("btn-volver-ejercicios");
+
+  if (returnTo && btnVolver) {
+    btnVolver.href = returnTo;
+    btnVolver.style.display = "inline-flex";
+  }
+
+  if (returnTo) {
+    const playgroundLinks = document.querySelectorAll('a[href*="playground/index.html"]');
+
+    playgroundLinks.forEach((link) => {
+      const rawHref = link.getAttribute("href");
+      const url = new URL(rawHref, window.location.href);
+
+      if (!url.searchParams.get("returnTo")) {
+        url.searchParams.set("returnTo", returnTo);
+      }
+
+      link.setAttribute("href", url.pathname + url.search);
+    });
+  }
+</script>
+</body>
+</html>

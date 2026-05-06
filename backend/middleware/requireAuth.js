@@ -36,6 +36,7 @@ async function requireAuth(req, res, next) {
       email: user.email,
       role: user.role,
       createdAt: user.createdAt,
+      theme: user.theme,
     };
 
     next();

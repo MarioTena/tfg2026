@@ -1,21 +1,149 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Python - Temas</title>
-<link rel="stylesheet" href="../../../styles.css">
+  <meta charset="UTF-8">
+  <title>Python · Tema 9</title>
+  <link rel="stylesheet" href="../../../styles.css">
 </head>
 <body>
 
-<header class="header">
-  <h1>Ruta Python</h1>
-  <p>Completa los temas en orden para desbloquear los siguientes.</p>
-</header>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-title">
+        <h1>Tema 9 · Archivos</h1>
+        <p>Progreso del tema y acceso rápido a la ruta.</p>
+      </div>
 
-<main class="main-container single-column">
-  <div id="topics" class="progress-grid"></div>
-</main>
+      <div class="topbar-actions">
+        <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+        <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+        <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+        <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+      </div>
+    </div>
+  </div>
 
-<script src="progress.js"></script>
+  <header class="header">
+    <span class="mission-tag">Ruta de aprendizaje</span>
+    <h1>Tema 9 · Manejo de archivos</h1>
+    <p>Aprende a guardar y recuperar información fuera del programa entendiendo bien qué hace cada modo de apertura y cómo trabajar con archivos de forma segura.</p>
+
+    <div class="progress-hero">
+      <div class="progress-hero-top">
+        <div>
+          <div class="progress-label">Progreso del tema</div>
+          <div class="mini-note" id="topic-progress-copy">Cargando progreso...</div>
+        </div>
+
+        <div class="badges">
+          <span class="badge blue">Python</span>
+          <span class="badge green">Tema 9</span>
+        </div>
+      </div>
+
+      <div class="progress-track">
+        <div id="topic-progress-fill" class="progress-fill" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <div class="buttons-row">
+      <a id="continue-btn" class="btn btn-primary" href="javascript:void(0)">Continuar ruta</a>
+      <a class="btn btn-secondary" href="../index.html">Volver a Python</a>
+    </div>
+  </header>
+
+  <main class="main-container single-column">
+
+    <section class="exercise-card">
+      <div class="exercise-header">
+        <div>
+          <h2 class="exercise-title">Qué vas a dominar en este tema</h2>
+          <p class="exercise-subtitle">
+            Este bloque te enseña a trabajar con archivos entendiendo qué significa guardar datos fuera del programa, cómo leerlos, cómo escribirlos y qué riesgos debes anticipar.
+          </p>
+        </div>
+
+        <div class="badges">
+          <span class="badge blue">Fundamentos</span>
+          <span class="badge blue">Persistencia</span>
+          <span class="badge green">Práctica final</span>
+        </div>
+      </div>
+
+      <div class="exercise-body">
+        <div class="exercise-block">
+          <h3>Habilidades que entrenas</h3>
+          <ul>
+            <li>entender qué diferencia hay entre variable y archivo</li>
+            <li>leer archivos completos o línea a línea</li>
+            <li>escribir contenido nuevo o añadir al final</li>
+            <li>distinguir correctamente entre <code>r</code>, <code>w</code> y <code>a</code></li>
+            <li>usar <code>with</code> como patrón más seguro</li>
+            <li>evitar errores típicos con rutas, modos y formato de líneas</li>
+            <li>combinar escritura y lectura dentro del mismo flujo de trabajo</li>
+          </ul>
+        </div>
+
+        <div class="exercise-block">
+          <h3>Cómo avanzar</h3>
+          <ul>
+            <li>completa los conceptos en orden</li>
+            <li>fíjate en el efecto real de cada modo de apertura</li>
+            <li>piensa qué pasará con el contenido anterior</li>
+            <li>usa mini-retos y ejercicios para consolidar criterio</li>
+          </ul>
+
+          <div class="challenge">
+            En archivos, muchos errores no vienen de la sintaxis, sino de no prever qué pasará con el contenido antes de abrirlo.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Ruta del tema</h2>
+      <div id="topics" class="topic-roadmap"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Resumen del recorrido</h2>
+
+      <div class="theory-grid">
+        <div class="theory-card">
+          <h3>9.1 · Qué es un archivo</h3>
+          <p>Aprendes por qué un archivo permite conservar datos fuera del programa y reutilizarlos más tarde.</p>
+        </div>
+
+        <div class="theory-card">
+          <h3>9.2 · Leer archivos</h3>
+          <p>Entiendes cómo recuperar contenido completo o línea a línea según lo que necesites hacer.</p>
+        </div>
+
+        <div class="theory-card">
+          <h3>9.3 · Escribir archivos</h3>
+          <p>Aprendes a sobrescribir o añadir contenido entendiendo las consecuencias de cada decisión.</p>
+        </div>
+
+        <div class="theory-card">
+          <h3>9.4 · Buenas prácticas y errores</h3>
+          <p>Trabajas hábitos más seguros para evitar pérdidas de información y problemas frecuentes.</p>
+        </div>
+
+        <div class="theory-card">
+          <h3>9.5 · Práctica guiada</h3>
+          <p>Lees situaciones reales, eliges modos de apertura y razonas qué pasará antes de escribir código.</p>
+        </div>
+
+        <div class="theory-card">
+          <h3>Reto final</h3>
+          <p>Consolidas el tema combinando lectura, escritura, limpieza y criterio de decisión en archivos.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="../theme-progress-base.js"></script>
+  <script src="progress.js"></script>
 </body>
 </html>

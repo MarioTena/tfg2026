@@ -2,131 +2,349 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Tema 8.5 – Mini retos</title>
+  <title>Tema 8.5 – Razonar y practicar estructuras</title>
   <link rel="stylesheet" href="../../../styles.css" />
 </head>
 <body>
+
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 8 · Tuplas y sets</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 8 · Python</h1>
-  <p>8.5 · Mini retos: integrar tuplas y sets</p>
+  <span class="mission-tag">Misión 8.5</span>
+  <h1>Razonar y practicar estructuras</h1>
+  <p>Combina tuplas, sets y criterio de diseño para decidir cuándo importa el orden, la unicidad o la estabilidad.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 8 · Tuplas y sets</div>
+        <div class="mini-note">Práctica guiada · 8 retos de razonamiento · dificultad inicial-media</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Tuplas</span>
+        <span class="badge blue">Sets</span>
+        <span class="badge green">Diseño</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 82%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#retos">Empezar práctica guiada</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
-  <section class="panel">
-    <h2>Mini-reto 1 · Coordenada</h2>
-    <pre><code>punto = (4, 9)
-print(punto[0])
-print(punto[1])</code></pre>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué entrenas aquí</h2>
+        <p class="exercise-subtitle">
+          Aquí no solo practicas sintaxis. Aprendes a decidir mejor qué estructura encaja con cada situación y por qué.
+        </p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Comparación</span>
+        <span class="badge blue">Criterio</span>
+        <span class="badge green">Práctica guiada</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Objetivo</h3>
+        <p>
+          Vas a practicar cómo usar tuplas y sets y, sobre todo, cómo justificar su elección frente a una lista u otra alternativa.
+        </p>
+
+        <div class="callout">
+          Idea clave: una estructura buena no es la más conocida, sino la que representa mejor el caso real.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Cómo usar esta pantalla</h3>
+        <ul>
+          <li>lee la situación o el código</li>
+          <li>identifica si importa orden, repetición, pertenencia o cambio</li>
+          <li>decide si usarías lista, tupla o set</li>
+          <li>intenta justificarlo con una frase clara</li>
+        </ul>
+
+        <div class="challenge">
+          No te quedes en “funciona”. Intenta explicar por qué esa estructura modela mejor el problema.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="retos" class="panel">
+    <h2>Reto 1 · Tupla o lista</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Situación</h3>
+        <p>Quieres representar una coordenada GPS con latitud y longitud.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Qué debes pensar</h3>
+        <p>¿Te conviene más una lista o una tupla? ¿Qué transmite mejor que esos dos valores forman un par estable?</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Mini-reto 2 · Eliminar duplicados</h2>
-    <pre><code>numeros = [1, 2, 2, 3, 4, 4, 5]
-unicos = set(numeros)
-print(unicos)</code></pre>
+    <h2>Reto 2 · El error de la tupla de un elemento</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Código</h3>
+        <pre><code>dato = (7)</code></pre>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pregunta</h3>
+        <p>¿Por qué esto no representa bien una tupla de un elemento? ¿Qué falta exactamente?</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      Este es uno de los errores clásicos del tema: olvidar la coma en la tupla de un solo elemento.
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Mini-reto 3 · Elementos comunes</h2>
-    <pre><code>a = {1, 2, 3, 4}
-b = {3, 4, 5, 6}
-print(a & b)</code></pre>
+    <h2>Reto 3 · Set o lista con repetidos</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Situación</h3>
+        <p>Tienes una colección de etiquetas y no quieres que ninguna se repita.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pregunta</h3>
+        <p>¿Qué problema tendrías si usaras una lista? ¿Por qué un set suele representar mejor este caso?</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Mini-reto 4 · Añadir a set</h2>
-    <pre><code>tags = {"python", "html"}
-tags.add("css")
-print(tags)</code></pre>
+    <h2>Reto 4 · El set no es una secuencia</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Código incorrecto</h3>
+        <pre><code>colores = {"rojo", "verde", "azul"}
+print(colores[0])</code></pre>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pregunta</h3>
+        <p>¿Por qué este planteamiento es incorrecto? ¿Qué idea de fondo está fallando aquí?</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Mini-reto 5 · Elegir estructura</h2>
-    <p>Decide si usarías lista, tupla o set para:</p>
-    <ul>
-      <li>asientos numerados</li>
-      <li>latitud y longitud</li>
-      <li>usuarios únicos conectados</li>
-    </ul>
+    <h2>Reto 5 · Dirección de la diferencia</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Código</h3>
+        <pre><code>a = {1, 2, 3}
+b = {3, 4, 5}
+
+print(a - b)
+print(b - a)</code></pre>
+      </div>
+
+      <div class="theory-card">
+        <h3>Qué entrenas</h3>
+        <p>¿Por qué no devuelven lo mismo? Explica qué pregunta responde cada una.</p>
+      </div>
+    </div>
+
+    <div class="challenge">
+      La diferencia es una de las operaciones donde más se nota que el orden de los operandos sí importa.
+    </div>
   </section>
 
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./04-cuando-usar-cada-estructura.html">Anterior</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Ejercicios Tema 8</a>
-  </div>
+  <section class="panel">
+    <h2>Reto 6 · Elegir la estructura menos adecuada</h2>
 
-  <button class="btn btn-primary" onclick="completeTopic('8.5')">Marcar como completado</button>
-  <script>
-const TOPIC_ID = "8.5";
-const NEXT_URL = "./py-tema8-ejercicios.html";
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Situación</h3>
+        <p>Quieres guardar una lista editable de tareas en el orden en que deben hacerse.</p>
+      </div>
 
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+      <div class="theory-card">
+        <h3>Pregunta</h3>
+        <p>¿Cuál sería la peor elección entre lista, tupla y set? ¿Por qué?</p>
+      </div>
+    </div>
+  </section>
 
-const nextBtn = document.getElementById("nextBtn");
+  <section class="panel">
+    <h2>Reto 7 · Funciona, pero modela peor</h2>
 
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Situación</h3>
+        <p>Guardas una coordenada <code>[40.4, -3.7]</code> en una lista.</p>
+      </div>
 
-    if (!token || !nextBtn) return;
+      <div class="theory-card">
+        <h3>Pregunta</h3>
+        <p>¿Podría funcionar? Sí. ¿Pero qué estructura podría representar mejor la intención del problema y por qué?</p>
+      </div>
+    </div>
+  </section>
 
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
+  <section class="panel">
+    <h2>Reto 8 · Qué harías con este caso</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Situación</h3>
+        <p>Quieres saber qué alumnos aparecen en dos listas de asistencia distintas sin repetir nombres.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Prueba obligatoria</h3>
+        <p>¿Qué estructura y qué operación usarías? Explica por qué el enfoque encaja con la pregunta.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Método rápido para elegir estructura</h2>
+        <p class="exercise-subtitle">Qué hacer antes de decidir entre lista, tupla o set.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Paso a paso</h3>
+        <ol>
+          <li>pregunta si importa el orden</li>
+          <li>pregunta si puede haber duplicados</li>
+          <li>pregunta si el grupo debería cambiar</li>
+          <li>pregunta si te importa la pertenencia más que la posición</li>
+          <li>elige la estructura que mejor responda a esas condiciones</li>
+        </ol>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Regla útil</h3>
+        <div class="challenge">
+          Si una estructura “sirve” pero obliga a pensar el problema de forma menos natural, probablemente no sea la mejor.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Siguiente paso</h2>
+    <p>Ya has trabajado la comparación, la depuración y el razonamiento sobre estas estructuras. Ahora toca resolver ejercicios por tu cuenta.</p>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./04-cuando-usar-cada-estructura.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Ejercicios Tema 8</a>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
+    </div>
+  </section>
+
+<script src="../topic-completion.js"></script>
+<script>
+  const missionCompletion = initTopicCompletion({
+    topicId: "8.5",
+    nextUrl: "./py-tema8-ejercicios.html"
+  });
+
+  const completeBtn = document.getElementById("completeBtn");
+  const completionMessage = document.getElementById("completionMessage");
+
+  function showCompletionMessage(text) {
+    if (!completionMessage) return;
+    completionMessage.textContent = text;
+    completionMessage.style.display = "block";
+  }
+
+  function showMissionCompletedState() {
+    if (!completeBtn) return;
+
+    completeBtn.style.display = "none";
+
+    if (!document.getElementById("completedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "completedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Misión completada ✅";
+      completeBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  async function syncCompletionUI() {
+    try {
+      const completed = await missionCompletion.isCompleted();
+
+      if (completed) {
+        showMissionCompletedState();
+        showCompletionMessage("Esta misión ya estaba marcada como completada.");
+      }
+    } catch (error) {
+      console.error("Error comprobando estado de la misión:", error);
+    }
+  }
+
+  if (completeBtn) {
+    completeBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
+
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
+
+        await missionCompletion.completeTopic();
+
+        showMissionCompletedState();
+        showCompletionMessage("Has marcado esta misión como completada.");
+      } catch (error) {
+        console.error("Error al completar la misión:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso.");
       }
     });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
   }
-}
 
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
-    }
-
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
-    });
-
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
-    }
-
-    alert("Tema completado 🎉");
-
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
-  }
-}
-
-unlockNextIfCompleted();
+  syncCompletionUI();
 </script>
 
 </main>

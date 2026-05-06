@@ -3,36 +3,33 @@
 // ----------------------------------------------------------------------------
 // Ejecución de código en Docker.
 // - Python: ejecución real en contenedor python:3.11
-// - C: de momento simulado (mismo formato de salida)
+// - C: de momento simulado
+// - Soporte para stdin en Python
 // ============================================================================
 
 const { spawn } = require("child_process");
 
-// Ejecuta un contenedor Docker y pasa el código por stdin
-function runDockerCommand(image, extraArgs, code, timeoutMs = 15000) {
+// Ejecuta un contenedor Docker
+function runDockerCommand(image, extraArgs, stdinData = "", timeoutMs = 15000) {
   return new Promise((resolve) => {
     let stdout = "";
     let stderr = "";
     let finished = false;
     const start = Date.now();
 
-    // Comando: docker run --rm -i <image> ...extraArgs
     const args = ["run", "--rm", "-i", image, ...extraArgs];
     const proc = spawn("docker", args, {
       stdio: ["pipe", "pipe", "pipe"],
     });
 
-    // Acumulo salida estándar
     proc.stdout.on("data", (data) => {
       stdout += data.toString();
     });
 
-    // Acumulo errores
     proc.stderr.on("data", (data) => {
       stderr += data.toString();
     });
 
-    // Por si Docker no arranca o no está en PATH
     proc.on("error", (err) => {
       if (finished) return;
       finished = true;
@@ -45,7 +42,6 @@ function runDockerCommand(image, extraArgs, code, timeoutMs = 15000) {
       });
     });
 
-    // Timeout para evitar que se quede colgado
     const timeout = setTimeout(() => {
       if (finished) return;
       finished = true;
@@ -59,7 +55,6 @@ function runDockerCommand(image, extraArgs, code, timeoutMs = 15000) {
       });
     }, timeoutMs);
 
-    // Cuando el proceso termina
     proc.on("close", (exitCode) => {
       if (finished) return;
       finished = true;
@@ -70,23 +65,26 @@ function runDockerCommand(image, extraArgs, code, timeoutMs = 15000) {
       resolve({ stdout, stderr, status, timeMs });
     });
 
-    // Envío el código al contenedor por stdin
-    proc.stdin.write(code);
+    proc.stdin.write(stdinData || "");
     proc.stdin.end();
   });
 }
 
 // ============================================================================
 // Python: ejecución real en contenedor python:3.11
-// Usa: docker run --rm -i python:3.11 python -
+// Usa python -c <code> para dejar stdin libre para input()
 // ============================================================================
-async function runPythonInDocker(code) {
-  // python -  => lee el código desde stdin
-  return runDockerCommand("python:3.11", ["python", "-"], code, 10000);
+async function runPythonInDocker(code, stdin = "") {
+  return runDockerCommand(
+    "python:3.11",
+    ["python", "-c", code],
+    stdin,
+    10000
+  );
 }
 
 // ============================================================================
-// C: der momento simulado
+// C: de momento simulado
 // ============================================================================
 async function runCInDockerSimulado(code) {
   let stdout = "";
@@ -94,7 +92,6 @@ async function runCInDockerSimulado(code) {
   let status = "success";
   const start = Date.now();
 
-  // Simulación sencilla para C
   if (code.toLowerCase().includes("error")) {
     status = "error";
     stderr = "Simulación C: error detectado en el código.";
@@ -109,16 +106,15 @@ async function runCInDockerSimulado(code) {
 // ============================================================================
 // Función principal usada por server.js
 // ============================================================================
-async function runCodeInDocker(language, code) {
+async function runCodeInDocker(language, code, stdin = "") {
   if (language === "python") {
-    return runPythonInDocker(code);
+    return runPythonInDocker(code, stdin);
   }
 
   if (language === "c") {
     return runCInDockerSimulado(code);
   }
 
-  // Por si llega algún lenguaje raro
   return {
     stdout: "",
     stderr: `Lenguaje no soportado: ${language}`,

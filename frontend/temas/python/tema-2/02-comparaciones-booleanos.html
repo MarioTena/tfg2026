@@ -7,133 +7,305 @@
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 2 · Condicionales</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 2 · Python</h1>
-  <p>2.2 · Comparaciones y booleanos: la base matemática de las decisiones</p>
+  <span class="mission-tag">Misión 2.2</span>
+  <h1>Comparaciones y booleanos</h1>
+  <p>Aprende la base lógica que hace posibles las decisiones en programación: comparar valores y obtener respuestas exactas.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 2 · Condicionales</div>
+        <div class="mini-note">Nivel inicial · 12-15 min · True / False</div>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Comparación</span>
+        <span class="badge green">Booleanos</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 66%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
-<main class="main-container single-column">
+<main class="main-container single-column" id="bloque-principal">
 
-  <section class="panel">
-    <h2>¿Qué es una comparación?</h2>
-    <p>
-      Una comparación es una expresión que enfrenta dos valores para responder una pregunta exacta.
-      El resultado siempre es un booleano: <code>True</code> o <code>False</code>.
-    </p>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué vas a entender hoy</h2>
+        <p class="exercise-subtitle">
+          Un programa decide comparando valores. Para hacerlo, necesita respuestas exactas:
+          <code>True</code> o <code>False</code>.
+        </p>
+      </div>
 
-    <pre><code>print(5 > 3)
-print(10 == 10)
-print(7 < 2)</code></pre>
+      <div class="badges">
+        <span class="badge blue">Objetivo</span>
+        <span class="badge green">Base lógica</span>
+      </div>
+    </div>
 
-    <p>
-      En programación, comparar significa convertir una pregunta en una respuesta formal.
-    </p>
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué problema resuelve</h3>
+        <p>
+          Antes de usar bien los condicionales, necesitas entender qué tipo de preguntas puede responder
+          Python. Las comparaciones son esas preguntas, y los booleanos son sus respuestas.
+        </p>
+
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3>Edad</h3>
+            <p>Comprobar si alguien es mayor o igual que 18.</p>
+          </div>
+
+          <div class="theory-card">
+            <h3>Acceso</h3>
+            <p>Ver si un usuario coincide con el esperado.</p>
+          </div>
+
+          <div class="theory-card">
+            <h3>Precio</h3>
+            <p>Detectar si una cantidad supera un límite.</p>
+          </div>
+
+          <div class="theory-card">
+            <h3>Validación</h3>
+            <p>Saber si dos datos son iguales o distintos.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          Idea clave: una comparación responde una pregunta exacta y el resultado siempre es booleano.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes vigilar</h3>
+        <ul>
+          <li>la diferencia entre <code>=</code> y <code>==</code></li>
+          <li>los operadores de comparación</li>
+          <li>las comparaciones con texto</li>
+          <li>los casos frontera</li>
+          <li>el tipo de dato que estás comparando</li>
+        </ul>
+
+        <div class="challenge">
+          Si entiendes bien las comparaciones, los condicionales dejan de parecer magia.
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section class="panel">
-    <h2>¿Qué es un booleano?</h2>
-    <p>
-      Un booleano es un tipo de dato que solo puede tener dos valores:
-      <code>True</code> o <code>False</code>.
-      Es el tipo que usa el programa para decidir.
-    </p>
+  <section class="exercise-card video-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Vídeo explicativo</h2>
+        <p class="exercise-subtitle">
+          Si prefieres una explicación guiada paso a paso, aquí tienes el vídeo de apoyo de esta misión.
+        </p>
+      </div>
 
-    <pre><code>aprobado = True
-bloqueado = False
-print(type(aprobado))</code></pre>
+      <div class="badges">
+        <span class="badge blue">Vídeo</span>
+        <span class="badge green">Apoyo visual</span>
+      </div>
+    </div>
 
-    <div class="callout">
-      Los condicionales no entienden “más o menos”. Entienden verdadero o falso.
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Comparaciones y booleanos</h3>
+
+        <video controls preload="metadata" style="width: 100%; border-radius: 16px;">
+          <source src="../../../videos/tema-2/2.2-comparaciones-booleanos.mp4" type="video/mp4">
+          Tu navegador no puede reproducir este vídeo.
+        </video>
+
+        <p class="mini-note" style="margin-top: 12px;">
+          Consejo: puedes ver primero el vídeo completo o pausarlo e ir probando los ejemplos en el playground.
+        </p>
+      </div>
     </div>
   </section>
 
   <section class="panel">
-    <h2>Operadores de comparación</h2>
-    <ul>
-      <li><code>==</code> igual que</li>
-      <li><code>!=</code> distinto de</li>
-      <li><code>&gt;</code> mayor que</li>
-      <li><code>&lt;</code> menor que</li>
-      <li><code>&gt;=</code> mayor o igual que</li>
-      <li><code>&lt;=</code> menor o igual que</li>
-    </ul>
+    <h2>Comparaciones y booleanos: la base de todo</h2>
 
-    <pre><code>print(8 == 8)
-print(8 != 3)
-print(9 > 2)
-print(4 < 1)
-print(7 >= 7)
-print(2 <= 10)</code></pre>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Comparación</h3>
+        <p>Es una expresión que enfrenta dos valores para responder una pregunta exacta.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Booleano</h3>
+        <p>Es un tipo de dato que solo puede valer <code>True</code> o <code>False</code>.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Resultado</h3>
+        <p>Toda comparación termina produciendo un booleano.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Uso real</h3>
+        <p>Es la base de validaciones, filtros, clasificaciones y decisiones.</p>
+      </div>
+    </div>
+
+    <pre><code>print(5 > 3)
+print(10 == 10)
+print(7 < 2)
+
+aprobado = True
+bloqueado = False
+print(type(aprobado))</code></pre>
   </section>
 
   <section class="panel">
-    <h2>⚠️ El error más importante: <code>=</code> no es <code>==</code></h2>
-    <p>
-      Este error es central. Si no lo entiendes bien, construirás mal casi todo lo que venga después.
-    </p>
+    <h2>Dónde aparecen las comparaciones en problemas reales</h2>
 
-    <ul>
-      <li><code>=</code> significa asignar</li>
-      <li><code>==</code> significa comparar</li>
-    </ul>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Acceso</h3>
+        <p>Comprobar si un usuario coincide con el esperado.</p>
+      </div>
 
-    <pre><code>edad = 18          # asignación
+      <div class="theory-card">
+        <h3>Filtros</h3>
+        <p>Decidir si un precio, una edad o una nota supera un umbral.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Validación</h3>
+        <p>Detectar si un dato es correcto antes de continuar.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Clasificación</h3>
+        <p>Separar casos según igualdades, diferencias o rangos.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      Cada vez que haces una pregunta del tipo “¿es igual?”, “¿es mayor?” o “¿coincide?”, estás comparando.
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">El error más importante del bloque</h2>
+        <p class="exercise-subtitle">
+          Esta confusión rompe muchísimos ejercicios al principio.
+        </p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3><code>=</code> no es <code>==</code></h3>
+        <ul>
+          <li><code>=</code> significa asignar</li>
+          <li><code>==</code> significa comparar</li>
+        </ul>
+
+        <pre><code>edad = 18          # asignación
 print(edad == 18)  # comparación</code></pre>
 
-    <p>
-      La primera línea guarda un valor.
-      La segunda pregunta si el valor guardado es igual a 18.
-    </p>
+        <p>
+          La primera línea guarda un valor. La segunda pregunta si ese valor es igual a 18.
+        </p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Guardar el resultado de una comparación</h3>
+        <pre><code>edad = 17
+es_mayor = edad >= 18
+print(es_mayor)</code></pre>
+
+        <p>
+          Aquí <code>es_mayor</code> vale <code>False</code>.
+        </p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Comparar números</h2>
+    <h2>Cómo comparar bien</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3><code>==</code></h3>
+        <p>igual que</p>
+      </div>
+
+      <div class="theory-card">
+        <h3><code>!=</code></h3>
+        <p>distinto de</p>
+      </div>
+
+      <div class="theory-card">
+        <h3><code>&gt;</code> / <code>&lt;</code></h3>
+        <p>mayor que / menor que</p>
+      </div>
+
+      <div class="theory-card">
+        <h3><code>&gt;=</code> / <code>&lt;=</code></h3>
+        <p>mayor o igual / menor o igual</p>
+      </div>
+    </div>
+
+    <h3>Con números</h3>
     <pre><code>precio = 50
 print(precio > 100)
 print(precio <= 50)
 print(precio == 50)
 print(precio != 30)</code></pre>
 
-    <p>
-      Las comparaciones numéricas son la base de los rangos, las validaciones y la lógica de negocio.
-    </p>
-  </section>
-
-  <section class="panel">
-    <h2>Comparar textos</h2>
+    <h3>Con texto</h3>
     <pre><code>usuario = "ana"
 print(usuario == "ana")
 print(usuario == "Ana")
 print(usuario != "admin")</code></pre>
 
-    <p>
-      Python compara exactamente el contenido del texto.
-      Las mayúsculas y minúsculas cuentan.
-    </p>
+    <pre><code>print("5" == 5)        # False
+print("Ana" == "ana")  # False
+print(10 == 10.0)      # True</code></pre>
 
     <div class="callout">
       <code>"ana"</code> y <code>"Ana"</code> no son el mismo valor.
+      <code>"5"</code> y <code>5</code> tampoco.
     </div>
   </section>
 
   <section class="panel">
-    <h2>Guardar el resultado de una comparación</h2>
-    <p>
-      Una comparación se puede guardar en una variable.
-      Esto es muy útil para hacer el código más legible.
-    </p>
+    <h2>Cómo se usan dentro de un <code>if</code></h2>
 
-    <pre><code>edad = 17
-es_mayor = edad >= 18
-print(es_mayor)</code></pre>
-
-    <p>
-      Aquí <code>es_mayor</code> vale <code>False</code>.
-    </p>
-  </section>
-
-  <section class="panel">
-    <h2>Comparaciones dentro de condicionales</h2>
     <pre><code>nota = 6
 
 if nota >= 5:
@@ -142,213 +314,365 @@ else:
     print("Has suspendido")</code></pre>
 
     <p>
-      El <code>if</code> no evalúa números directamente: evalúa el resultado booleano de la comparación.
+      El <code>if</code> no evalúa directamente el número: evalúa el booleano que produce la comparación.
     </p>
   </section>
 
   <section class="panel">
-    <h2>Comparaciones encadenadas</h2>
+    <h2>Variables booleanas dentro de un <code>if</code></h2>
+
+    <pre><code>es_mayor = True
+
+if es_mayor:
+    print("Puede pasar")
+else:
+    print("No puede pasar")</code></pre>
+
     <p>
-      Python permite escribir rangos de forma muy natural.
+      Un <code>if</code> no necesita siempre una comparación escrita en ese momento.
+      También puede evaluar directamente una variable booleana.
     </p>
+
+    <pre><code>cuenta_activa = False
+
+if cuenta_activa:
+    print("La cuenta está activa")
+else:
+    print("La cuenta está inactiva")</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Comparaciones encadenadas</h2>
 
     <pre><code>edad = 20
 print(18 <= edad <= 30)</code></pre>
 
     <p>
-      Esto equivale a decir: <code>edad &gt;= 18 and edad &lt;= 30</code>, pero es más limpio.
+      Esta forma es muy útil para comprobar rangos sencillos con claridad.
     </p>
+
+    <pre><code>temperatura = 25
+
+if 20 <= temperatura <= 30:
+    print("Temperatura templada")</code></pre>
   </section>
 
   <section class="panel">
-    <h2>Verdad y falsedad de valores</h2>
-    <p>
-      Además de las comparaciones, Python puede interpretar algunos valores como verdaderos o falsos.
-      Esto se conoce como <em>truthiness</em>.
-    </p>
+    <h2>Casos frontera: donde más se falla</h2>
 
-    <pre><code>print(bool(0))
-print(bool(1))
-print(bool(""))
-print(bool("Hola"))</code></pre>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3><code>&gt;</code> frente a <code>&gt;=</code></h3>
+        <p>No significan lo mismo. Uno excluye el valor límite y el otro lo incluye.</p>
+      </div>
 
-    <ul>
-      <li><code>0</code> suele interpretarse como falso</li>
-      <li>un número distinto de 0 suele interpretarse como verdadero</li>
-      <li>una cadena vacía suele interpretarse como falsa</li>
-      <li>una cadena con contenido suele interpretarse como verdadera</li>
-    </ul>
+      <div class="theory-card">
+        <h3>El 18</h3>
+        <p>Si la regla es <code>edad >= 18</code>, 18 ya entra como válido.</p>
+      </div>
 
-    <p>
-      No necesitas dominarlo todo ahora, pero es importante empezar a verlo.
-    </p>
+      <div class="theory-card">
+        <h3>El 5</h3>
+        <p>Si la regla es <code>nota >= 5</code>, 5 ya es aprobado.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>El 0</h3>
+        <p>Cuando clasificas números, el 0 suele merecer una comprobación específica.</p>
+      </div>
+    </div>
+
+    <pre><code>nota = 5
+
+if nota >= 5:
+    print("Aprobado")
+else:
+    print("Suspenso")</code></pre>
   </section>
 
   <section class="panel">
-    <h2>Comparar booleanos</h2>
-    <pre><code>activo = True
-print(activo == True)
-print(activo == False)</code></pre>
+    <h2>Primer contacto con <code>input()</code></h2>
+
+    <pre><code>nota = int(input("Introduce tu nota: "))
+
+if nota >= 5:
+    print("Aprobado")
+else:
+    print("Suspenso")</code></pre>
 
     <p>
-      Aunque se puede hacer, normalmente es más claro usar la variable directamente en condiciones.
+      Aquí el programa recibe el dato del usuario, lo convierte con <code>int()</code>
+      y después decide.
     </p>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Errores que debes detectar rápido</h2>
+        <p class="exercise-subtitle">
+          Aprender comparaciones también consiste en reconocer fallos comunes.
+        </p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Error 1</h3>
+        <pre><code>edad = 18
+if edad = 18:
+    print("Coincide")</code></pre>
+
+        <p>
+          Está mal porque <code>=</code> asigna; no compara.
+        </p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Error 2</h3>
+        <pre><code>usuario = "Ana"
+print(usuario == "ana")</code></pre>
+
+        <p>
+          Da <code>False</code> porque las mayúsculas y minúsculas importan.
+        </p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>💭 Piensa antes de ejecutar</h2>
-    <pre><code>numero = 10
-print(numero == 10)
-print(numero != 10)
-print(numero > 5)
-print(numero < 3)</code></pre>
+    <h2>Buenas prácticas</h2>
 
-    <ul>
-      <li>¿Qué expresiones dan <code>True</code>?</li>
-      <li>¿Cuál da <code>False</code>?</li>
-      <li>¿Qué cambiaría si <code>numero</code> fuera 3?</li>
-    </ul>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Pregunta exacta</h3>
+        <p>Antes de escribir, formula mentalmente la pregunta que quieres responder.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Tipos correctos</h3>
+        <p>Comprueba si estás comparando números con números y texto con texto.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Casos límite</h3>
+        <p>Revisa siempre valores frontera como 0, 5, 18 o 100.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Código claro</h3>
+        <p>Haz comparaciones simples cuando eso facilite entender el resultado.</p>
+      </div>
+    </div>
   </section>
 
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
+        <p class="exercise-subtitle">Practica comparaciones, booleanos y un caso frontera.</p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">2.2</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Enunciado</h3>
+        <p>
+          Guarda una variable llamada <code>nota</code>.  
+          Si la nota es 5 o más, imprime <code>"Aprobado"</code>.  
+          Si no, imprime <code>"Suspenso"</code>.
+        </p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes practicar</h3>
+        <ul>
+          <li>comparar con <code>>=</code></li>
+          <li>entender qué devuelve la condición</li>
+          <li>probar el valor frontera: <code>5</code></li>
+        </ul>
+
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-2%2F02-comparaciones-booleanos.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Resumen mental del subtema</h2>
+        <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Ideas clave</h3>
+        <ul>
+          <li>toda comparación devuelve <code>True</code> o <code>False</code></li>
+          <li><code>=</code> no es lo mismo que <code>==</code></li>
+          <li>los textos distinguen mayúsculas y minúsculas</li>
+          <li>los tipos importan al comparar</li>
+          <li>los valores frontera deben probarse siempre</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Puente con el siguiente bloque</h3>
+        <div class="challenge">
+          Saber comparar no basta: ahora toca razonar bien qué rama entra, detectar errores de lógica
+          y practicar con valores límite.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
   <section class="panel">
-    <h2>Casos límite</h2>
+    <h2>Siguiente paso</h2>
     <p>
-      Los casos límite son valores que están justo en la frontera de una regla.
-      Son fundamentales al programar bien.
+      Ya sabes comparar y entender booleanos. Ahora toca leer mejor los condicionales,
+      probar casos frontera y corregir errores típicos de lógica.
     </p>
 
-    <pre><code>edad = 18
-if edad >= 18:
-    print("Mayor de edad")</code></pre>
-
-    <p>
-      Aquí <code>18</code> es un caso límite. Debes pensar siempre en estos valores frontera.
-    </p>
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./01-condicionales.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
+    </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
   </section>
 
-  <section class="panel">
-    <h2>Errores frecuentes</h2>
-    <ul>
-      <li>confundir asignación con comparación</li>
-      <li>comparar texto sin tener en cuenta mayúsculas</li>
-      <li>olvidar que el resultado de toda comparación es booleano</li>
-      <li>no probar casos límite</li>
-      <li>usar comparaciones innecesariamente complejas</li>
-    </ul>
-  </section>
-
-  <section class="panel">
-    <h2>Mini-reto guiado</h2>
-    <p>
-      Guarda dos números y muestra el resultado de estas preguntas:
-    </p>
-
-    <ul>
-      <li>¿son iguales?</li>
-      <li>¿el primero es mayor?</li>
-      <li>¿el segundo es mayor o igual?</li>
-    </ul>
-
-    <pre><code>a = 8
-b = 12
-
-print(a == b)
-print(a > b)
-print(b >= a)</code></pre>
-  </section>
-
-  <section class="panel">
-    <h2>Reto de entrevista</h2>
-    <p>
-      Explica qué devuelve esta expresión y por qué:
-    </p>
-
-    <pre><code>5 <= 5</code></pre>
-
-    <p>
-      Respuesta correcta: devuelve <code>True</code> porque “menor o igual” incluye la igualdad.
-    </p>
-  </section>
-
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./01-condicionales.html">Anterior</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
-
-  <button class="btn btn-primary" onclick="completeTopic('2.2')">Marcar como completado</button>
-
+  <script src="../topic-completion.js"></script>
   <script>
-const TOPIC_ID = "2.2";
-const NEXT_URL = "./03-operadores-logicos.html";
+    const subtopicCompletion = initTopicCompletion({
+      topicId: "2.2",
+      nextUrl: "./03-operadores-logicos.html"
+    });
 
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+    const miniRetoCompletion = initTopicCompletion({
+      topicId: "2.2.mini"
+    });
 
-const nextBtn = document.getElementById("nextBtn");
+    const completeBtn = document.getElementById("completeBtn");
+    const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+    const completionMessage = document.getElementById("completionMessage");
 
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
+    function showCompletionMessage(text) {
+      if (!completionMessage) return;
+      completionMessage.textContent = text;
+      completionMessage.style.display = "block";
+    }
 
-    if (!token || !nextBtn) return;
+    function showCompletedState() {
+      if (!completeBtn) return;
 
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
+      completeBtn.style.display = "none";
+
+      if (!document.getElementById("completedBadge")) {
+        const badge = document.createElement("span");
+        badge.id = "completedBadge";
+        badge.className = "btn btn-secondary";
+        badge.textContent = "Subtema completado ✅";
+        completeBtn.parentNode.appendChild(badge);
       }
-    });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
-  }
-}
-
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
     }
 
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
-    });
+    function showMiniCompletedState() {
+      if (!miniCompleteBtn) return;
 
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
+      miniCompleteBtn.style.display = "none";
+
+      if (!document.getElementById("miniCompletedBadge")) {
+        const badge = document.createElement("span");
+        badge.id = "miniCompletedBadge";
+        badge.className = "btn btn-secondary";
+        badge.textContent = "Mini-reto completado ✅";
+        miniCompleteBtn.parentNode.appendChild(badge);
+      }
     }
 
-    alert("Tema completado 🎉");
+    async function syncCompletionUI() {
+      try {
+        const subtopicDone = await subtopicCompletion.isCompleted();
+        const miniDone = await miniRetoCompletion.isCompleted();
 
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
+        if (subtopicDone) {
+          showCompletedState();
+        }
+
+        if (miniDone) {
+          showMiniCompletedState();
+        }
+
+        if (subtopicDone && miniDone) {
+          showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+        } else if (subtopicDone) {
+          showCompletionMessage("Este subtema ya estaba marcado como completado.");
+        } else if (miniDone) {
+          showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+        }
+      } catch (error) {
+        console.error("Error comprobando estado del subtema:", error);
+      }
     }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
-  }
-}
 
-unlockNextIfCompleted();
-</script>
+    if (completeBtn) {
+      completeBtn.addEventListener("click", async (e) => {
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
+
+        try {
+          btn.disabled = true;
+          btn.textContent = "Guardando...";
+
+          await subtopicCompletion.completeTopic();
+
+          showCompletedState();
+          showCompletionMessage("Has marcado este subtema como completado.");
+        } catch (error) {
+          console.error("Error al completar el subtema:", error);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          showCompletionMessage(error.message || "No se pudo guardar el progreso.");
+        }
+      });
+    }
+
+    if (miniCompleteBtn) {
+      miniCompleteBtn.addEventListener("click", async (e) => {
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
+
+        try {
+          btn.disabled = true;
+          btn.textContent = "Guardando...";
+
+          await miniRetoCompletion.completeTopic();
+
+          showMiniCompletedState();
+          showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+        } catch (error) {
+          console.error("Error al completar el mini-reto:", error);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+        }
+      });
+    }
+
+    syncCompletionUI();
+  </script>
+
 </main>
 </body>
 </html>

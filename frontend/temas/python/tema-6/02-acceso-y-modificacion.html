@@ -7,12 +7,142 @@
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 6 · Diccionarios</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 6 · Python</h1>
-  <p>6.2 · Acceso y modificación: leer y actualizar valores por clave</p>
+  <span class="mission-tag">Misión 6.2</span>
+  <h1>Acceso y modificación</h1>
+  <p>Aprende a leer, actualizar, añadir y eliminar valores en un diccionario usando sus claves.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 6 · Diccionarios</div>
+        <div class="mini-note">Nivel inicial · 12-15 min · Lectura y actualización</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Claves</span>
+        <span class="badge green">Modificación</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 40%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
+
+<section class="exercise-card">
+  <div class="exercise-header">
+    <div>
+      <h2 class="exercise-title">Qué vas a entender hoy</h2>
+      <p class="exercise-subtitle">
+        Un diccionario no solo sirve para guardar datos: también tienes que saber acceder a ellos, cambiarlos y añadir información nueva.
+      </p>
+    </div>
+    <div class="badges">
+      <span class="badge blue">Objetivo</span>
+      <span class="badge green">Acceso y cambio</span>
+    </div>
+  </div>
+
+  <div class="exercise-body">
+    <div class="exercise-block">
+      <h3>Qué problema resuelve</h3>
+      <p>
+        Crear un diccionario es solo el primer paso. En programación real necesitas consultar un dato concreto,
+        actualizarlo cuando cambia o añadir nuevas claves cuando aparece más información.
+      </p>
+
+      <div class="theory-grid">
+        <div class="theory-card">
+          <h3>Leer datos</h3>
+          <p>Acceder a un valor usando su clave.</p>
+        </div>
+        <div class="theory-card">
+          <h3>Actualizar</h3>
+          <p>Cambiar el valor de una clave que ya existe.</p>
+        </div>
+        <div class="theory-card">
+          <h3>Añadir</h3>
+          <p>Crear una nueva clave con su valor asociado.</p>
+        </div>
+        <div class="theory-card">
+          <h3>Seguridad</h3>
+          <p>Evitar errores cuando una clave no existe.</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        Idea clave: trabajar con diccionarios significa moverte por claves, no por posiciones.
+      </div>
+    </div>
+
+    <div class="exercise-block">
+      <h3>Qué debes vigilar</h3>
+      <ul>
+        <li>escribir bien cada clave</li>
+        <li>distinguir entre actualizar y añadir</li>
+        <li>tener cuidado con claves que no existen</li>
+        <li>usar <code>get()</code> o <code>in</code> cuando necesites más seguridad</li>
+      </ul>
+
+      <div class="challenge">
+        Piensa así: acceder a <code>diccionario["clave"]</code> es pedir un dato concreto por su nombre.
+      </div>
+    </div>
+  </div>
+</section>
+
+  <section class="panel">
+    <h2>Dónde aparecen el acceso y la modificación de diccionarios en problemas reales</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Perfiles</h3>
+        <p>Leer o actualizar datos concretos de una persona por su clave.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Estados</h3>
+        <p>Cambiar valores cuando una situación evoluciona o se actualiza.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Nuevos datos</h3>
+        <p>Añadir claves cuando aparece información que antes no existía.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Acceso seguro</h3>
+        <p>Consultar claves con cuidado para evitar errores innecesarios.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      Acceder y modificar diccionarios aparece cuando trabajas con información estructurada que cambia con el tiempo.
+    </div>
+  </section>
 
   <section class="panel">
     <h2>Acceder a un valor por su clave</h2>
@@ -65,7 +195,55 @@ print(persona)</code></pre>
   </section>
 
   <section class="panel">
-    <h2>⚠️ Error típico: acceder a una clave inexistente</h2>
+    <h2>Eliminar una clave</h2>
+    <pre><code>datos = {
+    "nombre": "Marta",
+    "edad": 28,
+    "ciudad": "Sevilla"
+}
+
+del datos["ciudad"]
+print(datos)</code></pre>
+
+    <p>
+      <code>del</code> elimina la clave y su valor asociado.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Dos ideas que debes distinguir</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Actualizar</h3>
+        <p>La clave ya existía y cambias su valor.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Añadir</h3>
+        <p>La clave no existía y pasa a formar parte del diccionario.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Acceder</h3>
+        <p>Solo lees el valor asociado a una clave.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Eliminar</h3>
+        <p>Quitas la clave y su valor del diccionario.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Misma sintaxis, distinto efecto</h2>
+    <p>
+      En actualización y añadir usas la misma forma:
+      <code>diccionario[clave] = valor</code>.
+      Lo que cambia es si esa clave ya estaba o no.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Error típico: acceder a una clave inexistente</h2>
     <pre><code>producto = {
     "nombre": "Ratón",
     "precio": 25
@@ -75,6 +253,21 @@ print(producto["stock"])</code></pre>
 
     <p>
       Esto da error porque la clave <code>"stock"</code> no existe.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Escribir mal una clave también es un error lógico</h2>
+
+    <pre><code>usuario = {
+    "nombre": "Luis",
+    "activo": True
+}
+
+print(usuario["actvo"])</code></pre>
+
+    <p>
+      Aunque el diccionario esté bien, una clave mal escrita provoca fallo porque no coincide con ninguna existente.
     </p>
   </section>
 
@@ -114,154 +307,259 @@ print("email" in usuario)</code></pre>
   </section>
 
   <section class="panel">
-    <h2>Eliminar una clave</h2>
-    <pre><code>datos = {
-    "nombre": "Marta",
-    "edad": 28,
-    "ciudad": "Sevilla"
-}
+    <h2>¿Cuándo usar corchetes, <code>get()</code> o <code>in</code>?</h2>
 
- del datos["ciudad"]
-print(datos)</code></pre>
-
-    <p>
-      <code>del</code> elimina la clave y su valor asociado.
-    </p>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Corchetes</h3>
+        <p>Cuando sabes con seguridad que la clave existe.</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>get()</code></h3>
+        <p>Cuando la clave podría no existir y quieres evitar error.</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>in</code></h3>
+        <p>Cuando primero quieres comprobar si la clave está presente.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Idea práctica</h3>
+        <p>La elección depende de cuánto control tengas sobre la estructura.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>💭 Piensa antes de ejecutar</h2>
-    <pre><code>alumno = {
-    "nombre": "Carlos",
-    "nota": 8
-}
+    <h2>Cómo pensar acceso y modificación antes de escribirlo</h2>
 
-alumno["nota"] = 9
-alumno["curso"] = "Python"
-print(alumno)</code></pre>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Paso 1</h3>
+        <p>Identifica qué clave representa el dato que necesitas.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 2</h3>
+        <p>Decide si vas a leer, actualizar, añadir o eliminar.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 3</h3>
+        <p>Si no estás seguro de que la clave exista, considera <code>get()</code> o <code>in</code>.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 4</h3>
+        <p>Comprueba el resultado imprimiendo el diccionario o el valor final.</p>
+      </div>
+    </div>
+  </section>
 
-    <ul>
-      <li>¿qué claves tiene el diccionario al final?</li>
-      <li>¿qué valor tiene <code>nota</code>?</li>
-    </ul>
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
+        <p class="exercise-subtitle">Practica acceso, actualización y seguridad con claves.</p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">6.2</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Enunciado</h3>
+        <p>
+          Crea un diccionario <code>producto</code> con las claves <code>nombre</code> y <code>precio</code>.
+          Después:
+        </p>
+        <ul>
+          <li>imprime el precio</li>
+          <li>actualízalo a otro valor</li>
+          <li>añade la clave <code>stock</code></li>
+          <li>imprime el diccionario final</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes practicar</h3>
+        <ul>
+          <li>acceso por clave</li>
+          <li>diferencia entre actualizar y añadir</li>
+          <li>pensar el diccionario como datos con nombre</li>
+        </ul>
+
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-6%2F02-acceso-y-modificacion.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Resumen mental del subtema</h2>
+        <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Ideas clave</h3>
+        <ul>
+          <li>accedes por clave, no por posición</li>
+          <li>la misma sintaxis permite actualizar o añadir</li>
+          <li>si una clave no existe, el acceso directo puede fallar</li>
+          <li><code>get()</code> e <code>in</code> ayudan cuando no tienes certeza</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Puente con el siguiente bloque</h3>
+        <div class="challenge">
+          Ya sabes entrar y cambiar datos. Ahora toca recorrer el diccionario completo según lo que quieras hacer con él.
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Errores frecuentes</h2>
-    <ul>
-      <li>escribir mal una clave</li>
-      <li>acceder a una clave que no existe</li>
-      <li>olvidar que las claves de texto deben ir entre comillas</li>
-      <li>confundir actualizar una clave con añadir una nueva</li>
-    </ul>
-  </section>
-
-  <section class="panel">
-    <h2>Mini-reto guiado</h2>
+    <h2>Siguiente paso</h2>
     <p>
-      Crea un diccionario de producto, cambia el precio y añade una clave <code>stock</code>.
+      Ya sabes acceder y modificar datos. Lo siguiente es aprender a recorrer diccionarios con criterio.
     </p>
 
-    <pre><code>producto = {
-    "nombre": "Monitor",
-    "precio": 150
-}
-
-producto["precio"] = 175
-producto["stock"] = 12
-print(producto)</code></pre>
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./01-que-es-un-diccionario.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
+    </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
   </section>
 
-  <section class="panel">
-    <h2>Pregunta de entrevista</h2>
-    <p>
-      ¿Qué ventaja tiene <code>get()</code> frente a acceder directamente con <code>diccionario[clave]</code>?
-    </p>
+<script src="../topic-completion.js"></script>
+<script>
+  const subtopicCompletion = initTopicCompletion({
+    topicId: "6.2",
+    nextUrl: "./03-recorrer-diccionarios.html"
+  });
 
-    <p>
-      Respuesta sólida: <code>get()</code> permite recuperar un valor sin provocar error si la clave no existe, y además puede devolver un valor por defecto.
-    </p>
-  </section>
+  const miniRetoCompletion = initTopicCompletion({
+    topicId: "6.2.mini"
+  });
 
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./01-que-es-un-diccionario.html">Anterior</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
+  const completeBtn = document.getElementById("completeBtn");
+  const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+  const completionMessage = document.getElementById("completionMessage");
 
-  <button class="btn btn-primary" onclick="completeTopic('6.2')">Marcar como completado</button>
+  function showCompletionMessage(text) {
+    if (!completionMessage) return;
+    completionMessage.textContent = text;
+    completionMessage.style.display = "block";
+  }
 
- <script>
-const TOPIC_ID = "6.2";
-const NEXT_URL = "./03-recorrer-diccionarios.html";
+  function showCompletedState() {
+    if (!completeBtn) return;
 
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+    completeBtn.style.display = "none";
 
-const nextBtn = document.getElementById("nextBtn");
+    if (!document.getElementById("completedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "completedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Subtema completado ✅";
+      completeBtn.parentNode.appendChild(badge);
+    }
+  }
 
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
+  function showMiniCompletedState() {
+    if (!miniCompleteBtn) return;
 
-    if (!token || !nextBtn) return;
+    miniCompleteBtn.style.display = "none";
 
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
+    if (!document.getElementById("miniCompletedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "miniCompletedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Mini-reto completado ✅";
+      miniCompleteBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  async function syncCompletionUI() {
+    try {
+      const subtopicDone = await subtopicCompletion.isCompleted();
+      const miniDone = await miniRetoCompletion.isCompleted();
+
+      if (subtopicDone) {
+        showCompletedState();
+      }
+
+      if (miniDone) {
+        showMiniCompletedState();
+      }
+
+      if (subtopicDone && miniDone) {
+        showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+      } else if (subtopicDone) {
+        showCompletionMessage("Este subtema ya estaba marcado como completado.");
+      } else if (miniDone) {
+        showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+      }
+    } catch (error) {
+      console.error("Error comprobando estado del subtema:", error);
+    }
+  }
+
+  if (completeBtn) {
+    completeBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
+
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
+
+        await subtopicCompletion.completeTopic();
+
+        showCompletedState();
+        showCompletionMessage("Has marcado este subtema como completado.");
+      } catch (error) {
+        console.error("Error al completar el subtema:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso.");
       }
     });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
   }
-}
 
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
+  if (miniCompleteBtn) {
+    miniCompleteBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
 
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
-    }
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
 
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
+        await miniRetoCompletion.completeTopic();
+
+        showMiniCompletedState();
+        showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+      } catch (error) {
+        console.error("Error al completar el mini-reto:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+      }
     });
-
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
-    }
-
-    alert("Tema completado 🎉");
-
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
   }
-}
 
-unlockNextIfCompleted();
+  syncCompletionUI();
 </script>
+
 
 </main>
 </body>

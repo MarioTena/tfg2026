@@ -7,37 +7,115 @@
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 6 · Diccionarios</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 6 · Python</h1>
-  <p>6.1 · Qué es un diccionario: guardar información por clave y valor</p>
+  <span class="mission-tag">Misión 6.1</span>
+  <h1>Qué es un diccionario</h1>
+  <p>Aprende a guardar información por clave y valor para que cada dato tenga un significado claro.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 6 · Diccionarios</div>
+        <div class="mini-note">Nivel inicial · 12-15 min · Clave y valor</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Diccionarios</span>
+        <span class="badge green">Base esencial</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 20%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
 
-  <section class="panel">
-    <h2>¿Qué problema resuelven los diccionarios?</h2>
-    <p>
-      Las listas son muy útiles cuando el orden importa y trabajas con posiciones.
-      Pero a veces no quieres acceder por índice, sino por significado.
-    </p>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué vas a entender hoy</h2>
+        <p class="exercise-subtitle">
+          Un diccionario permite guardar información por nombre, no por posición. Cada dato tiene una clave y un valor asociado.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Objetivo</span>
+        <span class="badge green">Clave → valor</span>
+      </div>
+    </div>
 
-    <p>
-      Por ejemplo, si tienes información de una persona, esto no es muy expresivo:
-    </p>
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué problema resuelve</h3>
+        <p>
+          Las listas son muy útiles cuando importa el orden, pero a veces no quieres acceder por índice,
+          sino por significado. Un diccionario te permite nombrar cada dato de forma explícita.
+        </p>
 
-    <pre><code>persona = ["Ana", 30, "Madrid"]</code></pre>
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3>Persona</h3>
+            <p>Guardar nombre, edad y ciudad con significado claro.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Producto</h3>
+            <p>Representar nombre, precio y stock.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Configuración</h3>
+            <p>Guardar idioma, tema o notificaciones.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Lectura clara</h3>
+            <p>Evitar recordar qué significa cada posición de una lista.</p>
+          </div>
+        </div>
 
-    <p>
-      ¿Qué representa cada posición? Hay que recordarlo. En cambio, con un diccionario puedes nombrar cada dato.
-    </p>
+        <div class="callout">
+          Idea clave: un diccionario organiza datos por claves con significado, no por posiciones.
+        </div>
+      </div>
 
-    <div class="callout">
-      Un diccionario guarda pares <strong>clave → valor</strong>. Permite acceder a la información por nombre, no por posición.
+      <div class="exercise-block">
+        <h3>Qué debes vigilar</h3>
+        <ul>
+          <li>un diccionario usa llaves <code>{}</code></li>
+          <li>cada dato se guarda como <code>clave: valor</code></li>
+          <li>las claves sirven para identificar cada valor</li>
+          <li>no debes pensar en índices como en una lista</li>
+        </ul>
+
+        <div class="challenge">
+          Piensa así: una lista responde a “¿qué hay en la posición 0?” y un diccionario responde a “¿qué valor tiene la clave nombre?”.
+        </div>
+      </div>
     </div>
   </section>
 
   <section class="panel">
-    <h2>¿Qué es un diccionario?</h2>
+    <h2>Qué es un diccionario</h2>
     <p>
       Un diccionario es una estructura de datos que almacena valores asociados a claves.
       Se escribe entre llaves <code>{}</code>.
@@ -55,23 +133,126 @@
   </section>
 
   <section class="panel">
+    <h2>Dónde aparecen los diccionarios en problemas reales</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Usuarios</h3>
+        <p>Guardar datos personales o de acceso.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Productos</h3>
+        <p>Representar precio, stock, nombre o categoría.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Películas o libros</h3>
+        <p>Asociar título, año, autor o director.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Configuraciones</h3>
+        <p>Gestionar opciones del sistema con nombres claros.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      Cuando los datos tienen nombre propio y quieres acceder a ellos por significado, el diccionario suele ser la mejor opción.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Lista frente a diccionario</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Lista</h3>
+        <p>Sirve cuando importa el orden o la posición de cada elemento.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Diccionario</h3>
+        <p>Sirve cuando importa el nombre o el significado de cada dato.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Lista pregunta</h3>
+        <p>¿Qué hay en la posición 0 o 1?</p>
+      </div>
+      <div class="theory-card">
+        <h3>Diccionario pregunta</h3>
+        <p>¿Qué valor tiene la clave <code>precio</code> o <code>edad</code>?</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
     <h2>Ventajas frente a una lista</h2>
-    <ul>
-      <li>el código es más legible</li>
-      <li>cada dato tiene significado explícito</li>
-      <li>es ideal para representar entidades reales</li>
-      <li>evita depender de recordar posiciones numéricas</li>
-    </ul>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Más legible</h3>
+        <p>Cada dato tiene una clave clara.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Más expresivo</h3>
+        <p>No tienes que recordar qué representa cada posición.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Más realista</h3>
+        <p>Encaja muy bien para representar entidades reales.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Más mantenible</h3>
+        <p>El código suele entenderse mejor con el paso del tiempo.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Entidad y atributos</h2>
+    <p>
+      Una forma útil de pensar un diccionario es esta:
+      representa una entidad y cada clave es uno de sus atributos.
+    </p>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Entidad</h3>
+        <p>Un usuario, un producto, una película o una configuración.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Atributos</h3>
+        <p><code>nombre</code>, <code>edad</code>, <code>precio</code>, <code>stock</code>, <code>activo</code>.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Idea práctica</h3>
+        <p>Cada clave describe qué representa ese valor.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Ventaja</h3>
+        <p>El programa se lee con más sentido que usando posiciones numéricas.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
     <h2>Ejemplos reales</h2>
-    <ul>
-      <li>una persona: nombre, edad, email</li>
-      <li>un producto: nombre, precio, stock</li>
-      <li>una película: título, año, director</li>
-      <li>una configuración: idioma, tema, notificaciones</li>
-    </ul>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Persona</h3>
+        <p><code>nombre</code>, <code>edad</code>, <code>email</code></p>
+      </div>
+      <div class="theory-card">
+        <h3>Producto</h3>
+        <p><code>nombre</code>, <code>precio</code>, <code>stock</code></p>
+      </div>
+      <div class="theory-card">
+        <h3>Película</h3>
+        <p><code>titulo</code>, <code>anio</code>, <code>director</code></p>
+      </div>
+      <div class="theory-card">
+        <h3>Configuración</h3>
+        <p><code>idioma</code>, <code>tema</code>, <code>notificaciones</code></p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
@@ -84,6 +265,29 @@
   </section>
 
   <section class="panel">
+    <h2>Casos simples importantes</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Vacío</h3>
+        <pre><code>{}</code></pre>
+      </div>
+      <div class="theory-card">
+        <h3>Una sola clave</h3>
+        <pre><code>{"nombre": "Ana"}</code></pre>
+      </div>
+      <div class="theory-card">
+        <h3>Varios tipos</h3>
+        <pre><code>{"nombre": "Ana", "edad": 30, "activo": True}</code></pre>
+      </div>
+      <div class="theory-card">
+        <h3>Idea útil</h3>
+        <p>Los valores pueden ser de tipos distintos si tiene sentido para el problema.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
     <h2>Claves únicas</h2>
     <p>
       En un diccionario no debería haber claves repetidas. Cada clave identifica un dato concreto.
@@ -93,146 +297,235 @@
     "nombre": "Teclado",
     "precio": 40
 }</code></pre>
+
+    <div class="callout">
+      La clave no es un adorno. Es el nombre exacto con el que luego pedirás ese dato.
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Qué debes entender desde el principio</h2>
+    <h2>Cómo pensar si te conviene un diccionario</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Paso 1</h3>
+        <p>Pregúntate si los datos tienen nombres naturales.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 2</h3>
+        <p>Si vas a pedir información como <code>precio</code> o <code>stock</code>, suele encajar un diccionario.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 3</h3>
+        <p>Si solo te importa una secuencia ordenada, quizá una lista sea mejor.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 4</h3>
+        <p>Decide qué claves representan mejor la realidad del problema.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
+        <p class="exercise-subtitle">Empieza a pensar un diccionario como entidad con atributos claros.</p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">6.1</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Enunciado</h3>
+        <p>
+          Crea un diccionario llamado <code>curso</code> con las claves:
+          <code>nombre</code>, <code>duracion</code> y <code>activo</code>.
+          Después imprímelo completo.
+        </p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes practicar</h3>
+        <ul>
+          <li>usar llaves <code>{}</code></li>
+          <li>definir parejas <code>clave: valor</code></li>
+          <li>pensar qué representa cada clave</li>
+        </ul>
+
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-6%2F01-que-es-un-diccionario.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Resumen mental del subtema</h2>
+        <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Ideas clave</h3>
+        <ul>
+          <li>un diccionario guarda datos por significado, no por posición</li>
+          <li>cada dato se guarda como clave y valor</li>
+          <li>suele representar una entidad con atributos</li>
+          <li>si quieres acceder por nombre, un diccionario suele tener más sentido que una lista</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Puente con el siguiente bloque</h3>
+        <div class="challenge">
+          Ya entiendes qué es un diccionario. Ahora toca aprender a entrar en sus datos, cambiarlos y añadir nuevos.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Siguiente paso</h2>
     <p>
-      Una lista responde a “¿qué hay en la posición 0, 1 o 2?”.
-      Un diccionario responde a “¿qué valor tiene la clave nombre, edad o precio?”.
-    </p>
-  </section>
-
-  <section class="panel">
-    <h2>💭 Piensa antes de ejecutar</h2>
-    <pre><code>coche = {
-    "marca": "Toyota",
-    "modelo": "Corolla",
-    "anio": 2022
-}
-
-print(coche)</code></pre>
-
-    <ul>
-      <li>¿qué estructura se imprime?</li>
-      <li>¿qué diferencia ves con una lista?</li>
-    </ul>
-  </section>
-
-  <section class="panel">
-    <h2>Errores conceptuales frecuentes</h2>
-    <ul>
-      <li>confundir diccionarios con listas</li>
-      <li>usar corchetes en vez de llaves al crearlos</li>
-      <li>no entender la diferencia entre clave y valor</li>
-      <li>pensar que se accede por posición como en una lista</li>
-    </ul>
-  </section>
-
-  <section class="panel">
-    <h2>Mini-reto guiado</h2>
-    <p>
-      Crea un diccionario que represente un libro con las claves <code>titulo</code>, <code>autor</code> y <code>anio</code>.
+      Ya entiendes la idea general del diccionario. Lo siguiente es aprender a acceder a sus claves y modificar sus valores.
     </p>
 
-    <pre><code>libro = {
-    "titulo": "Clean Code",
-    "autor": "Robert C. Martin",
-    "anio": 2008
-}
-
-print(libro)</code></pre>
+    <div class="buttons-row">
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
+    </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
   </section>
 
-  <section class="panel">
-    <h2>Pregunta de entrevista</h2>
-    <p>
-      ¿Qué diferencia conceptual hay entre una lista y un diccionario?
-    </p>
+<script src="../topic-completion.js"></script>
+<script>
+  const subtopicCompletion = initTopicCompletion({
+    topicId: "6.1",
+    nextUrl: "./02-acceso-y-modificacion.html"
+  });
 
-    <p>
-      Respuesta sólida: una lista organiza datos por posición; un diccionario organiza datos por claves con significado.
-    </p>
-  </section>
+  const miniRetoCompletion = initTopicCompletion({
+    topicId: "6.1.mini"
+  });
 
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./index.html">Índice tema</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
+  const completeBtn = document.getElementById("completeBtn");
+  const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+  const completionMessage = document.getElementById("completionMessage");
 
-  <button class="btn btn-primary" onclick="completeTopic('6.1')">Marcar como completado</button>
+  function showCompletionMessage(text) {
+    if (!completionMessage) return;
+    completionMessage.textContent = text;
+    completionMessage.style.display = "block";
+  }
 
-  <script>
-const TOPIC_ID = "6.1";
-const NEXT_URL = "./02-acceso-y-modificacion.html";
+  function showCompletedState() {
+    if (!completeBtn) return;
 
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+    completeBtn.style.display = "none";
 
-const nextBtn = document.getElementById("nextBtn");
+    if (!document.getElementById("completedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "completedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Subtema completado ✅";
+      completeBtn.parentNode.appendChild(badge);
+    }
+  }
 
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
+  function showMiniCompletedState() {
+    if (!miniCompleteBtn) return;
 
-    if (!token || !nextBtn) return;
+    miniCompleteBtn.style.display = "none";
 
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
+    if (!document.getElementById("miniCompletedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "miniCompletedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Mini-reto completado ✅";
+      miniCompleteBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  async function syncCompletionUI() {
+    try {
+      const subtopicDone = await subtopicCompletion.isCompleted();
+      const miniDone = await miniRetoCompletion.isCompleted();
+
+      if (subtopicDone) {
+        showCompletedState();
+      }
+
+      if (miniDone) {
+        showMiniCompletedState();
+      }
+
+      if (subtopicDone && miniDone) {
+        showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+      } else if (subtopicDone) {
+        showCompletionMessage("Este subtema ya estaba marcado como completado.");
+      } else if (miniDone) {
+        showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+      }
+    } catch (error) {
+      console.error("Error comprobando estado del subtema:", error);
+    }
+  }
+
+  if (completeBtn) {
+    completeBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
+
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
+
+        await subtopicCompletion.completeTopic();
+
+        showCompletedState();
+        showCompletionMessage("Has marcado este subtema como completado.");
+      } catch (error) {
+        console.error("Error al completar el subtema:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso.");
       }
     });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
   }
-}
 
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
+  if (miniCompleteBtn) {
+    miniCompleteBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
 
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
-    }
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
 
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
+        await miniRetoCompletion.completeTopic();
+
+        showMiniCompletedState();
+        showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+      } catch (error) {
+        console.error("Error al completar el mini-reto:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+      }
     });
-
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
-    }
-
-    alert("Tema completado 🎉");
-
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
   }
-}
 
-unlockNextIfCompleted();
+  syncCompletionUI();
 </script>
 
 </main>

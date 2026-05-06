@@ -7,10 +7,26 @@
 </head>
 <body>
 
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Tema 4 · Listas</h1>
+      <p>Progreso del tema y acceso rápido a la ruta.</p>
+    </div>
+
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</div>
+
 <header class="header">
   <span class="mission-tag">Ruta de aprendizaje</span>
   <h1>Tema 4 · Listas en Python</h1>
-  <p>Aprende a guardar varios datos, acceder a posiciones, recorrer listas y resolver problemas prácticos.</p>
+  <p>Aprende a guardar varios datos, acceder a posiciones, recorrer listas y resolver problemas prácticos con estructuras de datos reales.</p>
 
   <div class="progress-hero">
     <div class="progress-hero-top">
@@ -32,7 +48,7 @@
 
   <div class="buttons-row">
     <a id="continue-btn" class="btn btn-primary" href="javascript:void(0)">Continuar ruta</a>
-    <a class="btn btn-secondary" href="../../../home.html">Volver al inicio</a>
+    <a class="btn btn-secondary" href="../index.html">Volver a Python</a>
   </div>
 </header>
 
@@ -43,7 +59,7 @@
       <div>
         <h2 class="exercise-title">Qué vas a dominar en este tema</h2>
         <p class="exercise-subtitle">
-          Este bloque te lleva desde entender qué es una lista hasta usarla en ejercicios y mini-retos.
+          Este bloque te lleva desde entender qué es una lista hasta usarla para acceder, modificar, recorrer, buscar, contar y manipular grupos de datos.
         </p>
       </div>
 
@@ -58,11 +74,13 @@
       <div class="exercise-block">
         <h3>Habilidades que entrenas</h3>
         <ul>
-          <li>crear listas</li>
-          <li>acceder y modificar posiciones</li>
+          <li>crear listas y darles sentido como estructura</li>
+          <li>acceder a posiciones con índices</li>
+          <li>modificar elementos existentes</li>
+          <li>usar índices negativos y slicing</li>
           <li>recorrer listas con bucles</li>
-          <li>usar métodos como <code>append()</code> y <code>sort()</code></li>
-          <li>buscar, contar y acumular valores</li>
+          <li>usar acumuladores, contadores y búsquedas</li>
+          <li>aplicar métodos como <code>append()</code>, <code>remove()</code>, <code>pop()</code> y <code>sort()</code></li>
         </ul>
       </div>
 
@@ -70,12 +88,13 @@
         <h3>Cómo avanzar</h3>
         <ul>
           <li>completa los conceptos en orden</li>
-          <li>entra en mini-retos para consolidar</li>
-          <li>termina con los ejercicios del tema</li>
+          <li>piensa siempre qué representa la lista</li>
+          <li>distingue entre trabajar por posición y por valor</li>
+          <li>entra en práctica guiada antes del bloque final</li>
         </ul>
 
         <div class="challenge">
-          Las pantallas se desbloquean en orden para que no saltes a la práctica sin haber visto la base.
+          El error más común con listas no es la sintaxis. Es no tener claro qué representa cada elemento y qué operación estás haciendo realmente sobre la estructura.
         </div>
       </div>
     </div>
@@ -86,8 +105,45 @@
     <div id="topics" class="topic-roadmap"></div>
   </section>
 
+  <section class="panel">
+    <h2>Resumen del recorrido</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>4.1 · Qué es una lista</h3>
+        <p>Entiendes por qué una lista sirve para agrupar varios datos relacionados dentro de una misma estructura ordenada.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>4.2 · Acceso y modificación</h3>
+        <p>Aprendes a entrar en posiciones concretas, modificar valores, usar índices negativos y extraer partes con slicing.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>4.3 · Recorrer listas</h3>
+        <p>Trabajas recorridos, acumuladores, contadores y búsquedas usando bucles sobre colecciones.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>4.4 · Métodos de listas</h3>
+        <p>Aprendes a añadir, eliminar, ordenar, invertir y consultar listas con herramientas ya construidas por Python.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>4.5 · Práctica guiada</h3>
+        <p>Consolidas lectura, depuración y razonamiento antes de pasar a los ejercicios finales.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Reto final</h3>
+        <p>Combinas creación, acceso, recorrido, métodos y análisis de listas en problemas más completos.</p>
+      </div>
+    </div>
+  </section>
+
 </main>
 
+<script src="../theme-progress-base.js"></script>
 <script src="progress.js"></script>
 </body>
 </html>

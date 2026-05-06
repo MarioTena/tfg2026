@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Proyecto integrador 3 · Gestor simple con archivo</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Proyecto integrador 3 · Gestor simple con archivo</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_proyecto3_gestor_archivo">Playground</a>
+    </div>
+  </div>
+</nav>
+
+<header class="header">
+  <span class="mission-tag">Proyecto integrador</span>
+  <h1>Proyecto 3 · Gestor simple con archivo</h1>
+  <p>Construye un programa que guarde y recupere información desde un archivo, validando entradas y controlando errores previsibles.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Proyecto con persistencia</div>
+        <div class="mini-note">Nivel intermedio · 40-60 min · Archivos, validación y excepciones</div>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Archivos</span>
+        <span class="badge blue">Errores</span>
+        <span class="badge green">Persistencia real</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 100%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#objetivo">Empezar proyecto</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python&exerciseId=py_proyecto3_gestor_archivo">Abrir en playground</a>
+  </div>
+</header>
+
+<main class="main-container single-column">
+
+  <section class="exercise-card" id="objetivo">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué entrenas aquí</h2>
+        <p class="exercise-subtitle">
+          En este proyecto das un salto importante: tus datos ya no viven solo mientras el programa está abierto. Ahora los guardas en archivo y los recuperas después.
+        </p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Persistencia</span>
+        <span class="badge blue">Validación</span>
+        <span class="badge green">Programa real</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Objetivo</h3>
+        <p>
+          Vas a crear un programa que guarde registros en un archivo, permita leerlos de nuevo, añadir información nueva y controlar errores básicos.
+        </p>
+
+        <div class="callout">
+          Idea clave: aquí el programa ya maneja información que sobrevive al cierre, algo muy cercano al comportamiento real de muchas aplicaciones.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué conceptos estás combinando</h3>
+        <ul>
+          <li>archivos</li>
+          <li>lectura y escritura</li>
+          <li>funciones</li>
+          <li>validación</li>
+          <li><code>try / except</code></li>
+          <li><code>raise</code></li>
+          <li>strings</li>
+          <li>listas</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Situación</h2>
+    <p>
+      Imagina que quieres guardar registros sencillos, por ejemplo nombres, tareas, productos o cualquier dato básico.
+      El programa debe poder añadir nuevos registros y recuperar los que ya existían.
+    </p>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Leer</h3>
+        <p>Mostrar lo que ya estaba guardado.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Añadir</h3>
+        <p>Guardar nuevas líneas sin borrar lo anterior.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Validar</h3>
+        <p>Evitar guardar entradas vacías o inválidas.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Gestionar errores</h3>
+        <p>Responder mejor si hay un problema con el archivo o con la entrada.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Requisitos mínimos</h2>
+    <ul>
+      <li>debes usar un archivo de texto para guardar información</li>
+      <li>debes usar funciones para organizar el programa</li>
+      <li>debes mostrar un menú dentro de un bucle <code>while</code></li>
+      <li>debes permitir ver registros guardados</li>
+      <li>debes permitir añadir un nuevo registro</li>
+      <li>debes validar que el registro no esté vacío</li>
+      <li>debes manejar errores básicos relacionados con lectura o escritura</li>
+      <li>debes permitir salir</li>
+    </ul>
+
+    <div class="challenge">
+      Este proyecto te obliga a combinar almacenamiento real, validación y control de errores en un mismo flujo.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Diseño recomendado</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Función 1</h3>
+        <p>Mostrar el menú principal.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Función 2</h3>
+        <p>Leer y mostrar los registros del archivo.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Función 3</h3>
+        <p>Añadir un nuevo registro al archivo.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Función 4</h3>
+        <p>Validar que el dato introducido sea correcto.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Función 5</h3>
+        <p>Gestionar errores con mensajes útiles.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Bucle principal</h3>
+        <p>Controlar el menú y las acciones del usuario.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Flujo mental del proyecto</h2>
+    <ol>
+      <li>preguntar qué quiere hacer el usuario</li>
+      <li>si quiere ver datos, leer el archivo</li>
+      <li>si quiere añadir datos, validar la entrada</li>
+      <li>guardar el nuevo registro usando el modo correcto</li>
+      <li>si algo falla, mostrar un mensaje comprensible</li>
+    </ol>
+
+    <div class="callout">
+      Aquí el gran aprendizaje no es solo usar archivos, sino decidir bien cuándo leer, cuándo añadir y cómo reaccionar si algo sale mal.
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Fases del proyecto</h2>
+        <p class="exercise-subtitle">Resuélvelo por partes para que el programa vaya creciendo con orden.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Fase 1</h3>
+        <p>Crea el menú y la opción de salir.</p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Fase 2</h3>
+        <p>Implementa la lectura del archivo y muestra las líneas guardadas.</p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Fase 3</h3>
+        <p>Implementa la opción de añadir un nuevo registro.</p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Fase 4</h3>
+        <p>Valida que la entrada no esté vacía antes de guardarla.</p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Fase 5</h3>
+        <p>Captura errores básicos del archivo con <code>try / except</code>.</p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Fase 6</h3>
+        <p>Refuerza mensajes y mejora la claridad del programa.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Pistas opcionales</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Pista 1</h3>
+        <p>Usa <code>with open(..., "r")</code> para leer.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pista 2</h3>
+        <p>Usa <code>with open(..., "a")</code> para añadir sin borrar lo anterior.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pista 3</h3>
+        <p>Recuerda usar <code>\n</code> si quieres guardar cada registro en una línea distinta.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pista 4</h3>
+        <p>Usa <code>.strip()</code> para limpiar lo leído o validar que no esté vacío.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pista 5</h3>
+        <p>Captura <code>FileNotFoundError</code> si el archivo no existe al intentar leer.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pista 6</h3>
+        <p>Puedes usar <code>raise ValueError(...)</code> si la entrada no cumple la regla que quieres imponer.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Versión ampliada</h2>
+    <p>Si terminas la versión principal, puedes añadir mejoras como estas:</p>
+
+    <ul>
+      <li>guardar solo registros válidos y rechazar los inválidos</li>
+      <li>mostrar cuántos registros hay en total</li>
+      <li>crear un archivo nuevo con solo los registros válidos</li>
+      <li>permitir buscar un registro por texto</li>
+      <li>guardar la fecha o la categoría junto al registro</li>
+    </ul>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué deberías haber conseguido al terminar</h2>
+        <p class="exercise-subtitle">Este proyecto te acerca mucho más a la programación útil de verdad.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Competencias que consolidan</h3>
+        <ul>
+          <li>leer y escribir datos persistentes</li>
+          <li>elegir correctamente entre leer y añadir</li>
+          <li>validar entradas antes de guardar</li>
+          <li>gestionar errores previsibles</li>
+          <li>organizar todo eso con funciones y menú</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Cierre didáctico</h3>
+        <div class="challenge">
+          Aquí tus datos ya no desaparecen al cerrar el programa. Ese detalle cambia mucho la sensación de aplicación real.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Resolver en playground</h2>
+    <p>
+      Abre este proyecto en el playground para trabajar con la plantilla inicial.
+      Recuerda que, si usas <code>input()</code>, debes rellenar también la entrada del programa.
+    </p>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./index.html">Volver a proyectos</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_proyecto3_gestor_archivo">Abrir proyecto en playground</a>
+    </div>
+  </section>
+
+</main>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const returnTo = params.get("returnTo");
+
+  const btnVolver = document.getElementById("btn-volver-ejercicios");
+
+  if (returnTo && btnVolver) {
+    btnVolver.href = returnTo;
+    btnVolver.style.display = "inline-flex";
+  }
+
+  if (returnTo) {
+    const playgroundLinks = document.querySelectorAll('a[href*="playground/index.html"]');
+
+    playgroundLinks.forEach((link) => {
+      const rawHref = link.getAttribute("href");
+      const url = new URL(rawHref, window.location.href);
+
+      if (!url.searchParams.get("returnTo")) {
+        url.searchParams.set("returnTo", returnTo);
+      }
+
+      link.setAttribute("href", url.pathname + url.search);
+    });
+  }
+</script>
+</body>
+</html>

@@ -1,23 +1,150 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Python - Temas</title>
-<link rel="stylesheet" href="../../../styles.css">
+  <meta charset="UTF-8">
+  <title>Python · Tema 7</title>
+  <link rel="stylesheet" href="../../../styles.css">
 </head>
 <body>
 
-<header class="header">
-  <h1>Ruta Python</h1>
-  <p>Completa los temas en orden para desbloquear los siguientes.</p>
-</header>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-title">
+        <h1>Tema 7 · Strings</h1>
+        <p>Progreso del tema y acceso rápido a la ruta.</p>
+      </div>
 
-<main class="main-container single-column">
+      <div class="topbar-actions">
+        <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+        <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+        <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+        <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+      </div>
+    </div>
+  </div>
 
-  <div id="topics" class="progress-grid"></div>
+  <header class="header">
+    <span class="mission-tag">Ruta de aprendizaje</span>
+    <h1>Tema 7 · Strings intermedios</h1>
+    <p>Aprende a tratar el texto como una secuencia: acceder a partes, transformarlo, recorrerlo y analizarlo con más precisión.</p>
 
-</main>
+    <div class="progress-hero">
+      <div class="progress-hero-top">
+        <div>
+          <div class="progress-label">Progreso del tema</div>
+          <div class="mini-note" id="topic-progress-copy">Cargando progreso...</div>
+        </div>
 
-<script src="progress.js"></script>
+        <div class="badges">
+          <span class="badge blue">Python</span>
+          <span class="badge green">Tema 7</span>
+        </div>
+      </div>
+
+      <div class="progress-track">
+        <div id="topic-progress-fill" class="progress-fill" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <div class="buttons-row">
+      <a id="continue-btn" class="btn btn-primary" href="javascript:void(0)">Continuar ruta</a>
+      <a class="btn btn-secondary" href="../index.html">Volver a Python</a>
+    </div>
+  </header>
+
+  <main class="main-container single-column">
+
+    <section class="exercise-card">
+      <div class="exercise-header">
+        <div>
+          <h2 class="exercise-title">Qué vas a dominar en este tema</h2>
+          <p class="exercise-subtitle">
+            Este bloque te enseña a trabajar con texto de forma mucho más precisa: acceder a posiciones, extraer fragmentos,
+            transformar cadenas, recorrerlas y analizarlas con criterio.
+          </p>
+        </div>
+
+        <div class="badges">
+          <span class="badge blue">Fundamentos</span>
+          <span class="badge blue">Texto</span>
+          <span class="badge green">Práctica final</span>
+        </div>
+      </div>
+
+      <div class="exercise-body">
+        <div class="exercise-block">
+          <h3>Habilidades que entrenas</h3>
+          <ul>
+            <li>entender un string como secuencia de caracteres</li>
+            <li>usar indexación y slicing con seguridad</li>
+            <li>aplicar métodos útiles como <code>lower()</code>, <code>strip()</code>, <code>replace()</code>, <code>split()</code> o <code>join()</code></li>
+            <li>distinguir entre carácter, fragmento, subcadena y palabra</li>
+            <li>recorrer y analizar texto con bucles</li>
+            <li>elegir si conviene un índice, un método o un bucle</li>
+            <li>entender la inmutabilidad de los strings en situaciones reales</li>
+          </ul>
+        </div>
+
+        <div class="exercise-block">
+          <h3>Cómo avanzar</h3>
+          <ul>
+            <li>completa los conceptos en orden</li>
+            <li>prueba distintos textos y observa qué cambia</li>
+            <li>fíjate siempre en qué devuelve cada operación</li>
+            <li>usa mini-retos y ejercicios para consolidar</li>
+          </ul>
+
+          <div class="challenge">
+            En strings, muchos errores no vienen de la sintaxis, sino de no tener claro qué sale exactamente de cada acceso, método o recorrido.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Ruta del tema</h2>
+      <div id="topics" class="topic-roadmap"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Resumen del recorrido</h2>
+
+      <div class="theory-grid">
+        <div class="theory-card">
+          <h3>7.1 · Strings como secuencias</h3>
+          <p>Aprendes a ver el texto como una secuencia ordenada de caracteres, no solo como “algo que se imprime”.</p>
+        </div>
+
+        <div class="theory-card">
+          <h3>7.2 · Indexación y slicing</h3>
+          <p>Trabajas posiciones concretas y fragmentos de texto con índices positivos, negativos y cortes más precisos.</p>
+        </div>
+
+        <div class="theory-card">
+          <h3>7.3 · Métodos de strings</h3>
+          <p>Aprendes a transformar, limpiar, buscar, dividir y unir texto con herramientas ya preparadas por Python.</p>
+        </div>
+
+        <div class="theory-card">
+          <h3>7.4 · Recorrer y analizar texto</h3>
+          <p>Combinas strings, bucles y lógica para contar, buscar, validar y analizar información útil del texto.</p>
+        </div>
+
+        <div class="theory-card">
+          <h3>7.5 · Práctica guiada</h3>
+          <p>Lees, razonas y detectas errores para elegir mejor entre slicing, métodos y bucles.</p>
+        </div>
+
+        <div class="theory-card">
+          <h3>Reto final</h3>
+          <p>Consolidas el tema resolviendo problemas más completos de texto, limpieza, análisis y transformación.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="../theme-progress-base.js"></script>
+  <script src="progress.js"></script>
 </body>
 </html>

@@ -7,32 +7,413 @@
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 10 · Errores y excepciones</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 10 · Python</h1>
-  <p>Ejercicios para practicar manejo de errores, excepciones y validaciones.</p>
+  <span class="mission-tag">Practice mode</span>
+  <h1>Ejercicios de errores y excepciones</h1>
+  <p>Practica validaciones, captura de errores y control de excepciones resolviendo misiones en el playground.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 10 · Ruta de práctica</div>
+        <div class="mini-note">12 ejercicios + 2 retos finales</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Python</span>
+        <span class="badge green">Hands-on</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 92%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#ejercicios">Ir a ejercicios</a>
+    <a class="btn btn-secondary" href="./index.html">Volver al tema</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
 
-  <section class="panel">
-    <h2>Cómo usar estos ejercicios</h2>
-    <p>
-      Aquí no basta con que el programa funcione cuando todo va bien. Debes pensar qué ocurre cuando algo falla:
-      una conversión incorrecta, una división imposible o un archivo que no existe.
-    </p>
-    <div class="buttons-row">
-      <a class="btn btn-secondary" href="./index.html">Volver al Tema 10</a>
-      <a class="btn btn-secondary" href="../index.html">Volver a ruta Python</a>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Cómo trabajar esta pantalla</h2>
+        <p class="exercise-subtitle">
+          Aquí no basta con que el programa funcione cuando todo va bien. Debes pensar qué ocurre cuando algo falla y cómo responder a ese error.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">try / except</span>
+        <span class="badge blue">raise</span>
+        <span class="badge green">Validación</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Recomendación</h3>
+        <ul>
+          <li>piensa primero qué podría fallar</li>
+          <li>distingue entre prevenir, capturar y lanzar errores</li>
+          <li>fíjate en qué bloque debe ejecutar cada caso</li>
+          <li>abre el playground y prueba también entradas incorrectas</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Clave del tema</h3>
+        <div class="challenge">
+          Un programa robusto no es el que nunca falla, sino el que sabe reaccionar bien cuando algo falla.
+        </div>
+
+        <div class="buttons-row">
+          <a class="btn btn-secondary btn-sm" href="./index.html">Volver al Tema 10</a>
+          <a class="btn btn-secondary btn-sm" href="../index.html">Volver a ruta Python</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="panel"><h2>Ejercicio 1 · Conversión segura</h2><p>Pide un número y controla el caso inválido con <code>try</code> / <code>except</code>.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema10_ej1">Abrir en playground</a></div></section>
-  <section class="panel"><h2>Ejercicio 2 · División segura</h2><p>Captura el error de división por cero.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema10_ej2">Abrir en playground</a></div></section>
-  <section class="panel"><h2>Ejercicio 3 · Archivo ausente</h2><p>Intenta leer un archivo y controla <code>FileNotFoundError</code>.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema10_ej3">Abrir en playground</a></div></section>
-  <section class="panel"><h2>Ejercicio 4 · else y finally</h2><p>Haz un ejemplo donde se vean ambos bloques en acción.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema10_ej4">Abrir en playground</a></div></section>
-  <section class="panel"><h2>Ejercicio 5 · Validación con raise</h2><p>Lanza una excepción si la nota está fuera de rango.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema10_ej5">Abrir en playground</a></div></section>
-  <section class="panel"><h2>Reto final · Validar entrada numérica</h2><p>Pide un número al usuario, conviértelo de forma segura y lanza un error si está fuera de un rango permitido.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema10_reto1">Abrir en playground</a></div></section>
+  <section id="ejercicios" class="panel">
+    <h2>Misiones disponibles</h2>
+
+    <div class="theory-grid exercise-grid">
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 1 · Conversión segura</h3>
+        <p>Pide un número y controla el caso inválido con <code>try</code> / <code>except</code>.</p>
+        <div class="badges">
+          <span class="badge blue">Fácil</span>
+          <span class="badge">6 min</span>
+          <span class="badge">ValueError</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema10_ej1&returnTo=..%2Ftemas%2Fpython%2Ftema-10%2Fpy-tema10-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 2 · División segura</h3>
+        <p>Captura el error de división por cero.</p>
+        <div class="badges">
+          <span class="badge blue">Fácil</span>
+          <span class="badge">6 min</span>
+          <span class="badge">ZeroDivisionError</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema10_ej2&returnTo=..%2Ftemas%2Fpython%2Ftema-10%2Fpy-tema10-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 3 · Archivo ausente</h3>
+        <p>Intenta leer un archivo y controla <code>FileNotFoundError</code>.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">7 min</span>
+          <span class="badge">Excepciones</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema10_ej3&returnTo=..%2Ftemas%2Fpython%2Ftema-10%2Fpy-tema10-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 4 · else y finally</h3>
+        <p>Haz un ejemplo donde se vean ambos bloques en acción.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">8 min</span>
+          <span class="badge">Flujo</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema10_ej4&returnTo=..%2Ftemas%2Fpython%2Ftema-10%2Fpy-tema10-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 5 · Validación con raise</h3>
+        <p>Lanza una excepción si la nota está fuera de rango.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">8 min</span>
+          <span class="badge">raise</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema10_ej5&returnTo=..%2Ftemas%2Fpython%2Ftema-10%2Fpy-tema10-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 6 · Capturar error concreto</h3>
+        <p>Corrige un ejemplo que usa <code>except</code> genérico por uno más específico.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">8 min</span>
+          <span class="badge">Precisión</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema10_ej6&returnTo=..%2Ftemas%2Fpython%2Ftema-10%2Fpy-tema10-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 7 · Qué poner en el try</h3>
+        <p>Reescribe un bloque donde el <code>try</code> contiene más código del necesario.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">8 min</span>
+          <span class="badge">Diseño</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema10_ej7&returnTo=..%2Ftemas%2Fpython%2Ftema-10%2Fpy-tema10-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 8 · Mensaje útil</h3>
+        <p>Mejora un <code>raise</code> con un mensaje demasiado vago.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">7 min</span>
+          <span class="badge">Claridad</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema10_ej8&returnTo=..%2Ftemas%2Fpython%2Ftema-10%2Fpy-tema10-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 9 · Prevenir o capturar</h3>
+        <p>Decide si un caso conviene resolverlo con una condición previa o con una excepción.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">9 min</span>
+          <span class="badge">Criterio</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema10_ej9&returnTo=..%2Ftemas%2Fpython%2Ftema-10%2Fpy-tema10-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 10 · Varias excepciones</h3>
+        <p>Captura dos tipos de fallo distintos en un mismo bloque de código.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">9 min</span>
+          <span class="badge">Múltiples casos</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema10_ej10&returnTo=..%2Ftemas%2Fpython%2Ftema-10%2Fpy-tema10-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 11 · Función con validación</h3>
+        <p>Crea una función que valide un dato antes de calcular algo con él.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">9 min</span>
+          <span class="badge">Funciones</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema10_ej11&returnTo=..%2Ftemas%2Fpython%2Ftema-10%2Fpy-tema10-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 12 · Flujo completo</h3>
+        <p>Explica con comentarios qué partes de un ejemplo irían en <code>try</code>, <code>except</code>, <code>else</code> y <code>finally</code>.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">9 min</span>
+          <span class="badge">Flujo completo</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema10_ej12&returnTo=..%2Ftemas%2Fpython%2Ftema-10%2Fpy-tema10-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-highlight theory-card-exercise">
+        <h3>Mini reto · Conversión y rango</h3>
+        <p>Convierte una entrada de texto, captura el fallo de conversión y después valida el rango con <code>raise</code>.</p>
+        <div class="badges">
+          <span class="badge green">Reto</span>
+          <span class="badge">10 min</span>
+          <span class="badge">Combinado</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema10_reto1&returnTo=..%2Ftemas%2Fpython%2Ftema-10%2Fpy-tema10-ejercicios.html">Abrir reto</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-highlight theory-card-exercise">
+        <h3>Reto final · Validación robusta completa</h3>
+        <p>Pide un dato al usuario, conviértelo, valida sus reglas, distingue éxito y error y deja un cierre final claro.</p>
+        <div class="badges">
+          <span class="badge green">Reto final</span>
+          <span class="badge">12-15 min</span>
+          <span class="badge">Integrador</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema10_reto2&returnTo=..%2Ftemas%2Fpython%2Ftema-10%2Fpy-tema10-ejercicios.html">Abrir reto</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Ya puedes hacer el proyecto más completo</h2>
+    <p>
+      Después de trabajar errores y validaciones, ya puedes enfrentarte a un proyecto con persistencia real y control de fallos.
+    </p>
+
+    <div class="theory-grid exercise-grid">
+      <article class="theory-card theory-card-highlight theory-card-exercise">
+        <h3>Proyecto 3 · Gestor simple con archivo</h3>
+        <p>Lee, guarda, valida y maneja errores básicos con persistencia real.</p>
+
+        <div class="badges">
+          <span class="badge green">Ya disponible</span>
+          <span class="badge">Temas 1, 2, 3, 5, 9 y 10</span>
+        </div>
+
+        <p class="mini-note" style="margin-top: 12px;">
+          Requiere: Tema 1, Tema 2, Tema 3, Tema 5, Tema 9 y Tema 10
+        </p>
+
+        <div class="exercise-actions">
+          <a class="btn btn-secondary btn-sm" href="../proyectos/index.html?returnTo=/frontend/temas/python/tema-10/py-tema10-ejercicios.html">Ver proyectos</a>
+          <a class="btn btn-primary btn-sm" href="/frontend/temas/python/proyectos/proyecto-3-gestor-archivo.html?returnTo=/frontend/temas/python/tema-10/py-tema10-ejercicios.html">Abrir proyecto</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Cierre del tema 10</h2>
+        <p class="exercise-subtitle">
+          Cuando hayas practicado estos ejercicios, marca esta parte como completada para cerrar el bloque de errores y excepciones.
+        </p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Práctica</span>
+        <span class="badge green">Completar tema</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Antes de cerrar este bloque</h3>
+        <ul>
+          <li>entiendes mejor qué es una excepción</li>
+          <li>puedes capturar errores previsibles con más criterio</li>
+          <li>distingues el papel de <code>else</code> y <code>finally</code></li>
+          <li>sabes usar <code>raise</code> para imponer reglas</li>
+          <li>distingues mejor entre prevenir, capturar y lanzar</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Última recomendación</h3>
+        <div class="challenge">
+          En este tema, la mejor pregunta no es “¿cómo se escribe try?”, sino “¿qué puede fallar aquí y cómo quiero responder?”.
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./05-mini-retos.html">Volver a práctica guiada</a>
+      <a class="btn btn-secondary" href="./index.html">Volver al índice del tema</a>
+      <a class="btn btn-secondary" href="../index.html">Ir a ruta Python</a>
+      <button class="btn btn-primary" onclick="completeTopic('10.ejercicios')">
+        Marcar ejercicios como completados
+      </button>
+    </div>
+  </section>
 
 </main>
+
+<script src="../topic-completion.js"></script>
+<script>
+  const exercisesCompletion = initTopicCompletion({
+    topicId: "10.ejercicios"
+  });
+
+  const completeBtn = document.getElementById("completeExercisesBtn");
+
+  function showExercisesCompletedState() {
+    if (!completeBtn) return;
+
+    completeBtn.style.display = "none";
+
+    if (!document.getElementById("completedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "completedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Ejercicios completados ✅";
+      completeBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  async function syncExercisesCompletionUI() {
+    try {
+      const completed = await exercisesCompletion.isCompleted();
+
+      if (completed) {
+        showExercisesCompletedState();
+      }
+    } catch (error) {
+      console.error("Error comprobando estado de ejercicios:", error);
+    }
+  }
+
+  if (completeBtn) {
+    completeBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
+
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
+
+        await exercisesCompletion.completeTopic();
+
+        showExercisesCompletedState();
+        alert("Ejercicios completados 🎉");
+        window.location.href = "./index.html";
+      } catch (error) {
+        console.error("Error marcando ejercicios como completados:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        alert(error.message || "No se pudo guardar el progreso");
+      }
+    });
+  }
+
+  syncExercisesCompletionUI();
+</script>
+
 </body>
 </html>

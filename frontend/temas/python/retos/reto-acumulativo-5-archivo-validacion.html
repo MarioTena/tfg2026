@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reto acumulativo 5 · Lectura y validación desde archivo</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Reto acumulativo 6 · Lectura y validación desde archivo</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_reto_acumulativo_5_archivo">Playground</a>
+    </div>
+  </div>
+</nav>
+
+<header class="header">
+  <span class="mission-tag">Reto acumulativo</span>
+  <h1>Reto acumulativo 6 · Lectura y validación desde archivo</h1>
+  <p>Combina archivos, limpieza de líneas, validación y resumen final a partir de datos externos.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Práctica de integración</div>
+        <div class="mini-note">Nivel intermedio · 25-35 min · Archivos y validación</div>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">archivos</span>
+        <span class="badge blue">validación</span>
+        <span class="badge green">robustez</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 100%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#objetivo">Empezar reto</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python&exerciseId=py_reto_acumulativo_5_archivo">Abrir en playground</a>
+  </div>
+</header>
+
+<main class="main-container single-column">
+
+  <section class="exercise-card" id="objetivo">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué entrenas aquí</h2>
+        <p class="exercise-subtitle">
+          Este reto te obliga a trabajar con datos que vienen de fuera del programa, limpiarlos y decidir cuáles son válidos.
+        </p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Archivos</span>
+        <span class="badge blue">Limpieza</span>
+        <span class="badge green">Resumen final</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Objetivo</h3>
+        <p>
+          Vas a leer un archivo con una línea por dato, limpiar cada línea, validar su contenido y hacer un resumen final.
+        </p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué conceptos estás combinando</h3>
+        <ul>
+          <li>archivos</li>
+          <li>lectura línea a línea</li>
+          <li><code>strip()</code></li>
+          <li>validación</li>
+          <li>listas</li>
+          <li>resumen de resultados</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Enunciado</h2>
+    <p>
+      Crea un programa que lea un archivo de texto con una línea por dato.
+      El programa debe:
+    </p>
+
+    <ul>
+      <li>leer línea a línea</li>
+      <li>limpiar cada línea con <code>strip()</code></li>
+      <li>validar si la línea es correcta según la regla que definas</li>
+      <li>guardar las líneas válidas</li>
+      <li>mostrar cuántas eran válidas y cuántas no</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Pistas opcionales</h2>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Pista 1</h3>
+        <p>Usa <code>with open(..., "r")</code> para leer el archivo.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Pista 2</h3>
+        <p>Recorre línea a línea con un <code>for</code>.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Pista 3</h3>
+        <p>Usa <code>strip()</code> antes de validar.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Pista 4</h3>
+        <p>Define primero qué considerarás línea válida.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Versión ampliada</h2>
+    <ul>
+      <li>guardar las líneas válidas en otro archivo</li>
+      <li>mostrar también cuáles eran inválidas</li>
+      <li>usar <code>try / except</code> si el archivo no existe</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Resolver en playground</h2>
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./index.html">Volver a retos</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_reto_acumulativo_5_archivo">Abrir reto en playground</a>
+    </div>
+  </section>
+
+</main>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const returnTo = params.get("returnTo");
+
+  const btnVolver = document.getElementById("btn-volver-ejercicios");
+
+  if (returnTo && btnVolver) {
+    btnVolver.href = returnTo;
+    btnVolver.style.display = "inline-flex";
+  }
+
+  if (returnTo) {
+    const playgroundLinks = document.querySelectorAll('a[href*="playground/index.html"]');
+
+    playgroundLinks.forEach((link) => {
+      const rawHref = link.getAttribute("href");
+      const url = new URL(rawHref, window.location.href);
+
+      if (!url.searchParams.get("returnTo")) {
+        url.searchParams.set("returnTo", returnTo);
+      }
+
+      link.setAttribute("href", url.pathname + url.search);
+    });
+  }
+</script>
+</body>
+</html>

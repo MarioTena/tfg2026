@@ -4,15 +4,15 @@
 // ============================================================================
 
 //Infrestructura de API
+const dotenv = require("dotenv");
 const express = require("express");
 const cors = require("cors");
-const dotenv = require("dotenv");
+
 
 const mongoose = require("mongoose"); //conexion mongodb
 
 const Attempt = require("./models/Attempt"); //guardar intentos
 const { runCodeInDocker } = require("./utils/dockerRunner"); //ejecutar codigo en Docker
-const { generateFeedbackForAttempt } = require("./services/aiFeedback"); //feedback IA
 const authRoutes = require("./routes/authRoutes"); //rutas de registro/login
 const { requireAuth } = require("./middleware/requireAuth"); //middleware para proteger endpoints
 const progressRoutes = require("./routes/progressRoutes");
@@ -167,7 +167,7 @@ app.get("/api/attempts", requireAuth, async (req, res) => {
 // ============================================================================
 app.post("/api/run", requireAuth, async (req, res) => {
   try {
-    const { language, code, exerciseId } = req.body || {};
+    const { language, code, stdin = "", exerciseId, topic } = req.body || {};
 
     if (!language || !code) {
       return res.status(400).json({
@@ -184,40 +184,27 @@ app.post("/api/run", requireAuth, async (req, res) => {
       });
     }
 
-    // 1) Ejecutar código
-    const result = await runCodeInDocker(language, code);
+    const result = await runCodeInDocker(language, code, stdin);
 
-    // 2) Crear intento asociado al usuario del token
     const attempt = new Attempt({
       userId: req.user.id,
       language,
+      topic: topic || null,
+      exerciseId: exerciseId || null,
       code,
+      stdin: stdin || "",
       stdout: result.stdout,
       stderr: result.stderr,
       status: result.status,
       timeMs: result.timeMs,
     });
 
-    // 3) Generar feedback automático (de momento lo de chatgpt, luego sera un botón que se conectará a una ia)
-    const feedback = await generateFeedbackForAttempt(attempt, { exerciseId });
-
-    // 4) Guardar feedback dentro del intento
-    attempt.aiFeedback = {
-      message: feedback.message,
-      level: feedback.level,
-      createdAt: new Date(),
-      exerciseId: exerciseId || null,
-    };
-
-    // 5) Guardar en Mongo
     const saved = await attempt.save();
 
-    // 6) Responder
     return res.json({
       ok: true,
       run: result,
       attemptId: saved._id,
-      feedback,
     });
   } catch (e) {
     console.error("❌ Error en /api/run:", e);
@@ -229,10 +216,124 @@ app.post("/api/run", requireAuth, async (req, res) => {
   }
 });
 
-
 // ============================================================================
 // Arranque del servidor
 // ============================================================================
-app.listen(PORT, () => {
+const http = require("http");
+const { Server } = require("socket.io");
+const jwt = require("jsonwebtoken");
+const {
+  startInteractivePythonSession,
+  sendInputToSession,
+  stopSession,
+  stopAllUserSessions
+} = require("./utils/interactiveRunner");
+
+const server = http.createServer(app);
+
+const io = new Server(server, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"]
+  }
+});
+
+io.use((socket, next) => {
+  try {
+    const token = socket.handshake.auth?.token;
+
+    if (!token) {
+      return next(new Error("Token no proporcionado"));
+    }
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+    const normalizedUserId =
+      decoded.id ||
+      decoded._id ||
+      decoded.userId ||
+      decoded.sub ||
+      decoded.user?._id ||
+      decoded.user?.id ||
+      null;
+
+    if (!normalizedUserId) {
+      return next(new Error("Token válido pero sin identificador de usuario"));
+    }
+
+    socket.user = {
+      ...decoded,
+      id: normalizedUserId,
+    };
+
+    next();
+  } catch (error) {
+    next(new Error("Token inválido"));
+  }
+});
+
+io.on("connection", (socket) => {
+  socket.on("console:start", async ({ language, code, exerciseId, topic }) => {
+    try {
+      if (language !== "python") {
+        socket.emit("console:error", {
+          message: "La consola interactiva solo está disponible para Python."
+        });
+        return;
+      }
+
+      if (!code || !code.trim()) {
+        socket.emit("console:error", {
+          message: "No hay código para ejecutar."
+        });
+        return;
+      }
+
+      const result = await startInteractivePythonSession({
+        code,
+        language,
+        exerciseId: exerciseId || null,
+        topic: topic || null,
+        userId: socket.user.id,
+        socket,
+        io
+      });
+
+      socket.emit("console:started", result);
+    } catch (error) {
+      socket.emit("console:error", {
+        message: error.message || "No se pudo iniciar la consola interactiva."
+      });
+    }
+  });
+
+  socket.on("console:input", ({ sessionId, input }) => {
+    try {
+      sendInputToSession({
+        sessionId,
+        input,
+        userId: socket.user.id
+      });
+    } catch (error) {
+      socket.emit("console:error", {
+        sessionId,
+        message: error.message || "No se pudo enviar la entrada."
+      });
+    }
+  });
+
+  socket.on("console:stop", async ({ sessionId }) => {
+    await stopSession({
+      sessionId,
+      userId: socket.user.id
+    });
+  });
+
+  socket.on("disconnect", async () => {
+    await stopAllUserSessions(socket.user.id);
+  });
+});
+
+server.listen(PORT, () => {
   console.log(`🚀 API escuchando en http://localhost:${PORT}`);
 });

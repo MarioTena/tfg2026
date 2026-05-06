@@ -7,121 +7,407 @@
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 2 · Condicionales</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 2 · Python</h1>
-  <p>Ejercicios para practicar condicionales, comparaciones, booleanos y lógica.</p>
+  <span class="mission-tag">Practice mode</span>
+  <h1>Ejercicios de condicionales</h1>
+  <p>Practica decisiones, comparaciones, booleanos y lógica resolviendo misiones en el playground.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 2 · Ruta de práctica</div>
+        <div class="mini-note">13 ejercicios + 2 retos finales</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Python</span>
+        <span class="badge green">Hands-on</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 100%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#ejercicios">Ir a ejercicios</a>
+    <a class="btn btn-secondary" href="./index.html">Volver al tema</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
 
-  <section class="panel">
-    <h2>Cómo usar estos ejercicios</h2>
-    <p>
-      Abre cada ejercicio en el playground. Tendrás el enunciado y una plantilla inicial.
-      Ejecuta, equivócate, corrige y repite.
-    </p>
-    <div class="buttons-row">
-      <a class="btn btn-secondary" href="./index.html">Volver al Tema 2</a>
-      <a class="btn btn-secondary" href="../index.html">Volver a ruta Python</a>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Cómo trabajar esta pantalla</h2>
+        <p class="exercise-subtitle">
+          Aquí la clave no es solo escribir código. También debes pensar la condición,
+          prever el resultado y probar bien los límites.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">if</span>
+        <span class="badge blue">elif</span>
+        <span class="badge green">Práctica</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Recomendación</h3>
+        <ul>
+          <li>lee el enunciado con calma</li>
+          <li>identifica qué condición decide el resultado</li>
+          <li>piensa qué pasa si se cumple y qué pasa si no</li>
+          <li>prueba casos normales y casos frontera</li>
+          <li>corrige antes de pasar al siguiente ejercicio</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Clave del tema</h3>
+        <div class="challenge">
+          Un condicional no consiste en “poner un if”. Consiste en traducir una decisión real
+          a una condición lógica correcta y poder explicar por qué funciona.
+        </div>
+
+        <div class="buttons-row">
+          <a class="btn btn-secondary btn-sm" href="./index.html">Volver al Tema 2</a>
+          <a class="btn btn-secondary btn-sm" href="../index.html">Volver a ruta Python</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="panel">
-    <h2>Ejercicio 1 · Mayor de edad</h2>
-    <p>Si <code>edad</code> es 18 o más, imprime “Mayor de edad”. Si no, “Menor de edad”.</p>
-    <div class="buttons-row">
-      <a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema2_ej1">Abrir en playground</a>
+  <section id="ejercicios" class="panel">
+    <h2>Misiones disponibles</h2>
+
+    <div class="theory-grid exercise-grid">
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 1 · Mayor de edad</h3>
+        <p>Si <code>edad</code> es 18 o más, imprime “Mayor de edad”. Si no, “Menor de edad”.</p>
+        <div class="badges">
+          <span class="badge blue">Fácil</span>
+          <span class="badge">5 min</span>
+          <span class="badge">if / else</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema2_ej1&returnTo=..%2Ftemas%2Fpython%2Ftema-2%2Fpy-tema2-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 2 · Nota (aprobado/suspenso)</h3>
+        <p>Si <code>nota</code> es 5 o más, imprime “Aprobado”. Si no, “Suspenso”.</p>
+        <div class="badges">
+          <span class="badge blue">Fácil</span>
+          <span class="badge">5 min</span>
+          <span class="badge">Comparación</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema2_ej2&returnTo=..%2Ftemas%2Fpython%2Ftema-2%2Fpy-tema2-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 3 · Clasificación con <code>elif</code></h3>
+        <p>Clasifica una nota: sobresaliente, notable, aprobado o suspenso.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">7 min</span>
+          <span class="badge">elif</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema2_ej3&returnTo=..%2Ftemas%2Fpython%2Ftema-2%2Fpy-tema2-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 4 · Positivo, negativo o cero</h3>
+        <p>Guarda un número e imprime si es positivo, negativo o cero.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">6 min</span>
+          <span class="badge">Condiciones</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema2_ej4&returnTo=..%2Ftemas%2Fpython%2Ftema-2%2Fpy-tema2-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 5 · Comparar dos números</h3>
+        <p>Guarda dos números e imprime cuál es mayor o si son iguales.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">7 min</span>
+          <span class="badge">Comparar</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema2_ej5&returnTo=..%2Ftemas%2Fpython%2Ftema-2%2Fpy-tema2-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+      
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 6 · Usuario administrador</h3>
+        <p>Si el usuario es <code>admin</code>, imprime “Acceso total”. Si no, “Acceso limitado”.</p>
+        <div class="badges">
+          <span class="badge blue">Fácil</span>
+          <span class="badge">5 min</span>
+          <span class="badge">Strings</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema2_ej6&returnTo=..%2Ftemas%2Fpython%2Ftema-2%2Fpy-tema2-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 7 · Descuento</h3>
+        <p>Un cliente tiene descuento si es estudiante o si tiene menos de 25 años.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">7 min</span>
+          <span class="badge">or</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema2_ej7&returnTo=..%2Ftemas%2Fpython%2Ftema-2%2Fpy-tema2-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 8 · Acceso seguro</h3>
+        <p>Permite el acceso solo si la contraseña es correcta y la cuenta está activa.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">8 min</span>
+          <span class="badge">and</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema2_ej8&returnTo=..%2Ftemas%2Fpython%2Ftema-2%2Fpy-tema2-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 9 · Rango numérico</h3>
+        <p>Comprueba si un número está entre 10 y 20, ambos inclusive.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">8 min</span>
+          <span class="badge">Rangos</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema2_ej9&returnTo=..%2Ftemas%2Fpython%2Ftema-2%2Fpy-tema2-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 10 · Par o impar</h3>
+        <p>Usa el operador % para comprobar si un número es par o impar.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">7 min</span>
+          <span class="badge">Módulo</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema2_ej10&returnTo=..%2Ftemas%2Fpython%2Ftema-2%2Fpy-tema2-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 11 · Detectar acceso denegado con <code>not</code></h3>
+        <p>Si la cuenta no está activa, imprime “Cuenta inactiva”. Si no, “Cuenta activa”.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">6 min</span>
+          <span class="badge">not</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema2_ej11&returnTo=..%2Ftemas%2Fpython%2Ftema-2%2Fpy-tema2-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 12 · Corregir lógica</h3>
+        <p>Reordena una clasificación con <code>elif</code> para que no tape los casos más altos.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">7 min</span>
+          <span class="badge">Depuración</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema2_ej12&returnTo=..%2Ftemas%2Fpython%2Ftema-2%2Fpy-tema2-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 13 · Input y mayor de edad</h3>
+        <p>Pide una edad con <code>input()</code>, conviértela con <code>int()</code> y decide si la persona es mayor o menor de edad.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">7 min</span>
+          <span class="badge">input()</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema2_ej13&returnTo=..%2Ftemas%2Fpython%2Ftema-2%2Fpy-tema2-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-highlight theory-card-exercise">
+        <h3>Mini reto · Clasificador de acceso</h3>
+        <p>Decide si un usuario puede pasar según su edad y si tiene entrada.</p>
+        <div class="badges">
+          <span class="badge green">Reto</span>
+          <span class="badge">10 min</span>
+          <span class="badge">and</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema2_reto1&returnTo=..%2Ftemas%2Fpython%2Ftema-2%2Fpy-tema2-ejercicios.html">Abrir reto</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-highlight theory-card-exercise">
+        <h3>Reto final · Clasificación por edad</h3>
+        <p>Clasifica una edad como niño, adolescente, adulto o senior, cuidando bien el orden y los límites.</p>
+        <div class="badges">
+          <span class="badge green">Reto final</span>
+          <span class="badge">12 min</span>
+          <span class="badge">Integrador</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema2_reto2&returnTo=..%2Ftemas%2Fpython%2Ftema-2%2Fpy-tema2-ejercicios.html">Abrir reto</a>
+        </div>
+      </article>
+
     </div>
   </section>
 
-  <section class="panel">
-    <h2>Ejercicio 2 · Nota (aprobado/suspenso)</h2>
-    <p>Si <code>nota</code> es 5 o más, imprime “Aprobado”. Si no, “Suspenso”.</p>
-    <div class="buttons-row">
-      <a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema2_ej2">Abrir en playground</a>
-    </div>
-  </section>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Checklist de cierre</h2>
+        <p class="exercise-subtitle">
+          Antes de cerrar el tema, comprueba que controlas de verdad lo esencial.
+        </p>
+      </div>
 
-  <section class="panel">
-    <h2>Ejercicio 3 · Clasificación con elif</h2>
-    <p>Clasifica una nota: sobresaliente, notable, aprobado o suspenso.</p>
-    <div class="buttons-row">
-      <a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema2_ej3">Abrir en playground</a>
+      <div class="badges">
+        <span class="badge blue">Práctica</span>
+        <span class="badge green">Completar tema</span>
+      </div>
     </div>
-  </section>
 
-  <section class="panel">
-    <h2>Ejercicio 4 · Positivo, negativo o cero</h2>
-    <p>Guarda un número e imprime si es positivo, negativo o cero.</p>
-    <div class="buttons-row">
-      <a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema2_ej4">Abrir en playground</a>
-    </div>
-  </section>
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Deberías poder hacer esto</h3>
+        <ul>
+          <li>distinguir entre <code>if</code>, <code>elif</code> y <code>else</code></li>
+          <li>escribir comparaciones correctas</li>
+          <li>explicar qué devuelve una comparación</li>
+          <li>usar <code>and</code>, <code>or</code> y <code>not</code> con sentido</li>
+          <li>detectar un error de sintaxis o de lógica básico</li>
+          <li>ordenar bien casos con rangos</li>
+          <li>probar valores límite sin que te lo recuerden</li>
+        </ul>
+      </div>
 
-  <section class="panel">
-    <h2>Ejercicio 5 · Comparar dos números</h2>
-    <p>Guarda dos números e imprime cuál es mayor o si son iguales.</p>
-    <div class="buttons-row">
-      <a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema2_ej5">Abrir en playground</a>
+      <div class="exercise-block">
+        <h3>Última recomendación</h3>
+        <div class="challenge">
+          Si un ejercicio te sale, pero no sabes explicar por qué, todavía no lo dominas del todo.
+        </div>
+      </div>
     </div>
-  </section>
 
-  <section class="panel">
-    <h2>Ejercicio 6 · Usuario administrador</h2>
-    <p>Si el usuario es <code>admin</code>, imprime “Acceso total”. Si no, “Acceso limitado”.</p>
-    <div class="buttons-row">
-      <a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema2_ej6">Abrir en playground</a>
-    </div>
-  </section>
-
-  <section class="panel">
-    <h2>Ejercicio 7 · Descuento</h2>
-    <p>Un cliente tiene descuento si es estudiante o si tiene menos de 25 años.</p>
-    <div class="buttons-row">
-      <a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema2_ej7">Abrir en playground</a>
-    </div>
-  </section>
-
-  <section class="panel">
-    <h2>Ejercicio 8 · Acceso seguro</h2>
-    <p>Permite el acceso solo si la contraseña es correcta y la cuenta está activa.</p>
-    <div class="buttons-row">
-      <a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema2_ej8">Abrir en playground</a>
-    </div>
-  </section>
-
-  <section class="panel">
-    <h2>Ejercicio 9 · Rango numérico</h2>
-    <p>Comprueba si un número está entre 10 y 20, ambos inclusive.</p>
-    <div class="buttons-row">
-      <a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema2_ej9">Abrir en playground</a>
-    </div>
-  </section>
-
-  <section class="panel">
-    <h2>Ejercicio 10 · Par o impar</h2>
-    <p>Usa el operador <code>%</code> para comprobar si un número es par o impar.</p>
-    <div class="buttons-row">
-      <a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema2_ej10">Abrir en playground</a>
-    </div>
-  </section>
-
-  <section class="panel">
-    <h2>Mini reto · Control de acceso</h2>
-    <p>Permite entrar solo si la persona es mayor de edad y tiene DNI.</p>
-    <div class="buttons-row">
-      <a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema2_reto1">Abrir en playground</a>
-    </div>
-  </section>
-
-  <section class="panel">
-    <h2>Reto final · Clasificación por edad</h2>
-    <p>Clasifica una edad como niño, adolescente, adulto o senior.</p>
-    <div class="buttons-row">
-      <a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema2_reto2">Abrir en playground</a>
-    </div>
+<div class="buttons-row">
+  <a class="btn btn-secondary" href="./04-mini-retos.html">Volver a práctica guiada</a>
+  <a class="btn btn-secondary" href="./index.html">Volver al índice del tema</a>
+  <a class="btn btn-secondary" href="../index.html">Ir a ruta Python</a>
+  <a class="btn btn-secondary" href="../tema-3/index.html">Tema 3</a>
+  <button class="btn btn-primary" onclick="completeTopic('2.ejercicios')">
+    Marcar ejercicios como completados
+  </button>
+</div>
   </section>
 
 </main>
+
+<script src="../topic-completion.js"></script>
+<script>
+  const exercisesCompletion = initTopicCompletion({
+    topicId: "2.ejercicios"
+  });
+
+  const completeBtn = document.getElementById("completeExercisesBtn");
+
+  function showExercisesCompletedState() {
+    if (!completeBtn) return;
+
+    completeBtn.style.display = "none";
+
+    if (!document.getElementById("completedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "completedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Ejercicios completados ✅";
+      completeBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  async function syncExercisesCompletionUI() {
+    try {
+      const completed = await exercisesCompletion.isCompleted();
+
+      if (completed) {
+        showExercisesCompletedState();
+      }
+    } catch (error) {
+      console.error("Error comprobando estado de ejercicios:", error);
+    }
+  }
+
+  if (completeBtn) {
+    completeBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
+
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
+
+        await exercisesCompletion.completeTopic();
+
+        showExercisesCompletedState();
+        alert("Ejercicios completados 🎉");
+        window.location.href = "./index.html";
+      } catch (error) {
+        console.error("Error marcando ejercicios como completados:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        alert(error.message || "No se pudo guardar el progreso");
+      }
+    });
+  }
+
+  syncExercisesCompletionUI();
+</script>
+
 </body>
 </html>

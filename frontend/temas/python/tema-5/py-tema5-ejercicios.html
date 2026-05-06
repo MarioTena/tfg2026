@@ -7,33 +7,452 @@
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 5 · Funciones</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 5 · Python</h1>
-  <p>Ejercicios para practicar funciones, parámetros, return y diseño básico.</p>
+  <span class="mission-tag">Practice mode</span>
+  <h1>Ejercicios de funciones</h1>
+  <p>Practica definición de funciones, parámetros, return, ámbito y diseño básico resolviendo misiones en el playground.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 5 · Ruta de práctica</div>
+        <div class="mini-note">12 ejercicios + 2 retos finales</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Python</span>
+        <span class="badge green">Hands-on</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 92%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#ejercicios">Ir a ejercicios</a>
+    <a class="btn btn-secondary" href="./index.html">Volver al tema</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
 
-  <section class="panel">
-    <h2>Cómo usar estos ejercicios</h2>
-    <p>
-      En este tema conviene distinguir muy bien entre definir una función, llamarla, pasar argumentos y devolver valores.
-      No te limites a ejecutar: intenta explicar qué recibe cada función y qué devuelve.
-    </p>
-    <div class="buttons-row">
-      <a class="btn btn-secondary" href="./index.html">Volver al Tema 5</a>
-      <a class="btn btn-secondary" href="../index.html">Volver a ruta Python</a>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Cómo trabajar esta pantalla</h2>
+        <p class="exercise-subtitle">
+          Aquí importa distinguir muy bien entre definir una función, llamarla, pasar argumentos y devolver valores.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Funciones</span>
+        <span class="badge blue">return</span>
+        <span class="badge green">Práctica guiada</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Recomendación</h3>
+        <ul>
+          <li>lee el enunciado</li>
+          <li>piensa qué debe recibir la función</li>
+          <li>decide si debe imprimir o devolver</li>
+          <li>abre el playground y comprueba el resultado</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Clave del tema</h3>
+        <div class="challenge">
+          No confundas escribir una función con usarla. Una cosa es definirla y otra llamarla con los argumentos correctos.
+        </div>
+
+        <div class="buttons-row">
+          <a class="btn btn-secondary btn-sm" href="./index.html">Volver al Tema 5</a>
+          <a class="btn btn-secondary btn-sm" href="../index.html">Volver a ruta Python</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="panel"><h2>Ejercicio 1 · Saludo simple</h2><p>Crea una función que imprima un saludo fijo.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema5_ej1">Abrir en playground</a></div></section>
-  <section class="panel"><h2>Ejercicio 2 · Saludo con nombre</h2><p>Crea una función que reciba un nombre y lo salude.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema5_ej2">Abrir en playground</a></div></section>
-  <section class="panel"><h2>Ejercicio 3 · Doble con return</h2><p>Crea una función que devuelva el doble de un número.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema5_ej3">Abrir en playground</a></div></section>
-  <section class="panel"><h2>Ejercicio 4 · Suma de dos números</h2><p>Crea una función que reciba dos números y devuelva su suma.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema5_ej4">Abrir en playground</a></div></section>
-  <section class="panel"><h2>Ejercicio 5 · Mayor de edad</h2><p>Devuelve <code>True</code> si la edad es 18 o más.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema5_ej5">Abrir en playground</a></div></section>
-  <section class="panel"><h2>Ejercicio 6 · Clasificar número</h2><p>Devuelve “positivo”, “negativo” o “cero”.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema5_ej6">Abrir en playground</a></div></section>
-  <section class="panel"><h2>Reto final · Precio final</h2><p>Crea funciones para calcular IVA, aplicar descuento y devolver el precio final.</p><div class="buttons-row"><a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_tema5_reto1">Abrir en playground</a></div></section>
+  <section id="ejercicios" class="panel">
+    <h2>Misiones disponibles</h2>
+
+    <div class="theory-grid exercise-grid">
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 1 · Saludo simple</h3>
+        <p>Crea una función que imprima un saludo fijo.</p>
+        <div class="badges">
+          <span class="badge blue">Fácil</span>
+          <span class="badge">5 min</span>
+          <span class="badge">print</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema5_ej1&returnTo=..%2Ftemas%2Fpython%2Ftema-5%2Fpy-tema5-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 2 · Saludo con nombre</h3>
+        <p>Crea una función que reciba un nombre y lo salude.</p>
+        <div class="badges">
+          <span class="badge blue">Fácil</span>
+          <span class="badge">6 min</span>
+          <span class="badge">Parámetros</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema5_ej2&returnTo=..%2Ftemas%2Fpython%2Ftema-5%2Fpy-tema5-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 3 · Doble con return</h3>
+        <p>Crea una función que devuelva el doble de un número.</p>
+        <div class="badges">
+          <span class="badge blue">Fácil</span>
+          <span class="badge">6 min</span>
+          <span class="badge">return</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema5_ej3&returnTo=..%2Ftemas%2Fpython%2Ftema-5%2Fpy-tema5-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 4 · Suma de dos números</h3>
+        <p>Crea una función que reciba dos números y devuelva su suma.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">7 min</span>
+          <span class="badge">Argumentos</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema5_ej4&returnTo=..%2Ftemas%2Fpython%2Ftema-5%2Fpy-tema5-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 5 · Mayor de edad</h3>
+        <p>Devuelve <code>True</code> si la edad es 18 o más.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">8 min</span>
+          <span class="badge">Booleanos</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema5_ej5&returnTo=..%2Ftemas%2Fpython%2Ftema-5%2Fpy-tema5-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 6 · Clasificar número</h3>
+        <p>Devuelve “positivo”, “negativo” o “cero”.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">8 min</span>
+          <span class="badge">Condiciones</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema5_ej6&returnTo=..%2Ftemas%2Fpython%2Ftema-5%2Fpy-tema5-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 7 · print o return</h3>
+        <p>Corrige una función para que devuelva un valor útil en lugar de solo imprimirlo.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">8 min</span>
+          <span class="badge">Diseño</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema5_ej7&returnTo=..%2Ftemas%2Fpython%2Ftema-5%2Fpy-tema5-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 8 · Varias llamadas</h3>
+        <p>Llama varias veces a la misma función con datos distintos y muestra los resultados.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">7 min</span>
+          <span class="badge">Reutilización</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema5_ej8&returnTo=..%2Ftemas%2Fpython%2Ftema-5%2Fpy-tema5-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 9 · Error de argumentos</h3>
+        <p>Corrige una llamada que no respeta el número de argumentos que espera la función.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">7 min</span>
+          <span class="badge">Depuración</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema5_ej9&returnTo=..%2Ftemas%2Fpython%2Ftema-5%2Fpy-tema5-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 10 · Variable local</h3>
+        <p>Corrige un código que intenta usar fuera una variable creada dentro de una función.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">8 min</span>
+          <span class="badge">Ámbito</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema5_ej10&returnTo=..%2Ftemas%2Fpython%2Ftema-5%2Fpy-tema5-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 11 · Función booleana</h3>
+        <p>Crea una función que indique si un número es par devolviendo <code>True</code> o <code>False</code>.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">8 min</span>
+          <span class="badge">Booleanos</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema5_ej11&returnTo=..%2Ftemas%2Fpython%2Ftema-5%2Fpy-tema5-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 12 · Función limpia</h3>
+        <p>Reescribe una función mal nombrada y con responsabilidades mezcladas para que quede más clara.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">9 min</span>
+          <span class="badge">Buenas prácticas</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema5_ej12&returnTo=..%2Ftemas%2Fpython%2Ftema-5%2Fpy-tema5-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-highlight theory-card-exercise">
+        <h3>Mini reto · Saludo reutilizable</h3>
+        <p>Crea una función que construya un saludo y devuelva el texto para reutilizarlo varias veces.</p>
+        <div class="badges">
+          <span class="badge green">Reto</span>
+          <span class="badge">10 min</span>
+          <span class="badge">Texto + return</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema5_reto1&returnTo=..%2Ftemas%2Fpython%2Ftema-5%2Fpy-tema5-ejercicios.html">Abrir reto</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-highlight theory-card-exercise">
+        <h3>Reto final · Precio final</h3>
+        <p>Crea funciones para calcular IVA, aplicar descuento y devolver el precio final con diseño limpio.</p>
+        <div class="badges">
+          <span class="badge green">Reto final</span>
+          <span class="badge">12-15 min</span>
+          <span class="badge">Integrador</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema5_reto2&returnTo=..%2Ftemas%2Fpython%2Ftema-5%2Fpy-tema5-ejercicios.html">Abrir reto</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="panel">
+  <h2>Ya puedes hacer nuevos retos y tu primer proyecto</h2>
+  <p>
+    Con funciones ya puedes organizar mejor la lógica y enfrentarte a prácticas más amplias.
+  </p>
+
+  <div class="theory-grid exercise-grid">
+    <article class="theory-card theory-card-highlight theory-card-exercise">
+      <h3>Reto acumulativo 2 · Estadísticas de notas</h3>
+      <p>Valida notas y calcula media, máxima, mínima, aprobados y suspensos.</p>
+
+      <div class="badges">
+        <span class="badge green">Ya disponible</span>
+        <span class="badge">Temas 1-5</span>
+      </div>
+
+      <p class="mini-note" style="margin-top: 12px;">
+        Requiere: Tema 1, Tema 2, Tema 3, Tema 4 y Tema 5
+      </p>
+
+      <div class="exercise-actions">
+        <a class="btn btn-secondary btn-sm" href="../retos/index.html?returnTo=/frontend/temas/python/tema-5/py-tema5-ejercicios.html">Ver retos</a>
+        <a class="btn btn-primary btn-sm" href="/frontend/temas/python/retos/reto-acumulativo-3-estadisticas-notas.html?returnTo=/frontend/temas/python/tema-5/py-tema5-ejercicios.html">Abrir reto</a>
+      </div>
+    </article>
+
+    <article class="theory-card theory-card-highlight theory-card-exercise">
+      <h3>Reto acumulativo 3 · Menú de análisis simple</h3>
+      <p>Construye un pequeño programa con menú, datos en lista, resumen y control de opciones.</p>
+
+      <div class="badges">
+        <span class="badge green">Ya disponible</span>
+        <span class="badge">Temas 1-5</span>
+      </div>
+
+      <p class="mini-note" style="margin-top: 12px;">
+        Requiere: Tema 1, Tema 2, Tema 3, Tema 4 y Tema 5
+      </p>
+
+      <div class="exercise-actions">
+        <a class="btn btn-secondary btn-sm" href="../retos/index.html?returnTo=/frontend/temas/python/tema-5/py-tema5-ejercicios.html">Ver retos</a>
+        <a class="btn btn-primary btn-sm" href="/frontend/temas/python/retos/reto-acumulativo-6-menu-analisis.html?returnTo=/frontend/temas/python/tema-5/py-tema5-ejercicios.html">Abrir reto</a>
+      </div>
+    </article>
+
+    <article class="theory-card theory-card-highlight theory-card-exercise">
+      <h3>Proyecto 1 · Gestor básico de tareas</h3>
+      <p>Construye un programa con menú para añadir, ver, eliminar y completar tareas.</p>
+
+      <div class="badges">
+        <span class="badge green">Ya disponible</span>
+        <span class="badge">Temas 1-5</span>
+      </div>
+
+      <p class="mini-note" style="margin-top: 12px;">
+        Requiere: Tema 1, Tema 2, Tema 3, Tema 4 y Tema 5
+      </p>
+
+      <div class="exercise-actions">
+        <a class="btn btn-secondary btn-sm" href="../proyectos/index.html?returnTo=/frontend/temas/python/tema-5/py-tema5-ejercicios.html">Ver proyectos</a>
+        <a class="btn btn-primary btn-sm" href="/frontend/temas/python/proyectos/proyecto-1-gestor-tareas.html?returnTo=/frontend/temas/python/tema-5/py-tema5-ejercicios.html">Abrir proyecto</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Cierre del tema 5</h2>
+        <p class="exercise-subtitle">
+          Cuando hayas practicado estos ejercicios, marca esta parte como completada para cerrar el bloque de funciones.
+        </p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Práctica</span>
+        <span class="badge green">Completar tema</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Antes de cerrar este bloque</h3>
+        <ul>
+          <li>has definido funciones sin errores de sintaxis</li>
+          <li>distingues entre parámetros, argumentos y valor de retorno</li>
+          <li>sabes cuándo usar <code>print</code> y cuándo usar <code>return</code></li>
+          <li>entiendes mejor el ámbito de las variables</li>
+          <li>has probado varias funciones con datos distintos</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Última recomendación</h3>
+        <div class="challenge">
+          No memorices funciones “de receta”. Lo importante es entender qué tarea tienen, qué reciben y qué deberían devolver.
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./05-mini-retos.html">Volver a práctica guiada</a>
+      <a class="btn btn-secondary" href="./index.html">Volver al índice del tema</a>
+      <a class="btn btn-secondary" href="../index.html">Ir a ruta Python</a>
+      <a class="btn btn-secondary" href="../tema-6/index.html">Tema 6</a>
+      <button class="btn btn-primary" onclick="completeTopic('5.ejercicios')">
+        Marcar ejercicios como completados
+      </button>
+    </div>
+  </section>
 
 </main>
+
+<script src="../topic-completion.js"></script>
+<script>
+  const exercisesCompletion = initTopicCompletion({
+    topicId: "5.ejercicios"
+  });
+
+  const completeBtn = document.getElementById("completeExercisesBtn");
+
+  function showExercisesCompletedState() {
+    if (!completeBtn) return;
+
+    completeBtn.style.display = "none";
+
+    if (!document.getElementById("completedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "completedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Ejercicios completados ✅";
+      completeBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  async function syncExercisesCompletionUI() {
+    try {
+      const completed = await exercisesCompletion.isCompleted();
+
+      if (completed) {
+        showExercisesCompletedState();
+      }
+    } catch (error) {
+      console.error("Error comprobando estado de ejercicios:", error);
+    }
+  }
+
+  if (completeBtn) {
+    completeBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
+
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
+
+        await exercisesCompletion.completeTopic();
+
+        showExercisesCompletedState();
+        alert("Ejercicios completados 🎉");
+        window.location.href = "./index.html";
+      } catch (error) {
+        console.error("Error marcando ejercicios como completados:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        alert(error.message || "No se pudo guardar el progreso");
+      }
+    });
+  }
+
+  syncExercisesCompletionUI();
+</script>
+
 </body>
 </html>

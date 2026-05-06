@@ -7,12 +7,135 @@
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 5 · Funciones</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 5 · Python</h1>
-  <p>5.4 · Ámbito y buenas prácticas: escribir funciones limpias y seguras</p>
+  <span class="mission-tag">Misión 5.4</span>
+  <h1>Ámbito y buenas prácticas</h1>
+  <p>Aprende a escribir funciones limpias, claras y seguras entendiendo bien desde dónde existen las variables.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 5 · Funciones</div>
+        <div class="mini-note">Nivel inicial · 12-15 min · Variables y diseño limpio</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Ámbito</span>
+        <span class="badge green">Buenas prácticas</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 80%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué vas a entender hoy</h2>
+        <p class="exercise-subtitle">
+          El ámbito indica desde dónde puede usarse una variable. Además, vas a ver cómo escribir funciones más claras y mantenibles.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Objetivo</span>
+        <span class="badge green">Funciones limpias</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué problema resuelve</h3>
+        <p>
+          Cuando empiezas a crear varias funciones, necesitas saber qué variables existen dentro de cada una
+          y cómo evitar dependencias confusas con el exterior.
+        </p>
+
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3>Variables locales</h3>
+            <p>Entender por qué una variable creada dentro no siempre existe fuera.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Claridad</h3>
+            <p>Evitar funciones que dependen de cosas “escondidas”.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Mantenimiento</h3>
+            <p>Escribir funciones más fáciles de entender y probar.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Diseño</h3>
+            <p>Separar cálculo, impresión y decisiones en piezas más limpias.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          Idea clave: una función suele ser mejor cuando depende de sus parámetros y no de variables externas escondidas.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes vigilar</h3>
+        <ul>
+          <li>una variable local suele existir solo dentro de la función</li>
+          <li>no mezclar demasiadas responsabilidades en una sola función</li>
+          <li>usar nombres que indiquen bien la intención</li>
+          <li>evitar duplicación cuando una función puede resolverla</li>
+        </ul>
+
+        <div class="challenge">
+          Piensa así: una función clara no solo funciona; también se entiende rápido.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Dónde aparecen estos problemas en situaciones reales</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Errores de variables</h3>
+        <p>Usar fuera de una función algo que solo existe dentro.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Funciones confusas</h3>
+        <p>Funciones que dependen demasiado del contexto y son difíciles de reutilizar.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Mala organización</h3>
+        <p>Funciones que mezclan cálculo, impresión y decisiones en un solo bloque.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Código difícil</h3>
+        <p>Nombres vagos y responsabilidades mezcladas hacen más complejo mantener el programa.</p>
+      </div>
+    </div>
+  </section>
 
   <section class="panel">
     <h2>¿Qué es el ámbito?</h2>
@@ -36,7 +159,7 @@ ejemplo()</code></pre>
   </section>
 
   <section class="panel">
-    <h2>⚠️ Error típico: usar fuera una variable local</h2>
+    <h2>Error típico: usar fuera una variable local</h2>
     <pre><code>def ejemplo():
     mensaje = "Hola"
 
@@ -55,10 +178,6 @@ print(mensaje)</code></pre>
 
     <pre><code>def saludar(nombre):
     print("Hola", nombre)</code></pre>
-
-    <div class="callout">
-      Una función suele ser mejor cuando depende de sus parámetros y no de variables escondidas fuera.
-    </div>
   </section>
 
   <section class="panel">
@@ -66,6 +185,24 @@ print(mensaje)</code></pre>
     <p>
       Una función no debería hacer demasiadas cosas a la vez.
       Cuanto más concreta sea su responsabilidad, más fácil será entenderla y reutilizarla.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Ejemplo comparado: función confusa vs función limpia</h2>
+
+    <pre><code>def hacer_cosa(x):
+    print("Resultado:", x * 1.21)</code></pre>
+
+    <p>
+      Funciona, pero su nombre no ayuda y mezcla cálculo con impresión.
+    </p>
+
+    <pre><code>def calcular_iva(precio):
+    return precio * 0.21</code></pre>
+
+    <p>
+      Esta versión expresa mejor la intención y devuelve un valor útil.
     </p>
   </section>
 
@@ -103,133 +240,303 @@ print("IVA:", iva)</code></pre>
   </section>
 
   <section class="panel">
-    <h2>💭 Piensa antes de ejecutar</h2>
-    <pre><code>def crear_mensaje(nombre):
-    texto = "Hola " + nombre
-    return texto
+    <h2>Responsabilidades mezcladas</h2>
 
-resultado = crear_mensaje("Ana")
-print(resultado)</code></pre>
-
-    <ul>
-      <li>¿dónde existe la variable <code>texto</code>?</li>
-      <li>¿qué valor recibe <code>resultado</code>?</li>
-    </ul>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Calcular</h3>
+        <p>La función obtiene un resultado.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Mostrar</h3>
+        <p>Otra parte del programa lo enseña por pantalla.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Decidir</h3>
+        <p>Otra función o bloque puede tomar decisiones con ese resultado.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Ventaja</h3>
+        <p>El código se vuelve más claro, reutilizable y fácil de probar.</p>
+      </div>
+    </div>
   </section>
+
+  <section class="panel">
+    <h2>Cómo pensar una función limpia antes de escribirla</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Paso 1</h3>
+        <p>Decide qué responsabilidad exacta va a tener la función.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 2</h3>
+        <p>Evita que dependa de variables externas si puedes pasar esos datos por parámetros.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 3</h3>
+        <p>Elige un nombre que explique bien lo que hace.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 4</h3>
+        <p>Separa calcular, decidir y mostrar cuando eso mejore la claridad.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      Una función limpia no solo resuelve el problema. También deja claro cómo lo resuelve y para qué sirve.
+    </div>
+  </section>
+
 
   <section class="panel">
     <h2>Errores frecuentes</h2>
-    <ul>
-      <li>crear funciones demasiado largas</li>
-      <li>usar nombres poco descriptivos</li>
-      <li>depender demasiado de variables externas</li>
-      <li>mezclar cálculo, impresión y decisiones en una sola función</li>
-    </ul>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Error 1</h3>
+        <p>Crear funciones demasiado largas.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 2</h3>
+        <p>Usar nombres poco descriptivos.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 3</h3>
+        <p>Depender demasiado de variables externas.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 4</h3>
+        <p>Mezclar cálculo, impresión y decisiones en una sola función.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Mini-reto guiado</h2>
-    <p>
-      Crea una función <code>es_aprobado</code> que reciba una nota y devuelva <code>True</code> o <code>False</code>.
-    </p>
+    <h2>Buenas prácticas</h2>
 
-    <pre><code>def es_aprobado(nota):
-    return nota >= 5
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Responsabilidad clara</h3>
+        <p>Cada función debería resolver una tarea principal, no muchas a la vez.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Nombres útiles</h3>
+        <p>El nombre debería indicar qué hace la función sin necesidad de leerla entera.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Parámetros antes que dependencias</h3>
+        <p>Mejor pasar datos por parámetros que depender de variables externas ocultas.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Separación de tareas</h3>
+        <p>Si una función calcula, intenta que otra parte del programa se encargue de mostrar.</p>
+      </div>
+    </div>
+  </section>
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
+        <p class="exercise-subtitle">Ahora toca aplicar ámbito y diseño limpio con intención.</p>
+      </div>
 
-print(es_aprobado(7))
-print(es_aprobado(3))</code></pre>
+      <div class="badges">
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">5.4</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Enunciado</h3>
+        <p>
+          Crea una función que reciba un nombre y devuelva un saludo.
+          Después guárdalo en una variable fuera de la función e imprímelo.
+        </p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes practicar</h3>
+        <ul>
+          <li>distinguir entre variables dentro y fuera de la función</li>
+          <li>usar parámetros en lugar de depender de variables externas</li>
+          <li>devolver un valor con <code>return</code></li>
+        </ul>
+
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-5%2F04-ambito-y-buenas-practicas.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section class="panel">
-    <h2>Pregunta de entrevista</h2>
-    <p>
-      ¿Por qué conviene pasar datos por parámetros en lugar de depender de variables externas?
-    </p>
-
-    <p>
-      Respuesta sólida: porque la función queda más clara, más reutilizable, más fácil de probar y menos dependiente del contexto externo.
-    </p>
-  </section>
-
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./03-return.html">Anterior</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+  <section class="exercise-card">
+  <div class="exercise-header">
+    <div>
+      <h2 class="exercise-title">Resumen mental del subtema</h2>
+      <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
+    </div>
   </div>
 
-  <button class="btn btn-primary" onclick="completeTopic('5.4')">Marcar como completado</button>
+  <div class="exercise-body">
+    <div class="exercise-block">
+      <h3>Ideas clave</h3>
+      <ul>
+        <li>una variable local existe solo dentro de su función</li>
+        <li>las funciones claras dependen de parámetros, no de variables “escondidas” fuera</li>
+        <li>un buen nombre comunica mejor la intención que un comentario confuso</li>
+        <li>una función pequeña y enfocada suele ser más fácil de probar, reutilizar y mantener</li>
+        <li>el diseño de una función también importa, no solo que el código funcione</li>
+      </ul>
+    </div>
 
-  <script>
-  const TOPIC_ID = "5.4";
-const NEXT_URL = "./05-mini-retos.html";
+    <div class="exercise-block">
+      <h3>Puente con el siguiente bloque</h3>
+      <div class="challenge">
+        Ya conoces las piezas principales del tema: qué es una función, cómo recibe datos, cómo devuelve resultados y cómo escribirla con más criterio. Ahora toca combinarlas en mini-retos antes de los ejercicios finales.
+      </div>
+    </div>
+  </div>
+</section>
 
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+  <section class="panel">
+    <h2>Siguiente paso</h2>
+    <p>
+      Ya entiendes el ámbito y cómo escribir funciones más limpias. Ahora toca razonar y practicar funciones con más intención.
+    </p>
 
-const nextBtn = document.getElementById("nextBtn");
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./03-return.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
+    </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
+  </section>
 
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
+<script src="../topic-completion.js"></script>
+<script>
+  const subtopicCompletion = initTopicCompletion({
+    topicId: "5.4",
+    nextUrl: "./05-mini-retos.html"
+  });
 
-    if (!token || !nextBtn) return;
+  const miniRetoCompletion = initTopicCompletion({
+    topicId: "5.4.mini"
+  });
 
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
+  const completeBtn = document.getElementById("completeBtn");
+  const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+  const completionMessage = document.getElementById("completionMessage");
+
+  function showCompletionMessage(text) {
+    if (!completionMessage) return;
+    completionMessage.textContent = text;
+    completionMessage.style.display = "block";
+  }
+
+  function showCompletedState() {
+    if (!completeBtn) return;
+
+    completeBtn.style.display = "none";
+
+    if (!document.getElementById("completedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "completedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Subtema completado ✅";
+      completeBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  function showMiniCompletedState() {
+    if (!miniCompleteBtn) return;
+
+    miniCompleteBtn.style.display = "none";
+
+    if (!document.getElementById("miniCompletedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "miniCompletedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Mini-reto completado ✅";
+      miniCompleteBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  async function syncCompletionUI() {
+    try {
+      const subtopicDone = await subtopicCompletion.isCompleted();
+      const miniDone = await miniRetoCompletion.isCompleted();
+
+      if (subtopicDone) {
+        showCompletedState();
+      }
+
+      if (miniDone) {
+        showMiniCompletedState();
+      }
+
+      if (subtopicDone && miniDone) {
+        showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+      } else if (subtopicDone) {
+        showCompletionMessage("Este subtema ya estaba marcado como completado.");
+      } else if (miniDone) {
+        showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+      }
+    } catch (error) {
+      console.error("Error comprobando estado del subtema:", error);
+    }
+  }
+
+  if (completeBtn) {
+    completeBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
+
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
+
+        await subtopicCompletion.completeTopic();
+
+        showCompletedState();
+        showCompletionMessage("Has marcado este subtema como completado.");
+      } catch (error) {
+        console.error("Error al completar el subtema:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso.");
       }
     });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
   }
-}
 
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
+  if (miniCompleteBtn) {
+    miniCompleteBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
 
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
-    }
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
 
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
+        await miniRetoCompletion.completeTopic();
+
+        showMiniCompletedState();
+        showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+      } catch (error) {
+        console.error("Error al completar el mini-reto:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+      }
     });
-
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
-    }
-
-    alert("Tema completado 🎉");
-
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
   }
-}
 
-unlockNextIfCompleted();
-  </script>
+  syncCompletionUI();
+</script>
 
 </main>
 </body>

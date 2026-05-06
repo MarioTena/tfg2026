@@ -7,18 +7,148 @@
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 7 · Strings</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 7 · Python</h1>
-  <p>7.1 · Strings como secuencias: entender el texto como una estructura recorrible</p>
+  <span class="mission-tag">Misión 7.1</span>
+  <h1>Strings como secuencias</h1>
+  <p>Aprende a ver el texto no solo como palabras, sino como una estructura ordenada de caracteres que se puede medir, recorrer y analizar.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 7 · Strings</div>
+        <div class="mini-note">Nivel inicial · 12-15 min · Texto como estructura</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Secuencias</span>
+        <span class="badge green">Base esencial</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 20%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué vas a entender hoy</h2>
+        <p class="exercise-subtitle">
+          Un string no es solo texto. En Python también es una secuencia ordenada de caracteres sobre la que puedes contar, recorrer y operar.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Objetivo</span>
+        <span class="badge green">Texto estructurado</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué problema resuelve</h3>
+        <p>
+          En el tema 1 viste que un string era texto. Ahora das un paso más: entenderlo como secuencia te permite
+          tratar cada carácter como parte de una estructura más grande.
+        </p>
+
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3>Contar</h3>
+            <p>Saber cuántos caracteres tiene un texto.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Recorrer</h3>
+            <p>Analizar el texto letra a letra.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Cortar</h3>
+            <p>Extraer una parte concreta del texto.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Validar</h3>
+            <p>Comprobar patrones simples o formatos básicos.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          Idea clave: pensar un string como secuencia te permite trabajar con el texto de forma mucho más potente.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes vigilar</h3>
+        <ul>
+          <li>un string está formado por caracteres ordenados</li>
+          <li>los espacios también cuentan como caracteres</li>
+          <li>se puede medir con <code>len()</code></li>
+          <li>un string es inmutable</li>
+        </ul>
+
+        <div class="challenge">
+          Piensa así: un string no es una “masa de texto”, sino una secuencia ordenada de caracteres.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Dónde aparecen los strings como secuencias en problemas reales</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Mensajes</h3>
+        <p>Contar caracteres, medir longitud o revisar texto recibido.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Validaciones</h3>
+        <p>Comprobar formatos simples o analizar carácter a carácter.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Búsqueda</h3>
+        <p>Recorrer texto para localizar letras, símbolos o patrones básicos.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Procesamiento</h3>
+        <p>Tratar un texto como estructura ordenada para trabajarlo mejor.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      Pensar un string como secuencia es útil cuando no te basta con verlo como “texto”, sino como una colección ordenada de caracteres.
+    </div>
+  </section>
 
   <section class="panel">
     <h2>Qué cambia respecto al tema 1</h2>
     <p>
       En el tema 1 viste que un string es texto, por ejemplo <code>"Hola"</code>.
-      Ahora vamos a dar un paso más importante: en Python, un string no es solo texto,
+      Ahora vas a dar un paso más importante: en Python, un string no es solo texto,
       sino también una <strong>secuencia de caracteres</strong>.
     </p>
 
@@ -31,7 +161,7 @@
     <h2>Qué significa “secuencia”</h2>
     <p>
       Una secuencia es una estructura ordenada de elementos.
-      En una lista los elementos pueden ser números o textos.
+      En una lista los elementos pueden ser números, booleanos o textos.
       En un string, los elementos son caracteres.
     </p>
 
@@ -41,6 +171,29 @@ print(texto)</code></pre>
     <p>
       Ese string está formado por los caracteres <code>P</code>, <code>y</code>, <code>t</code>, <code>h</code>, <code>o</code> y <code>n</code>.
     </p>
+  </section>
+
+  <section class="panel">
+    <h2>Strings y listas: similitudes y diferencias</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Lista</h3>
+        <p>Secuencia de elementos generales.</p>
+      </div>
+      <div class="theory-card">
+        <h3>String</h3>
+        <p>Secuencia de caracteres.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Orden</h3>
+        <p>En ambos casos, el orden importa.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Diferencia clave</h3>
+        <p>El string representa texto; la lista puede representar muchas otras cosas.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
@@ -69,6 +222,56 @@ print(len(frase))</code></pre>
   </section>
 
   <section class="panel">
+    <h2>No todos los caracteres son letras</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Letras</h3>
+        <p><code>"Python"</code></p>
+      </div>
+      <div class="theory-card">
+        <h3>Espacios</h3>
+        <p><code>"Hola mundo"</code></p>
+      </div>
+      <div class="theory-card">
+        <h3>Números</h3>
+        <p><code>"Aula 3"</code></p>
+      </div>
+      <div class="theory-card">
+        <h3>Signos</h3>
+        <p><code>"Hola!"</code></p>
+      </div>
+    </div>
+
+    <p>
+      Todo eso sigue siendo texto y todo cuenta como parte de la secuencia.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Casos simples importantes</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>String vacío</h3>
+        <pre><code>texto = ""</code></pre>
+      </div>
+      <div class="theory-card">
+        <h3>Un solo carácter</h3>
+        <pre><code>texto = "A"</code></pre>
+      </div>
+      <div class="theory-card">
+        <h3>Con espacios</h3>
+        <pre><code>texto = " a "</code></pre>
+      </div>
+      <div class="theory-card">
+        <h3>Idea útil</h3>
+        <p>Un string puede ser muy corto, muy largo o incluso estar vacío.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
     <h2>Un string es inmutable</h2>
     <p>
       Igual que ocurre con otros tipos de datos, un string no se modifica carácter a carácter de forma directa.
@@ -81,154 +284,269 @@ print(len(frase))</code></pre>
   </section>
 
   <section class="panel">
-    <h2>Diferencia con una lista</h2>
-    <p>
-      Ambos son secuencias, pero hay una diferencia muy importante:
-    </p>
+    <h2>Por qué importa la inmutabilidad de verdad</h2>
 
-    <ul>
-      <li>una lista es mutable</li>
-      <li>un string es inmutable</li>
-    </ul>
+    <pre><code>texto = "Hola"
+# texto[0] = "h"</code></pre>
 
     <p>
-      Esta diferencia aparecerá mucho al programar.
+      Esa idea no funciona en strings. No puedes cambiar una posición concreta como harías en una lista.
     </p>
+
+    <div class="callout">
+      En strings, muchas operaciones no “retocan” el original: crean una nueva versión del texto.
+    </div>
   </section>
 
   <section class="panel">
     <h2>Cuándo es importante ver un string como secuencia</h2>
-    <ul>
-      <li>cuando quieres contar letras</li>
-      <li>cuando quieres recorrer carácter a carácter</li>
-      <li>cuando quieres extraer una parte del texto</li>
-      <li>cuando necesitas validar formato</li>
-      <li>cuando buscas patrones simples</li>
-    </ul>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Contar letras</h3>
+        <p>Medir longitud o repeticiones.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Recorrer</h3>
+        <p>Procesar carácter a carácter.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Extraer partes</h3>
+        <p>Tomar fragmentos del texto.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Analizar</h3>
+        <p>Buscar patrones y validar formatos simples.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>💭 Piensa antes de ejecutar</h2>
-    <pre><code>palabra = "sol"
-print(palabra)
-print(len(palabra))</code></pre>
+    <h2>Cómo pensar un string antes de trabajarlo</h2>
 
-    <ul>
-      <li>¿qué representa <code>len(palabra)</code>?</li>
-      <li>¿qué pasaría si la palabra fuera <code>"sol brillante"</code>?</li>
-    </ul>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Paso 1</h3>
+        <p>Piensa en el texto como caracteres ordenados.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 2</h3>
+        <p>Comprueba si te importa la longitud, una posición o un fragmento.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 3</h3>
+        <p>Ten en cuenta espacios y signos, porque también forman parte del string.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 4</h3>
+        <p>Recuerda que cambiar el texto suele implicar crear una nueva versión.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
+        <p class="exercise-subtitle">Empieza a pensar el texto como secuencia de caracteres reales.</p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">7.1</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Enunciado</h3>
+        <p>
+          Crea un string con tu nombre y apellido separados por un espacio.
+          Después imprime:
+        </p>
+        <ul>
+          <li>el string completo</li>
+          <li>su longitud con <code>len()</code></li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes practicar</h3>
+        <ul>
+          <li>ver el string como secuencia</li>
+          <li>recordar que los espacios cuentan</li>
+          <li>usar <code>len()</code> para medir el texto real</li>
+        </ul>
+
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-7%2F01-strings-como-secuencias.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Resumen mental del subtema</h2>
+        <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Ideas clave</h3>
+        <ul>
+          <li>un string es una secuencia ordenada de caracteres</li>
+          <li>los espacios también son caracteres</li>
+          <li>puedes medir su longitud con <code>len()</code></li>
+          <li>un string es inmutable: no cambias una letra directamente</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Puente con el siguiente bloque</h3>
+        <div class="challenge">
+          Ya entiendes el string como secuencia. Ahora toca acceder a posiciones concretas y extraer fragmentos con precisión.
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Errores frecuentes</h2>
-    <ul>
-      <li>pensar que un string es indivisible</li>
-      <li>olvidar que los espacios cuentan</li>
-      <li>no distinguir entre string y lista</li>
-      <li>no entender la idea de inmutabilidad</li>
-    </ul>
-  </section>
-
-  <section class="panel">
-    <h2>Mini-reto guiado</h2>
+    <h2>Siguiente paso</h2>
     <p>
-      Crea una variable <code>frase</code>, guárdale una frase corta y muestra su longitud.
+      Ya entiendes la idea de secuencia. Lo siguiente es aprender a entrar en posiciones concretas y cortar fragmentos del texto.
     </p>
 
-    <pre><code>frase = "Aprender Python"
-print(frase)
-print(len(frase))</code></pre>
+    <div class="buttons-row">
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
+    </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
   </section>
 
-  <section class="panel">
-    <h2>Pregunta de entrevista</h2>
-    <p>
-      ¿Por qué puede decirse que un string es una secuencia?
-    </p>
+  <script src="../topic-completion.js"></script>
+<script>
+  const subtopicCompletion = initTopicCompletion({
+    topicId: "7.1",
+    nextUrl: "./02-indexacion-y-slicing.html"
+  });
 
-    <p>
-      Respuesta sólida: porque está formado por caracteres ordenados sobre los que se puede acceder, recorrer y operar como elementos individuales.
-    </p>
-  </section>
+  const miniRetoCompletion = initTopicCompletion({
+    topicId: "7.1.mini"
+  });
 
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./index.html">Índice tema</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
+  const completeBtn = document.getElementById("completeBtn");
+  const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+  const completionMessage = document.getElementById("completionMessage");
 
-  <button class="btn btn-primary" onclick="completeTopic('7.1')">Marcar como completado</button>
+  function showCompletionMessage(text) {
+    if (!completionMessage) return;
+    completionMessage.textContent = text;
+    completionMessage.style.display = "block";
+  }
 
-  <script>
-const TOPIC_ID = "7.1";
-const NEXT_URL = "./02-indexacion-y-slicing.html";
+  function showCompletedState() {
+    if (!completeBtn) return;
 
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+    completeBtn.style.display = "none";
 
-const nextBtn = document.getElementById("nextBtn");
+    if (!document.getElementById("completedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "completedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Subtema completado ✅";
+      completeBtn.parentNode.appendChild(badge);
+    }
+  }
 
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
+  function showMiniCompletedState() {
+    if (!miniCompleteBtn) return;
 
-    if (!token || !nextBtn) return;
+    miniCompleteBtn.style.display = "none";
 
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
+    if (!document.getElementById("miniCompletedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "miniCompletedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Mini-reto completado ✅";
+      miniCompleteBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  async function syncCompletionUI() {
+    try {
+      const subtopicDone = await subtopicCompletion.isCompleted();
+      const miniDone = await miniRetoCompletion.isCompleted();
+
+      if (subtopicDone) {
+        showCompletedState();
+      }
+
+      if (miniDone) {
+        showMiniCompletedState();
+      }
+
+      if (subtopicDone && miniDone) {
+        showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+      } else if (subtopicDone) {
+        showCompletionMessage("Este subtema ya estaba marcado como completado.");
+      } else if (miniDone) {
+        showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+      }
+    } catch (error) {
+      console.error("Error comprobando estado del subtema:", error);
+    }
+  }
+
+  if (completeBtn) {
+    completeBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
+
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
+
+        await subtopicCompletion.completeTopic();
+
+        showCompletedState();
+        showCompletionMessage("Has marcado este subtema como completado.");
+      } catch (error) {
+        console.error("Error al completar el subtema:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso.");
       }
     });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
   }
-}
 
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
+  if (miniCompleteBtn) {
+    miniCompleteBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
 
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
-    }
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
 
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
+        await miniRetoCompletion.completeTopic();
+
+        showMiniCompletedState();
+        showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+      } catch (error) {
+        console.error("Error al completar el mini-reto:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+      }
     });
-
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
-    }
-
-    alert("Tema completado 🎉");
-
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
   }
-}
 
-unlockNextIfCompleted();
+  syncCompletionUI();
 </script>
 
 </main>

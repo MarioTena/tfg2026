@@ -2,143 +2,346 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Tema 10.5 – Mini retos</title>
+  <title>Tema 10.5 – Razonar y practicar excepciones</title>
   <link rel="stylesheet" href="../../../styles.css" />
 </head>
 <body>
+
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 10 · Errores y excepciones</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 10 · Python</h1>
-  <p>10.5 · Mini retos: integrar manejo de errores y validaciones</p>
+  <span class="mission-tag">Misión 10.5</span>
+  <h1>Razonar y practicar excepciones</h1>
+  <p>Combina validaciones, control de errores y bloques de excepción para construir programas más robustos.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 10 · Errores y excepciones</div>
+        <div class="mini-note">Práctica guiada · 8 retos de razonamiento · dificultad inicial-media</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">try / except</span>
+        <span class="badge blue">raise</span>
+        <span class="badge green">Validación</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 82%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#retos">Empezar práctica guiada</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
-  <section class="panel">
-    <h2>Mini-reto 1 · Conversión segura</h2>
-    <pre><code>texto = input("Escribe un número: ")
 
-try:
-    numero = int(texto)
-    print("Número correcto")
-except ValueError:
-    print("Entrada no válida")</code></pre>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué entrenas aquí</h2>
+        <p class="exercise-subtitle">
+          Aquí vas a practicar cómo se comporta un programa cuando algo falla y cómo decidir si conviene prevenir, capturar o lanzar una excepción.
+        </p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">try / except</span>
+        <span class="badge blue">raise</span>
+        <span class="badge green">Criterio</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Objetivo</h3>
+        <p>
+          Vas a dejar de ver las excepciones como simples bloques de sintaxis y empezar a pensar qué puede fallar, qué regla se incumple y qué comportamiento quieres ofrecer.
+        </p>
+
+        <div class="callout">
+          Idea clave: un programa robusto no ignora los errores; los anticipa, los interpreta y decide cómo reaccionar.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Cómo usar esta pantalla</h3>
+        <ul>
+          <li>lee la situación o el código</li>
+          <li>piensa qué puede fallar exactamente</li>
+          <li>decide qué excepción tiene sentido capturar</li>
+          <li>pregúntate si deberías validar antes o lanzar una excepción tú mismo</li>
+        </ul>
+
+        <div class="challenge">
+          No uses excepciones solo porque sí. Piensa qué error real quieres controlar y qué comportamiento quieres ofrecer.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="retos" class="panel">
+    <h2>Reto 1 · Conversión o validación</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Situación</h3>
+        <p>Un usuario escribe su edad y el programa intenta convertirla a entero.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Qué debes pensar</h3>
+        <p>¿Qué parte puede provocar una excepción y qué parte es mejor validar después con una condición?</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Mini-reto 2 · División segura</h2>
-    <pre><code>try:
-    a = 10
-    b = 0
-    print(a / b)
-except ZeroDivisionError:
-    print("No se puede dividir entre cero")</code></pre>
+    <h2>Reto 2 · División entre cero</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Situación</h3>
+        <p>Tienes dos números y el divisor podría valer 0.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pregunta</h3>
+        <p>¿Qué excepción concreta podría aparecer y qué mensaje tendría sentido mostrar?</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      Aquí conviene distinguir bien entre un error técnico de Python y una validación previa que puedes hacer tú.
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Mini-reto 3 · Abrir archivo</h2>
-    <pre><code>try:
-    with open("datos.txt", "r") as archivo:
-        print(archivo.read())
-except FileNotFoundError:
-    print("Archivo no encontrado")</code></pre>
+    <h2>Reto 3 · Archivo ausente</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Situación</h3>
+        <p>Intentas abrir un archivo que podría no existir.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pregunta</h3>
+        <p>¿Qué excepción esperas y por qué aquí tiene sentido capturarla?</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Mini-reto 4 · Validación con raise</h2>
-    <pre><code>def validar_nota(nota):
-    if nota < 0 or nota > 10:
-        raise ValueError("Nota inválida")
-    return nota</code></pre>
+    <h2>Reto 4 · Qué va en el <code>try</code></h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Situación</h3>
+        <p>Tienes entrada de usuario, conversión, división y varios <code>print</code>.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pregunta</h3>
+        <p>¿Por qué conviene que dentro del <code>try</code> esté solo la parte que realmente podría fallar?</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Mini-reto 5 · else y finally</h2>
-    <pre><code>try:
-    numero = int("7")
-except ValueError:
-    print("Error")
-else:
-    print("Todo correcto")
-finally:
-    print("Fin del proceso")</code></pre>
+    <h2>Reto 5 · Cuándo usar <code>else</code></h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Situación</h3>
+        <p>Si la conversión sale bien, quieres mostrar un mensaje adicional.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Qué entrenas</h3>
+        <p>¿Por qué <code>else</code> puede dejar el flujo más claro que ponerlo todo dentro del <code>try</code>?</p>
+      </div>
+    </div>
+
+    <div class="challenge">
+      Un <code>try</code> demasiado grande hace más difícil entender qué error estás intentando controlar.
+    </div>
   </section>
 
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./04-raise-y-validaciones.html">Anterior</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Ejercicios Tema 10</a>
-  </div>
+  <section class="panel">
+    <h2>Reto 6 · Cuándo usar <code>finally</code></h2>
 
-  <button class="btn btn-primary" onclick="completeTopic('10.5')">Marcar como completado</button>
-  <script>
-const TOPIC_ID = "10.5";
-const NEXT_URL = "./py-tema10-ejercicios.html";
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Situación</h3>
+        <p>Quieres mostrar un mensaje final pase lo que pase.</p>
+      </div>
 
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+      <div class="theory-card">
+        <h3>Pregunta</h3>
+        <p>¿Qué papel cumple <code>finally</code> y qué lo diferencia de <code>else</code>?</p>
+      </div>
+    </div>
+  </section>
 
-const nextBtn = document.getElementById("nextBtn");
+  <section class="panel">
+    <h2>Reto 7 · Capturar o lanzar</h2>
 
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Situación</h3>
+        <p>Una nota ya es numérica, pero puede estar fuera de rango.</p>
+      </div>
 
-    if (!token || !nextBtn) return;
+      <div class="theory-card">
+        <h3>Pregunta</h3>
+        <p>¿Aquí tiene más sentido capturar una excepción de Python o lanzar tú mismo una con <code>raise</code>?</p>
+      </div>
+    </div>
+  </section>
 
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
+  <section class="panel">
+    <h2>Reto 8 · Prevenir, capturar o lanzar</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Situación</h3>
+        <p>Tienes una entrada del usuario, una conversión y una regla de negocio.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Prueba obligatoria</h3>
+        <p>Identifica qué parte conviene prevenir, cuál capturar y cuál lanzar.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Cómo pensar este tipo de ejercicios</h2>
+        <p class="exercise-subtitle">Antes de escribir un <code>try</code>, identifica el fallo real que puede ocurrir.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Paso a paso</h3>
+        <ol>
+          <li>piensa qué puede fallar exactamente</li>
+          <li>decide si ese fallo es una excepción de Python o una regla tuya</li>
+          <li>si es una excepción previsible, captúrala con el tipo adecuado</li>
+          <li>si es una regla de negocio inválida, valídala y usa <code>raise</code> si hace falta</li>
+          <li>usa <code>else</code> y <code>finally</code> cuando aporten claridad</li>
+        </ol>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Regla útil</h3>
+        <div class="challenge">
+          Controlar errores no consiste en taparlos, sino en reaccionar de forma útil y comprensible.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Siguiente paso</h2>
+    <p>Ya has combinado manejo de errores y validaciones. Ahora toca resolver ejercicios por tu cuenta.</p>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./04-raise-y-validaciones.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Ejercicios Tema 10</a>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
+    </div>
+
+    <p id="completionMessage" class="mini-note" style="display:none;"></p>
+  </section>
+
+<script src="../topic-completion.js"></script>
+<script>
+  const missionCompletion = initTopicCompletion({
+    topicId: "10.5",
+    nextUrl: "./py-tema10-ejercicios.html"
+  });
+
+  const completeBtn = document.getElementById("completeBtn");
+  const completionMessage = document.getElementById("completionMessage");
+
+  function showCompletionMessage(text) {
+    if (!completionMessage) return;
+    completionMessage.textContent = text;
+    completionMessage.style.display = "block";
+  }
+
+  function showMissionCompletedState() {
+    if (!completeBtn) return;
+
+    completeBtn.style.display = "none";
+
+    if (!document.getElementById("completedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "completedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Misión completada ✅";
+      completeBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  async function syncCompletionUI() {
+    try {
+      const completed = await missionCompletion.isCompleted();
+
+      if (completed) {
+        showMissionCompletedState();
+        showCompletionMessage("Esta misión ya estaba marcada como completada.");
+      }
+    } catch (error) {
+      console.error("Error comprobando estado de la misión:", error);
+    }
+  }
+
+  if (completeBtn) {
+    completeBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
+
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
+
+        await missionCompletion.completeTopic();
+
+        showMissionCompletedState();
+        showCompletionMessage("Has marcado esta misión como completada.");
+      } catch (error) {
+        console.error("Error al completar la misión:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso.");
       }
     });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
   }
-}
 
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
-    }
-
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
-    });
-
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
-    }
-
-    alert("Tema completado 🎉");
-
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
-  }
-}
-
-unlockNextIfCompleted();
+  syncCompletionUI();
 </script>
 
 </main>

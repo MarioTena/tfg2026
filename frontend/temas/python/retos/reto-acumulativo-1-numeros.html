@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reto acumulativo 1 · Análisis de números</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Reto acumulativo 1 · Análisis de números</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_reto_acumulativo_1_numeros">Playground</a>
+    </div>
+  </div>
+</nav>
+
+<header class="header">
+  <span class="mission-tag">Reto acumulativo</span>
+  <h1>Reto acumulativo 1 · Análisis de números</h1>
+  <p>Combina entrada de datos, bucles, listas y condicionales para analizar varios números introducidos por el usuario.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Práctica de integración</div>
+        <div class="mini-note">Nivel inicial-intermedio · 20-30 min · Entrada, listas y análisis</div>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">while</span>
+        <span class="badge blue">listas</span>
+        <span class="badge green">reto mixto</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 100%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#objetivo">Empezar reto</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python&exerciseId=py_reto_acumulativo_1_numeros">Abrir en playground</a>
+  </div>
+</header>
+
+<main class="main-container single-column">
+
+  <section class="exercise-card" id="objetivo">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué entrenas aquí</h2>
+        <p class="exercise-subtitle">
+          Este reto te obliga a usar juntos varios conceptos que ya conoces para recoger datos, guardarlos y analizarlos al final.
+        </p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Integración</span>
+        <span class="badge blue">Razonamiento</span>
+        <span class="badge green">Práctica real</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Objetivo</h3>
+        <p>
+          Vas a crear un programa que pida números al usuario hasta que escriba <code>fin</code>.
+          Después, el programa deberá analizar todos los números introducidos.
+        </p>
+
+        <div class="callout">
+          Idea clave: aquí ya no basta con leer un número y mostrar algo. Tienes que guardar varios datos, recorrerlos y extraer información útil.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué conceptos estás combinando</h3>
+        <ul>
+          <li><code>input</code></li>
+          <li><code>while</code></li>
+          <li>listas</li>
+          <li>conversión con <code>int()</code></li>
+          <li>condicionales</li>
+          <li>contadores</li>
+          <li>máximo y mínimo</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Enunciado</h2>
+    <p>
+      Crea un programa que pida números al usuario uno por uno.
+      El programa debe seguir pidiendo números hasta que el usuario escriba <code>fin</code>.
+    </p>
+
+    <p>Cuando termine la entrada, el programa debe mostrar:</p>
+
+    <ul>
+      <li>cuántos números ha introducido</li>
+      <li>cuántos son pares</li>
+      <li>cuántos son impares</li>
+      <li>cuál es el mayor</li>
+      <li>cuál es el menor</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Requisitos mínimos</h2>
+    <ul>
+      <li>debes usar un bucle <code>while</code></li>
+      <li>debes usar una lista para guardar los números</li>
+      <li>debes parar cuando el usuario escriba <code>fin</code></li>
+      <li>debes convertir a entero los números válidos</li>
+      <li>debes mostrar el análisis final al terminar</li>
+      <li>si no se ha introducido ningún número, debes indicarlo claramente</li>
+    </ul>
+
+    <div class="challenge">
+      No intentes resolver el análisis al mismo tiempo que lees. Primero guarda bien los datos y luego piensa cómo recorrerlos.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Diseño recomendado</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Paso 1</h3>
+        <p>Crea una lista vacía para guardar los números.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Paso 2</h3>
+        <p>Pide datos al usuario dentro de un <code>while</code>.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Paso 3</h3>
+        <p>Si escribe <code>fin</code>, termina el bucle.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Paso 4</h3>
+        <p>Si escribe un número, conviértelo y guárdalo en la lista.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Paso 5</h3>
+        <p>Cuando termine, recorre la lista para analizar sus datos.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Paso 6</h3>
+        <p>Muestra el resumen final por pantalla.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Fases del reto</h2>
+        <p class="exercise-subtitle">Avanzar por fases te ayudará a no mezclar demasiadas cosas a la vez.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Fase 1</h3>
+        <p>Haz que el programa pida datos hasta que el usuario escriba <code>fin</code>.</p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Fase 2</h3>
+        <p>Guarda cada número válido en una lista.</p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Fase 3</h3>
+        <p>Muestra cuántos números se han guardado.</p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Fase 4</h3>
+        <p>Cuenta cuántos son pares y cuántos son impares.</p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Fase 5</h3>
+        <p>Calcula el mayor y el menor.</p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Fase 6</h3>
+        <p>Mejora mensajes y comprueba el caso donde no se introducen números.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Pistas opcionales</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Pista 1</h3>
+        <p>Usa una lista vacía, por ejemplo <code>numeros = []</code>.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pista 2</h3>
+        <p>Compara la entrada con <code>"fin"</code> antes de convertirla.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pista 3</h3>
+        <p>Puedes usar <code>append()</code> para guardar cada número en la lista.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pista 4</h3>
+        <p>Para saber si un número es par, usa <code>numero % 2 == 0</code>.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pista 5</h3>
+        <p>Para el mayor y el menor, puedes usar <code>max()</code> y <code>min()</code> si ya los has visto, o razonarlo manualmente.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pista 6</h3>
+        <p>Antes de analizar, comprueba si la lista está vacía.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Versión ampliada</h2>
+    <p>Si terminas la versión principal, puedes añadir mejoras como estas:</p>
+
+    <ul>
+      <li>calcular también la media</li>
+      <li>contar positivos, negativos y ceros</li>
+      <li>evitar entradas no numéricas usando <code>try / except</code> si ya has visto errores</li>
+      <li>mostrar la lista completa al final</li>
+    </ul>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué deberías haber consolidado al terminar</h2>
+        <p class="exercise-subtitle">Este reto sirve como puente entre ejercicios sueltos y problemas más completos.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Competencias que consolidan</h3>
+        <ul>
+          <li>recoger varios datos del usuario</li>
+          <li>controlar una entrada repetida con <code>while</code></li>
+          <li>guardar información en listas</li>
+          <li>recorrer y analizar datos guardados</li>
+          <li>manejar el caso donde no hay datos</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Cierre didáctico</h3>
+        <div class="challenge">
+          Aquí empiezas a trabajar más como programador: recoges datos, los almacenas y luego los interpretas.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Resolver en playground</h2>
+    
+    <p>
+      Abre este reto en el playground para resolverlo con plantilla inicial.
+      Recuerda escribir también la entrada del programa si quieres simular varios números por consola.
+    </p>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="../index.html">Volver a ruta Python</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_reto_acumulativo_1_numeros">Abrir reto en playground</a>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const returnTo = params.get("returnTo");
+
+  const btnVolver = document.getElementById("btn-volver-ejercicios");
+
+  if (returnTo && btnVolver) {
+    btnVolver.href = returnTo;
+    btnVolver.style.display = "inline-flex";
+  }
+
+  if (returnTo) {
+    const playgroundLinks = document.querySelectorAll('a[href*="playground/index.html"]');
+
+    playgroundLinks.forEach((link) => {
+      const rawHref = link.getAttribute("href");
+      const url = new URL(rawHref, window.location.href);
+
+      if (!url.searchParams.get("returnTo")) {
+        url.searchParams.set("returnTo", returnTo);
+      }
+
+      link.setAttribute("href", url.pathname + url.search);
+    });
+  }
+</script>
+</body>
+</html>

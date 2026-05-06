@@ -7,253 +7,461 @@
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 3 · Bucles</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 3 · Python</h1>
-  <p>3.4 · break y continue: controlar el flujo dentro de un bucle</p>
+  <span class="mission-tag">Misión 3.4</span>
+  <h1>break y continue</h1>
+  <p>Aprende a controlar mejor el flujo de un bucle: detenerlo antes o saltar iteraciones concretas.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 3 · Bucles</div>
+        <div class="mini-note">Nivel inicial · 12-15 min · Control de flujo</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">break</span>
+        <span class="badge green">continue</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 66%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
 
-  <section class="panel">
-    <h2>¿Qué problema resuelven <code>break</code> y <code>continue</code>?</h2>
-    <p>
-      A veces no basta con repetir. Necesitas modificar el comportamiento del bucle desde dentro:
-    </p>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué vas a entender hoy</h2>
+        <p class="exercise-subtitle">
+          A veces un bucle no debe completar todas sus iteraciones. Necesitas poder pararlo o saltarte una vuelta concreta.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Objetivo</span>
+        <span class="badge green">Control</span>
+      </div>
+    </div>
 
-    <ul>
-      <li>detenerlo antes de tiempo</li>
-      <li>saltar una iteración concreta</li>
-    </ul>
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué problema resuelve</h3>
+        <p>
+          Hay situaciones en las que seguir iterando ya no tiene sentido, o donde una iteración concreta no te interesa.
+          Ahí entran <code>break</code> y <code>continue</code>.
+        </p>
 
-    <p>
-      Para eso sirven <code>break</code> y <code>continue</code>.
-    </p>
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3>Búsqueda</h3>
+            <p>Cuando ya has encontrado lo que buscabas, puedes detener el bucle.</p>
+          </div>
+
+          <div class="theory-card">
+            <h3>Filtrado</h3>
+            <p>Puedes saltarte elementos que no te interesan.</p>
+          </div>
+
+          <div class="theory-card">
+            <h3>Validación</h3>
+            <p>Un programa puede terminar una repetición antes de tiempo si ya tiene una respuesta suficiente.</p>
+          </div>
+
+          <div class="theory-card">
+            <h3>Claridad</h3>
+            <p>Bien usados, ayudan a expresar mejor la intención del algoritmo.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          Idea clave: <code>break</code> detiene el bucle entero; <code>continue</code> solo salta la iteración actual.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes vigilar</h3>
+        <ul>
+          <li>si quieres parar el bucle o solo saltar una vuelta</li>
+          <li>en qué condición exacta se ejecuta <code>break</code> o <code>continue</code></li>
+          <li>cómo cambia la salida del programa al introducirlos</li>
+          <li>que la lógica siga siendo fácil de leer</li>
+        </ul>
+
+        <div class="challenge">
+          No uses <code>break</code> o <code>continue</code> por costumbre. Úsalos cuando mejoren la lógica y la claridad.
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2><code>break</code>: terminar el bucle inmediatamente</h2>
-    <pre><code>for numero in range(1, 10):
-    if numero == 5:
-        break
-    print(numero)</code></pre>
+    <h2>Qué hace <code>break</code></h2>
 
-    <p>
-      Cuando <code>numero</code> vale 5, el bucle se detiene por completo.
-      Ya no hay más iteraciones.
-    </p>
-  </section>
-
-  <section class="panel">
-    <h2>Cuándo usar <code>break</code></h2>
-    <ul>
-      <li>cuando encuentras lo que buscabas</li>
-      <li>cuando ocurre una condición de parada</li>
-      <li>cuando no tiene sentido seguir iterando</li>
-    </ul>
-  </section>
-
-  <section class="panel">
-    <h2><code>continue</code>: saltar solo la iteración actual</h2>
-    <pre><code>for numero in range(1, 6):
-    if numero == 3:
-        continue
-    print(numero)</code></pre>
-
-    <p>
-      Aquí no se imprime el 3, pero el bucle sigue con el 4 y el 5.
-    </p>
-  </section>
-
-  <section class="panel">
-    <h2>Diferencia exacta entre ambos</h2>
-    <ul>
-      <li><code>break</code> → corta todo el bucle</li>
-      <li><code>continue</code> → salta solo una vuelta y sigue con la siguiente</li>
-    </ul>
-  </section>
-
-  <section class="panel">
-    <h2>Ejemplo realista con búsqueda</h2>
     <pre><code>for letra in "python":
     if letra == "h":
         break
     print(letra)</code></pre>
 
     <p>
-      Se imprimen <code>p</code>, <code>y</code>, <code>t</code> y luego el bucle termina.
+      Cuando Python llega a <code>break</code>, el bucle termina por completo.
     </p>
   </section>
 
   <section class="panel">
-    <h2>Ejemplo realista con filtrado</h2>
-    <pre><code>for numero in range(1, 8):
+    <h2>Qué hace <code>continue</code></h2>
+
+    <pre><code>for numero in range(1, 6):
+    if numero == 3:
+        continue
+    print(numero)</code></pre>
+
+    <p>
+      Cuando Python llega a <code>continue</code>, no ejecuta el resto de esa iteración y pasa a la siguiente.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Diferencia mental rápida</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3><code>break</code></h3>
+        <p>“No tiene sentido seguir. Salgo del bucle.”</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>continue</code></h3>
+        <p>“Esta vuelta no me interesa. Paso a la siguiente.”</p>
+      </div>
+      <div class="theory-card">
+        <h3>Efecto</h3>
+        <p>Uno corta el proceso; el otro lo mantiene pero salta una iteración.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Uso real</h3>
+        <p>Buscar, filtrar, validar o evitar trabajo innecesario.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Dónde aparecen <code>break</code> y <code>continue</code> en problemas reales</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Búsqueda</h3>
+        <p>Dejar de recorrer cuando ya has encontrado el dato deseado.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Filtrado</h3>
+        <p>Ignorar elementos que no cumplen una condición.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Validación</h3>
+        <p>Salir cuando se detecta la primera respuesta correcta.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Optimización</h3>
+        <p>Evitar vueltas que ya no aportan nada al resultado.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Ejemplo con <code>break</code> en <code>while</code></h2>
+
+    <pre><code>while True:
+    texto = input("Escribe salir para terminar: ")
+
+    if texto == "salir":
+        break
+
+print("Programa terminado")</code></pre>
+
+    <p>
+      Este patrón se usa mucho cuando la salida depende de una orden del usuario.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Ejemplo con <code>continue</code> para filtrar</h2>
+
+    <pre><code>for numero in range(1, 11):
     if numero % 2 == 0:
         continue
     print(numero)</code></pre>
 
     <p>
-      Aquí saltas los pares y solo muestras impares.
+      Aquí se saltan los números pares y solo se imprimen los impares.
     </p>
   </section>
 
   <section class="panel">
-    <h2>⚠️ Error típico: usar <code>break</code> cuando querías <code>continue</code></h2>
+    <h2>Qué cambia en la salida</h2>
+
+    <pre><code>for numero in range(1, 6):
+    if numero == 4:
+        break
+    print(numero)</code></pre>
+
     <p>
-      Si quieres saltarte un valor, no debes romper el bucle entero.
+      Se imprimen 1, 2 y 3. El 4 ya no se imprime porque el bucle se corta justo antes.
     </p>
 
     <pre><code>for numero in range(1, 6):
-    if numero == 3:
-        break
-    print(numero)</code></pre>
-
-    <p>
-      Esto no “omite el 3”. Hace algo más radical: termina completamente el bucle.
-    </p>
-  </section>
-
-  <section class="panel">
-    <h2>Con <code>while</code> también existen</h2>
-    <pre><code>contador = 0
-
-while True:
-    contador = contador + 1
-    if contador == 4:
-        break
-    print(contador)</code></pre>
-
-    <p>
-      Este patrón se usa mucho cuando la condición de salida se decide desde dentro del bucle.
-    </p>
-  </section>
-
-  <section class="panel">
-    <h2>💭 Piensa antes de ejecutar</h2>
-    <pre><code>for numero in range(1, 6):
-    if numero == 2:
-        continue
-    if numero == 5:
-        break
-    print(numero)</code></pre>
-
-    <ul>
-      <li>¿qué números se imprimen?</li>
-      <li>¿por qué no aparece el 2?</li>
-      <li>¿por qué no aparece el 5?</li>
-    </ul>
-  </section>
-
-  <section class="panel">
-    <h2>Buenas prácticas</h2>
-    <ul>
-      <li>usa <code>break</code> solo cuando la salida anticipada tenga sentido real</li>
-      <li>usa <code>continue</code> para filtrar casos concretos</li>
-      <li>no abuses de ellos si hacen el flujo difícil de leer</li>
-      <li>explica la intención con variables y condiciones claras</li>
-    </ul>
-  </section>
-
-  <section class="panel">
-    <h2>Mini-reto guiado</h2>
-    <p>
-      Recorre los números del 1 al 10 e imprime todos menos el 5.
-    </p>
-
-    <pre><code>for numero in range(1, 11):
-    if numero == 5:
+    if numero == 4:
         continue
     print(numero)</code></pre>
+
+    <p>
+      Se imprimen 1, 2, 3 y 5. El 4 se omite, pero el bucle sigue.
+    </p>
   </section>
 
   <section class="panel">
-    <h2>Reto de entrevista</h2>
-    <p>
-      ¿Qué diferencia conceptual hay entre <code>break</code> y <code>continue</code>?
-    </p>
+    <h2>Errores frecuentes</h2>
 
-    <p>
-      Respuesta sólida: <code>break</code> termina el bucle completo; <code>continue</code> solo omite la iteración actual y permite seguir con las siguientes.
-    </p>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Error 1</h3>
+        <p>Confundir <code>break</code> con <code>continue</code>.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 2</h3>
+        <p>No pensar si el corte ocurre antes o después del <code>print</code>.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 3</h3>
+        <p>Usarlos sin entender qué efecto tienen en la salida final.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 4</h3>
+        <p>Complicar un bucle sencillo con demasiados saltos.</p>
+      </div>
+    </div>
   </section>
 
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./03-while.html">Anterior</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
+        <p class="exercise-subtitle">Usa <code>continue</code> para filtrar una secuencia.</p>
+      </div>
 
-  <button class="btn btn-primary" onclick="completeTopic('3.4')">Marcar como completado</button>
+      <div class="badges">
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">3.4</span>
+      </div>
+    </div>
 
-  <script>
-const TOPIC_ID = "3.4";
-const NEXT_URL = "./05-mini-retos.html";
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Enunciado</h3>
+        <p>
+          Recorre los números del 1 al 10 e imprime solo los impares usando <code>continue</code>.
+        </p>
+      </div>
 
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+      <div class="exercise-block">
+        <h3>Qué debes practicar</h3>
+        <ul>
+          <li>decidir qué iteraciones no interesan</li>
+          <li>saltar casos concretos</li>
+          <li>mantener el resto del bucle funcionando</li>
+        </ul>
 
-const nextBtn = document.getElementById("nextBtn");
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-3%2F04-break-continue.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
+        </div>
+      </div>
+    </div>
+  </section>
 
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Resumen mental del subtema</h2>
+        <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
+      </div>
+    </div>
 
-    if (!token || !nextBtn) return;
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Ideas clave</h3>
+        <ul>
+          <li><code>break</code> detiene el bucle entero</li>
+          <li><code>continue</code> salta solo la iteración actual</li>
+          <li>su efecto depende del lugar exacto donde aparezcan</li>
+          <li>son herramientas útiles cuando mejoran la intención del algoritmo</li>
+        </ul>
+      </div>
 
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
+      <div class="exercise-block">
+        <h3>Puente con el siguiente bloque</h3>
+        <div class="challenge">
+          Ya conoces las piezas principales del tema. Ahora toca combinarlas en mini-retos cortos antes de los ejercicios finales.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Siguiente paso</h2>
+    <p>
+      Ya sabes usar <code>for</code>, <code>while</code>, <code>break</code> y <code>continue</code>. Ahora toca combinarlos en mini-retos.
+    </p>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./03-while.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
+    </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
+  </section>
+
+<script src="../topic-completion.js"></script>
+<script>
+  const subtopicCompletion = initTopicCompletion({
+    topicId: "3.4",
+    nextUrl: "./05-mini-retos.html"
+  });
+
+  const miniRetoCompletion = initTopicCompletion({
+    topicId: "3.4.mini"
+  });
+
+  const completeBtn = document.getElementById("completeBtn");
+  const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+  const completionMessage = document.getElementById("completionMessage");
+
+  function showCompletionMessage(text) {
+    if (!completionMessage) return;
+    completionMessage.textContent = text;
+    completionMessage.style.display = "block";
+  }
+
+  function showCompletedState() {
+    if (!completeBtn) return;
+
+    completeBtn.style.display = "none";
+
+    if (!document.getElementById("completedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "completedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Subtema completado ✅";
+      completeBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  function showMiniCompletedState() {
+    if (!miniCompleteBtn) return;
+
+    miniCompleteBtn.style.display = "none";
+
+    if (!document.getElementById("miniCompletedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "miniCompletedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Mini-reto completado ✅";
+      miniCompleteBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  async function syncCompletionUI() {
+    try {
+      const subtopicDone = await subtopicCompletion.isCompleted();
+      const miniDone = await miniRetoCompletion.isCompleted();
+
+      if (subtopicDone) {
+        showCompletedState();
+      }
+
+      if (miniDone) {
+        showMiniCompletedState();
+      }
+
+      if (subtopicDone && miniDone) {
+        showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+      } else if (subtopicDone) {
+        showCompletionMessage("Este subtema ya estaba marcado como completado.");
+      } else if (miniDone) {
+        showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+      }
+    } catch (error) {
+      console.error("Error comprobando estado del subtema:", error);
+    }
+  }
+
+  if (completeBtn) {
+    completeBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
+
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
+
+        await subtopicCompletion.completeTopic();
+
+        showCompletedState();
+        showCompletionMessage("Has marcado este subtema como completado.");
+      } catch (error) {
+        console.error("Error al completar el subtema:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso.");
       }
     });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
   }
-}
 
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
+  if (miniCompleteBtn) {
+    miniCompleteBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
 
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
-    }
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
 
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
+        await miniRetoCompletion.completeTopic();
+
+        showMiniCompletedState();
+        showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+      } catch (error) {
+        console.error("Error al completar el mini-reto:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+      }
     });
-
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
-    }
-
-    alert("Tema completado 🎉");
-
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
   }
-}
 
-unlockNextIfCompleted();
+  syncCompletionUI();
 </script>
 
 </main>

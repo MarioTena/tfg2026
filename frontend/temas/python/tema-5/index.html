@@ -1,23 +1,150 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Python - Temas</title>
-<link rel="stylesheet" href="../../../styles.css">
+  <meta charset="UTF-8">
+  <title>Python · Tema 5</title>
+  <link rel="stylesheet" href="../../../styles.css">
 </head>
 <body>
 
-<header class="header">
-  <h1>Ruta Python</h1>
-  <p>Completa los temas en orden para desbloquear los siguientes.</p>
-</header>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-title">
+        <h1>Tema 5 · Funciones</h1>
+        <p>Progreso del tema y acceso rápido a la ruta.</p>
+      </div>
 
-<main class="main-container single-column">
+      <div class="topbar-actions">
+        <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+        <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+        <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+        <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+      </div>
+    </div>
+  </div>
 
-  <div id="topics" class="progress-grid"></div>
+  <header class="header">
+    <span class="mission-tag">Ruta de aprendizaje</span>
+    <h1>Tema 5 · Funciones en Python</h1>
+    <p>Aprende a dividir problemas en bloques reutilizables usando funciones, parámetros, valores de retorno y diseño más limpio.</p>
 
-</main>
+    <div class="progress-hero">
+      <div class="progress-hero-top">
+        <div>
+          <div class="progress-label">Progreso del tema</div>
+          <div class="mini-note" id="topic-progress-copy">Cargando progreso...</div>
+        </div>
 
-<script src="progress.js"></script>
+        <div class="badges">
+          <span class="badge blue">Python</span>
+          <span class="badge green">Tema 5</span>
+        </div>
+      </div>
+
+      <div class="progress-track">
+        <div id="topic-progress-fill" class="progress-fill" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <div class="buttons-row">
+      <a id="continue-btn" class="btn btn-primary" href="javascript:void(0)">Continuar ruta</a>
+      <a class="btn btn-secondary" href="../index.html">Volver a Python</a>
+    </div>
+  </header>
+
+  <main class="main-container single-column">
+
+    <section class="exercise-card">
+      <div class="exercise-header">
+        <div>
+          <h2 class="exercise-title">Qué vas a dominar en este tema</h2>
+          <p class="exercise-subtitle">
+            Este bloque te enseña a crear funciones útiles, pasarles datos, decidir qué deben devolver y escribir código más claro y reutilizable.
+          </p>
+        </div>
+
+        <div class="badges">
+          <span class="badge blue">Fundamentos</span>
+          <span class="badge blue">Diseño</span>
+          <span class="badge green">Práctica final</span>
+        </div>
+      </div>
+
+      <div class="exercise-body">
+        <div class="exercise-block">
+          <h3>Habilidades que entrenas</h3>
+          <ul>
+            <li>definir funciones correctamente</li>
+            <li>distinguir entre definir y llamar</li>
+            <li>usar parámetros y argumentos</li>
+            <li>distinguir entre <code>print</code> y <code>return</code></li>
+            <li>reutilizar código sin copiar lógica</li>
+            <li>entender el ámbito de las variables</li>
+            <li>escribir funciones más limpias y con mejor nombre</li>
+          </ul>
+        </div>
+
+        <div class="exercise-block">
+          <h3>Cómo avanzar</h3>
+          <ul>
+            <li>completa los conceptos en orden</li>
+            <li>piensa qué debe hacer cada función</li>
+            <li>decide qué datos necesita</li>
+            <li>decide si debe imprimir o devolver</li>
+            <li>usa práctica guiada y ejercicios para consolidar</li>
+          </ul>
+
+          <div class="challenge">
+            El error típico en funciones no es solo de sintaxis. Es no tener claro qué tarea resuelve la función, qué recibe y qué debería devolver.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Ruta del tema</h2>
+      <div id="topics" class="topic-roadmap"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Resumen del recorrido</h2>
+
+      <div class="theory-grid">
+        <div class="theory-card">
+          <h3>5.1 · Qué es una función</h3>
+          <p>Aprendes la idea de función como bloque reutilizable con una responsabilidad concreta.</p>
+        </div>
+
+        <div class="theory-card">
+          <h3>5.2 · Parámetros y argumentos</h3>
+          <p>Entiendes cómo hacer funciones flexibles y cómo separar la lógica de los datos concretos.</p>
+        </div>
+
+        <div class="theory-card">
+          <h3>5.3 · return</h3>
+          <p>Aprendes a devolver resultados reutilizables y a no confundir mostrar con producir un valor.</p>
+        </div>
+
+        <div class="theory-card">
+          <h3>5.4 · Ámbito y buenas prácticas</h3>
+          <p>Trabajas variables locales, funciones limpias, nombres claros y mejor diseño.</p>
+        </div>
+
+        <div class="theory-card">
+          <h3>5.5 · Práctica guiada</h3>
+          <p>Lees, razonas y detectas errores para entender de verdad cómo se comportan las funciones.</p>
+        </div>
+
+        <div class="theory-card">
+          <h3>Reto final</h3>
+          <p>Consolidas el tema diseñando funciones, llamándolas bien y reutilizando sus resultados.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="../theme-progress-base.js"></script>
+  <script src="progress.js"></script>
 </body>
 </html>

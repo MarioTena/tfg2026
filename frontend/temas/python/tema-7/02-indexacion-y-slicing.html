@@ -7,12 +7,142 @@
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 7 · Strings</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 7 · Python</h1>
-  <p>7.2 · Indexación y slicing: acceder a letras y fragmentos de texto</p>
+  <span class="mission-tag">Misión 7.2</span>
+  <h1>Indexación y slicing</h1>
+  <p>Aprende a acceder a letras concretas y a extraer fragmentos de texto con precisión.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 7 · Strings</div>
+        <div class="mini-note">Nivel inicial · 12-15 min · Posiciones y fragmentos</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Índices</span>
+        <span class="badge green">Slicing</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 40%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué vas a entender hoy</h2>
+        <p class="exercise-subtitle">
+          Si un string es una secuencia, entonces puedes acceder a posiciones concretas y extraer partes del texto igual que hacías con otras estructuras.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Objetivo</span>
+        <span class="badge green">Acceso y fragmentos</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué problema resuelve</h3>
+        <p>
+          Muchas veces no necesitas todo el texto, sino una letra concreta, el último carácter o un fragmento.
+          La indexación y el slicing sirven para eso.
+        </p>
+
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3>Primera letra</h3>
+            <p>Acceder a una posición concreta.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Última letra</h3>
+            <p>Acceder usando índices negativos.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Fragmento</h3>
+            <p>Extraer una parte del texto con slicing.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Control</h3>
+            <p>Trabajar con el texto con más precisión.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          Idea clave: acceder a una posición y extraer un fragmento no son exactamente la misma operación.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes vigilar</h3>
+        <ul>
+          <li>los índices empiezan en 0</li>
+          <li>los índices negativos cuentan desde el final</li>
+          <li>el slicing no incluye el límite final</li>
+          <li>un índice fuera de rango provoca error</li>
+        </ul>
+
+        <div class="challenge">
+          Piensa así: acceder es pedir una posición exacta; hacer slicing es pedir un tramo del texto.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Dónde aparecen la indexación y el slicing en problemas reales</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Iniciales</h3>
+        <p>Tomar la primera letra o un carácter concreto de un texto.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Códigos</h3>
+        <p>Extraer una parte concreta de una cadena con formato fijo.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Fragmentos</h3>
+        <p>Recuperar solo una parte de un mensaje o dato más largo.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Revisión</h3>
+        <p>Acceder al principio, al final o a una zona concreta del texto.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      La indexación y el slicing aparecen cuando necesitas precisión: no todo el texto, sino una posición o un fragmento concreto.
+    </div>
+  </section>
 
   <section class="panel">
     <h2>Acceder a una posición concreta</h2>
@@ -26,6 +156,18 @@ print(texto[1])</code></pre>
 
     <p>
       Esto imprimirá <code>P</code> y <code>y</code>.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Un índice devuelve un string de un carácter</h2>
+    <pre><code>texto = "Hola"
+letra = texto[0]
+print(letra)
+print(type(letra))</code></pre>
+
+    <p>
+      El resultado no es “algo especial”: sigue siendo un string, pero de longitud 1.
     </p>
   </section>
 
@@ -46,7 +188,7 @@ print(texto[-2])</code></pre>
   </section>
 
   <section class="panel">
-    <h2>⚠️ Error típico: índice fuera de rango</h2>
+    <h2>Error típico: índice fuera de rango</h2>
     <pre><code>texto = "sol"
 print(texto[3])</code></pre>
 
@@ -68,6 +210,29 @@ print(texto[1:4])</code></pre>
       Devuelve <code>yth</code>.
       Empieza en el índice 1 y llega hasta antes del 4.
     </p>
+  </section>
+
+  <section class="panel">
+    <h2>Índice frente a slicing</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Índice</h3>
+        <p>Devuelve un solo carácter.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Slicing</h3>
+        <p>Devuelve un fragmento, aunque tenga una sola letra o incluso esté vacío.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Ejemplo 1</h3>
+        <p><code>texto[2]</code></p>
+      </div>
+      <div class="theory-card">
+        <h3>Ejemplo 2</h3>
+        <p><code>texto[2:3]</code></p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
@@ -112,134 +277,272 @@ print(texto[::-1])</code></pre>
   </section>
 
   <section class="panel">
-    <h2>💭 Piensa antes de ejecutar</h2>
-    <pre><code>palabra = "programa"
-print(palabra[0])
-print(palabra[-1])
-print(palabra[2:6])</code></pre>
+    <h2>Casos frontera útiles</h2>
 
-    <ul>
-      <li>¿qué devuelve cada línea?</li>
-      <li>¿por qué el límite final no se incluye?</li>
-    </ul>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Primer carácter</h3>
+        <p><code>texto[0]</code></p>
+      </div>
+      <div class="theory-card">
+        <h3>Último carácter</h3>
+        <p><code>texto[-1]</code></p>
+      </div>
+      <div class="theory-card">
+        <h3>Slicing vacío</h3>
+        <p><code>texto[2:2]</code></p>
+      </div>
+      <div class="theory-card">
+        <h3>Todo el string</h3>
+        <p><code>texto[:]</code></p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Errores frecuentes</h2>
-    <ul>
-      <li>pensar que el primer índice es 1</li>
-      <li>olvidar que el slicing no incluye el final</li>
-      <li>usar índices fuera de rango</li>
-      <li>confundir un carácter con una subcadena</li>
-    </ul>
+    <h2>Matiz importante: índice fuera del límite vs slicing fuera del límite</h2>
+
+    <pre><code>texto = "sol"
+# texto[10] da error
+print(texto[10:20])</code></pre>
+
+    <p>
+      Un índice fuera de rango falla, pero un slicing fuera del límite simplemente devuelve lo que pueda o incluso una cadena vacía.
+    </p>
+
+    <div class="callout">
+      Este detalle es muy útil para no confundir errores de acceso con cortes seguros.
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Mini-reto guiado</h2>
-    <p>
-      Guarda tu nombre en una variable y muestra:
-    </p>
-    <ul>
-      <li>la primera letra</li>
-      <li>la última letra</li>
-      <li>las tres primeras letras</li>
-    </ul>
+    <h2>Cómo pensar indexación y slicing antes de escribirlos</h2>
 
-    <pre><code>nombre = "Carlos"
-print(nombre[0])
-print(nombre[-1])
-print(nombre[:3])</code></pre>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Paso 1</h3>
+        <p>Decide si quieres un carácter o un fragmento.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 2</h3>
+        <p>Si quieres una posición exacta, usa un índice.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 3</h3>
+        <p>Si quieres un tramo, usa slicing.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 4</h3>
+        <p>Recuerda que el límite final del slicing no se incluye.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
+        <p class="exercise-subtitle">Practica la diferencia entre posición exacta y fragmento.</p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">7.2</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Enunciado</h3>
+        <p>
+          Crea un string con la palabra <code>"programa"</code> y después:
+        </p>
+        <ul>
+          <li>imprime la primera letra</li>
+          <li>imprime la última letra</li>
+          <li>extrae con slicing las cuatro primeras letras</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes practicar</h3>
+        <ul>
+          <li>índices positivos y negativos</li>
+          <li>diferencia entre un carácter y un fragmento</li>
+          <li>recordar que el slicing no incluye el final</li>
+        </ul>
+
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-7%2F02-indexacion-y-slicing.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Resumen mental del subtema</h2>
+        <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Ideas clave</h3>
+        <ul>
+          <li>un índice devuelve un carácter</li>
+          <li>un slicing devuelve un fragmento</li>
+          <li>los índices empiezan en 0</li>
+          <li>el final del slicing no se incluye</li>
+          <li>un índice fuera de rango falla, pero un slicing puede no fallar</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Puente con el siguiente bloque</h3>
+        <div class="challenge">
+          Ya sabes acceder y cortar texto. Ahora toca transformarlo y analizarlo mejor con métodos de strings.
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Pregunta de entrevista</h2>
+    <h2>Siguiente paso</h2>
     <p>
-      ¿Qué diferencia hay entre <code>texto[2]</code> y <code>texto[2:3]</code>?
+      Ya sabes acceder a posiciones y fragmentos. Lo siguiente es usar métodos de strings para transformar y analizar texto.
     </p>
 
-    <p>
-      Respuesta sólida: ambos apuntan a la misma posición, pero el primero devuelve un carácter y el segundo devuelve una subcadena de longitud 1.
-    </p>
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./01-strings-como-secuencias.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
+    </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
   </section>
 
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./01-strings-como-secuencias.html">Anterior</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
+  <script src="../topic-completion.js"></script>
+<script>
+  const subtopicCompletion = initTopicCompletion({
+    topicId: "7.2",
+    nextUrl: "./03-metodos-de-strings.html"
+  });
 
-  <button class="btn btn-primary" onclick="completeTopic('7.2')">Marcar como completado</button>
+  const miniRetoCompletion = initTopicCompletion({
+    topicId: "7.2.mini"
+  });
 
-  <script>
-const TOPIC_ID = "7.2";
-const NEXT_URL = "./03-metodos-de-strings.html";
+  const completeBtn = document.getElementById("completeBtn");
+  const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+  const completionMessage = document.getElementById("completionMessage");
 
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+  function showCompletionMessage(text) {
+    if (!completionMessage) return;
+    completionMessage.textContent = text;
+    completionMessage.style.display = "block";
+  }
 
-const nextBtn = document.getElementById("nextBtn");
+  function showCompletedState() {
+    if (!completeBtn) return;
 
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
+    completeBtn.style.display = "none";
 
-    if (!token || !nextBtn) return;
+    if (!document.getElementById("completedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "completedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Subtema completado ✅";
+      completeBtn.parentNode.appendChild(badge);
+    }
+  }
 
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
+  function showMiniCompletedState() {
+    if (!miniCompleteBtn) return;
+
+    miniCompleteBtn.style.display = "none";
+
+    if (!document.getElementById("miniCompletedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "miniCompletedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Mini-reto completado ✅";
+      miniCompleteBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  async function syncCompletionUI() {
+    try {
+      const subtopicDone = await subtopicCompletion.isCompleted();
+      const miniDone = await miniRetoCompletion.isCompleted();
+
+      if (subtopicDone) {
+        showCompletedState();
+      }
+
+      if (miniDone) {
+        showMiniCompletedState();
+      }
+
+      if (subtopicDone && miniDone) {
+        showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+      } else if (subtopicDone) {
+        showCompletionMessage("Este subtema ya estaba marcado como completado.");
+      } else if (miniDone) {
+        showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+      }
+    } catch (error) {
+      console.error("Error comprobando estado del subtema:", error);
+    }
+  }
+
+  if (completeBtn) {
+    completeBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
+
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
+
+        await subtopicCompletion.completeTopic();
+
+        showCompletedState();
+        showCompletionMessage("Has marcado este subtema como completado.");
+      } catch (error) {
+        console.error("Error al completar el subtema:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso.");
       }
     });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
   }
-}
 
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
+  if (miniCompleteBtn) {
+    miniCompleteBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
 
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
-    }
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
 
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
+        await miniRetoCompletion.completeTopic();
+
+        showMiniCompletedState();
+        showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+      } catch (error) {
+        console.error("Error al completar el mini-reto:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+      }
     });
-
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
-    }
-
-    alert("Tema completado 🎉");
-
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
   }
-}
 
-unlockNextIfCompleted();
+  syncCompletionUI();
 </script>
 
 </main>

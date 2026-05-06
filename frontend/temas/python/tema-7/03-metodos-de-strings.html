@@ -7,19 +7,194 @@
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 7 · Strings</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 7 · Python</h1>
-  <p>7.3 · Métodos de strings: transformar y analizar texto</p>
+  <span class="mission-tag">Misión 7.3</span>
+  <h1>Métodos de strings</h1>
+  <p>Aprende a transformar, limpiar, buscar, separar y unir texto con algunos de los métodos más útiles de Python.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 7 · Strings</div>
+        <div class="mini-note">Nivel inicial · 12-15 min · Transformar y limpiar texto</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Métodos</span>
+        <span class="badge green">Texto útil</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 60%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
 
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué vas a entender hoy</h2>
+        <p class="exercise-subtitle">
+          Un string no solo se puede leer o cortar: también puedes limpiarlo, transformarlo, buscar dentro de él y convertirlo en partes más manejables.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Objetivo</span>
+        <span class="badge green">Transformar texto</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué problema resuelve</h3>
+        <p>
+          En programas reales los textos rara vez llegan perfectos. A veces tienen espacios de sobra,
+          mayúsculas inconsistentes o partes que necesitas sustituir, separar o validar.
+        </p>
+
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3>Normalizar</h3>
+            <p>Pasar todo a mayúsculas o minúsculas.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Limpiar</h3>
+            <p>Eliminar espacios sobrantes al principio o al final.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Sustituir</h3>
+            <p>Cambiar una parte del texto por otra.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Separar</h3>
+            <p>Convertir una frase en varias partes con <code>split()</code>.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          Idea clave: los métodos de strings te permiten trabajar con texto sin tener que escribir toda la lógica desde cero.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes vigilar</h3>
+        <ul>
+          <li>los strings son inmutables</li>
+          <li>muchos métodos devuelven un string nuevo</li>
+          <li>si no guardas el resultado, el cambio se pierde</li>
+          <li>algunos métodos transforman y otros analizan</li>
+        </ul>
+
+        <div class="challenge">
+          Piensa así: aplicar un método a un string no suele “retocarlo por dentro”, sino producir una nueva versión del texto.
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="panel">
-    <h2>Por qué importan los métodos de strings</h2>
-    <p>
-      Los strings aparecen en casi todos los programas: nombres, formularios, búsquedas, mensajes, validaciones.
-      Por eso Python ofrece muchos métodos para trabajar con ellos.
-    </p>
+    <h2>Dónde aparecen los archivos en problemas reales</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Notas</h3>
+        <p>Guardar resultados, apuntes o texto que no quieres perder al cerrar el programa.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Configuración</h3>
+        <p>Leer opciones que el programa necesita al arrancar.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Historial</h3>
+        <p>Registrar acciones, eventos o cambios para revisarlos después.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Resultados</h3>
+        <p>Conservar la salida de un programa para reutilizarla más adelante.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      Los archivos aparecen cuando necesitas que la información sobreviva más allá de una ejecución concreta del programa.
+    </div>
+  </section>
+
+ <section class="panel">
+    <h2>Dónde aparecen los métodos de strings en problemas reales</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Formularios</h3>
+        <p>Limpiar nombres, correos o textos escritos por usuarios.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Búsquedas</h3>
+        <p>Normalizar texto antes de comparar o localizar una palabra.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Mensajes</h3>
+        <p>Separar, unir o transformar partes de un texto.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Validación</h3>
+        <p>Comprobar si un texto contiene algo, empieza igual o tiene un formato más limpio.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      Los métodos de strings aparecen constantemente porque casi todos los programas trabajan con texto imperfecto que necesita limpieza, análisis o transformación.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Un mapa mental útil de métodos</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Normalizar</h3>
+        <p><code>lower()</code>, <code>upper()</code></p>
+      </div>
+      <div class="theory-card">
+        <h3>Limpiar</h3>
+        <p><code>strip()</code></p>
+      </div>
+      <div class="theory-card">
+        <h3>Sustituir y buscar</h3>
+        <p><code>replace()</code>, <code>find()</code>, <code>in</code></p>
+      </div>
+      <div class="theory-card">
+        <h3>Separar y unir</h3>
+        <p><code>split()</code>, <code>join()</code></p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
@@ -29,8 +204,12 @@ print(texto.lower())
 print(texto.upper())</code></pre>
 
     <p>
-      Muy útiles para comparar textos sin depender de mayúsculas y minúsculas.
+      Son muy útiles para comparar textos sin depender de mayúsculas y minúsculas.
     </p>
+
+    <div class="callout">
+      Si dos textos deberían considerarse iguales aunque cambien las mayúsculas, normalizarlos antes suele ser buena idea.
+    </div>
   </section>
 
   <section class="panel">
@@ -39,8 +218,7 @@ print(texto.upper())</code></pre>
 print(texto.strip())</code></pre>
 
     <p>
-      Elimina espacios al principio y al final.
-      Muy útil con entradas de usuario.
+      Elimina espacios al principio y al final. Es muy útil cuando trabajas con entrada de usuario.
     </p>
   </section>
 
@@ -71,32 +249,82 @@ print(archivo.startswith("da"))
 print(archivo.endswith(".csv"))</code></pre>
 
     <p>
-      Muy útiles para validaciones y comprobaciones simples.
+      Muy útiles para comprobaciones simples, por ejemplo validar extensiones o prefijos.
     </p>
   </section>
 
   <section class="panel">
-    <h2><code>split()</code></h2>
-    <pre><code>frase = "uno dos tres"
+    <h2><code>split()</code> y <code>join()</code></h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3><code>split()</code></h3>
+        <pre><code>frase = "uno dos tres"
 print(frase.split())</code></pre>
+        <p>Convierte un string en una lista separándolo normalmente por espacios.</p>
+      </div>
 
-    <p>
-      Convierte el string en una lista, separándolo normalmente por espacios.
-    </p>
-  </section>
-
-  <section class="panel">
-    <h2><code>join()</code></h2>
-    <pre><code>palabras = ["Hola", "mundo"]
+      <div class="theory-card">
+        <h3><code>join()</code></h3>
+        <pre><code>palabras = ["Hola", "mundo"]
 print(" ".join(palabras))</code></pre>
+        <p>Une los elementos de una lista en un único string.</p>
+      </div>
+    </div>
 
-    <p>
-      Une elementos de una lista en un único string.
-    </p>
+    <div class="challenge">
+      Regla mental: <code>split()</code> separa un texto; <code>join()</code> une varias partes en un texto.
+    </div>
   </section>
 
   <section class="panel">
-    <h2>⚠️ Importante: los strings son inmutables</h2>
+    <h2>Qué devuelve cada uno</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Devuelven string</h3>
+        <p><code>lower()</code>, <code>upper()</code>, <code>strip()</code>, <code>replace()</code></p>
+      </div>
+      <div class="theory-card">
+        <h3>Devuelve entero</h3>
+        <p><code>find()</code></p>
+      </div>
+      <div class="theory-card">
+        <h3>Devuelven booleano</h3>
+        <p><code>startswith()</code>, <code>endswith()</code>, y también <code>in</code></p>
+      </div>
+      <div class="theory-card">
+        <h3>Devuelve lista</h3>
+        <p><code>split()</code></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2><code>in</code> frente a <code>find()</code></h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3><code>in</code></h3>
+        <p>Sirve para saber si una subcadena está o no está.</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>find()</code></h3>
+        <p>Sirve cuando además te interesa la posición.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Pregunta clave</h3>
+        <p>¿Solo quieres comprobar existencia o también saber dónde aparece?</p>
+      </div>
+      <div class="theory-card">
+        <h3>Caso importante</h3>
+        <p><code>find()</code> devuelve <code>-1</code> si no encuentra nada.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Importante: los strings son inmutables</h2>
     <p>
       Métodos como <code>lower()</code> o <code>replace()</code> no cambian el string original; devuelven uno nuevo.
     </p>
@@ -106,135 +334,336 @@ texto.lower()
 print(texto)</code></pre>
 
     <p>
-      Esto seguirá imprimiendo <code>HOLA</code>.
-      Si quieres conservar el cambio, debes guardarlo.
+      Esto seguirá imprimiendo <code>HOLA</code>. Si quieres conservar el cambio, debes guardarlo.
     </p>
 
     <pre><code>texto = texto.lower()</code></pre>
   </section>
 
   <section class="panel">
-    <h2>💭 Piensa antes de ejecutar</h2>
-    <pre><code>texto = "  PyThOn  "
+    <h2>La inmutabilidad en la práctica</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Error típico</h3>
+        <p>Llamar a un método y creer que ya cambió el texto original.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Solución</h3>
+        <p>Guardar el resultado en la misma variable o en otra nueva.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Consecuencia</h3>
+        <p>Muchos “fallos raros” al empezar vienen de olvidar este paso.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Regla útil</h3>
+        <p>Si el método devuelve algo nuevo, decide si necesitas conservarlo.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Cómo pensar qué método necesitas</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Paso 1</h3>
+        <p>Pregúntate si quieres transformar, limpiar, buscar o separar el texto.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 2</h3>
+        <p>Elige el método que resuelva exactamente esa tarea.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 3</h3>
+        <p>Comprueba qué tipo de resultado devuelve.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 4</h3>
+        <p>Guarda el resultado si quieres seguir usándolo después.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Piensa antes de ejecutar</h2>
+        <p class="exercise-subtitle">Antes de probar el código, intenta seguir qué hace cada método sobre el texto.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Código</h3>
+        <pre><code>texto = "  PyThOn  "
 texto = texto.strip().lower()
 print(texto)</code></pre>
+      </div>
 
-    <ul>
-      <li>¿qué hace cada método?</li>
-      <li>¿por qué se pueden encadenar?</li>
-    </ul>
+      <div class="exercise-block">
+        <h3>Preguntas</h3>
+        <ul>
+          <li>¿qué hace <code>strip()</code>?</li>
+          <li>¿qué hace <code>lower()</code>?</li>
+          <li>¿por qué se pueden encadenar?</li>
+        </ul>
+
+        <div class="mini-note">
+          Pista: el resultado de un método puede convertirse en la entrada del siguiente.
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
     <h2>Errores frecuentes</h2>
-    <ul>
-      <li>pensar que los métodos modifican el string original</li>
-      <li>olvidar guardar el resultado</li>
-      <li>usar <code>find()</code> sin comprobar el caso <code>-1</code></li>
-      <li>no distinguir entre <code>split()</code> y <code>join()</code></li>
-    </ul>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Error 1</h3>
+        <p>Pensar que los métodos modifican el string original.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 2</h3>
+        <p>Olvidar guardar el resultado.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 3</h3>
+        <p>Usar <code>find()</code> sin considerar el caso <code>-1</code>.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 4</h3>
+        <p>No distinguir entre <code>split()</code> y <code>join()</code>.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Mini-reto guiado</h2>
-    <p>
-      Crea una frase con espacios sobrantes y conviértela a minúsculas sin espacios laterales.
-    </p>
+    <h2>Buenas prácticas</h2>
 
-    <pre><code>frase = "   HOLA PYTHON   "
-frase = frase.strip().lower()
-print(frase)</code></pre>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Normaliza</h3>
+        <p>Si vas a comparar texto, considera usar <code>lower()</code>.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Limpia entradas</h3>
+        <p><code>strip()</code> suele ser útil con texto escrito por usuarios.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Guarda cambios</h3>
+        <p>Recuerda que muchos métodos devuelven una nueva versión del string.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Elige bien</h3>
+        <p>No uses varios métodos por costumbre; usa el que resuelva la tarea concreta.</p>
+      </div>
+    </div>
+  </section>
+
+    <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
+        <p class="exercise-subtitle">Ahora toca limpiar y transformar texto con intención.</p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">7.3</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Enunciado</h3>
+        <p>
+          Crea una frase con espacios sobrantes y con letras mezcladas en mayúsculas y minúsculas.
+          Después conviértela a minúsculas y sin espacios laterales.
+        </p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes practicar</h3>
+        <ul>
+          <li>limpiar espacios laterales</li>
+          <li>normalizar texto a minúsculas</li>
+          <li>aplicar transformaciones en el orden correcto</li>
+        </ul>
+
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-7%2F03-metodos-de-strings.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Resumen mental del subtema</h2>
+        <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Ideas clave</h3>
+        <ul>
+          <li>los strings son inmutables, así que los métodos suelen devolver un texto nuevo</li>
+          <li>si no guardas el resultado de una transformación, el cambio se pierde</li>
+          <li>unos métodos sirven para limpiar texto y otros para analizarlo o dividirlo</li>
+          <li>normalizar texto antes de compararlo evita muchos errores simples</li>
+          <li>trabajar bien con strings consiste en transformar el texto con intención, no en encadenar métodos porque sí</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Puente con el siguiente bloque</h3>
+        <div class="challenge">
+          Ya sabes limpiar, transformar y separar texto. El siguiente paso es recorrer strings con bucles para contar, buscar y analizar información carácter a carácter o palabra a palabra.
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Pregunta de entrevista</h2>
+    <h2>Siguiente paso</h2>
     <p>
-      ¿Por qué conviene recordar que los strings son inmutables al usar métodos como <code>replace()</code> o <code>lower()</code>?
+      Ya sabes transformar y limpiar texto. Lo siguiente es recorrer strings y analizarlos con bucles y condicionales.
     </p>
 
-    <p>
-      Respuesta sólida: porque esos métodos no cambian el string original; devuelven uno nuevo, así que si no lo guardas, pierdes el resultado.
-    </p>
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./02-indexacion-y-slicing.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
+    </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
   </section>
 
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./02-indexacion-y-slicing.html">Anterior</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
+  <script src="../topic-completion.js"></script>
+<script>
+  const subtopicCompletion = initTopicCompletion({
+    topicId: "7.3",
+    nextUrl: "./04-recorrer-y-analizar-texto.html"
+  });
 
-  <button class="btn btn-primary" onclick="completeTopic('7.3')">Marcar como completado</button>
+  const miniRetoCompletion = initTopicCompletion({
+    topicId: "7.3.mini"
+  });
 
-  <script>
-const TOPIC_ID = "7.3";
-const NEXT_URL = "./04-recorrer-y-analizar-texto.html";
+  const completeBtn = document.getElementById("completeBtn");
+  const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+  const completionMessage = document.getElementById("completionMessage");
 
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+  function showCompletionMessage(text) {
+    if (!completionMessage) return;
+    completionMessage.textContent = text;
+    completionMessage.style.display = "block";
+  }
 
-const nextBtn = document.getElementById("nextBtn");
+  function showCompletedState() {
+    if (!completeBtn) return;
 
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
+    completeBtn.style.display = "none";
 
-    if (!token || !nextBtn) return;
+    if (!document.getElementById("completedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "completedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Subtema completado ✅";
+      completeBtn.parentNode.appendChild(badge);
+    }
+  }
 
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
+  function showMiniCompletedState() {
+    if (!miniCompleteBtn) return;
+
+    miniCompleteBtn.style.display = "none";
+
+    if (!document.getElementById("miniCompletedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "miniCompletedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Mini-reto completado ✅";
+      miniCompleteBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  async function syncCompletionUI() {
+    try {
+      const subtopicDone = await subtopicCompletion.isCompleted();
+      const miniDone = await miniRetoCompletion.isCompleted();
+
+      if (subtopicDone) {
+        showCompletedState();
+      }
+
+      if (miniDone) {
+        showMiniCompletedState();
+      }
+
+      if (subtopicDone && miniDone) {
+        showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+      } else if (subtopicDone) {
+        showCompletionMessage("Este subtema ya estaba marcado como completado.");
+      } else if (miniDone) {
+        showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+      }
+    } catch (error) {
+      console.error("Error comprobando estado del subtema:", error);
+    }
+  }
+
+  if (completeBtn) {
+    completeBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
+
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
+
+        await subtopicCompletion.completeTopic();
+
+        showCompletedState();
+        showCompletionMessage("Has marcado este subtema como completado.");
+      } catch (error) {
+        console.error("Error al completar el subtema:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso.");
       }
     });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
   }
-}
 
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
+  if (miniCompleteBtn) {
+    miniCompleteBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
 
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
-    }
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
 
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
+        await miniRetoCompletion.completeTopic();
+
+        showMiniCompletedState();
+        showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+      } catch (error) {
+        console.error("Error al completar el mini-reto:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+      }
     });
-
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
-    }
-
-    alert("Tema completado 🎉");
-
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
   }
-}
 
-unlockNextIfCompleted();
+  syncCompletionUI();
 </script>
 
 </main>

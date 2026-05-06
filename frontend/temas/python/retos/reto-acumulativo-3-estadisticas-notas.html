@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reto acumulativo 3 · Estadísticas de notas</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Reto acumulativo 2 · Estadísticas de notas</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_reto_acumulativo_3_notas">Playground</a>
+    </div>
+  </div>
+</nav>
+
+<header class="header">
+  <span class="mission-tag">Reto acumulativo</span>
+  <h1>Reto acumulativo 2 · Estadísticas de notas</h1>
+  <p>Combina entrada, validación, listas y análisis numérico para construir un resumen académico simple.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Práctica de integración</div>
+        <div class="mini-note">Nivel intermedio · 20-30 min · Listas, validación y cálculos</div>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">listas</span>
+        <span class="badge blue">validación</span>
+        <span class="badge green">reto mixto</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 100%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#objetivo">Empezar reto</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python&exerciseId=py_reto_acumulativo_3_notas">Abrir en playground</a>
+  </div>
+</header>
+
+<main class="main-container single-column">
+
+  <section class="exercise-card" id="objetivo">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué entrenas aquí</h2>
+        <p class="exercise-subtitle">
+          Este reto te obliga a trabajar con datos numéricos que deben validarse antes de analizarlos.
+        </p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Integración</span>
+        <span class="badge blue">Validación</span>
+        <span class="badge green">Análisis</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Objetivo</h3>
+        <p>
+          Vas a pedir notas al usuario hasta que escriba <code>fin</code>. Después, el programa deberá calcular estadísticas útiles.
+        </p>
+
+        <div class="callout">
+          Idea clave: aquí no basta con guardar números; además debes validar que tengan sentido y luego analizarlos.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué conceptos estás combinando</h3>
+        <ul>
+          <li><code>input</code></li>
+          <li><code>while</code></li>
+          <li>listas</li>
+          <li>validación de rango</li>
+          <li>condicionales</li>
+          <li>cálculo de media</li>
+          <li>conteo de aprobados y suspensos</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Enunciado</h2>
+    <p>
+      Crea un programa que pida notas al usuario hasta que escriba <code>fin</code>.
+      Cada nota debe ser un número entre 0 y 10.
+    </p>
+
+    <p>Al terminar, el programa debe mostrar:</p>
+
+    <ul>
+      <li>cuántas notas se han introducido</li>
+      <li>la media</li>
+      <li>la nota más alta</li>
+      <li>la nota más baja</li>
+      <li>cuántos aprobados hay</li>
+      <li>cuántos suspensos hay</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Requisitos mínimos</h2>
+    <ul>
+      <li>debes usar una lista para guardar las notas</li>
+      <li>debes validar que cada nota esté entre 0 y 10</li>
+      <li>debes usar un bucle <code>while</code></li>
+      <li>debes parar cuando el usuario escriba <code>fin</code></li>
+      <li>si no hay notas, debes indicarlo claramente</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Pistas opcionales</h2>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Pista 1</h3>
+        <p>Convierte la entrada a número solo después de comprobar que no es <code>fin</code>.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Pista 2</h3>
+        <p>Valida con una condición tipo <code>0 &lt;= nota &lt;= 10</code>.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Pista 3</h3>
+        <p>La media es suma total dividida entre cantidad de notas.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Pista 4</h3>
+        <p>Una nota aprobada suele ser mayor o igual que 5.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Versión ampliada</h2>
+    <ul>
+      <li>mostrar también cuántas notas son excelentes, notables y suspensas</li>
+      <li>usar funciones separadas para validar y analizar</li>
+      <li>ordenar las notas antes de mostrarlas</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Resolver en playground</h2>
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./index.html">Volver a retos</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_reto_acumulativo_3_notas">Abrir reto en playground</a>
+    </div>
+  </section>
+
+</main>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const returnTo = params.get("returnTo");
+
+  const btnVolver = document.getElementById("btn-volver-ejercicios");
+
+  if (returnTo && btnVolver) {
+    btnVolver.href = returnTo;
+    btnVolver.style.display = "inline-flex";
+  }
+
+  if (returnTo) {
+    const playgroundLinks = document.querySelectorAll('a[href*="playground/index.html"]');
+
+    playgroundLinks.forEach((link) => {
+      const rawHref = link.getAttribute("href");
+      const url = new URL(rawHref, window.location.href);
+
+      if (!url.searchParams.get("returnTo")) {
+        url.searchParams.set("returnTo", returnTo);
+      }
+
+      link.setAttribute("href", url.pathname + url.search);
+    });
+  }
+</script>
+</body>
+</html>

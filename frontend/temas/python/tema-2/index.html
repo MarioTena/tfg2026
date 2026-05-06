@@ -1,21 +1,147 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Python - Temas</title>
-<link rel="stylesheet" href="../../../styles.css">
+  <meta charset="UTF-8">
+  <title>Python · Tema 2</title>
+  <link rel="stylesheet" href="../../../styles.css">
 </head>
 <body>
 
-<header class="header">
-  <h1>Ruta Python</h1>
-  <p>Completa los temas en orden para desbloquear los siguientes.</p>
-</header>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-title">
+        <h1>Tema 2 · Condicionales</h1>
+        <p>Progreso del tema y acceso rápido a la ruta.</p>
+      </div>
 
-<main class="main-container single-column">
-  <div id="topics" class="progress-grid"></div>
-</main>
+      <div class="topbar-actions">
+        <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+        <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+        <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+        <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+      </div>
+    </div>
+  </div>
 
-<script src="progress.js"></script>
+  <header class="header">
+    <span class="mission-tag">Ruta de aprendizaje</span>
+    <h1>Tema 2 · Condicionales en Python</h1>
+    <p>Aprende a tomar decisiones con <code>if</code>, <code>elif</code> y <code>else</code>, usando comparaciones, booleanos y operadores lógicos.</p>
+
+    <div class="progress-hero">
+      <div class="progress-hero-top">
+        <div>
+          <div class="progress-label">Progreso del tema</div>
+          <div class="mini-note" id="topic-progress-copy">Cargando progreso...</div>
+        </div>
+
+        <div class="badges">
+          <span class="badge blue">Python</span>
+          <span class="badge green">Tema 2</span>
+        </div>
+      </div>
+
+      <div class="progress-track">
+        <div id="topic-progress-fill" class="progress-fill" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <div class="buttons-row">
+      <a id="continue-btn" class="btn btn-primary" href="javascript:void(0)">Continuar ruta</a>
+      <a class="btn btn-secondary" href="../index.html">Volver a Python</a>
+    </div>
+  </header>
+
+  <main class="main-container single-column">
+
+    <section class="exercise-card">
+      <div class="exercise-header">
+        <div>
+          <h2 class="exercise-title">Qué vas a dominar en este tema</h2>
+          <p class="exercise-subtitle">
+            Este bloque te enseña a construir decisiones lógicas básicas y a entender cómo el programa
+            elige un camino u otro según los datos.
+          </p>
+        </div>
+
+        <div class="badges">
+          <span class="badge blue">Fundamentos</span>
+          <span class="badge blue">Lógica</span>
+          <span class="badge green">Práctica final</span>
+        </div>
+      </div>
+
+      <div class="exercise-body">
+        <div class="exercise-block">
+          <h3>Habilidades que entrenas</h3>
+          <ul>
+            <li>usar <code>if</code>, <code>elif</code> y <code>else</code></li>
+            <li>hacer comparaciones correctas</li>
+            <li>entender qué significa <code>True</code> y <code>False</code></li>
+            <li>combinar condiciones con <code>and</code>, <code>or</code> y <code>not</code></li>
+            <li>razonar qué bloque se ejecuta en cada caso</li>
+            <li>detectar errores típicos de sintaxis y lógica</li>
+            <li>probar casos límite antes de dar un ejercicio por bueno</li>
+          </ul>
+        </div>
+
+        <div class="exercise-block">
+          <h3>Cómo avanzar</h3>
+          <ul>
+            <li>completa los conceptos en orden</li>
+            <li>lee el código antes de ejecutarlo</li>
+            <li>piensa qué resultado debería salir</li>
+            <li>prueba casos normales y casos frontera</li>
+            <li>usa la práctica guiada antes del reto final</li>
+          </ul>
+
+          <div class="challenge">
+            La dificultad real de este tema no está en escribir un <code>if</code>, sino en construir
+            una condición correcta y entender por qué entra en un bloque y no en otro.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Ruta del tema</h2>
+      <div id="topics" class="topic-roadmap"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Resumen del recorrido</h2>
+
+      <div class="theory-grid">
+        <div class="theory-card">
+          <h3>2.1 · Condicionales</h3>
+          <p>Aprendes qué es decidir en programación y cómo se construyen los bloques con <code>if</code>, <code>elif</code> y <code>else</code>.</p>
+        </div>
+
+        <div class="theory-card">
+          <h3>2.2 · Comparaciones y booleanos</h3>
+          <p>Entiendes cómo se hacen preguntas exactas al programa y por qué el resultado es siempre <code>True</code> o <code>False</code>.</p>
+        </div>
+
+        <div class="theory-card">
+          <h3>2.3 · Operadores lógicos</h3>
+          <p>Aprendes a combinar varias condiciones con <code>and</code>, <code>or</code> y <code>not</code> para tomar decisiones más completas.</p>
+        </div>
+
+        <div class="theory-card">
+          <h3>2.4 · Razonar condicionales</h3>
+          <p>Practicas el orden de los casos, los valores frontera, la lectura de código y la corrección de errores típicos.</p>
+        </div>
+
+        <div class="theory-card">
+          <h3>Reto final</h3>
+          <p>Consolidas el tema escribiendo, corrigiendo y razonando condicionales en ejercicios más variados.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="../theme-progress-base.js"></script>
+  <script src="progress.js"></script>
 </body>
 </html>

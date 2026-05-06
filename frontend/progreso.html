@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mi progreso</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-title">
+        <h1>Mi progreso</h1>
+        <p>Seguimiento de tu avance y siguiente paso recomendado.</p>
+      </div>
+
+      <div class="topbar-actions">
+        <a class="btn btn-secondary btn-sm" href="menu.html">Menú</a>
+        <a class="btn btn-secondary btn-sm" href="temas/python/index.html">Ruta Python</a>
+        <a class="btn btn-secondary btn-sm" href="playground/index.html?lang=python">Playground</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="header">
+    <span class="mission-tag">Panel personal</span>
+    <h1>Tu progreso</h1>
+    <p>
+      Consulta cuánto has avanzado, qué ruta tienes en marcha y cuál es el siguiente paso recomendado.
+    </p>
+
+    <div class="progress-hero">
+      <div class="progress-hero-top">
+        <div>
+          <div class="progress-label">Progreso global en Python</div>
+          <div class="mini-note" id="profile-progress-copy">Cargando progreso...</div>
+        </div>
+
+        <div class="badges">
+          <span class="badge blue">Seguimiento</span>
+          <span class="badge green">Aprendizaje</span>
+        </div>
+      </div>
+
+      <div class="progress-track">
+        <div id="profile-progress-fill" class="progress-fill" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <div class="buttons-row">
+      <a id="profile-continue-btn" class="btn btn-primary" href="temas/python/index.html">Continuar donde lo dejaste</a>
+      <a class="btn btn-secondary" href="menu.html">Volver al menú</a>
+    </div>
+  </header>
+
+  <main class="main-container single-column">
+
+    <section class="exercise-card">
+      <div class="exercise-header">
+        <div>
+          <h2 class="exercise-title">Resumen rápido</h2>
+          <p class="exercise-subtitle">
+            Una vista general de tu avance actual dentro de la plataforma.
+          </p>
+        </div>
+
+        <div class="badges">
+          <span class="badge blue">Ruta Python</span>
+          <span class="badge green">Panel</span>
+        </div>
+      </div>
+
+      <div class="exercise-body">
+        <div class="exercise-block stat-card">
+          <h3>Temas completados</h3>
+          <p class="stat-big" id="stat-completed-topics">-</p>
+          <p class="mini-note">sobre 10 temas</p>
+        </div>
+
+        <div class="exercise-block stat-card">
+          <h3>Temas en progreso</h3>
+          <p class="stat-big" id="stat-in-progress-topics">-</p>
+          <p class="mini-note">con algún bloque ya realizado</p>
+        </div>
+
+        <div class="exercise-block stat-card">
+          <h3>Bloques completados</h3>
+          <p class="stat-big" id="stat-completed-blocks">-</p>
+          <p class="mini-note">suma total de subtemas y ejercicios</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Siguiente paso recomendado</h2>
+
+      <div class="topic-roadmap">
+        <article id="next-step-card" class="roadmap-card current">
+          <div class="roadmap-top">
+            <span id="next-step-tag" class="mission-tag">Siguiente</span>
+            <span class="roadmap-state current">Sigue aquí</span>
+          </div>
+
+          <h3 id="next-step-title">Cargando siguiente paso...</h3>
+
+          <div class="topic-meta">
+            <span id="next-step-chip-1" class="topic-chip">Ruta</span>
+            <span id="next-step-chip-2" class="topic-chip">Progreso</span>
+          </div>
+
+          <p id="next-step-cta" class="roadmap-cta">
+            Estamos calculando cuál es el mejor punto para continuar.
+          </p>
+
+          <p id="next-step-desc" class="roadmap-desc"></p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Estado de las rutas</h2>
+
+      <div class="topic-roadmap">
+        <article id="theme-zero-card" class="roadmap-card available" onclick="window.location.href='temas/tema-0/index.html'">
+          <div class="roadmap-top">
+            <span class="mission-tag">Tema 0</span>
+            <span class="roadmap-state available">Común</span>
+          </div>
+
+          <h3>Introducción a la programación</h3>
+
+          <div class="topic-meta">
+            <span class="topic-chip">Base mental</span>
+            <span class="topic-chip">Antes de lenguajes</span>
+          </div>
+
+          <p class="roadmap-cta">
+            Ruta común para entender cómo se programa antes de elegir lenguaje.
+          </p>
+        </article>
+
+        <article id="python-route-card" class="roadmap-card available" onclick="window.location.href='temas/python/index.html'">
+          <div class="roadmap-top">
+            <span class="mission-tag">Ruta Python</span>
+            <span id="python-route-state" class="roadmap-state available">Disponible</span>
+          </div>
+
+          <h3>Python paso a paso</h3>
+
+          <div class="topic-meta">
+            <span class="topic-chip">10 temas</span>
+            <span id="python-route-chip-progress" class="topic-chip">0/10 temas</span>
+          </div>
+
+          <p id="python-route-cta" class="roadmap-cta">
+            Consulta el avance completo de la ruta y entra directamente en el siguiente tema recomendado.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Accesos rápidos</h2>
+
+      <div class="topic-roadmap quick-links-grid">
+        <article class="roadmap-card available" onclick="window.location.href='temas/python/index.html'">
+          <div class="roadmap-top">
+            <span class="mission-tag">Ruta</span>
+            <span class="roadmap-state available">Abrir</span>
+          </div>
+          <h3>Ir a Python</h3>
+          <p class="roadmap-cta">Ver todos los temas de la ruta y su estado.</p>
+        </article>
+
+        <article class="roadmap-card available" onclick="window.location.href='temas/tema-0/index.html'">
+          <div class="roadmap-top">
+            <span class="mission-tag">Base</span>
+            <span class="roadmap-state available">Abrir</span>
+          </div>
+          <h3>Ir a Tema 0</h3>
+          <p class="roadmap-cta">Repasar los fundamentos generales antes del lenguaje.</p>
+        </article>
+
+        <article class="roadmap-card available" onclick="window.location.href='playground/index.html?lang=python'">
+          <div class="roadmap-top">
+            <span class="mission-tag">Práctica</span>
+            <span class="roadmap-state available">Abrir</span>
+          </div>
+          <h3>Abrir playground</h3>
+          <p class="roadmap-cta">Probar código, practicar y revisar resultados.</p>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="progreso.js"></script>
+</body>
+</html>

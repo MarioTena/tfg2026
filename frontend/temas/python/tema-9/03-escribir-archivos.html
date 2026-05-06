@@ -6,12 +6,144 @@
   <link rel="stylesheet" href="../../../styles.css" />
 </head>
 <body>
+
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 9 · Archivos</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 9 · Python</h1>
-  <p>9.3 · Escribir archivos: guardar resultados y datos</p>
+  <span class="mission-tag">Misión 9.3</span>
+  <h1>Escribir archivos</h1>
+  <p>Aprende a guardar resultados y datos en archivos de texto de forma controlada y segura.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 9 · Archivos</div>
+        <div class="mini-note">Nivel inicial · 12-15 min · Guardar contenido</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Escritura</span>
+        <span class="badge green">Guardar datos</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 60%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué vas a entender hoy</h2>
+        <p class="exercise-subtitle">
+          Escribir un archivo significa enviar datos desde tu programa a un lugar persistente para conservarlos después.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Objetivo</span>
+        <span class="badge green">Guardar resultados</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué problema resuelve</h3>
+        <p>
+          Muchas veces tu programa genera datos que no quieres perder: una lista de tareas,
+          un historial, un informe o el resultado de un cálculo.
+        </p>
+
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3>Informes</h3>
+            <p>Crear archivos con resultados nuevos.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Historial</h3>
+            <p>Añadir nueva información sin borrar la anterior.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Tareas</h3>
+            <p>Guardar varias líneas de texto.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Persistencia</h3>
+            <p>Conservar lo que el programa produce.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          Idea clave: escribir en un archivo es convertir la salida del programa en información que permanece guardada.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes vigilar</h3>
+        <ul>
+          <li><code>w</code> sobrescribe lo anterior</li>
+          <li><code>a</code> añade al final sin borrar</li>
+          <li>conviene usar <code>with</code></li>
+          <li>si escribes varias líneas, debes cuidar los saltos de línea</li>
+        </ul>
+
+        <div class="challenge">
+          Piensa así: escribir no es solo guardar texto, también es decidir si quieres reemplazar o conservar lo que ya había.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Dónde aparece escribir archivos en problemas reales</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Informes</h3>
+        <p>Guardar resultados generados por el programa.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Historial</h3>
+        <p>Registrar acciones o eventos sin perder lo anterior.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Tareas</h3>
+        <p>Crear archivos con varias líneas de texto estructurado.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Persistencia</h3>
+        <p>Conservar datos producidos durante la ejecución para reutilizarlos después.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      Escribir archivos aparece cuando necesitas que la salida del programa no desaparezca al terminar.
+    </div>
+  </section>
+
   <section class="panel">
     <h2>Escribir sobrescribiendo</h2>
     <pre><code>with open("salida.txt", "w") as archivo:
@@ -33,9 +165,47 @@
   </section>
 
   <section class="panel">
-    <h2>⚠️ Cuidado con <code>w</code></h2>
+    <h2>La diferencia real entre <code>w</code> y <code>a</code></h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3><code>w</code></h3>
+        <p>Empiezas desde cero y reemplazas el contenido anterior.</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>a</code></h3>
+        <p>Conservas lo anterior y agregas contenido al final.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Pregunta útil</h3>
+        <p>¿Quieres crear un contenido nuevo o ampliar uno existente?</p>
+      </div>
+      <div class="theory-card">
+        <h3>Riesgo</h3>
+        <p>Elegir mal aquí puede cambiar completamente el resultado.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Cuidado con <code>w</code></h2>
     <p>
       Si abres un archivo importante con <code>w</code>, puedes borrar todo su contenido sin querer.
+    </p>
+
+    <div class="callout">
+      Antes de usar <code>w</code>, pregúntate si realmente quieres reemplazar todo.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2><code>write()</code> no añade saltos por sí solo</h2>
+    <pre><code>with open("tareas.txt", "w") as archivo:
+    archivo.write("Estudiar")
+    archivo.write("Practicar")</code></pre>
+
+    <p>
+      Si haces esto, el contenido quedará seguido. <code>write()</code> no mete saltos de línea automáticamente.
     </p>
   </section>
 
@@ -45,90 +215,314 @@
     archivo.write("Estudiar\n")
     archivo.write("Practicar\n")
     archivo.write("Repasar\n")</code></pre>
+
+    <p>
+      El salto de línea <code>\n</code> hace que cada tarea quede en una línea distinta.
+    </p>
   </section>
 
   <section class="panel">
-    <h2>Mini-reto guiado</h2>
-    <p>Crea un archivo y escribe tres líneas con tareas del día.</p>
+    <h2>Crear nuevo o añadir al historial</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3><code>w</code></h3>
+        <p>Cuando quieres generar un contenido nuevo desde cero.</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>a</code></h3>
+        <p>Cuando quieres conservar lo anterior y agregar algo más.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Riesgo</h3>
+        <p>Usar <code>w</code> sin pensar puede borrar información previa.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Intención</h3>
+        <p>Elegir bien el modo es tan importante como escribir el texto.</p>
+      </div>
+    </div>
   </section>
 
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./02-leer-archivos.html">Anterior</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
+  <section class="panel">
+    <h2>Casos frontera útiles</h2>
 
-  <button class="btn btn-primary" onclick="completeTopic('9.3')">Marcar como completado</button>
-  <script>
-const TOPIC_ID = "9.3";
-const NEXT_URL = "./04-buenas-practicas-y-errores.html";
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Archivo nuevo</h3>
+        <p><code>w</code> o <code>a</code> pueden crearlo si no existe.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Varias líneas</h3>
+        <p>Debes pensar en <code>\n</code> si quieres que se separen.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Contenido previo importante</h3>
+        <p>Usar <code>w</code> sin querer puede ser un problema grave.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Historial continuo</h3>
+        <p><code>a</code> suele encajar mejor que <code>w</code>.</p>
+      </div>
+    </div>
+  </section>
 
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+  <section class="panel">
+    <h2>Cómo pensar una escritura antes de hacerla</h2>
 
-const nextBtn = document.getElementById("nextBtn");
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Paso 1</h3>
+        <p>Decide si el archivo debe empezar de cero.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 2</h3>
+        <p>Si no, pregúntate si debes añadir al final.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 3</h3>
+        <p>Piensa si el contenido necesita varias líneas.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 4</h3>
+        <p>Usa <code>with</code> para que el cierre sea automático.</p>
+      </div>
+    </div>
+  </section>
 
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Piensa antes de ejecutar</h2>
+        <p class="exercise-subtitle">Aquí la clave es prever qué pasará con el contenido anterior del archivo.</p>
+      </div>
+    </div>
 
-    if (!token || !nextBtn) return;
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Situaciones</h3>
+        <ul>
+          <li>crear una lista nueva de tareas</li>
+          <li>añadir una nueva línea al historial</li>
+          <li>guardar varias líneas separadas correctamente</li>
+        </ul>
+      </div>
 
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
+      <div class="exercise-block">
+        <h3>Preguntas</h3>
+        <ul>
+          <li>¿cuándo usarías <code>w</code>?</li>
+          <li>¿cuándo usarías <code>a</code>?</li>
+          <li>¿por qué hace falta <code>\n</code> en muchos casos?</li>
+        </ul>
+
+        <div class="mini-note">
+          Pista: piensa en si debes reemplazar o conservar lo anterior.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
+        <p class="exercise-subtitle">Ahora toca guardar varias tareas en un archivo nuevo.</p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">9.3</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Enunciado</h3>
+        <p>
+          Escribe un ejemplo con <code>with</code> que cree un archivo nuevo y guarde tres tareas,
+          cada una en una línea distinta.
+        </p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes practicar</h3>
+        <ul>
+          <li>usar <code>w</code> con intención</li>
+          <li>entender que <code>write()</code> no añade saltos por sí solo</li>
+          <li>escribir varias líneas con <code>\n</code></li>
+        </ul>
+
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-9%2F03-escribir-archivos.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Resumen mental del subtema</h2>
+        <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Ideas clave</h3>
+        <ul>
+          <li><code>w</code> sobrescribe; <code>a</code> añade</li>
+          <li>escribir implica decidir qué hacer con el contenido previo</li>
+          <li><code>write()</code> no mete saltos de línea automáticamente</li>
+          <li><code>with</code> sigue siendo el patrón recomendado</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Puente con el siguiente bloque</h3>
+        <div class="challenge">
+          Ya sabes leer y escribir. Ahora toca hacerlo de forma más segura, limpia y predecible.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Siguiente paso</h2>
+    <p>
+      Ya sabes escribir en archivos. Lo siguiente es trabajar con buenas prácticas y evitar errores frecuentes antes de que ocurran.
+    </p>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./02-leer-archivos.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
+    </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
+  </section>
+
+  <script src="../topic-completion.js"></script>
+<script>
+  const subtopicCompletion = initTopicCompletion({
+    topicId: "9.3",
+    nextUrl: "./04-buenas-practicas-y-errores.html"
+  });
+
+  const miniRetoCompletion = initTopicCompletion({
+    topicId: "9.3.mini"
+  });
+
+  const completeBtn = document.getElementById("completeBtn");
+  const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+  const completionMessage = document.getElementById("completionMessage");
+
+  function showCompletionMessage(text) {
+    if (!completionMessage) return;
+    completionMessage.textContent = text;
+    completionMessage.style.display = "block";
+  }
+
+  function showCompletedState() {
+    if (!completeBtn) return;
+
+    completeBtn.style.display = "none";
+
+    if (!document.getElementById("completedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "completedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Subtema completado ✅";
+      completeBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  function showMiniCompletedState() {
+    if (!miniCompleteBtn) return;
+
+    miniCompleteBtn.style.display = "none";
+
+    if (!document.getElementById("miniCompletedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "miniCompletedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Mini-reto completado ✅";
+      miniCompleteBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  async function syncCompletionUI() {
+    try {
+      const subtopicDone = await subtopicCompletion.isCompleted();
+      const miniDone = await miniRetoCompletion.isCompleted();
+
+      if (subtopicDone) {
+        showCompletedState();
+      }
+
+      if (miniDone) {
+        showMiniCompletedState();
+      }
+
+      if (subtopicDone && miniDone) {
+        showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+      } else if (subtopicDone) {
+        showCompletionMessage("Este subtema ya estaba marcado como completado.");
+      } else if (miniDone) {
+        showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+      }
+    } catch (error) {
+      console.error("Error comprobando estado del subtema:", error);
+    }
+  }
+
+  if (completeBtn) {
+    completeBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
+
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
+
+        await subtopicCompletion.completeTopic();
+
+        showCompletedState();
+        showCompletionMessage("Has marcado este subtema como completado.");
+      } catch (error) {
+        console.error("Error al completar el subtema:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso.");
       }
     });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
   }
-}
 
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
+  if (miniCompleteBtn) {
+    miniCompleteBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
 
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
-    }
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
 
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
+        await miniRetoCompletion.completeTopic();
+
+        showMiniCompletedState();
+        showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+      } catch (error) {
+        console.error("Error al completar el mini-reto:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+      }
     });
-
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
-    }
-
-    alert("Tema completado 🎉");
-
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
   }
-}
 
-unlockNextIfCompleted();
+  syncCompletionUI();
 </script>
 
 </main>

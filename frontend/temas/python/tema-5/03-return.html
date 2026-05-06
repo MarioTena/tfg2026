@@ -7,18 +7,141 @@
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 5 · Funciones</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 5 · Python</h1>
-  <p>5.3 · return: devolver resultados en lugar de solo imprimir</p>
+  <span class="mission-tag">Misión 5.3</span>
+  <h1>return</h1>
+  <p>Aprende a devolver resultados desde una función en lugar de limitarte a imprimirlos.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 5 · Funciones</div>
+        <div class="mini-note">Nivel inicial · 12-15 min · Resultados reutilizables</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">return</span>
+        <span class="badge green">Concepto clave</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 60%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué vas a entender hoy</h2>
+        <p class="exercise-subtitle">
+          Imprimir y devolver no son lo mismo. <code>return</code> hace que una función produzca un resultado reutilizable.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Objetivo</span>
+        <span class="badge green">Resultados</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué problema resuelve</h3>
+        <p>
+          Si una función solo imprime, muestra algo por pantalla, pero no te deja trabajar después con ese valor.
+          Con <code>return</code>, puedes guardar el resultado, reutilizarlo y combinarlo.
+        </p>
+
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3>Cálculos</h3>
+            <p>Guardar el resultado de una suma o de un IVA.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Reutilización</h3>
+            <p>Usar el resultado dentro de otras operaciones.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Decisiones</h3>
+            <p>Devolver <code>True</code> o <code>False</code> desde una función.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Composición</h3>
+            <p>Encadenar funciones y trabajar con sus resultados.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          Idea clave: <code>return</code> convierte a la función en una herramienta que produce un valor utilizable.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes vigilar</h3>
+        <ul>
+          <li>imprimir no es devolver</li>
+          <li><code>return</code> termina la función</li>
+          <li>el valor devuelto puede guardarse en una variable</li>
+          <li>si no devuelves nada, el resultado será <code>None</code></li>
+        </ul>
+
+        <div class="challenge">
+          Piensa así: <code>print()</code> enseña algo; <code>return</code> entrega algo.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Dónde aparece <code>return</code> en problemas reales</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Cálculos</h3>
+        <p>Devolver importes, descuentos, medias o resultados numéricos.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Mensajes</h3>
+        <p>Construir texto y usarlo más adelante en otra parte del programa.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Validaciones</h3>
+        <p>Devolver booleanos como <code>True</code> o <code>False</code>.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Funciones encadenadas</h3>
+        <p>Usar el resultado de una función dentro de otra operación.</p>
+      </div>
+    </div>
+  </section>
 
   <section class="panel">
     <h2>Imprimir no es lo mismo que devolver</h2>
     <p>
       Este es uno de los saltos conceptuales más importantes del curso.
-      Una función puede mostrar algo por pantalla con <code>print()</code>, pero también puede <strong>devolver</strong> un valor usando <code>return</code>.
+      Una función puede mostrar algo por pantalla con <code>print()</code>, pero también puede devolver un valor usando <code>return</code>.
     </p>
   </section>
 
@@ -45,18 +168,29 @@ print(resultado)</code></pre>
     <p>
       Ahora el valor devuelto puede guardarse, reutilizarse o combinarse con otras operaciones.
     </p>
-
-    <div class="callout">
-      <code>return</code> convierte a la función en una herramienta que produce un resultado reutilizable.
-    </div>
   </section>
 
   <section class="panel">
     <h2>Qué hace exactamente <code>return</code></h2>
-    <ul>
-      <li>termina la ejecución de la función</li>
-      <li>envía un valor al lugar donde la función fue llamada</li>
-    </ul>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Termina la función</h3>
+        <p>En cuanto se ejecuta, la función deja de seguir leyendo líneas.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Envía un valor</h3>
+        <p>Devuelve un resultado al lugar donde se llamó a la función.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Permite reutilizar</h3>
+        <p>Ese valor puede guardarse, imprimirse o usarse en otra operación.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Mejora diseño</h3>
+        <p>Hace que la función sea más útil y más flexible.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
@@ -70,7 +204,7 @@ print(resultado + 10)</code></pre>
   </section>
 
   <section class="panel">
-    <h2>⚠️ Error típico: creer que <code>print</code> sustituye a <code>return</code></h2>
+    <h2>Error típico: creer que <code>print</code> sustituye a <code>return</code></h2>
     <pre><code>def sumar(a, b):
     print(a + b)
 
@@ -79,6 +213,20 @@ print(resultado)</code></pre>
 
     <p>
       Esto imprimirá primero 5 y luego <code>None</code>, porque la función no ha devuelto nada.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Comparación directa: misma tarea, diseño distinto</h2>
+
+    <pre><code>def doble_mostrar(numero):
+    print(numero * 2)
+
+def doble_devolver(numero):
+    return numero * 2</code></pre>
+
+    <p>
+      La primera muestra el resultado. La segunda lo produce para que puedas seguir trabajando con él.
     </p>
   </section>
 
@@ -119,131 +267,246 @@ print(es_mayor_de_edad(15))</code></pre>
   </section>
 
   <section class="panel">
-    <h2>💭 Piensa antes de ejecutar</h2>
-    <pre><code>def doble(numero):
-    return numero * 2
+    <h2>Qué pasa si no devuelves nada útil</h2>
 
-valor = doble(5)
-print(valor)
-print(doble(3) + 1)</code></pre>
+    <pre><code>def saludar():
+    print("Hola")
 
-    <ul>
-      <li>¿qué vale <code>valor</code>?</li>
-      <li>¿qué imprime la última línea?</li>
-    </ul>
+resultado = saludar()
+print(resultado)</code></pre>
+
+    <p>
+      <code>resultado</code> valdrá <code>None</code> porque la función no ha devuelto un valor útil.
+    </p>
+
+    <div class="callout">
+      Este es uno de los errores más comunes al empezar: usar una función pensada para imprimir como si devolviera algo.
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Errores frecuentes</h2>
-    <ul>
-      <li>confundir imprimir con devolver</li>
-      <li>olvidar guardar el resultado devuelto</li>
-      <li>escribir código después de un <code>return</code> pensando que seguirá ejecutándose</li>
-    </ul>
+    <h2>Cómo pensar un <code>return</code> antes de escribirlo</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Paso 1</h3>
+        <p>Piensa qué resultado produce la función.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 2</h3>
+        <p>Decide si ese resultado debe poder reutilizarse.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 3</h3>
+        <p>Si la respuesta es sí, probablemente necesitas <code>return</code>.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 4</h3>
+        <p>Comprueba el resultado guardándolo en una variable o usándolo en otra operación.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
+        <p class="exercise-subtitle">Practica la diferencia entre mostrar y devolver.</p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">5.3</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Enunciado</h3>
+        <p>
+          Crea una función <code>triple(numero)</code> que devuelva el triple de un número.
+          Guarda el resultado de <code>triple(4)</code> en una variable y luego imprímelo.
+        </p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes practicar</h3>
+        <ul>
+          <li>usar <code>return</code> en vez de <code>print</code> dentro de la función</li>
+          <li>guardar el valor devuelto</li>
+          <li>reutilizar el resultado fuera de la función</li>
+        </ul>
+
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-5%2F03-return.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Resumen mental del subtema</h2>
+        <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Ideas clave</h3>
+        <ul>
+          <li><code>print</code> muestra; <code>return</code> devuelve</li>
+          <li>el valor devuelto puede guardarse y reutilizarse</li>
+          <li><code>return</code> termina la función</li>
+          <li>si no devuelves nada útil, el resultado será <code>None</code></li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Puente con el siguiente bloque</h3>
+        <div class="challenge">
+          Ya sabes devolver resultados. Lo siguiente es entender el ámbito de las variables y cómo escribir funciones más limpias.
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Mini-reto guiado</h2>
+    <h2>Siguiente paso</h2>
     <p>
-      Crea una función que reciba un precio y devuelva el precio con IVA del 21%.
+      Ya sabes devolver resultados. Lo siguiente es entender el ámbito de las variables y cómo escribir funciones más limpias.
     </p>
 
-    <pre><code>def precio_con_iva(precio):
-    return precio * 1.21
-
-final = precio_con_iva(100)
-print(final)</code></pre>
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./02-parametros-y-argumentos.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
+    </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
   </section>
 
-  <section class="panel">
-    <h2>Pregunta de entrevista</h2>
-    <p>
-      ¿Qué diferencia hay entre <code>print()</code> y <code>return</code> dentro de una función?
-    </p>
+<script src="../topic-completion.js"></script>
+<script>
+  const subtopicCompletion = initTopicCompletion({
+    topicId: "5.3",
+    nextUrl: "./04-ambito-y-buenas-practicas.html"
+  });
 
-    <p>
-      Respuesta sólida: <code>print()</code> muestra información por pantalla; <code>return</code> devuelve un valor para seguir utilizándolo fuera de la función.
-    </p>
-  </section>
+  const miniRetoCompletion = initTopicCompletion({
+    topicId: "5.3.mini"
+  });
 
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./02-parametros-y-argumentos.html">Anterior</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
+  const completeBtn = document.getElementById("completeBtn");
+  const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+  const completionMessage = document.getElementById("completionMessage");
 
-  <button class="btn btn-primary" onclick="completeTopic('5.3')">Marcar como completado</button>
+  function showCompletionMessage(text) {
+    if (!completionMessage) return;
+    completionMessage.textContent = text;
+    completionMessage.style.display = "block";
+  }
 
-  <script>
-const TOPIC_ID = "5.3";
-const NEXT_URL = "./04-ambito-y-buenas-practicas.html";
+  function showCompletedState() {
+    if (!completeBtn) return;
 
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+    completeBtn.style.display = "none";
 
-const nextBtn = document.getElementById("nextBtn");
+    if (!document.getElementById("completedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "completedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Subtema completado ✅";
+      completeBtn.parentNode.appendChild(badge);
+    }
+  }
 
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
+  function showMiniCompletedState() {
+    if (!miniCompleteBtn) return;
 
-    if (!token || !nextBtn) return;
+    miniCompleteBtn.style.display = "none";
 
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
+    if (!document.getElementById("miniCompletedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "miniCompletedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Mini-reto completado ✅";
+      miniCompleteBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  async function syncCompletionUI() {
+    try {
+      const subtopicDone = await subtopicCompletion.isCompleted();
+      const miniDone = await miniRetoCompletion.isCompleted();
+
+      if (subtopicDone) {
+        showCompletedState();
+      }
+
+      if (miniDone) {
+        showMiniCompletedState();
+      }
+
+      if (subtopicDone && miniDone) {
+        showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+      } else if (subtopicDone) {
+        showCompletionMessage("Este subtema ya estaba marcado como completado.");
+      } else if (miniDone) {
+        showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+      }
+    } catch (error) {
+      console.error("Error comprobando estado del subtema:", error);
+    }
+  }
+
+  if (completeBtn) {
+    completeBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
+
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
+
+        await subtopicCompletion.completeTopic();
+
+        showCompletedState();
+        showCompletionMessage("Has marcado este subtema como completado.");
+      } catch (error) {
+        console.error("Error al completar el subtema:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso.");
       }
     });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
   }
-}
 
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
+  if (miniCompleteBtn) {
+    miniCompleteBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
 
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
-    }
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
 
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
+        await miniRetoCompletion.completeTopic();
+
+        showMiniCompletedState();
+        showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+      } catch (error) {
+        console.error("Error al completar el mini-reto:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+      }
     });
-
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
-    }
-
-    alert("Tema completado 🎉");
-
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
   }
-}
 
-unlockNextIfCompleted();
+  syncCompletionUI();
 </script>
 
 </main>

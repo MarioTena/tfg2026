@@ -7,18 +7,149 @@
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 6 · Diccionarios</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 6 · Python</h1>
-  <p>6.4 · Métodos y buenas prácticas: trabajar mejor con diccionarios</p>
+  <span class="mission-tag">Misión 6.4</span>
+  <h1>Métodos y buenas prácticas</h1>
+  <p>Aprende a trabajar mejor con diccionarios usando sus métodos más útiles y eligiendo bien la estructura de datos.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 6 · Diccionarios</div>
+        <div class="mini-note">Nivel inicial · 12-15 min · Métodos útiles y criterio</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">get()</span>
+        <span class="badge blue">update()</span>
+        <span class="badge green">Buenas prácticas</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 80%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
+
+  <section class="exercise-card">
+  <div class="exercise-header">
+    <div>
+      <h2 class="exercise-title">Qué vas a entender hoy</h2>
+      <p class="exercise-subtitle">
+        Los diccionarios tienen métodos muy útiles para consultar, actualizar y organizar datos de forma más clara y práctica.
+      </p>
+    </div>
+    <div class="badges">
+      <span class="badge blue">Objetivo</span>
+      <span class="badge green">Métodos útiles</span>
+    </div>
+  </div>
+
+  <div class="exercise-body">
+    <div class="exercise-block">
+      <h3>Qué problema resuelve</h3>
+      <p>
+        Trabajar con diccionarios de forma básica está bien, pero sus métodos permiten hacerlo mejor:
+        consultar datos, actualizarlos, eliminarlos o revisar la estructura con menos código y más claridad.
+      </p>
+
+      <div class="theory-grid">
+        <div class="theory-card">
+          <h3>Consultar</h3>
+          <p>Ver claves, valores o parejas completas.</p>
+        </div>
+        <div class="theory-card">
+          <h3>Actualizar</h3>
+          <p>Cambiar varias claves de una sola vez.</p>
+        </div>
+        <div class="theory-card">
+          <h3>Eliminar</h3>
+          <p>Quitar claves que ya no necesitas.</p>
+        </div>
+        <div class="theory-card">
+          <h3>Criterio</h3>
+          <p>Entender cuándo conviene usar diccionario y cuándo lista.</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        Idea clave: dominar una estructura de datos también significa saber usar bien sus métodos.
+      </div>
+    </div>
+
+    <div class="exercise-block">
+      <h3>Qué debes vigilar</h3>
+      <ul>
+        <li>no todos los métodos hacen lo mismo</li>
+        <li>algunos consultan y otros modifican</li>
+        <li><code>get()</code>, <code>pop()</code> y <code>update()</code> tienen funciones distintas</li>
+        <li>también debes saber cuándo usar lista y cuándo diccionario</li>
+      </ul>
+
+      <div class="challenge">
+        Pensar bien el método correcto también forma parte de programar bien.
+      </div>
+    </div>
+  </div>
+</section>
+
+  <section class="panel">
+    <h2>Dónde aparecen los métodos de diccionarios en problemas reales</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Consultas</h3>
+        <p>Obtener claves, valores o pares completos según lo que necesites revisar.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Actualizaciones</h3>
+        <p>Cambiar varios datos de una sola vez con métodos más cómodos.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Limpieza</h3>
+        <p>Eliminar claves o reorganizar mejor la información almacenada.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Criterio</h3>
+        <p>Elegir mejor cuándo usar diccionario y cómo trabajar con él de forma más segura.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      Los métodos de diccionarios aparecen cuando ya no solo quieres guardar datos, sino manipularlos con más claridad y menos código.
+    </div>
+  </section>
 
   <section class="panel">
     <h2>Métodos fundamentales</h2>
     <p>
       Hay varios métodos muy útiles al trabajar con diccionarios.
-      En este tema vamos a centrarnos en los más prácticos para una base sólida.
+      En este bloque vas a centrarte en los más prácticos para una base sólida.
     </p>
   </section>
 
@@ -104,165 +235,352 @@ print(producto)</code></pre>
   </section>
 
   <section class="panel">
-    <h2>Buenas prácticas</h2>
-    <ul>
-      <li>usa claves claras y coherentes</li>
-      <li>mantén un mismo criterio de nombres</li>
-      <li>no mezcles datos sin relación en el mismo diccionario</li>
-      <li>usa <code>get()</code> si no estás seguro de que la clave exista</li>
-      <li>piensa si realmente necesitas lista o diccionario</li>
-    </ul>
-  </section>
+    <h2>Consultar no es modificar</h2>
 
-  <section class="panel">
-    <h2>Lista o diccionario: criterio correcto</h2>
-    <ul>
-      <li>usa lista cuando importa el orden o la secuencia</li>
-      <li>usa diccionario cuando importa el significado de cada dato</li>
-    </ul>
-
-    <div class="callout">
-      Elegir bien la estructura de datos ya es una habilidad de programador serio.
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Consultan</h3>
+        <p><code>keys()</code>, <code>values()</code>, <code>items()</code>, <code>get()</code></p>
+      </div>
+      <div class="theory-card">
+        <h3>Modifican</h3>
+        <p><code>pop()</code>, <code>update()</code>, asignación por clave</p>
+      </div>
+      <div class="theory-card">
+        <h3>Idea útil</h3>
+        <p>Primero decide si solo quieres mirar o también cambiar el diccionario.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Importancia</h3>
+        <p>Evita tocar la estructura por accidente.</p>
+      </div>
     </div>
   </section>
 
   <section class="panel">
-    <h2>💭 Piensa antes de ejecutar</h2>
-    <pre><code>usuario = {
-    "nombre": "Luis",
-    "edad": 35
-}
+    <h2>Qué hace cada método en la práctica</h2>
 
-usuario.update({"edad": 36, "activo": True})
-print(usuario.get("activo"))
-print(usuario)</code></pre>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3><code>keys()</code></h3>
+        <p>Te ayuda a ver qué datos existen.</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>values()</code></h3>
+        <p>Sirve cuando te interesan los datos pero no sus nombres.</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>get()</code></h3>
+        <p>Es útil cuando una clave puede faltar.</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>update()</code></h3>
+        <p>Va bien para varios cambios seguidos sin repetir muchas líneas.</p>
+      </div>
+    </div>
+  </section>
 
-    <ul>
-      <li>¿qué cambia con <code>update()</code>?</li>
-      <li>¿qué devuelve <code>get("activo")</code>?</li>
-    </ul>
+  <section class="panel">
+    <h2>Casos importantes de <code>pop()</code> y <code>update()</code></h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3><code>pop()</code></h3>
+        <p>No solo elimina: también devuelve el valor que quita.</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>update()</code> clave existente</h3>
+        <p>Si la clave ya estaba, su valor se actualiza.</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>update()</code> clave nueva</h3>
+        <p>Si la clave no estaba, se añade.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Idea práctica</h3>
+        <p>Un mismo método puede servir para dos efectos distintos según el estado del diccionario.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Lista o diccionario: criterio correcto</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Usa lista</h3>
+        <p>Cuando importa el orden o la secuencia.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Usa diccionario</h3>
+        <p>Cuando importa el significado de cada dato.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Piensa en acceso</h3>
+        <p>Si vas a pedir datos por nombre, suele encajar mejor un diccionario.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Piensa en estructura</h3>
+        <p>Elegir bien la estructura también es programar bien.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      Elegir bien la estructura de datos ya es una habilidad importante de programación.
+    </div>
   </section>
 
   <section class="panel">
     <h2>Errores frecuentes</h2>
-    <ul>
-      <li>usar una lista donde un diccionario sería más claro</li>
-      <li>acceder a claves sin verificar si existen</li>
-      <li>usar nombres de claves inconsistentes</li>
-      <li>pensar que <code>keys()</code> o <code>values()</code> devuelven listas normales siempre</li>
-    </ul>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Error 1</h3>
+        <p>Usar acceso directo cuando la clave puede no existir.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 2</h3>
+        <p>Olvidar que <code>pop()</code> modifica el diccionario.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 3</h3>
+        <p>No entender si <code>update()</code> está actualizando o añadiendo.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 4</h3>
+        <p>Elegir diccionario cuando en realidad solo necesitabas una secuencia simple.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Mini-reto guiado</h2>
-    <p>
-      Crea un diccionario de configuración, actualiza varias claves y elimina una de ellas.
-    </p>
+    <h2>Cómo pensar qué método necesitas</h2>
 
-    <pre><code>config = {
-    "tema": "claro",
-    "idioma": "es",
-    "notificaciones": True
-}
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Paso 1</h3>
+        <p>Pregúntate si solo quieres consultar o también modificar.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 2</h3>
+        <p>Decide si necesitas claves, valores o ambas cosas.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 3</h3>
+        <p>Si la clave puede faltar, considera <code>get()</code> o una comprobación con <code>in</code>.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 4</h3>
+        <p>Si necesitas cambiar varias cosas, piensa si <code>update()</code> encaja mejor.</p>
+      </div>
+    </div>
+  </section>
 
-config.update({
-    "tema": "oscuro",
-    "fuente": "grande"
-})
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
+        <p class="exercise-subtitle">Combina métodos útiles y criterio de acceso más seguro.</p>
+      </div>
 
-config.pop("notificaciones")
-print(config)</code></pre>
+      <div class="badges">
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">6.4</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Enunciado</h3>
+        <p>
+          Crea un diccionario <code>config</code> con la clave <code>tema</code>. Después:
+        </p>
+        <ul>
+          <li>usa <code>get()</code> para leer <code>idioma</code> con valor por defecto</li>
+          <li>usa <code>update()</code> para añadir <code>idioma</code> y <code>notificaciones</code></li>
+          <li>usa <code>pop()</code> para eliminar una clave</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes practicar</h3>
+        <ul>
+          <li>distinguir métodos que consultan de métodos que modifican</li>
+          <li>pensar mejor cuándo usar cada uno</li>
+          <li>ver el efecto final sobre la estructura</li>
+        </ul>
+
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-6%2F04-metodos-y-buenas-practicas.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Resumen mental del subtema</h2>
+        <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Ideas clave</h3>
+        <ul>
+          <li>no todos los métodos hacen lo mismo</li>
+          <li>algunos consultan y otros modifican</li>
+          <li><code>pop()</code> elimina y devuelve</li>
+          <li><code>update()</code> puede actualizar y añadir a la vez</li>
+          <li>elegir lista o diccionario también forma parte del diseño</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Puente con el siguiente bloque</h3>
+        <div class="challenge">
+          Ya dominas bastante la teoría. Ahora toca razonar mejor sobre diccionarios, detectar errores y decidir cuándo usarlos.
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Pregunta de entrevista</h2>
+    <h2>Siguiente paso</h2>
     <p>
-      ¿Cuándo usarías un diccionario en vez de una lista?
+      Ya dominas bastante la teoría. Ahora toca razonar mejor sobre diccionarios antes de pasar a los ejercicios finales.
     </p>
 
-    <p>
-      Respuesta sólida: cuando los datos tienen nombres o claves con significado y quiero acceder a ellos de forma explícita en lugar de depender de posiciones.
-    </p>
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./03-recorrer-diccionarios.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
+    </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
   </section>
 
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./03-recorrer-diccionarios.html">Anterior</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
+  <script src="../topic-completion.js"></script>
+<script>
+  const subtopicCompletion = initTopicCompletion({
+    topicId: "6.4",
+    nextUrl: "./05-mini-retos.html"
+  });
 
-  <button class="btn btn-primary" onclick="completeTopic('6.4')">Marcar como completado</button>
+  const miniRetoCompletion = initTopicCompletion({
+    topicId: "6.4.mini"
+  });
 
-  <script>
-const TOPIC_ID = "6.4";
-const NEXT_URL = "./05-mini-retos.html";
+  const completeBtn = document.getElementById("completeBtn");
+  const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+  const completionMessage = document.getElementById("completionMessage");
 
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+  function showCompletionMessage(text) {
+    if (!completionMessage) return;
+    completionMessage.textContent = text;
+    completionMessage.style.display = "block";
+  }
 
-const nextBtn = document.getElementById("nextBtn");
+  function showCompletedState() {
+    if (!completeBtn) return;
 
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
+    completeBtn.style.display = "none";
 
-    if (!token || !nextBtn) return;
+    if (!document.getElementById("completedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "completedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Subtema completado ✅";
+      completeBtn.parentNode.appendChild(badge);
+    }
+  }
 
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
+  function showMiniCompletedState() {
+    if (!miniCompleteBtn) return;
+
+    miniCompleteBtn.style.display = "none";
+
+    if (!document.getElementById("miniCompletedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "miniCompletedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Mini-reto completado ✅";
+      miniCompleteBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  async function syncCompletionUI() {
+    try {
+      const subtopicDone = await subtopicCompletion.isCompleted();
+      const miniDone = await miniRetoCompletion.isCompleted();
+
+      if (subtopicDone) {
+        showCompletedState();
+      }
+
+      if (miniDone) {
+        showMiniCompletedState();
+      }
+
+      if (subtopicDone && miniDone) {
+        showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+      } else if (subtopicDone) {
+        showCompletionMessage("Este subtema ya estaba marcado como completado.");
+      } else if (miniDone) {
+        showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+      }
+    } catch (error) {
+      console.error("Error comprobando estado del subtema:", error);
+    }
+  }
+
+  if (completeBtn) {
+    completeBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
+
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
+
+        await subtopicCompletion.completeTopic();
+
+        showCompletedState();
+        showCompletionMessage("Has marcado este subtema como completado.");
+      } catch (error) {
+        console.error("Error al completar el subtema:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso.");
       }
     });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
   }
-}
 
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
+  if (miniCompleteBtn) {
+    miniCompleteBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
 
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
-    }
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
 
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
+        await miniRetoCompletion.completeTopic();
+
+        showMiniCompletedState();
+        showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+      } catch (error) {
+        console.error("Error al completar el mini-reto:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+      }
     });
-
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
-    }
-
-    alert("Tema completado 🎉");
-
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
   }
-}
 
-unlockNextIfCompleted();
+  syncCompletionUI();
 </script>
 
 </main>

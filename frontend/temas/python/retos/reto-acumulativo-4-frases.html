@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reto acumulativo 4 · Análisis de frases</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Reto acumulativo 4 · Análisis de frases</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_reto_acumulativo_4_frases">Playground</a>
+    </div>
+  </div>
+</nav>
+
+<header class="header">
+  <span class="mission-tag">Reto acumulativo</span>
+  <h1>Reto acumulativo 4 · Análisis de frases</h1>
+  <p>Combina strings, funciones y análisis de texto para obtener información útil a partir de una frase.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Práctica de integración</div>
+        <div class="mini-note">Nivel intermedio · 15-25 min · Strings y funciones</div>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">strings</span>
+        <span class="badge blue">funciones</span>
+        <span class="badge green">análisis de texto</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 100%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#objetivo">Empezar reto</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python&exerciseId=py_reto_acumulativo_4_frases">Abrir en playground</a>
+  </div>
+</header>
+
+<main class="main-container single-column">
+
+  <section class="exercise-card" id="objetivo">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué entrenas aquí</h2>
+        <p class="exercise-subtitle">
+          Este reto te ayuda a tratar una frase como una fuente de datos que puedes descomponer y analizar.
+        </p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Texto</span>
+        <span class="badge blue">Descomposición</span>
+        <span class="badge green">Funciones</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Objetivo</h3>
+        <p>
+          Vas a pedir una frase al usuario y mostrar varias estadísticas sobre ella.
+        </p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué conceptos estás combinando</h3>
+        <ul>
+          <li><code>input</code></li>
+          <li>strings</li>
+          <li>listas de palabras</li>
+          <li>funciones</li>
+          <li>conteos</li>
+          <li>búsqueda de vocales</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Enunciado</h2>
+    <p>
+      Crea un programa que pida una frase al usuario y muestre:
+    </p>
+
+    <ul>
+      <li>cuántas palabras tiene</li>
+      <li>cuántas letras tiene sin contar espacios</li>
+      <li>cuántas vocales contiene</li>
+      <li>cuál es la palabra más larga</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Pistas opcionales</h2>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Pista 1</h3>
+        <p>Puedes usar <code>split()</code> para separar la frase en palabras.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Pista 2</h3>
+        <p>Para contar letras sin espacios, puedes recorrer la frase y saltarte el espacio.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Pista 3</h3>
+        <p>Las vocales pueden compararse con <code>"aeiouáéíóú"</code>.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Pista 4</h3>
+        <p>Para la palabra más larga, compara longitudes con <code>len()</code>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Versión ampliada</h2>
+    <ul>
+      <li>contar también consonantes</li>
+      <li>mostrar cuántas palabras empiezan por vocal</li>
+      <li>ignorar signos de puntuación simples</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Resolver en playground</h2>
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./index.html">Volver a retos</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python&exerciseId=py_reto_acumulativo_4_frases">Abrir reto en playground</a>
+    </div>
+  </section>
+
+</main>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const returnTo = params.get("returnTo");
+
+  const btnVolver = document.getElementById("btn-volver-ejercicios");
+
+  if (returnTo && btnVolver) {
+    btnVolver.href = returnTo;
+    btnVolver.style.display = "inline-flex";
+  }
+
+  if (returnTo) {
+    const playgroundLinks = document.querySelectorAll('a[href*="playground/index.html"]');
+
+    playgroundLinks.forEach((link) => {
+      const rawHref = link.getAttribute("href");
+      const url = new URL(rawHref, window.location.href);
+
+      if (!url.searchParams.get("returnTo")) {
+        url.searchParams.set("returnTo", returnTo);
+      }
+
+      link.setAttribute("href", url.pathname + url.search);
+    });
+  }
+</script>
+</body>
+</html>

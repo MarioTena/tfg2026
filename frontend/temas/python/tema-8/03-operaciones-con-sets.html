@@ -6,12 +6,144 @@
   <link rel="stylesheet" href="../../../styles.css" />
 </head>
 <body>
+
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 8 · Tuplas y sets</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 8 · Python</h1>
-  <p>8.3 · Operaciones con sets: unión, intersección y diferencia</p>
+  <span class="mission-tag">Misión 8.3</span>
+  <h1>Operaciones con sets</h1>
+  <p>Aprende a usar unión, intersección, diferencia y diferencia simétrica para comparar grupos de elementos.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 8 · Tuplas y sets</div>
+        <div class="mini-note">Nivel inicial · 12-15 min · Comparar conjuntos</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Unión</span>
+        <span class="badge green">Intersección</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 60%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué vas a entender hoy</h2>
+        <p class="exercise-subtitle">
+          Los sets no solo sirven para evitar duplicados: también permiten comparar grupos de elementos con operaciones muy expresivas.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Objetivo</span>
+        <span class="badge green">Comparar grupos</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué problema resuelve</h3>
+        <p>
+          Muchas veces necesitas saber qué elementos aparecen en ambos grupos, cuáles son exclusivos
+          o qué conjunto resulta de unirlos sin repetir.
+        </p>
+
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3>Usuarios comunes</h3>
+            <p>Saber quién está en dos grupos a la vez.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Elementos únicos</h3>
+            <p>Unir conjuntos sin duplicados.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Diferencias</h3>
+            <p>Detectar qué hay en un grupo pero no en otro.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Comparaciones reales</h3>
+            <p>Hobbies comunes, etiquetas compartidas o catálogos distintos.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          Idea clave: cada operación con sets responde a una pregunta distinta sobre dos grupos.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes vigilar</h3>
+        <ul>
+          <li>la unión junta todo sin repetir</li>
+          <li>la intersección se queda con lo común</li>
+          <li>la diferencia conserva lo exclusivo</li>
+          <li>la diferencia depende del orden: <code>a - b</code> no es lo mismo que <code>b - a</code></li>
+        </ul>
+
+        <div class="challenge">
+          Piensa así: antes de usar el símbolo, formula con palabras qué quieres saber sobre los dos grupos.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Dónde aparecen las operaciones con sets en problemas reales</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Coincidencias</h3>
+        <p>Ver qué elementos aparecen en dos grupos distintos a la vez.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Unión de grupos</h3>
+        <p>Juntar elementos sin duplicar los que ya estaban.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Diferencias</h3>
+        <p>Detectar qué hay en un grupo pero no en otro.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Comparación real</h3>
+        <p>Contrastar etiquetas, usuarios, intereses o catálogos de forma clara.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      Las operaciones con sets aparecen cuando la pregunta real trata sobre grupos: qué comparten, qué los diferencia o qué resulta al combinarlos.
+    </div>
+  </section>
+
   <section class="panel">
     <h2>Por qué son interesantes los sets</h2>
     <p>
@@ -64,108 +196,333 @@ print(a ^ b)</code></pre>
   </section>
 
   <section class="panel">
-    <h2>Casos reales</h2>
-    <ul>
-      <li>usuarios comunes entre dos grupos</li>
-      <li>productos únicos de dos catálogos</li>
-      <li>tags compartidos entre documentos</li>
-      <li>elementos repetidos vs exclusivos</li>
-    </ul>
+    <h2>Cómo leer cada operación mentalmente</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3><code>a | b</code></h3>
+        <p>“Todo lo que haya en cualquiera de los dos”.</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>a & b</code></h3>
+        <p>“Solo lo que comparten”.</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>a - b</code></h3>
+        <p>“Lo que está en A pero no en B”.</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>a ^ b</code></h3>
+        <p>“Lo que no está compartido entre ambos”.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>💭 Piensa antes de ejecutar</h2>
-    <pre><code>grupo_a = {"Ana", "Luis", "Marta"}
+    <h2>La diferencia no es simétrica</h2>
+
+    <pre><code>a = {1, 2, 3}
+b = {3, 4, 5}
+
+print(a - b)
+print(b - a)</code></pre>
+
+    <p>
+      Estas dos operaciones no responden a la misma pregunta.
+      Una mira qué sobra en <code>a</code> y la otra qué sobra en <code>b</code>.
+    </p>
+
+    <div class="callout">
+      Este es uno de los puntos más importantes del tema: la dirección de la diferencia sí importa.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Casos reales</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Usuarios comunes</h3>
+        <p>Encontrar coincidencias entre dos grupos.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Productos exclusivos</h3>
+        <p>Ver qué catálogo tiene elementos que otro no tiene.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Etiquetas compartidas</h3>
+        <p>Comparar tags entre documentos o contenidos.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Hobbies</h3>
+        <p>Detectar intereses comunes o no compartidos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Qué pregunta responde cada operación</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Unión</h3>
+        <p>¿Qué elementos hay en total entre ambos grupos?</p>
+      </div>
+      <div class="theory-card">
+        <h3>Intersección</h3>
+        <p>¿Qué elementos comparten?</p>
+      </div>
+      <div class="theory-card">
+        <h3>Diferencia</h3>
+        <p>¿Qué elementos son exclusivos de uno de ellos?</p>
+      </div>
+      <div class="theory-card">
+        <h3>Diferencia simétrica</h3>
+        <p>¿Qué elementos no están repetidos entre ambos?</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Operador o idea</h2>
+    <p>
+      Los símbolos <code>|</code>, <code>&</code>, <code>-</code> y <code>^</code> son útiles,
+      pero lo importante es entender la idea conceptual que hay detrás de cada operación.
+    </p>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Piensa antes de ejecutar</h2>
+        <p class="exercise-subtitle">Antes de ejecutar, piensa qué elementos aparecen en ambos grupos y cuáles no.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Código</h3>
+        <pre><code>grupo_a = {"Ana", "Luis", "Marta"}
 grupo_b = {"Luis", "Carlos", "Marta"}
 print(grupo_a & grupo_b)</code></pre>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Preguntas</h3>
+        <ul>
+          <li>¿qué nombres aparecen en los dos sets?</li>
+          <li>¿por qué <code>Ana</code> y <code>Carlos</code> no salen?</li>
+          <li>¿qué pregunta responde exactamente la intersección?</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
+        <p class="exercise-subtitle">Practica comparación de grupos pensando primero en la pregunta y luego en la operación.</p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">8.3</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Enunciado</h3>
+        <p>
+          Crea dos sets de alumnos. Después:
+        </p>
+        <ul>
+          <li>imprime los que están en ambos grupos</li>
+          <li>imprime los que solo están en el primero</li>
+          <li>imprime todos los alumnos distintos entre ambos grupos</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes practicar</h3>
+        <ul>
+          <li>intersección</li>
+          <li>diferencia con dirección correcta</li>
+          <li>unión</li>
+        </ul>
+
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-8%2F03-operaciones-con-sets.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Resumen mental del subtema</h2>
+        <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Ideas clave</h3>
+        <ul>
+          <li>la unión junta todo sin repetir</li>
+          <li>la intersección deja solo lo común</li>
+          <li>la diferencia depende del orden</li>
+          <li>la diferencia simétrica conserva lo no compartido</li>
+          <li>cada operación responde a una pregunta distinta</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Puente con el siguiente bloque</h3>
+        <div class="challenge">
+          Ya sabes operar con sets. Ahora toca tomar mejores decisiones sobre cuándo conviene usar lista, tupla o set.
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Mini-reto guiado</h2>
-    <p>Crea dos sets de hobbies y muestra cuáles coinciden.</p>
+    <h2>Siguiente paso</h2>
+    <p>
+      Ya sabes comparar grupos con sets. Lo siguiente es aprender a elegir mejor entre lista, tupla y set según el problema.
+    </p>
 
-    <pre><code>persona1 = {"leer", "cine", "viajar"}
-persona2 = {"cine", "deporte", "viajar"}
-print(persona1 & persona2)</code></pre>
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./02-que-son-los-sets.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
+    </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
   </section>
 
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./02-que-son-los-sets.html">Anterior</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
+  <script src="../topic-completion.js"></script>
+<script>
+  const subtopicCompletion = initTopicCompletion({
+    topicId: "8.3",
+    nextUrl: "./04-cuando-usar-cada-estructura.html"
+  });
 
-  <button class="btn btn-primary" onclick="completeTopic('8.3')">Marcar como completado</button>
-  <script>
-const TOPIC_ID = "8.3";
-const NEXT_URL = "./04-cuando-usar-cada-estructura.html";
+  const miniRetoCompletion = initTopicCompletion({
+    topicId: "8.3.mini"
+  });
 
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+  const completeBtn = document.getElementById("completeBtn");
+  const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+  const completionMessage = document.getElementById("completionMessage");
 
-const nextBtn = document.getElementById("nextBtn");
+  function showCompletionMessage(text) {
+    if (!completionMessage) return;
+    completionMessage.textContent = text;
+    completionMessage.style.display = "block";
+  }
 
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
+  function showCompletedState() {
+    if (!completeBtn) return;
 
-    if (!token || !nextBtn) return;
+    completeBtn.style.display = "none";
 
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
+    if (!document.getElementById("completedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "completedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Subtema completado ✅";
+      completeBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  function showMiniCompletedState() {
+    if (!miniCompleteBtn) return;
+
+    miniCompleteBtn.style.display = "none";
+
+    if (!document.getElementById("miniCompletedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "miniCompletedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Mini-reto completado ✅";
+      miniCompleteBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  async function syncCompletionUI() {
+    try {
+      const subtopicDone = await subtopicCompletion.isCompleted();
+      const miniDone = await miniRetoCompletion.isCompleted();
+
+      if (subtopicDone) {
+        showCompletedState();
+      }
+
+      if (miniDone) {
+        showMiniCompletedState();
+      }
+
+      if (subtopicDone && miniDone) {
+        showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+      } else if (subtopicDone) {
+        showCompletionMessage("Este subtema ya estaba marcado como completado.");
+      } else if (miniDone) {
+        showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+      }
+    } catch (error) {
+      console.error("Error comprobando estado del subtema:", error);
+    }
+  }
+
+  if (completeBtn) {
+    completeBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
+
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
+
+        await subtopicCompletion.completeTopic();
+
+        showCompletedState();
+        showCompletionMessage("Has marcado este subtema como completado.");
+      } catch (error) {
+        console.error("Error al completar el subtema:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso.");
       }
     });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
   }
-}
 
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
+  if (miniCompleteBtn) {
+    miniCompleteBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
 
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
-    }
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
 
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
+        await miniRetoCompletion.completeTopic();
+
+        showMiniCompletedState();
+        showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+      } catch (error) {
+        console.error("Error al completar el mini-reto:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+      }
     });
-
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
-    }
-
-    alert("Tema completado 🎉");
-
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
   }
-}
 
-unlockNextIfCompleted();
+  syncCompletionUI();
 </script>
 
 </main>

@@ -6,17 +6,149 @@
   <link rel="stylesheet" href="../../../styles.css" />
 </head>
 <body>
+
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 10 · Errores y excepciones</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 10 · Python</h1>
-  <p>10.2 · try y except: controlar errores sin romper el programa</p>
+  <span class="mission-tag">Misión 10.2</span>
+  <h1>try y except</h1>
+  <p>Aprende a controlar errores de forma explícita para que el programa no se rompa sin más.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 10 · Errores y excepciones</div>
+        <div class="mini-note">Nivel inicial · 12-15 min · Controlar fallos</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">try / except</span>
+        <span class="badge green">Control</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 40%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué vas a entender hoy</h2>
+        <p class="exercise-subtitle">
+          Con <code>try</code> y <code>except</code> puedes anticipar errores probables y definir cómo debe reaccionar el programa.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Objetivo</span>
+        <span class="badge green">Reacción controlada</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué problema resuelve</h3>
+        <p>
+          Hay situaciones donde algo puede salir mal aunque tu programa esté bien escrito:
+          conversiones inválidas, archivos ausentes o datos mal introducidos.
+        </p>
+
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3>Conversión</h3>
+            <p>Un texto puede no ser convertible a número.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Archivos</h3>
+            <p>El archivo que buscas puede no existir.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Entradas</h3>
+            <p>El usuario puede escribir algo incorrecto.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Continuidad</h3>
+            <p>El programa puede responder mejor en lugar de romperse.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          Idea clave: <code>try</code> y <code>except</code> no evitan todos los errores, pero te permiten controlarlos mejor.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes vigilar</h3>
+        <ul>
+          <li><code>try</code> contiene el código que podría fallar</li>
+          <li><code>except</code> define qué hacer si falla</li>
+          <li>capturar errores concretos suele ser mejor que usar un <code>except</code> genérico</li>
+          <li>no deberías usar <code>except</code> para esconder problemas sin entenderlos</li>
+        </ul>
+
+        <div class="challenge">
+          Piensa así: gestionar errores no es taparlos, sino responder a ellos con intención.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Dónde aparecen <code>try</code> y <code>except</code> en problemas reales</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Conversión de datos</h3>
+        <p>Cuando un texto puede no convertirse correctamente a número.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Archivos</h3>
+        <p>Cuando un archivo puede no existir o no abrirse como esperas.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Entradas del usuario</h3>
+        <p>Cuando el usuario puede escribir algo incorrecto o inesperado.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Continuidad</h3>
+        <p>Cuando quieres responder al fallo sin romper el programa de golpe.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <code>try</code> y <code>except</code> aparecen cuando sabes que una operación puede fallar y quieres controlar mejor la reacción del programa.
+    </div>
+  </section>
+
   <section class="panel">
     <h2>Idea principal</h2>
     <p>
       Con <code>try</code> y <code>except</code> puedes intentar ejecutar código que podría fallar,
-      y definir qué hacer si efectivamente aparece un error.
+      y definir qué hacer si efectivamente aparece una excepción.
     </p>
 
     <pre><code>try:
@@ -31,12 +163,25 @@ except:
 
   <section class="panel">
     <h2>Por qué es útil</h2>
-    <ul>
-      <li>evita que el programa termine de forma brusca</li>
-      <li>permite mostrar mensajes más claros al usuario</li>
-      <li>facilita validar entradas problemáticas</li>
-      <li>es esencial cuando trabajas con archivos o conversiones</li>
-    </ul>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Evita cortes bruscos</h3>
+        <p>El programa no tiene por qué terminar de golpe.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Mejora mensajes</h3>
+        <p>Puedes mostrar una explicación más clara.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Valida entradas</h3>
+        <p>Encaja muy bien con datos del usuario.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Uso real</h3>
+        <p>Es muy común con conversiones y archivos.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
@@ -94,130 +239,346 @@ except ValueError as error:
   </section>
 
   <section class="panel">
-    <h2>⚠️ Error típico: usar <code>except</code> para ocultarlo todo</h2>
+    <h2>Qué parte debe ir dentro del <code>try</code></h2>
     <p>
-      Un <code>except</code> demasiado genérico puede esconder errores que en realidad deberías corregir.
+      Dentro del <code>try</code> conviene poner solo el código que realmente podría lanzar la excepción que esperas.
     </p>
 
+    <div class="callout">
+      Meter demasiado código dentro del <code>try</code> puede hacer más difícil entender qué parte ha fallado.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Ejemplo: try demasiado grande</h2>
     <pre><code>try:
-    algo = 10 / 0
-except:
-    print("Error")</code></pre>
+    texto = input("Escribe un número: ")
+    numero = int(texto)
+    print(numero)
+    print(10 / numero)
+except ValueError:
+    print("No era un número válido")</code></pre>
 
     <p>
-      Esto funciona, pero a veces impide entender qué tipo de error ocurrió realmente.
+      Aquí se mezclan posibles fallos distintos. El código funciona, pero no es la forma más clara de razonar.
     </p>
   </section>
 
   <section class="panel">
-    <h2>💭 Piensa antes de ejecutar</h2>
-    <pre><code>texto = "abc"
+    <h2><code>except</code> genérico frente a específico</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Genérico</h3>
+        <p>Captura cualquier excepción, incluso algunas que no esperabas.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Específico</h3>
+        <p>Deja claro qué problema estás anticipando.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Genérico</h3>
+        <p>Puede ocultar fallos de diseño.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Específico</h3>
+        <p>Suele ser más claro, más útil y más fácil de mantener.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Capturar no sustituye a pensar la lógica</h2>
+    <p>
+      El manejo de excepciones ayuda a responder a fallos previsibles,
+      pero no sustituye a diseñar bien el programa ni a validar las reglas importantes cuando corresponda.
+    </p>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Piensa antes de ejecutar</h2>
+        <p class="exercise-subtitle">Intenta seguir el flujo del programa antes de verlo en pantalla.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Código</h3>
+        <pre><code>texto = "abc"
 
 try:
     numero = int(texto)
     print("Conversión correcta")
 except ValueError:
     print("Conversión incorrecta")</code></pre>
+      </div>
 
-    <ul>
-      <li>¿qué camino sigue el programa?</li>
-      <li>¿por qué entra en <code>except</code>?</li>
-    </ul>
+      <div class="exercise-block">
+        <h3>Preguntas</h3>
+        <ul>
+          <li>¿qué camino sigue el programa?</li>
+          <li>¿por qué entra en <code>except</code>?</li>
+          <li>¿qué error concreto está intentando capturarse?</li>
+        </ul>
+
+        <div class="mini-note">
+          Pista: el fallo ocurre al intentar convertir un texto no numérico.
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Mini-reto guiado</h2>
-    <p>
-      Pide al usuario un número y usa <code>try</code> / <code>except</code> para mostrar un mensaje si introduce texto inválido.
-    </p>
+    <h2>Errores frecuentes</h2>
 
-    <pre><code>texto = input("Escribe un número: ")
-
-try:
-    numero = int(texto)
-    print("Número válido:", numero)
-except ValueError:
-    print("Debes escribir un número entero")</code></pre>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Error 1</h3>
+        <p>Usar <code>except</code> genérico por costumbre.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 2</h3>
+        <p>No pensar qué error concreto puede producirse.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 3</h3>
+        <p>Capturar errores para ocultarlos sin entenderlos.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error 4</h3>
+        <p>Meter demasiado código dentro del <code>try</code>.</p>
+      </div>
+    </div>
   </section>
 
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./01-que-es-un-error.html">Anterior</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
+  <section class="panel">
+    <h2>Buenas prácticas</h2>
 
-  <button class="btn btn-primary" onclick="completeTopic('10.2')">Marcar como completado</button>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Captura errores concretos</h3>
+        <p>Tu código será más claro y preciso.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Usa mensajes útiles</h3>
+        <p>Explican mejor qué ha pasado.</p>
+      </div>
+      <div class="theory-card">
+        <h3>No tapes todo</h3>
+        <p>Una excepción no debería ocultar un fallo de diseño.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Anticipa</h3>
+        <p>Piensa qué entradas o situaciones pueden fallar.</p>
+      </div>
+    </div>
+  </section>
+
+    <section id="reto" class="exercise-card">
+      <div class="exercise-header">
+        <div>
+          <h2 class="exercise-title">Mini-reto del subtema</h2>
+          <p class="exercise-subtitle">Ahora toca anticipar una conversión inválida de forma más controlada.</p>
+        </div>
+
+        <div class="badges">
+          <span class="badge blue">Mini-reto</span>
+          <span class="badge green">10.2</span>
+        </div>
+      </div>
+
+      <div class="exercise-body">
+        <div class="exercise-block">
+          <h3>Enunciado</h3>
+          <p>
+            Escribe un ejemplo que pida un número al usuario y use <code>try</code> / <code>except ValueError</code>
+            para mostrar un mensaje útil si la conversión falla.
+          </p>
+        </div>
+
+        <div class="exercise-block">
+          <h3>Qué debes practicar</h3>
+          <ul>
+            <li>detectar una excepción previsible</li>
+            <li>capturar el tipo de error correcto</li>
+            <li>mostrar un mensaje claro sin romper el programa</li>
+          </ul>
+
+          <div class="buttons-row">
+            <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-10%2F02-try-except.html">Resolver en playground</a>
+            <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Resumen mental del subtema</h2>
+        <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Ideas clave</h3>
+        <ul>
+          <li><code>try</code> contiene la parte que podría fallar</li>
+          <li><code>except</code> define cómo reacciona el programa si ocurre un error</li>
+          <li>capturar errores concretos suele ser mejor que usar un <code>except</code> demasiado genérico</li>
+          <li>controlar un error no significa ignorarlo, sino responder de forma útil</li>
+          <li>las excepciones permiten que el programa falle de forma más comprensible y controlada</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Puente con el siguiente bloque</h3>
+        <div class="challenge">
+          Ya sabes capturar errores básicos con <code>try</code> y <code>except</code>. El siguiente paso es entender cómo usar <code>else</code> y <code>finally</code> para describir mejor qué pasa si todo sale bien y qué debe ocurrir siempre al final.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Siguiente paso</h2>
+    <p>
+      Ya sabes usar <code>try</code> y <code>except</code>. Lo siguiente es controlar mejor el flujo con <code>else</code>, <code>finally</code> y una visión más amplia de errores comunes.
+    </p>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./01-que-es-un-error.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
+    </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
+  </section>
+
+  <script src="../topic-completion.js"></script>
   <script>
-const TOPIC_ID = "10.2";
-const NEXT_URL = "./03-else-finally-y-errores-comunes.html";
+    const subtopicCompletion = initTopicCompletion({
+      topicId: "10.2",
+      nextUrl: "./03-else-finally-y-errores-comunes.html"
+    });
 
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+    const miniRetoCompletion = initTopicCompletion({
+      topicId: "10.2.mini"
+    });
 
-const nextBtn = document.getElementById("nextBtn");
+    const completeBtn = document.getElementById("completeBtn");
+    const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+    const completionMessage = document.getElementById("completionMessage");
 
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
+    function showCompletionMessage(text) {
+      if (!completionMessage) return;
+      completionMessage.textContent = text;
+      completionMessage.style.display = "block";
+    }
 
-    if (!token || !nextBtn) return;
+    function showCompletedState() {
+      if (!completeBtn) return;
 
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
+      completeBtn.style.display = "none";
+
+      if (!document.getElementById("completedBadge")) {
+        const badge = document.createElement("span");
+        badge.id = "completedBadge";
+        badge.className = "btn btn-secondary";
+        badge.textContent = "Subtema completado ✅";
+        completeBtn.parentNode.appendChild(badge);
       }
-    });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
-  }
-}
-
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
     }
 
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
-    });
+    function showMiniCompletedState() {
+      if (!miniCompleteBtn) return;
 
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
+      miniCompleteBtn.style.display = "none";
+
+      if (!document.getElementById("miniCompletedBadge")) {
+        const badge = document.createElement("span");
+        badge.id = "miniCompletedBadge";
+        badge.className = "btn btn-secondary";
+        badge.textContent = "Mini-reto completado ✅";
+        miniCompleteBtn.parentNode.appendChild(badge);
+      }
     }
 
-    alert("Tema completado 🎉");
+    async function syncCompletionUI() {
+      try {
+        const subtopicDone = await subtopicCompletion.isCompleted();
+        const miniDone = await miniRetoCompletion.isCompleted();
 
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
+        if (subtopicDone) {
+          showCompletedState();
+        }
+
+        if (miniDone) {
+          showMiniCompletedState();
+        }
+
+        if (subtopicDone && miniDone) {
+          showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+        } else if (subtopicDone) {
+          showCompletionMessage("Este subtema ya estaba marcado como completado.");
+        } else if (miniDone) {
+          showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+        }
+      } catch (error) {
+        console.error("Error comprobando estado del subtema:", error);
+      }
     }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
-  }
-}
 
-unlockNextIfCompleted();
-</script>
+    if (completeBtn) {
+      completeBtn.addEventListener("click", async (e) => {
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
+
+        try {
+          btn.disabled = true;
+          btn.textContent = "Guardando...";
+
+          await subtopicCompletion.completeTopic();
+
+          showCompletedState();
+          showCompletionMessage("Has marcado este subtema como completado.");
+        } catch (error) {
+          console.error("Error al completar el subtema:", error);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          showCompletionMessage(error.message || "No se pudo guardar el progreso.");
+        }
+      });
+    }
+
+    if (miniCompleteBtn) {
+      miniCompleteBtn.addEventListener("click", async (e) => {
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
+
+        try {
+          btn.disabled = true;
+          btn.textContent = "Guardando...";
+
+          await miniRetoCompletion.completeTopic();
+
+          showMiniCompletedState();
+          showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+        } catch (error) {
+          console.error("Error al completar el mini-reto:", error);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+        }
+      });
+    }
+
+    syncCompletionUI();
+  </script>
+
 </main>
 </body>
 </html>

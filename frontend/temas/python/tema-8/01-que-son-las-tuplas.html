@@ -6,47 +6,222 @@
   <link rel="stylesheet" href="../../../styles.css" />
 </head>
 <body>
+
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 8 · Tuplas y sets</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 8 · Python</h1>
-  <p>8.1 · Qué son las tuplas: secuencias ordenadas e inmutables</p>
+  <span class="mission-tag">Misión 8.1</span>
+  <h1>Qué son las tuplas</h1>
+  <p>Aprende qué son las tuplas y por qué se usan para representar datos ordenados que no deberían cambiar.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 8 · Tuplas y sets</div>
+        <div class="mini-note">Nivel inicial · 12-15 min · Secuencias estables</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Tuplas</span>
+        <span class="badge green">Inmutables</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 20%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
-  <section class="panel">
-    <h2>¿Qué es una tupla?</h2>
-    <p>
-      Una tupla es una estructura de datos ordenada, parecida a una lista, pero con una diferencia fundamental:
-      <strong>no se puede modificar después de crearla</strong>.
-    </p>
 
-    <pre><code>coordenada = (10, 20)
-colores = ("rojo", "verde", "azul")</code></pre>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué vas a entender hoy</h2>
+        <p class="exercise-subtitle">
+          Una tupla es una secuencia ordenada, parecida a una lista, pero pensada para datos que quieres mantener estables.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Objetivo</span>
+        <span class="badge green">Orden + estabilidad</span>
+      </div>
+    </div>
 
-    <div class="callout">
-      Una tupla es útil cuando quieres dejar claro que esos datos no deben cambiar.
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué problema resuelve</h3>
+        <p>
+          A veces necesitas guardar varios datos juntos manteniendo el orden, pero dejando claro que
+          ese grupo no debería modificarse durante la ejecución del programa.
+        </p>
+
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3>Coordenadas</h3>
+            <p>Guardar una posición fija como <code>(x, y)</code>.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Fechas simples</h3>
+            <p>Representar día, mes y año en un grupo fijo.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Datos fijos</h3>
+            <p>Comunicar que no quieres modificaciones accidentales.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Funciones</h3>
+            <p>Devolver varios resultados a la vez de forma ordenada.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          Idea clave: una tupla se parece a una lista, pero además comunica estabilidad e intención de no cambio.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes vigilar</h3>
+        <ul>
+          <li>usa paréntesis <code>()</code></li>
+          <li>mantiene el orden de los elementos</li>
+          <li>permite longitud, indexación y slicing</li>
+          <li>no se puede modificar directamente</li>
+        </ul>
+
+        <div class="challenge">
+          Piensa así: una lista suele representar datos flexibles; una tupla, un grupo ordenado que quieres mantener estable.
+        </div>
+      </div>
     </div>
   </section>
 
   <section class="panel">
-    <h2>Tupla vs lista</h2>
-    <ul>
-      <li>ambas son secuencias ordenadas</li>
-      <li>ambas permiten indexación y slicing</li>
-      <li>la lista es mutable</li>
-      <li>la tupla es inmutable</li>
-    </ul>
+    <h2>Dónde aparecen las tuplas en problemas reales</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Coordenadas</h3>
+        <p>Guardar una posición fija como latitud y longitud o eje X e Y.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Fechas simples</h3>
+        <p>Representar día, mes y año como un grupo ordenado y estable.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Resultados múltiples</h3>
+        <p>Devolver varios valores juntos desde una función.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Datos estables</h3>
+        <p>Dejar claro que un grupo de datos no debería modificarse durante el programa.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      Las tuplas aparecen cuando importa el orden, pero también quieres transmitir estabilidad y evitar cambios accidentales.
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Crear tuplas</h2>
-    <pre><code>numeros = (1, 2, 3)
-datos = ("Ana", 30, True)</code></pre>
-
+    <h2>Qué es una tupla</h2>
     <p>
-      También existe la tupla de un solo elemento, pero necesita una coma.
+      Una tupla es una estructura de datos ordenada, parecida a una lista, pero con una diferencia fundamental:
+      <strong>no se modifica directamente después de crearla</strong>.
     </p>
 
+    <pre><code>coordenada = (10, 20)
+colores = ("rojo", "verde", "azul")</code></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Tupla frente a lista</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Ambas</h3>
+        <p>Son secuencias ordenadas.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Ambas</h3>
+        <p>Permiten indexación, longitud y slicing.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Lista</h3>
+        <p>Es mutable y se usa bien cuando el contenido cambia.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Tupla</h3>
+        <p>Es inmutable y expresa mejor datos fijos o estables.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Por qué importa que sea inmutable</h2>
+    <p>
+      La tupla no solo “no cambia”: también comunica una intención de diseño.
+      Si usas una tupla, le estás diciendo a quien lea tu código que ese grupo de datos no debería modificarse.
+    </p>
+
+    <div class="callout">
+      A veces una lista podría funcionar técnicamente, pero una tupla representa mejor el problema.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Casos simples importantes</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Tupla vacía</h3>
+        <pre><code>vacia = ()</code></pre>
+      </div>
+      <div class="theory-card">
+        <h3>Un solo elemento</h3>
+        <pre><code>una = (7,)</code></pre>
+      </div>
+      <div class="theory-card">
+        <h3>Tipos mezclados</h3>
+        <pre><code>datos = ("Ana", 30, True)</code></pre>
+      </div>
+      <div class="theory-card">
+        <h3>Idea útil</h3>
+        <p>Una tupla puede ser corta, larga o incluso estar vacía.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>La tupla de un solo elemento</h2>
     <pre><code>una_tupla = (5,)</code></pre>
+
+    <p>
+      La coma es obligatoria. Sin ella, Python no lo interpreta como tupla de un elemento.
+    </p>
+
+    <pre><code>no_es_tupla = (5)</code></pre>
   </section>
 
   <section class="panel">
@@ -54,10 +229,55 @@ datos = ("Ana", 30, True)</code></pre>
     <pre><code>colores = ("rojo", "verde", "azul")
 print(colores[0])
 print(colores[-1])</code></pre>
+
+    <p>
+      Igual que en listas y strings, puedes acceder por índice positivo o negativo.
+    </p>
   </section>
 
   <section class="panel">
-    <h2>⚠️ Error típico: intentar modificar una tupla</h2>
+    <h2>Slicing en tuplas</h2>
+    <pre><code>numeros = (10, 20, 30, 40)
+print(numeros[1:3])</code></pre>
+
+    <p>
+      Una tupla sigue siendo una secuencia, así que también puedes cortar fragmentos.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Casos reales donde una tupla encaja bien</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Coordenadas</h3>
+        <p><code>(x, y)</code> o <code>(latitud, longitud)</code>.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Fechas simples</h3>
+        <p>Un grupo ordenado como <code>(dia, mes, anio)</code>.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Pares fijos</h3>
+        <p>Datos que tienen sentido como conjunto estable.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Retornos múltiples</h3>
+        <p>Varias piezas de información devueltas por una función.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Cuándo una lista funcionaría pero una tupla representa mejor</h2>
+    <p>
+      Podrías guardar unas coordenadas en una lista, pero si el valor representa una posición fija,
+      la tupla comunica mejor que ese grupo no está pensado para ir cambiando elemento a elemento.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Error típico: intentar modificar una tupla</h2>
     <pre><code>colores = ("rojo", "verde", "azul")
 colores[1] = "amarillo"</code></pre>
 
@@ -67,109 +287,233 @@ colores[1] = "amarillo"</code></pre>
   </section>
 
   <section class="panel">
-    <h2>Cuándo usar tuplas</h2>
-    <ul>
-      <li>coordenadas</li>
-      <li>fechas simples</li>
-      <li>datos fijos que no deben cambiar</li>
-      <li>devolver varios valores desde una función</li>
-    </ul>
+    <h2>Cómo pensar una tupla antes de usarla</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Paso 1</h3>
+        <p>Pregúntate si el orden importa.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 2</h3>
+        <p>Pregúntate si esos datos deberían permanecer estables.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 3</h3>
+        <p>Si el grupo es fijo y ordenado, una tupla suele encajar mejor.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Paso 4</h3>
+        <p>Si necesitas cambiar, añadir o eliminar con frecuencia, probablemente quieras una lista.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
+        <p class="exercise-subtitle">Empieza a ver la tupla como secuencia ordenada y estable.</p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">8.1</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Enunciado</h3>
+        <p>
+          Crea una tupla llamada <code>coordenada</code> con dos números.
+          Después:
+        </p>
+        <ul>
+          <li>imprime el primer valor</li>
+          <li>imprime el segundo valor</li>
+          <li>imprime su longitud con <code>len()</code></li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes practicar</h3>
+        <ul>
+          <li>crear una tupla correctamente</li>
+          <li>acceder por índice</li>
+          <li>recordar que una tupla sigue siendo una secuencia</li>
+        </ul>
+
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-8%2F01-que-son-las-tuplas.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Resumen mental del subtema</h2>
+        <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Ideas clave</h3>
+        <ul>
+          <li>una tupla es una secuencia ordenada</li>
+          <li>se parece a una lista, pero expresa estabilidad</li>
+          <li>permite indexación, longitud y slicing</li>
+          <li>no se modifica directamente</li>
+          <li>la tupla de un elemento necesita coma</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Puente con el siguiente bloque</h3>
+        <div class="challenge">
+          Ya entiendes qué es una tupla. Ahora toca una estructura muy distinta: los sets, donde lo importante no es el orden, sino la unicidad.
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>💭 Piensa antes de ejecutar</h2>
-    <pre><code>punto = (3, 7)
-print(punto[0])
-print(len(punto))</code></pre>
+    <h2>Siguiente paso</h2>
+    <p>
+      Ya entiendes las tuplas. Lo siguiente es aprender qué es un set y por qué no debes pensarlo como una secuencia con posiciones.
+    </p>
+
+    <div class="buttons-row">
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
+    </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
   </section>
 
-  <section class="panel">
-    <h2>Mini-reto guiado</h2>
-    <p>Crea una tupla con día, mes y año y muestra cada valor.</p>
+<script src="../topic-completion.js"></script>
+<script>
+  const subtopicCompletion = initTopicCompletion({
+    topicId: "8.1",
+    nextUrl: "./02-que-son-los-sets.html"
+  });
 
-    <pre><code>fecha = (14, 3, 2026)
-print(fecha[0])
-print(fecha[1])
-print(fecha[2])</code></pre>
-  </section>
+  const miniRetoCompletion = initTopicCompletion({
+    topicId: "8.1.mini"
+  });
 
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./index.html">Índice tema</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
+  const completeBtn = document.getElementById("completeBtn");
+  const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+  const completionMessage = document.getElementById("completionMessage");
 
-  <button class="btn btn-primary" onclick="completeTopic('8.1')">Marcar como completado</button>
-  <script>
-const TOPIC_ID = "8.1";
-const NEXT_URL = "./02-que-son-los-sets.html";
+  function showCompletionMessage(text) {
+    if (!completionMessage) return;
+    completionMessage.textContent = text;
+    completionMessage.style.display = "block";
+  }
 
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+  function showCompletedState() {
+    if (!completeBtn) return;
 
-const nextBtn = document.getElementById("nextBtn");
+    completeBtn.style.display = "none";
 
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
+    if (!document.getElementById("completedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "completedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Subtema completado ✅";
+      completeBtn.parentNode.appendChild(badge);
+    }
+  }
 
-    if (!token || !nextBtn) return;
+  function showMiniCompletedState() {
+    if (!miniCompleteBtn) return;
 
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
+    miniCompleteBtn.style.display = "none";
+
+    if (!document.getElementById("miniCompletedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "miniCompletedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Mini-reto completado ✅";
+      miniCompleteBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  async function syncCompletionUI() {
+    try {
+      const subtopicDone = await subtopicCompletion.isCompleted();
+      const miniDone = await miniRetoCompletion.isCompleted();
+
+      if (subtopicDone) {
+        showCompletedState();
+      }
+
+      if (miniDone) {
+        showMiniCompletedState();
+      }
+
+      if (subtopicDone && miniDone) {
+        showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+      } else if (subtopicDone) {
+        showCompletionMessage("Este subtema ya estaba marcado como completado.");
+      } else if (miniDone) {
+        showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+      }
+    } catch (error) {
+      console.error("Error comprobando estado del subtema:", error);
+    }
+  }
+
+  if (completeBtn) {
+    completeBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
+
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
+
+        await subtopicCompletion.completeTopic();
+
+        showCompletedState();
+        showCompletionMessage("Has marcado este subtema como completado.");
+      } catch (error) {
+        console.error("Error al completar el subtema:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso.");
       }
     });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
   }
-}
 
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
+  if (miniCompleteBtn) {
+    miniCompleteBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
 
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
-    }
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
 
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
+        await miniRetoCompletion.completeTopic();
+
+        showMiniCompletedState();
+        showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+      } catch (error) {
+        console.error("Error al completar el mini-reto:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+      }
     });
-
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
-    }
-
-    alert("Tema completado 🎉");
-
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
   }
-}
 
-unlockNextIfCompleted();
+  syncCompletionUI();
 </script>
 
 </main>

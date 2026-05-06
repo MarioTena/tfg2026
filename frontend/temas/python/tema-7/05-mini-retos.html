@@ -2,172 +2,353 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Tema 7.5 – Mini retos</title>
+  <title>Tema 7.5 – Razonar y practicar strings</title>
   <link rel="stylesheet" href="../../../styles.css" />
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 7 · Strings</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 7 · Python</h1>
-  <p>7.5 · Mini retos: integrar strings, bucles y métodos</p>
+  <span class="mission-tag">Misión 7.5</span>
+  <h1>Razonar y practicar strings</h1>
+  <p>Aprende a leer operaciones sobre texto, prever resultados y decidir si conviene usar índices, slicing, métodos o bucles.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 7 · Strings en Python</div>
+        <div class="mini-note">Práctica guiada · 8 retos de razonamiento · dificultad inicial-media</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Lectura</span>
+        <span class="badge blue">Depuración</span>
+        <span class="badge green">Texto</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 82%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#retos">Empezar práctica guiada</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
 
-  <section class="panel">
-    <h2>Objetivo de esta parte</h2>
-    <p>
-      Aquí vas a combinar indexación, slicing, métodos y recorridos para resolver problemas pequeños pero útiles.
-    </p>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué entrenas aquí</h2>
+        <p class="exercise-subtitle">
+          En este bloque no solo escribes texto. Aprendes a decidir si estás trabajando con un carácter, una subcadena, una palabra o una cadena completa.
+        </p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Lectura</span>
+        <span class="badge blue">Criterio</span>
+        <span class="badge green">Práctica guiada</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Objetivo</h3>
+        <p>
+          Estos retos te ayudan a dejar de aplicar operaciones “por intuición” y empezar a elegir mejor entre índice, slicing, método o recorrido.
+        </p>
+
+        <div class="callout">
+          Idea clave: en strings, una misma tarea puede tener varias soluciones, pero una suele ser más clara o más útil que otra.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Cómo usar esta pantalla</h3>
+        <ul>
+          <li>lee el código antes de ejecutarlo</li>
+          <li>pregúntate qué tipo de resultado produce</li>
+          <li>identifica si el string original cambia o no</li>
+          <li>decide si el problema pide carácter, fragmento, palabra o texto entero</li>
+        </ul>
+
+        <div class="challenge">
+          Si no puedes explicar qué devuelve una operación de texto, todavía no la controlas del todo.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="retos" class="panel">
+    <h2>Reto 1 · Índice o slicing</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Código</h3>
+        <pre><code>texto = "Python"
+print(texto[2])
+print(texto[2:3])</code></pre>
+      </div>
+
+      <div class="theory-card">
+        <h3>Qué debes pensar</h3>
+        <p>¿Devuelven exactamente lo mismo? ¿Qué diferencia conceptual hay entre pedir una posición y pedir un fragmento?</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Mini-reto 1 · Primera y última letra</h2>
-    <pre><code>palabra = "programa"
-print(palabra[0])
-print(palabra[-1])</code></pre>
+    <h2>Reto 2 · Límite del slicing</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Código</h3>
+        <pre><code>texto = "programa"
+print(texto[:4])</code></pre>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pregunta</h3>
+        <p>¿Por qué se extraen cuatro caracteres y no cinco? ¿Qué significa realmente ese 4 en el slicing?</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      En slicing, el final marca hasta dónde llega el corte sin incluir esa posición.
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Mini-reto 2 · Texto invertido</h2>
-    <pre><code>texto = "python"
-print(texto[::-1])</code></pre>
+    <h2>Reto 3 · Inmutabilidad real</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Código</h3>
+        <pre><code>texto = "HOLA"
+texto.lower()
+print(texto)</code></pre>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pregunta</h3>
+        <p>¿Por qué sigue imprimiendo <code>HOLA</code>? ¿Qué olvidó hacer el programador?</p>
+      </div>
+    </div>
+
+    <div class="challenge">
+      Este es uno de los errores más importantes del tema: pensar que un método cambia el string original sin guardar nada.
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Mini-reto 3 · Normalizar nombre</h2>
-    <pre><code>nombre = "   ANA   "
-nombre = nombre.strip().lower()
-print(nombre)</code></pre>
+    <h2>Reto 4 · <code>in</code> o <code>find()</code></h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Situación</h3>
+        <p>Quieres saber si el texto contiene <code>".csv"</code>.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pregunta</h3>
+        <p>¿Te basta con <code>in</code> o te conviene <code>find()</code>? ¿Qué harías si también necesitaras saber la posición?</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Mini-reto 4 · Contar vocales</h2>
-    <pre><code>texto = "Programacion"
-contador = 0
+    <h2>Reto 5 · split() y tipo de resultado</h2>
 
-for letra in texto.lower():
-    if letra in "aeiou":
-        contador = contador + 1
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Código</h3>
+        <pre><code>frase = "Python es util"
+resultado = frase.split()
+print(resultado)</code></pre>
+      </div>
 
-print(contador)</code></pre>
+      <div class="theory-card">
+        <h3>Qué entrenas</h3>
+        <p>¿El resultado sigue siendo un string o ahora es otra estructura? ¿Qué unidades contiene?</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Mini-reto 5 · Separar palabras</h2>
-    <pre><code>frase = "Python es muy util"
-palabras = frase.split()
-print(palabras)</code></pre>
+    <h2>Reto 6 · join() frente a split()</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Situación</h3>
+        <p>Tienes una lista de palabras y quieres reconstruir una frase.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pregunta</h3>
+        <p>¿Qué método encaja mejor aquí? Explica por qué <code>split()</code> no sería la herramienta adecuada en ese caso.</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Mini-reto 6 · Reemplazar texto</h2>
-    <pre><code>frase = "Me gusta Java"
-frase = frase.replace("Java", "Python")
-print(frase)</code></pre>
+    <h2>Reto 7 · Método o bucle</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Situación</h3>
+        <p>Quieres contar cuántas vocales hay en un texto.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pregunta</h3>
+        <p>¿Te conviene más un método simple o un bucle? ¿Por qué aquí un recorrido suele tener más sentido?</p>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Cómo pensar este tipo de ejercicios</h2>
-    <ol>
-      <li>decide si trabajas a nivel de carácter o de palabra</li>
-      <li>si el texto es irregular, normalízalo primero</li>
-      <li>si necesitas contar, crea un acumulador</li>
-      <li>si necesitas extraer una parte, piensa en slicing</li>
-      <li>si necesitas transformar, revisa si ya existe un método adecuado</li>
-    </ol>
+    <h2>Reto 8 · Nivel de análisis</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Situación</h3>
+        <p>Quieres contar cuántas palabras hay en una frase.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Prueba obligatoria</h3>
+        <p>¿Trabajarías a nivel de carácter o de palabra? ¿Qué operación harías antes para preparar ese análisis?</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Método rápido para comprobar una operación sobre strings</h2>
+        <p class="exercise-subtitle">Qué hacer antes de dar un ejercicio por bien resuelto.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Paso a paso</h3>
+        <ol>
+          <li>decide si quieres un carácter, un fragmento, una palabra o toda la cadena</li>
+          <li>piensa si el string debe transformarse antes</li>
+          <li>comprueba si la operación devuelve string, lista, booleano o entero</li>
+          <li>pregúntate si necesitas guardar el resultado</li>
+          <li>elige entre método o bucle según la tarea</li>
+        </ol>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Regla útil</h3>
+        <div class="challenge">
+          Si no sabes qué tipo de resultado produce una operación, todavía no la dominas del todo.
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Pregunta de entrevista</h2>
-    <p>
-      ¿Qué diferencia hay entre recorrer un string carácter a carácter y usar <code>split()</code>?
-    </p>
+    <h2>Siguiente paso</h2>
+    <p>Ya has trabajado la lectura, la depuración y el razonamiento sobre strings. Ahora toca resolver ejercicios por tu cuenta.</p>
 
-    <p>
-      Respuesta sólida: recorrer un string trabaja a nivel de caracteres; <code>split()</code> lo divide en partes, normalmente palabras, y permite analizarlo a otro nivel.
-    </p>
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./04-recorrer-y-analizar-texto.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Ejercicios Tema 7</a>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
+    </div>
   </section>
 
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./04-recorrer-y-analizar-texto.html">Anterior</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Ejercicios Tema 7</a>
-  </div>
-
-  <button class="btn btn-primary" onclick="completeTopic('7.5')">Marcar como completado</button>
-
+  <script src="../topic-completion.js"></script>
   <script>
-const TOPIC_ID = "7.5";
-const NEXT_URL = "./py-tema7-ejercicios.html";
+    const missionCompletion = initTopicCompletion({
+      topicId: "7.5",
+      nextUrl: "./py-tema7-ejercicios.html"
+    });
 
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+    const completeBtn = document.getElementById("completeBtn");
+    const completionMessage = document.getElementById("completionMessage");
 
-const nextBtn = document.getElementById("nextBtn");
+    function showCompletionMessage(text) {
+      if (!completionMessage) return;
+      completionMessage.textContent = text;
+      completionMessage.style.display = "block";
+    }
 
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
+    function showMissionCompletedState() {
+      if (!completeBtn) return;
 
-    if (!token || !nextBtn) return;
+      completeBtn.style.display = "none";
 
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
+      if (!document.getElementById("completedBadge")) {
+        const badge = document.createElement("span");
+        badge.id = "completedBadge";
+        badge.className = "btn btn-secondary";
+        badge.textContent = "Misión completada ✅";
+        completeBtn.parentNode.appendChild(badge);
       }
-    });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
-  }
-}
-
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
     }
 
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
-    });
+    async function syncCompletionUI() {
+      try {
+        const completed = await missionCompletion.isCompleted();
 
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
+        if (completed) {
+          showMissionCompletedState();
+          showCompletionMessage("Esta misión ya estaba marcada como completada.");
+        }
+      } catch (error) {
+        console.error("Error comprobando estado de la misión:", error);
+      }
     }
 
-    alert("Tema completado 🎉");
+    if (completeBtn) {
+      completeBtn.addEventListener("click", async (e) => {
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
 
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
+        try {
+          btn.disabled = true;
+          btn.textContent = "Guardando...";
+
+          await missionCompletion.completeTopic();
+
+          showMissionCompletedState();
+          showCompletionMessage("Has marcado esta misión como completada.");
+        } catch (error) {
+          console.error("Error al completar la misión:", error);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          showCompletionMessage(error.message || "No se pudo guardar el progreso.");
+        }
+      });
     }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
-  }
-}
 
-unlockNextIfCompleted();
-</script>
+    syncCompletionUI();
+  </script>
+
 </main>
 </body>
 </html>

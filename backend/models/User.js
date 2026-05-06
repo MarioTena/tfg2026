@@ -1,22 +1,53 @@
-// ============================================================================
-// Modelo de usuario para login (registro + autenticación con JWT)
-// ============================================================================
-
 const mongoose = require("mongoose");
 
 const UserSchema = new mongoose.Schema(
   {
-    // Nombre visible del usuario/alumno
-    name: { type: String, required: true, trim: true },
+    name: {
+      type: String,
+      required: true,
+      trim: true,
+    },
 
-    // Email único para login
-    email: { type: String, required: true, unique: true, lowercase: true, trim: true },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      lowercase: true,
+      trim: true,
+    },
 
-    // Contraseña cifrada (NUNCA guardamos la contraseña en claro)
-    passwordHash: { type: String, required: true },
+    passwordHash: {
+      type: String,
+      required: true,
+    },
 
-    // Rol simple (por si luego quieres admin/profesor/alumno)
-    role: { type: String, enum: ["student", "admin"], default: "student" },
+    role: {
+      type: String,
+      enum: ["student", "admin"],
+      default: "student",
+    },
+
+    theme: {
+      type: String,
+      enum: ["dark", "light"],
+      default: "dark",
+    },
+
+    onboardingCompleted: {
+      type: Boolean,
+      default: false,
+    },
+
+    resetPasswordToken: {
+      type: String,
+      default: null,
+      index: true,
+    },
+
+    resetPasswordExpires: {
+      type: Date,
+      default: null,
+    },
   },
   { timestamps: true }
 );
