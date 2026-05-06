@@ -1,3 +1,5 @@
+window.EXERCISE_CATALOG = window.EXERCISE_CATALOG || {};
+
 window.EXERCISE_CATALOG["py_tema10_ej1"] = {
   id: "py_tema10_ej1",
   language: "python",

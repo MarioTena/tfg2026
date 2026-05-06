@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Configuración</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-title">
+        <h1>Configuración</h1>
+        <p>Cuenta, apariencia y preferencias personales.</p>
+      </div>
+
+      <div class="topbar-actions">
+        <a class="btn btn-secondary btn-sm" href="menu.html">Menú</a>
+        <a class="btn btn-secondary btn-sm" href="progreso.html">Mi progreso</a>
+        <a class="btn btn-secondary btn-sm" href="temas/python/index.html">Ruta Python</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="header">
+    <span class="mission-tag">Panel personal</span>
+    <h1>Tu configuración</h1>
+    <p id="config-user-copy" class="mini-note">Cargando tu perfil...</p>
+    <p>Ajusta tu cuenta y la forma en la que visualizas la plataforma.</p>
+  </header>
+
+  <main class="main-container single-column">
+
+    <section class="exercise-card">
+      <div class="exercise-header">
+        <div>
+          <h2 class="exercise-title">Cuenta</h2>
+          <p class="exercise-subtitle">Actualiza tu nombre visible y revisa tu email.</p>
+        </div>
+        <div class="badges">
+          <span class="badge blue">Perfil</span>
+          <span class="badge green">Cuenta</span>
+        </div>
+      </div>
+
+      <div class="exercise-body">
+        <div class="exercise-block">
+          <div class="field">
+            <label for="config-name">Nombre visible</label>
+            <input id="config-name" type="text" placeholder="Escribe tu nombre visible" />
+            <p class="mini-note">Este nombre se usará para personalizar tu experiencia dentro de la plataforma.</p>
+          </div>
+
+          <div class="field">
+            <label>Email</label>
+            <div class="input-like" id="config-email">Cargando...</div>
+            <p class="mini-note">Tu email se usa para iniciar sesión y recuperar tu cuenta.</p>
+          </div>
+
+          <div class="buttons-row">
+            <button id="save-name-btn" class="btn btn-primary" type="button">Guardar nombre</button>
+            <a class="btn btn-secondary" href="forgot-password.html">Cambiar contraseña</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="exercise-card settings-card">
+      <div class="exercise-header">
+        <div>
+          <h2 class="exercise-title">Apariencia</h2>
+          <p class="exercise-subtitle">Personaliza cómo se ve la plataforma.</p>
+        </div>
+
+        <div class="badges">
+          <span class="badge blue">Tema</span>
+          <span class="badge green">Preferencias</span>
+        </div>
+      </div>
+
+      <div class="settings-list">
+        <div class="setting-row">
+          <div class="setting-copy">
+            <h3>Modo claro</h3>
+            <p>
+              Activa una visualización más luminosa para trabajar en entornos con mucha luz.
+            </p>
+          </div>
+
+          <label class="theme-switch" for="theme-toggle">
+            <input type="checkbox" id="theme-toggle" />
+            <span class="theme-switch-track">
+              <span class="theme-switch-thumb"></span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Accesos rápidos</h2>
+      <div class="topic-roadmap quick-links-grid">
+        <article class="roadmap-card available" onclick="window.location.href='progreso.html'">
+          <div class="roadmap-top">
+            <span class="mission-tag">Progreso</span>
+            <span class="roadmap-state available">Abrir</span>
+          </div>
+          <h3>Ir a mi progreso</h3>
+          <p class="roadmap-cta">Consultar tu avance y tu siguiente paso recomendado.</p>
+        </article>
+
+        <article class="roadmap-card available" onclick="window.location.href='playground/index.html?lang=python'">
+          <div class="roadmap-top">
+            <span class="mission-tag">Práctica</span>
+            <span class="roadmap-state available">Abrir</span>
+          </div>
+          <h3>Abrir playground</h3>
+          <p class="roadmap-cta">Seguir practicando código, probar ideas y revisar resultados.</p>
+        </article>
+
+        <article class="roadmap-card available" id="logout-card">
+          <div class="roadmap-top">
+            <span class="mission-tag">Sesión</span>
+            <span class="roadmap-state available">Salir</span>
+          </div>
+          <h3>Cerrar sesión</h3>
+          <p class="roadmap-cta">Salir de la plataforma de forma segura.</p>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="theme-init.js"></script>
+  <script src="configuracion.js"></script>
+</body>
+</html>

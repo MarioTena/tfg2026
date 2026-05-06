@@ -1,5 +1,24 @@
 const PROGRESS_API_URL = "http://localhost:3000/api/progress/python";
 const PROGRESS_COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+const LAST_THEME_STORAGE_KEY = "lastPythonTheme";
+
+function extractThemeId(topicId) {
+  if (!topicId) return null;
+
+  const normalized = String(topicId).trim();
+
+  if (!normalized) return null;
+
+  const match = normalized.match(/^(\d+)/);
+  return match ? match[1] : null;
+}
+
+function saveLastThemeFromTopic(topicId) {
+  const themeId = extractThemeId(topicId);
+  if (!themeId) return;
+
+  localStorage.setItem(LAST_THEME_STORAGE_KEY, themeId);
+}
 
 function initTopicCompletion({
   topicId,
@@ -72,6 +91,8 @@ function initTopicCompletion({
     if (!res.ok) {
       throw new Error(`Error HTTP: ${res.status}`);
     }
+
+    saveLastThemeFromTopic(topicId);
 
     if (nextBtn && nextUrl) {
       nextBtn.classList.remove("btn-disabled");

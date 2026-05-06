@@ -18,6 +18,7 @@
       <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
       <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
       <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+      <a class="btn btn-secondary btn-sm" href="../../../configuracion.html">Configuración</a>
     </div>
   </div>
 </nav>
@@ -336,19 +337,25 @@
       </div>
     </div>
 
-<div class="buttons-row">
-  <a class="btn btn-secondary" href="./04-mini-retos.html">Volver a práctica guiada</a>
-  <a class="btn btn-secondary" href="./index.html">Volver al índice del tema</a>
-  <a class="btn btn-secondary" href="../index.html">Ir a ruta Python</a>
-  <a class="btn btn-secondary" href="../tema-3/index.html">Tema 3</a>
-  <button class="btn btn-primary" onclick="completeTopic('2.ejercicios')">
-    Marcar ejercicios como completados
-  </button>
-</div>
-  </section>
+    <div class="callout">
+      Cuando marques los ejercicios como completados, este tema contará como cerrado dentro de tu ruta de Python.
+    </div>
 
+    <div class="buttons-row">
+      <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
+      <a class="btn btn-secondary" href="./04-mini-retos.html">Volver a práctica guiada</a>
+      <a class="btn btn-secondary" href="./index.html">Volver al índice del tema</a>
+      <a class="btn btn-secondary" href="../index.html">Ir a ruta Python</a>
+      <a class="btn btn-secondary" href="../tema-3/index.html">Tema 3</a>
+      <button id="completeExercisesBtn" class="btn btn-primary">
+        Marcar ejercicios como completados
+      </button>
+      <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
+    </div>
+  </section>
 </main>
 
+<script src="../../../theme-init.js"></script>
 <script src="../topic-completion.js"></script>
 <script>
   const exercisesCompletion = initTopicCompletion({
@@ -356,6 +363,13 @@
   });
 
   const completeBtn = document.getElementById("completeExercisesBtn");
+  const completionMessage = document.getElementById("completionMessage");
+
+  function showCompletionMessage(text) {
+    if (!completionMessage) return;
+    completionMessage.textContent = text;
+    completionMessage.style.display = "block";
+  }
 
   function showExercisesCompletedState() {
     if (!completeBtn) return;
@@ -377,6 +391,7 @@
 
       if (completed) {
         showExercisesCompletedState();
+        showCompletionMessage("Estos ejercicios ya estaban marcados como completados.");
       }
     } catch (error) {
       console.error("Error comprobando estado de ejercicios:", error);
@@ -395,13 +410,12 @@
         await exercisesCompletion.completeTopic();
 
         showExercisesCompletedState();
-        alert("Ejercicios completados 🎉");
-        window.location.href = "./index.html";
+        showCompletionMessage("Has marcado los ejercicios como completados.");
       } catch (error) {
         console.error("Error marcando ejercicios como completados:", error);
         btn.disabled = false;
         btn.textContent = originalText;
-        alert(error.message || "No se pudo guardar el progreso");
+        showCompletionMessage(error.message || "No se pudo guardar el progreso.");
       }
     });
   }

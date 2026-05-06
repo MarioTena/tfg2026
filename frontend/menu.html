@@ -11,7 +11,7 @@
     <div class="topbar-inner">
       <div class="topbar-title">
         <h1>Aprender a programar</h1>
-        <p>Navega entre rutas, progreso y práctica.</p>
+        <p>Navega por tu ruta, tu progreso y tus espacios de práctica.</p>
       </div>
 
       <div class="topbar-actions">
@@ -19,6 +19,7 @@
         <a class="btn btn-secondary btn-sm" href="progreso.html">Mi progreso</a>
         <a class="btn btn-secondary btn-sm" href="temas/python/index.html">Ruta Python</a>
         <a class="btn btn-secondary btn-sm" href="playground/index.html?lang=python">Playground</a>
+        <a class="btn btn-secondary btn-sm" href="configuracion.html">Configuración</a>
       </div>
     </div>
   </div>
@@ -26,8 +27,9 @@
   <header class="header">
     <span class="mission-tag">Plataforma de aprendizaje</span>
     <h1>Continúa tu ruta de programación</h1>
+    <p id="welcome-user-copy" class="mini-note" style="margin-top: 10px;">Cargando tu espacio personal...</p>
     <p>
-      Empieza por la base común, continúa con Python o vuelve directamente al siguiente bloque recomendado.
+      Accede al tema que tienes en curso, continúa tu ruta de Python o practica directamente en el playground.
     </p>
 
     <div class="progress-hero">
@@ -38,7 +40,7 @@
         </div>
 
         <div class="badges">
-          <span class="badge blue">Desde cero</span>
+          <span class="badge blue">Python</span>
           <span class="badge green">Aprendizaje guiado</span>
         </div>
       </div>
@@ -49,50 +51,14 @@
     </div>
 
     <div class="buttons-row">
-      <a id="continue-learning-btn" class="btn btn-primary" href="temas/tema-0/index.html">Continuar donde lo dejaste</a>
-      <a class="btn btn-secondary" href="temas/tema-0/index.html">Empezar por Tema 0</a>
-      <a class="btn btn-secondary" href="temas/python/index.html">Ir a Python</a>
+      <a id="continue-learning-btn" class="btn btn-primary" href="temas/python/index.html">Continuar donde lo dejaste</a>
+      <a class="btn btn-secondary" href="temas/python/index.html">Ir a la ruta Python</a>
+      <a class="btn btn-secondary" href="playground/index.html?lang=python">Abrir playground</a>
       <a class="btn btn-secondary" href="progreso.html">Ver mi progreso</a>
     </div>
   </header>
 
   <main class="main-container single-column">
-
-    <section class="exercise-card">
-      <div class="exercise-header">
-        <div>
-          <h2 class="exercise-title">Cómo está organizada la plataforma</h2>
-          <p class="exercise-subtitle">
-            Primero entiendes cómo pensar como programador. Después avanzas por una ruta de lenguaje con teoría, mini-retos, ejercicios y práctica en el playground.
-          </p>
-        </div>
-
-        <div class="badges">
-          <span class="badge blue">Tema 0</span>
-          <span class="badge blue">Rutas</span>
-          <span class="badge green">Playground</span>
-        </div>
-      </div>
-
-      <div class="exercise-body">
-        <div class="exercise-block">
-          <h3>Orden recomendado</h3>
-          <ul>
-            <li>empieza por el Tema 0 común</li>
-            <li>elige después una ruta de lenguaje</li>
-            <li>avanza tema a tema</li>
-            <li>consolida con mini-retos y ejercicios</li>
-          </ul>
-        </div>
-
-        <div class="exercise-block">
-          <h3>Qué puedes hacer ahora</h3>
-          <div class="challenge">
-            Puedes seguir el recorrido recomendado o entrar directamente en el tema que necesites repasar.
-          </div>
-        </div>
-      </div>
-    </section>
 
     <section class="panel">
       <h2>Tu siguiente paso recomendado</h2>
@@ -112,85 +78,131 @@
           </div>
 
           <p class="roadmap-cta" id="recommended-cta">
-            Estamos calculando el siguiente bloque recomendado para ti.
+            Estamos calculando el tema que tienes actualmente en curso.
           </p>
         </article>
       </div>
     </section>
 
     <section class="panel">
-      <h2>Punto de entrada recomendado</h2>
+      <h2>Accesos principales</h2>
+
+      <div class="topic-roadmap quick-links-grid">
+
+        <article class="roadmap-card available" onclick="window.location.href='temas/python/index.html'">
+          <div class="roadmap-top">
+            <span class="mission-tag">Ruta</span>
+            <span class="roadmap-state available">Abrir</span>
+          </div>
+
+          <h3>Ruta Python</h3>
+
+          <div class="topic-meta">
+            <span class="topic-chip">Desde cero</span>
+            <span class="topic-chip">10 temas</span>
+            <span class="topic-chip">Progresiva</span>
+          </div>
+
+          <p class="roadmap-cta">
+            Entra en la ruta principal y continúa tema a tema con teoría, mini-retos, checkpoints y ejercicios.
+          </p>
+        </article>
+
+        <article class="roadmap-card available" onclick="window.location.href='progreso.html'">
+          <div class="roadmap-top">
+            <span class="mission-tag">Panel</span>
+            <span class="roadmap-state available">Abrir</span>
+          </div>
+
+          <h3>Mi progreso</h3>
+
+          <div class="topic-meta">
+            <span class="topic-chip">Resumen</span>
+            <span class="topic-chip">Avance</span>
+            <span class="topic-chip">Siguiente paso</span>
+          </div>
+
+          <p class="roadmap-cta">
+            Consulta lo que ya has completado, el estado de la ruta y el siguiente bloque recomendado.
+          </p>
+        </article>
+
+        <article class="roadmap-card available" onclick="window.location.href='playground/index.html?lang=python'">
+          <div class="roadmap-top">
+            <span class="mission-tag">Práctica</span>
+            <span class="roadmap-state available">Abrir</span>
+          </div>
+
+          <h3>Playground</h3>
+
+          <div class="topic-meta">
+            <span class="topic-chip">Código</span>
+            <span class="topic-chip">Pruebas</span>
+            <span class="topic-chip">Experimentación</span>
+          </div>
+
+          <p class="roadmap-cta">
+            Escribe, ejecuta y prueba variantes de código libremente para consolidar lo aprendido.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Base recomendada si empiezas desde cero</h2>
 
       <div class="topic-roadmap">
         <article class="roadmap-card available roadmap-core" onclick="window.location.href='temas/tema-0/index.html'">
           <div class="roadmap-top">
             <span class="mission-tag">Tema 0</span>
-            <span class="roadmap-state available">Recomendado</span>
+            <span class="roadmap-state available">Base común</span>
           </div>
 
           <h3>Introducción a la programación</h3>
 
           <div class="topic-meta">
-            <span class="topic-chip">Común</span>
-            <span class="topic-chip">Antes de lenguajes</span>
-            <span class="topic-chip">Base mental</span>
+            <span class="topic-chip">Fundamentos</span>
+            <span class="topic-chip">Antes de Python</span>
+            <span class="topic-chip">Recomendado al empezar</span>
           </div>
 
           <p class="roadmap-cta">
-            Aprende qué es programar, cómo piensa un ordenador, cómo usar la plataforma y cómo enfrentarte a errores y ejercicios.
+            Ideal si quieres construir mejor base mental antes de avanzar por la ruta principal de Python.
           </p>
         </article>
       </div>
     </section>
 
     <section class="panel">
-      <h2>Rutas de lenguaje</h2>
+      <h2>Cómo seguir avanzando</h2>
 
-      <div class="topic-roadmap">
+      <div class="theory-grid">
+        <div class="theory-card">
+          <h3>Continúa por tu ruta</h3>
+          <p>Sigue el recorrido recomendado si quieres avanzar con una progresión lógica y estable.</p>
+        </div>
 
-        <article class="roadmap-card available roadmap-base" onclick="window.location.href='temas/python/index.html'">
-          <div class="roadmap-top">
-            <span class="mission-tag">Ruta 1</span>
-            <span class="roadmap-state available">Disponible</span>
-          </div>
+        <div class="theory-card">
+          <h3>Practica después de estudiar</h3>
+          <p>Combina teoría, mini-retos, checkpoint y ejercicios para fijar mejor cada tema.</p>
+        </div>
 
-          <h3>Python</h3>
+        <div class="theory-card">
+          <h3>Usa el playground para probar</h3>
+          <p>No te limites a ejecutar una vez. Cambia valores, rompe cosas y observa qué ocurre.</p>
+        </div>
 
-          <div class="topic-meta">
-            <span class="topic-chip">Desde cero</span>
-            <span class="topic-chip">10 temas</span>
-            <span class="topic-chip">Práctica guiada</span>
-          </div>
-
-          <p class="roadmap-cta">
-            Empieza con fundamentos, estructuras, funciones, archivos y control de errores en una ruta progresiva.
-          </p>
-        </article>
-
-        <article class="roadmap-card locked roadmap-advanced">
-          <div class="roadmap-top">
-            <span class="mission-tag">Ruta 2</span>
-            <span class="roadmap-state locked">Próximamente</span>
-          </div>
-
-          <h3>C</h3>
-
-          <div class="topic-meta">
-            <span class="topic-chip">Pendiente</span>
-            <span class="topic-chip">Bajo nivel</span>
-            <span class="topic-chip">Próxima ruta</span>
-          </div>
-
-          <p class="roadmap-cta">
-            Ruta reservada para aprender fundamentos de C y primeros programas cuando el contenido esté disponible.
-          </p>
-        </article>
-
+        <div class="theory-card">
+          <h3>Sube de nivel poco a poco</h3>
+          <p>Cuando avances varios temas, entra también en retos acumulativos y proyectos integradores.</p>
+        </div>
       </div>
     </section>
 
   </main>
 
+  <script src="./theme-init.js"></script>
   <script src="menu.js"></script>
 </body>
 </html>

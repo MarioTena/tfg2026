@@ -7,177 +7,459 @@
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 1 · Introducción a Python</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+      <a class="btn btn-secondary btn-sm" href="../../../configuracion.html">Configuración</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 1 · Python</h1>
-  <p>1.2 · Tu primer programa y cómo se ejecuta</p>
+  <span class="mission-tag">Misión 1.2</span>
+  <h1>Primer programa en Python</h1>
+  <p>Escribe tus primeras instrucciones, entiende cómo se ejecutan en orden y empieza a pensar el resultado antes de pulsar “Ejecutar”.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 1 · Introducción a Python</div>
+        <div class="mini-note">Nivel inicial · 10-12 min · Primer contacto real con el código</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">print()</span>
+        <span class="badge green">Secuencia</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 24%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
 
-  <!-- BLOQUE 1 -->
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué vas a entender hoy</h2>
+        <p class="exercise-subtitle">
+          Un programa no es más que una secuencia de instrucciones. En este bloque vas a escribir tus primeros comandos y a observar cómo Python los ejecuta uno detrás de otro.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Objetivo</span>
+        <span class="badge green">Primer programa</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué problema resuelve</h3>
+        <p>
+          Antes de usar variables, cálculos o estructuras más complejas, necesitas entender la idea más básica:
+          escribir una instrucción, ejecutarla y saber qué resultado produce.
+        </p>
+
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3>Salida</h3>
+            <p>Mostrar texto o resultados por pantalla.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Orden</h3>
+            <p>Ver que Python sigue las líneas de arriba hacia abajo.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Predicción</h3>
+            <p>Intentar anticipar qué ocurrirá antes de ejecutar.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Errores</h3>
+            <p>Empezar a entender que equivocarse también forma parte del aprendizaje.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          Idea clave: programar no empieza haciendo cosas complejas. Empieza entendiendo qué hace una instrucción simple y en qué orden ocurre.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes vigilar</h3>
+        <ul>
+          <li>qué línea se ejecuta primero</li>
+          <li>qué muestra exactamente cada <code>print()</code></li>
+          <li>cuántas líneas de salida produce tu programa</li>
+          <li>qué ocurre si escribes algo incorrecto</li>
+        </ul>
+
+        <div class="challenge">
+          Si no puedes explicar qué imprime cada línea, aún no controlas del todo tu programa aunque “funcione”.
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="panel">
     <h2>Un programa es una secuencia</h2>
+
     <p>
-      Python ejecuta el código de arriba hacia abajo, sin saltarse líneas.
+      Python ejecuta el código de arriba hacia abajo, sin adivinar ni reordenar lo que has escrito.
     </p>
 
     <pre><code>print("Uno")
 print("Dos")
 print("Tres")</code></pre>
 
-    <div class="callout">
-      El orden importa. Siempre.
-    </div>
+    <p>
+      La salida aparecerá en el mismo orden en el que has escrito las instrucciones.
+    </p>
   </section>
 
-  <!-- BLOQUE 2 -->
   <section class="panel">
     <h2>Tu primer programa real</h2>
+
     <p>
-      El comando <code>print</code> sirve para mostrar información.
+      La instrucción <code>print()</code> sirve para mostrar información en pantalla.
     </p>
 
     <pre><code>print("Hola mundo")</code></pre>
 
-    <p>
-      Esta línea ya es un programa completo.
-    </p>
-  </section>
-
-  <!-- BLOQUE 3 -->
-  <section class="panel">
-    <h2>💡 Piensa antes de ejecutar</h2>
-    <p>
-      Antes de darle a “Ejecutar”, pregúntate:
-    </p>
-
-    <ul>
-      <li>¿Qué va a mostrar?</li>
-      <li>¿Cuántas líneas?</li>
-      <li>¿En qué orden?</li>
-    </ul>
-  </section>
-
-  <!-- BLOQUE 4 -->
-  <section class="panel">
-    <h2>Mini-reto guiado</h2>
-    <p>
-      Escribe un programa que muestre:
-    </p>
-
-    <ol>
-      <li>Tu nombre</li>
-      <li>Tu edad</li>
-      <li>Un mensaje final</li>
-    </ol>
-
-    <pre><code># Ejemplo de estructura
-print("Nombre")
-print("Edad")
-print("Mensaje final")</code></pre>
-
     <div class="callout">
-      No busques hacerlo perfecto.  
-      El objetivo es probar y equivocarte.
+      Esa sola línea ya es un programa completo.
     </div>
   </section>
 
-  <!-- BLOQUE 5 -->
   <section class="panel">
-    <h2>Errores = aprendizaje</h2>
+    <h2>Piensa antes de ejecutar</h2>
+
     <p>
-      Prueba a cometer un error a propósito:
+      Antes de pulsar “Ejecutar”, hazte siempre preguntas simples:
+    </p>
+
+    <ul>
+      <li>¿Qué se va a mostrar?</li>
+      <li>¿Cuántas líneas saldrán?</li>
+      <li>¿En qué orden?</li>
+    </ul>
+
+    <pre><code>print("Hola")
+print("Python")</code></pre>
+
+    <p>
+      Parece muy básico, pero esta costumbre te ayudará muchísimo más adelante.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Qué hace exactamente <code>print()</code></h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Muestra texto</h3>
+        <p>Sirve para enseñar información al usuario.</p>
+      </div>
+      <div class="theory-card">
+        <h3>No guarda nada</h3>
+        <p>Solo muestra. Aún no estás almacenando información.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Es inmediato</h3>
+        <p>Ves enseguida el efecto de lo que escribes.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Es útil para probar</h3>
+        <p>Más adelante también te servirá para comprobar cómo va tu programa.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Tu primer programa con varias líneas</h2>
+
+    <p>
+      Un programa puede tener varias instrucciones seguidas.
+    </p>
+
+    <pre><code>print("Me llamo Ana")
+print("Estoy aprendiendo Python")
+print("Voy paso a paso")</code></pre>
+
+    <p>
+      Aquí cada línea tiene una función muy sencilla, pero juntas ya forman una pequeña secuencia con sentido.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Errores = aprendizaje, no fracaso</h2>
+
+    <p>
+      Una de las cosas más importantes de este subtema es que pierdas el miedo al error.
     </p>
 
     <pre><code>print(Hola)</code></pre>
 
     <p>
-      Lee el error que aparece.  
-      Aprender a interpretar errores es parte fundamental de programar.
+      Ese código da error porque <code>Hola</code> no está escrito como texto entre comillas.
     </p>
+
+    <div class="callout">
+      No te interesa solo “que funcione”. Te interesa entender por qué funciona o por qué falla.
+    </div>
   </section>
 
-  <!-- NAVEGACIÓN -->
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./01-que-es-python.html">Anterior</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
+  <section class="panel">
+    <h2>Dónde aparece esta idea en problemas reales</h2>
 
-<button class="btn btn-primary" onclick="completeTopic('1.2')">Marcar como completado</button>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Mensajes</h3>
+        <p>Mostrar información al usuario de forma clara.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Pruebas</h3>
+        <p>Comprobar que una parte del programa está haciendo lo que esperas.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Seguimiento</h3>
+        <p>Entender el flujo de ejecución paso a paso.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Depuración</h3>
+        <p>Usar salidas por pantalla para ver qué está ocurriendo realmente.</p>
+      </div>
+    </div>
+  </section>
 
-<script>
-const TOPIC_ID = "1.2";
-const NEXT_URL = "./03-variables-y-tipos-de-datos.html";
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
+        <p class="exercise-subtitle">Escribe tu primer programa corto con varias líneas y sentido propio.</p>
+      </div>
 
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+      <div class="badges">
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">1.2</span>
+      </div>
+    </div>
 
-const nextBtn = document.getElementById("nextBtn");
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Enunciado</h3>
+        <p>
+          Escribe un programa que muestre tres líneas distintas:
+        </p>
 
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
+        <ul>
+          <li>tu nombre</li>
+          <li>tu edad</li>
+          <li>un mensaje final sobre que estás aprendiendo Python</li>
+        </ul>
+      </div>
 
-    if (!token || !nextBtn) return;
+      <div class="exercise-block">
+        <h3>Qué debes practicar</h3>
+        <ul>
+          <li>usar varias instrucciones <code>print()</code></li>
+          <li>pensar el orden de ejecución</li>
+          <li>prever la salida antes de ejecutar</li>
+          <li>ganar soltura escribiendo tu primer bloque de código con intención</li>
+        </ul>
 
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-1%2F02-primer-programa.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Resumen mental del subtema</h2>
+        <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Ideas clave</h3>
+        <ul>
+          <li>un programa es una secuencia de instrucciones</li>
+          <li>Python ejecuta de arriba hacia abajo</li>
+          <li><code>print()</code> sirve para mostrar información</li>
+          <li>antes de ejecutar, conviene pensar qué salida esperas</li>
+          <li>equivocarte al escribir código también forma parte del aprendizaje</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Puente con el siguiente bloque</h3>
+        <div class="challenge">
+          Ya sabes escribir y ejecutar tus primeras instrucciones. Lo siguiente es aprender a guardar información para reutilizarla: variables y tipos de datos.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Siguiente paso</h2>
+    <p>
+      Ya has escrito tus primeras instrucciones y entiendes cómo se ejecutan. Lo siguiente es guardar información en variables y empezar a reutilizarla.
+    </p>
+
+    <div class="callout">
+      Cuando marques este subtema como completado, se desbloqueará el siguiente bloque del tema.
+    </div>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./01-que-es-python.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente bloque</a>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
+    </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
+  </section>
+
+  <script src="../../../theme-init.js"></script> 
+  <script src="../topic-completion.js"></script>
+  <script>
+    const subtopicCompletion = initTopicCompletion({
+      topicId: "1.2",
+      nextUrl: "./03-variables-y-tipos-de-datos.html"
+    });
+
+    const miniRetoCompletion = initTopicCompletion({
+      topicId: "1.2.mini"
+    });
+
+    const completeBtn = document.getElementById("completeBtn");
+    const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+    const completionMessage = document.getElementById("completionMessage");
+
+    function showCompletionMessage(text) {
+      if (!completionMessage) return;
+      completionMessage.textContent = text;
+      completionMessage.style.display = "block";
+    }
+
+    function showCompletedState() {
+      if (!completeBtn) return;
+
+      completeBtn.style.display = "none";
+
+      if (!document.getElementById("completedBadge")) {
+        const badge = document.createElement("span");
+        badge.id = "completedBadge";
+        badge.className = "btn btn-secondary";
+        badge.textContent = "Subtema completado ✅";
+        completeBtn.parentNode.appendChild(badge);
       }
-    });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
-  }
-}
-
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
     }
 
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
-    });
+    function showMiniCompletedState() {
+      if (!miniCompleteBtn) return;
 
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
+      miniCompleteBtn.style.display = "none";
+
+      if (!document.getElementById("miniCompletedBadge")) {
+        const badge = document.createElement("span");
+        badge.id = "miniCompletedBadge";
+        badge.className = "btn btn-secondary";
+        badge.textContent = "Mini-reto completado ✅";
+        miniCompleteBtn.parentNode.appendChild(badge);
+      }
     }
 
-    alert("Tema completado 🎉");
+    async function syncCompletionUI() {
+      try {
+        const subtopicDone = await subtopicCompletion.isCompleted();
+        const miniDone = await miniRetoCompletion.isCompleted();
 
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
+        if (subtopicDone) {
+          showCompletedState();
+        }
+
+        if (miniDone) {
+          showMiniCompletedState();
+        }
+
+        if (subtopicDone && miniDone) {
+          showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+        } else if (subtopicDone) {
+          showCompletionMessage("Este subtema ya estaba marcado como completado.");
+        } else if (miniDone) {
+          showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+        }
+      } catch (error) {
+        console.error("Error comprobando estado del subtema:", error);
+      }
     }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
-  }
-}
 
-unlockNextIfCompleted();
-</script>
+    if (completeBtn) {
+      completeBtn.addEventListener("click", async (e) => {
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
+
+        try {
+          btn.disabled = true;
+          btn.textContent = "Guardando...";
+
+          await subtopicCompletion.completeTopic();
+
+          showCompletedState();
+          showCompletionMessage("Has marcado este subtema como completado.");
+        } catch (error) {
+          console.error("Error al completar el subtema:", error);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          showCompletionMessage(error.message || "No se pudo guardar el progreso.");
+        }
+      });
+    }
+
+    if (miniCompleteBtn) {
+      miniCompleteBtn.addEventListener("click", async (e) => {
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
+
+        try {
+          btn.disabled = true;
+          btn.textContent = "Guardando...";
+
+          await miniRetoCompletion.completeTopic();
+
+          showMiniCompletedState();
+          showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+        } catch (error) {
+          console.error("Error al completar el mini-reto:", error);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+        }
+      });
+    }
+
+    syncCompletionUI();
+  </script>
+
 </main>
-
 </body>
 </html>

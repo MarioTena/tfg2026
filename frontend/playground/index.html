@@ -22,6 +22,7 @@
       <a class="btn btn-secondary btn-sm" href="../progreso.html">Mi progreso</a>
       <a class="btn btn-secondary btn-sm" href="../temas/python/index.html">Ruta Python</a>
       <a class="btn btn-secondary btn-sm" id="back-btn" href="../temas/python/index.html">Volver al tema</a>
+      <a class="btn btn-secondary btn-sm" href="../configuracion.html">Configuración</a>
       <button class="btn btn-secondary btn-sm" id="logout-btn" type="button">Salir</button>
     </div>
   </div>
@@ -46,16 +47,13 @@
     </div>
 
     <div class="field">
-      <label for="user">Usuario</label>
-      <input id="user" type="text" placeholder="alumno1" value="alumno1" />
+      <label>Usuario</label>
+      <div class="input-like" id="session-user-name">Cargando usuario...</div>
     </div>
 
     <div class="field">
-      <label for="language">Lenguaje</label>
-      <select id="language">
-        <option value="python" selected>Python</option>
-        <option value="c" disabled>C (pendiente)</option>
-      </select>
+      <label>Lenguaje</label>
+      <div class="input-like" id="fixed-language">Python</div>
     </div>
 
     <section id="exercise-panel" class="exercise-card" style="display:none; margin-bottom: 12px;">
@@ -95,29 +93,14 @@
       </div>
     </section>
 
-<div class="editor-shell">
-  <div class="editor-toolbar">
-    <h3 id="editor-title">Editor de código</h3>
-    <span class="editor-meta" id="editor-meta">Python · Modo práctica</span>
-  </div>
+    <div class="editor-shell">
+      <div class="editor-toolbar">
+        <h3 id="editor-title">Editor de código</h3>
+        <span class="editor-meta" id="editor-meta">Python · Modo práctica</span>
+      </div>
 
-  <textarea id="code">print("Hola desde el playground")</textarea>
-</div>
-
-<div class="field" style="margin-top: 12px;">
-  <label for="stdin">Entrada del programa</label>
-  <textarea
-    id="stdin"
-    rows="5"
-    placeholder="Escribe aquí lo que introducirías por consola.&#10;Cada línea equivale a una llamada a input().&#10;&#10;Ejemplo:&#10;7&#10;Ana"
-    style="width: 100%; resize: vertical;"
-  ></textarea>
-  <p class="mini-note" style="margin-top: 8px;">
-    Cada línea se enviará como entrada estándar del programa.
-  </p>
-</div>
-
-<div class="playground-actions">
+      <textarea id="code">print("Hola desde el playground")</textarea>
+    </div>
 
     <div class="playground-actions">
       <button id="run-btn" class="btn btn-primary" type="button">Ejecutar código</button>
@@ -153,24 +136,46 @@
 
     <div class="output-block">
       <h3>Consola</h3>
-      <pre id="console-output"></pre>
+
+      <div id="console-output" class="console-output"></div>
+
+      <div id="interactive-console-controls" style="display: none; margin-top: 12px;">
+        <label for="interactive-console-input" style="display:block; margin-bottom: 8px;">
+          Enviar línea a la consola
+        </label>
+
+        <div class="buttons-row interactive-console-row" style="align-items: center;">
+          <input
+            id="interactive-console-input"
+            class="interactive-console-input"
+            type="text"
+            placeholder="Escribe una línea y pulsa Enviar"
+            style="flex: 1;"
+          />
+          <button id="send-console-input-btn" class="btn btn-primary" type="button">
+            Enviar
+          </button>
+          <button id="stop-console-btn" class="btn btn-secondary" type="button">
+            Detener consola
+          </button>
+        </div>
+
+          <p class="mini-note" id="interactive-console-help" style="margin-top: 10px;">
+            Ejecuta el programa para activar la consola y responder a los <code>input()</code> si los hay.
+          </p>
+      </div>
     </div>
 
-    
-    <div class="output-block">
+    <div class="output-block" id="stdout-block">
       <h3>stdout</h3>
       <pre id="stdout"></pre>
     </div>
 
-    <div class="output-block">
+    <div class="output-block" id="stderr-block">
       <h3>stderr</h3>
       <pre id="stderr"></pre>
     </div>
 
-    <div class="output-block">
-      <h3>Feedback automático</h3>
-      <pre id="feedback"></pre>
-    </div>
   </section>
 </main>
 
@@ -182,6 +187,7 @@
   <ul id="attempts-list"></ul>
 </section>
 
+<script src="../theme-init.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/python/python.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/addon/edit/matchbrackets.min.js"></script>
@@ -202,6 +208,7 @@
 <script src="../exercises/python-proyectos.catalog.js"></script>
 <script src="../exercises/python-retos.catalog.js"></script>
 
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
 <script src="../app.js"></script>
 </body>
 </html>

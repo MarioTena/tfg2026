@@ -18,6 +18,7 @@
       <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
       <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
       <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+      <a class="btn btn-secondary btn-sm" href="../../../configuracion.html">Configuración</a>
     </div>
   </div>
 </nav>
@@ -110,6 +111,37 @@
         <div class="challenge">
           Piensa así: aplicar un método a un string no suele “retocarlo por dentro”, sino producir una nueva versión del texto.
         </div>
+      </div>
+    </div>
+  </section>
+
+    <section class="exercise-card video-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Vídeo explicativo</h2>
+        <p class="exercise-subtitle">
+          Si prefieres una explicación guiada paso a paso, aquí tienes el vídeo de apoyo de esta misión.
+        </p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Vídeo</span>
+        <span class="badge green">Apoyo visual</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Comparaciones y booleanos</h3>
+
+        <video controls preload="metadata" style="width: 100%; border-radius: 16px;">
+          <source src="../../../videos/tema-7/7.3-metodos-de-strings.mp4" type="video/mp4">
+          Tu navegador no puede reproducir este vídeo.
+        </video>
+
+        <p class="mini-note" style="margin-top: 12px;">
+          Consejo: puedes ver primero el vídeo completo o pausarlo e ir probando los ejemplos en el playground.
+        </p>
       </div>
     </div>
   </section>
@@ -536,16 +568,21 @@ print(texto)</code></pre>
       Ya sabes transformar y limpiar texto. Lo siguiente es recorrer strings y analizarlos con bucles y condicionales.
     </p>
 
+    <div class="callout">
+      Cuando marques este subtema como completado, se desbloqueará el siguiente bloque del tema.
+    </div>
+    
     <div class="buttons-row">
       <a class="btn btn-secondary" href="./02-indexacion-y-slicing.html">Anterior</a>
       <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente bloque</a>
       <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
     </div>
     <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
   </section>
 
-  <script src="../topic-completion.js"></script>
+<script src="../../../theme-init.js"></script>
+<script src="../topic-completion.js"></script>
 <script>
   const subtopicCompletion = initTopicCompletion({
     topicId: "7.3",

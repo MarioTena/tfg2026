@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 1.7 – Razonar y practicar introducción a Python</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 1 · Introducción a Python</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+      <a class="btn btn-secondary btn-sm" href="../../../configuracion.html">Configuración</a>
+    </div>
+  </div>
+</nav>
+
+<header class="header">
+  <span class="mission-tag">Misión 1.7</span>
+  <h1>Razonar y practicar introducción a Python</h1>
+  <p>Consolida los fundamentos del tema leyendo código, anticipando resultados y detectando errores antes de ejecutar.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 1 · Introducción a Python</div>
+        <div class="mini-note">Práctica guiada · 8 mini-retos · dificultad inicial</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Lectura</span>
+        <span class="badge blue">Comprensión</span>
+        <span class="badge green">Práctica guiada</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 87%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#retos">Empezar práctica guiada</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
+</header>
+
+<main class="main-container single-column">
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué entrenas aquí</h2>
+        <p class="exercise-subtitle">
+          En este bloque no aprendes teoría nueva. Lo que haces es consolidar lo ya visto:
+          leer instrucciones, anticipar salidas, detectar errores simples y entender mejor qué hace cada línea.
+        </p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Lectura</span>
+        <span class="badge blue">Corrección</span>
+        <span class="badge green">Práctica guiada</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Objetivo</h3>
+        <p>
+          Estos mini-retos te ayudan a dejar de ver Python como una lista de comandos sueltos y empezar a entenderlo
+          como un lenguaje con reglas, tipos de datos, operaciones y resultados previsibles.
+        </p>
+
+        <div class="callout">
+          Idea clave: si puedes explicar qué va a pasar antes de ejecutar, estás empezando a programar de verdad.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Cómo usar esta pantalla</h3>
+        <ul>
+          <li>lee el código antes de ejecutarlo</li>
+          <li>intenta prever la salida</li>
+          <li>pregúntate qué tipo de dato interviene</li>
+          <li>detecta si hay un error de sintaxis, de tipo o de lógica</li>
+        </ul>
+
+        <div class="challenge">
+          No uses el playground solo para “probar a ver qué sale”. Primero piensa. Después comprueba.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="retos" class="panel">
+    <h2>Mini-reto 1 · ¿Qué imprime este programa?</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Código</h3>
+        <pre><code>print("Hola")
+print("Python")</code></pre>
+      </div>
+
+      <div class="theory-card">
+        <h3>Qué debes pensar</h3>
+        <p>¿Cuántas líneas aparecen? ¿En qué orden? ¿Qué diferencia hay entre escribir una línea o dos?</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 2 · Variable y valor</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Código</h3>
+        <pre><code>nombre = "Ana"
+print(nombre)</code></pre>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pregunta</h3>
+        <p>¿Qué se imprime: el texto <code>nombre</code> o el contenido guardado en la variable?</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      Una variable no se imprime como etiqueta. Se imprime el valor que contiene.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 3 · Suma o texto</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Código A</h3>
+        <pre><code>print(2 + 3)</code></pre>
+      </div>
+
+      <div class="theory-card">
+        <h3>Código B</h3>
+        <pre><code>print("2" + "3")</code></pre>
+      </div>
+    </div>
+
+    <p>
+      ¿Por qué el resultado no es el mismo? ¿Qué cambia cuando trabajas con números y cuando trabajas con strings?
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 4 · Detecta el error</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Código incorrecto</h3>
+        <pre><code>print("Hola)</code></pre>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pregunta</h3>
+        <p>¿Qué falta? ¿Por qué Python no puede interpretar correctamente esa línea?</p>
+      </div>
+    </div>
+
+    <div class="challenge">
+      Muchos errores iniciales no son “misteriosos”. Suelen venir de comillas, paréntesis o signos mal cerrados.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 5 · Cambios en una variable</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Código</h3>
+        <pre><code>edad = 18
+edad = 19
+print(edad)</code></pre>
+      </div>
+
+      <div class="theory-card">
+        <h3>Qué entrenas</h3>
+        <p>Entender que una variable puede cambiar de valor y que el último valor asignado sustituye al anterior.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 6 · Construir mensajes</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Código</h3>
+        <pre><code>nombre = "Lucía"
+print("Hola " + nombre)</code></pre>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pregunta</h3>
+        <p>¿Qué salida genera? ¿Por qué aquí sí tiene sentido unir texto con una variable?</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 7 · Operación inválida</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Código incorrecto</h3>
+        <pre><code>edad = "18"
+print(edad + 2)</code></pre>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pregunta</h3>
+        <p>¿Por qué falla? ¿Qué tipo de dato tiene <code>edad</code> y qué problema aparece al intentar sumarle un número?</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Mini-reto 8 · Leer el error como pista</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Idea</h3>
+        <p>Cuando Python lanza un error, no te está “castigando”. Te está diciendo dónde mirar.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Pregunta</h3>
+        <p>Cuando veas un error, ¿qué deberías revisar primero: comillas, paréntesis, nombres de variables o tipos de datos?</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      Aprender a leer errores pronto te hace avanzar mucho más rápido que intentar evitarlos siempre.
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Método rápido para comprobar tu razonamiento</h2>
+        <p class="exercise-subtitle">Qué hacer antes de dar un código sencillo por correcto.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Paso a paso</h3>
+        <ol>
+          <li>lee cada línea de arriba abajo</li>
+          <li>identifica qué variables se crean o cambian</li>
+          <li>piensa qué tipo de dato interviene</li>
+          <li>anticipa la salida o el error</li>
+          <li>compruébalo en el playground</li>
+        </ol>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Regla útil</h3>
+        <div class="challenge">
+          Si no puedes explicar qué hace cada línea, todavía no controlas del todo el código, aunque “funcione”.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Siguiente paso</h2>
+    <p>
+      Ya has repasado y consolidado los conceptos básicos del tema. Ahora toca resolver ejercicios por tu cuenta para cerrar la introducción a Python.
+    </p>
+
+    <div class="callout">
+      Cuando marques este subtema como completado, se desbloqueará el checkpoint del tema.
+    </div>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./06-errores.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Checkpoint del tema</a>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
+    </div>
+
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
+  </section>
+
+  <script src="../../../theme-init.js"></script> 
+  <script src="../topic-completion.js"></script>
+  <script>
+    const missionCompletion = initTopicCompletion({
+      topicId: "1.7",
+      nextUrl: "./tema-1-checkpoint.html"
+    });
+
+    const completeBtn = document.getElementById("completeBtn");
+    const completionMessage = document.getElementById("completionMessage");
+
+    function showCompletionMessage(text) {
+      if (!completionMessage) return;
+      completionMessage.textContent = text;
+      completionMessage.style.display = "block";
+    }
+
+    function showMissionCompletedState() {
+      if (!completeBtn) return;
+
+      completeBtn.style.display = "none";
+
+      if (!document.getElementById("completedBadge")) {
+        const badge = document.createElement("span");
+        badge.id = "completedBadge";
+        badge.className = "btn btn-secondary";
+        badge.textContent = "Misión completada ✅";
+        completeBtn.parentNode.appendChild(badge);
+      }
+    }
+
+    async function syncCompletionUI() {
+      try {
+        const completed = await missionCompletion.isCompleted();
+
+        if (completed) {
+          showMissionCompletedState();
+          showCompletionMessage("Esta misión ya estaba marcada como completada.");
+        }
+      } catch (error) {
+        console.error("Error comprobando estado de la misión:", error);
+      }
+    }
+
+    if (completeBtn) {
+      completeBtn.addEventListener("click", async (e) => {
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
+
+        try {
+          btn.disabled = true;
+          btn.textContent = "Guardando...";
+
+          await missionCompletion.completeTopic();
+
+          showMissionCompletedState();
+          showCompletionMessage("Has marcado esta misión como completada.");
+        } catch (error) {
+          console.error("Error al completar la misión:", error);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          showCompletionMessage(error.message || "No se pudo guardar el progreso.");
+        }
+      });
+    }
+
+    syncCompletionUI();
+  </script>
+
+</main>
+</body>
+</html>

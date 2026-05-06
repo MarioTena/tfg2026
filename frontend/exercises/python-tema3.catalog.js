@@ -1,6 +1,4 @@
-// ======================================================
-// Tema 3 - Python
-// ======================================================
+window.EXERCISE_CATALOG = window.EXERCISE_CATALOG || {};
 
 window.EXERCISE_CATALOG["py_tema3_ej1"] = {
   id: "py_tema3_ej1",

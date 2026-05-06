@@ -2,105 +2,395 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Tema 1 (Python) - Ejercicios</title>
+  <title>Tema 1 · Python · Ejercicios</title>
   <link rel="stylesheet" href="../../../styles.css" />
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 1 · Introducción a Python</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+      <a class="btn btn-secondary btn-sm" href="../../../configuracion.html">Configuración</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 1 (Python) – Ejercicios</h1>
-  <p>Practica los conceptos básicos de variables, operaciones y errores.</p>
+  <span class="mission-tag">Practice mode</span>
+  <h1>Ejercicios de introducción a Python</h1>
+  <p>Practica impresión, variables, tipos de datos, operaciones, strings y lectura de errores resolviendo misiones en el playground.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 1 · Ruta de práctica</div>
+        <div class="mini-note">10 ejercicios + 2 retos finales</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Python</span>
+        <span class="badge green">Hands-on</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 100%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#ejercicios">Ir a ejercicios</a>
+    <a class="btn btn-secondary" href="./index.html">Volver al tema</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
 
-  <!-- Introducción -->
-  <section class="panel">
-    <h2>Cómo usar estos ejercicios</h2>
-    <p>
-      Pulsa en <strong>"Abrir en playground"</strong>.  
-      El editor se abrirá con el enunciado comentado y una plantilla preparada.
-    </p>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Cómo trabajar esta pantalla</h2>
+        <p class="exercise-subtitle">
+          La clave aquí no es solo escribir código, sino entender qué hace cada línea, qué tipo de dato interviene y por qué el resultado es el que es.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">print()</span>
+        <span class="badge blue">Variables</span>
+        <span class="badge green">Práctica guiada</span>
+      </div>
+    </div>
 
-    <div class="buttons-row">
-      <a class="btn btn-secondary" href="./index.html">Volver al Tema 1</a>
-      <a class="btn btn-secondary" href="../../../menu.html">Menú de temas</a>
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Recomendación</h3>
+        <ul>
+          <li>lee el enunciado y piensa la salida antes de ejecutar</li>
+          <li>comprueba si estás usando texto o números</li>
+          <li>si aparece un error, intenta interpretarlo antes de corregir</li>
+          <li>usa el playground para validar tu razonamiento, no solo para probar al azar</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Clave del tema</h3>
+        <div class="challenge">
+          En este primer bloque, lo importante no es hacer programas complejos. Es construir una base sólida: entender instrucciones, datos, operaciones y errores.
+        </div>
+
+        <div class="buttons-row">
+          <a class="btn btn-secondary btn-sm" href="./index.html">Volver al Tema 1</a>
+          <a class="btn btn-secondary btn-sm" href="../index.html">Volver a ruta Python</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- EJERCICIO 1 -->
-  <section class="panel">
-    <h2>Ejercicio 1 – "Hola mundo"</h2>
-    <p>
-      Escribe un programa en Python que muestre exactamente:
-    </p>
+  <section id="ejercicios" class="panel">
+    <h2>Misiones disponibles</h2>
 
-    <pre><code>Hola mundo desde TFG</code></pre>
+    <div class="theory-grid exercise-grid">
 
-    <div class="buttons-row">
-      <a class="btn btn-primary"
-         href="../../../playground/index.html?lang=python&exerciseId=py_tema1_ej1">
-        Abrir en playground
-      </a>
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 1 · Tu primer print</h3>
+        <p>Muestra por pantalla el texto <code>Hola, Python</code>.</p>
+        <div class="badges">
+          <span class="badge blue">Fácil</span>
+          <span class="badge">4 min</span>
+          <span class="badge">print()</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema1_ej1&returnTo=..%2Ftemas%2Fpython%2Ftema-1%2Fpy-tema1-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 2 · Dos líneas</h3>
+        <p>Muestra dos mensajes en líneas separadas usando dos instrucciones <code>print()</code>.</p>
+        <div class="badges">
+          <span class="badge blue">Fácil</span>
+          <span class="badge">5 min</span>
+          <span class="badge">Salida</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema1_ej2&returnTo=..%2Ftemas%2Fpython%2Ftema-1%2Fpy-tema1-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 3 · Guardar un nombre</h3>
+        <p>Crea una variable llamada <code>nombre</code> y muestra su contenido por pantalla.</p>
+        <div class="badges">
+          <span class="badge blue">Fácil</span>
+          <span class="badge">6 min</span>
+          <span class="badge">Variables</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema1_ej3&returnTo=..%2Ftemas%2Fpython%2Ftema-1%2Fpy-tema1-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 4 · Dos variables</h3>
+        <p>Guarda tu edad y tu ciudad en dos variables distintas y muéstralas.</p>
+        <div class="badges">
+          <span class="badge blue">Fácil</span>
+          <span class="badge">6 min</span>
+          <span class="badge">Datos</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema1_ej4&returnTo=..%2Ftemas%2Fpython%2Ftema-1%2Fpy-tema1-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 5 · Suma básica</h3>
+        <p>Crea dos variables numéricas, súmalas y muestra el resultado.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">7 min</span>
+          <span class="badge">Operaciones</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema1_ej5&returnTo=..%2Ftemas%2Fpython%2Ftema-1%2Fpy-tema1-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 6 · Multiplicación</h3>
+        <p>Calcula el doble de un número guardado en una variable.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">6 min</span>
+          <span class="badge">Números</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema1_ej6&returnTo=..%2Ftemas%2Fpython%2Ftema-1%2Fpy-tema1-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 7 · Unir texto</h3>
+        <p>Crea un saludo uniendo un string fijo con una variable de nombre.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">7 min</span>
+          <span class="badge">Strings</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema1_ej7&returnTo=..%2Ftemas%2Fpython%2Ftema-1%2Fpy-tema1-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 8 · Frase personalizada</h3>
+        <p>Usa varias variables para construir una frase completa sobre una persona.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">8 min</span>
+          <span class="badge">Concatenación</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema1_ej8&returnTo=..%2Ftemas%2Fpython%2Ftema-1%2Fpy-tema1-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 9 · Detectar un error</h3>
+        <p>Corrige una línea con comillas o paréntesis mal cerrados.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">7 min</span>
+          <span class="badge">Errores</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema1_ej9&returnTo=..%2Ftemas%2Fpython%2Ftema-1%2Fpy-tema1-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-exercise">
+        <h3>Ejercicio 10 · Tipo incorrecto</h3>
+        <p>Corrige un programa que intenta mezclar texto y números de forma incorrecta.</p>
+        <div class="badges">
+          <span class="badge blue">Media</span>
+          <span class="badge">8 min</span>
+          <span class="badge">Tipos</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema1_ej10&returnTo=..%2Ftemas%2Fpython%2Ftema-1%2Fpy-tema1-ejercicios.html">Abrir</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-highlight theory-card-exercise">
+        <h3>Mini reto · Tarjeta personal</h3>
+        <p>Crea un pequeño programa que muestre nombre, edad y ciudad en formato claro y ordenado.</p>
+        <div class="badges">
+          <span class="badge green">Reto</span>
+          <span class="badge">10 min</span>
+          <span class="badge">Variables + strings</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema1_reto1&returnTo=..%2Ftemas%2Fpython%2Ftema-1%2Fpy-tema1-ejercicios.html">Abrir reto</a>
+        </div>
+      </article>
+
+      <article class="theory-card theory-card-highlight theory-card-exercise">
+        <h3>Reto final · Presentación completa</h3>
+        <p>Construye un programa corto que use impresión, variables, operaciones y strings para presentar información personal de forma más elaborada.</p>
+        <div class="badges">
+          <span class="badge green">Reto final</span>
+          <span class="badge">12 min</span>
+          <span class="badge">Integrador</span>
+        </div>
+        <div class="exercise-actions">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&exerciseId=py_tema1_reto2&returnTo=..%2Ftemas%2Fpython%2Ftema-1%2Fpy-tema1-ejercicios.html">Abrir reto</a>
+        </div>
+      </article>
+
     </div>
   </section>
 
-  <!-- EJERCICIO 2 -->
-  <section class="panel">
-    <h2>Ejercicio 2 – Operaciones básicas</h2>
-    <p>
-      Crea dos variables <code>a</code> y <code>b</code> con valores 7 y 4.
-      Muestra:
-    </p>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Checklist de cierre</h2>
+        <p class="exercise-subtitle">
+          Antes de cerrar el tema, comprueba que controlas de verdad lo esencial.
+        </p>
+      </div>
 
-    <ul>
-      <li>La suma</li>
-      <li>La resta</li>
-      <li>El producto</li>
-    </ul>
+      <div class="badges">
+        <span class="badge blue">Práctica</span>
+        <span class="badge green">Completar tema</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Deberías poder hacer esto</h3>
+        <ul>
+          <li>usar <code>print()</code> con seguridad</li>
+          <li>crear y reutilizar variables</li>
+          <li>distinguir texto y números</li>
+          <li>hacer operaciones simples</li>
+          <li>unir strings para construir mensajes</li>
+          <li>leer errores básicos sin bloquearte</li>
+          <li>anticipar la salida de programas sencillos</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Última recomendación</h3>
+        <div class="challenge">
+          Si un programa te funciona pero no sabes explicar qué hace cada línea, todavía no has cerrado bien la base. La comprensión importa más que la velocidad.
+        </div>
+      </div>
+    </div>
+
+    <div id="unlockHint" class="callout">
+      Cuando marques los ejercicios como completados, este tema contará como cerrado dentro de tu ruta de Python.
+    </div>
 
     <div class="buttons-row">
-      <a class="btn btn-primary"
-         href="../../../playground/index.html?lang=python&exerciseId=py_tema1_ej2">
-        Abrir en playground
-      </a>
+      <a class="btn btn-secondary" href="./07-mini-retos.html">Volver a práctica guiada</a>
+      <a class="btn btn-secondary" href="./index.html">Volver al índice del tema</a>
+      <a class="btn btn-secondary" href="../index.html">Ir a ruta Python</a>
+      <a class="btn btn-secondary" href="../tema-2/index.html">Tema 2</a>
+      <button id="completeExercisesBtn" class="btn btn-primary" type="button">
+        Marcar ejercicios como completados
+      </button>
     </div>
-  </section>
 
-  <!-- EJERCICIO 3 -->
-  <section class="panel">
-    <h2>Ejercicio 3 – Nombre del alumno</h2>
-    <p>
-      Define una variable <code>nombre</code> con tu nombre y muestra:
-    </p>
-
-    <pre><code>Me llamo Mario</code></pre>
-
-    <div class="buttons-row">
-      <a class="btn btn-primary"
-         href="../../../playground/index.html?lang=python&exerciseId=py_tema1_ej3">
-        Abrir en playground
-      </a>
-    </div>
-  </section>
-
-  <!-- EJERCICIO 4 -->
-  <section class="panel">
-    <h2>Ejercicio 4 – Error intencional</h2>
-    <p>
-      Ejecuta el código y observa el error que aparece.
-      Intenta entender qué variable falta.
-    </p>
-
-    <div class="buttons-row">
-      <a class="btn btn-primary"
-         href="../../../playground/index.html?lang=python&exerciseId=py_tema1_ej4">
-        Abrir en playground
-      </a>
-    </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
   </section>
 
 </main>
 
+<script src="../../../theme-init.js"></script>
+<script src="../topic-completion.js"></script>
+<script>
+  const exercisesCompletion = initTopicCompletion({
+    topicId: "1.ejercicios"
+  });
+
+  const completeBtn = document.getElementById("completeExercisesBtn");
+  const completionMessage = document.getElementById("completionMessage");
+  const unlockHint = document.getElementById("unlockHint");
+
+  function showCompletionMessage(text) {
+    if (!completionMessage) return;
+    completionMessage.textContent = text;
+    completionMessage.style.display = "block";
+  }
+
+  function hideUnlockHint() {
+    if (!unlockHint) return;
+    unlockHint.style.display = "none";
+  }
+
+  function showExercisesCompletedState() {
+    if (!completeBtn) return;
+
+    completeBtn.style.display = "none";
+
+    if (!document.getElementById("completedBadge")) {
+      const badge = document.createElement("span");
+      badge.id = "completedBadge";
+      badge.className = "btn btn-secondary";
+      badge.textContent = "Ejercicios completados ✅";
+      completeBtn.parentNode.appendChild(badge);
+    }
+  }
+
+  async function syncExercisesCompletionUI() {
+    try {
+      const completed = await exercisesCompletion.isCompleted();
+
+      if (completed) {
+        showExercisesCompletedState();
+        hideUnlockHint();
+        showCompletionMessage("Estos ejercicios ya estaban completados. El tema 1 ya cuenta como cerrado en tu ruta.");
+      }
+    } catch (error) {
+      console.error("Error comprobando estado de ejercicios:", error);
+    }
+  }
+
+  if (completeBtn) {
+    completeBtn.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      const originalText = btn.textContent;
+
+      try {
+        btn.disabled = true;
+        btn.textContent = "Guardando...";
+
+        await exercisesCompletion.completeTopic();
+
+        showExercisesCompletedState();
+        hideUnlockHint();
+        showCompletionMessage("Has marcado los ejercicios como completados. El tema 1 ya cuenta como cerrado en tu ruta.");
+
+        setTimeout(() => {
+          window.location.href = "./index.html";
+        }, 900);
+      } catch (error) {
+        console.error("Error marcando ejercicios como completados:", error);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        showCompletionMessage(error.message || "No se pudo guardar el progreso.");
+      }
+    });
+  }
+
+  syncExercisesCompletionUI();
+</script>
 </body>
 </html>

@@ -2,238 +2,483 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Tema 1.3 – Variables y tipos</title>
+  <title>Tema 1.3 – Variables y tipos de datos</title>
   <link rel="stylesheet" href="../../../styles.css" />
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 1 · Introducción a Python</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+      <a class="btn btn-secondary btn-sm" href="../../../configuracion.html">Configuración</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 1 · Python</h1>
-  <p>1.3 · Variables: guardar información y reutilizarla</p>
+  <span class="mission-tag">Misión 1.3</span>
+  <h1>Variables y tipos de datos</h1>
+  <p>Aprende a guardar información, reutilizarla y distinguir entre texto, números y otros valores básicos.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 1 · Introducción a Python</div>
+        <div class="mini-note">Nivel inicial · 12-15 min · Guardar y reutilizar información</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Variables</span>
+        <span class="badge green">Tipos</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 38%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
 
-  <!-- BLOQUE 1 -->
-  <section class="panel">
-    <h2>¿Qué es una variable?</h2>
-    <p>
-      Una variable es una forma de <strong>guardar información</strong>
-      para usarla más adelante.
-    </p>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué vas a entender hoy</h2>
+        <p class="exercise-subtitle">
+          Una variable te permite guardar un valor para reutilizarlo más adelante. En este bloque vas a empezar a trabajar con datos de verdad: nombres, edades, textos y números.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Objetivo</span>
+        <span class="badge green">Base mental</span>
+      </div>
+    </div>
 
-    <div class="callout">
-      Piensa en una variable como una etiqueta con un valor dentro.
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué problema resuelve</h3>
+        <p>
+          Si no pudieras guardar información, tendrías que escribir todo una y otra vez. Las variables permiten almacenar valores, darles un nombre y usarlos cuando los necesites.
+        </p>
+
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3>Guardar</h3>
+            <p>Conservar un dato para usarlo más tarde.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Reutilizar</h3>
+            <p>Evitar repetir el mismo valor una y otra vez.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Actualizar</h3>
+            <p>Cambiar el valor de una variable cuando lo necesites.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Comprender datos</h3>
+            <p>Distinguir entre texto, números y otros tipos básicos.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          Idea clave: una variable no es “una palabra especial”. Es un nombre que apunta a un valor.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes vigilar</h3>
+        <ul>
+          <li>qué nombre tiene la variable</li>
+          <li>qué valor guarda</li>
+          <li>si el valor cambia más adelante</li>
+          <li>qué tipo de dato estás usando</li>
+        </ul>
+
+        <div class="challenge">
+          Si confundes el nombre de la variable con el valor que contiene, te costará mucho entender el código.
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- BLOQUE 2 -->
   <section class="panel">
-    <h2>Crear una variable</h2>
+    <h2>¿Qué es una variable?</h2>
+
     <p>
-      En Python, crear una variable es muy sencillo:
+      Una variable es una forma de <strong>guardar información</strong> con un nombre para poder reutilizarla después.
     </p>
 
     <pre><code>edad = 20</code></pre>
 
     <p>
-      Aquí estamos diciendo:
+      Aquí, <code>edad</code> es el nombre de la variable y <code>20</code> es el valor guardado.
     </p>
 
-    <ul>
-      <li>El nombre de la variable es <code>edad</code></li>
-      <li>Su valor es <code>20</code></li>
-    </ul>
+    <div class="callout">
+      Piensa en una variable como una etiqueta con un valor asociado.
+    </div>
   </section>
 
-  <!-- BLOQUE 3 -->
   <section class="panel">
-    <h2>💭 Piensa antes de ejecutar</h2>
+    <h2>Usar una variable</h2>
 
     <p>
-      Antes de probar este código, piensa:
+      Una vez has guardado un valor, puedes utilizarlo en otras líneas del programa.
     </p>
 
     <pre><code>edad = 20
 print(edad)</code></pre>
 
+    <p>
+      Python no imprime el texto <code>edad</code>. Imprime el valor que esa variable contiene.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Piensa antes de ejecutar</h2>
+
+    <pre><code>nombre = "Ana"
+print(nombre)</code></pre>
+
     <ul>
-      <li>¿Qué va a mostrar?</li>
-      <li>¿Mostrará el texto <code>edad</code> o el número?</li>
+      <li>¿Qué se mostrará?</li>
+      <li>¿Se imprime la palabra <code>nombre</code> o el valor guardado?</li>
     </ul>
 
     <div class="callout">
-      Ejecuta el código solo cuando tengas una respuesta en mente.
+      Antes de ejecutar, intenta responder mentalmente. Después compruébalo.
     </div>
   </section>
 
-  <!-- BLOQUE 4 -->
   <section class="panel">
     <h2>Usar variables en mensajes</h2>
+
     <p>
-      Las variables sirven para combinar información:
+      Las variables sirven para construir programas algo más flexibles.
     </p>
 
     <pre><code>nombre = "Ana"
 print("Me llamo", nombre)</code></pre>
 
     <p>
-      Python sustituye la variable por su valor.
+      Python sustituye la variable por su contenido cuando ejecuta el programa.
     </p>
   </section>
 
-  <!-- BLOQUE 5 -->
   <section class="panel">
-    <h2>Tipos de datos (sin memorizar)</h2>
+    <h2>Tipos de datos básicos</h2>
+
     <p>
-      Cada valor tiene un <strong>tipo</strong>.
-      Python lo detecta automáticamente.
+      No todos los valores son iguales. Python distingue entre distintos <strong>tipos de datos</strong>.
     </p>
 
-    <pre><code>edad = 21        # número entero
-altura = 1.70    # número decimal
+    <pre><code>edad = 21        # entero
+altura = 1.70    # decimal
 nombre = "Luis"  # texto
 activo = True    # booleano</code></pre>
 
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Enteros</h3>
+        <p>Números sin decimales, como 3 o 21.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Decimales</h3>
+        <p>Números con parte decimal, como 1.5 o 2.75.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Strings</h3>
+        <p>Texto entre comillas, como <code>"Hola"</code>.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Booleanos</h3>
+        <p>Valores lógicos: <code>True</code> o <code>False</code>.</p>
+      </div>
+    </div>
+
     <div class="callout">
-      No tienes que indicar el tipo: Python lo deduce por ti.
+      No hace falta declarar el tipo manualmente. Python lo deduce por ti.
     </div>
   </section>
 
-  <!-- BLOQUE 6 -->
   <section class="panel">
-    <h2>⚠️ Error típico (muy importante)</h2>
+    <h2>Una variable puede cambiar</h2>
 
     <p>
-      Observa este código:
+      Las variables no tienen por qué quedarse siempre con el mismo valor.
     </p>
+
+    <pre><code>edad = 18
+edad = 19
+print(edad)</code></pre>
+
+    <p>
+      El valor final será 19, porque la segunda asignación sustituye a la primera.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Error típico: usar una variable antes de crearla</h2>
 
     <pre><code>print(nombre)
 nombre = "Ana"</code></pre>
 
     <p>
-      ❓ Pregunta clave:
+      Este código falla porque Python ejecuta de arriba hacia abajo y en la primera línea todavía no existe ninguna variable llamada <code>nombre</code>.
     </p>
 
-    <ul>
-      <li>¿Funcionará?</li>
-      <li>¿Por qué sí o por qué no?</li>
-    </ul>
-
-    <div class="callout">
-      Python ejecuta de arriba hacia abajo.
-      No puede usar una variable que aún no existe.
+    <div class="challenge">
+      Una variable solo puede usarse después de haber sido creada.
     </div>
   </section>
 
-  <!-- BLOQUE 7 -->
   <section class="panel">
-    <h2>Mini-reto guiado</h2>
-    <p>
-      Crea un programa que:
-    </p>
+    <h2>Dónde aparece esta idea en problemas reales</h2>
 
-    <ol>
-      <li>Guarde tu nombre en una variable</li>
-      <li>Guarde tu edad en otra variable</li>
-      <li>Muestre un mensaje usando ambas</li>
-    </ol>
-
-    <pre><code># Ejemplo de estructura
-nombre = "Tu nombre"
-edad = 0
-print("Me llamo", nombre)
-print("Tengo", edad, "años")</code></pre>
-
-    <div class="callout">
-      No copies sin pensar.  
-      Cambia valores y observa qué ocurre.
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Datos personales</h3>
+        <p>Guardar nombre, edad, ciudad o curso.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Cálculos</h3>
+        <p>Conservar números para operar con ellos después.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Mensajes</h3>
+        <p>Construir salidas más personalizadas y reutilizables.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Programas reales</h3>
+        <p>Casi cualquier programa necesita almacenar y manipular información.</p>
+      </div>
     </div>
   </section>
 
-  <!-- NAVEGACIÓN -->
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./02-primer-programa.html">Anterior</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
+        <p class="exercise-subtitle">Empieza a guardar y reutilizar datos con un programa muy sencillo.</p>
+      </div>
 
-  <button class="btn btn-primary" onclick="completeTopic('1.3')">Marcar como completado</button>
+      <div class="badges">
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">1.3</span>
+      </div>
+    </div>
 
-<script>
-const TOPIC_ID = "1.3";
-const NEXT_URL = "./04-operaciones.html";
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Enunciado</h3>
+        <p>Crea un programa que:</p>
+        <ol>
+          <li>guarde tu nombre en una variable</li>
+          <li>guarde tu edad en otra</li>
+          <li>muestre dos mensajes usando ambas variables</li>
+        </ol>
+      </div>
 
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+      <div class="exercise-block">
+        <h3>Qué debes practicar</h3>
+        <ul>
+          <li>crear variables</li>
+          <li>guardar distintos tipos de datos</li>
+          <li>usar variables dentro de mensajes</li>
+          <li>pensar qué se mostrará antes de ejecutar</li>
+        </ul>
 
-const nextBtn = document.getElementById("nextBtn");
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-1%2F03-variables-y-tipos-de-datos.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
+        </div>
+      </div>
+    </div>
+  </section>
 
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Resumen mental del subtema</h2>
+        <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
+      </div>
+    </div>
 
-    if (!token || !nextBtn) return;
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Ideas clave</h3>
+        <ul>
+          <li>una variable guarda un valor con un nombre</li>
+          <li>puedes reutilizar ese valor en otras líneas</li>
+          <li>los datos tienen tipos distintos</li>
+          <li>una variable puede cambiar de valor</li>
+          <li>no puedes usar una variable antes de crearla</li>
+        </ul>
+      </div>
 
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
+      <div class="exercise-block">
+        <h3>Puente con el siguiente bloque</h3>
+        <div class="challenge">
+          Ya sabes guardar información. Lo siguiente es empezar a operar con esos datos: sumar, restar, multiplicar y entender qué calcula Python.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Siguiente paso</h2>
+    <p>
+      Ya puedes guardar y reutilizar información. Lo siguiente es aprender a hacer operaciones con esos valores y entender cómo calcula Python.
+    </p>
+
+    <div class="callout">
+      Cuando marques este subtema como completado, se desbloqueará el siguiente bloque del tema.
+    </div>
+    
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./02-primer-programa.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente bloque</a>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
+    </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
+  </section>
+
+  <script src="../../../theme-init.js"></script> 
+  <script src="../topic-completion.js"></script>
+  <script>
+    const subtopicCompletion = initTopicCompletion({
+      topicId: "1.3",
+      nextUrl: "./04-operaciones.html"
+    });
+
+    const miniRetoCompletion = initTopicCompletion({
+      topicId: "1.3.mini"
+    });
+
+    const completeBtn = document.getElementById("completeBtn");
+    const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+    const completionMessage = document.getElementById("completionMessage");
+
+    function showCompletionMessage(text) {
+      if (!completionMessage) return;
+      completionMessage.textContent = text;
+      completionMessage.style.display = "block";
+    }
+
+    function showCompletedState() {
+      if (!completeBtn) return;
+
+      completeBtn.style.display = "none";
+
+      if (!document.getElementById("completedBadge")) {
+        const badge = document.createElement("span");
+        badge.id = "completedBadge";
+        badge.className = "btn btn-secondary";
+        badge.textContent = "Subtema completado ✅";
+        completeBtn.parentNode.appendChild(badge);
       }
-    });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
-  }
-}
-
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
     }
 
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
-    });
+    function showMiniCompletedState() {
+      if (!miniCompleteBtn) return;
 
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
+      miniCompleteBtn.style.display = "none";
+
+      if (!document.getElementById("miniCompletedBadge")) {
+        const badge = document.createElement("span");
+        badge.id = "miniCompletedBadge";
+        badge.className = "btn btn-secondary";
+        badge.textContent = "Mini-reto completado ✅";
+        miniCompleteBtn.parentNode.appendChild(badge);
+      }
     }
 
-    alert("Tema completado 🎉");
+    async function syncCompletionUI() {
+      try {
+        const subtopicDone = await subtopicCompletion.isCompleted();
+        const miniDone = await miniRetoCompletion.isCompleted();
 
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
+        if (subtopicDone) {
+          showCompletedState();
+        }
+
+        if (miniDone) {
+          showMiniCompletedState();
+        }
+
+        if (subtopicDone && miniDone) {
+          showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+        } else if (subtopicDone) {
+          showCompletionMessage("Este subtema ya estaba marcado como completado.");
+        } else if (miniDone) {
+          showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+        }
+      } catch (error) {
+        console.error("Error comprobando estado del subtema:", error);
+      }
     }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
-  }
-}
 
-unlockNextIfCompleted();
-</script>
+    if (completeBtn) {
+      completeBtn.addEventListener("click", async (e) => {
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
 
+        try {
+          btn.disabled = true;
+          btn.textContent = "Guardando...";
+
+          await subtopicCompletion.completeTopic();
+
+          showCompletedState();
+          showCompletionMessage("Has marcado este subtema como completado.");
+        } catch (error) {
+          console.error("Error al completar el subtema:", error);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          showCompletionMessage(error.message || "No se pudo guardar el progreso.");
+        }
+      });
+    }
+
+    if (miniCompleteBtn) {
+      miniCompleteBtn.addEventListener("click", async (e) => {
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
+
+        try {
+          btn.disabled = true;
+          btn.textContent = "Guardando...";
+
+          await miniRetoCompletion.completeTopic();
+
+          showMiniCompletedState();
+          showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+        } catch (error) {
+          console.error("Error al completar el mini-reto:", error);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+        }
+      });
+    }
+
+    syncCompletionUI();
+  </script>
 
 </main>
-
 </body>
 </html>

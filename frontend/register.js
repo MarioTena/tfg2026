@@ -11,17 +11,32 @@ const passwordInput = document.getElementById("password");
 const registerBtn = document.getElementById("register-btn");
 const statusMsg = document.getElementById("status-msg");
 
+function showStatus(message, isError = true) {
+  statusMsg.textContent = message;
+  statusMsg.classList.toggle("status-success", !isError);
+  statusMsg.classList.toggle("status-error", isError);
+}
+
 async function doRegister() {
-  statusMsg.textContent = "";
+  showStatus("", true);
   registerBtn.disabled = true;
+  registerBtn.textContent = "Creando cuenta...";
 
   const name = nameInput.value.trim();
   const email = emailInput.value.trim();
   const password = passwordInput.value;
 
   if (!name || !email || !password) {
-    statusMsg.textContent = "Rellena nombre, email y contraseña.";
+    showStatus("Completa nombre, email y contraseña.");
     registerBtn.disabled = false;
+    registerBtn.textContent = "Crear cuenta";
+    return;
+  }
+
+  if (password.length < 6) {
+    showStatus("La contraseña debe tener al menos 6 caracteres.");
+    registerBtn.disabled = false;
+    registerBtn.textContent = "Crear cuenta";
     return;
   }
 
@@ -35,23 +50,27 @@ async function doRegister() {
     const data = await res.json().catch(() => null);
 
     if (!res.ok || !data?.ok) {
-      statusMsg.textContent = data?.error || "No se ha podido crear el usuario.";
+      showStatus(data?.error || "No se ha podido crear la cuenta.");
       registerBtn.disabled = false;
+      registerBtn.textContent = "Crear cuenta";
       return;
     }
 
-    // Registro OK → vamos a login y pre-rellenamos el email
     const url = `./login.html?email=${encodeURIComponent(email)}`;
-    window.location.href = url;
+    setTimeout(() => {
+      window.location.href = url;
+    }, 700);
   } catch (err) {
     console.error("Register error:", err);
-    statusMsg.textContent = "No se ha podido conectar con la API.";
+    showStatus("No se ha podido conectar con la API.");
   } finally {
     registerBtn.disabled = false;
+    registerBtn.textContent = "Crear cuenta";
   }
 }
 
 registerBtn.addEventListener("click", doRegister);
+
 document.addEventListener("keydown", (e) => {
   if (e.key === "Enter") doRegister();
 });

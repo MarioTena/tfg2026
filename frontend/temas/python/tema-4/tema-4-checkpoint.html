@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 4 · Checkpoint</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 4 · Checkpoint final</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="./index.html">Tema 4</a>
+      <a class="btn btn-secondary btn-sm" href="../../../configuracion.html">Configuración</a>
+    </div>
+  </div>
+</nav>
+
+<header class="header">
+  <span class="mission-tag">Checkpoint</span>
+  <h1>Checkpoint del tema 4</h1>
+  <p>Antes de desbloquear los ejercicios, comprueba que dominas la lógica básica de las listas.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Evaluación rápida</div>
+        <div class="mini-note">4 preguntas · apruebas con 3 aciertos</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Listas</span>
+        <span class="badge green">Desbloqueo</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 100%;"></div>
+    </div>
+  </div>
+</header>
+
+<main class="main-container single-column">
+
+  <section id="quizPassedCard" class="exercise-card" style="display:none;">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Checkpoint superado ✅</h2>
+        <p class="exercise-subtitle">
+          Ya has demostrado la comprensión mínima del tema. Los ejercicios del tema 4 están desbloqueados.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge green">Aprobado</span>
+        <span class="badge blue">Tema 4</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué significa esto</h3>
+        <ul>
+          <li>ya puedes acceder al bloque de ejercicios del tema</li>
+          <li>no necesitas repetir este checkpoint</li>
+          <li>puedes seguir practicando o repasar si quieres</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <div class="buttons-row">
+          <a class="btn btn-primary" href="./py-tema4-ejercicios.html">Ir a ejercicios</a>
+          <a class="btn btn-secondary" href="./index.html">Volver al tema</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Cómo funciona</h2>
+        <p class="exercise-subtitle">
+          Este checkpoint valida que entiendes qué es una lista, cómo acceder por posición, cómo recorrerla y cómo distinguir entre métodos que modifican y métodos que consultan.
+        </p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <ul>
+          <li>son 4 preguntas</li>
+          <li>necesitas 3 correctas para aprobar</li>
+          <li>puedes repetirlo las veces que necesites</li>
+          <li>si apruebas, se desbloquean los ejercicios del tema 4</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <form id="quizForm">
+
+    <section class="panel checkpoint-question" data-question="q1">
+      <h2>Pregunta 1</h2>
+      <p><strong>¿Qué imprime este código?</strong></p>
+      <pre><code>frutas = ["manzana", "pera", "uva"]
+print(frutas[-1])</code></pre>
+
+      <label class="checkpoint-option"><input type="radio" name="q1" value="A"> manzana</label><br>
+      <label class="checkpoint-option"><input type="radio" name="q1" value="B"> pera</label><br>
+      <label class="checkpoint-option"><input type="radio" name="q1" value="C"> uva</label><br>
+      <label class="checkpoint-option"><input type="radio" name="q1" value="D"> Da error</label>
+
+      <p class="mini-note checkpoint-feedback" style="display:none; margin-top:12px;"></p>
+    </section>
+
+    <section class="panel checkpoint-question" data-question="q2">
+      <h2>Pregunta 2</h2>
+      <p><strong>¿Qué devuelve este slicing?</strong></p>
+      <pre><code>numeros = [10, 20, 30, 40, 50]
+print(numeros[1:4])</code></pre>
+
+      <label class="checkpoint-option"><input type="radio" name="q2" value="A"> [20, 30, 40]</label><br>
+      <label class="checkpoint-option"><input type="radio" name="q2" value="B"> [20, 30, 40, 50]</label><br>
+      <label class="checkpoint-option"><input type="radio" name="q2" value="C"> [10, 20, 30, 40]</label><br>
+      <label class="checkpoint-option"><input type="radio" name="q2" value="D"> 20, 30, 40</label>
+
+      <p class="mini-note checkpoint-feedback" style="display:none; margin-top:12px;"></p>
+    </section>
+
+    <section class="panel checkpoint-question" data-question="q3">
+      <h2>Pregunta 3</h2>
+      <p><strong>¿Qué afirmación es correcta?</strong></p>
+
+      <label class="checkpoint-option"><input type="radio" name="q3" value="A"> remove() elimina por posición y pop() por valor</label><br>
+      <label class="checkpoint-option"><input type="radio" name="q3" value="B"> remove() y pop() hacen exactamente lo mismo siempre</label><br>
+      <label class="checkpoint-option"><input type="radio" name="q3" value="C"> remove() elimina por valor y pop() por posición</label><br>
+      <label class="checkpoint-option"><input type="radio" name="q3" value="D"> sort() no modifica la lista original</label>
+
+      <p class="mini-note checkpoint-feedback" style="display:none; margin-top:12px;"></p>
+    </section>
+
+    <section class="panel checkpoint-question" data-question="q4">
+      <h2>Pregunta 4</h2>
+      <p><strong>¿Qué imprime este código?</strong></p>
+      <pre><code>numeros = [5, 10, 15]
+suma = 0
+
+for numero in numeros:
+    suma = suma + numero
+
+print(suma)</code></pre>
+
+      <label class="checkpoint-option"><input type="radio" name="q4" value="A"> 15</label><br>
+      <label class="checkpoint-option"><input type="radio" name="q4" value="B"> 20</label><br>
+      <label class="checkpoint-option"><input type="radio" name="q4" value="C"> 30</label><br>
+      <label class="checkpoint-option"><input type="radio" name="q4" value="D"> Da error</label>
+
+      <p class="mini-note checkpoint-feedback" style="display:none; margin-top:12px;"></p>
+    </section>
+
+  </form>
+
+  <section class="exercise-card">
+    <div class="callout">
+      Si superas este checkpoint, se desbloquearán los ejercicios del tema 4. Si no apruebas, puedes repetirlo las veces que necesites.
+    </div>
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./05-mini-retos.html">Volver a práctica guiada</a>
+      <button id="submitQuizBtn" class="btn btn-primary" type="button">Corregir checkpoint</button>
+      <a id="goToExercisesBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Ejercicios bloqueados</a>
+    </div>
+
+    <div id="quizResult" class="callout" style="display:none; margin-top:16px;"></div>
+  </section>
+
+</main>
+
+<script src="../../../theme-init.js"></script>
+<script src="../topic-completion.js"></script>
+<script src="./tema-4-checkpoint.js"></script>
+</body>
+</html>

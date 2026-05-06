@@ -61,8 +61,8 @@ async function doLogin() {
       localStorage.setItem("user", JSON.stringify(data.user));
     }
 
-    // ... redirige a la pantalla inicial (home)
-    window.location.href = "menu.html";
+  const onboardingCompleted = data.user?.onboardingCompleted === true;
+  window.location.href = onboardingCompleted ? "menu.html" : "bienvenida.html";
   } catch (err) {
     console.error("Login error:", err);
     statusMsg.textContent = "No se ha podido conectar con la API.";
