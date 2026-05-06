@@ -18,6 +18,7 @@
       <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
       <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
       <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+      <a class="btn btn-secondary btn-sm" href="../../../configuracion.html">Configuración</a>
     </div>
   </div>
 </nav>
@@ -399,16 +400,21 @@
       Ya tienes la teoría importante. Ahora toca razonar y practicar estas estructuras antes de pasar a los ejercicios finales.
     </p>
 
+    <div class="callout">
+      Cuando marques este subtema como completado, se desbloqueará el siguiente bloque del tema.
+    </div>
+    
     <div class="buttons-row">
       <a class="btn btn-secondary" href="./03-operaciones-con-sets.html">Anterior</a>
       <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente bloque</a>
       <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
     </div>
     <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
   </section>
 
-  <script src="../topic-completion.js"></script>
+<script src="../../../theme-init.js"></script>
+<script src="../topic-completion.js"></script>
 <script>
   const subtopicCompletion = initTopicCompletion({
     topicId: "8.4",

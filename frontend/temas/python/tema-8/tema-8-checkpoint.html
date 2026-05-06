@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 8 · Checkpoint</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 8 · Checkpoint final</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="./index.html">Tema 8</a>
+      <a class="btn btn-secondary btn-sm" href="../../../configuracion.html">Configuración</a>
+    </div>
+  </div>
+</nav>
+
+<header class="header">
+  <span class="mission-tag">Checkpoint</span>
+  <h1>Checkpoint del tema 8</h1>
+  <p>Antes de desbloquear los ejercicios, comprueba que dominas la lógica básica de tuplas y sets.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Evaluación rápida</div>
+        <div class="mini-note">4 preguntas · apruebas con 3 aciertos</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Tuplas</span>
+        <span class="badge green">Sets</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 100%;"></div>
+    </div>
+  </div>
+</header>
+
+<main class="main-container single-column">
+
+  <section id="quizPassedCard" class="exercise-card" style="display:none;">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Checkpoint superado ✅</h2>
+        <p class="exercise-subtitle">
+          Ya has demostrado la comprensión mínima del tema. Los ejercicios del tema 8 están desbloqueados.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge green">Aprobado</span>
+        <span class="badge blue">Tema 8</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué significa esto</h3>
+        <ul>
+          <li>ya puedes acceder al bloque de ejercicios del tema</li>
+          <li>no necesitas repetir este checkpoint</li>
+          <li>puedes seguir practicando o repasar si quieres</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <div class="buttons-row">
+          <a class="btn btn-primary" href="./py-tema8-ejercicios.html">Ir a ejercicios</a>
+          <a class="btn btn-secondary" href="./index.html">Volver al tema</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Cómo funciona</h2>
+        <p class="exercise-subtitle">
+          Este checkpoint valida que distingues entre orden, unicidad, pertenencia, estabilidad y elección correcta de estructura.
+        </p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <ul>
+          <li>son 4 preguntas</li>
+          <li>necesitas 3 correctas para aprobar</li>
+          <li>puedes repetirlo las veces que necesites</li>
+          <li>si apruebas, se desbloquean los ejercicios del tema 8</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <form id="quizForm">
+
+    <section class="panel checkpoint-question" data-question="q1">
+      <h2>Pregunta 1</h2>
+      <p><strong>¿Qué estructura representa mejor una coordenada GPS fija?</strong></p>
+
+      <label class="checkpoint-option"><input type="radio" name="q1" value="A"> Lista</label><br>
+      <label class="checkpoint-option"><input type="radio" name="q1" value="B"> Tupla</label><br>
+      <label class="checkpoint-option"><input type="radio" name="q1" value="C"> Set</label><br>
+      <label class="checkpoint-option"><input type="radio" name="q1" value="D"> String</label>
+
+      <p class="mini-note checkpoint-feedback" style="display:none; margin-top:12px;"></p>
+    </section>
+
+    <section class="panel checkpoint-question" data-question="q2">
+      <h2>Pregunta 2</h2>
+      <p><strong>¿Qué le falta a este código para ser una tupla de un elemento?</strong></p>
+      <pre><code>dato = (7)</code></pre>
+
+      <label class="checkpoint-option"><input type="radio" name="q2" value="A"> Un corchete</label><br>
+      <label class="checkpoint-option"><input type="radio" name="q2" value="B"> Una coma</label><br>
+      <label class="checkpoint-option"><input type="radio" name="q2" value="C"> Un punto y coma</label><br>
+      <label class="checkpoint-option"><input type="radio" name="q2" value="D"> Nada, ya es una tupla correcta</label>
+
+      <p class="mini-note checkpoint-feedback" style="display:none; margin-top:12px;"></p>
+    </section>
+
+    <section class="panel checkpoint-question" data-question="q3">
+      <h2>Pregunta 3</h2>
+      <p><strong>Si no quieres duplicados y te importa saber si un valor pertenece al grupo, ¿qué estructura encaja mejor?</strong></p>
+
+      <label class="checkpoint-option"><input type="radio" name="q3" value="A"> Lista</label><br>
+      <label class="checkpoint-option"><input type="radio" name="q3" value="B"> Tupla</label><br>
+      <label class="checkpoint-option"><input type="radio" name="q3" value="C"> Set</label><br>
+      <label class="checkpoint-option"><input type="radio" name="q3" value="D"> Integer</label>
+
+      <p class="mini-note checkpoint-feedback" style="display:none; margin-top:12px;"></p>
+    </section>
+
+    <section class="panel checkpoint-question" data-question="q4">
+      <h2>Pregunta 4</h2>
+      <p><strong>¿Qué afirmación es correcta sobre la diferencia de sets?</strong></p>
+
+      <label class="checkpoint-option"><input type="radio" name="q4" value="A"> a - b y b - a siempre devuelven lo mismo</label><br>
+      <label class="checkpoint-option"><input type="radio" name="q4" value="B"> La diferencia responde a “lo que está en el primero pero no en el segundo”</label><br>
+      <label class="checkpoint-option"><input type="radio" name="q4" value="C"> La diferencia solo funciona con números</label><br>
+      <label class="checkpoint-option"><input type="radio" name="q4" value="D"> La diferencia ordena automáticamente los elementos</label>
+
+      <p class="mini-note checkpoint-feedback" style="display:none; margin-top:12px;"></p>
+    </section>
+
+  </form>
+
+  <section class="exercise-card">
+    <div class="callout">
+      Si superas este checkpoint, se desbloquearán los ejercicios del tema 8. Si no apruebas, puedes repetirlo las veces que necesites.
+    </div>
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./05-mini-retos.html">Volver a práctica guiada</a>
+      <button id="submitQuizBtn" class="btn btn-primary" type="button">Corregir checkpoint</button>
+      <a id="goToExercisesBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Ejercicios bloqueados</a>
+    </div>
+
+    <div id="quizResult" class="callout" style="display:none; margin-top:16px;"></div>
+  </section>
+
+</main>
+
+<script src="../../../theme-init.js"></script>
+<script src="../topic-completion.js"></script>
+<script src="./tema-8-checkpoint.js"></script>
+</body>
+</html>

@@ -2,36 +2,133 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Tema 1.5 – Strings (texto)</title>
+  <title>Tema 1.5 – Strings: trabajar con texto</title>
   <link rel="stylesheet" href="../../../styles.css" />
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 1 · Introducción a Python</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+      <a class="btn btn-secondary btn-sm" href="../../../configuracion.html">Configuración</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 1 · Python</h1>
-  <p>1.5 · Strings: trabajar con texto</p>
+  <span class="mission-tag">Misión 1.5</span>
+  <h1>Strings: trabajar con texto</h1>
+  <p>Aprende qué es un string, cómo unir texto, cómo medirlo y cómo acceder a sus caracteres sin confundirte.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 1 · Introducción a Python</div>
+        <div class="mini-note">Nivel inicial · 12-15 min · Texto, concatenación y primeros accesos</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Strings</span>
+        <span class="badge green">Texto</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 66%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
 
-  <!-- BLOQUE 1 -->
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué vas a entender hoy</h2>
+        <p class="exercise-subtitle">
+          Un string es texto. En este bloque vas a aprender cómo Python lo representa, cómo unir mensajes y cómo empezar a analizar caracteres individuales.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Objetivo</span>
+        <span class="badge green">Texto</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué problema resuelve</h3>
+        <p>
+          Los programas no solo trabajan con números. También necesitan mostrar mensajes, guardar nombres, procesar palabras y construir salidas legibles. Para eso sirven los strings.
+        </p>
+
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3>Mensajes</h3>
+            <p>Mostrar texto al usuario.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Datos personales</h3>
+            <p>Guardar nombres, ciudades o cualquier otro texto.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Concatenación</h3>
+            <p>Unir varias partes para construir una frase.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Análisis</h3>
+            <p>Medir texto y acceder a letras concretas.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          Idea clave: en Python, si algo va entre comillas, es texto.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes vigilar</h3>
+        <ul>
+          <li>si el valor está entre comillas o no</li>
+          <li>si estás uniendo texto con texto o texto con números</li>
+          <li>si Python añade espacios automáticamente o no</li>
+          <li>qué posición concreta estás intentando leer dentro del string</li>
+        </ul>
+
+        <div class="challenge">
+          Un string parece simple, pero muchos errores iniciales vienen de no pensar bien qué es texto y qué no.
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="panel">
     <h2>¿Qué es un string?</h2>
+
     <p>
-      Un <strong>string</strong> es texto.  
-      Cualquier cosa que esté entre comillas.
+      Un <strong>string</strong> es texto. En Python, cualquier cosa entre comillas se interpreta como texto.
     </p>
 
     <pre><code>nombre = "Ana"
 mensaje = "Hola mundo"</code></pre>
 
     <div class="callout">
-      Si lleva comillas → es texto.
+      Si lleva comillas, Python lo trata como texto.
     </div>
   </section>
 
-
-  <!-- BLOQUE 2 -->
   <section class="panel">
     <h2>Comillas simples o dobles</h2>
 
@@ -39,55 +136,71 @@ mensaje = "Hola mundo"</code></pre>
 texto2 = 'Hola'</code></pre>
 
     <p>
-      Ambas funcionan igual.
+      Ambas formas funcionan. Lo importante es abrir y cerrar correctamente.
     </p>
 
-    <div class="callout">
-      Lo importante es abrir y cerrar correctamente.
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Comillas dobles</h3>
+        <p><code>"Hola"</code></p>
+      </div>
+      <div class="theory-card">
+        <h3>Comillas simples</h3>
+        <p><code>'Hola'</code></p>
+      </div>
+      <div class="theory-card">
+        <h3>Regla real</h3>
+        <p>No importa tanto cuál uses, sino cerrarlas bien.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Error típico</h3>
+        <p>Abrir con una y cerrar mal provoca error de sintaxis.</p>
+      </div>
     </div>
   </section>
 
-
-  <!-- BLOQUE 3 -->
   <section class="panel">
-    <h2>💭 Piensa antes de ejecutar</h2>
+    <h2>Piensa antes de ejecutar</h2>
 
     <pre><code>print("Hola" + "Mundo")</code></pre>
 
     <ul>
-      <li>¿Qué mostrará?</li>
-      <li>¿Habrá espacio entre palabras?</li>
+      <li>¿Qué se mostrará?</li>
+      <li>¿Aparecerá un espacio entre las palabras?</li>
     </ul>
 
     <div class="callout">
-      Python no añade espacios automáticamente.
+      Python no añade espacios automáticamente cuando unes strings con <code>+</code>.
     </div>
   </section>
 
-
-  <!-- BLOQUE 4 -->
   <section class="panel">
     <h2>Concatenar texto</h2>
+
+    <p>
+      El operador <code>+</code> une strings.
+    </p>
 
     <pre><code>print("Hola" + " " + "Mundo")</code></pre>
 
     <p>
-      El símbolo <code>+</code> une strings.
-    </p>
-
-    <p>
-      Pero hay una forma más sencilla:
+      También puedes usar comas con <code>print()</code>:
     </p>
 
     <pre><code>print("Hola", "Mundo")</code></pre>
 
-    <div class="callout">
-      Con comas, Python añade espacios automáticamente.
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Con <code>+</code></h3>
+        <p>Tú controlas cada espacio y cada parte del texto.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Con comas</h3>
+        <p>Python separa automáticamente los elementos con espacios.</p>
+      </div>
     </div>
   </section>
 
-
-  <!-- BLOQUE 5 -->
   <section class="panel">
     <h2>Usar variables con texto</h2>
 
@@ -95,31 +208,33 @@ texto2 = 'Hola'</code></pre>
 print("Hola", nombre)</code></pre>
 
     <p>
-      Python sustituye la variable por su valor.
+      Aquí Python toma el valor de <code>nombre</code> y lo inserta en la salida.
     </p>
+
+    <div class="callout">
+      No estás mostrando la palabra <code>nombre</code>, sino el texto guardado dentro.
+    </div>
   </section>
 
-
-  <!-- BLOQUE 6 -->
   <section class="panel">
-    <h2>⚠️ Error típico: mezclar texto y número</h2>
+    <h2>Error típico: mezclar texto y número</h2>
 
     <pre><code>edad = 20
 print("Tengo " + edad + " años")</code></pre>
 
-    <p>❓ ¿Funcionará?</p>
-
-    <div class="callout">
-      No. Python no puede sumar texto y número directamente.
-    </div>
+    <p>
+      Este código falla porque intenta unir directamente un string y un entero.
+    </p>
 
     <p>Forma correcta:</p>
 
     <pre><code>print("Tengo", edad, "años")</code></pre>
+
+    <div class="challenge">
+      Cuando mezclas tipos distintos, no basta con “querer unirlos”. Python necesita que pienses qué tipo de dato estás usando.
+    </div>
   </section>
 
-
-  <!-- BLOQUE 7 -->
   <section class="panel">
     <h2>Longitud de un string</h2>
 
@@ -127,7 +242,7 @@ print("Tengo " + edad + " años")</code></pre>
 print(len(nombre))</code></pre>
 
     <p>
-      La función <code>len()</code> devuelve cuántos caracteres tiene el texto.
+      La función <code>len()</code> devuelve cuántos caracteres tiene un texto.
     </p>
 
     <div class="callout">
@@ -135,8 +250,6 @@ print(len(nombre))</code></pre>
     </div>
   </section>
 
-
-  <!-- BLOQUE 8 -->
   <section class="panel">
     <h2>Acceder a letras individuales</h2>
 
@@ -145,143 +258,263 @@ print(nombre[0])
 print(nombre[1])</code></pre>
 
     <p>
-      Python empieza a contar desde <strong>0</strong>.
+      Python empieza a contar desde 0.
     </p>
 
-    <div class="callout">
-      0 → primera letra  
-      1 → segunda  
-      2 → tercera
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>0</h3>
+        <p>Primera letra</p>
+      </div>
+      <div class="theory-card">
+        <h3>1</h3>
+        <p>Segunda letra</p>
+      </div>
+      <div class="theory-card">
+        <h3>2</h3>
+        <p>Tercera letra</p>
+      </div>
+      <div class="theory-card">
+        <h3>Regla</h3>
+        <p>Los índices empiezan en 0, no en 1.</p>
+      </div>
     </div>
   </section>
 
-
-  <!-- BLOQUE 9 -->
   <section class="panel">
-    <h2>Mini-reto guiado</h2>
+    <h2>Dónde aparece esta idea en problemas reales</h2>
 
-    <p>Crea un programa que:</p>
-
-    <ol>
-      <li>Guarde tu nombre</li>
-      <li>Muestre cuántas letras tiene</li>
-      <li>Muestre la primera letra</li>
-    </ol>
-
-    <pre><code># Estructura base
-nombre = "Tu nombre"
-
-print("Tu nombre tiene", len(nombre), "letras")
-print("La primera letra es:", nombre[0])</code></pre>
-
-    <div class="callout">
-      Cambia el nombre y observa cómo cambia el resultado.
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Salidas claras</h3>
+        <p>Mensajes, avisos o resultados legibles para el usuario.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Datos de texto</h3>
+        <p>Nombres, apellidos, ciudades, cursos o comentarios.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Validación</h3>
+        <p>Comprobar longitud, primera letra o contenido de un texto.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Construcción de mensajes</h3>
+        <p>Unir texto fijo con datos que cambian.</p>
+      </div>
     </div>
   </section>
 
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
+        <p class="exercise-subtitle">Usa texto, longitud y acceso a caracteres en un programa sencillo.</p>
+      </div>
 
-  <!-- BLOQUE 10 -->
-  <section class="panel panel-challenge">
-    <h2>🎯 Reto extra</h2>
+      <div class="badges">
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">1.5</span>
+      </div>
+    </div>
 
-    <p>
-      ¿Qué ocurre aquí?
-    </p>
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Enunciado</h3>
+        <p>Crea un programa que:</p>
+        <ol>
+          <li>guarde tu nombre en una variable</li>
+          <li>muestre cuántas letras tiene con <code>len()</code></li>
+          <li>muestre la primera letra del nombre</li>
+        </ol>
+      </div>
 
-    <pre><code>nombre = "Ana"
-print(nombre[5])</code></pre>
+      <div class="exercise-block">
+        <h3>Qué debes practicar</h3>
+        <ul>
+          <li>guardar texto en variables</li>
+          <li>usar <code>len()</code></li>
+          <li>acceder a una posición concreta del string</li>
+          <li>pensar cómo cambia el resultado si cambias el nombre</li>
+        </ul>
 
-    <p>
-      Ejecuta y observa el error.
-    </p>
-
-    <div class="callout">
-      Intentas acceder a una posición que no existe.
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-1%2F05-strings.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
+        </div>
+      </div>
     </div>
   </section>
 
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Resumen mental del subtema</h2>
+        <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
+      </div>
+    </div>
 
-  <!-- NAVEGACIÓN -->
-  <div class="buttons-row">
-   <a class="btn btn-secondary" href="./04-operaciones.html">Anterior</a>
-   <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-   <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Ideas clave</h3>
+        <ul>
+          <li>un string es texto entre comillas</li>
+          <li>puedes unir texto con <code>+</code> o con comas en <code>print()</code></li>
+          <li>mezclar texto y número sin cuidado provoca errores</li>
+          <li><code>len()</code> mide la longitud del texto</li>
+          <li>los caracteres se acceden por posición empezando en 0</li>
+        </ul>
+      </div>
 
-  <button class="btn btn-primary" onclick="completeTopic('1.5')">Marcar como completado</button>
+      <div class="exercise-block">
+        <h3>Puente con el siguiente bloque</h3>
+        <div class="challenge">
+          Ya sabes trabajar con texto. Lo siguiente es aprender a leer errores como parte normal del proceso y dejar de verlos como algo “malo”.
+        </div>
+      </div>
+    </div>
+  </section>
 
-<script>
-const TOPIC_ID = "1.5";
-const NEXT_URL = "./06-errores.html";
+  <section class="panel">
+    <h2>Siguiente paso</h2>
+    <p>
+      Ya puedes trabajar con texto y construir salidas más ricas. Lo siguiente es aprender a interpretar errores y usarlos para mejorar tu código.
+    </p>
 
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+    <div class="callout">
+      Cuando marques este subtema como completado, se desbloqueará el siguiente bloque del tema.
+    </div>
+    
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./04-operaciones.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente bloque</a>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
+    </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
+  </section>
 
-const nextBtn = document.getElementById("nextBtn");
+  <script src="../../../theme-init.js"></script> 
+  <script src="../topic-completion.js"></script>
+  <script>
+    const subtopicCompletion = initTopicCompletion({
+      topicId: "1.5",
+      nextUrl: "./06-errores.html"
+    });
 
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
+    const miniRetoCompletion = initTopicCompletion({
+      topicId: "1.5.mini"
+    });
 
-    if (!token || !nextBtn) return;
+    const completeBtn = document.getElementById("completeBtn");
+    const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+    const completionMessage = document.getElementById("completionMessage");
 
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
+    function showCompletionMessage(text) {
+      if (!completionMessage) return;
+      completionMessage.textContent = text;
+      completionMessage.style.display = "block";
+    }
+
+    function showCompletedState() {
+      if (!completeBtn) return;
+
+      completeBtn.style.display = "none";
+
+      if (!document.getElementById("completedBadge")) {
+        const badge = document.createElement("span");
+        badge.id = "completedBadge";
+        badge.className = "btn btn-secondary";
+        badge.textContent = "Subtema completado ✅";
+        completeBtn.parentNode.appendChild(badge);
       }
-    });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
-  }
-}
-
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
     }
 
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
-    });
+    function showMiniCompletedState() {
+      if (!miniCompleteBtn) return;
 
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
+      miniCompleteBtn.style.display = "none";
+
+      if (!document.getElementById("miniCompletedBadge")) {
+        const badge = document.createElement("span");
+        badge.id = "miniCompletedBadge";
+        badge.className = "btn btn-secondary";
+        badge.textContent = "Mini-reto completado ✅";
+        miniCompleteBtn.parentNode.appendChild(badge);
+      }
     }
 
-    alert("Tema completado 🎉");
+    async function syncCompletionUI() {
+      try {
+        const subtopicDone = await subtopicCompletion.isCompleted();
+        const miniDone = await miniRetoCompletion.isCompleted();
 
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
+        if (subtopicDone) {
+          showCompletedState();
+        }
+
+        if (miniDone) {
+          showMiniCompletedState();
+        }
+
+        if (subtopicDone && miniDone) {
+          showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+        } else if (subtopicDone) {
+          showCompletionMessage("Este subtema ya estaba marcado como completado.");
+        } else if (miniDone) {
+          showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+        }
+      } catch (error) {
+        console.error("Error comprobando estado del subtema:", error);
+      }
     }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
-  }
-}
 
-unlockNextIfCompleted();
-</script>
+    if (completeBtn) {
+      completeBtn.addEventListener("click", async (e) => {
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
+
+        try {
+          btn.disabled = true;
+          btn.textContent = "Guardando...";
+
+          await subtopicCompletion.completeTopic();
+
+          showCompletedState();
+          showCompletionMessage("Has marcado este subtema como completado.");
+        } catch (error) {
+          console.error("Error al completar el subtema:", error);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          showCompletionMessage(error.message || "No se pudo guardar el progreso.");
+        }
+      });
+    }
+
+    if (miniCompleteBtn) {
+      miniCompleteBtn.addEventListener("click", async (e) => {
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
+
+        try {
+          btn.disabled = true;
+          btn.textContent = "Guardando...";
+
+          await miniRetoCompletion.completeTopic();
+
+          showMiniCompletedState();
+          showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+        } catch (error) {
+          console.error("Error al completar el mini-reto:", error);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+        }
+      });
+    }
+
+    syncCompletionUI();
+  </script>
+
 </main>
-
 </body>
 </html>

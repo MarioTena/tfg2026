@@ -2,101 +2,182 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Tema 1.6 – Laboratorio de errores</title>
+  <title>Tema 1.6 – Errores en Python</title>
   <link rel="stylesheet" href="../../../styles.css" />
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 1 · Introducción a Python</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+      <a class="btn btn-secondary btn-sm" href="../../../configuracion.html">Configuración</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 1 · Python</h1>
-  <p>1.6 · Laboratorio de errores: aprender equivocándote</p>
+  <span class="mission-tag">Misión 1.6</span>
+  <h1>Errores en Python</h1>
+  <p>Aprende a leer errores como parte normal del proceso, entender qué significan y dejar de verlos como un bloqueo.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 1 · Introducción a Python</div>
+        <div class="mini-note">Nivel inicial · 10-12 min · Leer errores sin miedo</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Errores</span>
+        <span class="badge green">Depuración inicial</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 78%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
 
-  <!-- INTRO -->
-  <section class="panel">
-    <h2>💡 Antes de empezar</h2>
-    <p>
-      Los errores no significan que no sabes programar.
-      Significan que estás programando.
-    </p>
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué vas a entender hoy</h2>
+        <p class="exercise-subtitle">
+          Programar no consiste en no equivocarse. Consiste en entender qué ha pasado cuando algo falla y usar esa información para corregir el código.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Objetivo</span>
+        <span class="badge green">Lectura de errores</span>
+      </div>
+    </div>
 
-    <div class="callout">
-      Un buen programador no es el que no comete errores,
-      sino el que sabe leerlos.
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué problema resuelve</h3>
+        <p>
+          Cuando Python encuentra algo incorrecto, no se queda “pensando”. Se detiene y te da una pista. Aprender a leer esa pista es una habilidad básica.
+        </p>
+
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3>Sintaxis</h3>
+            <p>Errores por escribir algo mal: comillas, paréntesis o signos.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Nombre</h3>
+            <p>Errores por usar variables que no existen.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Tipo</h3>
+            <p>Errores por mezclar datos incompatibles.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Índice</h3>
+            <p>Errores por intentar acceder a posiciones que no existen.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          Idea clave: un error no es una señal de que “no sirves”. Es información técnica sobre algo concreto que debes revisar.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes vigilar</h3>
+        <ul>
+          <li>el tipo de error que aparece</li>
+          <li>la línea donde se produce</li>
+          <li>el mensaje final de Python</li>
+          <li>si el problema es de sintaxis, de nombre, de tipo o de acceso</li>
+        </ul>
+
+        <div class="challenge">
+          El principiante mira el error y se bloquea. El programador aprende a leerlo como una pista.
+        </div>
+      </div>
     </div>
   </section>
 
+  <section class="panel">
+    <h2>Antes de empezar: equivocarte es normal</h2>
 
-  <!-- ERROR 1 -->
-  <section class="panel panel-challenge">
-    <h2>🔴 Error 1 · Variable no definida</h2>
+    <p>
+      Los errores no significan que no sabes programar. Significan que estás escribiendo código real y que el ordenador te está devolviendo feedback.
+    </p>
+
+    <div class="callout">
+      Un buen programador no es el que nunca falla, sino el que sabe interpretar el fallo y corregirlo.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Error 1 · Variable no definida</h2>
 
     <pre><code>print(nombre)
 nombre = "Ana"</code></pre>
 
-    <p>❓ Antes de ejecutar:</p>
-    <ul>
-      <li>¿Qué crees que pasará?</li>
-      <li>¿Por qué?</li>
-    </ul>
-
-    <div class="callout">
-      Python ejecuta de arriba hacia abajo.
-    </div>
-
-    <p>Mensaje esperado:</p>
+    <p>
+      Este código falla porque intentas usar una variable antes de crearla.
+    </p>
 
     <pre><code>NameError: name 'nombre' is not defined</code></pre>
 
-    <p>
-      El error te está diciendo exactamente el problema:
-      intentas usar algo que aún no existe.
-    </p>
+    <div class="callout">
+      Python ejecuta de arriba hacia abajo. Si en una línea una variable aún no existe, no puede usarla.
+    </div>
   </section>
 
-
-  <!-- ERROR 2 -->
-  <section class="panel panel-challenge">
-    <h2>🔴 Error 2 · Comillas mal cerradas</h2>
+  <section class="panel">
+    <h2>Error 2 · Comillas mal cerradas</h2>
 
     <pre><code>print("Hola mundo)</code></pre>
 
-    <p>❓ ¿Qué falta?</p>
+    <p>
+      Aquí falta cerrar correctamente el texto.
+    </p>
 
     <pre><code>SyntaxError: unterminated string literal</code></pre>
 
     <div class="callout">
-      Si abres comillas, debes cerrarlas.
+      Si abres comillas, debes cerrarlas. Muchas veces el error es más simple de lo que parece.
     </div>
   </section>
 
-
-  <!-- ERROR 3 -->
-  <section class="panel panel-challenge">
-    <h2>🔴 Error 3 · Mezclar texto y número</h2>
+  <section class="panel">
+    <h2>Error 3 · Mezclar texto y número</h2>
 
     <pre><code>edad = 20
 print("Tengo " + edad + " años")</code></pre>
 
-    <p>❓ ¿Por qué falla?</p>
+    <p>
+      Este error aparece porque intentas unir un string con un entero usando <code>+</code>.
+    </p>
 
     <pre><code>TypeError: can only concatenate str (not "int") to str</code></pre>
 
-    <p>
-      Python no puede sumar directamente texto y número.
-    </p>
+    <p>Forma correcta:</p>
 
-    <div class="callout">
-      Usa comas en print o convierte el número a texto.
-    </div>
+    <pre><code>print("Tengo", edad, "años")</code></pre>
   </section>
 
-
-  <!-- ERROR 4 -->
-  <section class="panel panel-challenge">
-    <h2>🔴 Error 4 · División entre cero</h2>
+  <section class="panel">
+    <h2>Error 4 · División entre cero</h2>
 
     <pre><code>x = 10
 y = 0
@@ -105,158 +186,287 @@ print(x / y)</code></pre>
     <pre><code>ZeroDivisionError: division by zero</code></pre>
 
     <p>
-      Matemáticamente no existe dividir entre cero.
-      Python lo bloquea.
+      Matemáticamente no se puede dividir entre cero, y Python bloquea esa operación.
     </p>
   </section>
 
-
-  <!-- ERROR 5 -->
-  <section class="panel panel-challenge">
-    <h2>🔴 Error 5 · Índice fuera de rango</h2>
+  <section class="panel">
+    <h2>Error 5 · Índice fuera de rango</h2>
 
     <pre><code>nombre = "Ana"
 print(nombre[5])</code></pre>
 
     <pre><code>IndexError: string index out of range</code></pre>
 
+    <p>
+      El string tiene menos posiciones de las que intentas acceder.
+    </p>
+
     <div class="callout">
-      Intentas acceder a una posición que no existe.
+      Si el texto tiene 3 letras, no puedes pedir una posición que no existe.
     </div>
   </section>
 
-
-  <!-- INTERPRETAR TRACEBACK -->
   <section class="panel">
-    <h2>🧠 Cómo leer un error (muy importante)</h2>
+    <h2>Cómo leer un error</h2>
 
     <pre><code>Traceback (most recent call last):
   File "programa.py", line 2, in &lt;module&gt;
     print(nombre)
 NameError: name 'nombre' is not defined</code></pre>
 
-    <p>
-      Siempre fíjate en:
-    </p>
+    <p>Cuando veas algo así, fíjate en tres cosas:</p>
 
     <ul>
-      <li>🔎 Tipo de error (NameError, TypeError...)</li>
-      <li>📍 Línea donde ocurre</li>
-      <li>🧾 Mensaje final (es la clave)</li>
+      <li>el tipo de error</li>
+      <li>la línea donde ocurre</li>
+      <li>el mensaje final, que suele ser la pista más útil</li>
     </ul>
 
-    <div class="callout">
-      El mensaje final casi siempre te dice exactamente qué está mal.
+    <div class="challenge">
+      El mensaje final no está ahí para decorar. Normalmente te dice exactamente qué revisar.
     </div>
   </section>
 
+  <section class="panel">
+    <h2>Dónde aparece esta idea en problemas reales</h2>
 
-  <!-- RETO FINAL -->
-  <section class="panel panel-challenge">
-    <h2>🎯 Reto final del laboratorio</h2>
-
-    <p>
-      Crea un programa que tenga:
-    </p>
-
-    <ul>
-      <li>Una variable mal escrita</li>
-      <li>Una división entre cero</li>
-      <li>Un índice incorrecto</li>
-    </ul>
-
-    <p>
-      Ejecuta uno a uno y observa los errores.
-    </p>
-
-    <div class="callout">
-      Tu objetivo no es que funcione.
-      Tu objetivo es entender el mensaje.
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Depuración</h3>
+        <p>Entender por qué tu programa no produce el resultado esperado.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Mantenimiento</h3>
+        <p>Corregir código escrito por ti o por otras personas.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Aprendizaje</h3>
+        <p>Usar el error como pista para mejorar tu comprensión.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Autonomía</h3>
+        <p>Depender menos de ayuda externa para avanzar.</p>
+      </div>
     </div>
   </section>
 
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
+        <p class="exercise-subtitle">Practica la lectura de errores observando qué falla y por qué.</p>
+      </div>
 
-  <!-- NAVEGACIÓN -->
-  <div class="buttons-row">
-   <a class="btn btn-secondary" href="./05-strings.html">Anterior</a>
-   <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-   <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
+      <div class="badges">
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">1.6</span>
+      </div>
+    </div>
 
-  <button class="btn btn-primary" onclick="completeTopic('1.6')">Marcar como completado</button>
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Enunciado</h3>
+        <p>
+          Crea tres ejemplos cortos en el playground:
+        </p>
+        <ol>
+          <li>uno con una variable no definida</li>
+          <li>uno con comillas mal cerradas</li>
+          <li>uno mezclando texto y número incorrectamente</li>
+        </ol>
+        <p>
+          Tu objetivo no es “arreglarlos rápido”, sino leer el mensaje y entender qué te está diciendo Python.
+        </p>
+      </div>
 
-<script>
-const TOPIC_ID = "1.6";
-const NEXT_URL = "./07-mini-proyecto.html";
+      <div class="exercise-block">
+        <h3>Qué debes practicar</h3>
+        <ul>
+          <li>provocar errores de forma controlada</li>
+          <li>leer el tipo de error</li>
+          <li>identificar la línea problemática</li>
+          <li>explicar con tus palabras qué está fallando</li>
+        </ul>
 
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-1%2F06-errores.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
+        </div>
+      </div>
+    </div>
+  </section>
 
-const nextBtn = document.getElementById("nextBtn");
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Resumen mental del subtema</h2>
+        <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
+      </div>
+    </div>
 
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Ideas clave</h3>
+        <ul>
+          <li>los errores forman parte normal del proceso</li>
+          <li>Python te da pistas útiles cuando falla</li>
+          <li>debes mirar tipo de error, línea y mensaje</li>
+          <li>muchos errores iniciales son simples y repetitivos</li>
+          <li>leer errores te hace avanzar más rápido que evitarlos por miedo</li>
+        </ul>
+      </div>
 
-    if (!token || !nextBtn) return;
+      <div class="exercise-block">
+        <h3>Puente con el siguiente bloque</h3>
+        <div class="challenge">
+          Ya entiendes mejor cómo pensar y corregir. Lo siguiente es consolidar todo el tema con mini-retos guiados antes del bloque final de ejercicios.
+        </div>
+      </div>
+    </div>
+  </section>
 
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
+  <section class="panel">
+    <h2>Siguiente paso</h2>
+    <p>
+      Ya sabes leer errores básicos y entender qué te está diciendo Python. Lo siguiente es combinar todo lo aprendido en una práctica guiada de mini-retos.
+    </p>
+    
+    <div class="callout">
+      Cuando marques este subtema como completado, se desbloqueará el siguiente bloque del tema.
+    </div>
+
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./05-strings.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente bloque</a>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
+    </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
+  </section>
+
+  <script src="../../../theme-init.js"></script> 
+  <script src="../topic-completion.js"></script>
+  <script>
+    const subtopicCompletion = initTopicCompletion({
+      topicId: "1.6",
+      nextUrl: "./07-mini-retos.html"
+    });
+
+    const miniRetoCompletion = initTopicCompletion({
+      topicId: "1.6.mini"
+    });
+
+    const completeBtn = document.getElementById("completeBtn");
+    const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+    const completionMessage = document.getElementById("completionMessage");
+
+    function showCompletionMessage(text) {
+      if (!completionMessage) return;
+      completionMessage.textContent = text;
+      completionMessage.style.display = "block";
+    }
+
+    function showCompletedState() {
+      if (!completeBtn) return;
+
+      completeBtn.style.display = "none";
+
+      if (!document.getElementById("completedBadge")) {
+        const badge = document.createElement("span");
+        badge.id = "completedBadge";
+        badge.className = "btn btn-secondary";
+        badge.textContent = "Subtema completado ✅";
+        completeBtn.parentNode.appendChild(badge);
       }
-    });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
-  }
-}
-
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
     }
 
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
-    });
+    function showMiniCompletedState() {
+      if (!miniCompleteBtn) return;
 
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
+      miniCompleteBtn.style.display = "none";
+
+      if (!document.getElementById("miniCompletedBadge")) {
+        const badge = document.createElement("span");
+        badge.id = "miniCompletedBadge";
+        badge.className = "btn btn-secondary";
+        badge.textContent = "Mini-reto completado ✅";
+        miniCompleteBtn.parentNode.appendChild(badge);
+      }
     }
 
-    alert("Tema completado 🎉");
+    async function syncCompletionUI() {
+      try {
+        const subtopicDone = await subtopicCompletion.isCompleted();
+        const miniDone = await miniRetoCompletion.isCompleted();
 
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
+        if (subtopicDone) {
+          showCompletedState();
+        }
+
+        if (miniDone) {
+          showMiniCompletedState();
+        }
+
+        if (subtopicDone && miniDone) {
+          showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+        } else if (subtopicDone) {
+          showCompletionMessage("Este subtema ya estaba marcado como completado.");
+        } else if (miniDone) {
+          showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+        }
+      } catch (error) {
+        console.error("Error comprobando estado del subtema:", error);
+      }
     }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
-  }
-}
 
-unlockNextIfCompleted();
-</script>
+    if (completeBtn) {
+      completeBtn.addEventListener("click", async (e) => {
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
+
+        try {
+          btn.disabled = true;
+          btn.textContent = "Guardando...";
+
+          await subtopicCompletion.completeTopic();
+
+          showCompletedState();
+          showCompletionMessage("Has marcado este subtema como completado.");
+        } catch (error) {
+          console.error("Error al completar el subtema:", error);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          showCompletionMessage(error.message || "No se pudo guardar el progreso.");
+        }
+      });
+    }
+
+    if (miniCompleteBtn) {
+      miniCompleteBtn.addEventListener("click", async (e) => {
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
+
+        try {
+          btn.disabled = true;
+          btn.textContent = "Guardando...";
+
+          await miniRetoCompletion.completeTopic();
+
+          showMiniCompletedState();
+          showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+        } catch (error) {
+          console.error("Error al completar el mini-reto:", error);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+        }
+      });
+    }
+
+    syncCompletionUI();
+  </script>
+
 </main>
-
 </body>
 </html>

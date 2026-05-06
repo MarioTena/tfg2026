@@ -18,6 +18,7 @@
       <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
       <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
       <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+      <a class="btn btn-secondary btn-sm" href="../../../configuracion.html">Configuración</a>
     </div>
   </div>
 </nav>
@@ -272,20 +273,27 @@ print(resultado)</code></pre>
   <section class="panel">
     <h2>Siguiente paso</h2>
     <p>Ya has trabajado la lectura, la depuración y el razonamiento sobre strings. Ahora toca resolver ejercicios por tu cuenta.</p>
+    
+    <div class="callout">
+      Cuando marques este subtema como completado, se desbloqueará el checkpoint del tema.
+    </div>
 
     <div class="buttons-row">
       <a class="btn btn-secondary" href="./04-recorrer-y-analizar-texto.html">Anterior</a>
       <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Ejercicios Tema 7</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Checkpoint del tema</a>
       <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
     </div>
+
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
   </section>
 
+  <script src="../../../theme-init.js"></script>
   <script src="../topic-completion.js"></script>
   <script>
     const missionCompletion = initTopicCompletion({
       topicId: "7.5",
-      nextUrl: "./py-tema7-ejercicios.html"
+      nextUrl: "./tema-7-checkpoint.html"
     });
 
     const completeBtn = document.getElementById("completeBtn");

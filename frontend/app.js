@@ -11,6 +11,13 @@ let lastAttemptId = null;
 let lastRunStatus = null;
 let lastHintSource = null;
 
+let consoleSocket = null;
+let interactiveSessionId = null;
+let interactiveConsoleRunning = false;
+
+let interactiveStartedAt = null;
+let interactiveTimerId = null;
+
 // Si no hay token, no dejamos entrar al playground
 (function redirectIfNotLogged() {
   const token = localStorage.getItem("token");
@@ -20,9 +27,9 @@ let lastHintSource = null;
 // ============================================================================
 // Referencias a elementos del DOM
 // ============================================================================
-const languageSelect = document.getElementById("language");
+const sessionUserNameEl = document.getElementById("session-user-name");
+const fixedLanguageEl = document.getElementById("fixed-language");
 const codeTextarea = document.getElementById("code");
-const stdinTextarea = document.getElementById("stdin");
 const runButton = document.getElementById("run-btn");
 const statusMsg = document.getElementById("status-msg");
 
@@ -58,6 +65,16 @@ const playgroundLangBadgeEl = document.getElementById("playground-lang-badge");
 const playgroundModeBadgeEl = document.getElementById("playground-mode-badge");
 
 const outputPanelEl = document.querySelector(".panel-output");
+
+const interactiveConsoleControlsEl = document.getElementById("interactive-console-controls");
+const interactiveConsoleInputEl = document.getElementById("interactive-console-input");
+const sendConsoleInputBtn = document.getElementById("send-console-input-btn");
+const stopConsoleBtn = document.getElementById("stop-console-btn");
+const interactiveConsoleHelpEl = document.getElementById("interactive-console-help");
+
+const stdoutBlockEl = document.getElementById("stdout-block");
+const stderrBlockEl = document.getElementById("stderr-block");
+
 // ============================================================================
 // Editor
 // ============================================================================
@@ -89,13 +106,17 @@ function initCodeEditor() {
     },
   });
 
-  editor.on("change", () => {
-    if (lastAttemptId) {
-      if (statusMsg) {
-        statusMsg.textContent = "Has modificado el código. Ejecuta de nuevo para pedir una pista sobre la versión actual.";
-      }
-    }
-  });
+editor.on("change", () => {
+  if (lastAttemptId && statusMsg) {
+    statusMsg.textContent =
+      "Has modificado el código. Ejecuta de nuevo para pedir una pista sobre la versión actual.";
+    return;
+  }
+
+  if (statusMsg && !interactiveConsoleRunning) {
+    statusMsg.textContent = "Listo para practicar.";
+  }
+});
   editor.setSize("100%", 500);
 }
 
@@ -115,7 +136,6 @@ function getEditorCode() {
 // ============================================================================
 // Helpers visuales
 // ============================================================================
-
 function resetAiPanel() {
   if (aiFeedbackEl) aiFeedbackEl.textContent = "";
   lastHintSource = null;
@@ -150,23 +170,115 @@ function updateAiButtonState() {
   aiHintBtn.disabled = !token || !hasExercise || !hasAttempt || noCredits || creditsError;
 }
 
+function setRunStatus(status) {
+  if (!runStatusEl) return;
+
+  runStatusEl.textContent = status || "-";
+
+  runStatusEl.classList.remove(
+    "status-success",
+    "status-error",
+    "status-running",
+    "status-timeout",
+    "status-stopped"
+  );
+
+  if (status === "success") {
+    runStatusEl.classList.add("status-success");
+  } else if (status === "running") {
+    runStatusEl.classList.add("status-running");
+  } else if (status === "stopped") {
+    runStatusEl.classList.add("status-stopped");
+  } else if (
+    status === "timeout" ||
+    status === "timeout_total" ||
+    status === "timeout_inactive"
+  ) {
+    runStatusEl.classList.add("status-timeout");
+  } else if (status && status !== "-") {
+    runStatusEl.classList.add("status-error");
+  }
+}
+
+function startInteractiveTimer() {
+  stopInteractiveTimer();
+  interactiveStartedAt = Date.now();
+
+  if (runTimeEl) {
+    runTimeEl.textContent = "0 s";
+  }
+
+  interactiveTimerId = setInterval(() => {
+    if (!interactiveStartedAt || !runTimeEl) return;
+
+    const elapsedMs = Date.now() - interactiveStartedAt;
+    const elapsedSec = Math.floor(elapsedMs / 1000);
+
+    if (elapsedSec < 60) {
+      runTimeEl.textContent = `${elapsedSec} s`;
+      return;
+    }
+
+    const minutes = Math.floor(elapsedSec / 60);
+    const seconds = elapsedSec % 60;
+    runTimeEl.textContent = `${minutes} min ${seconds} s`;
+  }, 1000);
+}
+
+function stopInteractiveTimer() {
+  if (interactiveTimerId) {
+    clearInterval(interactiveTimerId);
+    interactiveTimerId = null;
+  }
+}
+
+
+
+function clearConsoleOutput() {
+  if (!consoleOutputEl) return;
+  consoleOutputEl.innerHTML = "";
+}
+
+function appendConsoleLine(text, kind = "output") {
+  if (!consoleOutputEl) return;
+
+  const line = document.createElement("div");
+  line.className = `console-line console-line-${kind}`;
+
+  if (kind === "input") {
+    line.textContent = `> ${text}`;
+  } else if (kind === "error") {
+    line.textContent = text;
+  } else {
+    line.textContent = text;
+  }
+
+  consoleOutputEl.appendChild(line);
+  consoleOutputEl.scrollTop = consoleOutputEl.scrollHeight;
+}
+
+function appendMultilineConsole(text, kind = "output") {
+  if (!text) return;
+
+  const lines = String(text).split("\n");
+
+  lines.forEach((line) => {
+    appendConsoleLine(line, kind);
+  });
+}
+
 function resetOutput() {
+  stopInteractiveTimer();
+  interactiveStartedAt = null;
+
   if (stdoutEl) stdoutEl.textContent = "";
   if (stderrEl) stderrEl.textContent = "";
-  if (runStatusEl) runStatusEl.textContent = "-";
+  setRunStatus("-");
   if (runTimeEl) runTimeEl.textContent = "-";
   if (statusMsg) statusMsg.textContent = "Listo para ejecutar.";
   if (feedbackEl) feedbackEl.textContent = "";
-  if (consoleOutputEl) consoleOutputEl.textContent = "";
+  clearConsoleOutput();
   resetAiPanel();
-}
-
-function formatTopicLabel(topic) {
-  if (!topic) return "Ruta de práctica";
-  return topic
-    .replace("python/", "")
-    .replaceAll("-", " ")
-    .replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
 function getReturnToFromURL() {
@@ -219,8 +331,7 @@ function updateBackToTopicButton(exercise) {
 }
 
 function updatePlaygroundHeader(exercise) {
-  const language = languageSelect?.value || "python";
-  const langLabel = language.charAt(0).toUpperCase() + language.slice(1);
+  const langLabel = "Python";
 
   if (playgroundLangBadgeEl) {
     playgroundLangBadgeEl.textContent = langLabel;
@@ -284,21 +395,58 @@ function updateExerciseUI(ex, lang) {
   updatePlaygroundHeader(ex);
 }
 
+function focusOutputPanel() {
+  if (!outputPanelEl) return;
+
+  outputPanelEl.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+
+  outputPanelEl.classList.add("panel-output-active");
+
+  setTimeout(() => {
+    outputPanelEl.classList.remove("panel-output-active");
+  }, 1200);
+}
+
+function stopInteractiveConsoleIfRunning() {
+  if (interactiveSessionId) {
+    stopInteractiveConsole();
+  }
+}
+
+function getSessionUser() {
+  try {
+    return JSON.parse(localStorage.getItem("user") || "{}");
+  } catch {
+    return {};
+  }
+}
+
+function paintSessionUser() {
+  const user = getSessionUser();
+  if (sessionUserNameEl) {
+    sessionUserNameEl.textContent = user?.name || user?.email || "Alumno";
+  }
+
+  if (fixedLanguageEl) {
+    fixedLanguageEl.textContent = "Python";
+  }
+}
 // ============================================================================
 // Carga ejercicio desde URL
 // ============================================================================
 function loadExerciseFromURL() {
+  stopInteractiveConsoleIfRunning();
+
   const params = new URLSearchParams(window.location.search);
   const lang = params.get("lang");
   const exerciseId = params.get("exerciseId");
 
-  if (lang && languageSelect) {
-    languageSelect.value = lang;
-  }
 
   const catalog = window.EXERCISE_CATALOG || {};
 
-  // Caso 1: modo libre
   if (!exerciseId) {
     currentExerciseId = null;
     lastAttemptId = null;
@@ -325,7 +473,6 @@ function loadExerciseFromURL() {
     exercisePanelEl.style.display = "block";
   }
 
-  // Caso 2: ejercicio encontrado
   if (ex) {
     if (exerciseTitleEl) {
       exerciseTitleEl.textContent = ex.title || `Ejercicio: ${exerciseId}`;
@@ -353,6 +500,8 @@ function loadExerciseFromURL() {
     const resetBtn = document.getElementById("btn-reset-template");
     if (resetBtn) {
       resetBtn.onclick = () => {
+        stopInteractiveConsoleIfRunning();
+
         if (ex.starterCode) {
           setEditorCode(ex.starterCode);
         }
@@ -383,7 +532,6 @@ function loadExerciseFromURL() {
     return;
   }
 
-  // Caso 3: viene exerciseId pero no existe en catálogo
   if (exerciseTitleEl) {
     exerciseTitleEl.textContent = `Ejercicio: ${exerciseId}`;
   }
@@ -408,6 +556,7 @@ function loadExerciseFromURL() {
   if (topbarSubEl) {
     topbarSubEl.textContent = "Ejercicio no encontrado en catálogo.";
   }
+
   updateAiButtonState();
 }
 
@@ -545,7 +694,6 @@ async function loadAiCredits() {
 
     aiCreditsEl.textContent = `Créditos IA: ${data.remainingCredits}`;
     updateAiButtonState();
-
   } catch (error) {
     console.error("Error cargando créditos IA:", error);
     aiCreditsEl.textContent = "Créditos IA: error";
@@ -631,7 +779,6 @@ async function requestAiHint() {
     if (aiCreditsEl) {
       aiCreditsEl.textContent = `Créditos IA: ${data.remainingCredits}`;
     }
-
   } catch (error) {
     console.error("Error pidiendo pista IA:", error);
     setAiMessage("Error de conexión con la IA.");
@@ -642,183 +789,258 @@ async function requestAiHint() {
 }
 
 // ============================================================================
-// Ejecutar código
+// Console / execution modes
 // ============================================================================
-async function runCode() {
-  resetOutput();
 
-  lastRunStatus = null;
-  lastAttemptId = null;
-  updateAiButtonState();
 
-  const language = languageSelect?.value || "python";
+function updateExecutionModeUI() {
+  if (interactiveConsoleControlsEl) {
+    interactiveConsoleControlsEl.style.display = "block";
+  }
+
+  if (runButton && !interactiveConsoleRunning) {
+    runButton.textContent = "Ejecutar código";
+  }
+
+  if (statusMsg && !interactiveConsoleRunning) {
+    statusMsg.textContent = "Listo para practicar.";
+  }
+
+  if (stdoutBlockEl) stdoutBlockEl.style.display = "none";
+  if (stderrBlockEl) stderrBlockEl.style.display = "none";
+}
+
+function appendInteractiveConsole(text, kind = "output") {
+  if (!consoleOutputEl) return;
+
+  const normalized = String(text ?? "").replace(/\r/g, "");
+  const lines = normalized.split("\n");
+
+  lines.forEach((line, index) => {
+    const isLastEmpty = index === lines.length - 1 && line === "";
+    if (!isLastEmpty) {
+      appendConsoleLine(line, kind);
+    }
+  });
+}
+
+function initInteractiveSocket() {
+  if (consoleSocket || typeof io === "undefined") return;
+
+  const token = localStorage.getItem("token");
+  if (!token) return;
+
+  consoleSocket = io("http://localhost:3000", {
+    auth: { token }
+  });
+
+  consoleSocket.on("console:started", ({ sessionId, attemptId }) => {
+    interactiveSessionId = sessionId;
+    lastAttemptId = attemptId || null;
+
+    appendInteractiveConsole(">>> Consola iniciada", "system");
+    setInteractiveConsoleRunningState(true);
+    setRunStatus("running");
+    startInteractiveTimer();
+    updateAiButtonState();
+
+    if (statusMsg) {
+      statusMsg.textContent = "Consola interactiva iniciada.";
+    }
+  });
+
+  consoleSocket.on("console:output", ({ text }) => {
+    appendInteractiveConsole(text);
+  });
+
+  consoleSocket.on("console:error", ({ message }) => {
+    appendInteractiveConsole(message, "error");
+  });
+
+  consoleSocket.on("console:end", async ({ status, attemptId }) => {
+    appendInteractiveConsole(`>>> Sesión finalizada (${status})`, "system");
+    interactiveSessionId = null;
+
+    if (attemptId) {
+      lastAttemptId = attemptId;
+    }
+
+    lastRunStatus = status || null;
+
+    setInteractiveConsoleRunningState(false);
+    setRunStatus(status || "-");
+    stopInteractiveTimer();
+    updateAiButtonState();
+
+    try {
+      await loadAttempts();
+    } catch (error) {
+      console.error("Error refrescando historial tras consola interactiva:", error);
+    }
+
+    if (statusMsg) {
+      if (status === "success") {
+        statusMsg.textContent = "La consola ha finalizado correctamente.";
+      } else if (status === "timeout_total") {
+        statusMsg.textContent = "La consola ha alcanzado el tiempo máximo permitido.";
+      } else if (status === "timeout_inactive") {
+        statusMsg.textContent = "La consola se ha cerrado por inactividad.";
+      } else if (status === "stopped") {
+        statusMsg.textContent = "La consola se ha detenido.";
+      } else {
+        statusMsg.textContent = `Consola finalizada: ${status}.`;
+      }
+    }
+
+    focusOutputPanel();
+  });
+}
+
+function setInteractiveConsoleRunningState(isRunning) {
+  interactiveConsoleRunning = isRunning;
+
+  if (sendConsoleInputBtn) {
+    sendConsoleInputBtn.disabled = !isRunning;
+    sendConsoleInputBtn.classList.toggle("btn-disabled", !isRunning);
+  }
+
+  if (stopConsoleBtn) {
+    stopConsoleBtn.disabled = !isRunning;
+    stopConsoleBtn.classList.toggle("btn-disabled", !isRunning);
+  }
+
+  if (interactiveConsoleInputEl) {
+    interactiveConsoleInputEl.disabled = !isRunning;
+    interactiveConsoleInputEl.classList.toggle("interactive-console-input-disabled", !isRunning);
+  }
+
+  if (runButton) {
+    runButton.disabled = isRunning;
+    runButton.textContent = isRunning ? "Programa en ejecución..." : "Ejecutar código";
+  }
+
+  if (interactiveConsoleHelpEl) {
+    interactiveConsoleHelpEl.textContent = isRunning
+      ? "La ejecución está activa. Si el programa pide datos, escríbelos aquí."
+      : "Ejecuta el programa para activar la consola y responder a los input() si los hay.";
+  }
+}
+
+function sendInteractiveConsoleInput() {
+  if (!consoleSocket || !interactiveSessionId || !interactiveConsoleInputEl) return;
+
+  const input = interactiveConsoleInputEl.value;
+  if (input === "") return;
+
+  consoleSocket.emit("console:input", {
+    sessionId: interactiveSessionId,
+    input
+  });
+
+  appendInteractiveConsole(input, "input");
+  interactiveConsoleInputEl.value = "";
+}
+
+function stopInteractiveConsole() {
+  if (!consoleSocket || !interactiveSessionId) return;
+
+  consoleSocket.emit("console:stop", {
+    sessionId: interactiveSessionId
+  });
+
+  appendInteractiveConsole(">>> Consola detenida por el usuario", "system");
+  interactiveSessionId = null;
+  setInteractiveConsoleRunningState(false);
+  setRunStatus("stopped");
+  stopInteractiveTimer();
+
+    if (interactiveConsoleInputEl) {
+    interactiveConsoleInputEl.value = "";
+  }
+
+  if (statusMsg) {
+    statusMsg.textContent = "La consola se ha detenido.";
+  }
+}
+
+function startInteractiveConsole() {
+  initInteractiveSocket();
+
+  if (!consoleSocket) {
+    if (statusMsg) statusMsg.textContent = "No se pudo iniciar la consola.";
+    return;
+  }
+
+  const language = "python";
   const code = getEditorCode();
-  const stdin = stdinTextarea?.value || "";
 
   if (!code.trim()) {
     if (statusMsg) statusMsg.textContent = "Escribe algún código antes de ejecutar.";
     return;
   }
 
-  if (statusMsg) statusMsg.textContent = "Ejecutando código...";
-  if (runButton) runButton.disabled = true;
-  
- 
+  const catalog = window.EXERCISE_CATALOG || {};
+  const ex = currentExerciseId ? catalog[currentExerciseId] : null;
 
-  try {
-    const catalog = window.EXERCISE_CATALOG || {};
-    const ex = currentExerciseId ? catalog[currentExerciseId] : null;
+  resetOutput();
+  setInteractiveConsoleRunningState(false);
+  clearConsoleOutput();
 
-    const body = {
-      language,
-      code,
-      stdin,
-      exerciseId: currentExerciseId,
-      topic: ex?.topic || null,
-    };
+  lastAttemptId = null;
+  lastRunStatus = null;
+  updateAiButtonState();
 
-    const response = await fetch(API_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-      body: JSON.stringify(body),
-    });
+  setRunStatus("running");
+  if (runTimeEl) runTimeEl.textContent = "0 s";
+  if (stdoutEl) stdoutEl.textContent = "";
+  if (stderrEl) stderrEl.textContent = "";
+  if (feedbackEl) feedbackEl.textContent = "";
 
-    const data = await response.json();
+  consoleSocket.emit("console:start", {
+    language,
+    code,
+    exerciseId: currentExerciseId || null,
+    topic: ex?.topic || null
+  });
 
-    if (!response.ok || !data.ok) {
-      if (statusMsg) statusMsg.textContent = data.error || "Error al ejecutar el código.";
-      if (runStatusEl) runStatusEl.textContent = "error";
-      if (stderrEl && data.details) stderrEl.textContent = data.details;
-      return;
-    }
-
-    const run = data.run || {};
-
-    lastAttemptId = data.attemptId || null;
-    lastRunStatus = run.status || null;
-
-    if (stdoutEl) stdoutEl.textContent = run.stdout || "";
-    if (stderrEl) stderrEl.textContent = run.stderr || "";
-    if (runStatusEl) runStatusEl.textContent = run.status || "-";
-    if (runTimeEl) {
-      runTimeEl.textContent =
-        typeof run.timeMs === "number" ? `${run.timeMs} ms` : "-";
-    }
-
-    updateAiButtonState();
-
-
-    if (consoleOutputEl) {
-      consoleOutputEl.textContent = buildConsoleTranscript(run.stdout || "", stdin);
-    }
-
-    await loadAttempts();
-
-    if (statusMsg) {
-      if (run.status === "success") {
-        statusMsg.textContent = "Ejecución completada correctamente.";
-         focusOutputPanel();
-      } else if (run.status === "timeout") {
-        statusMsg.textContent = "La ejecución ha superado el tiempo límite.";
-         focusOutputPanel();
-      } else {
-        statusMsg.textContent = "La ejecución ha devuelto un error.";
-         focusOutputPanel();
-      }
-    }
-  } catch (err) {
-    console.error("Error llamando a /api/run:", err);
-    if (statusMsg) statusMsg.textContent = "No se ha podido conectar con la API.";
-    if (runStatusEl) runStatusEl.textContent = "error";
-  } finally {
-    if (runButton) runButton.disabled = false;
+  if (statusMsg) {
+    statusMsg.textContent = "Iniciando ejecución...";
   }
 }
 
+// ============================================================================
+// Ejecutar código
+// ============================================================================
+async function runCode() {
+  lastRunStatus = null;
+  lastAttemptId = null;
+  updateAiButtonState();
+
+  resetOutput();
+  startInteractiveConsole();
+}
 // ============================================================================
 // Logout
 // ============================================================================
 const logoutBtn = document.getElementById("logout-btn");
 if (logoutBtn) {
   logoutBtn.addEventListener("click", () => {
+    if (consoleSocket && interactiveSessionId) {
+      consoleSocket.emit("console:stop", {
+        sessionId: interactiveSessionId
+      });
+    }
+
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     window.location.href = "../login.html";
   });
 }
 
-function buildConsoleTranscript(stdout, stdin) {
-  const cleanStdout = stdout || "";
-  const inputLines = (stdin || "").split("\n");
-
-  if (!cleanStdout && !stdin) return "";
-
-  let transcript = cleanStdout;
-
-  // Fuerza saltos visuales detrás de prompts típicos
-  transcript = transcript.replace(/: /g, ":\n");
-
-  // Añade lo que el usuario escribió debajo de cada prompt
-  let result = "";
-  let inputIndex = 0;
-
-  const lines = transcript.split("\n");
-
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
-    result += line + "\n";
-
-    const trimmed = line.trim();
-
-    // Heurística simple: si la línea parece un prompt, añadimos una línea de entrada
-    if (
-      trimmed.endsWith(":") &&
-      inputIndex < inputLines.length &&
-      inputLines[inputIndex] !== undefined
-    ) {
-      result += inputLines[inputIndex] + "\n";
-      inputIndex += 1;
-    }
-  }
-
-  return result.trim();
-}
-
-function focusOutputPanel() {
-  if (!outputPanelEl) return;
-
-  outputPanelEl.scrollIntoView({
-    behavior: "smooth",
-    block: "start"
-  });
-
-  outputPanelEl.classList.add("panel-output-active");
-
-  setTimeout(() => {
-    outputPanelEl.classList.remove("panel-output-active");
-  }, 1200);
-}
-
 // ============================================================================
 // Init
 // ============================================================================
 initCodeEditor();
-
-if (languageSelect) {
-  languageSelect.addEventListener("change", () => {
-    const catalog = window.EXERCISE_CATALOG || {};
-    const currentExercise = currentExerciseId ? catalog[currentExerciseId] : null;
-
-    if (currentExercise) {
-      updateExerciseUI(currentExercise, languageSelect.value);
-    } else {
-      updatePlaygroundHeader(null);
-    }
-  });
-}
 
 if (runButton) {
   runButton.addEventListener("click", runCode);
@@ -828,7 +1050,37 @@ if (aiHintBtn) {
   aiHintBtn.addEventListener("click", requestAiHint);
 }
 
+
+if (sendConsoleInputBtn) {
+  sendConsoleInputBtn.addEventListener("click", sendInteractiveConsoleInput);
+}
+
+if (stopConsoleBtn) {
+  stopConsoleBtn.addEventListener("click", stopInteractiveConsole);
+}
+
+if (interactiveConsoleInputEl) {
+  interactiveConsoleInputEl.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      sendInteractiveConsoleInput();
+    }
+  });
+}
+
+window.addEventListener("beforeunload", () => {
+  if (consoleSocket && interactiveSessionId) {
+    consoleSocket.emit("console:stop", {
+      sessionId: interactiveSessionId
+    });
+  }
+});
+
 loadExerciseFromURL();
 loadAttempts();
 loadAiCredits();
 updateAiButtonState();
+setInteractiveConsoleRunningState(false);
+updateExecutionModeUI();
+initInteractiveSocket();
+paintSessionUser();

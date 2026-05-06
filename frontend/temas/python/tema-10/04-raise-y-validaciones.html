@@ -18,6 +18,7 @@
       <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
       <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
       <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+      <a class="btn btn-secondary btn-sm" href="../../../configuracion.html">Configuración</a>
     </div>
   </div>
 </nav>
@@ -110,6 +111,37 @@
         <div class="challenge">
           Piensa así: con <code>raise</code> no reaccionas a un fallo externo, sino que decides frenar tú mismo un caso inválido.
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card video-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Vídeo explicativo</h2>
+        <p class="exercise-subtitle">
+          Si prefieres una explicación guiada paso a paso, aquí tienes el vídeo de apoyo de esta misión.
+        </p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Vídeo</span>
+        <span class="badge green">Apoyo visual</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Comparaciones y booleanos</h3>
+
+        <video controls preload="metadata" style="width: 100%; border-radius: 16px;">
+          <source src="../../../videos/tema-10/10.4-raise-y-validaciones.mp4" type="video/mp4">
+          Tu navegador no puede reproducir este vídeo.
+        </video>
+
+        <p class="mini-note" style="margin-top: 12px;">
+          Consejo: puedes ver primero el vídeo completo o pausarlo e ir probando los ejemplos en el playground.
+        </p>
       </div>
     </div>
   </section>
@@ -462,15 +494,20 @@ print(validar_precio(10))</code></pre>
       Ya sabes usar <code>raise</code> y validar datos. Lo siguiente es practicar situaciones donde debes decidir si conviene prevenir, capturar o lanzar una excepción.
     </p>
 
+    <div class="callout">
+      Cuando marques este subtema como completado, se desbloqueará el siguiente bloque del tema.
+    </div>
+    
     <div class="buttons-row">
       <a class="btn btn-secondary" href="./03-else-finally-y-errores-comunes.html">Anterior</a>
       <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente bloque</a>
       <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
     </div>
     <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
   </section>
 
+  <script src="../../../theme-init.js"></script>
   <script src="../topic-completion.js"></script>
   <script>
     const subtopicCompletion = initTopicCompletion({

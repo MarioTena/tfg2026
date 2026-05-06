@@ -7,30 +7,127 @@
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 1 · Introducción a Python</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+      <a class="btn btn-secondary btn-sm" href="../../../configuracion.html">Configuración</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 1 · Python</h1>
-  <p>1.4 · Operaciones: cómo calcula Python</p>
+  <span class="mission-tag">Misión 1.4</span>
+  <h1>Operaciones y cálculos</h1>
+  <p>Aprende cómo calcula Python, qué hacen los operadores básicos y cómo anticipar resultados antes de ejecutar.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 1 · Introducción a Python</div>
+        <div class="mini-note">Nivel inicial · 12-15 min · Operaciones básicas y razonamiento</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Operaciones</span>
+        <span class="badge green">Cálculo</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 52%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
 
-  <!-- BLOQUE 1 -->
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué vas a entender hoy</h2>
+        <p class="exercise-subtitle">
+          Python no solo muestra texto o guarda datos. También puede calcular. En este bloque vas a aprender cómo funcionan las operaciones básicas y qué debes observar para no confundirte.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Objetivo</span>
+        <span class="badge green">Base matemática</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué problema resuelve</h3>
+        <p>
+          En cuanto empiezas a trabajar con números, necesitas hacer operaciones: sumar, restar, multiplicar, dividir o comparar resultados. Python permite hacer esos cálculos de forma directa, pero debes entender bien qué hace cada operador.
+        </p>
+
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3>Sumar</h3>
+            <p>Combinar cantidades o acumular valores.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Restar</h3>
+            <p>Calcular diferencias entre números.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Multiplicar</h3>
+            <p>Escalar un valor o repetir una cantidad.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Dividir</h3>
+            <p>Repartir o calcular cocientes y restos.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          Idea clave: no se trata de memorizar símbolos aislados. Se trata de entender qué resultado produce cada operación.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes vigilar</h3>
+        <ul>
+          <li>qué operador estás usando</li>
+          <li>si Python devuelve entero o decimal</li>
+          <li>el orden en el que se resuelven las operaciones</li>
+          <li>si estás mezclando tipos de datos incompatibles</li>
+        </ul>
+
+        <div class="challenge">
+          Un cálculo mal entendido no siempre da error. A veces funciona, pero da un resultado distinto del que esperabas.
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="panel">
     <h2>Python también calcula</h2>
+
     <p>
-      Además de guardar información, Python puede realizar
-      <strong>operaciones matemáticas</strong>.
+      Igual que una calculadora, Python puede resolver operaciones matemáticas básicas.
     </p>
 
     <pre><code>print(5 + 3)</code></pre>
 
-    <div class="callout">
+    <p>
       Python evalúa la operación y muestra el resultado.
-    </div>
+    </p>
   </section>
 
-
-  <!-- BLOQUE 2 -->
   <section class="panel">
     <h2>Operaciones básicas</h2>
 
@@ -46,220 +143,332 @@ print(a % b)   # resto
 print(a ** b)  # potencia</code></pre>
 
     <p>
-      No memorices aún. Lo importante es entender qué hace cada símbolo.
+      No necesitas memorizar todo de golpe. Lo importante ahora es entender el efecto general de cada operador.
     </p>
   </section>
 
-
-  <!-- BLOQUE 3 -->
   <section class="panel">
-    <h2>💭 Piensa antes de ejecutar</h2>
+    <h2>Piensa antes de ejecutar</h2>
 
     <pre><code>print(10 / 3)</code></pre>
 
     <ul>
-      <li>¿Qué resultado esperas?</li>
-      <li>¿Será 3 o 3.333...?</li>
+      <li>¿Esperas un 3?</li>
+      <li>¿Esperas un decimal?</li>
+      <li>¿Por qué?</li>
     </ul>
 
     <div class="callout">
-      Python siempre devuelve decimal en divisiones normales.
+      Acostúmbrate a prever el resultado antes de ejecutar. Esa costumbre vale más que ir probando sin pensar.
     </div>
   </section>
 
-
-  <!-- BLOQUE 4 -->
   <section class="panel">
     <h2>División normal vs división entera</h2>
 
     <pre><code>print(10 / 3)
 print(10 // 3)</code></pre>
 
-    <p>
-      Observa la diferencia:
-    </p>
-
-    <ul>
-      <li><code>/</code> → devuelve decimal</li>
-      <li><code>//</code> → elimina los decimales</li>
-    </ul>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3><code>/</code></h3>
+        <p>Devuelve un resultado decimal.</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>//</code></h3>
+        <p>Devuelve solo la parte entera del cociente.</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>%</code></h3>
+        <p>Devuelve el resto de la división.</p>
+      </div>
+      <div class="theory-card">
+        <h3><code>**</code></h3>
+        <p>Eleva un número a una potencia.</p>
+      </div>
+    </div>
 
     <div class="callout">
-      Esta diferencia es clave en muchos algoritmos.
+      La diferencia entre división normal, entera y resto aparece constantemente en problemas reales.
     </div>
   </section>
 
-
-  <!-- BLOQUE 5 -->
   <section class="panel">
     <h2>Orden de operaciones</h2>
 
     <pre><code>print(2 + 3 * 4)</code></pre>
 
+    <p>
+      Python respeta las reglas matemáticas habituales:
+    </p>
+
     <ul>
-      <li>¿Da 20?</li>
-      <li>¿O da 14?</li>
+      <li>primero multiplicación y división</li>
+      <li>después suma y resta</li>
+      <li>los paréntesis cambian el orden</li>
     </ul>
 
-    <div class="callout">
-      Python respeta las reglas matemáticas:
-      primero multiplicación, luego suma.
-    </div>
-
     <pre><code>print((2 + 3) * 4)</code></pre>
+
+    <div class="challenge">
+      Si no piensas el orden de evaluación, puedes obtener resultados correctos técnicamente, pero no los que querías.
+    </div>
   </section>
 
-
-  <!-- BLOQUE 6 -->
   <section class="panel">
-    <h2>⚠️ Error típico: mezclar tipos</h2>
+    <h2>Error típico: mezclar texto y número</h2>
 
     <pre><code>edad = 20
 print("Tengo " + edad + " años")</code></pre>
 
     <p>
-      ❓ ¿Funcionará?
+      Este código falla porque Python no puede sumar directamente un string y un entero.
     </p>
-
-    <div class="callout">
-      No. No se puede sumar texto con número directamente.
-    </div>
 
     <p>Forma correcta:</p>
 
     <pre><code>print("Tengo", edad, "años")</code></pre>
+
+    <div class="callout">
+      No todo lo que parece una “suma” lo es. Con texto y números hay que pensar también en los tipos de datos.
+    </div>
   </section>
 
-
-  <!-- BLOQUE 7 -->
   <section class="panel">
-    <h2>Mini-reto práctico</h2>
+    <h2>Dónde aparece esta idea en problemas reales</h2>
 
-    <p>
-      Crea un programa que:
-    </p>
-
-    <ol>
-      <li>Guarde dos números en variables</li>
-      <li>Calcule su suma</li>
-      <li>Calcule su multiplicación</li>
-      <li>Muestre ambos resultados</li>
-    </ol>
-
-    <pre><code># Estructura base
-a = 0
-b = 0
-
-print("Suma:", a + b)
-print("Multiplicación:", a * b)</code></pre>
-
-    <div class="callout">
-      Cambia los números y observa cómo varían los resultados.
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Precios</h3>
+        <p>Sumar importes, aplicar descuentos o calcular totales.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Contadores</h3>
+        <p>Incrementar o reducir cantidades paso a paso.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Medias y repartos</h3>
+        <p>Dividir cantidades y analizar resultados.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Reglas</h3>
+        <p>Aplicar fórmulas simples dentro de un programa.</p>
+      </div>
     </div>
   </section>
 
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
+        <p class="exercise-subtitle">Empieza a usar operaciones con datos guardados en variables.</p>
+      </div>
 
-  <!-- BLOQUE 8 -->
-  <section class="panel panel-challenge">
-    <h2>🎯 Reto extra (nivel 2)</h2>
+      <div class="badges">
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">1.4</span>
+      </div>
+    </div>
 
-    <p>
-      ¿Qué ocurre si divides entre cero?
-    </p>
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Enunciado</h3>
+        <p>Crea un programa que:</p>
+        <ol>
+          <li>guarde dos números en variables</li>
+          <li>calcule su suma</li>
+          <li>calcule su multiplicación</li>
+          <li>muestre ambos resultados con mensajes claros</li>
+        </ol>
+      </div>
 
-    <pre><code>print(5 / 0)</code></pre>
+      <div class="exercise-block">
+        <h3>Qué debes practicar</h3>
+        <ul>
+          <li>usar operadores matemáticos básicos</li>
+          <li>guardar números en variables</li>
+          <li>pensar qué resultado obtendrás antes de ejecutar</li>
+          <li>mostrar resultados con claridad</li>
+        </ul>
 
-    <p>
-      Ejecuta y observa el error.
-    </p>
-
-    <div class="callout">
-      Aprender a leer errores es parte fundamental de programar.
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-1%2F04-operaciones.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
+        </div>
+      </div>
     </div>
   </section>
 
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Resumen mental del subtema</h2>
+        <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
+      </div>
+    </div>
 
-  <!-- NAVEGACIÓN -->
-  <div class="buttons-row">
-   <a class="btn btn-secondary" href="./03-variables-y-tipos-de-datos.html">Anterior</a>
-   <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-   <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Ideas clave</h3>
+        <ul>
+          <li>Python puede hacer operaciones matemáticas básicas</li>
+          <li>cada operador tiene un efecto distinto</li>
+          <li>la división normal y la entera no son lo mismo</li>
+          <li>el orden de operaciones importa</li>
+          <li>mezclar texto y números sin cuidado provoca errores</li>
+        </ul>
+      </div>
 
-  <button class="btn btn-primary" onclick="completeTopic('1.4')">Marcar como completado</button>
+      <div class="exercise-block">
+        <h3>Puente con el siguiente bloque</h3>
+        <div class="challenge">
+          Ya sabes operar con números. Lo siguiente es trabajar mejor con texto: strings, concatenación y manejo básico de caracteres.
+        </div>
+      </div>
+    </div>
+  </section>
 
-<script>
-const TOPIC_ID = "1.4";
-const NEXT_URL = "./05-strings.html";
+  <section class="panel">
+    <h2>Siguiente paso</h2>
+    <p>
+      Ya puedes hacer cálculos básicos con Python. Lo siguiente es aprender a trabajar con texto y construir mensajes más expresivos con strings.
+    </p>
 
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+    <div class="callout">
+      Cuando marques este subtema como completado, se desbloqueará el siguiente bloque del tema.
+    </div>
+    
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./03-variables-y-tipos-de-datos.html">Anterior</a>
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente bloque</a>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
+    </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
+  </section>
 
-const nextBtn = document.getElementById("nextBtn");
+  <script src="../../../theme-init.js"></script> 
+  <script src="../topic-completion.js"></script>
+  <script>
+    const subtopicCompletion = initTopicCompletion({
+      topicId: "1.4",
+      nextUrl: "./05-strings.html"
+    });
 
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
+    const miniRetoCompletion = initTopicCompletion({
+      topicId: "1.4.mini"
+    });
 
-    if (!token || !nextBtn) return;
+    const completeBtn = document.getElementById("completeBtn");
+    const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+    const completionMessage = document.getElementById("completionMessage");
 
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
+    function showCompletionMessage(text) {
+      if (!completionMessage) return;
+      completionMessage.textContent = text;
+      completionMessage.style.display = "block";
+    }
+
+    function showCompletedState() {
+      if (!completeBtn) return;
+
+      completeBtn.style.display = "none";
+
+      if (!document.getElementById("completedBadge")) {
+        const badge = document.createElement("span");
+        badge.id = "completedBadge";
+        badge.className = "btn btn-secondary";
+        badge.textContent = "Subtema completado ✅";
+        completeBtn.parentNode.appendChild(badge);
       }
-    });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
-  }
-}
-
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
     }
 
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
-    });
+    function showMiniCompletedState() {
+      if (!miniCompleteBtn) return;
 
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
+      miniCompleteBtn.style.display = "none";
+
+      if (!document.getElementById("miniCompletedBadge")) {
+        const badge = document.createElement("span");
+        badge.id = "miniCompletedBadge";
+        badge.className = "btn btn-secondary";
+        badge.textContent = "Mini-reto completado ✅";
+        miniCompleteBtn.parentNode.appendChild(badge);
+      }
     }
 
-    alert("Tema completado 🎉");
+    async function syncCompletionUI() {
+      try {
+        const subtopicDone = await subtopicCompletion.isCompleted();
+        const miniDone = await miniRetoCompletion.isCompleted();
 
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
+        if (subtopicDone) {
+          showCompletedState();
+        }
+
+        if (miniDone) {
+          showMiniCompletedState();
+        }
+
+        if (subtopicDone && miniDone) {
+          showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+        } else if (subtopicDone) {
+          showCompletionMessage("Este subtema ya estaba marcado como completado.");
+        } else if (miniDone) {
+          showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+        }
+      } catch (error) {
+        console.error("Error comprobando estado del subtema:", error);
+      }
     }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
-  }
-}
 
-unlockNextIfCompleted();
-</script>
+    if (completeBtn) {
+      completeBtn.addEventListener("click", async (e) => {
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
+
+        try {
+          btn.disabled = true;
+          btn.textContent = "Guardando...";
+
+          await subtopicCompletion.completeTopic();
+
+          showCompletedState();
+          showCompletionMessage("Has marcado este subtema como completado.");
+        } catch (error) {
+          console.error("Error al completar el subtema:", error);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          showCompletionMessage(error.message || "No se pudo guardar el progreso.");
+        }
+      });
+    }
+
+    if (miniCompleteBtn) {
+      miniCompleteBtn.addEventListener("click", async (e) => {
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
+
+        try {
+          btn.disabled = true;
+          btn.textContent = "Guardando...";
+
+          await miniRetoCompletion.completeTopic();
+
+          showMiniCompletedState();
+          showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+        } catch (error) {
+          console.error("Error al completar el mini-reto:", error);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+        }
+      });
+    }
+
+    syncCompletionUI();
+  </script>
+
 </main>
-
 </body>
 </html>

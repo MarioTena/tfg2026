@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tema 5 · Checkpoint</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 5 · Checkpoint final</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="./index.html">Tema 5</a>
+      <a class="btn btn-secondary btn-sm" href="../../../configuracion.html">Configuración</a>
+    </div>
+  </div>
+</nav>
+
+<header class="header">
+  <span class="mission-tag">Checkpoint</span>
+  <h1>Checkpoint del tema 5</h1>
+  <p>Antes de desbloquear los ejercicios, comprueba que dominas la lógica básica de las funciones.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Evaluación rápida</div>
+        <div class="mini-note">4 preguntas · apruebas con 3 aciertos</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Funciones</span>
+        <span class="badge green">Desbloqueo</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 100%;"></div>
+    </div>
+  </div>
+</header>
+
+<main class="main-container single-column">
+
+  <section id="quizPassedCard" class="exercise-card" style="display:none;">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Checkpoint superado ✅</h2>
+        <p class="exercise-subtitle">
+          Ya has demostrado la comprensión mínima del tema. Los ejercicios del tema 5 están desbloqueados.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge green">Aprobado</span>
+        <span class="badge blue">Tema 5</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué significa esto</h3>
+        <ul>
+          <li>ya puedes acceder al bloque de ejercicios del tema</li>
+          <li>no necesitas repetir este checkpoint</li>
+          <li>puedes seguir practicando o repasar si quieres</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <div class="buttons-row">
+          <a class="btn btn-primary" href="./py-tema5-ejercicios.html">Ir a ejercicios</a>
+          <a class="btn btn-secondary" href="./index.html">Volver al tema</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Cómo funciona</h2>
+        <p class="exercise-subtitle">
+          Este checkpoint valida que distingues entre definir y llamar, entre parámetros y argumentos, entre imprimir y devolver, y que entiendes el ámbito básico.
+        </p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <ul>
+          <li>son 4 preguntas</li>
+          <li>necesitas 3 correctas para aprobar</li>
+          <li>puedes repetirlo las veces que necesites</li>
+          <li>si apruebas, se desbloquean los ejercicios del tema 5</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <form id="quizForm">
+
+    <section class="panel checkpoint-question" data-question="q1">
+      <h2>Pregunta 1</h2>
+      <p><strong>¿Qué ocurre con este código?</strong></p>
+      <pre><code>def saludar():
+    print("Hola")</code></pre>
+
+      <label class="checkpoint-option"><input type="radio" name="q1" value="A"> Imprime Hola automáticamente</label><br>
+      <label class="checkpoint-option"><input type="radio" name="q1" value="B"> Solo define la función; todavía no la ejecuta</label><br>
+      <label class="checkpoint-option"><input type="radio" name="q1" value="C"> Da error porque falta return</label><br>
+      <label class="checkpoint-option"><input type="radio" name="q1" value="D"> La función se ejecuta una vez al definirse</label>
+
+      <p class="mini-note checkpoint-feedback" style="display:none; margin-top:12px;"></p>
+    </section>
+
+    <section class="panel checkpoint-question" data-question="q2">
+      <h2>Pregunta 2</h2>
+      <p><strong>En este código, ¿qué es el parámetro y qué es el argumento?</strong></p>
+      <pre><code>def saludar(nombre):
+    print("Hola", nombre)
+
+saludar("Ana")</code></pre>
+
+      <label class="checkpoint-option"><input type="radio" name="q2" value="A"> parámetro: "Ana" · argumento: nombre</label><br>
+      <label class="checkpoint-option"><input type="radio" name="q2" value="B"> parámetro: saludar · argumento: print</label><br>
+      <label class="checkpoint-option"><input type="radio" name="q2" value="C"> parámetro: nombre · argumento: "Ana"</label><br>
+      <label class="checkpoint-option"><input type="radio" name="q2" value="D"> los dos son lo mismo</label>
+
+      <p class="mini-note checkpoint-feedback" style="display:none; margin-top:12px;"></p>
+    </section>
+
+    <section class="panel checkpoint-question" data-question="q3">
+      <h2>Pregunta 3</h2>
+      <p><strong>¿Qué imprime este código?</strong></p>
+      <pre><code>def doble(numero):
+    print(numero * 2)
+
+resultado = doble(4)
+print(resultado)</code></pre>
+
+      <label class="checkpoint-option"><input type="radio" name="q3" value="A"> 8 y después None</label><br>
+      <label class="checkpoint-option"><input type="radio" name="q3" value="B"> 8 y después 8</label><br>
+      <label class="checkpoint-option"><input type="radio" name="q3" value="C"> Solo 8</label><br>
+      <label class="checkpoint-option"><input type="radio" name="q3" value="D"> Da error</label>
+
+      <p class="mini-note checkpoint-feedback" style="display:none; margin-top:12px;"></p>
+    </section>
+
+    <section class="panel checkpoint-question" data-question="q4">
+      <h2>Pregunta 4</h2>
+      <p><strong>¿Por qué falla este código?</strong></p>
+      <pre><code>def crear_mensaje():
+    mensaje = "Hola"
+
+print(mensaje)</code></pre>
+
+      <label class="checkpoint-option"><input type="radio" name="q4" value="A"> Porque print solo funciona dentro de funciones</label><br>
+      <label class="checkpoint-option"><input type="radio" name="q4" value="B"> Porque mensaje es una variable local y fuera no existe</label><br>
+      <label class="checkpoint-option"><input type="radio" name="q4" value="C"> Porque faltan paréntesis en crear_mensaje</label><br>
+      <label class="checkpoint-option"><input type="radio" name="q4" value="D"> Porque una función no puede contener strings</label>
+
+      <p class="mini-note checkpoint-feedback" style="display:none; margin-top:12px;"></p>
+    </section>
+
+  </form>
+
+  <section class="exercise-card">
+    <div class="callout">
+      Si superas este checkpoint, se desbloquearán los ejercicios del tema 5. Si no apruebas, puedes repetirlo las veces que necesites.
+    </div>
+    <div class="buttons-row">
+      <a class="btn btn-secondary" href="./05-mini-retos.html">Volver a práctica guiada</a>
+      <button id="submitQuizBtn" class="btn btn-primary" type="button">Corregir checkpoint</button>
+      <a id="goToExercisesBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Ejercicios bloqueados</a>
+    </div>
+
+    <div id="quizResult" class="callout" style="display:none; margin-top:16px;"></div>
+  </section>
+
+</main>
+
+<script src="../../../theme-init.js"></script>
+<script src="../topic-completion.js"></script>
+<script src="./tema-5-checkpoint.js"></script>
+</body>
+</html>

@@ -7,55 +7,121 @@
 </head>
 <body>
 
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-title">
+      <h1>Ruta Python</h1>
+      <p>Tema 1 · Introducción a Python</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
+      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
+      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
+      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
+      <a class="btn btn-secondary btn-sm" href="../../../configuracion.html">Configuración</a>
+    </div>
+  </div>
+</nav>
+
 <header class="header">
-  <h1>Tema 1 · Python</h1>
-  <p>1.1 · ¿Qué es Python y por qué se usa tanto?</p>
+  <span class="mission-tag">Misión 1.1</span>
+  <h1>¿Qué es Python?</h1>
+  <p>Empieza entendiendo qué es un lenguaje de programación, por qué Python se usa tanto y cómo debes empezar a pensar cuando programas.</p>
+
+  <div class="progress-hero">
+    <div class="progress-hero-top">
+      <div>
+        <div class="progress-label">Tema 1 · Introducción a Python</div>
+        <div class="mini-note">Nivel inicial · 10-12 min · Primera toma de contacto</div>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Inicio</span>
+        <span class="badge green">Fundamentos</span>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 12%;"></div>
+    </div>
+  </div>
+
+  <div class="buttons-row">
+    <a class="btn btn-primary" href="#reto">Empezar misión</a>
+    <a class="btn btn-secondary" href="../../../playground/index.html?lang=python">Abrir playground</a>
+  </div>
 </header>
 
 <main class="main-container single-column">
 
-  <!-- BLOQUE 1 -->
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué vas a entender hoy</h2>
+        <p class="exercise-subtitle">
+          Python es un lenguaje de programación: una forma de escribir instrucciones para que un ordenador las ejecute.
+          En este primer bloque vas a entender qué significa eso y por qué Python es una buena puerta de entrada.
+        </p>
+      </div>
+      <div class="badges">
+        <span class="badge blue">Objetivo</span>
+        <span class="badge green">Base mental</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Qué problema resuelve</h3>
+        <p>
+          Programar sirve para dar órdenes claras a una máquina y hacer que ejecute pasos de forma precisa.
+          Python te permite hacerlo con una sintaxis bastante legible, sin empezar por una complejidad innecesaria.
+        </p>
+
+        <div class="theory-grid">
+          <div class="theory-card">
+            <h3>Automatización</h3>
+            <p>Repetir tareas sin hacerlas manualmente una y otra vez.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Lógica</h3>
+            <p>Aprender a pensar en pasos claros, concretos y ordenados.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Versatilidad</h3>
+            <p>Se usa en datos, automatización, web, inteligencia artificial y educación.</p>
+          </div>
+          <div class="theory-card">
+            <h3>Aprendizaje</h3>
+            <p>Es un buen lenguaje para empezar porque deja ver mejor la lógica del programa.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          Idea clave: programar no es “hablar con el ordenador”. Es escribir instrucciones exactas y en orden.
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes vigilar</h3>
+        <ul>
+          <li>el ordenador ejecuta exactamente lo que le escribes</li>
+          <li>el orden de las instrucciones importa</li>
+          <li>si hay un error, Python se detiene en ese punto</li>
+          <li>programar exige precisión, no intuición vaga</li>
+        </ul>
+
+        <div class="challenge">
+          La máquina no interpreta intenciones. Ejecuta lo que has escrito, no lo que querías escribir.
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="panel">
     <h2>Python es una herramienta para dar órdenes</h2>
+
     <p>
-      Python es un <strong>lenguaje de programación</strong>, es decir,
-      una forma de escribir instrucciones para que un ordenador las ejecute.
-    </p>
-
-    <div class="callout">
-      El ordenador no interpreta, no adivina y no corrige:  
-      ejecuta exactamente lo que le dices.
-    </div>
-  </section>
-
-  <!-- BLOQUE 2 -->
-  <section class="panel">
-    <h2>¿Por qué aprender Python?</h2>
-
-    <div class="progress-grid">
-      <div class="progress-card">
-        <h3>🧠 Fácil de leer</h3>
-        <p>Su sintaxis se parece al lenguaje humano.</p>
-      </div>
-
-      <div class="progress-card">
-        <h3>🚀 Muy usado</h3>
-        <p>Web, IA, datos, automatización, educación.</p>
-      </div>
-
-      <div class="progress-card">
-        <h3>⚡ Ideal para aprender</h3>
-        <p>Permite centrarse en la lógica, no en la complejidad técnica.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- BLOQUE 3 -->
-  <section class="panel">
-    <h2>Python es interpretado</h2>
-    <p>
-      Python ejecuta el código <strong>línea a línea</strong>, en orden.
-      No hay compilación previa como en otros lenguajes.
+      Python es un <strong>lenguaje de programación</strong>. Eso significa que te permite escribir instrucciones
+      para que un ordenador haga algo concreto.
     </p>
 
     <pre><code>print("Empiezo")
@@ -63,111 +129,345 @@ print("Sigo")
 print("Termino")</code></pre>
 
     <p>
-      Si hay un error, Python se detiene en ese punto.
+      Python ejecuta las líneas de arriba hacia abajo, una detrás de otra.
     </p>
   </section>
 
-  <!-- BLOQUE 4 -->
   <section class="panel">
-    <h2>Piensa como programador</h2>
-    <p>
-      Aprender Python no es memorizar comandos.
-      Es aprender a:
-    </p>
+    <h2>¿Por qué aprender Python?</h2>
 
-    <ul>
-      <li>Dar instrucciones claras</li>
-      <li>Pensar paso a paso</li>
-      <li>Detectar errores</li>
-    </ul>
-
-    <div class="callout">
-      Programar es aprender a pensar con precisión.
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Fácil de leer</h3>
+        <p>Su sintaxis es bastante limpia y te deja concentrarte antes en la lógica que en el ruido técnico.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Muy usado</h3>
+        <p>Se utiliza en automatización, ciencia de datos, inteligencia artificial, web y muchas otras áreas.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Bueno para empezar</h3>
+        <p>Reduce fricción al inicio y te ayuda a construir una base mental sólida.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Útil a largo plazo</h3>
+        <p>No es solo un lenguaje “de aprendizaje”: también se usa profesionalmente.</p>
+      </div>
     </div>
   </section>
 
-  <!-- NAVEGACIÓN -->
-  <div class="buttons-row">
-    <a class="btn btn-secondary" href="./index.html">Índice tema</a>
-    <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-    <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente tema</a>
-  </div>
+  <section class="panel">
+    <h2>Python es interpretado</h2>
 
-  <button class="btn btn-primary" onclick="completeTopic('1.1')">Marcar como completado</button>
+    <p>
+      Python ejecuta el código línea a línea. No necesitas empezar entendiendo compiladores ni procesos complejos.
+      Lo importante ahora es comprender qué has escrito y qué hace cada línea.
+    </p>
 
+    <pre><code>print("Uno")
+print("Dos")
+print("Tres")</code></pre>
 
-<script>
-const TOPIC_ID = "1.1";
-const NEXT_URL = "./02-primer-programa.html";
+    <div class="callout">
+      Si Python encuentra un error en una línea, deja de avanzar y te señala ese punto.
+    </div>
+  </section>
 
-const API_URL = "http://localhost:3000/api/progress/python";
-const COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+  <section class="panel">
+    <h2>Cómo debes empezar a pensar como programador</h2>
 
-const nextBtn = document.getElementById("nextBtn");
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Paso a paso</h3>
+        <p>No pienses en ideas vagas. Piensa en secuencias concretas de acciones.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Precisión</h3>
+        <p>Una instrucción mal escrita no “se entiende más o menos”. Falla.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Causa y efecto</h3>
+        <p>Cada línea tiene una consecuencia. Debes poder explicarla.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Errores útiles</h3>
+        <p>Equivocarte forma parte del proceso. Leer errores también es programar.</p>
+      </div>
+    </div>
+  </section>
 
-async function unlockNextIfCompleted() {
-  try {
-    const token = localStorage.getItem("token");
+  <section class="panel">
+    <h2>Dónde aparece Python en problemas reales</h2>
 
-    if (!token || !nextBtn) return;
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Automatización</h3>
+        <p>Renombrar archivos, procesar datos o lanzar tareas repetitivas.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Datos</h3>
+        <p>Analizar información, hacer cálculos o generar informes.</p>
+      </div>
+      <div class="theory-card">
+        <h3>IA</h3>
+        <p>Es uno de los lenguajes más usados en aprendizaje automático y herramientas inteligentes.</p>
+      </div>
+      <div class="theory-card">
+        <h3>Educación</h3>
+        <p>Se utiliza mucho para enseñar programación por su legibilidad.</p>
+      </div>
+    </div>
 
-    const res = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
+    <div class="callout">
+      Aprender Python no es aprender algo aislado. Es entrar en una forma de pensar y en un ecosistema muy amplio.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>La idea central de este primer bloque</h2>
+
+    <p>
+      En este tema no te interesa memorizar definiciones perfectas. Te interesa comprender tres cosas:
+    </p>
+
+    <ul>
+      <li>que Python ejecuta instrucciones</li>
+      <li>que el orden importa</li>
+      <li>que programar exige precisión y claridad</li>
+    </ul>
+
+    <pre><code>print("Hola")
+print("Python")</code></pre>
+
+    <p>
+      Incluso un programa muy simple ya te permite empezar a pensar como programador.
+    </p>
+  </section>
+
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
+        <p class="exercise-subtitle">Empieza a tratar Python como un lenguaje de instrucciones, no como una idea abstracta.</p>
+      </div>
+
+      <div class="badges">
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">1.1</span>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Enunciado</h3>
+        <p>
+          Escribe un programa que muestre tres líneas distintas por pantalla:
+          una de saludo, una con la palabra <code>Python</code> y una tercera con un mensaje final.
+        </p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Qué debes practicar</h3>
+        <ul>
+          <li>entender que un programa es una secuencia de instrucciones</li>
+          <li>usar varias líneas <code>print()</code></li>
+          <li>pensar qué salida tendrá el programa antes de ejecutar</li>
+        </ul>
+
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-1%2F01-que-es-python.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Resumen mental del subtema</h2>
+        <p class="exercise-subtitle">Qué debes tener claro antes de seguir.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Ideas clave</h3>
+        <ul>
+          <li>Python es un lenguaje para escribir instrucciones que una máquina ejecuta</li>
+          <li>el ordenador sigue lo que escribes con precisión y en orden</li>
+          <li>Python es una buena opción para empezar por su claridad</li>
+          <li>programar es aprender a pensar con pasos concretos y bien definidos</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Puente con el siguiente bloque</h3>
+        <div class="challenge">
+          Ya entiendes qué es Python. Lo siguiente es escribir tu primer programa y empezar a ver cómo se ejecuta realmente el código.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Siguiente paso</h2>
+    <p>
+      Ya entiendes qué es Python y qué significa programar con precisión. Lo siguiente es escribir tu primer programa real.
+    </p>
+
+    <div class="callout">
+      Cuando marques este subtema como completado, se desbloqueará el siguiente bloque del tema.
+    </div>
+
+    <div class="buttons-row">
+      <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Siguiente bloque</a>
+      <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
+    </div>
+    <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
+  </section>
+
+  <script src="../../../theme-init.js"></script>  
+  <script src="../topic-completion.js"></script>
+  <script>
+    const subtopicCompletion = initTopicCompletion({
+      topicId: "1.1",
+      nextUrl: "./02-primer-programa.html"
+    });
+
+    const miniRetoCompletion = initTopicCompletion({
+      topicId: "1.1.mini"
+    });
+
+    const completeBtn = document.getElementById("completeBtn");
+    const miniCompleteBtn = document.getElementById("miniCompleteBtn");
+    const completionMessage = document.getElementById("completionMessage");
+    const unlockHint = document.getElementById("unlockHint");
+
+    function showCompletionMessage(text) {
+      if (!completionMessage) return;
+      completionMessage.textContent = text;
+      completionMessage.style.display = "block";
+    }
+
+    function showCompletedState() {
+      if (!completeBtn) return;
+
+      completeBtn.style.display = "none";
+
+      if (!document.getElementById("completedBadge")) {
+        const badge = document.createElement("span");
+        badge.id = "completedBadge";
+        badge.className = "btn btn-secondary";
+        badge.textContent = "Subtema completado ✅";
+        completeBtn.parentNode.appendChild(badge);
       }
-    });
-
-    if (!res.ok) return;
-
-    const data = await res.json();
-    const completed = data?.progress?.completedTopics || [];
-
-    if (completed.includes(TOPIC_ID)) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
-    }
-  } catch (error) {
-    console.error("Error comprobando progreso:", error);
-  }
-}
-
-async function completeTopic(topicId) {
-  try {
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      alert("Debes iniciar sesión para guardar el progreso");
-      return;
     }
 
-    const res = await fetch(COMPLETE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ topic: topicId })
-    });
+    function showMiniCompletedState() {
+      if (!miniCompleteBtn) return;
 
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
+      miniCompleteBtn.style.display = "none";
+
+      if (!document.getElementById("miniCompletedBadge")) {
+        const badge = document.createElement("span");
+        badge.id = "miniCompletedBadge";
+        badge.className = "btn btn-secondary";
+        badge.textContent = "Mini-reto completado ✅";
+        miniCompleteBtn.parentNode.appendChild(badge);
+      }
     }
 
-    alert("Tema completado 🎉");
+    async function syncCompletionUI() {
+      try {
+        const subtopicDone = await subtopicCompletion.isCompleted();
+        const miniDone = await miniRetoCompletion.isCompleted();
 
-    if (nextBtn) {
-      nextBtn.classList.remove("btn-disabled");
-      nextBtn.href = NEXT_URL;
+        if (subtopicDone) {
+          showCompletedState();
+          showNextUnlockedState();
+          hideUnlockHint();
+        }
+
+        if (miniDone) {
+          showMiniCompletedState();
+        }
+
+        if (subtopicDone && miniDone) {
+          showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
+        } else if (subtopicDone) {
+          showCompletionMessage("Este subtema ya estaba marcado como completado.");
+        } else if (miniDone) {
+          showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+        }
+      } catch (error) {
+        console.error("Error comprobando estado del subtema:", error);
+      }
     }
-  } catch (error) {
-    console.error("Error marcando tema como completado:", error);
-    alert("No se pudo guardar el progreso");
-  }
-}
 
-unlockNextIfCompleted();
-</script>
+    function hideUnlockHint() {
+      if (!unlockHint) return;
+      unlockHint.style.display = "none";
+    }
+
+      function showNextUnlockedState() {
+        if (!nextBtn) return;
+        nextBtn.textContent = "Ir al siguiente bloque";
+        nextBtn.classList.remove("btn-disabled");
+      }
+
+    if (completeBtn) {
+      completeBtn.addEventListener("click", async (e) => {
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
+
+        try {
+          btn.disabled = true;
+          btn.textContent = "Guardando...";
+
+          await subtopicCompletion.completeTopic();
+
+    
+
+          showCompletedState();
+          showNextUnlockedState();
+          hideUnlockHint();
+          showCompletionMessage("Has marcado este subtema como completado.");
+        } catch (error) {
+          console.error("Error al completar el subtema:", error);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          showCompletionMessage(error.message || "No se pudo guardar el progreso.");
+        }
+      });
+    }
+
+    if (miniCompleteBtn) {
+      miniCompleteBtn.addEventListener("click", async (e) => {
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
+
+        try {
+          btn.disabled = true;
+          btn.textContent = "Guardando...";
+
+          await miniRetoCompletion.completeTopic();
+
+          showMiniCompletedState();
+          showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+        } catch (error) {
+          console.error("Error al completar el mini-reto:", error);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          showCompletionMessage(error.message || "No se pudo guardar el progreso del mini-reto.");
+        }
+      });
+    }
+
+    syncCompletionUI();
+  </script>
+
 </main>
-
 </body>
 </html>
