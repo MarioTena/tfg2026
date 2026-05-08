@@ -32,7 +32,7 @@
     <div class="progress-hero-top">
       <div>
         <div class="progress-label">Tema 9 · Manejo de archivos</div>
-        <div class="mini-note">Práctica guiada · 8 retos de razonamiento · dificultad inicial-media</div>
+        <div class="mini-note">Práctica guiada · 2 horas · Retos de razonamiento</div>
       </div>
       <div class="badges">
         <span class="badge blue">r / w / a</span>
@@ -271,17 +271,16 @@
     <h2>Siguiente paso</h2>
     <p>Ya has trabajado la lectura, la escritura y el razonamiento sobre modos de apertura. Ahora toca resolver ejercicios por tu cuenta.</p>
     
-    <div class="callout">
+    <div id="unlockHint" class="callout">
       Cuando marques este subtema como completado, se desbloqueará el checkpoint del tema.
     </div>
 
     <div class="buttons-row">
       <a class="btn btn-secondary" href="./04-buenas-practicas-y-errores.html">Anterior</a>
       <a class="btn btn-primary" href="../../../playground/index.html?lang=python">Probar en el playground</a>
-      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Checkpoint del tema</a>
+      <a id="nextBtn" class="btn btn-secondary btn-disabled" href="javascript:void(0)">Ir al checkpoint</a>
       <button id="completeBtn" class="btn btn-primary" type="button">Marcar como completado</button>
     </div>
-
     <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
   </section>
 
@@ -295,6 +294,8 @@
 
   const completeBtn = document.getElementById("completeBtn");
   const completionMessage = document.getElementById("completionMessage");
+  const unlockHint = document.getElementById("unlockHint");
+  const nextBtn = document.getElementById("nextBtn"); 
 
   function showCompletionMessage(text) {
     if (!completionMessage) return;
@@ -304,16 +305,7 @@
 
   function showMissionCompletedState() {
     if (!completeBtn) return;
-
     completeBtn.style.display = "none";
-
-    if (!document.getElementById("completedBadge")) {
-      const badge = document.createElement("span");
-      badge.id = "completedBadge";
-      badge.className = "btn btn-secondary";
-      badge.textContent = "Misión completada ✅";
-      completeBtn.parentNode.appendChild(badge);
-    }
   }
 
   async function syncCompletionUI() {
@@ -322,12 +314,25 @@
 
       if (completed) {
         showMissionCompletedState();
-        showCompletionMessage("Esta misión ya estaba marcada como completada.");
+        showNextUnlockedState();
+        hideUnlockHint();
+        showCompletionMessage("Esta misión ya estaba completada. El checkpoint del tema ya está disponible.");
       }
     } catch (error) {
       console.error("Error comprobando estado de la misión:", error);
     }
   }
+
+      function hideUnlockHint() {
+        if (!unlockHint) return;
+        unlockHint.style.display = "none";
+      }
+
+      function showNextUnlockedState() {
+        if (!nextBtn) return;
+        nextBtn.textContent = "Ir al checkpoint";
+        nextBtn.classList.remove("btn-disabled");
+      }
 
   if (completeBtn) {
     completeBtn.addEventListener("click", async (e) => {
@@ -341,7 +346,9 @@
         await missionCompletion.completeTopic();
 
         showMissionCompletedState();
-        showCompletionMessage("Has marcado esta misión como completada.");
+        showNextUnlockedState();
+        hideUnlockHint();
+        showCompletionMessage("Has marcado esta misión como completada. Ya se ha desbloqueado el checkpoint del tema.");
       } catch (error) {
         console.error("Error al completar la misión:", error);
         btn.disabled = false;

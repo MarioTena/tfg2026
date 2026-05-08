@@ -5,28 +5,28 @@ initThemeProgress({
       title: "¿Qué es un bucle?",
       file: "01-que-es-un-bucle.html",
       type: "Concepto",
-      time: "10-12 min"
+      time: "12-15 min"
     },
     {
       id: "3.2",
       title: "Bucle for",
       file: "02-for.html",
       type: "Concepto",
-      time: "12-15 min"
+      time: "15-18 min"
     },
     {
       id: "3.3",
       title: "Bucle while",
       file: "03-while.html",
       type: "Concepto",
-      time: "12-15 min"
+      time: "15-18 min"
     },
     {
       id: "3.4",
       title: "break y continue",
       file: "04-break-continue.html",
       type: "Concepto",
-      time: "10-12 min"
+      time: "12-15 min"
     },
     {
       id: "3.5",
@@ -46,8 +46,8 @@ initThemeProgress({
       id: "3.ejercicios",
       title: "Ejercicios del tema 3",
       file: "py-tema3-ejercicios.html",
-      type: "Reto final",
-      time: "25-30 min"
+      type: "Ejercicios",
+      time: "2 horas"
     }
   ]
 });

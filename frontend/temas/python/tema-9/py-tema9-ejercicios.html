@@ -346,12 +346,11 @@
       </div>
     </div>
 
-    <div class="callout">
+    <div id="unlockHint" class="callout">
       Cuando marques los ejercicios como completados, este tema contará como cerrado dentro de tu ruta de Python.
     </div>
 
     <div class="buttons-row">
-      <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
       <a class="btn btn-secondary" href="./05-mini-retos.html">Volver a práctica guiada</a>
       <a class="btn btn-secondary" href="./index.html">Volver al índice del tema</a>
       <a class="btn btn-secondary" href="../index.html">Ir a ruta Python</a>
@@ -360,7 +359,6 @@
         Marcar ejercicios como completados
       </button>
     </div>
-
     <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
   </section>
 
@@ -375,6 +373,7 @@
 
   const completeBtn = document.getElementById("completeExercisesBtn");
   const completionMessage = document.getElementById("completionMessage");
+  const unlockHint = document.getElementById("unlockHint");
 
   function showCompletionMessage(text) {
     if (!completionMessage) return;
@@ -382,19 +381,16 @@
     completionMessage.style.display = "block";
   }
 
+  function hideUnlockHint() {
+    if (!unlockHint) return;
+    unlockHint.style.display = "none";
+  }
+
   function showExercisesCompletedState() {
     if (!completeBtn) return;
-
     completeBtn.style.display = "none";
-
-    if (!document.getElementById("completedBadge")) {
-      const badge = document.createElement("span");
-      badge.id = "completedBadge";
-      badge.className = "btn btn-secondary";
-      badge.textContent = "Ejercicios completados ✅";
-      completeBtn.parentNode.appendChild(badge);
-    }
   }
+
 
   async function syncExercisesCompletionUI() {
     try {
@@ -402,7 +398,8 @@
 
       if (completed) {
         showExercisesCompletedState();
-        showCompletionMessage("Estos ejercicios ya estaban marcados como completados.");
+        hideUnlockHint();
+        showCompletionMessage("Estos ejercicios ya estaban completados. El tema 9 ya cuenta como cerrado en tu ruta.");
       }
     } catch (error) {
       console.error("Error comprobando estado de ejercicios:", error);
@@ -421,7 +418,8 @@
         await exercisesCompletion.completeTopic();
 
         showExercisesCompletedState();
-        showCompletionMessage("Has marcado los ejercicios como completados.");
+        hideUnlockHint();
+        showCompletionMessage("Has marcado los ejercicios como completados. El tema 9 ya cuenta como cerrado en tu ruta.");
       } catch (error) {
         console.error("Error marcando ejercicios como completados:", error);
         btn.disabled = false;

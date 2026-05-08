@@ -2,7 +2,7 @@ initThemeProgress({
   topics: [
     {
       id: "4.1",
-      title: "¿Qué es una lista?",
+      title: "Listas en Python",
       file: "01-que-es-una-lista.html",
       type: "Concepto",
       time: "10-12 min"
@@ -46,8 +46,8 @@ initThemeProgress({
       id: "4.ejercicios",
       title: "Ejercicios del tema 4",
       file: "py-tema4-ejercicios.html",
-      type: "Reto final",
-      time: "25-30 min"
+      type: "Ejercicios",
+      time: "2 horas"
     }
   ]
 });

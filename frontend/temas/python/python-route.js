@@ -65,7 +65,7 @@ const routeTopics = [
   },
   {
     id: "7",
-    title: "Strings intermedios",
+    title: "Strings",
     file: "./tema-7/index.html",
     chip1: "Advanced",
     chip2: "Métodos",

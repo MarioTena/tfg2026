@@ -46,8 +46,8 @@ initThemeProgress({
       id: "9.ejercicios",
       title: "Ejercicios del tema 9",
       file: "py-tema9-ejercicios.html",
-      type: "Reto final",
-      time: "25-30 min"
+      type: "Ejercicios",
+      time: "2 horas"
     }
   ]
 });

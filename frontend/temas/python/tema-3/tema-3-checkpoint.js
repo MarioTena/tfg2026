@@ -36,6 +36,7 @@ const quizResult = document.getElementById("quizResult");
 const goToExercisesBtn = document.getElementById("goToExercisesBtn");
 const quizPassedCard = document.getElementById("quizPassedCard");
 const quizForm = document.getElementById("quizForm");
+const unlockHint = document.getElementById("unlockHint");
 
 const quizCompletion = initTopicCompletion({
   topicId: "3.quiz",
@@ -65,6 +66,11 @@ function showResult(message) {
   if (!quizResult) return;
   quizResult.textContent = message;
   quizResult.style.display = "block";
+}
+
+function hideUnlockHint() {
+  if (!unlockHint) return;
+  unlockHint.style.display = "none";
 }
 
 function unlockExercises() {
@@ -179,6 +185,7 @@ async function markQuizAsPassed(score) {
     unlockExercises();
     showPassedCard();
     disableQuizAfterPass();
+    hideUnlockHint();
     resetAttempts();
     showResult(`Checkpoint superado con ${score}/4. Ya se han desbloqueado los ejercicios del tema 3.`);
   } catch (error) {
@@ -206,6 +213,7 @@ async function syncQuizUI() {
       unlockExercises();
       showPassedCard();
       disableQuizAfterPass();
+      hideUnlockHint();
       showResult("Ya habías superado este checkpoint. Los ejercicios del tema 3 ya están desbloqueados.");
     }
   } catch (error) {

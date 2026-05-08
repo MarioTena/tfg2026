@@ -307,7 +307,6 @@
         Marcar ejercicios como completados
       </button>
     </div>
-
     <div id="completionMessage" class="callout" style="display:none; margin-top:16px;"></div>
   </section>
 
@@ -324,11 +323,15 @@
   const completionMessage = document.getElementById("completionMessage");
   const unlockHint = document.getElementById("unlockHint");
 
+  
+
   function showCompletionMessage(text) {
     if (!completionMessage) return;
     completionMessage.textContent = text;
     completionMessage.style.display = "block";
   }
+
+
 
   function hideUnlockHint() {
     if (!unlockHint) return;
@@ -337,17 +340,9 @@
 
   function showExercisesCompletedState() {
     if (!completeBtn) return;
-
     completeBtn.style.display = "none";
-
-    if (!document.getElementById("completedBadge")) {
-      const badge = document.createElement("span");
-      badge.id = "completedBadge";
-      badge.className = "btn btn-secondary";
-      badge.textContent = "Ejercicios completados ✅";
-      completeBtn.parentNode.appendChild(badge);
-    }
   }
+
 
   async function syncExercisesCompletionUI() {
     try {
@@ -377,10 +372,6 @@
         showExercisesCompletedState();
         hideUnlockHint();
         showCompletionMessage("Has marcado los ejercicios como completados. El tema 1 ya cuenta como cerrado en tu ruta.");
-
-        setTimeout(() => {
-          window.location.href = "./index.html";
-        }, 900);
       } catch (error) {
         console.error("Error marcando ejercicios como completados:", error);
         btn.disabled = false;

@@ -461,7 +461,7 @@ print("email" in usuario)</code></pre>
       Ya sabes acceder y modificar datos. Lo siguiente es aprender a recorrer diccionarios con criterio.
     </p>
 
-    <div class="callout">
+    <div id="unlockHint" class="callout">
       Cuando marques este subtema como completado, se desbloqueará el siguiente bloque del tema.
     </div>
     
@@ -489,6 +489,8 @@ print("email" in usuario)</code></pre>
   const completeBtn = document.getElementById("completeBtn");
   const miniCompleteBtn = document.getElementById("miniCompleteBtn");
   const completionMessage = document.getElementById("completionMessage");
+  const unlockHint = document.getElementById("unlockHint");
+  const nextBtn = document.getElementById("nextBtn");
 
   function showCompletionMessage(text) {
     if (!completionMessage) return;
@@ -498,16 +500,7 @@ print("email" in usuario)</code></pre>
 
   function showCompletedState() {
     if (!completeBtn) return;
-
     completeBtn.style.display = "none";
-
-    if (!document.getElementById("completedBadge")) {
-      const badge = document.createElement("span");
-      badge.id = "completedBadge";
-      badge.className = "btn btn-secondary";
-      badge.textContent = "Subtema completado ✅";
-      completeBtn.parentNode.appendChild(badge);
-    }
   }
 
   function showMiniCompletedState() {
@@ -529,24 +522,37 @@ print("email" in usuario)</code></pre>
       const subtopicDone = await subtopicCompletion.isCompleted();
       const miniDone = await miniRetoCompletion.isCompleted();
 
-      if (subtopicDone) {
-        showCompletedState();
-      }
+        if (subtopicDone) {
+          showCompletedState();
+          showNextUnlockedState();
+          hideUnlockHint();
+        }
 
-      if (miniDone) {
-        showMiniCompletedState();
-      }
+        if (miniDone) {
+          showMiniCompletedState();
+        }
 
-      if (subtopicDone && miniDone) {
-        showCompletionMessage("Ya habías completado este subtema y su mini-reto.");
-      } else if (subtopicDone) {
-        showCompletionMessage("Este subtema ya estaba marcado como completado.");
-      } else if (miniDone) {
-        showCompletionMessage("Este mini-reto ya estaba marcado como completado.");
+        if (subtopicDone && miniDone) {
+          showCompletionMessage("Ya habías completado este subtema y su mini-reto. El siguiente bloque ya está disponible.");
+        } else if (subtopicDone) {
+          showCompletionMessage("Este subtema ya estaba completado. Ya puedes pasar al siguiente bloque.");
+        } else if (miniDone) {
+          showCompletionMessage("Este mini-reto ya estaba completado. Cuando marques el subtema como completado, se desbloqueará el siguiente bloque.");
+        }
+      } catch (error) {
+        console.error("Error comprobando estado del subtema:", error);
       }
-    } catch (error) {
-      console.error("Error comprobando estado del subtema:", error);
     }
+
+  function hideUnlockHint() {
+    if (!unlockHint) return;
+    unlockHint.style.display = "none";
+  }
+
+  function showNextUnlockedState() {
+    if (!nextBtn) return;
+    nextBtn.textContent = "Ir al siguiente bloque";
+    nextBtn.classList.remove("btn-disabled");
   }
 
   if (completeBtn) {
@@ -561,7 +567,9 @@ print("email" in usuario)</code></pre>
         await subtopicCompletion.completeTopic();
 
         showCompletedState();
-        showCompletionMessage("Has marcado este subtema como completado.");
+        showNextUnlockedState();
+        hideUnlockHint();
+        showCompletionMessage("Has marcado este subtema como completado. Ya se ha desbloqueado el siguiente bloque del tema.");
       } catch (error) {
         console.error("Error al completar el subtema:", error);
         btn.disabled = false;
@@ -583,7 +591,7 @@ print("email" in usuario)</code></pre>
         await miniRetoCompletion.completeTopic();
 
         showMiniCompletedState();
-        showCompletionMessage("Has marcado el mini-reto como realizado. Cuando quieras, pulsa “Marcar como completado” para cerrar el subtema.");
+        showCompletionMessage("Has marcado el mini-reto como realizado. Para desbloquear el siguiente bloque, todavía debes marcar el subtema como completado.");
       } catch (error) {
         console.error("Error al completar el mini-reto:", error);
         btn.disabled = false;

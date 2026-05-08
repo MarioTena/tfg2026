@@ -36,6 +36,7 @@ const quizResult = document.getElementById("quizResult");
 const goToExercisesBtn = document.getElementById("goToExercisesBtn");
 const quizPassedCard = document.getElementById("quizPassedCard");
 const quizForm = document.getElementById("quizForm");
+const unlockHint = document.getElementById("unlockHint");
 
 const quizCompletion = initTopicCompletion({
   topicId: "10.quiz",
@@ -65,6 +66,11 @@ function showResult(message) {
   if (!quizResult) return;
   quizResult.textContent = message;
   quizResult.style.display = "block";
+}
+
+function hideUnlockHint() {
+  if (!unlockHint) return;
+  unlockHint.style.display = "none";
 }
 
 function unlockExercises() {
@@ -179,6 +185,7 @@ async function markQuizAsPassed(score) {
     unlockExercises();
     showPassedCard();
     disableQuizAfterPass();
+    hideUnlockHint();
     resetAttempts();
     showResult(`Checkpoint superado con ${score}/4. Ya se han desbloqueado los ejercicios del tema 10.`);
   } catch (error) {
@@ -196,7 +203,7 @@ function buildFailMessage(score, attemptNumber) {
     return `Has conseguido ${score}/4. Revisa especialmente la diferencia entre excepción y regla del programa, el papel de else y cuándo usar raise.`;
   }
 
-  return `Has conseguido ${score}/4. A partir de este intento ya puedes ver cuál era la opción correcta para aprender del fallo antes de volver a intentarlo.`;
+    return `Has conseguido ${score}/4. A partir de este intento ya puedes ver cuál era la opción correcta para aprender del fallo antes de volver a intentarlo. Los ejercicios seguirán bloqueados hasta que apruebes.`;
 }
 
 async function syncQuizUI() {
@@ -206,6 +213,7 @@ async function syncQuizUI() {
       unlockExercises();
       showPassedCard();
       disableQuizAfterPass();
+      hideUnlockHint();
       showResult("Ya habías superado este checkpoint. Los ejercicios del tema 10 ya están desbloqueados.");
     }
   } catch (error) {

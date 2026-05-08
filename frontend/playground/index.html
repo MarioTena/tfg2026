@@ -14,7 +14,7 @@
   <div class="topbar-inner">
     <div class="topbar-title">
       <h1>Playground</h1>
-      <p id="topbar-sub">Practica, ejecuta código y revisa el feedback.</p>
+      <p id="topbar-sub">Escribe código, ejecútalo, revisa la salida y aprende de los errores paso a paso.</p>
     </div>
 
     <div class="topbar-actions">
@@ -36,7 +36,7 @@
         <span class="mission-tag">Zona de práctica</span>
         <h2 class="playground-title">Entrena tu código</h2>
         <p class="playground-subtitle">
-          Usa el editor para probar ideas, resolver ejercicios y revisar la salida paso a paso.
+          Usa el editor para resolver ejercicios, probar ideas, ejecutar tu código y analizar el resultado con calma.
         </p>
       </div>
 
@@ -45,6 +45,49 @@
         <span class="badge green" id="playground-lang-badge">Python</span>
       </div>
     </div>
+
+    <section class="exercise-card" style="margin-bottom: 16px;">
+      <div class="exercise-header">
+        <div>
+          <h3 class="exercise-title" style="margin-top:0;">Cómo funciona esta pantalla</h3>
+          <p class="exercise-subtitle">
+            Este espacio te permite escribir código, ejecutarlo, revisar la salida, responder a los <code>input()</code> y pedir una pista si te bloqueas.
+          </p>
+        </div>
+
+        <div class="badges">
+          <span class="badge blue">Guía rápida</span>
+          <span class="badge green">Uso práctico</span>
+        </div>
+      </div>
+
+      <div class="exercise-body">
+        <div class="exercise-block">
+          <h3>Paso a paso</h3>
+          <ol>
+            <li>lee el enunciado si has entrado desde un ejercicio, reto o proyecto</li>
+            <li>escribe o modifica tu código en el editor</li>
+            <li>pulsa <strong>Ejecutar código</strong> para probarlo</li>
+            <li>revisa la consola, la salida y los errores</li>
+            <li>si te atascas, pide una pista con IA antes de abandonar</li>
+          </ol>
+        </div>
+
+        <div class="exercise-block">
+          <h3>Qué debes tener en cuenta</h3>
+          <ul>
+            <li>la consola muestra lo que imprime tu programa y lo que ocurre durante la ejecución</li>
+            <li>si tu código usa <code>input()</code>, podrás responder desde la consola interactiva</li>
+            <li>los errores no significan fracaso: son una parte normal del proceso de aprender a programar</li>
+            <li>el historial de intentos te ayuda a revisar qué has probado y cómo ha respondido tu código</li>
+          </ul>
+
+          <div class="callout">
+            Consejo: intenta pensar qué debería pasar antes de ejecutar. El objetivo no es solo probar, sino entender.
+          </div>
+        </div>
+      </div>
+    </section>
 
     <div class="field">
       <label>Usuario</label>
@@ -74,12 +117,12 @@
 
       <div class="exercise-body">
         <div class="exercise-block">
-          <h3>Pistas</h3>
+          <h3>Pistas del ejercicio</h3>
           <ul id="exercise-hints"></ul>
         </div>
 
         <div class="exercise-block">
-          <h3>Acciones</h3>
+          <h3>Acciones útiles</h3>
           <div class="exercise-actions">
             <button class="btn btn-secondary btn-sm" id="btn-reset-template" type="button">
               Reiniciar plantilla
@@ -104,7 +147,7 @@
 
     <div class="playground-actions">
       <button id="run-btn" class="btn btn-primary" type="button">Ejecutar código</button>
-      <span id="status-msg" class="playground-status">Listo para practicar.</span>
+      <span id="status-msg" class="playground-status">Listo para practicar. Escribe código y pulsa “Ejecutar código”.</span>
     </div>
 
     <div class="buttons-row" style="margin-top: 12px;">
@@ -114,8 +157,15 @@
       <span id="ai-credits" class="mission-tag">Créditos IA: -</span>
     </div>
 
+    <p class="mini-note" style="margin-top: 8px;">
+      Tienes 2 créditos de IA por tema. Úsalos solo cuando te bloquees de verdad.
+    </p>
+
     <div class="output-block" style="margin-top: 12px;">
       <h3>Pista IA</h3>
+      <p class="mini-note" style="margin-bottom: 10px;">
+        Úsala cuando te bloquees. La idea es orientarte, no darte directamente la solución.
+      </p>
       <pre id="ai-feedback"></pre>
     </div>
   </section>
@@ -160,9 +210,9 @@
           </button>
         </div>
 
-          <p class="mini-note" id="interactive-console-help" style="margin-top: 10px;">
-            Ejecuta el programa para activar la consola y responder a los <code>input()</code> si los hay.
-          </p>
+        <p class="mini-note" id="interactive-console-help" style="margin-top: 10px;">
+          Ejecuta el programa para activar la consola y responder a los <code>input()</code> si los hay.
+        </p>
       </div>
     </div>
 
@@ -181,7 +231,12 @@
 
 <section class="history">
   <div class="history-header">
-    <h2>Historial de intentos</h2>
+    <div>
+      <h2>Historial de intentos</h2>
+      <p class="mini-note" style="margin-top: 6px;">
+        Aquí verás tus ejecuciones recientes para revisar qué has probado y cómo ha respondido el código.
+      </p>
+    </div>
     <a class="btn btn-secondary btn-sm" href="../progreso.html">Ver progreso</a>
   </div>
   <ul id="attempts-list"></ul>
