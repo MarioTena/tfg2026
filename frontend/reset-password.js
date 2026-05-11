@@ -9,10 +9,13 @@ function getToken() {
   return params.get("token");
 }
 
-function showStatus(message, isError = true) {
+function showStatus(message = "", isError = true) {
+  if (!statusMsg) return;
+
   statusMsg.textContent = message;
-  statusMsg.classList.toggle("status-success", !isError);
-  statusMsg.classList.toggle("status-error", isError);
+  statusMsg.style.display = message ? "block" : "none";
+  statusMsg.classList.toggle("status-success", !isError && !!message);
+  statusMsg.classList.toggle("status-error", isError && !!message);
 }
 
 async function resetPassword() {
@@ -74,6 +77,9 @@ async function resetPassword() {
 
 resetBtn.addEventListener("click", resetPassword);
 
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") resetPassword();
+passwordInput?.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    resetPassword();
+  }
 });

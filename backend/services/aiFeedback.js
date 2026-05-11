@@ -472,7 +472,6 @@ function buildTutorPrompt(attempt, extraContext = {}) {
   const hints = Array.isArray(extraContext.hints) ? extraContext.hints : [];
 
   const issueType = detectIssueType(attempt);
-  console.log(`Este prompt ha sido el prompt de: ${getIssueTypeLabel(issueType)}`);
 
   const casePromptBlock = buildCasePromptBlock(issueType, attempt, extraContext);
   const riskLevel = detectHintRisk(attempt, extraContext);
@@ -692,7 +691,7 @@ async function generateRealAiFeedback(attempt, extraContext = {}) {
   const prompt = buildTutorPrompt(attempt, extraContext);
 
   const requestPayload = {
-    model: "openrouter/free",
+    model: process.env.OPENROUTER_MODEL || "openrouter/free",
     messages: [
       {
         role: "system",
@@ -713,7 +712,7 @@ async function generateRealAiFeedback(attempt, extraContext = {}) {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${apiKey}`,
-      "HTTP-Referer": "http://localhost:3000",
+      "HTTP-Referer": process.env.OPENROUTER_HTTP_REFERER || process.env.APP_BASE_URL || "http://localhost:3000",
       "X-Title": "TFG Python Tutor",
     },
     body: JSON.stringify(requestPayload),
@@ -722,9 +721,6 @@ async function generateRealAiFeedback(attempt, extraContext = {}) {
   const data = await response.json();
   
   const finishReason = data?.choices?.[0]?.finish_reason;
-  if (finishReason) {
-    console.log("finish_reason:", finishReason);
-  }
 
   if (!response.ok) {
     throw new Error(data?.error?.message || "Error llamando a la IA");
@@ -738,7 +734,7 @@ async function generateRealAiFeedback(attempt, extraContext = {}) {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${apiKey}`,
-        "HTTP-Referer": "http://localhost:3000",
+        "HTTP-Referer": process.env.OPENROUTER_HTTP_REFERER || process.env.APP_BASE_URL || "http://localhost:3000",
         "X-Title": "TFG Python Tutor",
       },
       body: JSON.stringify({
@@ -751,9 +747,6 @@ async function generateRealAiFeedback(attempt, extraContext = {}) {
     const retryData = await retryResponse.json();
 
     const retryFinishReason = retryData?.choices?.[0]?.finish_reason;
-    if (retryFinishReason) {
-      console.log("retry finish_reason:", retryFinishReason);
-    }
 
     if (!retryResponse.ok) {
       throw new Error(retryData?.error?.message || "Error llamando a la IA");

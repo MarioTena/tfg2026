@@ -366,70 +366,14 @@
 
 <script src="../../../theme-init.js"></script>
 <script src="../topic-completion.js"></script>
+<script src="../ui-completion.js"></script>
+<script src="../page-exercises.js"></script>
 <script>
-  const exercisesCompletion = initTopicCompletion({
-    topicId: "9.ejercicios"
+  initExercisesPage({
+    topicId: "9.ejercicios",
+    successMessage: "Has marcado los ejercicios como completados. El tema 9 ya cuenta como cerrado en tu ruta.",
+    alreadyCompletedMessage: "Estos ejercicios ya estaban completados. El tema 9 ya cuenta como cerrado en tu ruta."
   });
-
-  const completeBtn = document.getElementById("completeExercisesBtn");
-  const completionMessage = document.getElementById("completionMessage");
-  const unlockHint = document.getElementById("unlockHint");
-
-  function showCompletionMessage(text) {
-    if (!completionMessage) return;
-    completionMessage.textContent = text;
-    completionMessage.style.display = "block";
-  }
-
-  function hideUnlockHint() {
-    if (!unlockHint) return;
-    unlockHint.style.display = "none";
-  }
-
-  function showExercisesCompletedState() {
-    if (!completeBtn) return;
-    completeBtn.style.display = "none";
-  }
-
-
-  async function syncExercisesCompletionUI() {
-    try {
-      const completed = await exercisesCompletion.isCompleted();
-
-      if (completed) {
-        showExercisesCompletedState();
-        hideUnlockHint();
-        showCompletionMessage("Estos ejercicios ya estaban completados. El tema 9 ya cuenta como cerrado en tu ruta.");
-      }
-    } catch (error) {
-      console.error("Error comprobando estado de ejercicios:", error);
-    }
-  }
-
-  if (completeBtn) {
-    completeBtn.addEventListener("click", async (e) => {
-      const btn = e.currentTarget;
-      const originalText = btn.textContent;
-
-      try {
-        btn.disabled = true;
-        btn.textContent = "Guardando...";
-
-        await exercisesCompletion.completeTopic();
-
-        showExercisesCompletedState();
-        hideUnlockHint();
-        showCompletionMessage("Has marcado los ejercicios como completados. El tema 9 ya cuenta como cerrado en tu ruta.");
-      } catch (error) {
-        console.error("Error marcando ejercicios como completados:", error);
-        btn.disabled = false;
-        btn.textContent = originalText;
-        showCompletionMessage(error.message || "No se pudo guardar el progreso.");
-      }
-    });
-  }
-
-  syncExercisesCompletionUI();
 </script>
 
 </body>

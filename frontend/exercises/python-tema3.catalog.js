@@ -9,7 +9,7 @@ window.EXERCISE_CATALOG["py_tema3_ej1"] = {
   difficulty: "Fácil",
   estimatedTime: "5 min",
   skill: "for",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Del 1 al 5
 
@@ -32,7 +32,7 @@ window.EXERCISE_CATALOG["py_tema3_ej2"] = {
   difficulty: "Fácil",
   estimatedTime: "6 min",
   skill: "range()",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Cuenta atrás
 
@@ -55,7 +55,7 @@ window.EXERCISE_CATALOG["py_tema3_ej3"] = {
   difficulty: "Media",
   estimatedTime: "7 min",
   skill: "range()",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Números pares
 
@@ -77,7 +77,7 @@ window.EXERCISE_CATALOG["py_tema3_ej4"] = {
   difficulty: "Media",
   estimatedTime: "6 min",
   skill: "Recorrido",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Recorrer palabra
 
@@ -102,7 +102,7 @@ window.EXERCISE_CATALOG["py_tema3_ej5"] = {
   difficulty: "Media",
   estimatedTime: "8 min",
   skill: "Acumulador",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Suma del 1 al 10
 
@@ -129,7 +129,7 @@ window.EXERCISE_CATALOG["py_tema3_ej6"] = {
   difficulty: "Media",
   estimatedTime: "8 min",
   skill: "while",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: While del 1 al 5
 
@@ -154,7 +154,7 @@ window.EXERCISE_CATALOG["py_tema3_ej7"] = {
   difficulty: "Media",
   estimatedTime: "7 min",
   skill: "continue",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Saltar pares
 
@@ -178,7 +178,7 @@ window.EXERCISE_CATALOG["py_tema3_ej8"] = {
   difficulty: "Media",
   estimatedTime: "7 min",
   skill: "break",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Parar al encontrar
 
@@ -204,7 +204,7 @@ window.EXERCISE_CATALOG["py_tema3_ej9"] = {
   difficulty: "Media",
   estimatedTime: "8 min",
   skill: "input()",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `texto = ""
 
@@ -228,7 +228,7 @@ window.EXERCISE_CATALOG["py_tema3_ej10"] = {
   difficulty: "Media",
   estimatedTime: "8 min",
   skill: "Trazado",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `suma = 0
 
@@ -251,7 +251,7 @@ window.EXERCISE_CATALOG["py_tema3_ej11"] = {
   difficulty: "Media",
   estimatedTime: "8 min",
   skill: "Depuración",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `contador = 1
 
@@ -275,7 +275,7 @@ window.EXERCISE_CATALOG["py_tema3_ej12"] = {
   difficulty: "Media",
   estimatedTime: "8 min",
   skill: "Contador",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `contador_impares = 0
 

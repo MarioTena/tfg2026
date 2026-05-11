@@ -37,8 +37,9 @@ function setStatusMessage(message = "", isError = false) {
   if (!statusMsg) return;
 
   statusMsg.textContent = message;
+  statusMsg.style.display = message ? "block" : "none";
   statusMsg.classList.toggle("status-success", !isError && !!message);
-  statusMsg.classList.toggle("status-error", !!isError);
+  statusMsg.classList.toggle("status-error", isError && !!message);
 }
 
 async function loadProfile() {

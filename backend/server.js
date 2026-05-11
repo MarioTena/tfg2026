@@ -1,54 +1,63 @@
 // ============================================================================
 // SERVER.JS - Backend básico del TFG
-// Servidor Express + MongoDB para gestionar ejecuciones y pruebas
+// Servidor Express + MongoDB para gestionar autenticación, progreso,
+// IA, ejecuciones y consola interactiva.
 // ============================================================================
 
-//Infrestructura de API
 const dotenv = require("dotenv");
-const express = require("express");
-const cors = require("cors");
-
-
-const mongoose = require("mongoose"); //conexion mongodb
-
-const Attempt = require("./models/Attempt"); //guardar intentos
-const { runCodeInDocker } = require("./utils/dockerRunner"); //ejecutar codigo en Docker
-const authRoutes = require("./routes/authRoutes"); //rutas de registro/login
-const { requireAuth } = require("./middleware/requireAuth"); //middleware para proteger endpoints
-const progressRoutes = require("./routes/progressRoutes");
-const aiRoutes = require("./routes/aiRoutes");
-
-
-
-// ============================================================================
-// Configuración inicial
-// ============================================================================
-
-// Cargo las variables del archivo .env (por ejemplo MONGO_URI y PORT)
 dotenv.config();
 
-// Inicializo la aplicación Express
+const express = require("express");
+const cors = require("cors");
+const mongoose = require("mongoose");
+const http = require("http");
+const { Server } = require("socket.io");
+const jwt = require("jsonwebtoken");
+
+const Attempt = require("./models/Attempt");
+const { runCodeInDocker } = require("./utils/dockerRunner");
+const authRoutes = require("./routes/authRoutes");
+const { requireAuth } = require("./middleware/requireAuth");
+const progressRoutes = require("./routes/progressRoutes");
+const aiRoutes = require("./routes/aiRoutes");
+const {
+  startInteractivePythonSession,
+  sendInputToSession,
+  stopSession,
+  stopAllUserSessions
+} = require("./utils/interactiveRunner");
+
+// ============================================================================
+// Configuración
+// ============================================================================
+
 const app = express();
+const server = http.createServer(app);
 
-// Permito peticiones desde el frontend al backend
-app.use(cors());
-
-// Habilito el uso de JSON en las peticiones
-app.use(express.json());
-// ============================================================================
-// Rutas de autenticación
-// ============================================================================
-app.use("/api/auth", authRoutes);
-
-app.use("/api/progress", progressRoutes);
-
-app.use("/api/ai", aiRoutes);
-
-// Puerto donde escuchará la API (por defecto 3000)
 const PORT = process.env.PORT || 3000;
-
-// URL de conexión a MongoDB (si no hay variable, usa la local)
 const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/tfgdb";
+const JWT_SECRET = process.env.JWT_SECRET;
+const FRONTEND_URL = process.env.FRONTEND_URL || "*";
+
+if (!JWT_SECRET) {
+  console.error("❌ Falta JWT_SECRET en el archivo .env");
+  process.exit(1);
+}
+
+app.use(cors({
+  origin: FRONTEND_URL === "*" ? true : FRONTEND_URL,
+  credentials: true
+}));
+
+app.use(express.json({ limit: "1mb" }));
+
+// ============================================================================
+// Rutas
+// ============================================================================
+
+app.use("/api/auth", authRoutes);
+app.use("/api/progress", progressRoutes);
+app.use("/api/ai", aiRoutes);
 
 // ============================================================================
 // Conexión a MongoDB
@@ -57,36 +66,57 @@ mongoose
   .connect(MONGO_URI, { dbName: "tfgdb" })
   .then(() => console.log("✅ MongoDB conectado"))
   .catch((err) => {
-    console.error("❌ Error conectando a Mongo:", err.message);
+    console.error("❌ Error conectando a MongoDB:", err.message);
     process.exit(1);
   });
 
 // ============================================================================
+// Utilidades
+// ============================================================================
+function parseSafeLimit(value, defaultValue = 5, max = 20) {
+  const parsed = Number.parseInt(value, 10);
+
+  if (Number.isNaN(parsed) || parsed <= 0) {
+    return defaultValue;
+  }
+
+  return Math.min(parsed, max);
+}
+
+// ============================================================================
 // GET /api/health
-// Comprueba que la API responde y que MongoDB está accesible
 // ============================================================================
 app.get("/api/health", async (req, res) => {
   try {
-    const admin = mongoose.connection.db.admin();
+    const db = mongoose.connection?.db;
+
+    if (!db) {
+      return res.status(500).json({
+        api: "ok",
+        mongo: "fail",
+        error: "MongoDB no está inicializado"
+      });
+    }
+
+    const admin = db.admin();
     const ping = await admin.ping();
 
-    res.json({
+    return res.json({
       api: "ok",
-      mongo: ping?.ok === 1 ? "ok" : "fail",
+      mongo: ping?.ok === 1 ? "ok" : "fail"
     });
-  } catch (e) {
-    res.status(500).json({
+  } catch (error) {
+    return res.status(500).json({
       api: "ok",
       mongo: "fail",
-      error: e.message,
+      error: error.message
     });
   }
 });
 
 // ============================================================================
-// POST /api/test-insert
-// Inserta un documento de prueba en la colección "tests"
-// Sirve para probar que se puede escribir en MongoDB
+// Endpoints de prueba de Mongo
+// Puedes quitarlos antes de entrega final si no los necesitas
 // ============================================================================
 app.post("/api/test-insert", async (req, res) => {
   try {
@@ -95,29 +125,20 @@ app.post("/api/test-insert", async (req, res) => {
     const doc = {
       note,
       meta,
-      at: new Date(),
+      at: new Date()
     };
 
-    const result = await mongoose.connection.db
-      .collection("tests")
-      .insertOne(doc);
+    const result = await mongoose.connection.db.collection("tests").insertOne(doc);
 
-    res.json({ ok: true, insertedId: result.insertedId });
-  } catch (e) {
-    res.status(500).json({ ok: false, error: e.message });
+    return res.json({ ok: true, insertedId: result.insertedId });
+  } catch (error) {
+    return res.status(500).json({ ok: false, error: error.message });
   }
 });
 
-// ============================================================================
-// GET /api/test-list
-// Devuelve los últimos N documentos de la colección "tests"
-// ============================================================================
 app.get("/api/test-list", async (req, res) => {
   try {
-    const limit = Math.max(
-      1,
-      Math.min(parseInt(req.query.limit || "5", 10), 50)
-    );
+    const limit = parseSafeLimit(req.query.limit, 5, 50);
 
     const items = await mongoose.connection.db
       .collection("tests")
@@ -126,44 +147,38 @@ app.get("/api/test-list", async (req, res) => {
       .limit(limit)
       .toArray();
 
-    res.json({
+    return res.json({
       ok: true,
       count: items.length,
-      items,
+      items
     });
-  } catch (e) {
-    res.status(500).json({ ok: false, error: e.message });
+  } catch (error) {
+    return res.status(500).json({ ok: false, error: error.message });
   }
 });
 
-
-//Aqui empezamos con los endpoints reales
-
 // ============================================================================
-// ✅ GET /api/attempts
-// Devuelve los últimos N intentos guardados en la colección "attempts".
+// GET /api/attempts
 // ============================================================================
 app.get("/api/attempts", requireAuth, async (req, res) => {
   try {
-    const limit = Math.min(parseInt(req.query.limit || "5", 10), 20);
+    const limit = parseSafeLimit(req.query.limit, 5, 20);
 
     const attempts = await Attempt.find({ userId: req.user.id })
       .sort({ createdAt: -1 })
       .limit(limit);
 
-    res.json({
+    return res.json({
       ok: true,
-      items: attempts,
+      items: attempts
     });
-  } catch (e) {
-    res.status(500).json({ ok: false, error: e.message });
+  } catch (error) {
+    return res.status(500).json({ ok: false, error: error.message });
   }
 });
 
-
-
 // ============================================================================
-// ✅ POST /api/run
+// POST /api/run
 // ============================================================================
 app.post("/api/run", requireAuth, async (req, res) => {
   try {
@@ -172,7 +187,7 @@ app.post("/api/run", requireAuth, async (req, res) => {
     if (!language || !code) {
       return res.status(400).json({
         ok: false,
-        error: "Faltan campos: language, code",
+        error: "Faltan campos: language, code"
       });
     }
 
@@ -180,7 +195,7 @@ app.post("/api/run", requireAuth, async (req, res) => {
     if (!allowedLanguages.includes(language)) {
       return res.status(400).json({
         ok: false,
-        error: `Lenguaje no soportado. Usa: ${allowedLanguages.join(", ")}.`,
+        error: `Lenguaje no soportado. Usa: ${allowedLanguages.join(", ")}.`
       });
     }
 
@@ -196,7 +211,7 @@ app.post("/api/run", requireAuth, async (req, res) => {
       stdout: result.stdout,
       stderr: result.stderr,
       status: result.status,
-      timeMs: result.timeMs,
+      timeMs: result.timeMs
     });
 
     const saved = await attempt.save();
@@ -204,36 +219,24 @@ app.post("/api/run", requireAuth, async (req, res) => {
     return res.json({
       ok: true,
       run: result,
-      attemptId: saved._id,
+      attemptId: saved._id
     });
-  } catch (e) {
-    console.error("❌ Error en /api/run:", e);
+  } catch (error) {
+    console.error("❌ Error en /api/run:", error);
     return res.status(500).json({
       ok: false,
       error: "Error interno en /api/run",
-      details: e.message,
+      details: error.message
     });
   }
 });
 
 // ============================================================================
-// Arranque del servidor
+// Socket.IO
 // ============================================================================
-const http = require("http");
-const { Server } = require("socket.io");
-const jwt = require("jsonwebtoken");
-const {
-  startInteractivePythonSession,
-  sendInputToSession,
-  stopSession,
-  stopAllUserSessions
-} = require("./utils/interactiveRunner");
-
-const server = http.createServer(app);
-
 const io = new Server(server, {
   cors: {
-    origin: "*",
+    origin: FRONTEND_URL === "*" ? true : FRONTEND_URL,
     methods: ["GET", "POST"]
   }
 });
@@ -246,7 +249,7 @@ io.use((socket, next) => {
       return next(new Error("Token no proporcionado"));
     }
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, JWT_SECRET);
 
     const normalizedUserId =
       decoded.id ||
@@ -263,12 +266,12 @@ io.use((socket, next) => {
 
     socket.user = {
       ...decoded,
-      id: normalizedUserId,
+      id: normalizedUserId
     };
 
-    next();
+    return next();
   } catch (error) {
-    next(new Error("Token inválido"));
+    return next(new Error("Token inválido"));
   }
 });
 
@@ -282,7 +285,7 @@ io.on("connection", (socket) => {
         return;
       }
 
-      if (!code || !code.trim()) {
+      if (!code || !String(code).trim()) {
         socket.emit("console:error", {
           message: "No hay código para ejecutar."
         });
@@ -309,6 +312,13 @@ io.on("connection", (socket) => {
 
   socket.on("console:input", ({ sessionId, input }) => {
     try {
+      if (!sessionId) {
+        socket.emit("console:error", {
+          message: "Falta sessionId."
+        });
+        return;
+      }
+
       sendInputToSession({
         sessionId,
         input,
@@ -323,17 +333,65 @@ io.on("connection", (socket) => {
   });
 
   socket.on("console:stop", async ({ sessionId }) => {
-    await stopSession({
-      sessionId,
-      userId: socket.user.id
-    });
+    try {
+      if (!sessionId) return;
+
+      await stopSession({
+        sessionId,
+        userId: socket.user.id
+      });
+    } catch (error) {
+      socket.emit("console:error", {
+        sessionId,
+        message: error.message || "No se pudo detener la sesión."
+      });
+    }
   });
 
   socket.on("disconnect", async () => {
-    await stopAllUserSessions(socket.user.id);
+    try {
+      await stopAllUserSessions(socket.user.id);
+    } catch (error) {
+      console.error("❌ Error al cerrar sesiones del usuario:", error.message);
+    }
   });
 });
 
+// ============================================================================
+// Middleware global de errores
+// ============================================================================
+app.use((err, req, res, next) => {
+  console.error("❌ Error no controlado:", err);
+  res.status(500).json({
+    ok: false,
+    error: "Error interno del servidor"
+  });
+});
+
+// ============================================================================
+// Arranque
+// ============================================================================
 server.listen(PORT, () => {
   console.log(`🚀 API escuchando en http://localhost:${PORT}`);
 });
+
+// ============================================================================
+// Cierre ordenado
+// ============================================================================
+async function shutdown(signal) {
+  console.log(`\n⚠️ Recibido ${signal}. Cerrando servidor...`);
+
+  try {
+    await mongoose.connection.close();
+    server.close(() => {
+      console.log("✅ Servidor cerrado correctamente");
+      process.exit(0);
+    });
+  } catch (error) {
+    console.error("❌ Error cerrando la aplicación:", error.message);
+    process.exit(1);
+  }
+}
+
+process.on("SIGINT", () => shutdown("SIGINT"));
+process.on("SIGTERM", () => shutdown("SIGTERM"));

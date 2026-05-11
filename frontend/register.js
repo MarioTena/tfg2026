@@ -1,8 +1,3 @@
-// ============================================================================
-// register.js
-// Crea usuario en /api/auth/register y redirige a login.html
-// ============================================================================
-
 const API_REGISTER_URL = "http://localhost:3000/api/auth/register";
 
 const nameInput = document.getElementById("name");
@@ -11,14 +6,45 @@ const passwordInput = document.getElementById("password");
 const registerBtn = document.getElementById("register-btn");
 const statusMsg = document.getElementById("status-msg");
 
-function showStatus(message, isError = true) {
+let isSubmitting = false;
+
+function showStatus(message = "", isError = true) {
+  if (!statusMsg) return;
+
   statusMsg.textContent = message;
-  statusMsg.classList.toggle("status-success", !isError);
-  statusMsg.classList.toggle("status-error", isError);
+  statusMsg.style.display = message ? "block" : "none";
+  statusMsg.classList.toggle("status-success", !isError && !!message);
+  statusMsg.classList.toggle("status-error", isError && !!message);
+}
+
+function showGoToLoginButton(email) {
+  let loginBtn = document.getElementById("go-to-login-btn");
+
+  if (!loginBtn) {
+    loginBtn = document.createElement("a");
+    loginBtn.id = "go-to-login-btn";
+    loginBtn.className = "btn btn-primary";
+    loginBtn.textContent = "Ir a login";
+
+    registerBtn.parentNode.appendChild(loginBtn);
+  }
+
+  loginBtn.href = `./login.html?email=${encodeURIComponent(email)}`;
+  loginBtn.style.display = "inline-flex";
+}
+
+function lockRegisterFormAfterSuccess() {
+  if (nameInput) nameInput.disabled = true;
+  if (emailInput) emailInput.disabled = true;
+  if (passwordInput) passwordInput.disabled = true;
+  if (registerBtn) registerBtn.style.display = "none";
 }
 
 async function doRegister() {
-  showStatus("", true);
+  if (isSubmitting) return;
+
+  showStatus("");
+  isSubmitting = true;
   registerBtn.disabled = true;
   registerBtn.textContent = "Creando cuenta...";
 
@@ -28,6 +54,7 @@ async function doRegister() {
 
   if (!name || !email || !password) {
     showStatus("Completa nombre, email y contraseña.");
+    isSubmitting = false;
     registerBtn.disabled = false;
     registerBtn.textContent = "Crear cuenta";
     return;
@@ -35,6 +62,7 @@ async function doRegister() {
 
   if (password.length < 6) {
     showStatus("La contraseña debe tener al menos 6 caracteres.");
+    isSubmitting = false;
     registerBtn.disabled = false;
     registerBtn.textContent = "Crear cuenta";
     return;
@@ -51,26 +79,36 @@ async function doRegister() {
 
     if (!res.ok || !data?.ok) {
       showStatus(data?.error || "No se ha podido crear la cuenta.");
-      registerBtn.disabled = false;
-      registerBtn.textContent = "Crear cuenta";
       return;
     }
 
-    const url = `./login.html?email=${encodeURIComponent(email)}`;
-    setTimeout(() => {
-      window.location.href = url;
-    }, 700);
+    showStatus(
+      "Cuenta creada correctamente. Revisa tu correo y verifica la cuenta antes de iniciar sesión.",
+      false
+    );
+
+    lockRegisterFormAfterSuccess();
+    showGoToLoginButton(email);
   } catch (err) {
     console.error("Register error:", err);
     showStatus("No se ha podido conectar con la API.");
   } finally {
-    registerBtn.disabled = false;
-    registerBtn.textContent = "Crear cuenta";
+    isSubmitting = false;
+
+    if (registerBtn && registerBtn.style.display !== "none") {
+      registerBtn.disabled = false;
+      registerBtn.textContent = "Crear cuenta";
+    }
   }
 }
 
-registerBtn.addEventListener("click", doRegister);
+registerBtn?.addEventListener("click", doRegister);
 
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") doRegister();
+[nameInput, emailInput, passwordInput].forEach((input) => {
+  input?.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      doRegister();
+    }
+  });
 });

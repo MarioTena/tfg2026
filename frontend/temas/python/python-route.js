@@ -6,7 +6,7 @@ const progressFillEl = document.getElementById("python-route-progress-fill");
 const continueBtn = document.getElementById("python-continue-btn");
 const routeMapEl = document.getElementById("python-route-map");
 
-const LAST_THEME_STORAGE_KEY = "lastPythonTheme";
+const LAST_THEME_STORAGE_KEY_PREFIX = "lastPythonTheme";
 
 const routeTopics = [
   {
@@ -113,14 +113,29 @@ function getThemeProgress(theme, completedTopics) {
   };
 }
 
+function getCurrentUserId() {
+  try {
+    const user = JSON.parse(localStorage.getItem("user") || "{}");
+    return user?.id ? String(user.id) : null;
+  } catch {
+    return null;
+  }
+}
+
 function getStoredLastThemeId() {
-  const value = localStorage.getItem(LAST_THEME_STORAGE_KEY);
-  return value || null;
+  const userId = getCurrentUserId();
+  if (!userId) return null;
+
+  return localStorage.getItem(`${LAST_THEME_STORAGE_KEY_PREFIX}:${userId}`) || null;
 }
 
 function setStoredLastThemeId(themeId) {
   if (!themeId) return;
-  localStorage.setItem(LAST_THEME_STORAGE_KEY, String(themeId));
+
+  const userId = getCurrentUserId();
+  if (!userId) return;
+
+  localStorage.setItem(`${LAST_THEME_STORAGE_KEY_PREFIX}:${userId}`, String(themeId));
 }
 
 function getFirstNotCompletedTheme(completedTopics) {
@@ -221,9 +236,9 @@ function updateRouteHeader(completedTopics) {
     continueBtn.href = nextTheme.file;
     continueBtn.textContent = done === total ? "Revisar ruta" : `Continuar con Tema ${nextTheme.id}`;
 
-    continueBtn.addEventListener("click", () => {
+    continueBtn.onclick = () => {
       setStoredLastThemeId(nextTheme.id);
-    });
+    };
   }
 }
 

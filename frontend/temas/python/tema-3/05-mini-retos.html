@@ -309,79 +309,16 @@ print("Correcto")</code></pre>
 
 <script src="../../../theme-init.js"></script>
 <script src="../topic-completion.js"></script>
+<script src="../ui-completion.js"></script>
+<script src="../page-practice.js"></script>
 <script>
-  const missionCompletion = initTopicCompletion({
+  initPracticePage({
     topicId: "3.5",
-    nextUrl: "./tema-3-checkpoint.html"
+    nextUrl: "./tema-3-checkpoint.html",
+    unlockedLabel: "Ir al checkpoint",
+    successMessage: "Has marcado esta misión como completada. Ya se ha desbloqueado el checkpoint del tema.",
+    alreadyCompletedMessage: "Esta misión ya estaba completada. El checkpoint del tema ya está disponible."
   });
-
-  const completeBtn = document.getElementById("completeBtn");
-  const completionMessage = document.getElementById("completionMessage");
-  const unlockHint = document.getElementById("unlockHint");
-  const nextBtn = document.getElementById("nextBtn");
-
-  function showCompletionMessage(text) {
-    if (!completionMessage) return;
-    completionMessage.textContent = text;
-    completionMessage.style.display = "block";
-  }
-
-  function hideUnlockHint() {
-    if (!unlockHint) return;
-    unlockHint.style.display = "none";
-  }
-
-  function showMissionCompletedState() {
-    if (!completeBtn) return;
-    completeBtn.style.display = "none";
-  }
-
-  function showNextUnlockedState() {
-    if (!nextBtn) return;
-    nextBtn.textContent = "Ir al checkpoint";
-    nextBtn.classList.remove("btn-disabled");
-  }
-
-  async function syncCompletionUI() {
-    try {
-      const completed = await missionCompletion.isCompleted();
-
-      if (completed) {
-        showMissionCompletedState();
-        showNextUnlockedState();
-        hideUnlockHint();
-        showCompletionMessage("Esta misión ya estaba completada. El checkpoint del tema ya está disponible.");
-      }
-    } catch (error) {
-      console.error("Error comprobando estado de la misión:", error);
-    }
-  }
-
-  if (completeBtn) {
-    completeBtn.addEventListener("click", async (e) => {
-      const btn = e.currentTarget;
-      const originalText = btn.textContent;
-
-      try {
-        btn.disabled = true;
-        btn.textContent = "Guardando...";
-
-        await missionCompletion.completeTopic();
-
-        showMissionCompletedState();
-        showNextUnlockedState();
-        hideUnlockHint();
-        showCompletionMessage("Has marcado esta misión como completada. Ya se ha desbloqueado el checkpoint del tema.");
-      } catch (error) {
-        console.error("Error al completar la misión:", error);
-        btn.disabled = false;
-        btn.textContent = originalText;
-        showCompletionMessage(error.message || "No se pudo guardar el progreso.");
-      }
-    });
-  }
-
-  syncCompletionUI();
 </script>
 
 </main>

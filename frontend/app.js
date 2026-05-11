@@ -3,8 +3,6 @@
 // Playground: carga ejercicio desde URL, pinta metadatos, ejecuta código,
 // muestra historial y permite pedir pistas IA.
 // ============================================================================
-
-const API_URL = "http://localhost:3000/api/run";
 let editor = null;
 let currentExerciseId = null;
 let lastAttemptId = null;
@@ -17,6 +15,9 @@ let interactiveConsoleRunning = false;
 
 let interactiveStartedAt = null;
 let interactiveTimerId = null;
+
+let remainingAiCredits = null;
+let aiCreditsLoadError = false;
 
 // Si no hay token, no dejamos entrar al playground
 (function redirectIfNotLogged() {
@@ -38,7 +39,6 @@ const stderrEl = document.getElementById("stderr");
 const runStatusEl = document.getElementById("run-status");
 const runTimeEl = document.getElementById("run-time");
 const attemptsListEl = document.getElementById("attempts-list");
-const feedbackEl = document.getElementById("feedback");
 const consoleOutputEl = document.getElementById("console-output");
 
 const exercisePanelEl = document.getElementById("exercise-panel");
@@ -74,6 +74,8 @@ const interactiveConsoleHelpEl = document.getElementById("interactive-console-he
 
 const stdoutBlockEl = document.getElementById("stdout-block");
 const stderrBlockEl = document.getElementById("stderr-block");
+
+const DEFAULT_STATUS_MESSAGE = "Listo para practicar. Escribe código y pulsa “Ejecutar código”.";
 
 // ============================================================================
 // Editor
@@ -114,7 +116,7 @@ editor.on("change", () => {
   }
 
   if (statusMsg && !interactiveConsoleRunning) {
-    statusMsg.textContent = "Listo para practicar.";
+    statusMsg.textContent = DEFAULT_STATUS_MESSAGE;
   }
 });
   editor.setSize("100%", 500);
@@ -162,12 +164,16 @@ function updateAiButtonState() {
   const token = localStorage.getItem("token");
   const hasExercise = !!currentExerciseId;
   const hasAttempt = !!lastAttemptId;
-  const creditsText = aiCreditsEl?.textContent || "";
 
-  const noCredits = creditsText.includes(": 0");
-  const creditsError = creditsText.toLowerCase().includes("error");
+  const creditsKnown = typeof remainingAiCredits === "number";
+  const noCredits = creditsKnown && remainingAiCredits <= 0;
 
-  aiHintBtn.disabled = !token || !hasExercise || !hasAttempt || noCredits || creditsError;
+  aiHintBtn.disabled =
+    !token ||
+    !hasExercise ||
+    !hasAttempt ||
+    aiCreditsLoadError ||
+    noCredits;
 }
 
 function setRunStatus(status) {
@@ -247,8 +253,6 @@ function appendConsoleLine(text, kind = "output") {
 
   if (kind === "input") {
     line.textContent = `> ${text}`;
-  } else if (kind === "error") {
-    line.textContent = text;
   } else {
     line.textContent = text;
   }
@@ -275,8 +279,7 @@ function resetOutput() {
   if (stderrEl) stderrEl.textContent = "";
   setRunStatus("-");
   if (runTimeEl) runTimeEl.textContent = "-";
-  if (statusMsg) statusMsg.textContent = "Listo para ejecutar.";
-  if (feedbackEl) feedbackEl.textContent = "";
+  if (statusMsg) statusMsg.textContent = DEFAULT_STATUS_MESSAGE;
   clearConsoleOutput();
   resetAiPanel();
 }
@@ -388,7 +391,7 @@ function updateExerciseUI(ex, lang) {
   }
 
   if (exerciseBadgeSkillEl) {
-    exerciseBadgeSkillEl.textContent = `Skill: ${skill}`;
+    exerciseBadgeSkillEl.textContent = `Enfoque: ${skill}`;
   }
 
   updateBackToTopicButton(ex);
@@ -670,6 +673,8 @@ async function loadAiCredits() {
   const topic = getCurrentTopic();
 
   if (!token || !topic || !aiCreditsEl) {
+    remainingAiCredits = null;
+    aiCreditsLoadError = false;
     updateAiButtonState();
     return;
   }
@@ -687,15 +692,21 @@ async function loadAiCredits() {
     const data = await res.json();
 
     if (!res.ok || !data.ok) {
+      remainingAiCredits = null;
+      aiCreditsLoadError = true;
       aiCreditsEl.textContent = "Créditos IA: error";
       updateAiButtonState();
       return;
     }
 
-    aiCreditsEl.textContent = `Créditos IA: ${data.remainingCredits}`;
+    remainingAiCredits = data.remainingCredits;
+    aiCreditsLoadError = false;
+    aiCreditsEl.textContent = `Créditos IA: ${remainingAiCredits}`;
     updateAiButtonState();
   } catch (error) {
     console.error("Error cargando créditos IA:", error);
+    remainingAiCredits = null;
+    aiCreditsLoadError = true;
     aiCreditsEl.textContent = "Créditos IA: error";
     updateAiButtonState();
   }
@@ -758,15 +769,30 @@ async function requestAiHint() {
     if (!res.ok || !data.ok) {
       setAiMessage(data.error || "No se pudo obtener una pista");
 
-      if (aiCreditsEl && typeof data.remainingCredits === "number") {
-        aiCreditsEl.textContent = `Créditos IA: ${data.remainingCredits}`;
+      if (typeof data.remainingCredits === "number") {
+        remainingAiCredits = data.remainingCredits;
+        aiCreditsLoadError = false;
+
+        if (aiCreditsEl) {
+          aiCreditsEl.textContent = `Créditos IA: ${remainingAiCredits}`;
+        }
+      } else {
+        await loadAiCredits();
       }
 
-      await loadAiCredits();
       return;
     }
 
     setAiMessage(data.hint || "", data.source || null);
+
+    if (typeof data.remainingCredits === "number") {
+      remainingAiCredits = data.remainingCredits;
+      aiCreditsLoadError = false;
+
+      if (aiCreditsEl) {
+        aiCreditsEl.textContent = `Créditos IA: ${remainingAiCredits}`;
+      }
+    }
 
     if (statusMsg) {
       if (data.creditsSpent) {
@@ -774,10 +800,6 @@ async function requestAiHint() {
       } else {
         statusMsg.textContent = "Se ha mostrado ayuda técnica sin consumir crédito.";
       }
-    }
-
-    if (aiCreditsEl) {
-      aiCreditsEl.textContent = `Créditos IA: ${data.remainingCredits}`;
     }
   } catch (error) {
     console.error("Error pidiendo pista IA:", error);
@@ -803,7 +825,7 @@ function updateExecutionModeUI() {
   }
 
   if (statusMsg && !interactiveConsoleRunning) {
-    statusMsg.textContent = "Listo para practicar.";
+    statusMsg.textContent = DEFAULT_STATUS_MESSAGE;
   }
 
   if (stdoutBlockEl) stdoutBlockEl.style.display = "none";
@@ -984,7 +1006,6 @@ function startInteractiveConsole() {
 
   resetOutput();
   setInteractiveConsoleRunningState(false);
-  clearConsoleOutput();
 
   lastAttemptId = null;
   lastRunStatus = null;
@@ -992,9 +1013,6 @@ function startInteractiveConsole() {
 
   setRunStatus("running");
   if (runTimeEl) runTimeEl.textContent = "0 s";
-  if (stdoutEl) stdoutEl.textContent = "";
-  if (stderrEl) stderrEl.textContent = "";
-  if (feedbackEl) feedbackEl.textContent = "";
 
   consoleSocket.emit("console:start", {
     language,

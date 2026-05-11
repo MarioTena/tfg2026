@@ -1,7 +1,7 @@
 const API_URL = "http://localhost:3000/api/progress/python";
 const token = localStorage.getItem("token");
 
-const LAST_THEME_STORAGE_KEY = "lastPythonTheme";
+const LAST_THEME_STORAGE_KEY_PREFIX = "lastPythonTheme";
 
 const menuProgressCopyEl = document.getElementById("menu-progress-copy");
 const menuProgressFillEl = document.getElementById("menu-progress-fill");
@@ -111,13 +111,29 @@ function getThemeProgress(theme, completedTopics) {
   };
 }
 
+function getCurrentUserId() {
+  try {
+    const user = JSON.parse(localStorage.getItem("user") || "{}");
+    return user?.id ? String(user.id) : null;
+  } catch {
+    return null;
+  }
+}
+
 function getStoredLastThemeId() {
-  return localStorage.getItem(LAST_THEME_STORAGE_KEY) || null;
+  const userId = getCurrentUserId();
+  if (!userId) return null;
+
+  return localStorage.getItem(`${LAST_THEME_STORAGE_KEY_PREFIX}:${userId}`) || null;
 }
 
 function setStoredLastThemeId(themeId) {
   if (!themeId) return;
-  localStorage.setItem(LAST_THEME_STORAGE_KEY, String(themeId));
+
+  const userId = getCurrentUserId();
+  if (!userId) return;
+
+  localStorage.setItem(`${LAST_THEME_STORAGE_KEY_PREFIX}:${userId}`, String(themeId));
 }
 
 function getFirstNotCompletedTheme(completedTopics) {

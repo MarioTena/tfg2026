@@ -9,7 +9,7 @@ window.EXERCISE_CATALOG["py_tema5_ej1"] = {
   difficulty: "Fácil",
   estimatedTime: "5 min",
   skill: "print",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Saludo simple
 
@@ -34,7 +34,7 @@ window.EXERCISE_CATALOG["py_tema5_ej2"] = {
   difficulty: "Fácil",
   estimatedTime: "6 min",
   skill: "Parámetros",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Saludo con nombre
 
@@ -59,7 +59,7 @@ window.EXERCISE_CATALOG["py_tema5_ej3"] = {
   difficulty: "Fácil",
   estimatedTime: "6 min",
   skill: "return",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Doble con return
 
@@ -85,7 +85,7 @@ window.EXERCISE_CATALOG["py_tema5_ej4"] = {
   difficulty: "Media",
   estimatedTime: "7 min",
   skill: "Argumentos",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Suma de dos números
 
@@ -110,7 +110,7 @@ window.EXERCISE_CATALOG["py_tema5_ej5"] = {
   difficulty: "Media",
   estimatedTime: "8 min",
   skill: "Booleanos",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Mayor de edad
 
@@ -135,7 +135,7 @@ window.EXERCISE_CATALOG["py_tema5_ej6"] = {
   difficulty: "Media",
   estimatedTime: "8 min",
   skill: "Condiciones",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Clasificar número
 
@@ -159,7 +159,7 @@ window.EXERCISE_CATALOG["py_tema5_ej7"] = {
   difficulty: "Media",
   estimatedTime: "8 min",
   skill: "Diseño",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: print o return
 
@@ -188,7 +188,7 @@ window.EXERCISE_CATALOG["py_tema5_ej8"] = {
   difficulty: "Media",
   estimatedTime: "7 min",
   skill: "Reutilización",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `def cuadrado(numero):
     return numero * numero
@@ -211,7 +211,7 @@ window.EXERCISE_CATALOG["py_tema5_ej9"] = {
   difficulty: "Media",
   estimatedTime: "7 min",
   skill: "Depuración",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `def presentar(nombre, edad):
     print("Me llamo", nombre)
@@ -234,7 +234,7 @@ window.EXERCISE_CATALOG["py_tema5_ej10"] = {
   difficulty: "Media",
   estimatedTime: "8 min",
   skill: "Ámbito",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `def crear_mensaje():
     mensaje = "Hola"
@@ -256,7 +256,7 @@ window.EXERCISE_CATALOG["py_tema5_ej11"] = {
   difficulty: "Media",
   estimatedTime: "7 min",
   skill: "Booleanos",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# Crea aquí una función es_par(numero)
 
@@ -277,7 +277,7 @@ window.EXERCISE_CATALOG["py_tema5_ej12"] = {
   difficulty: "Media",
   estimatedTime: "9 min",
   skill: "Buenas prácticas",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `def hacer_cosa(x):
     print("Resultado:", x * 1.21)
@@ -296,7 +296,7 @@ window.EXERCISE_CATALOG["py_tema5_reto1"] = {
   statement: "Crea una función que construya un saludo y devuelva el texto para reutilizarlo varias veces.",
   difficulty: "Reto",
   estimatedTime: "10 min",
-  skill: "Text + return",
+  skill: "Texto + return",
   type: "Reto",
   starterCode:
 `# MINI RETO: Saludo reutilizable
@@ -322,7 +322,7 @@ window.EXERCISE_CATALOG["py_tema5_reto2"] = {
   statement: "Crea funciones para calcular IVA, aplicar descuento y devolver el precio final con diseño limpio.",
   difficulty: "Reto Final",
   estimatedTime: "12-15 min",
-  skill: "Combinado",
+  skill: "Integración",
   type: "Reto final",
   starterCode:
 `# RETO FINAL: Precio final

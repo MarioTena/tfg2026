@@ -9,7 +9,7 @@ window.EXERCISE_CATALOG["py_tema10_ej1"] = {
   difficulty: "Fácil",
   estimatedTime: "6 min",
   skill: "ValueError",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Conversión segura
 
@@ -34,7 +34,7 @@ window.EXERCISE_CATALOG["py_tema10_ej2"] = {
   difficulty: "Fácil",
   estimatedTime: "6 min",
   skill: "ZeroDivisionError",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: División segura
 
@@ -61,7 +61,7 @@ window.EXERCISE_CATALOG["py_tema10_ej3"] = {
   difficulty: "Media",
   estimatedTime: "7 min",
   skill: "Excepciones",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Archivo ausente
 
@@ -85,7 +85,7 @@ window.EXERCISE_CATALOG["py_tema10_ej4"] = {
   difficulty: "Media",
   estimatedTime: "8 min",
   skill: "Flujo",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: else y finally
 
@@ -109,7 +109,7 @@ window.EXERCISE_CATALOG["py_tema10_ej5"] = {
   difficulty: "Media",
   estimatedTime: "8 min",
   skill: "raise",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `nota = 12
 
@@ -131,7 +131,7 @@ window.EXERCISE_CATALOG["py_tema10_ej6"] = {
   difficulty: "Media",
   estimatedTime: "8 min",
   skill: "Precisión",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `texto = "hola"
 
@@ -158,7 +158,7 @@ window.EXERCISE_CATALOG["py_tema10_ej7"] = {
   difficulty: "Media",
   estimatedTime: "8 min",
   skill: "Diseño",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `texto = input("Escribe un número: ")
 
@@ -187,7 +187,7 @@ window.EXERCISE_CATALOG["py_tema10_ej8"] = {
   difficulty: "Media",
   estimatedTime: "7 min",
   skill: "Claridad",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `texto = "abc"
 
@@ -213,7 +213,7 @@ window.EXERCISE_CATALOG["py_tema10_ej9"] = {
   difficulty: "Media",
   estimatedTime: "9 min",
   skill: "Criterio",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Prevenir o capturar
 
@@ -238,7 +238,7 @@ window.EXERCISE_CATALOG["py_tema10_ej10"] = {
   difficulty: "Media",
   estimatedTime: "9 min",
   skill: "Multiples casos",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Varias excepciones
 
@@ -267,7 +267,7 @@ window.EXERCISE_CATALOG["py_tema10_ej11"] = {
   difficulty: "Media",
   estimatedTime: "9 min",
   skill: "Funciones",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Función con validación
 
@@ -291,7 +291,7 @@ window.EXERCISE_CATALOG["py_tema10_ej12"] = {
   difficulty: "Media",
   estimatedTime: "9 min",
   skill: "Flujo completo",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Flujo completo
 
@@ -347,7 +347,7 @@ window.EXERCISE_CATALOG["py_tema10_reto2"] = {
   statement: "Pide un dato al usuario, conviértelo, valida sus reglas, distingue éxito y error y deja un cierre final claro.",
   difficulty: "Reto final",
   estimatedTime: "12-15 min",
-  skill: "Integrador",
+  skill: "Integración",
   type: "Reto final",
   starterCode:
 `# RETO FINAL: Validación robusta completa

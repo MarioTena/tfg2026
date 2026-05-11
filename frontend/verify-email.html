@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Verificar correo</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <span class="mission-tag">Cuenta</span>
+    <h1>Verificación de correo</h1>
+    <p>Estamos comprobando tu enlace de verificación.</p>
+  </header>
+
+  <main class="main-container single-column">
+    <section class="exercise-card">
+      <div class="exercise-header">
+        <div>
+          <h2 class="exercise-title">Estado</h2>
+          <p class="exercise-subtitle">Resultado de la verificación de tu cuenta.</p>
+        </div>
+      </div>
+
+      <div class="exercise-body">
+        <div class="exercise-block">
+          <p id="verify-status" class="status-msg" style="display:none;"></p>
+
+          <div class="buttons-row" style="margin-top:16px;">
+            <a class="btn btn-primary" href="login.html">Ir a login</a>
+            <a class="btn btn-secondary" href="register.html">Volver a registro</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="./theme-init.js"></script>
+  <script src="./verify-email.js"></script>
+</body>
+</html>

@@ -9,7 +9,7 @@ window.EXERCISE_CATALOG["py_tema4_ej1"] = {
   difficulty: "Fácil",
   estimatedTime: "5 min",
   skill: "Listas",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Crear una lista
 
@@ -34,7 +34,7 @@ window.EXERCISE_CATALOG["py_tema4_ej2"] = {
   difficulty: "Fácil",
   estimatedTime: "6 min",
   skill: "Índices",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Primer y último elemento
 
@@ -59,7 +59,7 @@ window.EXERCISE_CATALOG["py_tema4_ej3"] = {
   difficulty: "Fácil",
   estimatedTime: "6 min",
   skill: "Modificar",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Modificar una posición
 
@@ -84,7 +84,7 @@ window.EXERCISE_CATALOG["py_tema4_ej4"] = {
   difficulty: "Media",
   estimatedTime: "7 min",
   skill: "for",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Recorrer una lista
 
@@ -109,7 +109,7 @@ window.EXERCISE_CATALOG["py_tema4_ej5"] = {
   difficulty: "Media",
   estimatedTime: "8 min",
   skill: "Acumulador",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Sumar elementos de una lista
 
@@ -137,7 +137,7 @@ window.EXERCISE_CATALOG["py_tema4_ej6"] = {
   difficulty: "Media",
   estimatedTime: "8 min",
   skill: "Contador",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Contar pares
 
@@ -165,7 +165,7 @@ window.EXERCISE_CATALOG["py_tema4_ej7"] = {
   difficulty: "Media",
   estimatedTime: "8 min",
   skill: "Búsqueda",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Buscar un valor
 
@@ -193,7 +193,7 @@ window.EXERCISE_CATALOG["py_tema4_ej8"] = {
   difficulty: "Media",
   estimatedTime: "7 min",
   skill: "Slicing",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Slicing básico
 
@@ -219,7 +219,7 @@ window.EXERCISE_CATALOG["py_tema4_ej9"] = {
   difficulty: "Media",
   estimatedTime: "6 min",
   skill: "append()",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: append()
 
@@ -245,7 +245,7 @@ window.EXERCISE_CATALOG["py_tema4_ej10"] = {
   difficulty: "Media",
   estimatedTime: "9 min",
   skill: "Métodos",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: remove() vs pop()
 
@@ -271,7 +271,7 @@ window.EXERCISE_CATALOG["py_tema4_ej11"] = {
   difficulty: "Media",
   estimatedTime: "7 min",
   skill: "sort()",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Ordenar una lista
 
@@ -296,7 +296,7 @@ window.EXERCISE_CATALOG["py_tema4_ej12"] = {
   difficulty: "Media",
   estimatedTime: "9 min",
   skill: "Razonamiento",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Predecir qué cambia
 
@@ -325,7 +325,7 @@ window.EXERCISE_CATALOG["py_tema4_ej13"] = {
   difficulty: "Media",
   estimatedTime: "8 min",
   skill: "Depuración",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Índice fuera de rango
 
@@ -352,7 +352,7 @@ window.EXERCISE_CATALOG["py_tema4_ej14"] = {
   difficulty: "Media",
   estimatedTime: "7 min",
   skill: "count()",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Contar apariciones
 

@@ -3,24 +3,53 @@
 // ----------------------------------------------------------------------------
 // Ejecución de código en Docker.
 // - Python: ejecución real en contenedor python:3.11
-// - C: de momento simulado
-// - Soporte para stdin en Python
+// - Soporte para stdin
 // ============================================================================
 
 const { spawn } = require("child_process");
 
-// Ejecuta un contenedor Docker
-function runDockerCommand(image, extraArgs, stdinData = "", timeoutMs = 15000) {
+const DOCKER_IMAGE_PYTHON = "python:3.11";
+const DEFAULT_TIMEOUT_MS = 10000;
+
+function buildSafeDockerArgs(image, extraArgs = []) {
+  return [
+    "run",
+    "--rm",
+    "-i",
+    "--network",
+    "none",
+    "--memory",
+    "128m",
+    "--cpus",
+    "0.5",
+    "--pids-limit",
+    "64",
+    "--read-only",
+    "--tmpfs",
+    "/tmp:rw,noexec,nosuid,size=16m",
+    image,
+    ...extraArgs,
+  ];
+}
+
+function runDockerCommand(image, extraArgs, stdinData = "", timeoutMs = DEFAULT_TIMEOUT_MS) {
   return new Promise((resolve) => {
     let stdout = "";
     let stderr = "";
     let finished = false;
     const start = Date.now();
 
-    const args = ["run", "--rm", "-i", image, ...extraArgs];
+    const args = buildSafeDockerArgs(image, extraArgs);
     const proc = spawn("docker", args, {
       stdio: ["pipe", "pipe", "pipe"],
     });
+
+    const finalize = (result) => {
+      if (finished) return;
+      finished = true;
+      clearTimeout(timeout);
+      resolve(result);
+    };
 
     proc.stdout.on("data", (data) => {
       stdout += data.toString();
@@ -31,42 +60,53 @@ function runDockerCommand(image, extraArgs, stdinData = "", timeoutMs = 15000) {
     });
 
     proc.on("error", (err) => {
-      if (finished) return;
-      finished = true;
       const timeMs = Date.now() - start;
-      resolve({
+      finalize({
         stdout,
-        stderr: "Error al lanzar Docker: " + err.message,
+        stderr: `Error al lanzar Docker: ${err.message}`,
         status: "error",
         timeMs,
       });
     });
 
     const timeout = setTimeout(() => {
-      if (finished) return;
-      finished = true;
-      proc.kill("SIGKILL");
+      try {
+        proc.kill("SIGKILL");
+      } catch {}
+
       const timeMs = Date.now() - start;
-      resolve({
+      finalize({
         stdout,
-        stderr: (stderr || "") + "\nTiempo de ejecución excedido.",
+        stderr: `${stderr || ""}\nTiempo de ejecución excedido.`.trim(),
         status: "timeout",
         timeMs,
       });
     }, timeoutMs);
 
     proc.on("close", (exitCode) => {
-      if (finished) return;
-      finished = true;
-      clearTimeout(timeout);
       const timeMs = Date.now() - start;
-
       const status = exitCode === 0 ? "success" : "error";
-      resolve({ stdout, stderr, status, timeMs });
+
+      finalize({
+        stdout,
+        stderr,
+        status,
+        timeMs,
+      });
     });
 
-    proc.stdin.write(stdinData || "");
-    proc.stdin.end();
+    try {
+      proc.stdin.write(stdinData || "");
+      proc.stdin.end();
+    } catch (err) {
+      const timeMs = Date.now() - start;
+      finalize({
+        stdout,
+        stderr: `Error enviando stdin al contenedor: ${err.message}`,
+        status: "error",
+        timeMs,
+      });
+    }
   });
 }
 
@@ -76,51 +116,27 @@ function runDockerCommand(image, extraArgs, stdinData = "", timeoutMs = 15000) {
 // ============================================================================
 async function runPythonInDocker(code, stdin = "") {
   return runDockerCommand(
-    "python:3.11",
+    DOCKER_IMAGE_PYTHON,
     ["python", "-c", code],
     stdin,
-    10000
+    DEFAULT_TIMEOUT_MS
   );
-}
-
-// ============================================================================
-// C: de momento simulado
-// ============================================================================
-async function runCInDockerSimulado(code) {
-  let stdout = "";
-  let stderr = "";
-  let status = "success";
-  const start = Date.now();
-
-  if (code.toLowerCase().includes("error")) {
-    status = "error";
-    stderr = "Simulación C: error detectado en el código.";
-  } else {
-    stdout = "Simulación C: ejecución completada correctamente.";
-  }
-
-  const timeMs = Date.now() - start;
-  return { stdout, stderr, status, timeMs };
 }
 
 // ============================================================================
 // Función principal usada por server.js
 // ============================================================================
 async function runCodeInDocker(language, code, stdin = "") {
-  if (language === "python") {
-    return runPythonInDocker(code, stdin);
+  if (language !== "python") {
+    return {
+      stdout: "",
+      stderr: `Lenguaje no soportado: ${language}`,
+      status: "error",
+      timeMs: 0,
+    };
   }
 
-  if (language === "c") {
-    return runCInDockerSimulado(code);
-  }
-
-  return {
-    stdout: "",
-    stderr: `Lenguaje no soportado: ${language}`,
-    status: "error",
-    timeMs: 0,
-  };
+  return runPythonInDocker(code, stdin);
 }
 
 module.exports = { runCodeInDocker };

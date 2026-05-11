@@ -9,7 +9,7 @@ window.EXERCISE_CATALOG["py_tema8_ej1"] = {
   difficulty: "Fácil",
   estimatedTime: "5 min",
   skill: "Tuplas",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Crear una tupla
 
@@ -32,7 +32,7 @@ window.EXERCISE_CATALOG["py_tema8_ej2"] = {
   difficulty: "Fácil",
   estimatedTime: "5 min",
   skill: "Sintaxis",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Tupla de un elemento
 
@@ -55,7 +55,7 @@ window.EXERCISE_CATALOG["py_tema8_ej3"] = {
   difficulty: "Fácil",
   estimatedTime: "5 min",
   skill: "Casos frontera",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Tupla vacía y longitud
 
@@ -78,7 +78,7 @@ window.EXERCISE_CATALOG["py_tema8_ej4"] = {
   difficulty: "Media",
   estimatedTime: "6 min",
   skill: "Duplicados",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Crear un set
 
@@ -103,7 +103,7 @@ window.EXERCISE_CATALOG["py_tema8_ej5"] = {
   difficulty: "Media",
   estimatedTime: "6 min",
   skill: "set()",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Set vacío correcto
 
@@ -127,7 +127,7 @@ window.EXERCISE_CATALOG["py_tema8_ej6"] = {
   difficulty: "Media",
   estimatedTime: "7 min",
   skill: "Modificar",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Añadir y eliminar en un set
 
@@ -153,7 +153,7 @@ window.EXERCISE_CATALOG["py_tema8_ej7"] = {
   difficulty: "Media",
   estimatedTime: "7 min",
   skill: "Pertenencia",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Pertenencia en set
 
@@ -179,7 +179,7 @@ window.EXERCISE_CATALOG["py_tema8_ej8"] = {
   difficulty: "Media",
   estimatedTime: "8 min",
   skill: "Operaciones",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Unión e intersección
 
@@ -205,7 +205,7 @@ window.EXERCISE_CATALOG["py_tema8_ej9"] = {
   difficulty: "Media",
   estimatedTime: "8 min",
   skill: "Diferencia",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Diferencia y dirección
 
@@ -233,7 +233,7 @@ window.EXERCISE_CATALOG["py_tema8_ej10"] = {
   difficulty: "Media",
   estimatedTime: "8 min",
   skill: "^",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Diferencia simétrica
 
@@ -259,7 +259,7 @@ window.EXERCISE_CATALOG["py_tema8_ej11"] = {
   difficulty: "Media",
   estimatedTime: "9 min",
   skill: "Diseño",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Elegir estructura
 
@@ -287,7 +287,7 @@ window.EXERCISE_CATALOG["py_tema8_ej12"] = {
   difficulty: "Media",
   estimatedTime: "9 min",
   skill: "Comparación",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Estructura que funciona pero representa peor
 
@@ -340,7 +340,7 @@ window.EXERCISE_CATALOG["py_tema8_reto2"] = {
   statement: "Resuelve varios casos combinando decisión de estructura, unicidad y comparación entre grupos.",
   difficulty: "Reto final",
   estimatedTime: "12-15 min",
-  skill: "Integrador",
+  skill: "Integración",
   type: "Reto final",
   starterCode:
 `# RETO FINAL: Elegir estructura y operar

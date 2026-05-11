@@ -9,7 +9,7 @@ window.EXERCISE_CATALOG["py_tema6_ej1"] = {
   difficulty: "Fácil",
   estimatedTime: "5 min",
   skill: "Crear",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Crear un diccionario
 
@@ -34,7 +34,7 @@ window.EXERCISE_CATALOG["py_tema6_ej2"] = {
   difficulty: "Fácil",
   estimatedTime: "6 min",
   skill: "Acceso",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Acceder por clave
 
@@ -63,7 +63,7 @@ window.EXERCISE_CATALOG["py_tema6_ej3"] = {
   difficulty: "Media",
   estimatedTime: "7 min",
   skill: "Añadir",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Añadir una clave
 
@@ -91,7 +91,7 @@ window.EXERCISE_CATALOG["py_tema6_ej4"] = {
   difficulty: "Media",
   estimatedTime: "7 min",
   skill: "Modificar",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Actualizar valor
 
@@ -119,7 +119,7 @@ window.EXERCISE_CATALOG["py_tema6_ej5"] = {
   difficulty: "Media",
   estimatedTime: "8 min",
   skill: "in",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Comprobar si existe una clave
 
@@ -147,7 +147,7 @@ window.EXERCISE_CATALOG["py_tema6_ej6"] = {
   difficulty: "Media",
   estimatedTime: "8 min",
   skill: "items()",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Recorrer claves y valores
 
@@ -176,7 +176,7 @@ window.EXERCISE_CATALOG["py_tema6_ej7"] = {
   difficulty: "Media",
   estimatedTime: "8 min",
   skill: "get()",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `config = {
     "tema": "oscuro"
@@ -201,7 +201,7 @@ window.EXERCISE_CATALOG["py_tema6_ej8"] = {
   difficulty: "Media",
   estimatedTime: "8 min",
   skill: "pop()",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `producto = {
     "nombre": "Teclado",
@@ -226,8 +226,8 @@ window.EXERCISE_CATALOG["py_tema6_ej9"] = {
   statement: "Calcula cuántas claves tiene un diccionario y muestra el resultado.",
   difficulty: "Media",
   estimatedTime: "8 min",
-  skill: "update()",
-  type: "Práctica guiada",
+  skill: "len()",
+  type: "Ejercicio",
   starterCode:
 `usuario = {
     "nombre": "Ana",
@@ -252,8 +252,8 @@ window.EXERCISE_CATALOG["py_tema6_ej10"] = {
   statement: "Muestra un pequeño resumen legible usando varios datos de un diccionario.",
   difficulty: "Media",
   estimatedTime: "8 min",
-  skill: "Depuración",
-  type: "Práctica guiada",
+  skill: "Resumen",
+  type: "Ejercicio",
   starterCode:
 `persona = {
     "nombre": "Luis",
@@ -279,7 +279,7 @@ window.EXERCISE_CATALOG["py_tema6_ej11"] = {
   difficulty: "Media",
   estimatedTime: "9 min",
   skill: "Diseño",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Lista o diccionario
 
@@ -305,7 +305,7 @@ window.EXERCISE_CATALOG["py_tema6_ej12"] = {
   difficulty: "Media",
   estimatedTime: "9 min",
   skill: "Casos frontera",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Diccionario vacío y clave opcional
 
@@ -361,7 +361,7 @@ window.EXERCISE_CATALOG["py_tema6_reto2"] = {
   statement: "Crea, modifica, comprueba y recorre un diccionario de producto usando varios métodos del tema.",
   difficulty: "Reto final",
   estimatedTime: "12-15 min",
-  skill: "Integrador",
+  skill: "Integración",
   type: "Reto final",
   starterCode:
 `# RETO FINAL: Gestión básica de producto

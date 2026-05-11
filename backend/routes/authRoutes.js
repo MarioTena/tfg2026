@@ -1,20 +1,17 @@
-// ============================================================================
-// Registro, login y endpoint /me (requiere JWT)
-// ============================================================================
-
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const crypto = require("crypto");
 const User = require("../models/User");
 const { requireAuth } = require("../middleware/requireAuth");
-const crypto = require("crypto");
-const { sendWelcomeEmail, sendResetPasswordEmail } = require("../services/emailService");
+const {
+  sendWelcomeEmail,
+  sendResetPasswordEmail,
+  sendVerifyEmail,
+} = require("../services/emailService");
 
 const router = express.Router();
 
-// ----------------------------------------------------------------------------
-// Helper: crear token JWT
-// ----------------------------------------------------------------------------
 function signToken(user) {
   const secret = process.env.JWT_SECRET;
   const expiresIn = process.env.JWT_EXPIRES_IN || "7d";
@@ -30,10 +27,19 @@ function signToken(user) {
   );
 }
 
-// ----------------------------------------------------------------------------
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function getAppBaseUrl() {
+  const baseUrl = process.env.APP_BASE_URL;
+  if (!baseUrl) {
+    throw new Error("Falta APP_BASE_URL en el .env");
+  }
+  return baseUrl.replace(/\/+$/, "");
+}
+
 // POST /api/auth/register
-// body: { name, email, password }
-// ----------------------------------------------------------------------------
 router.post("/register", async (req, res) => {
   try {
     const { name, email, password } = req.body || {};
@@ -42,23 +48,77 @@ router.post("/register", async (req, res) => {
       return res.status(400).json({ ok: false, error: "Faltan campos: name, email, password" });
     }
 
+    const normalizedEmail = String(email).toLowerCase().trim();
+    const trimmedName = String(name).trim();
+
+    if (!isValidEmail(normalizedEmail)) {
+      return res.status(400).json({ ok: false, error: "Email no válido." });
+    }
+
     if (password.length < 6) {
       return res.status(400).json({ ok: false, error: "La contraseña debe tener al menos 6 caracteres" });
     }
 
-    const existing = await User.findOne({ email: email.toLowerCase().trim() });
+    const existing = await User.findOne({ email: normalizedEmail });
     if (existing) {
       return res.status(409).json({ ok: false, error: "Ya existe un usuario con ese email" });
     }
 
     const passwordHash = await bcrypt.hash(password, 10);
+    const emailVerificationToken = crypto.randomBytes(32).toString("hex");
+    const emailVerificationExpires = new Date(Date.now() + 1000 * 60 * 60 * 24);
 
     const user = await User.create({
-      name: name.trim(),
-      email: email.toLowerCase().trim(),
+      name: trimmedName,
+      email: normalizedEmail,
       passwordHash,
       role: "student",
+      emailVerified: false,
+      emailVerificationToken,
+      emailVerificationExpires,
     });
+
+    const appBaseUrl = getAppBaseUrl();
+    const verifyUrl = `${appBaseUrl}/verify-email.html?token=${encodeURIComponent(emailVerificationToken)}`;
+
+    await sendVerifyEmail({
+      to: user.email,
+      name: user.name,
+      verifyUrl,
+    });
+
+    return res.json({
+      ok: true,
+      message: "Cuenta creada. Te hemos enviado un correo para verificar tu cuenta antes de iniciar sesión.",
+    });
+  } catch (e) {
+    return res.status(500).json({ ok: false, error: e.message });
+  }
+});
+
+// GET /api/auth/verify-email
+router.get("/verify-email", async (req, res) => {
+  try {
+    const token = String(req.query?.token || "").trim();
+
+    if (!token) {
+      return res.status(400).json({ ok: false, error: "Falta token." });
+    }
+
+    const user = await User.findOne({
+      emailVerificationToken: token,
+      emailVerificationExpires: { $gt: new Date() },
+    });
+
+    if (!user) {
+      return res.status(400).json({ ok: false, error: "El enlace de verificación no es válido o ha caducado." });
+    }
+
+    user.emailVerified = true;
+    user.emailVerificationToken = null;
+    user.emailVerificationExpires = null;
+
+    await user.save();
 
     try {
       await sendWelcomeEmail({
@@ -69,29 +129,16 @@ router.post("/register", async (req, res) => {
       console.error("Error enviando email de bienvenida:", emailError);
     }
 
-    const token = signToken(user);
-
     return res.json({
       ok: true,
-      token,
-      user: {
-        id: user._id,
-        name: user.name,
-        email: user.email,
-        role: user.role,
-        theme: user.theme || "dark",
-        onboardingCompleted: user.onboardingCompleted === true,
-      },
+      message: "Correo verificado correctamente. Ya puedes iniciar sesión.",
     });
   } catch (e) {
     return res.status(500).json({ ok: false, error: e.message });
   }
 });
 
-// ----------------------------------------------------------------------------
 // POST /api/auth/login
-// body: { email, password }
-// ----------------------------------------------------------------------------
 router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body || {};
@@ -99,7 +146,13 @@ router.post("/login", async (req, res) => {
       return res.status(400).json({ ok: false, error: "Faltan campos: email, password" });
     }
 
-    const user = await User.findOne({ email: email.toLowerCase().trim() });
+    const normalizedEmail = String(email).toLowerCase().trim();
+
+    if (!isValidEmail(normalizedEmail)) {
+      return res.status(400).json({ ok: false, error: "Email no válido." });
+    }
+
+    const user = await User.findOne({ email: normalizedEmail });
     if (!user) {
       return res.status(401).json({ ok: false, error: "Credenciales incorrectas" });
     }
@@ -109,6 +162,14 @@ router.post("/login", async (req, res) => {
       return res.status(401).json({ ok: false, error: "Credenciales incorrectas" });
     }
 
+    if (user.emailVerified !== true) {
+      return res.status(403).json({
+        ok: false,
+        error: "Debes verificar tu correo antes de iniciar sesión.",
+        code: "EMAIL_NOT_VERIFIED",
+      });
+    }
+
     const token = signToken(user);
 
     return res.json({
@@ -128,9 +189,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// ----------------------------------------------------------------------------
 // GET /api/auth/me
-// ----------------------------------------------------------------------------
 router.get("/me", requireAuth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select("_id name email role theme onboardingCompleted");
@@ -155,15 +214,17 @@ router.get("/me", requireAuth, async (req, res) => {
   }
 });
 
-// ----------------------------------------------------------------------------
 // POST /api/auth/forgot-password
-// ----------------------------------------------------------------------------
 router.post("/forgot-password", async (req, res) => {
   try {
     const email = String(req.body?.email || "").toLowerCase().trim();
 
     if (!email) {
       return res.status(400).json({ ok: false, error: "Debes indicar un email." });
+    }
+
+    if (!isValidEmail(email)) {
+      return res.status(400).json({ ok: false, error: "Email no válido." });
     }
 
     const user = await User.findOne({ email });
@@ -182,7 +243,7 @@ router.post("/forgot-password", async (req, res) => {
     user.resetPasswordExpires = expires;
     await user.save();
 
-    const resetUrl = `${process.env.APP_BASE_URL}/reset-password.html?token=${encodeURIComponent(rawToken)}`;
+    const resetUrl = `${getAppBaseUrl()}/reset-password.html?token=${encodeURIComponent(rawToken)}`;
 
     await sendResetPasswordEmail({
       to: user.email,
@@ -199,9 +260,7 @@ router.post("/forgot-password", async (req, res) => {
   }
 });
 
-// ----------------------------------------------------------------------------
 // POST /api/auth/reset-password
-// ----------------------------------------------------------------------------
 router.post("/reset-password", async (req, res) => {
   try {
     const token = String(req.body?.token || "").trim();
@@ -241,9 +300,7 @@ router.post("/reset-password", async (req, res) => {
   }
 });
 
-// ----------------------------------------------------------------------------
 // PUT /api/auth/profile
-// ----------------------------------------------------------------------------
 router.put("/profile", requireAuth, async (req, res) => {
   try {
     const { name, theme } = req.body || {};
@@ -262,6 +319,10 @@ router.put("/profile", requireAuth, async (req, res) => {
         return res.status(400).json({ ok: false, error: "Tema no válido." });
       }
       updates.theme = theme;
+    }
+
+    if (!Object.keys(updates).length) {
+      return res.status(400).json({ ok: false, error: "No hay cambios para guardar." });
     }
 
     const updatedUser = await User.findByIdAndUpdate(
@@ -290,9 +351,7 @@ router.put("/profile", requireAuth, async (req, res) => {
   }
 });
 
-// ----------------------------------------------------------------------------
 // PUT /api/auth/onboarding
-// ----------------------------------------------------------------------------
 router.put("/onboarding", requireAuth, async (req, res) => {
   try {
     const updatedUser = await User.findByIdAndUpdate(

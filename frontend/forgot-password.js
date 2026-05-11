@@ -4,10 +4,13 @@ const emailInput = document.getElementById("email");
 const sendBtn = document.getElementById("send-btn");
 const statusMsg = document.getElementById("status-msg");
 
-function showStatus(message, isError = true) {
+function showStatus(message = "", isError = true) {
+  if (!statusMsg) return;
+
   statusMsg.textContent = message;
-  statusMsg.classList.toggle("status-success", !isError);
-  statusMsg.classList.toggle("status-error", isError);
+  statusMsg.style.display = message ? "block" : "none";
+  statusMsg.classList.toggle("status-success", !isError && !!message);
+  statusMsg.classList.toggle("status-error", isError && !!message);
 }
 
 async function sendResetLink() {
@@ -53,6 +56,9 @@ async function sendResetLink() {
 
 sendBtn.addEventListener("click", sendResetLink);
 
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") sendResetLink();
+emailInput?.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    sendResetLink();
+  }
 });

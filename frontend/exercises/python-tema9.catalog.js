@@ -9,7 +9,7 @@ window.EXERCISE_CATALOG["py_tema9_ej1"] = {
   difficulty: "Fácil",
   estimatedTime: "6 min",
   skill: "w",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Crear un archivo nuevo
 
@@ -32,7 +32,7 @@ window.EXERCISE_CATALOG["py_tema9_ej2"] = {
   difficulty: "Media",
   estimatedTime: "7 min",
   skill: "a",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Añadir contenido
 
@@ -55,7 +55,7 @@ window.EXERCISE_CATALOG["py_tema9_ej3"] = {
   difficulty: "Media",
   estimatedTime: "7 min",
   skill: "read()",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Leer archivo completo
 
@@ -79,7 +79,7 @@ window.EXERCISE_CATALOG["py_tema9_ej4"] = {
   difficulty: "Media",
   estimatedTime: "8 min",
   skill: "Recorrido",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Leer línea a línea
 
@@ -103,7 +103,7 @@ window.EXERCISE_CATALOG["py_tema9_ej5"] = {
   difficulty: "Media",
   estimatedTime: "8 min",
   skill: "Diseño",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Elegir modo correcto
 
@@ -129,7 +129,7 @@ window.EXERCISE_CATALOG["py_tema9_ej6"] = {
   difficulty: "Media",
   estimatedTime: "8 min",
   skill: "Formato",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Varias líneas con \\n
 
@@ -152,7 +152,7 @@ window.EXERCISE_CATALOG["py_tema9_ej7"] = {
   difficulty: "Media",
   estimatedTime: "7 min",
   skill: "Razonamiento",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# Imagina que un archivo ya tiene contenido.
 # Escribe en comentarios:
@@ -175,7 +175,7 @@ window.EXERCISE_CATALOG["py_tema9_ej8"] = {
   difficulty: "Media",
   estimatedTime: "7 min",
   skill: "Caso frontera",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# Escribe en comentarios qué esperas que devuelva read()
 # si el archivo está vacío.
@@ -197,7 +197,7 @@ window.EXERCISE_CATALOG["py_tema9_ej9"] = {
   difficulty: "Media",
   estimatedTime: "8 min",
   skill: "Filtro",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `palabra_buscada = "Python"
 
@@ -221,7 +221,7 @@ window.EXERCISE_CATALOG["py_tema9_ej10"] = {
   difficulty: "Media",
   estimatedTime: "9 min",
   skill: "Combinado",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# Escribe una solución que:
 # 1. cree un archivo y escriba una línea
@@ -243,7 +243,7 @@ window.EXERCISE_CATALOG["py_tema9_ej11"] = {
   difficulty: "Media",
   estimatedTime: "8 min",
   skill: "Depuración",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Salida limpia
 
@@ -271,7 +271,7 @@ window.EXERCISE_CATALOG["py_tema9_ej12"] = {
   difficulty: "Media",
   estimatedTime: "8 min",
   skill: "Comparación",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Comparar w y a
 
@@ -319,7 +319,7 @@ window.EXERCISE_CATALOG["py_tema9_reto2"] = {
   statement: "Crea un pequeño registro: escribe varias líneas, añade otra, luego léelas y muéstralas limpias.",
   difficulty: "Reto final",
   estimatedTime: "12-15 min",
-  skill: "Integrador",
+  skill: "Integración",
   type: "Reto final",
   starterCode:
 `# RETO FINAL: Registro simple completo

@@ -121,9 +121,116 @@
   </section>
 
   <section class="panel">
+    <h2>Diseño recomendado</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Paso 1</h3>
+        <p>Abre el archivo con <code>with</code> y recórrelo línea a línea.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Paso 2</h3>
+        <p>Limpia cada línea con <code>strip()</code> antes de tomar cualquier decisión.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Paso 3</h3>
+        <p>Define con claridad qué regla vas a usar para considerar una línea válida.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Paso 4</h3>
+        <p>Separa las líneas válidas de las inválidas mientras recorres el archivo.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Paso 5</h3>
+        <p>Cuando termine la lectura, calcula el resumen final con cantidades claras.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Paso 6</h3>
+        <p>Mejora el programa para explicar mejor por qué una línea no pasa la validación.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Fases del reto</h2>
+        <p class="exercise-subtitle">Aquí conviene separar muy bien lectura, limpieza, validación y resumen.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Fase 1</h3>
+        <p>Lee el archivo línea a línea con <code>with</code>.</p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Fase 2</h3>
+        <p>Limpia cada línea con <code>strip()</code>.</p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Fase 3</h3>
+        <p>Decide qué significa que una línea sea válida.</p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Fase 4</h3>
+        <p>Separa líneas válidas e inválidas en colecciones distintas.</p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Fase 5</h3>
+        <p>Muestra un resumen con cantidades.</p>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Fase 6</h3>
+        <p>Mejora el programa para informar mejor de por qué una línea no pasa la validación.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
     <h2>Decisión importante del reto</h2>
     <div class="callout">
       Una parte clave aquí no es solo leer el archivo, sino definir bien qué significa que una línea sea válida. Sin esa regla, el programa no tiene un criterio sólido.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Ejemplos de regla de validación</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Opción 1</h3>
+        <p>Considerar válida una línea si no está vacía.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Opción 2</h3>
+        <p>Considerar válida una línea si contiene solo números.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Opción 3</h3>
+        <p>Considerar válida una línea si tiene una longitud mínima.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Opción 4</h3>
+        <p>Considerar válida una línea si cumple un formato simple que tú definas y puedas justificar.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      No hay una única regla correcta. Lo importante es que la definas con claridad y que tu programa sea coherente con ella.
     </div>
   </section>
 
@@ -150,12 +257,67 @@
   </section>
 
   <section class="panel">
+    <h2>Errores frecuentes</h2>
+
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3>Error 1</h3>
+        <p>Validar antes de limpiar la línea y dejar que espacios o saltos alteren el resultado.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Error 2</h3>
+        <p>No definir bien la regla de validez y acabar con un programa ambiguo.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Error 3</h3>
+        <p>Mezclar lectura, validación y resumen en el mismo bloque sin orden claro.</p>
+      </div>
+
+      <div class="theory-card">
+        <h3>Error 4</h3>
+        <p>No contemplar casos como archivo vacío o líneas en blanco.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
     <h2>Versión ampliada</h2>
     <ul>
       <li>guardar las líneas válidas en otro archivo</li>
       <li>mostrar también cuáles eran inválidas</li>
       <li>usar <code>try / except</code> si el archivo no existe</li>
     </ul>
+  </section>
+
+  <section class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Qué deberías haber consolidado al terminar</h2>
+        <p class="exercise-subtitle">Este reto te acerca más a problemas reales donde los datos no siempre vienen limpios ni listos para usar.</p>
+      </div>
+    </div>
+
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Competencias que consolidan</h3>
+        <ul>
+          <li>leer archivos línea a línea</li>
+          <li>limpiar datos antes de analizarlos</li>
+          <li>definir reglas de validación con criterio</li>
+          <li>separar entradas válidas e inválidas</li>
+          <li>resumir resultados a partir de datos externos</li>
+        </ul>
+      </div>
+
+      <div class="exercise-block">
+        <h3>Cierre didáctico</h3>
+        <div class="challenge">
+          Aquí ya no controlas del todo la entrada: el reto consiste precisamente en recibir datos externos, limpiarlos y decidir qué merece ser aceptado.
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="panel">

@@ -20,7 +20,6 @@ const nextStepDesc = document.getElementById("next-step-desc");
 const pythonRouteState = document.getElementById("python-route-state");
 const pythonRouteChipProgress = document.getElementById("python-route-chip-progress");
 const pythonRouteCta = document.getElementById("python-route-cta");
-const pythonRouteCard = document.getElementById("python-route-card");
 
 const pythonRoute = [
   {
@@ -30,7 +29,7 @@ const pythonRoute = [
     chip1: "Python",
     chip2: "Base",
     description: "Qué es Python, variables, tipos, operaciones y primeros programas.",
-    requiredTopics: ["1.1", "1.2", "1.3", "1.4", "1.5", "1.6", "1.7"]
+    requiredTopics: ["1.1", "1.2", "1.3", "1.4", "1.5", "1.6", "1.7", "1.quiz", "1.ejercicios"]
   },
   {
     id: "2",
@@ -39,7 +38,7 @@ const pythonRoute = [
     chip1: "Python",
     chip2: "Base",
     description: "Condiciones, comparaciones, operadores lógicos y toma de decisiones.",
-    requiredTopics: ["2.1", "2.2", "2.3", "2.4", "2.ejercicios"]
+    requiredTopics: ["2.1", "2.2", "2.3", "2.4", "2.quiz", "2.ejercicios"]
   },
   {
     id: "3",
@@ -48,7 +47,7 @@ const pythonRoute = [
     chip1: "Python",
     chip2: "Base",
     description: "Repetición con for/while, control con break/continue y ejercicios.",
-    requiredTopics: ["3.1", "3.2", "3.3", "3.4", "3.5", "3.ejercicios"]
+    requiredTopics: ["3.1", "3.2", "3.3", "3.4", "3.5", "3.quiz", "3.ejercicios"]
   },
   {
     id: "4",
@@ -57,7 +56,7 @@ const pythonRoute = [
     chip1: "Python",
     chip2: "Core",
     description: "Creación de listas, acceso, modificación, recorrido y métodos básicos.",
-    requiredTopics: ["4.1", "4.2", "4.3", "4.4", "4.5", "4.ejercicios"]
+    requiredTopics: ["4.1", "4.2", "4.3", "4.4", "4.5", "4.quiz", "4.ejercicios"]
   },
   {
     id: "5",
@@ -66,7 +65,7 @@ const pythonRoute = [
     chip1: "Python",
     chip2: "Core",
     description: "Definición de funciones, parámetros, return, ámbito y reutilización de código.",
-    requiredTopics: ["5.1", "5.2", "5.3", "5.4", "5.5", "5.ejercicios"]
+    requiredTopics: ["5.1", "5.2", "5.3", "5.4", "5.5", "5.quiz", "5.ejercicios"]
   },
   {
     id: "6",
@@ -75,7 +74,7 @@ const pythonRoute = [
     chip1: "Python",
     chip2: "Core",
     description: "Claves y valores, acceso, modificación, recorrido y métodos útiles.",
-    requiredTopics: ["6.1", "6.2", "6.3", "6.4", "6.5", "6.ejercicios"]
+    requiredTopics: ["6.1", "6.2", "6.3", "6.4", "6.5", "6.quiz", "6.ejercicios"]
   },
   {
     id: "7",
@@ -84,7 +83,7 @@ const pythonRoute = [
     chip1: "Python",
     chip2: "Advanced",
     description: "Strings como secuencias, slicing, métodos y análisis de texto.",
-    requiredTopics: ["7.1", "7.2", "7.3", "7.4", "7.5", "7.ejercicios"]
+    requiredTopics: ["7.1", "7.2", "7.3", "7.4", "7.5", "7.quiz", "7.ejercicios"]
   },
   {
     id: "8",
@@ -93,7 +92,7 @@ const pythonRoute = [
     chip1: "Python",
     chip2: "Advanced",
     description: "Tuplas inmutables, sets sin duplicados y elección correcta de estructuras.",
-    requiredTopics: ["8.1", "8.2", "8.3", "8.4", "8.5", "8.ejercicios"]
+    requiredTopics: ["8.1", "8.2", "8.3", "8.4", "8.5", "8.quiz", "8.ejercicios"]
   },
   {
     id: "9",
@@ -102,7 +101,7 @@ const pythonRoute = [
     chip1: "Python",
     chip2: "Advanced",
     description: "Lectura, escritura, modos de apertura y trabajo básico con archivos.",
-    requiredTopics: ["9.1", "9.2", "9.3", "9.4", "9.5", "9.ejercicios"]
+    requiredTopics: ["9.1", "9.2", "9.3", "9.4", "9.5", "9.quiz", "9.ejercicios"]
   },
   {
     id: "10",
@@ -111,7 +110,7 @@ const pythonRoute = [
     chip1: "Python",
     chip2: "Advanced",
     description: "try/except, else/finally, raise, validaciones y control de errores.",
-    requiredTopics: ["10.1", "10.2", "10.3", "10.4", "10.5", "10.ejercicios"]
+    requiredTopics: ["10.1", "10.2", "10.3", "10.4", "10.5", "10.quiz", "10.ejercicios"]
   }
 ];
 

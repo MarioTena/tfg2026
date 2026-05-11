@@ -4,50 +4,91 @@ const Progress = require("../models/Progress");
 
 const router = express.Router();
 
+const ALLOWED_LANGUAGES = ["python", "c"];
+
+function isValidLanguage(language) {
+  return ALLOWED_LANGUAGES.includes(language);
+}
+
 /* Obtener progreso */
 router.get("/:language", requireAuth, async (req, res) => {
-  const { language } = req.params;
+  try {
+    const { language } = req.params;
 
-  let progress = await Progress.findOne({
-    userId: req.user.id,
-    language
-  });
+    if (!isValidLanguage(language)) {
+      return res.status(400).json({
+        ok: false,
+        error: "Lenguaje no válido.",
+      });
+    }
 
-  if (!progress) {
-    progress = await Progress.create({
+    let progress = await Progress.findOne({
       userId: req.user.id,
       language,
-      completedTopics: []
+    });
+
+    if (!progress) {
+      progress = await Progress.create({
+        userId: req.user.id,
+        language,
+        completedTopics: [],
+      });
+    }
+
+    return res.json({ ok: true, progress });
+  } catch (error) {
+    console.error("Error obteniendo progreso:", error);
+    return res.status(500).json({
+      ok: false,
+      error: "Error interno obteniendo progreso.",
     });
   }
-
-  res.json({ ok: true, progress });
 });
 
 /* Marcar tema como completado */
 router.post("/:language/complete", requireAuth, async (req, res) => {
-  const { language } = req.params;
-  const { topic } = req.body;
+  try {
+    const { language } = req.params;
+    const topic = String(req.body?.topic || "").trim();
 
-  let progress = await Progress.findOne({
-    userId: req.user.id,
-    language
-  });
+    if (!isValidLanguage(language)) {
+      return res.status(400).json({
+        ok: false,
+        error: "Lenguaje no válido.",
+      });
+    }
 
-  if (!progress) {
-    progress = await Progress.create({
+    if (!topic) {
+      return res.status(400).json({
+        ok: false,
+        error: "Falta topic.",
+      });
+    }
+
+    let progress = await Progress.findOne({
       userId: req.user.id,
       language,
-      completedTopics: [topic]
     });
-  } else {
-    if (!progress.completedTopics.includes(topic)) {
+
+    if (!progress) {
+      progress = await Progress.create({
+        userId: req.user.id,
+        language,
+        completedTopics: [topic],
+      });
+    } else if (!progress.completedTopics.includes(topic)) {
       progress.completedTopics.push(topic);
       await progress.save();
     }
-  }
 
-  res.json({ ok: true, progress });
+    return res.json({ ok: true, progress });
+  } catch (error) {
+    console.error("Error guardando progreso:", error);
+    return res.status(500).json({
+      ok: false,
+      error: "Error interno guardando progreso.",
+    });
+  }
 });
 
 module.exports = router;

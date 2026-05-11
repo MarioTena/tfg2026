@@ -9,6 +9,7 @@ const sessions = new Map();
 
 const MAX_SESSION_MS = 5 * 60 * 1000; // 5 minutos
 const INACTIVITY_MS = 90 * 1000; // 90 segundos
+const DOCKER_IMAGE_PYTHON = "python:3.11";
 
 function mapSessionStatusToAttemptStatus(status) {
   if (status === "success") return "success";
@@ -80,7 +81,7 @@ function scheduleInactivityTimeout(session) {
 
       session.emitToSocket("console:error", {
         sessionId: session.sessionId,
-        message: "La consola se ha cerrado por inactividad."
+        message: "La consola se ha cerrado por inactividad.",
       });
 
       session.emitToSocket("console:end", {
@@ -92,6 +93,29 @@ function scheduleInactivityTimeout(session) {
       await cleanupSession(session.sessionId, "timeout_inactive");
     }
   }, INACTIVITY_MS);
+}
+
+function buildInteractiveDockerArgs(tempDir) {
+  return [
+    "run",
+    "--rm",
+    "-i",
+    "--network",
+    "none",
+    "--memory",
+    "128m",
+    "--cpus",
+    "0.5",
+    "--pids-limit",
+    "64",
+    "-v",
+    `${tempDir}:/app:ro`,
+    "--tmpfs",
+    "/tmp:rw,noexec,nosuid,size=16m",
+    DOCKER_IMAGE_PYTHON,
+    "python",
+    "/app/main.py",
+  ];
 }
 
 async function startInteractivePythonSession({
@@ -109,25 +133,10 @@ async function startInteractivePythonSession({
 
   fs.writeFileSync(scriptPath, code, "utf8");
 
-  const dockerArgs = [
-    "run",
-    "--rm",
-    "-i",
-    "--network",
-    "none",
-    "--memory",
-    "128m",
-    "--cpus",
-    "0.5",
-    "-v",
-    `${tempDir}:/app`,
-    "python:3.11",
-    "python",
-    "/app/main.py"
-  ];
+  const dockerArgs = buildInteractiveDockerArgs(tempDir);
 
   const proc = spawn("docker", dockerArgs, {
-    stdio: ["pipe", "pipe", "pipe"]
+    stdio: ["pipe", "pipe", "pipe"],
   });
 
   const attempt = await Attempt.create({
@@ -178,7 +187,7 @@ async function startInteractivePythonSession({
     emitToSocket("console:output", {
       sessionId,
       stream: "stdout",
-      text
+      text,
     });
   });
 
@@ -192,7 +201,7 @@ async function startInteractivePythonSession({
     emitToSocket("console:output", {
       sessionId,
       stream: "stderr",
-      text
+      text,
     });
   });
 
@@ -202,7 +211,7 @@ async function startInteractivePythonSession({
 
     emitToSocket("console:error", {
       sessionId,
-      message: `Error lanzando proceso: ${error.message}`
+      message: `Error lanzando proceso: ${error.message}`,
     });
 
     emitToSocket("console:end", {
@@ -242,7 +251,7 @@ async function startInteractivePythonSession({
 
       emitToSocket("console:error", {
         sessionId,
-        message: "La sesión interactiva ha alcanzado el tiempo máximo permitido."
+        message: "La sesión interactiva ha alcanzado el tiempo máximo permitido.",
       });
 
       emitToSocket("console:end", {
@@ -281,7 +290,7 @@ function sendInputToSession({ sessionId, input, userId }) {
   session.lastActivityAt = Date.now();
   session.stdinBuffer += `${input}\n`;
   scheduleInactivityTimeout(session);
-  session.proc.stdin.write(input + "\n");
+  session.proc.stdin.write(`${input}\n`);
 }
 
 async function stopSession({ sessionId, userId }) {
@@ -321,5 +330,5 @@ module.exports = {
   startInteractivePythonSession,
   sendInputToSession,
   stopSession,
-  stopAllUserSessions
+  stopAllUserSessions,
 };

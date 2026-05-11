@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const aiCreditSchema = new mongoose.Schema(
+const AiCreditSchema = new mongoose.Schema(
   {
     userId: {
       type: mongoose.Schema.Types.ObjectId,
@@ -27,6 +27,6 @@ const aiCreditSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-aiCreditSchema.index({ userId: 1, topic: 1 }, { unique: true });
+AiCreditSchema.index({ userId: 1, topic: 1 }, { unique: true });
 
-module.exports = mongoose.model("AiCredit", aiCreditSchema);
+module.exports = mongoose.model("AiCredit", AiCreditSchema);

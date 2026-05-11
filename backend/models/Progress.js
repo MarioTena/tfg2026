@@ -1,23 +1,27 @@
 const mongoose = require("mongoose");
 
-const ProgressSchema = new mongoose.Schema({
-  userId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
+const ProgressSchema = new mongoose.Schema(
+  {
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+
+    language: {
+      type: String,
+      enum: ["python", "c"],
+      required: true,
+    },
+
+    completedTopics: {
+      type: [String],
+      default: [],
+    },
   },
+  { timestamps: true }
+);
 
-  language: {
-    type: String,
-    enum: ["python", "c"],
-    required: true,
-  },
-
-  completedTopics: {
-    type: [String],
-    default: [],
-  }
-
-}, { timestamps: true });
+ProgressSchema.index({ userId: 1, language: 1 }, { unique: true });
 
 module.exports = mongoose.model("Progress", ProgressSchema);

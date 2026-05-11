@@ -9,7 +9,7 @@ window.EXERCISE_CATALOG["py_tema7_ej1"] = {
   difficulty: "Fácil",
   estimatedTime: "5 min",
   skill: "Índices",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Primera y última letra
 
@@ -34,7 +34,7 @@ window.EXERCISE_CATALOG["py_tema7_ej2"] = {
   difficulty: "Fácil",
   estimatedTime: "5 min",
   skill: "Slicing",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Tres primeras letras
 
@@ -59,7 +59,7 @@ window.EXERCISE_CATALOG["py_tema7_ej3"] = {
   difficulty: "Media",
   estimatedTime: "6 min",
   skill: "[::-1]",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Invertir texto
 
@@ -83,7 +83,7 @@ window.EXERCISE_CATALOG["py_tema7_ej4"] = {
   difficulty: "Fácil",
   estimatedTime: "5 min",
   skill: "lower()",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Pasar a minúsculas
 
@@ -109,7 +109,7 @@ window.EXERCISE_CATALOG["py_tema7_ej5"] = {
   difficulty: "Fácil",
   estimatedTime: "5 min",
   skill: "strip()",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Limpiar espacios
 
@@ -134,7 +134,7 @@ window.EXERCISE_CATALOG["py_tema7_ej6"] = {
   difficulty: "Media",
   estimatedTime: "7 min",
   skill: "Bucle",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Contar una letra
 
@@ -162,7 +162,7 @@ window.EXERCISE_CATALOG["py_tema7_ej7"] = {
   difficulty: "Media",
   estimatedTime: "7 min",
   skill: "split()",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Separar palabras
 
@@ -188,7 +188,7 @@ window.EXERCISE_CATALOG["py_tema7_ej8"] = {
   difficulty: "Media",
   estimatedTime: "7 min",
   skill: "join()",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `palabras = ["Hola", "mundo", "desde", "Python"]
 
@@ -210,7 +210,7 @@ window.EXERCISE_CATALOG["py_tema7_ej9"] = {
   difficulty: "Media",
   estimatedTime: "8 min",
   skill: "find()",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Buscar con find()
 
@@ -237,7 +237,7 @@ window.EXERCISE_CATALOG["py_tema7_ej10"] = {
   difficulty: "Media",
   estimatedTime: "7 min",
   skill: "Validación",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `archivo = "informe.csv"
 
@@ -258,7 +258,7 @@ window.EXERCISE_CATALOG["py_tema7_ej11"] = {
   difficulty: "Media",
   estimatedTime: "8 min",
   skill: "Depuración",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `texto = "HOLA"
 texto.lower()
@@ -279,7 +279,7 @@ window.EXERCISE_CATALOG["py_tema7_ej12"] = {
   difficulty: "Media",
   estimatedTime: "8 min",
   skill: "Análisis",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `frase = "Python es muy util"
 
@@ -326,7 +326,7 @@ window.EXERCISE_CATALOG["py_tema7_reto2"] = {
   statement: "Limpia una frase, pásala a minúsculas, cuenta vocales y cuenta palabras con una solución más completa.",
   difficulty: "Media",
   estimatedTime: "12-15 min",
-  skill: "Integrador",
+  skill: "Integración",
   type: "Reto final",
   starterCode:
 `# RETO FINAL: Analizar frase

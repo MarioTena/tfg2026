@@ -9,7 +9,7 @@ window.EXERCISE_CATALOG["py_tema2_ej1"] = {
   difficulty: "Fácil",
   estimatedTime: "5 min",
   skill: "if/else",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Mayor de edad
 
@@ -36,7 +36,7 @@ window.EXERCISE_CATALOG["py_tema2_ej2"] = {
   difficulty: "Fácil",
   estimatedTime: "5 min",
   skill: "Comparación",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Nota (aprobado/suspenso)
 
@@ -63,7 +63,7 @@ window.EXERCISE_CATALOG["py_tema2_ej3"] = {
   difficulty: "Media",
   estimatedTime: "7 min",
   skill: "elif",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Clasificación con elif
 
@@ -90,7 +90,7 @@ window.EXERCISE_CATALOG["py_tema2_ej4"] = {
   difficulty: "Media",
   estimatedTime: "6 min",
   skill: "Condiciones",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Positivo, negativo o cero
 
@@ -116,7 +116,7 @@ window.EXERCISE_CATALOG["py_tema2_ej5"] = {
   difficulty: "Media",
   estimatedTime: "7 min",
   skill: "Comparar",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Comparar dos números
 
@@ -143,7 +143,7 @@ window.EXERCISE_CATALOG["py_tema2_ej6"] = {
   difficulty: "Fácil",
   estimatedTime: "5 min",
   skill: "Strings",
-  type: "Práctica guiada",  
+  type: "Ejercicio",  
   starterCode:
 `# EJERCICIO: Usuario administrador
 
@@ -170,7 +170,7 @@ window.EXERCISE_CATALOG["py_tema2_ej7"] = {
   difficulty: "Media",
   estimatedTime: "7 min",
   skill: "or",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Descuento
 
@@ -198,7 +198,7 @@ window.EXERCISE_CATALOG["py_tema2_ej8"] = {
   difficulty: "Media",
   estimatedTime: "8 min",
   skill: "and",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Acceso seguro
 
@@ -226,7 +226,7 @@ window.EXERCISE_CATALOG["py_tema2_ej9"] = {
   difficulty: "Media",
   estimatedTime: "8 min",
   skill: "Rangos",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Rango numérico
 
@@ -253,7 +253,7 @@ window.EXERCISE_CATALOG["py_tema2_ej10"] = {
   difficulty: "Media",
   estimatedTime: "7 min",
   skill: "Módulo",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Par o impar
 
@@ -280,7 +280,7 @@ window.EXERCISE_CATALOG["py_tema2_ej11"] = {
   difficulty: "Media",
   estimatedTime: "7 min",
   skill: "not",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Detectar cuenta inactiva con not
 
@@ -307,7 +307,7 @@ window.EXERCISE_CATALOG["py_tema2_ej12"] = {
   difficulty: "Media",
   estimatedTime: "7 min",
   skill: "Depuración",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Corregir lógica de clasificación
 
@@ -341,7 +341,7 @@ window.EXERCISE_CATALOG["py_tema2_ej13"] = {
   difficulty: "Media",
   estimatedTime: "7 min",
   skill: "input()",
-  type: "Práctica guiada",
+  type: "Ejercicio",
   starterCode:
 `# EJERCICIO: Input y mayor de edad
 

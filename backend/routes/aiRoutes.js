@@ -10,18 +10,21 @@ const {
 const router = express.Router();
 
 async function getOrCreateAiCredit(userId, topic) {
-  let creditDoc = await AiCredit.findOne({ userId, topic });
-
-  if (!creditDoc) {
-    creditDoc = await AiCredit.create({
-      userId,
-      topic,
-      remainingCredits: 2,
-      usedCount: 0,
-    });
-  }
-
-  return creditDoc;
+  return AiCredit.findOneAndUpdate(
+    { userId, topic },
+    {
+      $setOnInsert: {
+        userId,
+        topic,
+        remainingCredits: 2,
+        usedCount: 0,
+      },
+    },
+    {
+      new: true,
+      upsert: true,
+    }
+  );
 }
 
 // Obtener créditos disponibles de IA para un tema
