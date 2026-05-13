@@ -9,22 +9,22 @@ const questionFeedback = {
   q1: {
     attempt1: "Piensa si aquí quieres leer, sobrescribir o añadir.",
     attempt2: "Si solo quieres recuperar contenido ya existente, no deberías usar un modo de escritura.",
-    final: "Correcto: el modo adecuado es r."
+    final: "Bien: has identificado correctamente el modo adecuado para leer un archivo."
   },
   q2: {
     attempt1: "Recuerda qué ocurre con el contenido previo al usar w.",
     attempt2: "Este modo no conserva lo anterior: empieza desde cero.",
-    final: "Correcto: w sobrescribe el contenido anterior."
+    final: "Bien: has entendido correctamente qué implica usar el modo w."
   },
   q3: {
     attempt1: "No pienses en sintaxis bonita, sino en seguridad y gestión del archivo.",
     attempt2: "Su ventaja principal no es leer más rápido, sino cerrar bien el recurso.",
-    final: "Correcto: with cierra el archivo automáticamente y hace el flujo más seguro."
+    final: "Bien: has entendido correctamente por qué with hace más seguro el trabajo con archivos."
   },
   q4: {
     attempt1: "Piensa en cómo suelen venir las líneas leídas desde un archivo.",
     attempt2: "Muchas veces arrastran saltos de línea o espacios que no quieres mostrar tal cual.",
-    final: "Correcto: strip() limpia espacios o saltos sobrantes."
+    final: "Bien: has identificado correctamente para qué sirve strip() en este contexto."
   }
 };
 
@@ -46,6 +46,6 @@ initCheckpointPage({
       return `Has conseguido ${score}/4. Revisa especialmente la diferencia entre r, w y a, y qué aportan with y strip().`;
     }
 
-    return `Has conseguido ${score}/4. A partir de este intento ya puedes ver cuál era la opción correcta para aprender del fallo antes de volver a intentarlo. Los ejercicios seguirán bloqueados hasta que apruebes.`;
+    return `Has conseguido ${score}/4. Aún no has interiorizado bien los conceptos clave del tema 9. Vuelve a repasar la teoría y la práctica guiada antes de repetir el checkpoint.`;
   }
 });

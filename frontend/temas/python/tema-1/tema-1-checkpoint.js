@@ -9,22 +9,22 @@ const questionFeedback = {
   q1: {
     attempt1: "Revisa cuál es la función básica de print() dentro de un programa.",
     attempt2: "print() no guarda datos ni cambia el flujo: su papel es mostrar información.",
-    final: "Correcto: print() sirve para mostrar información por pantalla."
+    final: "Bien: has identificado correctamente la función principal de print()."
   },
   q2: {
     attempt1: "Piensa cuál de las opciones está representada como texto en Python.",
     attempt2: "En Python, el texto se representa entre comillas.",
-    final: "Correcto: un string es texto y va entre comillas."
+    final: "Bien: has reconocido correctamente cómo se representa un string."
   },
   q3: {
     attempt1: "Aquí el problema no es de sintaxis, sino de cómo se combinan los datos.",
     attempt2: "Revisa la diferencia entre texto y número al construir un mensaje.",
-    final: "Correcto: el error aparece por mezclar directamente texto y número."
+    final: "Bien: has entendido correctamente el problema de mezclar tipos distintos."
   },
   q4: {
     attempt1: "Piensa qué muestra Python cuando imprimes una variable.",
     attempt2: "Una variable no imprime su nombre, sino el valor que contiene.",
-    final: "Correcto: Python imprime el valor guardado en la variable, es decir, Ana."
+    final: "Bien: has entendido correctamente qué ocurre al imprimir una variable."
   }
 };
 
@@ -43,9 +43,9 @@ initCheckpointPage({
     }
 
     if (attemptNumber === 2) {
-      return `Has conseguido ${score}/4. Vas acercándote. Ahora las pistas son más concretas: revisa especialmente qué hace print(), cómo se representa el texto y la diferencia entre texto y número.`;
+      return `Has conseguido ${score}/4. Revisa especialmente qué hace print(), cómo se representa el texto y la diferencia entre texto y número.`;
     }
 
-    return `Has conseguido ${score}/4. A partir de este intento ya puedes ver cuál era la opción correcta para aprender del fallo antes de volver a intentarlo. Los ejercicios seguirán bloqueados hasta que apruebes.`;
+    return `Has conseguido ${score}/4. Aún no has interiorizado bien los conceptos clave del tema 1. Vuelve a repasar la teoría y la práctica guiada antes de repetir el checkpoint.`;
   }
 });

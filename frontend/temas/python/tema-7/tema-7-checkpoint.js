@@ -9,22 +9,22 @@ const questionFeedback = {
   q1: {
     attempt1: "Piensa si estás pidiendo una posición exacta o un tramo del texto.",
     attempt2: "Una expresión usa índice y la otra slicing, aunque ambas puedan parecerse mucho en el resultado visual.",
-    final: "Correcto: una pide una posición exacta y la otra un fragmento."
+    final: "Bien: has distinguido correctamente entre acceder a una posición y extraer un fragmento."
   },
   q2: {
     attempt1: "Recuerda que el slicing no incluye el límite final.",
     attempt2: "El 4 marca hasta dónde llega el corte sin incluir esa posición.",
-    final: "Correcto: imprime prog."
+    final: "Bien: has entendido correctamente cómo funciona el límite final en slicing."
   },
   q3: {
     attempt1: "No confundas aplicar un método con modificar el string original.",
     attempt2: "Los strings son inmutables y muchos métodos devuelven una nueva cadena.",
-    final: "Correcto: imprime HOLA porque no se guardó el resultado."
+    final: "Bien: has entendido correctamente la inmutabilidad de los strings."
   },
   q4: {
     attempt1: "Piensa qué método separa y cuál une.",
     attempt2: "Uno convierte texto en partes; el otro reconstruye texto a partir de varias partes.",
-    final: "Correcto: join() sirve para unir palabras y reconstruir una frase."
+    final: "Bien: has identificado correctamente cuándo sirve join()."
   }
 };
 
@@ -46,6 +46,6 @@ initCheckpointPage({
       return `Has conseguido ${score}/4. Revisa especialmente la diferencia entre índice y slicing, la inmutabilidad y qué método conviene según la tarea.`;
     }
 
-    return `Has conseguido ${score}/4. A partir de este intento ya puedes ver cuál era la opción correcta para aprender del fallo antes de volver a intentarlo. Los ejercicios seguirán bloqueados hasta que apruebes.`;
+    return `Has conseguido ${score}/4. Aún no has interiorizado bien los conceptos clave del tema 7. Vuelve a repasar la teoría y la práctica guiada antes de repetir el checkpoint.`;
   }
 });

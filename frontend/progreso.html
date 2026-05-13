@@ -8,21 +8,13 @@
 </head>
 <body>
 
-  <div class="topbar">
-    <div class="topbar-inner">
-      <div class="topbar-title">
-        <h1>Mi progreso</h1>
-        <p>Seguimiento de tu avance y siguiente paso recomendado.</p>
-      </div>
-
-      <div class="topbar-actions">
-        <a class="btn btn-secondary btn-sm" href="menu.html">Menú</a>
-        <a class="btn btn-secondary btn-sm" href="temas/python/index.html">Ruta Python</a>
-        <a class="btn btn-secondary btn-sm" href="playground/index.html?lang=python">Playground</a>
-        <a class="btn btn-secondary btn-sm" href="configuracion.html">Configuración</a>
-      </div>
-    </div>
-  </div>
+<nav
+  id="app-topbar"
+  data-root=""
+  data-title="Mi progreso"
+  data-subtitle="Seguimiento de tu avance y siguiente paso recomendado."
+  data-route-href="temas/python/index.html"
+></nav>
 
   <header class="header">
     <span class="mission-tag">Panel personal</span>
@@ -198,5 +190,6 @@
 
   <script src="./theme-init.js"></script>
   <script src="progreso.js"></script>
+  <script src="topbar.js"></script> 
 </body>
 </html>

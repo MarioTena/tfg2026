@@ -2,6 +2,9 @@ const express = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
+const path = require("path");
+const fs = require("fs");
+const multer = require("multer");
 const User = require("../models/User");
 const { requireAuth } = require("../middleware/requireAuth");
 const {
@@ -11,6 +14,39 @@ const {
 } = require("../services/emailService");
 
 const router = express.Router();
+
+const avatarsDir = path.join(__dirname, "..", "uploads", "avatars");
+
+if (!fs.existsSync(avatarsDir)) {
+  fs.mkdirSync(avatarsDir, { recursive: true });
+}
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, avatarsDir);
+  },
+  filename: (req, file, cb) => {
+    const ext = path.extname(file.originalname || "").toLowerCase() || ".jpg";
+    const safeExt = [".jpg", ".jpeg", ".png", ".webp"].includes(ext) ? ext : ".jpg";
+    cb(null, `avatar-${req.user.id}-${Date.now()}${safeExt}`);
+  },
+});
+
+function avatarFileFilter(req, file, cb) {
+  const allowed = ["image/jpeg", "image/png", "image/webp"];
+  if (!allowed.includes(file.mimetype)) {
+    return cb(new Error("Formato no válido. Usa JPG, PNG o WEBP."));
+  }
+  cb(null, true);
+}
+
+const uploadAvatar = multer({
+  storage,
+  fileFilter: avatarFileFilter,
+  limits: {
+    fileSize: 2 * 1024 * 1024,
+  },
+});
 
 function signToken(user) {
   const secret = process.env.JWT_SECRET;
@@ -37,6 +73,35 @@ function getAppBaseUrl() {
     throw new Error("Falta APP_BASE_URL en el .env");
   }
   return baseUrl.replace(/\/+$/, "");
+}
+
+function buildAvatarUrl(req, filename) {
+  return `${req.protocol}://${req.get("host")}/uploads/avatars/${filename}`;
+}
+
+function deleteOldAvatarFile(avatarUrl) {
+  if (!avatarUrl) return;
+
+  try {
+    const parsed = new URL(avatarUrl);
+    const filename = path.basename(parsed.pathname);
+    if (!filename) return;
+
+    const absolutePath = path.join(avatarsDir, filename);
+
+    if (fs.existsSync(absolutePath)) {
+      fs.unlinkSync(absolutePath);
+    }
+  } catch {
+    try {
+      const filename = path.basename(String(avatarUrl));
+      const absolutePath = path.join(avatarsDir, filename);
+
+      if (fs.existsSync(absolutePath)) {
+        fs.unlinkSync(absolutePath);
+      }
+    } catch {}
+  }
 }
 
 // POST /api/auth/register
@@ -73,6 +138,8 @@ router.post("/register", async (req, res) => {
       email: normalizedEmail,
       passwordHash,
       role: "student",
+      theme: "dark",
+      avatarUrl: null,
       emailVerified: false,
       emailVerificationToken,
       emailVerificationExpires,
@@ -181,6 +248,7 @@ router.post("/login", async (req, res) => {
         email: user.email,
         role: user.role,
         theme: user.theme || "dark",
+        avatarUrl: user.avatarUrl || null,
         onboardingCompleted: user.onboardingCompleted === true,
       },
     });
@@ -192,7 +260,7 @@ router.post("/login", async (req, res) => {
 // GET /api/auth/me
 router.get("/me", requireAuth, async (req, res) => {
   try {
-    const user = await User.findById(req.user.id).select("_id name email role theme onboardingCompleted");
+    const user = await User.findById(req.user.id).select("_id name email role theme avatarUrl onboardingCompleted");
 
     if (!user) {
       return res.status(404).json({ ok: false, error: "Usuario no encontrado." });
@@ -206,6 +274,7 @@ router.get("/me", requireAuth, async (req, res) => {
         email: user.email,
         role: user.role,
         theme: user.theme || "dark",
+        avatarUrl: user.avatarUrl || null,
         onboardingCompleted: user.onboardingCompleted === true,
       },
     });
@@ -343,12 +412,66 @@ router.put("/profile", requireAuth, async (req, res) => {
         email: updatedUser.email,
         role: updatedUser.role,
         theme: updatedUser.theme || "dark",
+        avatarUrl: updatedUser.avatarUrl || null,
         onboardingCompleted: updatedUser.onboardingCompleted === true,
       },
     });
   } catch (e) {
     return res.status(500).json({ ok: false, error: e.message });
   }
+});
+
+// POST /api/auth/avatar
+router.post("/avatar", requireAuth, (req, res) => {
+  uploadAvatar.single("avatar")(req, res, async (error) => {
+    try {
+      if (error instanceof multer.MulterError) {
+        if (error.code === "LIMIT_FILE_SIZE") {
+          return res.status(400).json({ ok: false, error: "La imagen no puede superar 2 MB." });
+        }
+        return res.status(400).json({ ok: false, error: error.message || "No se pudo subir la imagen." });
+      }
+
+      if (error) {
+        return res.status(400).json({ ok: false, error: error.message || "No se pudo subir la imagen." });
+      }
+
+      if (!req.file) {
+        return res.status(400).json({ ok: false, error: "Debes seleccionar una imagen." });
+      }
+
+      const user = await User.findById(req.user.id);
+
+      if (!user) {
+        return res.status(404).json({ ok: false, error: "Usuario no encontrado." });
+      }
+
+      const oldAvatarUrl = user.avatarUrl || null;
+      const avatarUrl = buildAvatarUrl(req, req.file.filename);
+
+      user.avatarUrl = avatarUrl;
+      await user.save();
+
+      if (oldAvatarUrl) {
+        deleteOldAvatarFile(oldAvatarUrl);
+      }
+
+      return res.json({
+        ok: true,
+        user: {
+          id: user._id,
+          name: user.name,
+          email: user.email,
+          role: user.role,
+          theme: user.theme || "dark",
+          avatarUrl: user.avatarUrl || null,
+          onboardingCompleted: user.onboardingCompleted === true,
+        },
+      });
+    } catch (e) {
+      return res.status(500).json({ ok: false, error: e.message });
+    }
+  });
 });
 
 // PUT /api/auth/onboarding
@@ -372,6 +495,7 @@ router.put("/onboarding", requireAuth, async (req, res) => {
         email: updatedUser.email,
         role: updatedUser.role,
         theme: updatedUser.theme || "dark",
+        avatarUrl: updatedUser.avatarUrl || null,
         onboardingCompleted: updatedUser.onboardingCompleted === true,
       },
     });

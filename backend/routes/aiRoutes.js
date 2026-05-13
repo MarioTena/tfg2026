@@ -141,11 +141,20 @@ router.post("/hint", requireAuth, async (req, res) => {
         fallbackNote = "El proveedor de IA ha devuelto un error temporal.";
       } else if (msg.includes("no devolvió contenido") || msg.includes("empty_response")) {
         fallbackNote = "La IA no ha devuelto una respuesta útil.";
-      } else if (msg.includes("too_unstructured")) {
+      } else if (
+        msg.includes("too_unstructured") ||
+        msg.includes("too_few_lines") ||
+        msg.includes("bad_format") ||
+        msg.includes("line_too_long") ||
+        msg.includes("too_short")
+      ) {
         fallbackNote = "La IA ha respondido, pero el contenido no ha pasado la validación mínima.";
-      } else if (msg.includes("contains_code_block")) {
-        fallbackNote = "La IA ha respondido con demasiado código y se ha descartado.";
+      } else if (msg.includes("contains_code_block") || msg.includes("forbidden_format")) {
+        fallbackNote = "La IA ha respondido con un formato no permitido y se ha descartado.";
+      } else if (msg.includes("mentions_specific_line")) {
+        fallbackNote = "La IA ha respondido señalando una línea concreta y se ha descartado.";
       }
+
 
       console.error("Fallo IA real, uso fallback técnico:", error.message);
 

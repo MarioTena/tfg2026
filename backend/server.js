@@ -11,6 +11,8 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const http = require("http");
+const path = require("path");
+const fs = require("fs");
 const { Server } = require("socket.io");
 const jwt = require("jsonwebtoken");
 
@@ -50,6 +52,19 @@ app.use(cors({
 }));
 
 app.use(express.json({ limit: "1mb" }));
+
+const uploadsRoot = path.join(__dirname, "uploads");
+const avatarsDir = path.join(uploadsRoot, "avatars");
+
+if (!fs.existsSync(uploadsRoot)) {
+  fs.mkdirSync(uploadsRoot);
+}
+
+if (!fs.existsSync(avatarsDir)) {
+  fs.mkdirSync(avatarsDir, { recursive: true });
+}
+
+app.use("/uploads", express.static(uploadsRoot));
 
 // ============================================================================
 // Rutas

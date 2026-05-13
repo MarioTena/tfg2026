@@ -10,23 +10,16 @@
 </head>
 <body>
 
-<div class="topbar">
-  <div class="topbar-inner">
-    <div class="topbar-title">
-      <h1>Playground</h1>
-      <p id="topbar-sub">Escribe código, ejecútalo y aprende revisando la salida y los errores.</p>
-    </div>
-
-    <div class="topbar-actions">
-      <a class="btn btn-secondary btn-sm" href="../menu.html">Menú</a>
-      <a class="btn btn-secondary btn-sm" href="../progreso.html">Mi progreso</a>
-      <a class="btn btn-secondary btn-sm" href="../temas/python/index.html">Ruta Python</a>
-      <a class="btn btn-secondary btn-sm" id="back-btn" href="../temas/python/index.html">Volver al tema</a>
-      <a class="btn btn-secondary btn-sm" href="../configuracion.html">Configuración</a>
-      <button class="btn btn-secondary btn-sm" id="logout-btn" type="button">Salir</button>
-    </div>
-  </div>
-</div>
+<nav
+  id="app-topbar"
+  data-root="../"
+  data-title="Playground"
+  data-subtitle="Escribe código, ejecútalo y aprende revisando la salida y los errores."
+  data-route-href="../temas/python/index.html"
+  data-show-back="true"
+  data-back-label="Volver"
+  data-back-href="../temas/python/index.html"
+></nav>
 
 <main class="main-container playground-layout">
 
@@ -243,6 +236,7 @@
 </section>
 
 <script src="../theme-init.js"></script>
+<script src="../topbar.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/python/python.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/addon/edit/matchbrackets.min.js"></script>
@@ -262,6 +256,11 @@
 <script src="../exercises/python-tema10.catalog.js"></script>
 <script src="../exercises/python-proyectos.catalog.js"></script>
 <script src="../exercises/python-retos.catalog.js"></script>
+
+<script src="../playground-core.js"></script>
+<script src="../playground-ui.js"></script>
+<script src="../playground-exercise.js"></script>
+<script src="../playground-ai.js"></script>
 
 <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
 <script src="../app.js"></script>

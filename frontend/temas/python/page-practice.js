@@ -1,36 +1,49 @@
 function initPracticePage({
   topicId,
   nextUrl,
-  completeBtnId = "completeBtn",
   nextBtnId = "nextBtn",
+  completeBtnId = "completeBtn",
   unlockHintId = "unlockHint",
   completionMessageId = "completionMessage",
-  unlockedLabel = "Ir al checkpoint",
-  showCompletedBadge = false,
-  completedText = "Misión completada ✅",
-  successMessage = "Has marcado esta misión como completada. Ya se ha desbloqueado el siguiente paso.",
-  alreadyCompletedMessage = "Esta misión ya estaba completada. El siguiente paso ya está disponible."
+  lockedLabel = "Siguiente bloque",
+  unlockedLabel = "Continuar",
+  successMessage = "Has marcado este bloque como completado.",
+  alreadyCompletedMessage = "Este bloque ya estaba completado.",
+  onCompleted = null,
+  onAlreadyCompleted = null
 }) {
   const completion = initTopicCompletion({
     topicId,
-    nextUrl,
-    nextBtnId
+    nextUrl
   });
 
-  const completeBtn = document.getElementById(completeBtnId);
   const nextBtn = document.getElementById(nextBtnId);
+  const completeBtn = document.getElementById(completeBtnId);
   const unlockHint = document.getElementById(unlockHintId);
   const completionMessage = document.getElementById(completionMessageId);
 
+  function unlockNextButton() {
+    if (!nextBtn) return;
+
+    nextBtn.classList.remove("btn-disabled");
+    nextBtn.classList.add("btn-primary");
+    nextBtn.href = nextUrl || "javascript:void(0)";
+    nextBtn.textContent = unlockedLabel;
+  }
+
+  function lockNextButton() {
+    if (!nextBtn) return;
+
+    nextBtn.classList.add("btn-disabled");
+    nextBtn.classList.remove("btn-primary");
+    nextBtn.href = "javascript:void(0)";
+    nextBtn.textContent = lockedLabel;
+  }
+
   function showCompletedState() {
-    if (!completeBtn) return;
-
-    if (showCompletedBadge) {
-      hideButtonAndShowBadge(completeBtn, "completedBadge", completedText);
-      return;
+    if (completeBtn) {
+      completeBtn.style.display = "none";
     }
-
-    completeBtn.style.display = "none";
   }
 
   async function syncCompletionUI() {
@@ -38,13 +51,20 @@ function initPracticePage({
       const completed = await completion.isCompleted();
 
       if (completed) {
+        unlockNextButton();
         showCompletedState();
-        unlockNextButton(nextBtn, nextUrl, unlockedLabel);
         hideElement(unlockHint);
         showCompletionMessage(completionMessage, alreadyCompletedMessage);
+
+        if (typeof onAlreadyCompleted === "function") {
+          onAlreadyCompleted();
+        }
+      } else {
+        lockNextButton();
       }
     } catch (error) {
-      console.error("Error comprobando estado:", error);
+      console.error("Error comprobando estado del bloque:", error);
+      lockNextButton();
     }
   }
 
@@ -58,15 +78,22 @@ function initPracticePage({
 
       await completion.completeTopic();
 
+      unlockNextButton();
       showCompletedState();
-      unlockNextButton(nextBtn, nextUrl, unlockedLabel);
       hideElement(unlockHint);
       showCompletionMessage(completionMessage, successMessage);
+
+      if (typeof onCompleted === "function") {
+        onCompleted();
+      }
     } catch (error) {
-      console.error("Error al completar:", error);
+      console.error("Error marcando práctica como completada:", error);
       btn.disabled = false;
       btn.textContent = originalText;
-      showCompletionMessage(completionMessage, error.message || "No se pudo guardar el progreso.");
+      showCompletionMessage(
+        completionMessage,
+        error.message || "No se pudo guardar el progreso."
+      );
     }
   });
 

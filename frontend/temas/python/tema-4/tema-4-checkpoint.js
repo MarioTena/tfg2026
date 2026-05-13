@@ -9,22 +9,22 @@ const questionFeedback = {
   q1: {
     attempt1: "Revisa qué significan los índices negativos en una lista.",
     attempt2: "El índice -1 no apunta al principio, sino al final.",
-    final: "Correcto: -1 representa el último elemento de la lista, así que imprime 'uva'."
+    final: "Bien: has interpretado correctamente cómo funcionan los índices negativos."
   },
   q2: {
     attempt1: "Piensa en qué posición empieza y cuál es el límite final.",
     attempt2: "En slicing, el límite final no se incluye.",
-    final: "Correcto: devuelve [20, 30, 40]."
+    final: "Bien: has entendido correctamente cómo funciona el slicing."
   },
   q3: {
     attempt1: "Aquí debes distinguir entre trabajar por valor y trabajar por posición.",
     attempt2: "Uno piensa en el contenido y el otro en el índice.",
-    final: "Correcto: remove() elimina por valor y pop() por posición."
+    final: "Bien: has distinguido correctamente entre trabajar por valor y por posición."
   },
   q4: {
     attempt1: "Sigue mentalmente cómo cambia la variable suma en cada iteración.",
     attempt2: "No cuenta elementos: va acumulando el valor de cada número.",
-    final: "Correcto: 5 + 10 + 15 = 30."
+    final: "Bien: has entendido correctamente la lógica del acumulador."
   }
 };
 
@@ -46,6 +46,6 @@ initCheckpointPage({
       return `Has conseguido ${score}/4. Revisa especialmente índices negativos, slicing, acumuladores y la diferencia entre trabajar por valor y por posición.`;
     }
 
-    return `Has conseguido ${score}/4. A partir de este intento ya puedes ver cuál era la opción correcta para aprender del fallo antes de volver a intentarlo. Los ejercicios seguirán bloqueados hasta que apruebes.`;
+    return `Has conseguido ${score}/4. Aún no has interiorizado bien los conceptos clave del tema 4. Vuelve a repasar la teoría y la práctica guiada antes de repetir el checkpoint.`;
   }
 });

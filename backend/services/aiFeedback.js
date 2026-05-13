@@ -320,7 +320,6 @@ Restricción extra:
 // Fallback técnico mejorado
 // ----------------------------------------------------------------------------
 function buildTechnicalFallback(attempt, extraContext = {}) {
-  const { stderr, status } = attempt;
   const issueType = detectIssueType(attempt);
 
   let message = "";
@@ -486,7 +485,12 @@ Reglas generales obligatorias:
 - No escribas la solución final completa.
 - No devuelvas el código entero resuelto.
 - No reescribas el ejercicio completo.
-- No uses bloques de código largos.
+- No uses bloques de código.
+- No menciones funciones concretas, índices concretos, expresiones concretas ni líneas exactas.
+- No señales la línea donde está el fallo.
+- No menciones números de línea.
+- No uses expresiones como "línea 3", "línea 15", "línea anterior", "línea siguiente" o "línea marcada".
+- No des código, ni fragmentos de código, ni ejemplos de código.
 - Da pistas graduales, concretas y útiles.
 - Prioriza explicar el error real si existe.
 - Señala qué concepto debe revisar.
@@ -502,20 +506,19 @@ Nivel de riesgo de dar solución directa: ${riskLevel}
 
 ${antiSolutionInstruction}
 
-Formato obligatorio de respuesta:
+Formato deseado de respuesta:
 1. Qué concepto está fallando.
 2. Qué parte del problema debe revisar.
 3. Qué idea general necesita aplicar.
 4. Qué debe comprobar antes de volver a ejecutar.
 
 Reglas del formato:
-- Máximo 4 líneas numeradas.
-- Una sola frase por línea.
+- Intenta responder en 4 líneas numeradas.
+- Una sola idea principal por línea.
 - No uses negritas.
 - No uses bloques de código.
-- No menciones funciones concretas, índices concretos, expresiones concretas ni líneas concretas.
 - No escribas la solución literal.
-- No señales líneas concretas, posiciones concretas ni una zona exacta del código; orienta solo por bloque o concepto.
+- No señales líneas concretas, números de línea, posiciones concretas ni una zona exacta del código; orienta solo por bloque o concepto.
 
 Datos del ejercicio:
 Título: ${title}
@@ -548,57 +551,113 @@ function normalizeAiResponse(text) {
   return text
     .replace(/```[\s\S]*?```/g, "")
     .replace(/\*\*/g, "")
+    .replace(/^[•\-–]\s*/gm, "")
+    .replace(/\r/g, "")
     .replace(/\n{3,}/g, "\n\n")
     .trim();
 }
 
-function validateAiResponse(text, issueType = "generic_error") {
+function validateAiResponse(text, issueType = "generic_error", options = {}) {
+  const { strict = false } = options;
+
   if (!text || !text.trim()) {
     return { ok: false, reason: "empty_response" };
   }
 
   const cleaned = normalizeAiResponse(text);
-  const lower = cleaned.toLowerCase();
 
-  if (cleaned.length < 40) {
+  if (cleaned.length < 18) {
     return { ok: false, reason: "too_short" };
   }
 
-  const lines = cleaned
+  let lines = cleaned
     .split("\n")
     .map((l) => l.trim())
     .filter(Boolean);
 
-  if (lines.length < 4) {
-    return { ok: false, reason: "too_few_lines" };
+  if (!strict && lines.length === 1) {
+    lines = cleaned
+      .split(/(?<=\.)\s+(?=\d+\.|[A-ZÁÉÍÓÚÑ])/)
+      .map((l) => l.trim())
+      .filter(Boolean);
   }
 
-  const firstFour = lines.slice(0, 4);
-
-  const numbered = [
-    /^1\./.test(firstFour[0] || ""),
-    /^2\./.test(firstFour[1] || ""),
-    /^3\./.test(firstFour[2] || ""),
-    /^4\./.test(firstFour[3] || ""),
-  ].every(Boolean);
-
-  if (!numbered) {
-    return { ok: false, reason: "bad_format" };
+if (strict) {
+  if (lines.length < 3) {
+    return { ok: false, reason: "wrong_line_count" };
   }
 
-  const tooLongLine = firstFour.some((line) => line.length > 180);
+  const finalLines = lines.slice(0, 4);
+
+  const normalizedLines = finalLines.map((line, index) => {
+    const expected = `${index + 1}.`;
+
+    if (/^\d+\./.test(line)) {
+      return line.replace(/^\d+\./, expected);
+    }
+
+    return `${expected} ${line}`;
+  });
+
+  const tooLongLine = normalizedLines.some((line) => line.length > 280);
   if (tooLongLine) {
     return { ok: false, reason: "line_too_long" };
   }
 
-  if (cleaned.includes("**") || cleaned.includes("```")) {
+  if (cleaned.includes("```")) {
     return { ok: false, reason: "forbidden_format" };
   }
 
   return {
     ok: true,
-    normalizedText: firstFour.join("\n"),
+    normalizedText: normalizedLines.join("\n"),
   };
+}
+
+  if (lines.length < 3) {
+    return { ok: false, reason: "too_few_lines" };
+  }
+
+  const firstLines = lines.slice(0, 4);
+
+  const normalizedLines = firstLines.map((line, index) => {
+    const expected = `${index + 1}.`;
+
+    if (/^\d+\./.test(line)) {
+      return line.replace(/^\d+\./, expected);
+    }
+
+    return `${expected} ${line}`;
+  });
+
+  const tooLongLine = normalizedLines.some((line) => line.length > 320);
+  if (tooLongLine) {
+    return { ok: false, reason: "line_too_long" };
+  }
+
+  if (cleaned.includes("```")) {
+    return { ok: false, reason: "forbidden_format" };
+  }
+
+  return {
+    ok: true,
+    normalizedText: normalizedLines.join("\n"),
+  };
+}
+
+function expandSingleLineHint(text) {
+  const cleaned = normalizeAiResponse(text);
+  if (!cleaned) return "";
+
+  const firstLine = cleaned.replace(/^\d+\.\s*/, "").trim();
+  if (!firstLine) return "";
+
+  return [
+    `1. ${firstLine}`,
+    "2. Revisa el bloque donde se construye o se cierra ese texto.",
+    "3. Piensa si la estructura del texto empieza y termina de forma coherente.",
+    "4. Comprueba ese bloque antes de volver a ejecutar."
+  ].join("\n");
 }
 
 // ----------------------------------------------------------------------------
@@ -623,6 +682,12 @@ function looksTooSolutionLike(text) {
     "return ",
     "print(",
     "input(",
+    "def ",
+    "for ",
+    "while ",
+    "if ",
+    "elif ",
+    "else:",
   ];
 
   const directivePatterns = [
@@ -678,6 +743,70 @@ function looksTooSolutionLikeForIssue(text, issueType) {
   return false;
 }
 
+function mentionsSpecificLine(text) {
+  if (!text) return false;
+
+  const lower = text.toLowerCase();
+
+  const linePatterns = [
+    /\blínea\s+\d+\b/,
+    /\blinea\s+\d+\b/,
+    /\brevisa la línea\b/,
+    /\brevisa la linea\b/,
+    /\ben la línea\b/,
+    /\ben la linea\b/,
+    /\bla línea anterior\b/,
+    /\bla linea anterior\b/,
+    /\bla línea siguiente\b/,
+    /\bla linea siguiente\b/,
+    /\blínea marcada\b/,
+    /\blinea marcada\b/,
+    /\bjusto en la línea\b/,
+    /\bjusto en la linea\b/,
+  ];
+
+  return linePatterns.some((pattern) => pattern.test(lower));
+}
+
+// ----------------------------------------------------------------------------
+// Segundo intento: pedir solo reformateo
+// ----------------------------------------------------------------------------
+async function requestFormattingFix(apiKey, rawText) {
+  const response = await fetch(OPENROUTER_API_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${apiKey}`,
+      "HTTP-Referer": process.env.OPENROUTER_HTTP_REFERER || process.env.APP_BASE_URL || "http://localhost:3000",
+      "X-Title": "TFG Python Tutor",
+    },
+    body: JSON.stringify({
+      model: process.env.OPENROUTER_MODEL || "openrouter/free",
+      messages: [
+        {
+          role: "system",
+          content:
+            "Reformula el texto en español en 4 líneas numeradas, una idea breve por línea. No añadas código, funciones, índices, expresiones concretas, líneas exactas ni bloques markdown. No des la solución. No menciones líneas ni números de línea.",
+        },
+        {
+          role: "user",
+          content: rawText,
+        },
+      ],
+      temperature: 0.1,
+      max_tokens: 220,
+    }),
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data?.error?.message || "Error reformateando respuesta IA");
+  }
+
+  return data?.choices?.[0]?.message?.content?.trim() || "";
+}
+
 // ----------------------------------------------------------------------------
 // Llamada IA real
 // ----------------------------------------------------------------------------
@@ -696,7 +825,7 @@ async function generateRealAiFeedback(attempt, extraContext = {}) {
       {
         role: "system",
         content:
-          "Eres un tutor de programación para principiantes. Responde siempre en español con 4 líneas breves y numeradas. No des la solución literal. No escribas funciones, expresiones, índices, conversiones ni líneas exactas que el alumno deba copiar. Habla en términos de concepto, estructura, tipo de dato o intención del código. Si una respuesta suena como una instrucción exacta de implementación, es demasiado directa.",
+          "Eres un tutor de programación para principiantes. Responde siempre en español. No des la solución literal. No escribas código, ni fragmentos de código, ni funciones, ni índices, ni expresiones concretas, ni líneas exactas. No indiques la línea concreta del fallo. No menciones números de línea ni expresiones como línea 3, línea 15, línea anterior o línea siguiente. Habla en términos de concepto, estructura, tipo de dato o intención del código. Si una respuesta suena como una instrucción exacta de implementación, es demasiado directa.",
       },
       {
         role: "user",
@@ -719,8 +848,6 @@ async function generateRealAiFeedback(attempt, extraContext = {}) {
   });
 
   const data = await response.json();
-  
-  const finishReason = data?.choices?.[0]?.finish_reason;
 
   if (!response.ok) {
     throw new Error(data?.error?.message || "Error llamando a la IA");
@@ -746,8 +873,6 @@ async function generateRealAiFeedback(attempt, extraContext = {}) {
 
     const retryData = await retryResponse.json();
 
-    const retryFinishReason = retryData?.choices?.[0]?.finish_reason;
-
     if (!retryResponse.ok) {
       throw new Error(retryData?.error?.message || "Error llamando a la IA");
     }
@@ -760,13 +885,63 @@ async function generateRealAiFeedback(attempt, extraContext = {}) {
   }
 
   const issueType = detectIssueType(attempt);
-  const validation = validateAiResponse(text, issueType);
+  let validation = validateAiResponse(text, issueType, { strict: false });
 
   if (!validation.ok) {
-    throw new Error(`Respuesta IA inválida: ${validation.reason}`);
-  }
+    if (validation.reason === "too_few_lines" || validation.reason === "too_short") {
+      const expanded = expandSingleLineHint(text);
+      const expandedValidation = validateAiResponse(expanded, issueType, { strict: true });
 
-  text = validation.normalizedText || text;
+      if (expandedValidation.ok) {
+        text = expandedValidation.normalizedText || expanded;
+      } else {
+        try {
+          const reformatted = await requestFormattingFix(apiKey, text);
+          const strictRetried = validateAiResponse(reformatted, issueType, { strict: true });
+
+          if (!strictRetried.ok) {
+            throw new Error(`Respuesta IA inválida: ${strictRetried.reason}`);
+          }
+
+          text = strictRetried.normalizedText || reformatted;
+        } catch {
+          throw new Error(`Respuesta IA inválida: ${validation.reason}`);
+        }
+      }
+    } else {
+      try {
+        const reformatted = await requestFormattingFix(apiKey, text);
+        const strictRetried = validateAiResponse(reformatted, issueType, { strict: true });
+
+        if (!strictRetried.ok) {
+          throw new Error(`Respuesta IA inválida: ${strictRetried.reason}`);
+        }
+
+        text = strictRetried.normalizedText || reformatted;
+      } catch {
+        throw new Error(`Respuesta IA inválida: ${validation.reason}`);
+      }
+    }
+  } else {
+    const strictValidation = validateAiResponse(validation.normalizedText || text, issueType, { strict: true });
+
+    if (!strictValidation.ok) {
+      try {
+        const reformatted = await requestFormattingFix(apiKey, validation.normalizedText || text);
+        const strictRetried = validateAiResponse(reformatted, issueType, { strict: true });
+
+        if (!strictRetried.ok) {
+          throw new Error(`Respuesta IA inválida: ${strictRetried.reason}`);
+        }
+
+        text = strictRetried.normalizedText || reformatted;
+      } catch {
+        throw new Error(`Respuesta IA inválida: ${strictValidation.reason}`);
+      }
+    } else {
+      text = strictValidation.normalizedText || validation.normalizedText || text;
+    }
+  }
 
   if (looksTooSolutionLikeForIssue(text, issueType)) {
     throw new Error("Respuesta IA inválida: too_solution_like_for_issue");
@@ -774,6 +949,10 @@ async function generateRealAiFeedback(attempt, extraContext = {}) {
 
   if (looksTooSolutionLike(text)) {
     throw new Error("Respuesta IA inválida: too_solution_like");
+  }
+
+  if (mentionsSpecificLine(text)) {
+    throw new Error("Respuesta IA inválida: mentions_specific_line");
   }
 
   return {
@@ -795,5 +974,6 @@ module.exports = {
   buildAntiSolutionInstruction,
   looksTooSolutionLike,
   looksTooSolutionLikeForIssue,
+  mentionsSpecificLine,
   generateRealAiFeedback,
 };

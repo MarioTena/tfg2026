@@ -16,7 +16,8 @@ function initCheckpointPage({
   passResultMessage = "Checkpoint superado. Ya se han desbloqueado los ejercicios.",
   passSyncMessage = "Ya habías superado este checkpoint. Los ejercicios ya están desbloqueados.",
   passErrorMessage = "Has aprobado, pero no se pudo guardar el desbloqueo. Vuelve a intentarlo.",
-  failMessageBuilder = null
+  failMessageBuilder = null,
+  maxGuidedAttempts = 2
 }) {
   const submitQuizBtn = document.getElementById(submitQuizBtnId);
   const quizResult = document.getElementById(quizResultId);
@@ -117,7 +118,6 @@ function initCheckpointPage({
       const selected = getSelectedValue(key);
       const expected = quizAnswers[key];
       const feedbackEl = questionEl.querySelector(".checkpoint-feedback");
-      const options = questionEl.querySelectorAll(".checkpoint-option");
 
       const isCorrect = selected === expected;
 
@@ -126,23 +126,6 @@ function initCheckpointPage({
         questionEl.classList.add("checkpoint-correct");
       } else {
         questionEl.classList.add("checkpoint-incorrect");
-      }
-
-      const showCorrectAnswer = attemptNumber >= 3;
-
-      if (showCorrectAnswer) {
-        options.forEach((option) => {
-          const input = option.querySelector("input");
-          if (!input) return;
-
-          if (input.value === expected) {
-            option.classList.add("checkpoint-option-correct");
-          }
-
-          if (selected && input.value === selected && selected !== expected) {
-            option.classList.add("checkpoint-option-incorrect");
-          }
-        });
       }
 
       if (feedbackEl) {
@@ -155,7 +138,8 @@ function initCheckpointPage({
         } else if (attemptNumber === 2) {
           feedbackText = questionFeedback[key].attempt2;
         } else {
-          feedbackText = `${questionFeedback[key].attempt2} ${questionFeedback[key].final}`;
+          feedbackText =
+            "Todavía no has interiorizado bien este concepto. Vuelve a repasar la teoría y la práctica guiada del tema antes de intentarlo de nuevo.";
         }
 
         feedbackEl.textContent = feedbackText;
@@ -190,7 +174,7 @@ function initCheckpointPage({
       return `Has conseguido ${score}/4. Revisa de nuevo las ideas clave del tema antes de volver a intentarlo.`;
     }
 
-    return `Has conseguido ${score}/4. A partir de este intento ya puedes ver cuál era la opción correcta para aprender del fallo antes de volver a intentarlo. Los ejercicios seguirán bloqueados hasta que apruebes.`;
+    return `Has conseguido ${score}/4. Aún no has interiorizado bien los conceptos clave de este tema. Vuelve a repasar la teoría y la práctica guiada antes de repetir el checkpoint.`;
   }
 
   async function syncQuizUI() {

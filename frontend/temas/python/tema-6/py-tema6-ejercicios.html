@@ -7,21 +7,14 @@
 </head>
 <body>
 
-<nav class="topbar">
-  <div class="topbar-inner">
-    <div class="topbar-title">
-      <h1>Ruta Python</h1>
-      <p>Tema 6 · Diccionarios</p>
-    </div>
-    <div class="topbar-actions">
-      <a class="btn btn-secondary btn-sm" href="../../../menu.html">Menú</a>
-      <a class="btn btn-secondary btn-sm" href="../../../progreso.html">Mi progreso</a>
-      <a class="btn btn-secondary btn-sm" href="../index.html">Ruta Python</a>
-      <a class="btn btn-secondary btn-sm" href="../../../playground/index.html?lang=python">Playground</a>
-      <a class="btn btn-secondary btn-sm" href="../../../configuracion.html">Configuración</a>
-    </div>
-  </div>
-</nav>
+<nav
+  id="app-topbar"
+  data-root="../../../"
+  data-title="Ruta Python"
+  data-subtitle="Tema 6 · Diccionarios"
+  data-route-href="../index.html"
+  data-topic-href="./index.html"
+></nav>
 
 <header class="header">
   <span class="mission-tag">Practice mode</span>
@@ -367,12 +360,17 @@
 <script src="../topic-completion.js"></script>
 <script src="../ui-completion.js"></script>
 <script src="../page-exercises.js"></script>
+<script src="../../../topbar.js"></script>
 <script>
   initExercisesPage({
     topicId: "6.ejercicios",
     successMessage: "Has marcado los ejercicios como completados. El tema 6 ya cuenta como cerrado en tu ruta.",
-    alreadyCompletedMessage: "Estos ejercicios ya estaban completados. El tema 6 ya cuenta como cerrado en tu ruta."
+    alreadyCompletedMessage: "Estos ejercicios ya estaban completados. El tema 6 ya cuenta como cerrado en tu ruta.",
+    onCompleted: () => setNextPythonThemeForCurrentUser(6, 10),
+    onAlreadyCompleted: () => setNextPythonThemeForCurrentUser(6, 10)
   });
+
+  bindThemeLinksFromDataAttribute();
 </script>
 
 </body>

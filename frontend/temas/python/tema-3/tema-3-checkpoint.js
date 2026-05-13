@@ -9,22 +9,22 @@ const questionFeedback = {
   q1: {
     attempt1: "Revisa cómo funciona range(n) y desde qué valor empieza.",
     attempt2: "range(3) no llega hasta 3 incluido.",
-    final: "Correcto: imprime 0, 1 y 2."
+    final: "Bien: has entendido correctamente cómo se generan los valores con range()."
   },
   q2: {
     attempt1: "Piensa en cuándo controlas la secuencia y cuándo dependes de una condición.",
     attempt2: "No elijas por sintaxis: piensa en el tipo de problema que resuelve cada uno.",
-    final: "Correcto: for suele recorrer algo conocido; while depende de una condición."
+    final: "Bien: has distinguido correctamente cuándo encaja mejor for y cuándo while."
   },
   q3: {
     attempt1: "Compáralo mentalmente con continue.",
     attempt2: "Una instrucción salta una iteración; la otra termina el bucle entero.",
-    final: "Correcto: break sale completamente del bucle."
+    final: "Bien: has diferenciado correctamente entre interrumpir una iteración y salir del bucle."
   },
   q4: {
     attempt1: "Observa si la condición puede dejar de cumplirse en algún momento.",
     attempt2: "Dentro del bucle no se está actualizando la variable de control.",
-    final: "Correcto: puede quedarse en bucle infinito porque i nunca cambia."
+    final: "Bien: has identificado correctamente el riesgo de un bucle infinito."
   }
 };
 
@@ -46,6 +46,6 @@ initCheckpointPage({
       return `Has conseguido ${score}/4. Revisa especialmente cómo funciona range(), la diferencia entre for y while, y qué cambia entre break y continue.`;
     }
 
-    return `Has conseguido ${score}/4. A partir de este intento ya puedes ver cuál era la opción correcta para aprender del fallo antes de volver a intentarlo. Los ejercicios seguirán bloqueados hasta que apruebes.`;
+    return `Has conseguido ${score}/4. Aún no has interiorizado bien los conceptos clave del tema 3. Vuelve a repasar la teoría y la práctica guiada antes de repetir el checkpoint.`;
   }
 });

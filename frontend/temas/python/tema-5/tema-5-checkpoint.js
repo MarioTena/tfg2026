@@ -9,22 +9,22 @@ const questionFeedback = {
   q1: {
     attempt1: "Revisa la diferencia entre definir una función y llamarla.",
     attempt2: "def crea la función, pero no la ejecuta por sí sola.",
-    final: "Correcto: ese código solo define la función; para ejecutarla hay que llamarla."
+    final: "Bien: has distinguido correctamente entre crear una función y ejecutarla."
   },
   q2: {
     attempt1: "Piensa en qué aparece en la definición y qué aparece en la llamada.",
     attempt2: "Uno es el nombre interno que recibe el dato; el otro es el valor real que se pasa.",
-    final: "Correcto: nombre es el parámetro y \"Ana\" es el argumento."
+    final: "Bien: has diferenciado correctamente entre parámetro y argumento."
   },
   q3: {
     attempt1: "No confundas imprimir con devolver.",
-    attempt2: "La función muestra un valor, pero como no devuelve nada útil, el resultado asignado no es 8.",
-    final: "Correcto: primero imprime 8 y después imprime None."
+    attempt2: "La función muestra un valor, pero mostrarlo no significa devolverlo.",
+    final: "Bien: has entendido la diferencia entre mostrar un resultado y devolverlo."
   },
   q4: {
     attempt1: "Piensa en dónde existe la variable mensaje.",
     attempt2: "La variable se crea dentro de la función y no está disponible fuera.",
-    final: "Correcto: mensaje es local a la función y fuera no existe."
+    final: "Bien: has identificado correctamente el alcance local de la variable."
   }
 };
 
@@ -46,6 +46,6 @@ initCheckpointPage({
       return `Has conseguido ${score}/4. Revisa especialmente la diferencia entre definir y llamar, entre parámetro y argumento, y entre print y return.`;
     }
 
-    return `Has conseguido ${score}/4. A partir de este intento ya puedes ver cuál era la opción correcta para aprender del fallo antes de volver a intentarlo. Los ejercicios seguirán bloqueados hasta que apruebes.`;
+    return `Has conseguido ${score}/4. Aún no has interiorizado bien los conceptos clave del tema 5. Vuelve a repasar la teoría y la práctica guiada antes de repetir el checkpoint.`;
   }
 });

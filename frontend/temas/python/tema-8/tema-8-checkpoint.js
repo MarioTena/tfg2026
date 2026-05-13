@@ -9,22 +9,22 @@ const questionFeedback = {
   q1: {
     attempt1: "Piensa si aquí importa el orden y si ese par de datos debería ser estable.",
     attempt2: "Una coordenada suele modelarse mejor como un grupo ordenado que no debería cambiar arbitrariamente.",
-    final: "Correcto: una tupla representa mejor una coordenada fija."
+    final: "Bien: has identificado correctamente cuándo una tupla encaja mejor que otras estructuras."
   },
   q2: {
     attempt1: "Recuerda el caso especial de la tupla de un solo elemento.",
     attempt2: "Sin un símbolo extra, Python no lo interpreta como tupla.",
-    final: "Correcto: falta la coma."
+    final: "Bien: has entendido correctamente cómo se representa una tupla de un solo elemento."
   },
   q3: {
     attempt1: "Aquí debes pensar en unicidad y pertenencia, no en posición.",
     attempt2: "Si no quieres duplicados y te importa comprobar si algo está, una estructura encaja claramente mejor.",
-    final: "Correcto: un set es la mejor opción."
+    final: "Bien: has identificado correctamente cuándo conviene usar un set."
   },
   q4: {
     attempt1: "Piensa qué pregunta responde exactamente a a - b.",
     attempt2: "La diferencia depende del orden porque no pregunta lo mismo en ambos sentidos.",
-    final: "Correcto: a - b significa lo que está en el primero pero no en el segundo."
+    final: "Bien: has interpretado correctamente la diferencia entre sets."
   }
 };
 
@@ -46,6 +46,6 @@ initCheckpointPage({
       return `Has conseguido ${score}/4. Revisa especialmente cuándo conviene una tupla, cuándo un set y cómo interpretar la diferencia entre sets.`;
     }
 
-    return `Has conseguido ${score}/4. A partir de este intento ya puedes ver cuál era la opción correcta para aprender del fallo antes de volver a intentarlo. Los ejercicios seguirán bloqueados hasta que apruebes.`;
+    return `Has conseguido ${score}/4. Aún no has interiorizado bien los conceptos clave del tema 8. Vuelve a repasar la teoría y la práctica guiada antes de repetir el checkpoint.`;
   }
 });

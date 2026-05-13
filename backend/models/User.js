@@ -33,6 +33,12 @@ const UserSchema = new mongoose.Schema(
       default: "dark",
     },
 
+    avatarUrl: {
+      type: String,
+      default: null,
+      trim: true,
+    },
+
     onboardingCompleted: {
       type: Boolean,
       default: false,
