@@ -1,4 +1,5 @@
-const API_URL = "http://localhost:3000/api/progress/python";
+const API_BASE_URL = window.APP_CONFIG?.API_BASE_URL || "http://localhost:3000";
+const API_URL = `${API_BASE_URL}/api/progress/python`;
 const token = localStorage.getItem("token");
 
 const LAST_THEME_STORAGE_KEY_PREFIX = "lastPythonTheme";

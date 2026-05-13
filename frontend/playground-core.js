@@ -18,7 +18,7 @@ window.PlaygroundApp = {
   },
 
   config: {
-    API_BASE_URL: "http://localhost:3000",
+    API_BASE_URL: window.APP_CONFIG?.API_BASE_URL || "http://localhost:3000",
     DEFAULT_STATUS_MESSAGE:
       "Listo para practicar. Escribe código y pulsa “Ejecutar código”.",
   },

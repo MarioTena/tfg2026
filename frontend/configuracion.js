@@ -1,6 +1,7 @@
-const API_ME_URL = "http://localhost:3000/api/auth/me";
-const API_PROFILE_URL = "http://localhost:3000/api/auth/profile";
-const API_AVATAR_URL = "http://localhost:3000/api/auth/avatar";
+const API_BASE_URL = window.APP_CONFIG?.API_BASE_URL || "http://localhost:3000";
+const API_ME_URL = `${API_BASE_URL}/api/auth/me`;
+const API_PROFILE_URL = `${API_BASE_URL}/api/auth/profile`;
+const API_AVATAR_URL = `${API_BASE_URL}/api/auth/avatar`;
 
 const nameInput = document.getElementById("config-name");
 const emailEl = document.getElementById("config-email");
