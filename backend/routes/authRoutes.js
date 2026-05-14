@@ -152,8 +152,9 @@ router.post("/register", async (req, res) => {
 
       await existing.save();
 
-      const appBaseUrl = getAppBaseUrl();
-      const verifyUrl = `${appBaseUrl}/verify-email.html?token=${encodeURIComponent(rawEmailVerificationToken)}`;
+      const frontendUrl = process.env.FRONTEND_URL.replace(/\/+$/, "");
+      const verifyUrl = `${frontendUrl}/verify-email.html?token=${encodeURIComponent(rawEmailVerificationToken)}`;
+      
 
       await sendVerifyEmail({
         to: existing.email,
