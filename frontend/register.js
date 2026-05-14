@@ -62,7 +62,11 @@ async function doRegister() {
   }
 
   if (name.length < 2) {
-    return res.status(400).json({ ok: false, error: "El nombre debe tener al menos 2 caracteres." });
+    showStatus("El nombre debe tener al menos 2 caracteres.");
+    isSubmitting = false;
+    registerBtn.disabled = false;
+    registerBtn.textContent = "Crear cuenta";
+    return;
   }
 
   if (password.length < 8) {
