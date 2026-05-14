@@ -10,12 +10,18 @@ const {
 const router = express.Router();
 
 async function getOrCreateAiCredit(userId, topic) {
+  const safeTopic = String(topic || "").trim();
+
+  if (!safeTopic) {
+    throw new Error("Topic no válido");
+  }
+
   return AiCredit.findOneAndUpdate(
-    { userId, topic },
+    { userId, topic: safeTopic },
     {
       $setOnInsert: {
         userId,
-        topic,
+        topic: safeTopic,
         remainingCredits: 2,
         usedCount: 0,
       },
@@ -27,10 +33,9 @@ async function getOrCreateAiCredit(userId, topic) {
   );
 }
 
-// Obtener créditos disponibles de IA para un tema
 router.get("/credits", requireAuth, async (req, res) => {
   try {
-    const topic = req.query.topic;
+    const topic = String(req.query.topic || "").trim();
 
     if (!topic) {
       return res.status(400).json({
@@ -56,7 +61,6 @@ router.get("/credits", requireAuth, async (req, res) => {
   }
 });
 
-// Pedir pista con IA
 router.post("/hint", requireAuth, async (req, res) => {
   try {
     const {
@@ -68,7 +72,9 @@ router.post("/hint", requireAuth, async (req, res) => {
       hints,
     } = req.body;
 
-    if (!topic) {
+    const safeTopic = String(topic || "").trim();
+
+    if (!safeTopic) {
       return res.status(400).json({
         ok: false,
         error: "Falta topic",
@@ -101,7 +107,7 @@ router.post("/hint", requireAuth, async (req, res) => {
       });
     }
 
-    const creditDoc = await getOrCreateAiCredit(req.user.id, topic);
+    const creditDoc = await getOrCreateAiCredit(req.user.id, safeTopic);
 
     if (creditDoc.remainingCredits <= 0) {
       return res.status(403).json({
@@ -130,9 +136,8 @@ router.post("/hint", requireAuth, async (req, res) => {
       creditDoc.usedCount += 1;
       await creditDoc.save();
       creditsSpent = true;
-        } catch (error) {
+    } catch (error) {
       let fallbackNote = "";
-
       const msg = (error.message || "").toLowerCase();
 
       if (msg.includes("rate limit")) {
@@ -155,14 +160,12 @@ router.post("/hint", requireAuth, async (req, res) => {
         fallbackNote = "La IA ha respondido señalando una línea concreta y se ha descartado.";
       }
 
-
       console.error("Fallo IA real, uso fallback técnico:", error.message);
 
       hintResult = buildTechnicalFallback(attempt, extraContext);
 
       if (fallbackNote) {
-        hintResult.message =
-          `${fallbackNote}\n\n` + hintResult.message;
+        hintResult.message = `${fallbackNote}\n\n${hintResult.message}`;
       }
 
       source = "fallback";
@@ -190,7 +193,7 @@ router.post("/hint", requireAuth, async (req, res) => {
     console.error("Error generando pista IA:", error);
     return res.status(500).json({
       ok: false,
-      error: error.message || "Error generando pista IA",
+      error: "Error generando pista IA",
     });
   }
 });

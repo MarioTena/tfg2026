@@ -1,4 +1,5 @@
-const API_URL = "http://localhost:3000/api/auth/forgot-password";
+const API_BASE_URL = window.APP_CONFIG?.API_BASE_URL || "http://localhost:3000";
+const API_URL = `${API_BASE_URL}/api/auth/forgot-password`;
 
 const emailInput = document.getElementById("email");
 const sendBtn = document.getElementById("send-btn");

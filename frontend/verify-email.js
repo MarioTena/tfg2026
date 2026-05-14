@@ -1,3 +1,4 @@
+const API_BASE_URL = window.APP_CONFIG?.API_BASE_URL || "http://localhost:3000";
 const statusMsg = document.getElementById("verify-status");
 
 function showStatus(message = "", isError = true) {
@@ -21,7 +22,7 @@ async function verifyEmail() {
   showStatus("Verificando tu correo...", false);
 
   try {
-    const res = await fetch(`http://localhost:3000/api/auth/verify-email?token=${encodeURIComponent(token)}`);
+    const res = await fetch(`${API_BASE_URL}/api/auth/verify-email?token=${encodeURIComponent(token)}`);
     const data = await res.json().catch(() => null);
 
     if (!res.ok || !data?.ok) {

@@ -1,4 +1,5 @@
-const API_LOGIN_URL = "http://localhost:3000/api/auth/login";
+const API_BASE_URL = window.APP_CONFIG?.API_BASE_URL || "http://localhost:3000";
+const API_LOGIN_URL = `${API_BASE_URL}/api/auth/login`;
 
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");

@@ -1,4 +1,5 @@
-const API_URL = "http://localhost:3000/api/auth/reset-password";
+const API_BASE_URL = window.APP_CONFIG?.API_BASE_URL || "http://localhost:3000";
+const API_URL = `${API_BASE_URL}/api/auth/reset-password`;
 
 const passwordInput = document.getElementById("password");
 const resetBtn = document.getElementById("reset-btn");
@@ -40,8 +41,8 @@ async function resetPassword() {
     return;
   }
 
-  if (password.length < 6) {
-    showStatus("La contraseña debe tener al menos 6 caracteres.");
+  if (password.length < 8) {
+    showStatus("La contraseña debe tener al menos 8 caracteres.");
     resetBtn.disabled = false;
     resetBtn.textContent = "Guardar contraseña";
     return;

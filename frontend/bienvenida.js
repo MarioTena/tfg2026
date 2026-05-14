@@ -1,4 +1,5 @@
-const API_ONBOARDING_URL = "http://localhost:3000/api/auth/onboarding";
+const API_BASE_URL = window.APP_CONFIG?.API_BASE_URL || "http://localhost:3000";
+const API_ONBOARDING_URL = `${API_BASE_URL}/api/auth/onboarding`;
 
 const startBtn = document.getElementById("start-btn");
 const statusMsg = document.getElementById("status-msg");

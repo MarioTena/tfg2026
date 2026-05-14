@@ -75,8 +75,12 @@ function getAppBaseUrl() {
   return baseUrl.replace(/\/+$/, "");
 }
 
-function buildAvatarUrl(req, filename) {
-  return `${req.protocol}://${req.get("host")}/uploads/avatars/${filename}`;
+function hashToken(rawToken) {
+  return crypto.createHash("sha256").update(rawToken).digest("hex");
+}
+
+function buildAvatarUrl(filename) {
+  return `${getAppBaseUrl()}/uploads/avatars/${filename}`;
 }
 
 function deleteOldAvatarFile(avatarUrl) {
@@ -104,7 +108,6 @@ function deleteOldAvatarFile(avatarUrl) {
   }
 }
 
-// POST /api/auth/register
 router.post("/register", async (req, res) => {
   try {
     const { name, email, password } = req.body || {};
@@ -120,8 +123,12 @@ router.post("/register", async (req, res) => {
       return res.status(400).json({ ok: false, error: "Email no válido." });
     }
 
-    if (password.length < 6) {
-      return res.status(400).json({ ok: false, error: "La contraseña debe tener al menos 6 caracteres" });
+    if (trimmedName.length < 2) {
+      return res.status(400).json({ ok: false, error: "El nombre debe tener al menos 2 caracteres." });
+    }
+
+    if (password.length < 8) {
+      return res.status(400).json({ ok: false, error: "La contraseña debe tener al menos 8 caracteres" });
     }
 
     const existing = await User.findOne({ email: normalizedEmail });
@@ -130,7 +137,8 @@ router.post("/register", async (req, res) => {
     }
 
     const passwordHash = await bcrypt.hash(password, 10);
-    const emailVerificationToken = crypto.randomBytes(32).toString("hex");
+    const rawEmailVerificationToken = crypto.randomBytes(32).toString("hex");
+    const emailVerificationToken = hashToken(rawEmailVerificationToken);
     const emailVerificationExpires = new Date(Date.now() + 1000 * 60 * 60 * 24);
 
     const user = await User.create({
@@ -146,7 +154,7 @@ router.post("/register", async (req, res) => {
     });
 
     const appBaseUrl = getAppBaseUrl();
-    const verifyUrl = `${appBaseUrl}/verify-email.html?token=${encodeURIComponent(emailVerificationToken)}`;
+    const verifyUrl = `${appBaseUrl}/verify-email.html?token=${encodeURIComponent(rawEmailVerificationToken)}`;
 
     await sendVerifyEmail({
       to: user.email,
@@ -159,18 +167,20 @@ router.post("/register", async (req, res) => {
       message: "Cuenta creada. Te hemos enviado un correo para verificar tu cuenta antes de iniciar sesión.",
     });
   } catch (e) {
-    return res.status(500).json({ ok: false, error: e.message });
+    console.error("Error en /register:", e);
+    return res.status(500).json({ ok: false, error: "Error interno del servidor." });
   }
 });
 
-// GET /api/auth/verify-email
 router.get("/verify-email", async (req, res) => {
   try {
-    const token = String(req.query?.token || "").trim();
+    const rawToken = String(req.query?.token || "").trim();
 
-    if (!token) {
+    if (!rawToken) {
       return res.status(400).json({ ok: false, error: "Falta token." });
     }
+
+    const token = hashToken(rawToken);
 
     const user = await User.findOne({
       emailVerificationToken: token,
@@ -201,11 +211,11 @@ router.get("/verify-email", async (req, res) => {
       message: "Correo verificado correctamente. Ya puedes iniciar sesión.",
     });
   } catch (e) {
-    return res.status(500).json({ ok: false, error: e.message });
+    console.error("Error en /verify-email:", e);
+    return res.status(500).json({ ok: false, error: "Error interno del servidor." });
   }
 });
 
-// POST /api/auth/login
 router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body || {};
@@ -253,11 +263,11 @@ router.post("/login", async (req, res) => {
       },
     });
   } catch (e) {
-    return res.status(500).json({ ok: false, error: e.message });
+    console.error("Error en /login:", e);
+    return res.status(500).json({ ok: false, error: "Error interno del servidor." });
   }
 });
 
-// GET /api/auth/me
 router.get("/me", requireAuth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select("_id name email role theme avatarUrl onboardingCompleted");
@@ -279,11 +289,11 @@ router.get("/me", requireAuth, async (req, res) => {
       },
     });
   } catch (e) {
-    return res.status(500).json({ ok: false, error: e.message });
+    console.error("Error en /me:", e);
+    return res.status(500).json({ ok: false, error: "Error interno del servidor." });
   }
 });
 
-// POST /api/auth/forgot-password
 router.post("/forgot-password", async (req, res) => {
   try {
     const email = String(req.body?.email || "").toLowerCase().trim();
@@ -306,9 +316,10 @@ router.post("/forgot-password", async (req, res) => {
     }
 
     const rawToken = crypto.randomBytes(32).toString("hex");
+    const hashedToken = hashToken(rawToken);
     const expires = new Date(Date.now() + 1000 * 60 * 30);
 
-    user.resetPasswordToken = rawToken;
+    user.resetPasswordToken = hashedToken;
     user.resetPasswordExpires = expires;
     await user.save();
 
@@ -325,23 +336,25 @@ router.post("/forgot-password", async (req, res) => {
       message: "Si el email existe, recibirás instrucciones para cambiar la contraseña.",
     });
   } catch (e) {
-    return res.status(500).json({ ok: false, error: e.message });
+    console.error("Error en /forgot-password:", e);
+    return res.status(500).json({ ok: false, error: "Error interno del servidor." });
   }
 });
 
-// POST /api/auth/reset-password
 router.post("/reset-password", async (req, res) => {
   try {
-    const token = String(req.body?.token || "").trim();
+    const rawToken = String(req.body?.token || "").trim();
     const password = String(req.body?.password || "");
 
-    if (!token || !password) {
+    if (!rawToken || !password) {
       return res.status(400).json({ ok: false, error: "Faltan campos: token, password" });
     }
 
-    if (password.length < 6) {
-      return res.status(400).json({ ok: false, error: "La contraseña debe tener al menos 6 caracteres" });
+    if (password.length < 8) {
+      return res.status(400).json({ ok: false, error: "La contraseña debe tener al menos 8 caracteres" });
     }
+
+    const token = hashToken(rawToken);
 
     const user = await User.findOne({
       resetPasswordToken: token,
@@ -365,11 +378,11 @@ router.post("/reset-password", async (req, res) => {
       message: "Contraseña actualizada correctamente.",
     });
   } catch (e) {
-    return res.status(500).json({ ok: false, error: e.message });
+    console.error("Error en /reset-password:", e);
+    return res.status(500).json({ ok: false, error: "Error interno del servidor." });
   }
 });
 
-// PUT /api/auth/profile
 router.put("/profile", requireAuth, async (req, res) => {
   try {
     const { name, theme } = req.body || {};
@@ -377,8 +390,8 @@ router.put("/profile", requireAuth, async (req, res) => {
 
     if (typeof name !== "undefined") {
       const trimmedName = String(name).trim();
-      if (!trimmedName) {
-        return res.status(400).json({ ok: false, error: "El nombre no puede estar vacío." });
+      if (trimmedName.length < 2) {
+        return res.status(400).json({ ok: false, error: "El nombre debe tener al menos 2 caracteres." });
       }
       updates.name = trimmedName;
     }
@@ -417,11 +430,11 @@ router.put("/profile", requireAuth, async (req, res) => {
       },
     });
   } catch (e) {
-    return res.status(500).json({ ok: false, error: e.message });
+    console.error("Error en /profile:", e);
+    return res.status(500).json({ ok: false, error: "Error interno del servidor." });
   }
 });
 
-// POST /api/auth/avatar
 router.post("/avatar", requireAuth, (req, res) => {
   uploadAvatar.single("avatar")(req, res, async (error) => {
     try {
@@ -447,7 +460,7 @@ router.post("/avatar", requireAuth, (req, res) => {
       }
 
       const oldAvatarUrl = user.avatarUrl || null;
-      const avatarUrl = buildAvatarUrl(req, req.file.filename);
+      const avatarUrl = buildAvatarUrl(req.file.filename);
 
       user.avatarUrl = avatarUrl;
       await user.save();
@@ -469,12 +482,12 @@ router.post("/avatar", requireAuth, (req, res) => {
         },
       });
     } catch (e) {
-      return res.status(500).json({ ok: false, error: e.message });
+      console.error("Error en /avatar:", e);
+      return res.status(500).json({ ok: false, error: "Error interno del servidor." });
     }
   });
 });
 
-// PUT /api/auth/onboarding
 router.put("/onboarding", requireAuth, async (req, res) => {
   try {
     const updatedUser = await User.findByIdAndUpdate(
@@ -500,7 +513,8 @@ router.put("/onboarding", requireAuth, async (req, res) => {
       },
     });
   } catch (e) {
-    return res.status(500).json({ ok: false, error: e.message });
+    console.error("Error en /onboarding:", e);
+    return res.status(500).json({ ok: false, error: "Error interno del servidor." });
   }
 });
 

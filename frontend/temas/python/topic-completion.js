@@ -1,5 +1,6 @@
-const PROGRESS_API_URL = "http://localhost:3000/api/progress/python";
-const PROGRESS_COMPLETE_URL = "http://localhost:3000/api/progress/python/complete";
+const API_BASE_URL = window.APP_CONFIG?.API_BASE_URL || "http://localhost:3000";
+const PROGRESS_API_URL = `${API_BASE_URL}/api/progress/python`;
+const PROGRESS_COMPLETE_URL = `${API_BASE_URL}/api/progress/python/complete`;
 
 function extractThemeId(topicId) {
   if (!topicId) return null;

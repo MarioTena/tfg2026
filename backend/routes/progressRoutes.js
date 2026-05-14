@@ -10,7 +10,6 @@ function isValidLanguage(language) {
   return ALLOWED_LANGUAGES.includes(language);
 }
 
-/* Obtener progreso */
 router.get("/:language", requireAuth, async (req, res) => {
   try {
     const { language } = req.params;
@@ -22,18 +21,23 @@ router.get("/:language", requireAuth, async (req, res) => {
       });
     }
 
-    let progress = await Progress.findOne({
-      userId: req.user.id,
-      language,
-    });
-
-    if (!progress) {
-      progress = await Progress.create({
+    const progress = await Progress.findOneAndUpdate(
+      {
         userId: req.user.id,
         language,
-        completedTopics: [],
-      });
-    }
+      },
+      {
+        $setOnInsert: {
+          userId: req.user.id,
+          language,
+          completedTopics: [],
+        },
+      },
+      {
+        new: true,
+        upsert: true,
+      }
+    );
 
     return res.json({ ok: true, progress });
   } catch (error) {
@@ -45,7 +49,6 @@ router.get("/:language", requireAuth, async (req, res) => {
   }
 });
 
-/* Marcar tema como completado */
 router.post("/:language/complete", requireAuth, async (req, res) => {
   try {
     const { language } = req.params;
@@ -65,21 +68,25 @@ router.post("/:language/complete", requireAuth, async (req, res) => {
       });
     }
 
-    let progress = await Progress.findOne({
-      userId: req.user.id,
-      language,
-    });
-
-    if (!progress) {
-      progress = await Progress.create({
+    const progress = await Progress.findOneAndUpdate(
+      {
         userId: req.user.id,
         language,
-        completedTopics: [topic],
-      });
-    } else if (!progress.completedTopics.includes(topic)) {
-      progress.completedTopics.push(topic);
-      await progress.save();
-    }
+      },
+      {
+        $setOnInsert: {
+          userId: req.user.id,
+          language,
+        },
+        $addToSet: {
+          completedTopics: topic,
+        },
+      },
+      {
+        new: true,
+        upsert: true,
+      }
+    );
 
     return res.json({ ok: true, progress });
   } catch (error) {

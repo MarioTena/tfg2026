@@ -1,9 +1,3 @@
-// ============================================================================
-// SERVER.JS - Backend básico del TFG
-// Servidor Express + MongoDB para gestionar autenticación, progreso,
-// IA, ejecuciones y consola interactiva.
-// ============================================================================
-
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -29,25 +23,26 @@ const {
   stopAllUserSessions
 } = require("./utils/interactiveRunner");
 
-// ============================================================================
-// Configuración
-// ============================================================================
-
 const app = express();
 const server = http.createServer(app);
 
 const PORT = process.env.PORT || 3000;
 const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/tfgdb";
 const JWT_SECRET = process.env.JWT_SECRET;
-const FRONTEND_URL = process.env.FRONTEND_URL || "*";
+const FRONTEND_URL = process.env.FRONTEND_URL;
 
 if (!JWT_SECRET) {
   console.error("❌ Falta JWT_SECRET en el archivo .env");
   process.exit(1);
 }
 
+if (!FRONTEND_URL) {
+  console.error("❌ Falta FRONTEND_URL en el archivo .env");
+  process.exit(1);
+}
+
 app.use(cors({
-  origin: FRONTEND_URL === "*" ? true : FRONTEND_URL,
+  origin: FRONTEND_URL,
   credentials: true
 }));
 
@@ -66,17 +61,10 @@ if (!fs.existsSync(avatarsDir)) {
 
 app.use("/uploads", express.static(uploadsRoot));
 
-// ============================================================================
-// Rutas
-// ============================================================================
-
 app.use("/api/auth", authRoutes);
 app.use("/api/progress", progressRoutes);
 app.use("/api/ai", aiRoutes);
 
-// ============================================================================
-// Conexión a MongoDB
-// ============================================================================
 mongoose
   .connect(MONGO_URI, { dbName: "tfgdb" })
   .then(() => console.log("✅ MongoDB conectado"))
@@ -85,9 +73,6 @@ mongoose
     process.exit(1);
   });
 
-// ============================================================================
-// Utilidades
-// ============================================================================
 function parseSafeLimit(value, defaultValue = 5, max = 20) {
   const parsed = Number.parseInt(value, 10);
 
@@ -98,9 +83,6 @@ function parseSafeLimit(value, defaultValue = 5, max = 20) {
   return Math.min(parsed, max);
 }
 
-// ============================================================================
-// GET /api/health
-// ============================================================================
 app.get("/api/health", async (req, res) => {
   try {
     const db = mongoose.connection?.db;
@@ -129,52 +111,6 @@ app.get("/api/health", async (req, res) => {
   }
 });
 
-// ============================================================================
-// Endpoints de prueba de Mongo
-// Puedes quitarlos antes de entrega final si no los necesitas
-// ============================================================================
-app.post("/api/test-insert", async (req, res) => {
-  try {
-    const { note = "Hola TFG", meta = {} } = req.body || {};
-
-    const doc = {
-      note,
-      meta,
-      at: new Date()
-    };
-
-    const result = await mongoose.connection.db.collection("tests").insertOne(doc);
-
-    return res.json({ ok: true, insertedId: result.insertedId });
-  } catch (error) {
-    return res.status(500).json({ ok: false, error: error.message });
-  }
-});
-
-app.get("/api/test-list", async (req, res) => {
-  try {
-    const limit = parseSafeLimit(req.query.limit, 5, 50);
-
-    const items = await mongoose.connection.db
-      .collection("tests")
-      .find({})
-      .sort({ at: -1 })
-      .limit(limit)
-      .toArray();
-
-    return res.json({
-      ok: true,
-      count: items.length,
-      items
-    });
-  } catch (error) {
-    return res.status(500).json({ ok: false, error: error.message });
-  }
-});
-
-// ============================================================================
-// GET /api/attempts
-// ============================================================================
 app.get("/api/attempts", requireAuth, async (req, res) => {
   try {
     const limit = parseSafeLimit(req.query.limit, 5, 20);
@@ -188,13 +124,10 @@ app.get("/api/attempts", requireAuth, async (req, res) => {
       items: attempts
     });
   } catch (error) {
-    return res.status(500).json({ ok: false, error: error.message });
+    return res.status(500).json({ ok: false, error: "Error interno obteniendo intentos." });
   }
 });
 
-// ============================================================================
-// POST /api/run
-// ============================================================================
 app.post("/api/run", requireAuth, async (req, res) => {
   try {
     const { language, code, stdin = "", exerciseId, topic } = req.body || {};
@@ -240,18 +173,14 @@ app.post("/api/run", requireAuth, async (req, res) => {
     console.error("❌ Error en /api/run:", error);
     return res.status(500).json({
       ok: false,
-      error: "Error interno en /api/run",
-      details: error.message
+      error: "Error interno en /api/run"
     });
   }
 });
 
-// ============================================================================
-// Socket.IO
-// ============================================================================
 const io = new Server(server, {
   cors: {
-    origin: FRONTEND_URL === "*" ? true : FRONTEND_URL,
+    origin: FRONTEND_URL,
     methods: ["GET", "POST"]
   }
 });
@@ -372,9 +301,6 @@ io.on("connection", (socket) => {
   });
 });
 
-// ============================================================================
-// Middleware global de errores
-// ============================================================================
 app.use((err, req, res, next) => {
   console.error("❌ Error no controlado:", err);
   res.status(500).json({
@@ -383,16 +309,10 @@ app.use((err, req, res, next) => {
   });
 });
 
-// ============================================================================
-// Arranque
-// ============================================================================
 server.listen(PORT, () => {
-  console.log(`🚀 API escuchando en http://localhost:${PORT}`);
+  console.log(`🚀 API escuchando en puerto ${PORT}`);
 });
 
-// ============================================================================
-// Cierre ordenado
-// ============================================================================
 async function shutdown(signal) {
   console.log(`\n⚠️ Recibido ${signal}. Cerrando servidor...`);
 

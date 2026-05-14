@@ -1,4 +1,5 @@
-const API_REGISTER_URL = "http://localhost:3000/api/auth/register";
+const API_BASE_URL = window.APP_CONFIG?.API_BASE_URL || "http://localhost:3000";
+const API_REGISTER_URL = `${API_BASE_URL}/api/auth/register`;
 
 const nameInput = document.getElementById("name");
 const emailInput = document.getElementById("email");
@@ -60,8 +61,12 @@ async function doRegister() {
     return;
   }
 
-  if (password.length < 6) {
-    showStatus("La contraseña debe tener al menos 6 caracteres.");
+  if (name.length < 2) {
+    return res.status(400).json({ ok: false, error: "El nombre debe tener al menos 2 caracteres." });
+  }
+
+  if (password.length < 8) {
+    showStatus("La contraseña debe tener al menos 8 caracteres.");
     isSubmitting = false;
     registerBtn.disabled = false;
     registerBtn.textContent = "Crear cuenta";
