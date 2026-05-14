@@ -92,7 +92,7 @@ function initInteractiveSocket() {
 
   app.state.consoleSocket = io(app.api.socket, {
     auth: { token },
-    transports: ["websocket", "polling"],
+    transports: ["polling"],
     withCredentials: true
   });
 
