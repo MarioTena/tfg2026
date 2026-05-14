@@ -132,12 +132,20 @@ async function startInteractivePythonSession({
   const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "tfg-python-"));
   const scriptPath = path.join(tempDir, "main.py");
 
+  const validationError = validateUserCode(code);
+
+  if (validationError) {
+    throw new Error(validationError);
+  }
+
   fs.writeFileSync(scriptPath, code, "utf8");
 
-  const dockerArgs = buildInteractiveDockerArgs(tempDir);
-
-  const proc = spawn("docker", dockerArgs, {
+  const proc = spawn("python3", [scriptPath], {
     stdio: ["pipe", "pipe", "pipe"],
+    env: {
+      PATH: process.env.PATH,
+      PYTHONIOENCODING: "utf-8",
+    },
   });
 
   const attempt = await Attempt.create({
