@@ -1,47 +1,69 @@
-// ============================================================================
-// dockerRunner.js
-// ----------------------------------------------------------------------------
-// Ejecución de código en Docker.
-// - Python: ejecución real en contenedor python:3.11
-// - Soporte para stdin
-// ============================================================================
-
 const { spawn } = require("child_process");
 
-const DOCKER_IMAGE_PYTHON = "python:3.11";
 const DEFAULT_TIMEOUT_MS = 10000;
 
-function buildSafeDockerArgs(image, extraArgs = []) {
-  return [
-    "run",
-    "--rm",
-    "-i",
-    "--network",
-    "none",
-    "--memory",
-    "128m",
-    "--cpus",
-    "0.5",
-    "--pids-limit",
-    "64",
-    "--read-only",
-    "--tmpfs",
-    "/tmp:rw,noexec,nosuid,size=16m",
-    image,
-    ...extraArgs,
+function validateUserCode(code) {
+  if (!code || typeof code !== "string") {
+    return "No hay código para ejecutar.";
+  }
+
+  if (code.length > 5000) {
+    return "El código es demasiado largo para este entorno de práctica.";
+  }
+
+  const forbiddenPatterns = [
+    /import\s+os\b/,
+    /from\s+os\s+import\b/,
+    /import\s+subprocess\b/,
+    /from\s+subprocess\s+import\b/,
+    /import\s+socket\b/,
+    /from\s+socket\s+import\b/,
+    /import\s+shutil\b/,
+    /from\s+shutil\s+import\b/,
+    /open\s*\(/,
+    /exec\s*\(/,
+    /eval\s*\(/,
+    /compile\s*\(/,
+    /__import__/,
+    /globals\s*\(/,
+    /locals\s*\(/,
+    /vars\s*\(/,
+    /while\s+True\s*:/,
   ];
+
+  for (const pattern of forbiddenPatterns) {
+    if (pattern.test(code)) {
+      return "Este código usa instrucciones no permitidas en el entorno de práctica.";
+    }
+  }
+
+  return null;
 }
 
-function runDockerCommand(image, extraArgs, stdinData = "", timeoutMs = DEFAULT_TIMEOUT_MS) {
+function runPython(code, stdinData = "", timeoutMs = DEFAULT_TIMEOUT_MS) {
   return new Promise((resolve) => {
+    const validationError = validateUserCode(code);
+
+    if (validationError) {
+      return resolve({
+        stdout: "",
+        stderr: validationError,
+        status: "error",
+        timeMs: 0,
+      });
+    }
+
     let stdout = "";
     let stderr = "";
     let finished = false;
     const start = Date.now();
 
-    const args = buildSafeDockerArgs(image, extraArgs);
-    const proc = spawn("docker", args, {
+    const proc = spawn("python3", ["-c", code], {
       stdio: ["pipe", "pipe", "pipe"],
+      env: {
+        PATH: process.env.PATH,
+        PYTHONIOENCODING: "utf-8",
+      },
     });
 
     const finalize = (result) => {
@@ -63,7 +85,7 @@ function runDockerCommand(image, extraArgs, stdinData = "", timeoutMs = DEFAULT_
       const timeMs = Date.now() - start;
       finalize({
         stdout,
-        stderr: `Error al lanzar Docker: ${err.message}`,
+        stderr: `Error al lanzar Python: ${err.message}`,
         status: "error",
         timeMs,
       });
@@ -102,7 +124,7 @@ function runDockerCommand(image, extraArgs, stdinData = "", timeoutMs = DEFAULT_
       const timeMs = Date.now() - start;
       finalize({
         stdout,
-        stderr: `Error enviando stdin al contenedor: ${err.message}`,
+        stderr: `Error enviando stdin a Python: ${err.message}`,
         status: "error",
         timeMs,
       });
@@ -110,22 +132,6 @@ function runDockerCommand(image, extraArgs, stdinData = "", timeoutMs = DEFAULT_
   });
 }
 
-// ============================================================================
-// Python: ejecución real en contenedor python:3.11
-// Usa python -c <code> para dejar stdin libre para input()
-// ============================================================================
-async function runPythonInDocker(code, stdin = "") {
-  return runDockerCommand(
-    DOCKER_IMAGE_PYTHON,
-    ["python", "-c", code],
-    stdin,
-    DEFAULT_TIMEOUT_MS
-  );
-}
-
-// ============================================================================
-// Función principal usada por server.js
-// ============================================================================
 async function runCodeInDocker(language, code, stdin = "") {
   if (language !== "python") {
     return {
@@ -136,7 +142,7 @@ async function runCodeInDocker(language, code, stdin = "") {
     };
   }
 
-  return runPythonInDocker(code, stdin);
+  return runPython(code, stdin);
 }
 
-module.exports = { runCodeInDocker };
+module.exports = { runCodeInDocker, validateUserCode };

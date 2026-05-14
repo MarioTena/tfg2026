@@ -4,6 +4,7 @@ const os = require("os");
 const path = require("path");
 const { randomUUID } = require("crypto");
 const Attempt = require("../models/Attempt");
+const { validateUserCode } = require("./dockerRunner");
 
 const sessions = new Map();
 
