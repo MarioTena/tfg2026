@@ -132,8 +132,39 @@ router.post("/register", async (req, res) => {
     }
 
     const existing = await User.findOne({ email: normalizedEmail });
+
     if (existing) {
-      return res.status(409).json({ ok: false, error: "Ya existe un usuario con ese email" });
+      if (existing.emailVerified === true) {
+        return res.status(409).json({
+          ok: false,
+          error: "Ya existe un usuario con ese email",
+        });
+      }
+
+      const rawEmailVerificationToken = crypto.randomBytes(32).toString("hex");
+      const emailVerificationToken = hashToken(rawEmailVerificationToken);
+      const emailVerificationExpires = new Date(Date.now() + 1000 * 60 * 60 * 24);
+
+      existing.name = trimmedName;
+      existing.passwordHash = await bcrypt.hash(password, 10);
+      existing.emailVerificationToken = emailVerificationToken;
+      existing.emailVerificationExpires = emailVerificationExpires;
+
+      await existing.save();
+
+      const appBaseUrl = getAppBaseUrl();
+      const verifyUrl = `${appBaseUrl}/verify-email.html?token=${encodeURIComponent(rawEmailVerificationToken)}`;
+
+      await sendVerifyEmail({
+        to: existing.email,
+        name: existing.name,
+        verifyUrl,
+      });
+
+      return res.json({
+        ok: true,
+        message: "Ya existía una cuenta pendiente de verificación. Te hemos reenviado el correo para verificarla.",
+      });
     }
 
     const passwordHash = await bcrypt.hash(password, 10);
@@ -486,6 +517,61 @@ router.post("/avatar", requireAuth, (req, res) => {
       return res.status(500).json({ ok: false, error: "Error interno del servidor." });
     }
   });
+});
+
+router.post("/resend-verification", async (req, res) => {
+  try {
+    const email = String(req.body?.email || "").toLowerCase().trim();
+
+    if (!email) {
+      return res.status(400).json({ ok: false, error: "Debes indicar un email." });
+    }
+
+    if (!isValidEmail(email)) {
+      return res.status(400).json({ ok: false, error: "Email no válido." });
+    }
+
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.json({
+        ok: true,
+        message: "Si existe una cuenta pendiente, se reenviará el correo de verificación.",
+      });
+    }
+
+    if (user.emailVerified === true) {
+      return res.status(400).json({
+        ok: false,
+        error: "Esta cuenta ya está verificada.",
+      });
+    }
+
+    const rawEmailVerificationToken = crypto.randomBytes(32).toString("hex");
+    const emailVerificationToken = hashToken(rawEmailVerificationToken);
+    const emailVerificationExpires = new Date(Date.now() + 1000 * 60 * 60 * 24);
+
+    user.emailVerificationToken = emailVerificationToken;
+    user.emailVerificationExpires = emailVerificationExpires;
+    await user.save();
+
+    const appBaseUrl = getAppBaseUrl();
+    const verifyUrl = `${appBaseUrl}/verify-email.html?token=${encodeURIComponent(rawEmailVerificationToken)}`;
+
+    await sendVerifyEmail({
+      to: user.email,
+      name: user.name,
+      verifyUrl,
+    });
+
+    return res.json({
+      ok: true,
+      message: "Te hemos reenviado el correo de verificación.",
+    });
+  } catch (e) {
+    console.error("Error en /resend-verification:", e);
+    return res.status(500).json({ ok: false, error: "Error interno del servidor." });
+  }
 });
 
 router.put("/onboarding", requireAuth, async (req, res) => {

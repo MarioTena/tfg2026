@@ -13,25 +13,39 @@ function getAppBaseUrl() {
   return baseUrl.replace(/\/+$/, "");
 }
 
+function getMailFrom() {
+  const fromEmail = getRequiredEnv("MAIL_FROM_EMAIL");
+  const fromName = process.env.MAIL_FROM_NAME || "TFG Python";
+  return `"${fromName}" <${fromEmail}>`;
+}
+
 function createTransporter() {
   const host = getRequiredEnv("SMTP_HOST");
   const user = getRequiredEnv("SMTP_USER");
   const pass = getRequiredEnv("SMTP_PASS");
+  const port = Number(process.env.SMTP_PORT || 2525);
+  const secure = String(process.env.SMTP_SECURE) === "true";
 
   return nodemailer.createTransport({
     host,
-    port: Number(process.env.SMTP_PORT || 465),
-    secure: String(process.env.SMTP_SECURE) === "true",
+    port,
+    secure,
     family: 4,
     auth: {
       user,
       pass,
     },
+    connectionTimeout: 10000,
+    greetingTimeout: 10000,
+    socketTimeout: 15000,
+    logger: true,
+    debug: true,
   });
 }
 
 async function sendVerifyEmail({ to, name, verifyUrl }) {
   const transporter = createTransporter();
+  const from = getMailFrom();
 
   const html = `
     <div style="margin:0;padding:0;background-color:#f4f7fb;font-family:Arial,sans-serif;color:#162033;">
@@ -71,7 +85,7 @@ async function sendVerifyEmail({ to, name, verifyUrl }) {
   `;
 
   await transporter.sendMail({
-    from: `"TFG Python" <${process.env.SMTP_USER}>`,
+    from,
     to,
     subject: "Verifica tu correo - TFG Python",
     html,
@@ -80,6 +94,7 @@ async function sendVerifyEmail({ to, name, verifyUrl }) {
 
 async function sendWelcomeEmail({ to, name }) {
   const transporter = createTransporter();
+  const from = getMailFrom();
   const appBaseUrl = getAppBaseUrl();
 
   const html = `
@@ -116,17 +131,16 @@ async function sendWelcomeEmail({ to, name }) {
   `;
 
   await transporter.sendMail({
-    from: `"TFG Python" <${process.env.SMTP_USER}>`,
+    from,
     to,
     subject: "Bienvenido/a a TFG Python",
     html,
   });
 }
 
-
-
 async function sendResetPasswordEmail({ to, name, resetUrl }) {
   const transporter = createTransporter();
+  const from = getMailFrom();
 
   const html = `
     <div style="margin:0;padding:0;background-color:#f4f7fb;font-family:Arial,sans-serif;color:#162033;">
@@ -170,7 +184,7 @@ async function sendResetPasswordEmail({ to, name, resetUrl }) {
   `;
 
   await transporter.sendMail({
-    from: `"TFG Python" <${process.env.SMTP_USER}>`,
+    from,
     to,
     subject: "Recuperación de contraseña - TFG Python",
     html,
