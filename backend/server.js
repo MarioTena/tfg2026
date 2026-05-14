@@ -207,7 +207,7 @@ const io = new Server(server, {
     methods: ["GET", "POST"],
     credentials: true
   },
-  transports: ["polling"]
+  //transports: ["polling"]
 });
 
 io.use((socket, next) => {
