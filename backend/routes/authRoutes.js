@@ -185,8 +185,8 @@ router.post("/register", async (req, res) => {
       emailVerificationExpires,
     });
 
-    const appBaseUrl = getAppBaseUrl();
-    const verifyUrl = `${appBaseUrl}/verify-email.html?token=${encodeURIComponent(rawEmailVerificationToken)}`;
+    const frontendUrl = process.env.FRONTEND_URL.replace(/\/+$/, "");
+    const verifyUrl = `${frontendUrl}/verify-email.html?token=${encodeURIComponent(rawEmailVerificationToken)}`;
 
     await sendVerifyEmail({
       to: user.email,
@@ -556,8 +556,8 @@ router.post("/resend-verification", async (req, res) => {
     user.emailVerificationExpires = emailVerificationExpires;
     await user.save();
 
-    const appBaseUrl = getAppBaseUrl();
-    const verifyUrl = `${appBaseUrl}/verify-email.html?token=${encodeURIComponent(rawEmailVerificationToken)}`;
+    const frontendUrl = process.env.FRONTEND_URL.replace(/\/+$/, "");
+    const verifyUrl = `${frontendUrl}/verify-email.html?token=${encodeURIComponent(rawEmailVerificationToken)}`;
 
     await sendVerifyEmail({
       to: user.email,
