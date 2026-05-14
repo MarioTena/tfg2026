@@ -41,10 +41,26 @@ if (!FRONTEND_URL) {
   process.exit(1);
 }
 
+const allowedOrigins = [
+  process.env.FRONTEND_URL,
+  "https://tfg2026-frontend.onrender.com",
+].filter(Boolean).map((url) => url.replace(/\/+$/, ""));
+
 app.use(cors({
-  origin: FRONTEND_URL,
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+
+    return callback(new Error(`Origen no permitido por CORS: ${origin}`));
+  },
   credentials: true
 }));
+
+/*app.use(cors({
+  origin: FRONTEND_URL,
+  credentials: true
+}));*/
 
 app.use(express.json({ limit: "1mb" }));
 
@@ -178,11 +194,20 @@ app.post("/api/run", requireAuth, async (req, res) => {
   }
 });
 
+
 const io = new Server(server, {
   cors: {
-    origin: FRONTEND_URL,
-    methods: ["GET", "POST"]
-  }
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      return callback(new Error(`Origen no permitido por Socket.IO CORS: ${origin}`));
+    },
+    methods: ["GET", "POST"],
+    credentials: true
+  },
+  transports: ["websocket", "polling"]
 });
 
 io.use((socket, next) => {

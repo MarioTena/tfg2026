@@ -91,7 +91,9 @@ function initInteractiveSocket() {
   if (!token) return;
 
   app.state.consoleSocket = io(app.api.socket, {
-    auth: { token }
+    auth: { token },
+    transports: ["websocket", "polling"],
+    withCredentials: true
   });
 
   app.state.consoleSocket.on("console:started", ({ sessionId, attemptId }) => {
