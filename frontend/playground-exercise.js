@@ -25,12 +25,30 @@
   };
 
   app.updateBackToTopicButton = function updateBackToTopicButton(exercise) {
-    this.setTopbarBackLink(
+    const backHref =
       this.getReturnToFromURL() ||
-        this.getTopicPageFromExercise(exercise) ||
-        "../temas/python/index.html",
-      "Volver"
-    );
+      this.getTopicPageFromExercise(exercise) ||
+      "../temas/python/index.html";
+
+    const topbar = document.getElementById("app-topbar");
+
+    if (topbar) {
+      topbar.dataset.showBack = "true";
+      topbar.dataset.backHref = backHref;
+      topbar.dataset.backLabel = "Volver";
+    }
+
+    this.setTopbarBackLink(backHref, "Volver");
+
+    const applyBackLink = () => {
+      this.setTopbarBackLink(backHref, "Volver");
+    };
+
+    applyBackLink();
+
+    document.addEventListener("DOMContentLoaded", applyBackLink);
+
+    setTimeout(applyBackLink, 100);
   };
 
   app.updatePlaygroundHeader = function updatePlaygroundHeader(exercise) {

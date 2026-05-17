@@ -46,6 +46,25 @@ function initSubtopicPage({
     hideButtonAndShowBadge(miniCompleteBtn, "miniCompletedBadge", miniCompletedText);
   }
 
+  function addReturnToToPlaygroundLinks() {
+    const currentPage = window.location.href;
+
+    document.querySelectorAll('a[href*="playground/index.html"]').forEach((link) => {
+      try {
+        const url = new URL(link.getAttribute("href"), window.location.href);
+
+        if (!url.searchParams.has("returnTo")) {
+          url.searchParams.set("returnTo", currentPage);
+          link.href = url.href;
+        }
+      } catch (error) {
+        console.warn("No se pudo añadir returnTo al enlace de playground:", error);
+      }
+    });
+  }
+
+document.addEventListener("DOMContentLoaded", addReturnToToPlaygroundLinks);
+
   async function syncCompletionUI() {
     try {
       const subtopicDone = await subtopicCompletion.isCompleted();
