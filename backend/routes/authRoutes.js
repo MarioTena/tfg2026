@@ -355,7 +355,8 @@ router.post("/forgot-password", async (req, res) => {
     user.resetPasswordExpires = expires;
     await user.save();
 
-    const resetUrl = `${getAppBaseUrl()}/reset-password.html?token=${encodeURIComponent(rawToken)}`;
+    const frontendUrl = process.env.FRONTEND_URL.replace(/\/+$/, "");
+    const resetUrl = `${frontendUrl}/reset-password.html?token=${encodeURIComponent(rawToken)}`;
 
     await sendResetPasswordEmail({
       to: user.email,
