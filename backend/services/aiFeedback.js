@@ -1,8 +1,3 @@
-// ============================================================================
-// aiFeedback.js
-// IA real + validación + fallback técnico mejorado
-// ============================================================================
-
 const OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions";
 
 // ----------------------------------------------------------------------------
@@ -317,7 +312,7 @@ Restricción extra:
 }
 
 // ----------------------------------------------------------------------------
-// Fallback técnico mejorado
+// Fallback técnico
 // ----------------------------------------------------------------------------
 function buildTechnicalFallback(attempt, extraContext = {}) {
   const issueType = detectIssueType(attempt);
