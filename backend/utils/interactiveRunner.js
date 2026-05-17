@@ -10,7 +10,6 @@ const sessions = new Map();
 
 const MAX_SESSION_MS = 5 * 60 * 1000; // 5 minutos
 const INACTIVITY_MS = 90 * 1000; // 90 segundos
-const DOCKER_IMAGE_PYTHON = "python:3.11";
 
 function mapSessionStatusToAttemptStatus(status) {
   if (status === "success") return "success";
@@ -96,95 +95,8 @@ function scheduleInactivityTimeout(session) {
   }, INACTIVITY_MS);
 }
 
-function buildInteractiveDockerArgs(tempDir) {
-  return [
-    "run",
-    "--rm",
-    "-i",
-    "--network",
-    "none",
-    "--memory",
-    "128m",
-    "--cpus",
-    "0.5",
-    "--pids-limit",
-    "64",
-    "-v",
-    `${tempDir}:/app:ro`,
-    "--tmpfs",
-    "/tmp:rw,noexec,nosuid,size=16m",
-    DOCKER_IMAGE_PYTHON,
-    "python",
-    "/app/main.py",
-  ];
-}
-
-async function startInteractivePythonSession({
-  code,
-  userId,
-  socket,
-  io,
-  language = "python",
-  exerciseId = null,
-  topic = null,
-}) {
-  const sessionId = randomUUID();
-  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "tfg-python-"));
-  const scriptPath = path.join(tempDir, "main.py");
-
-  const validationError = validateUserCode(code);
-
-  if (validationError) {
-    throw new Error(validationError);
-  }
-
-  fs.writeFileSync(scriptPath, code, "utf8");
-
-  const proc = spawn("python3", [scriptPath], {
-    stdio: ["pipe", "pipe", "pipe"],
-    env: {
-      PATH: process.env.PATH,
-      PYTHONIOENCODING: "utf-8",
-    },
-  });
-
-  const attempt = await Attempt.create({
-    userId,
-    language,
-    topic: topic || null,
-    exerciseId: exerciseId || null,
-    code,
-    stdin: "",
-    stdout: "",
-    stderr: "",
-    status: "error",
-    timeMs: 0,
-  });
-
-  const emitToSocket = (event, payload) => {
-    io.to(socket.id).emit(event, payload);
-  };
-
-  const session = {
-    sessionId,
-    userId,
-    socketId: socket.id,
-    proc,
-    tempDir,
-    finished: false,
-    startedAt: Date.now(),
-    lastActivityAt: Date.now(),
-    timeout: null,
-    inactivityTimeout: null,
-    emitToSocket,
-    attemptId: attempt._id,
-    attemptFinalized: false,
-    stdoutBuffer: "",
-    stderrBuffer: "",
-    stdinBuffer: "",
-  };
-
-  sessions.set(sessionId, session);
+function attachProcessHandlers(session, proc) {
+  const { sessionId, emitToSocket } = session;
 
   proc.stdout.on("data", (chunk) => {
     const text = chunk.toString();
@@ -215,6 +127,8 @@ async function startInteractivePythonSession({
   });
 
   proc.on("error", async (error) => {
+    if (session.finished) return;
+
     session.finished = true;
     session.stderrBuffer += `\nError lanzando proceso: ${error.message}`;
 
@@ -252,28 +166,109 @@ async function startInteractivePythonSession({
 
     await cleanupSession(sessionId, finalStatus);
   });
+}
+
+function launchPythonProcess(session, scriptPath) {
+  const proc = spawn("python3", [scriptPath], {
+    stdio: ["pipe", "pipe", "pipe"],
+    env: {
+      PATH: process.env.PATH,
+      PYTHONIOENCODING: "utf-8",
+    },
+  });
+
+  session.proc = proc;
+  attachProcessHandlers(session, proc);
 
   session.timeout = setTimeout(async () => {
     if (!session.finished) {
       session.finished = true;
       session.stderrBuffer += "\nLa sesión interactiva ha alcanzado el tiempo máximo permitido.";
 
-      emitToSocket("console:error", {
-        sessionId,
+      session.emitToSocket("console:error", {
+        sessionId: session.sessionId,
         message: "La sesión interactiva ha alcanzado el tiempo máximo permitido.",
       });
 
-      emitToSocket("console:end", {
-        sessionId,
+      session.emitToSocket("console:end", {
+        sessionId: session.sessionId,
         status: "timeout_total",
         attemptId: session.attemptId || null,
       });
 
-      await cleanupSession(sessionId, "timeout_total");
+      await cleanupSession(session.sessionId, "timeout_total");
     }
   }, MAX_SESSION_MS);
 
   scheduleInactivityTimeout(session);
+}
+
+async function startInteractivePythonSession({
+  code,
+  userId,
+  socket,
+  io,
+  language = "python",
+  exerciseId = null,
+  topic = null,
+}) {
+  const sessionId = randomUUID();
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "tfg-python-"));
+  const scriptPath = path.join(tempDir, "main.py");
+
+  const validationError = validateUserCode(code);
+
+  if (validationError) {
+    throw new Error(validationError);
+  }
+
+  fs.writeFileSync(scriptPath, code, "utf8");
+
+  const attempt = await Attempt.create({
+    userId,
+    language,
+    topic: topic || null,
+    exerciseId: exerciseId || null,
+    code,
+    stdin: "",
+    stdout: "",
+    stderr: "",
+    status: "error",
+    timeMs: 0,
+  });
+
+  const emitToSocket = (event, payload) => {
+    io.to(socket.id).emit(event, payload);
+  };
+
+  const session = {
+    sessionId,
+    userId,
+    socketId: socket.id,
+    proc: null,
+    tempDir,
+    scriptPath,
+    finished: false,
+    startedAt: Date.now(),
+    lastActivityAt: Date.now(),
+    timeout: null,
+    inactivityTimeout: null,
+    emitToSocket,
+    attemptId: attempt._id,
+    attemptFinalized: false,
+    stdoutBuffer: "",
+    stderrBuffer: "",
+    stdinBuffer: "",
+  };
+
+  sessions.set(sessionId, session);
+
+  setTimeout(() => {
+    const currentSession = sessions.get(sessionId);
+    if (!currentSession || currentSession.finished) return;
+
+    launchPythonProcess(currentSession, scriptPath);
+  }, 100);
 
   return {
     sessionId,
@@ -294,6 +289,10 @@ function sendInputToSession({ sessionId, input, userId }) {
 
   if (session.finished) {
     throw new Error("La sesión ya ha terminado");
+  }
+
+  if (!session.proc || !session.proc.stdin) {
+    throw new Error("La consola todavía se está iniciando. Inténtalo de nuevo.");
   }
 
   session.lastActivityAt = Date.now();
