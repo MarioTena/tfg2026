@@ -47,7 +47,8 @@ function renderAppTopbar() {
 
   const menuHref = buildTopbarHref(root, "menu.html");
   const progressHref = buildTopbarHref(root, "progreso.html");
-  const playgroundHref = buildTopbarHref(root, "playground/index.html?lang=python");
+  const returnTo = encodeURIComponent(window.location.href);
+  const playgroundHref = buildTopbarHref(root, `playground/index.html?lang=python&returnTo=${returnTo}`);
   const configHref = buildTopbarHref(root, "configuracion.html");
   const loginHref = buildTopbarHref(root, "login.html");
 
