@@ -31,18 +31,18 @@ function initCheckpointPage({
     nextUrl: goToExercisesUrl
   });
 
+  let currentAttempt = 0;
+
   function getAttempts() {
-    const raw = localStorage.getItem(attemptStorageKey);
-    const parsed = Number(raw);
-    return Number.isFinite(parsed) && parsed > 0 ? parsed : 0;
+    return currentAttempt;
   }
 
   function setAttempts(value) {
-    localStorage.setItem(attemptStorageKey, String(value));
+    currentAttempt = value;
   }
 
   function resetAttempts() {
-    localStorage.removeItem(attemptStorageKey);
+    currentAttempt = 0;
   }
 
   function getSelectedValue(name) {
@@ -50,10 +50,48 @@ function initCheckpointPage({
     return checked ? checked.value : null;
   }
 
-  function showResult(message) {
-    if (!quizResult) return;
-    quizResult.textContent = message;
-    quizResult.style.display = "block";
+function showResult(message, type = "info") {
+  if (!quizResult) return;
+
+    const config = {
+      success: {
+        icon: "✅",
+        title: "Checkpoint superado",
+        className: "checkpoint-result-success"
+      },
+      warning: {
+        icon: "💡",
+        title: "Sigue intentándolo",
+        className: "checkpoint-result-warning"
+      },
+      danger: {
+        icon: "⚠️",
+        title: "Checkpoint no superado todavía",
+        className: "checkpoint-result-danger"
+      },
+      error: {
+        icon: "❌",
+        title: "No se pudo guardar el resultado",
+        className: "checkpoint-result-error"
+      },
+      info: {
+        icon: "ℹ️",
+        title: "Estado del checkpoint",
+        className: "checkpoint-result-info"
+      }
+    };
+
+    const result = config[type] || config.info;
+
+    quizResult.className = `checkpoint-result ${result.className}`;
+    quizResult.innerHTML = `
+      <div class="checkpoint-result-icon">${result.icon}</div>
+      <div>
+        <h3>${result.title}</h3>
+        <p>${message}</p>
+      </div>
+    `;
+    quizResult.style.display = "flex";
   }
 
   function hideUnlockHint() {
@@ -158,10 +196,10 @@ function initCheckpointPage({
       disableQuizAfterPass();
       hideUnlockHint();
       resetAttempts();
-      showResult(passResultMessage.replace("{score}", score));
+      showResult(passResultMessage.replace("{score}", score), "success");
     } catch (error) {
       console.error(error);
-      showResult(passErrorMessage);
+      showResult(passErrorMessage, "error");
     }
   }
 
@@ -185,7 +223,7 @@ function initCheckpointPage({
         showPassedCard();
         disableQuizAfterPass();
         hideUnlockHint();
-        showResult(passSyncMessage);
+        showResult(passSyncMessage, "success");
       }
     } catch (error) {
       console.error("Error comprobando el checkpoint:", error);
@@ -206,7 +244,10 @@ function initCheckpointPage({
     }
 
     const buildMessage = failMessageBuilder || defaultFailMessageBuilder;
-    showResult(buildMessage(score, nextAttempt));
+    const resultType = nextAttempt >= 3 ? "danger" : "warning";
+
+showResult(buildMessage(score, nextAttempt), resultType);
+    showResult(buildMessage(score, nextAttempt), resultType);
   });
 
   syncQuizUI();

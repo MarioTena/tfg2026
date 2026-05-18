@@ -3070,3 +3070,100 @@ body.theme-light .topbar-user-link-button:hover {
   background: #eef4ff;
   border-color: #bfdbfe;
 }
+
+.checkpoint-result {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-top: 22px;
+  padding: 18px 20px;
+  border-radius: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.92), rgba(30, 41, 59, 0.74));
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
+}
+
+.checkpoint-result-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.checkpoint-result h3 {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+}
+
+.checkpoint-result p {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--text-main);
+}
+
+.checkpoint-result-success {
+  border-color: rgba(34, 197, 94, 0.45);
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.18), rgba(15, 23, 42, 0.86));
+}
+
+.checkpoint-result-success .checkpoint-result-icon {
+  background: rgba(34, 197, 94, 0.2);
+}
+
+.checkpoint-result-success h3 {
+  color: #86efac;
+}
+
+.checkpoint-result-warning {
+  border-color: rgba(250, 204, 21, 0.45);
+  background: linear-gradient(135deg, rgba(250, 204, 21, 0.14), rgba(15, 23, 42, 0.86));
+}
+
+.checkpoint-result-warning .checkpoint-result-icon {
+  background: rgba(250, 204, 21, 0.18);
+}
+
+.checkpoint-result-warning h3 {
+  color: #fde68a;
+}
+
+.checkpoint-result-error {
+  border-color: rgba(248, 113, 113, 0.45);
+  background: linear-gradient(135deg, rgba(248, 113, 113, 0.16), rgba(15, 23, 42, 0.86));
+}
+
+.checkpoint-result-error .checkpoint-result-icon {
+  background: rgba(248, 113, 113, 0.2);
+}
+
+.checkpoint-result-error h3 {
+  color: #fca5a5;
+}
+
+.checkpoint-result-info {
+  border-color: rgba(96, 165, 250, 0.45);
+}
+
+.checkpoint-result-info .checkpoint-result-icon {
+  background: rgba(96, 165, 250, 0.18);
+}
+
+.checkpoint-result-info h3 {
+  color: #93c5fd;
+}
+
+.checkpoint-result-danger {
+  border-color: rgba(248, 113, 113, 0.45);
+  background: linear-gradient(135deg, rgba(248, 113, 113, 0.14), rgba(15, 23, 42, 0.86));
+}
+
+.checkpoint-result-danger .checkpoint-result-icon {
+  background: rgba(248, 113, 113, 0.18);
+}
+
+.checkpoint-result-danger h3 {
+  color: #fca5a5;
+}
