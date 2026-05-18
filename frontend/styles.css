@@ -1184,45 +1184,6 @@ code {
   max-width: 900px;
 }
 
-#retos .theory-grid {
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-}
-
-#retos .theory-card {
-  position: relative;
-  padding-top: 1rem;
-  background:
-    radial-gradient(circle at top right, rgba(79,140,255,0.10), transparent 30%),
-    linear-gradient(180deg, rgba(18,33,68,0.96), rgba(9,17,33,0.95));
-  border-color: rgba(79,140,255,0.18);
-  transition: none;
-  cursor: default;
-}
-
-#retos .theory-card:hover {
-  transform: none;
-  box-shadow: var(--shadow-lg);
-  border-color: rgba(79,140,255,0.18);
-}
-
-#retos .theory-card::before {
-  content: none;
-}
-
-#retos .theory-card h3 {
-  font-size: 1.05rem;
-  margin-bottom: 0.55rem;
-}
-
-#retos .theory-card p {
-  margin-bottom: 0.85rem;
-}
-
-#retos .theory-card pre {
-  margin-top: 0.85rem;
-  margin-bottom: 0;
-}
-
 .exercise-card .exercise-block,
 .panel .challenge {
   backdrop-filter: blur(8px);
@@ -3166,4 +3127,109 @@ body.theme-light .topbar-user-link-button:hover {
 
 .checkpoint-result-danger h3 {
   color: #fca5a5;
+}
+
+/* =========================================================
+   CHECKPOINT RESULT - MODO CLARO
+   ========================================================= */
+
+body.theme-light .checkpoint-result {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%) !important;
+  border: 1px solid #d6dfec !important;
+  color: #1e293b !important;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08) !important;
+}
+
+body.theme-light .checkpoint-result h3 {
+  color: #1e293b !important;
+  text-shadow: none !important;
+}
+
+body.theme-light .checkpoint-result p {
+  color: #475569 !important;
+}
+
+/* Estado correcto */
+body.theme-light .checkpoint-result-success {
+  background: linear-gradient(180deg, #ecfdf3 0%, #dcfce7 100%) !important;
+  border: 1px solid #86efac !important;
+}
+
+body.theme-light .checkpoint-result-success .checkpoint-result-icon {
+  background: #bbf7d0 !important;
+  color: #166534 !important;
+}
+
+body.theme-light .checkpoint-result-success h3 {
+  color: #166534 !important;
+}
+
+/* Estado aviso */
+body.theme-light .checkpoint-result-warning {
+  background: linear-gradient(180deg, #fffbeb 0%, #fef3c7 100%) !important;
+  border: 1px solid #fcd34d !important;
+}
+
+body.theme-light .checkpoint-result-warning .checkpoint-result-icon {
+  background: #fde68a !important;
+  color: #92400e !important;
+}
+
+body.theme-light .checkpoint-result-warning h3 {
+  color: #92400e !important;
+}
+
+/* Estado error */
+body.theme-light .checkpoint-result-error,
+body.theme-light .checkpoint-result-danger {
+  background: linear-gradient(180deg, #fff1f2 0%, #ffe4e6 100%) !important;
+  border: 1px solid #fda4af !important;
+}
+
+body.theme-light .checkpoint-result-error .checkpoint-result-icon,
+body.theme-light .checkpoint-result-danger .checkpoint-result-icon {
+  background: #fecdd3 !important;
+  color: #991b1b !important;
+}
+
+body.theme-light .checkpoint-result-error h3,
+body.theme-light .checkpoint-result-danger h3 {
+  color: #991b1b !important;
+}
+
+/* Estado info */
+body.theme-light .checkpoint-result-info {
+  background: linear-gradient(180deg, #eff6ff 0%, #dbeafe 100%) !important;
+  border: 1px solid #93c5fd !important;
+}
+
+body.theme-light .checkpoint-result-info .checkpoint-result-icon {
+  background: #bfdbfe !important;
+  color: #1d4ed8 !important;
+}
+
+body.theme-light .checkpoint-result-info h3 {
+  color: #1d4ed8 !important;
+}
+
+
+/* =========================================================
+   RETOS CON ID #retos - SOLO MODO CLARO
+   ========================================================= */
+
+body.theme-light #retos .theory-card {
+  background: linear-gradient(180deg, #f8fbff 0%, #eef3fb 100%) !important;
+  border: 1px solid #d6dfec !important;
+  color: #1e293b !important;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08) !important;
+}
+
+body.theme-light #retos .theory-card h3 {
+  color: #1e293b !important;
+  text-shadow: none !important;
+}
+
+body.theme-light #retos .theory-card p,
+body.theme-light #retos .theory-card li {
+  color: #475569 !important;
 }
