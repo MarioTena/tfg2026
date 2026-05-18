@@ -243,8 +243,12 @@ function updateNextStep(completedTopics) {
   const progress = getThemeProgress(nextTheme, completedTopics);
 
   if (nextStepCard) {
+    nextStepCard.classList.remove("current");
+    nextStepCard.classList.remove("available");
+    nextStepCard.classList.add("completed");
+
     nextStepCard.onclick = () => {
-      window.location.href = nextTheme.file;
+      window.location.href = "temas/python/index.html";
     };
   }
 
