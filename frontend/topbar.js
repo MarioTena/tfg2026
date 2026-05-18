@@ -42,6 +42,9 @@ function renderAppTopbar() {
   const hideMenu = mount.dataset.hideMenu === "true";
   const hideRoute = mount.dataset.hideRoute === "true";
   const hideTopic = mount.dataset.hideTopic === "true";
+  const hidePlayground = mount.dataset.hidePlayground === "true";
+  const hideProgress = mount.dataset.hideProgress === "true";
+  const hideConfig = mount.dataset.hideConfig === "true";
 
   const user = getStoredTopbarUser();
 
@@ -72,9 +75,9 @@ function renderAppTopbar() {
           </button>
 
           <div id="topbar-user-dropdown" class="topbar-user-dropdown">
-            <a class="topbar-user-link" href="${progressHref}">Mi progreso</a>
-            <a class="topbar-user-link" href="${playgroundHref}">Playground</a>
-            <a class="topbar-user-link" href="${configHref}">Configuración</a>
+            ${hideProgress ? "" : `<a class="topbar-user-link" href="${progressHref}">Mi progreso</a>`}
+            ${hidePlayground ? "" : `<a class="topbar-user-link" href="${playgroundHref}">Playground</a>`}
+            ${hideConfig ? "" : `<a class="topbar-user-link" href="${configHref}">Configuración</a>`}
             <button id="topbar-logout-btn" class="topbar-user-link topbar-user-link-button" type="button">Cerrar sesión</button>
           </div>
         </div>
