@@ -304,7 +304,12 @@
       const url = new URL(rawHref, window.location.href);
 
       if (!url.searchParams.has("returnTo")) {
-        url.searchParams.set("returnTo", normalizedReturnTo);
+        const currentPageReturnTo =
+          window.location.pathname +
+          window.location.search +
+          window.location.hash;
+
+        url.searchParams.set("returnTo", currentPageReturnTo);
       }
 
       link.setAttribute("href", url.pathname + url.search);
