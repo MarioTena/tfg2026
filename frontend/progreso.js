@@ -132,6 +132,10 @@ function getNextRecommendedTheme(completedTopics) {
     || pythonRoute[pythonRoute.length - 1];
 }
 
+function isPythonRouteCompleted(completedTopics) {
+  return pythonRoute.every(theme => getThemeProgress(theme, completedTopics).completed);
+}
+
 function updateGlobalProgress(completedTopics) {
   const totalThemes = pythonRoute.length;
   const completedThemes = pythonRoute.filter(theme => getThemeProgress(theme, completedTopics).completed).length;
@@ -194,6 +198,47 @@ function updateGlobalProgress(completedTopics) {
 }
 
 function updateNextStep(completedTopics) {
+  if (isPythonRouteCompleted(completedTopics)) {
+    if (nextStepCard) {
+      nextStepCard.onclick = () => {
+        window.location.href = "temas/python/index.html";
+      };
+    }
+
+    if (nextStepTag) {
+      nextStepTag.textContent = "Ruta completada";
+    }
+
+    if (nextStepTitle) {
+      nextStepTitle.textContent = "Has completado la ruta Python";
+    }
+
+    if (nextStepChip1) {
+      nextStepChip1.textContent = `${pythonRoute.length}/${pythonRoute.length} temas`;
+    }
+
+    if (nextStepChip2) {
+      nextStepChip2.textContent = "Completado";
+    }
+
+    if (nextStepCta) {
+      nextStepCta.textContent =
+        "Ya no tienes un tema pendiente. Puedes repasar contenidos, repetir ejercicios o practicar retos y proyectos.";
+    }
+
+    if (nextStepDesc) {
+      nextStepDesc.textContent =
+        "Ruta finalizada. El siguiente paso recomendado es repasar la ruta Python o practicar con los retos acumulativos y proyectos finales.";
+    }
+
+    if (profileContinueBtn) {
+      profileContinueBtn.href = "temas/python/index.html";
+      profileContinueBtn.textContent = "Repasar ruta Python";
+    }
+
+    return;
+  }
+
   const nextTheme = getNextRecommendedTheme(completedTopics);
   const progress = getThemeProgress(nextTheme, completedTopics);
 

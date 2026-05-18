@@ -193,6 +193,55 @@ function updateMenuProgress(completedTopics) {
   }
 }
 
+function isPythonRouteCompleted(completedTopics) {
+  return pythonRoute.every(theme => getThemeProgress(theme, completedTopics).completed);
+}
+
+function updateCompletedRouteBlock() {
+  if (menuProgressCopyEl) {
+    menuProgressCopyEl.textContent = `Ruta Python completada · ${pythonRoute.length}/${pythonRoute.length} temas`;
+  }
+
+  if (menuProgressFillEl) {
+    menuProgressFillEl.style.width = "100%";
+  }
+
+  if (recommendedCard) {
+    recommendedCard.classList.remove("current");
+    recommendedCard.classList.add("completed");
+    recommendedCard.onclick = () => {
+      window.location.href = "temas/python/index.html";
+    };
+  }
+
+  if (recommendedTag) {
+    recommendedTag.textContent = "Ruta completada";
+  }
+
+  if (recommendedTitle) {
+    recommendedTitle.textContent = "Has completado todos los temas de Python";
+  }
+
+  if (recommendedChip1) {
+    recommendedChip1.textContent = `${pythonRoute.length}/${pythonRoute.length} temas`;
+  }
+
+  if (recommendedChip2) {
+    recommendedChip2.textContent = "Completado";
+  }
+
+  if (recommendedCta) {
+    recommendedCta.textContent =
+      "Puedes repasar la ruta, volver a los ejercicios, resolver retos acumulativos o practicar proyectos finales.";
+  }
+
+  if (continueLearningBtn) {
+    continueLearningBtn.href = "temas/python/index.html";
+    continueLearningBtn.textContent = "Repasar ruta Python";
+    continueLearningBtn.onclick = null;
+  }
+}
+
 function updateRecommendedBlock(nextTheme, completedTopics) {
   if (!nextTheme) return;
 
@@ -269,10 +318,16 @@ async function loadMenuProgress() {
 
     const data = await res.json();
     const completedTopics = data?.progress?.completedTopics || [];
-    const nextTheme = getNextRecommendedTheme(completedTopics);
 
     updateWelcomeUser();
     updateMenuProgress(completedTopics);
+
+    if (isPythonRouteCompleted(completedTopics)) {
+      updateCompletedRouteBlock();
+      return;
+    }
+
+    const nextTheme = getNextRecommendedTheme(completedTopics);
     updateRecommendedBlock(nextTheme, completedTopics);
   } catch (error) {
     console.error("Error cargando progreso del menú:", error);
