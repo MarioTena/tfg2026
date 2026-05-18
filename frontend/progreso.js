@@ -200,6 +200,21 @@ function updateGlobalProgress(completedTopics) {
 function updateNextStep(completedTopics) {
   if (isPythonRouteCompleted(completedTopics)) {
     if (nextStepCard) {
+      nextStepCard.classList.remove("current");
+      nextStepCard.classList.remove("available");
+      nextStepCard.classList.remove("locked");
+      nextStepCard.classList.add("completed");
+
+      const nextStepState = nextStepCard.querySelector(".roadmap-state");
+
+      if (nextStepState) {
+        nextStepState.classList.remove("current");
+        nextStepState.classList.remove("available");
+        nextStepState.classList.remove("locked");
+        nextStepState.classList.add("completed");
+        nextStepState.textContent = "Completada";
+      }
+
       nextStepCard.onclick = () => {
         window.location.href = "temas/python/index.html";
       };
@@ -243,21 +258,21 @@ function updateNextStep(completedTopics) {
   const progress = getThemeProgress(nextTheme, completedTopics);
 
   if (nextStepCard) {
-    nextStepCard.classList.remove("current");
+    nextStepCard.classList.remove("completed");
     nextStepCard.classList.remove("available");
-    nextStepCard.classList.add("completed");
+    nextStepCard.classList.add("current");
 
     const nextStepState = nextStepCard.querySelector(".roadmap-state");
 
     if (nextStepState) {
-      nextStepState.classList.remove("current");
+      nextStepState.classList.remove("completed");
       nextStepState.classList.remove("available");
-      nextStepState.classList.add("completed");
-      nextStepState.textContent = "Completada";
+      nextStepState.classList.add("current");
+      nextStepState.textContent = "Sigue aquí";
     }
 
     nextStepCard.onclick = () => {
-      window.location.href = "temas/python/index.html";
+      window.location.href = nextTheme.file;
     };
   }
 
