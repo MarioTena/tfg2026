@@ -1,4 +1,8 @@
 initThemeProgress({
+  nextTheme: {
+    label: "Tema 10",
+    href: "../tema-10/index.html"
+  },
   topics: [
     {
       id: "9.1",

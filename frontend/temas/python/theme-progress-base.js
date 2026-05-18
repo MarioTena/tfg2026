@@ -76,8 +76,8 @@ function initThemeProgress(config) {
 
     if (continueBtn) {
       if (done === total && total > 0) {
-        continueBtn.href = "./index.html";
-        continueBtn.textContent = "Revisar tema";
+        continueBtn.href = config.nextTheme?.href || "../index.html";
+        continueBtn.textContent = config.nextTheme?.label || "Volver a la ruta Python";
       } else {
         const nextTopic = getNextAvailableTopic(completed);
         if (nextTopic) {

@@ -1,4 +1,8 @@
 initThemeProgress({
+nextTheme: {
+  label: "Ir a retos finales",
+  href: "../retos/index.html"
+},
   topics: [
     {
       id: "10.1",
