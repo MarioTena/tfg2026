@@ -208,7 +208,18 @@ function updateCompletedRouteBlock() {
 
   if (recommendedCard) {
     recommendedCard.classList.remove("current");
+    recommendedCard.classList.remove("available");
     recommendedCard.classList.add("completed");
+
+    const recommendedState = recommendedCard.querySelector(".roadmap-state");
+
+    if (recommendedState) {
+      recommendedState.classList.remove("current");
+      recommendedState.classList.remove("available");
+      recommendedState.classList.add("completed");
+      recommendedState.textContent = "Completada";
+    }
+
     recommendedCard.onclick = () => {
       window.location.href = "temas/python/index.html";
     };

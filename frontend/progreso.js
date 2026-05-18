@@ -247,6 +247,15 @@ function updateNextStep(completedTopics) {
     nextStepCard.classList.remove("available");
     nextStepCard.classList.add("completed");
 
+    const nextStepState = nextStepCard.querySelector(".roadmap-state");
+
+    if (nextStepState) {
+      nextStepState.classList.remove("current");
+      nextStepState.classList.remove("available");
+      nextStepState.classList.add("completed");
+      nextStepState.textContent = "Completada";
+    }
+
     nextStepCard.onclick = () => {
       window.location.href = "temas/python/index.html";
     };
