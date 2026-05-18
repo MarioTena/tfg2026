@@ -20,7 +20,6 @@ function validateUserCode(code) {
     /from\s+socket\s+import\b/,
     /import\s+shutil\b/,
     /from\s+shutil\s+import\b/,
-    /open\s*\(/,
     /exec\s*\(/,
     /eval\s*\(/,
     /compile\s*\(/,
@@ -28,7 +27,6 @@ function validateUserCode(code) {
     /globals\s*\(/,
     /locals\s*\(/,
     /vars\s*\(/,
-    /while\s+True\s*:/,
   ];
 
   for (const pattern of forbiddenPatterns) {
