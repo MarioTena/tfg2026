@@ -6,7 +6,7 @@
   <title>Verificar correo</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body data-force-dark="true">
   <header class="header">
     <span class="mission-tag">Cuenta</span>
     <h1>Verificación de correo</h1>
@@ -26,6 +26,19 @@
         <div class="exercise-block">
           <p id="verify-status" class="status-msg" style="display:none;"></p>
 
+          <div id="resend-verification-panel" style="display:none; margin-top:16px;">
+            <div class="field">
+              <label for="resend-email">Email</label>
+              <input id="resend-email" type="email" placeholder="tuemail@ejemplo.com" autocomplete="email" />
+              <p class="mini-note">Introduce el email con el que creaste la cuenta para recibir un nuevo enlace.</p>
+            </div>
+
+            <button id="resend-verification-btn" class="btn btn-secondary" type="button">
+              Reenviar correo de verificación
+            </button>
+
+            <p id="resend-status" class="status-msg" style="display:none;"></p>
+          </div>
           <div class="buttons-row" style="margin-top:16px;">
             <a class="btn btn-primary" href="login.html">Ir a login</a>
             <a class="btn btn-secondary" href="register.html">Volver a registro</a>

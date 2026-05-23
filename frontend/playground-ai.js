@@ -43,6 +43,7 @@
   app.loadAiCredits = async function loadAiCredits() {
     const token = this.getToken();
     const topic = this.getCurrentTopic();
+    const exerciseId = this.state.currentExerciseId || "";
 
     if (!token || !topic || !this.dom.aiCreditsEl) {
       this.state.remainingAiCredits = null;
@@ -52,9 +53,12 @@
     }
 
     try {
-      const res = await fetch(`${this.api.aiCredits}?topic=${encodeURIComponent(topic)}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await fetch(
+        `${this.api.aiCredits}?topic=${encodeURIComponent(topic)}&exerciseId=${encodeURIComponent(exerciseId)}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
 
       const data = await res.json();
 

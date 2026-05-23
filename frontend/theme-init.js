@@ -30,5 +30,13 @@ function applyTheme(theme) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  const forceDark = document.body?.dataset.forceDark === "true";
+
+  if (forceDark) {
+    document.body.classList.remove("theme-light");
+    document.body.classList.add("theme-dark");
+    return;
+  }
+
   applyTheme(getStoredTheme());
 });

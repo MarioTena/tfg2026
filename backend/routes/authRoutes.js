@@ -2,8 +2,6 @@ const express = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
-const path = require("path");
-const fs = require("fs");
 const multer = require("multer");
 const User = require("../models/User");
 const { requireAuth } = require("../middleware/requireAuth");
@@ -15,22 +13,7 @@ const {
 
 const router = express.Router();
 
-const avatarsDir = path.join(__dirname, "..", "uploads", "avatars");
-
-if (!fs.existsSync(avatarsDir)) {
-  fs.mkdirSync(avatarsDir, { recursive: true });
-}
-
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, avatarsDir);
-  },
-  filename: (req, file, cb) => {
-    const ext = path.extname(file.originalname || "").toLowerCase() || ".jpg";
-    const safeExt = [".jpg", ".jpeg", ".png", ".webp"].includes(ext) ? ext : ".jpg";
-    cb(null, `avatar-${req.user.id}-${Date.now()}${safeExt}`);
-  },
-});
+const storage = multer.memoryStorage();
 
 function avatarFileFilter(req, file, cb) {
   const allowed = ["image/jpeg", "image/png", "image/webp"];
@@ -67,45 +50,8 @@ function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-function getAppBaseUrl() {
-  const baseUrl = process.env.APP_BASE_URL;
-  if (!baseUrl) {
-    throw new Error("Falta APP_BASE_URL en el .env");
-  }
-  return baseUrl.replace(/\/+$/, "");
-}
-
 function hashToken(rawToken) {
   return crypto.createHash("sha256").update(rawToken).digest("hex");
-}
-
-function buildAvatarUrl(filename) {
-  return `${getAppBaseUrl()}/uploads/avatars/${filename}`;
-}
-
-function deleteOldAvatarFile(avatarUrl) {
-  if (!avatarUrl) return;
-
-  try {
-    const parsed = new URL(avatarUrl);
-    const filename = path.basename(parsed.pathname);
-    if (!filename) return;
-
-    const absolutePath = path.join(avatarsDir, filename);
-
-    if (fs.existsSync(absolutePath)) {
-      fs.unlinkSync(absolutePath);
-    }
-  } catch {
-    try {
-      const filename = path.basename(String(avatarUrl));
-      const absolutePath = path.join(avatarsDir, filename);
-
-      if (fs.existsSync(absolutePath)) {
-        fs.unlinkSync(absolutePath);
-      }
-    } catch {}
-  }
 }
 
 router.post("/register", async (req, res) => {
@@ -475,32 +421,41 @@ router.post("/avatar", requireAuth, (req, res) => {
         if (error.code === "LIMIT_FILE_SIZE") {
           return res.status(400).json({ ok: false, error: "La imagen no puede superar 2 MB." });
         }
-        return res.status(400).json({ ok: false, error: error.message || "No se pudo subir la imagen." });
+
+        return res.status(400).json({
+          ok: false,
+          error: error.message || "No se pudo subir la imagen."
+        });
       }
 
       if (error) {
-        return res.status(400).json({ ok: false, error: error.message || "No se pudo subir la imagen." });
+        return res.status(400).json({
+          ok: false,
+          error: error.message || "No se pudo subir la imagen."
+        });
       }
 
       if (!req.file) {
-        return res.status(400).json({ ok: false, error: "Debes seleccionar una imagen." });
+        return res.status(400).json({
+          ok: false,
+          error: "Debes seleccionar una imagen."
+        });
       }
 
       const user = await User.findById(req.user.id);
 
       if (!user) {
-        return res.status(404).json({ ok: false, error: "Usuario no encontrado." });
+        return res.status(404).json({
+          ok: false,
+          error: "Usuario no encontrado."
+        });
       }
 
-      const oldAvatarUrl = user.avatarUrl || null;
-      const avatarUrl = buildAvatarUrl(req.file.filename);
+      const avatarBase64 = req.file.buffer.toString("base64");
+      const avatarDataUrl = `data:${req.file.mimetype};base64,${avatarBase64}`;
 
-      user.avatarUrl = avatarUrl;
+      user.avatarUrl = avatarDataUrl;
       await user.save();
-
-      if (oldAvatarUrl) {
-        deleteOldAvatarFile(oldAvatarUrl);
-      }
 
       return res.json({
         ok: true,
@@ -516,7 +471,10 @@ router.post("/avatar", requireAuth, (req, res) => {
       });
     } catch (e) {
       console.error("Error en /avatar:", e);
-      return res.status(500).json({ ok: false, error: "Error interno del servidor." });
+      return res.status(500).json({
+        ok: false,
+        error: "Error interno del servidor."
+      });
     }
   });
 });

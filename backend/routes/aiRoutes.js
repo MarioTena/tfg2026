@@ -9,20 +9,47 @@ const {
 
 const router = express.Router();
 
-async function getOrCreateAiCredit(userId, topic) {
+function getInitialAiCredits(topic) {
+  const safeTopic = String(topic || "").trim();
+
+  if (safeTopic === "python/retos") {
+    return 3;
+  }
+
+  if (safeTopic === "python/proyectos") {
+    return 4;
+  }
+
+  return 2;
+}
+
+function getAiCreditScope(topic, exerciseId) {
+  const safeTopic = String(topic || "").trim();
+  const safeExerciseId = String(exerciseId || "").trim();
+
+  if ((safeTopic === "python/retos" || safeTopic === "python/proyectos") && safeExerciseId) {
+    return safeExerciseId;
+  }
+
+  return safeTopic;
+}
+
+async function getOrCreateAiCredit(userId, topic, exerciseId = null) {
   const safeTopic = String(topic || "").trim();
 
   if (!safeTopic) {
     throw new Error("Topic no válido");
   }
 
+  const creditScope = getAiCreditScope(safeTopic, exerciseId);
+
   return AiCredit.findOneAndUpdate(
-    { userId, topic: safeTopic },
+    { userId, topic: creditScope },
     {
       $setOnInsert: {
         userId,
-        topic: safeTopic,
-        remainingCredits: 2,
+        topic: creditScope,
+        remainingCredits: getInitialAiCredits(safeTopic),
         usedCount: 0,
       },
     },
@@ -36,6 +63,7 @@ async function getOrCreateAiCredit(userId, topic) {
 router.get("/credits", requireAuth, async (req, res) => {
   try {
     const topic = String(req.query.topic || "").trim();
+    const exerciseId = String(req.query.exerciseId || "").trim();
 
     if (!topic) {
       return res.status(400).json({
@@ -44,7 +72,7 @@ router.get("/credits", requireAuth, async (req, res) => {
       });
     }
 
-    const creditDoc = await getOrCreateAiCredit(req.user.id, topic);
+    const creditDoc = await getOrCreateAiCredit(req.user.id, topic, exerciseId);
 
     return res.json({
       ok: true,
@@ -107,8 +135,7 @@ router.post("/hint", requireAuth, async (req, res) => {
       });
     }
 
-    const creditDoc = await getOrCreateAiCredit(req.user.id, safeTopic);
-
+    const creditDoc = await getOrCreateAiCredit(req.user.id, safeTopic, exerciseId);
     if (creditDoc.remainingCredits <= 0) {
       return res.status(403).json({
         ok: false,

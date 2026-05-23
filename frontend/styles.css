@@ -3233,3 +3233,32 @@ body.theme-light #retos .theory-card p,
 body.theme-light #retos .theory-card li {
   color: #475569 !important;
 }
+
+.field-error input {
+  border-color: rgba(255, 107, 129, 0.75) !important;
+  box-shadow:
+    0 0 0 4px rgba(255, 107, 129, 0.14),
+    0 0 22px rgba(255, 107, 129, 0.12) !important;
+}
+
+.field-error label {
+  color: var(--red) !important;
+}
+
+.field-error-message {
+  margin: 6px 0 0;
+  color: var(--red);
+  font-size: 0.84rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+body.theme-light .field-error input {
+  border-color: #dc2626 !important;
+  box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.10) !important;
+}
+
+body.theme-light .field-error label,
+body.theme-light .field-error-message {
+  color: #dc2626 !important;
+}

@@ -18,6 +18,80 @@ function showStatus(message = "", isError = true) {
   statusMsg.classList.toggle("status-error", isError && !!message);
 }
 
+function getFieldWrapper(input) {
+  return input?.closest(".field") || null;
+}
+
+function clearFieldErrors() {
+  [nameInput, emailInput, passwordInput].forEach((input) => {
+    const field = getFieldWrapper(input);
+    if (!field) return;
+
+    field.classList.remove("field-error");
+
+    const oldError = field.querySelector(".field-error-message");
+    if (oldError) oldError.remove();
+  });
+}
+
+function showFieldError(input, message) {
+  const field = getFieldWrapper(input);
+  if (!field) return;
+
+  field.classList.add("field-error");
+
+  let errorEl = field.querySelector(".field-error-message");
+  if (!errorEl) {
+    errorEl = document.createElement("p");
+    errorEl.className = "field-error-message";
+    field.appendChild(errorEl);
+  }
+
+  errorEl.textContent = message;
+}
+
+function validateRegisterForm() {
+  clearFieldErrors();
+
+  let isValid = true;
+
+  const name = nameInput.value.trim();
+  const email = emailInput.value.trim();
+  const password = passwordInput.value;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!name) {
+    showFieldError(nameInput, "Introduce tu nombre.");
+    isValid = false;
+  } else if (name.length < 2) {
+    showFieldError(nameInput, "El nombre debe tener al menos 2 caracteres.");
+    isValid = false;
+  }
+
+
+  if (!email) {
+    showFieldError(emailInput, "Introduce tu email.");
+    isValid = false;
+  } else if (!emailRegex.test(email)) {
+    showFieldError(emailInput, "Introduce un email válido.");
+    isValid = false;
+  }
+
+  if (!password) {
+    showFieldError(passwordInput, "Introduce una contraseña.");
+    isValid = false;
+  } else if (password.length < 8) {
+    showFieldError(passwordInput, "La contraseña debe tener al menos 8 caracteres.");
+    isValid = false;
+  }
+
+  if (!isValid) {
+    showStatus("Revisa los campos marcados.", true);
+  }
+
+  return isValid;
+}
+
 function showGoToLoginButton(email) {
   let loginBtn = document.getElementById("go-to-login-btn");
 
@@ -53,24 +127,7 @@ async function doRegister() {
   const email = emailInput.value.trim();
   const password = passwordInput.value;
 
-  if (!name || !email || !password) {
-    showStatus("Completa nombre, email y contraseña.");
-    isSubmitting = false;
-    registerBtn.disabled = false;
-    registerBtn.textContent = "Crear cuenta";
-    return;
-  }
-
-  if (name.length < 2) {
-    showStatus("El nombre debe tener al menos 2 caracteres.");
-    isSubmitting = false;
-    registerBtn.disabled = false;
-    registerBtn.textContent = "Crear cuenta";
-    return;
-  }
-
-  if (password.length < 8) {
-    showStatus("La contraseña debe tener al menos 8 caracteres.");
+  if (!validateRegisterForm()) {
     isSubmitting = false;
     registerBtn.disabled = false;
     registerBtn.textContent = "Crear cuenta";
@@ -114,6 +171,20 @@ async function doRegister() {
 registerBtn?.addEventListener("click", doRegister);
 
 [nameInput, emailInput, passwordInput].forEach((input) => {
+  input?.addEventListener("input", () => {
+    const field = getFieldWrapper(input);
+    if (!field) return;
+
+    field.classList.remove("field-error");
+
+    const oldError = field.querySelector(".field-error-message");
+    if (oldError) oldError.remove();
+
+    if (statusMsg?.textContent === "Revisa los campos marcados.") {
+      showStatus("");
+    }
+  });
+
   input?.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
