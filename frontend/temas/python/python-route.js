@@ -169,12 +169,25 @@ function renderRoute(completedTopics) {
 
   routeTopics.forEach(theme => {
     const progress = getThemeProgress(theme, completedTopics);
-    const state = progress.completed ? "completed" : (nextRecommended.id === theme.id ? "current" : "available");
+    const isRecommended = nextRecommended.id === theme.id;
+
+    const state =
+      progress.completed
+        ? "completed"
+        : progress.started
+        ? "current"
+        : "available";
 
     const stateLabel =
-      state === "completed" ? "Completado" :
-      state === "current" ? "Sigue aquí" :
-      progress.started ? "En progreso" : "Disponible";
+      state === "completed"
+        ? "Completado"
+        : progress.started && isRecommended
+        ? "Sigue aquí"
+        : progress.started
+        ? "En progreso"
+        : isRecommended
+        ? "Siguiente"
+        : "Disponible";
 
     const progressText = `${progress.completedCount}/${progress.total} bloques`;
 
@@ -199,10 +212,12 @@ function renderRoute(completedTopics) {
         ${
           state === "completed"
             ? "Tema completado · puedes repasarlo"
-            : state === "current"
+            : progress.started && isRecommended
             ? "Este es tu siguiente tema recomendado"
             : progress.started
-            ? "Ya has empezado este tema"
+            ? "Tema empezado · puedes retomarlo"
+            : isRecommended
+            ? "Siguiente tema recomendado"
             : "Disponible para entrar directamente"
         }
       </p>
