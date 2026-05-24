@@ -1,6 +1,7 @@
 const API_BASE_URL = window.APP_CONFIG?.API_BASE_URL || "http://localhost:3000";
 const API_URL = `${API_BASE_URL}/api/progress/python`;
 const token = localStorage.getItem("token");
+const LAST_THEME_STORAGE_KEY_PREFIX = "lastPythonTheme";
 
 const profileProgressCopyEl = document.getElementById("profile-progress-copy");
 const profileProgressFillEl = document.getElementById("profile-progress-fill");
@@ -127,9 +128,43 @@ function getThemeProgress(theme, completedTopics) {
   };
 }
 
-function getNextRecommendedTheme(completedTopics) {
+function getCurrentUserId() {
+  try {
+    const user = JSON.parse(localStorage.getItem("user") || "{}");
+    return user?.id ? String(user.id) : null;
+  } catch {
+    return null;
+  }
+}
+
+function getStoredLastThemeId() {
+  const userId = getCurrentUserId();
+  if (!userId) return null;
+
+  return localStorage.getItem(`${LAST_THEME_STORAGE_KEY_PREFIX}:${userId}`) || null;
+}
+
+function getFirstNotCompletedTheme(completedTopics) {
   return pythonRoute.find(theme => !getThemeProgress(theme, completedTopics).completed)
     || pythonRoute[pythonRoute.length - 1];
+}
+
+function getNextRecommendedTheme(completedTopics) {
+  const lastThemeId = getStoredLastThemeId();
+
+  if (lastThemeId) {
+    const lastTheme = pythonRoute.find(theme => theme.id === lastThemeId);
+
+    if (lastTheme) {
+      const progress = getThemeProgress(lastTheme, completedTopics);
+
+      if (!progress.completed) {
+        return lastTheme;
+      }
+    }
+  }
+
+  return getFirstNotCompletedTheme(completedTopics);
 }
 
 function isPythonRouteCompleted(completedTopics) {
@@ -202,7 +237,6 @@ function updateNextStep(completedTopics) {
     if (nextStepCard) {
       nextStepCard.classList.remove("current");
       nextStepCard.classList.remove("available");
-      nextStepCard.classList.remove("locked");
       nextStepCard.classList.add("completed");
 
       const nextStepState = nextStepCard.querySelector(".roadmap-state");
@@ -210,7 +244,6 @@ function updateNextStep(completedTopics) {
       if (nextStepState) {
         nextStepState.classList.remove("current");
         nextStepState.classList.remove("available");
-        nextStepState.classList.remove("locked");
         nextStepState.classList.add("completed");
         nextStepState.textContent = "Completada";
       }
