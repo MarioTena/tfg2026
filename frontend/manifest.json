@@ -1,0 +1,19 @@
+{
+  "name": "AprendeCode",
+  "short_name": "AprendeCode",
+  "description": "Plataforma web para aprender programación paso a paso.",
+  "start_url": "/register.html",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#070b1a",
+  "theme_color": "#4f8cff",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/assets/icons/aprendecode-icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

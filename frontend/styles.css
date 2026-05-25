@@ -3262,3 +3262,20 @@ body.theme-light .field-error label,
 body.theme-light .field-error-message {
   color: #dc2626 !important;
 }
+
+.install-app-btn {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 200;
+  box-shadow: var(--shadow-lg);
+}
+
+@media (max-width: 640px) {
+  .install-app-btn {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    width: auto;
+  }
+}
