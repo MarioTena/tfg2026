@@ -28,26 +28,14 @@ function clearFieldErrors() {
     if (!field) return;
 
     field.classList.remove("field-error");
-
-    const oldError = field.querySelector(".field-error-message");
-    if (oldError) oldError.remove();
   });
 }
 
-function showFieldError(input, message) {
+function showFieldError(input) {
   const field = getFieldWrapper(input);
   if (!field) return;
 
   field.classList.add("field-error");
-
-  let errorEl = field.querySelector(".field-error-message");
-  if (!errorEl) {
-    errorEl = document.createElement("p");
-    errorEl.className = "field-error-message";
-    field.appendChild(errorEl);
-  }
-
-  errorEl.textContent = message;
 }
 
 function validateRegisterForm() {
@@ -61,27 +49,26 @@ function validateRegisterForm() {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   if (!name) {
-    showFieldError(nameInput, "Introduce tu nombre.");
+    showFieldError(nameInput);
     isValid = false;
   } else if (name.length < 2) {
-    showFieldError(nameInput, "El nombre debe tener al menos 2 caracteres.");
+    showFieldError(nameInput);
     isValid = false;
   }
 
-
   if (!email) {
-    showFieldError(emailInput, "Introduce tu email.");
+    showFieldError(emailInput);
     isValid = false;
   } else if (!emailRegex.test(email)) {
-    showFieldError(emailInput, "Introduce un email válido.");
+    showFieldError(emailInput);
     isValid = false;
   }
 
   if (!password) {
-    showFieldError(passwordInput, "Introduce una contraseña.");
+    showFieldError(passwordInput);
     isValid = false;
   } else if (password.length < 8) {
-    showFieldError(passwordInput, "La contraseña debe tener al menos 8 caracteres.");
+    showFieldError(passwordInput);
     isValid = false;
   }
 
@@ -176,9 +163,6 @@ registerBtn?.addEventListener("click", doRegister);
     if (!field) return;
 
     field.classList.remove("field-error");
-
-    const oldError = field.querySelector(".field-error-message");
-    if (oldError) oldError.remove();
 
     if (statusMsg?.textContent === "Revisa los campos marcados.") {
       showStatus("");

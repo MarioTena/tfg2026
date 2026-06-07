@@ -89,25 +89,16 @@ function clearFieldErrors() {
 
     field.classList.remove("field-error");
 
-    const oldError = field.querySelector(".field-error-message");
-    if (oldError) oldError.remove();
   });
 }
 
-function showFieldError(input, message) {
+function showFieldError(input) {
   const field = getFieldWrapper(input);
   if (!field) return;
 
   field.classList.add("field-error");
 
   let errorEl = field.querySelector(".field-error-message");
-  if (!errorEl) {
-    errorEl = document.createElement("p");
-    errorEl.className = "field-error-message";
-    field.appendChild(errorEl);
-  }
-
-  errorEl.textContent = message;
 }
 
 function validateLoginForm() {
@@ -120,15 +111,15 @@ function validateLoginForm() {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   if (!email) {
-    showFieldError(emailInput, "Introduce tu email.");
+    showFieldError(emailInput);
     isValid = false;
   } else if (!emailRegex.test(email)) {
-    showFieldError(emailInput, "Introduce un email válido.");
+    showFieldError(emailInput);
     isValid = false;
   }
 
   if (!password) {
-    showFieldError(passwordInput, "Introduce tu contraseña.");
+    showFieldError(passwordInput);
     isValid = false;
   }
 
@@ -227,9 +218,6 @@ loginBtn?.addEventListener("click", doLogin);
     if (!field) return;
 
     field.classList.remove("field-error");
-
-    const oldError = field.querySelector(".field-error-message");
-    if (oldError) oldError.remove();
 
     if (statusMsg?.textContent === "Revisa los campos marcados.") {
       showStatus("");
