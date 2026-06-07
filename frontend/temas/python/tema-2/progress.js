@@ -27,7 +27,7 @@ initThemeProgress({
     },
     {
       id: "2.4",
-      title: "Razonar condicionales y casos frontera",
+      title: "Razonar y prácticar condicionales",
       file: "04-mini-retos.html",
       type: "Práctica guiada",
       time: "12-15 min"

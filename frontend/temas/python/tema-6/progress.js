@@ -6,7 +6,7 @@ initThemeProgress({
   topics: [
     {
       id: "6.1",
-      title: "¿Qué es un diccionario?",
+      title: "Qué es un diccionario",
       file: "01-que-es-un-diccionario.html",
       type: "Concepto",
       time: "10-12 min"

@@ -1,8 +1,6 @@
 const OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions";
 
-// ----------------------------------------------------------------------------
-// Clasificación simple del caso
-// ----------------------------------------------------------------------------
+
 function detectIssueType(attempt) {
   const { status, stderr = "", stdout = "" } = attempt;
   const errorText = stderr.toLowerCase();
@@ -26,9 +24,7 @@ function detectIssueType(attempt) {
   return "generic_error";
 }
 
-// ----------------------------------------------------------------------------
-// Prompt específico según tipo de problema
-// ----------------------------------------------------------------------------
+
 function buildCasePromptBlock(issueType, attempt, extraContext = {}) {
   switch (issueType) {
     case "syntax":
@@ -250,9 +246,7 @@ Qué priorizar:
   }
 }
 
-// ----------------------------------------------------------------------------
-// Riesgo de dar solución demasiado directa
-// ----------------------------------------------------------------------------
+
 function detectHintRisk(attempt, extraContext = {}) {
   const code = (attempt.code || "").toLowerCase();
   const statement = (extraContext.statement || "").toLowerCase();
@@ -311,9 +305,7 @@ Restricción extra:
   `.trim();
 }
 
-// ----------------------------------------------------------------------------
-// Fallback técnico
-// ----------------------------------------------------------------------------
+
 function buildTechnicalFallback(attempt, extraContext = {}) {
   const issueType = detectIssueType(attempt);
 
@@ -432,9 +424,6 @@ function buildTechnicalFallback(attempt, extraContext = {}) {
   };
 }
 
-// ----------------------------------------------------------------------------
-// Etiqueta legible para logs
-// ----------------------------------------------------------------------------
 function getIssueTypeLabel(issueType) {
   const labels = {
     syntax: "SyntaxError",
@@ -455,9 +444,6 @@ function getIssueTypeLabel(issueType) {
   return labels[issueType] || issueType;
 }
 
-// ----------------------------------------------------------------------------
-// Prompt IA
-// ----------------------------------------------------------------------------
 function buildTutorPrompt(attempt, extraContext = {}) {
   const { language, code, stdin, stdout, stderr, status } = attempt;
 
@@ -537,9 +523,6 @@ ${stderr || ""}
 `.trim();
 }
 
-// ----------------------------------------------------------------------------
-// Normalización y validación mínima
-// ----------------------------------------------------------------------------
 function normalizeAiResponse(text) {
   if (!text) return "";
 
@@ -655,9 +638,7 @@ function expandSingleLineHint(text) {
   ].join("\n");
 }
 
-// ----------------------------------------------------------------------------
-// Detectores de respuesta demasiado resolutiva
-// ----------------------------------------------------------------------------
+
 function looksTooSolutionLike(text) {
   if (!text) return false;
 
@@ -763,9 +744,7 @@ function mentionsSpecificLine(text) {
   return linePatterns.some((pattern) => pattern.test(lower));
 }
 
-// ----------------------------------------------------------------------------
-// Segundo intento: pedir solo reformateo
-// ----------------------------------------------------------------------------
+
 async function requestFormattingFix(apiKey, rawText) {
   const response = await fetch(OPENROUTER_API_URL, {
     method: "POST",
@@ -802,9 +781,6 @@ async function requestFormattingFix(apiKey, rawText) {
   return data?.choices?.[0]?.message?.content?.trim() || "";
 }
 
-// ----------------------------------------------------------------------------
-// Llamada IA real
-// ----------------------------------------------------------------------------
 async function generateRealAiFeedback(attempt, extraContext = {}) {
   const apiKey = process.env.OPENROUTER_API_KEY;
 

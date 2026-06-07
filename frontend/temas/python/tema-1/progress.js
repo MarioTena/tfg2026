@@ -48,7 +48,7 @@ initThemeProgress({
     },
     {
       id: "1.7",
-      title: "Mini-retos",
+      title: "Razonar y practicar introducción a Python",
       file: "07-mini-retos.html",
       type: "Práctica guiada",
       time: "12-15 min"

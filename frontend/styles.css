@@ -1235,6 +1235,14 @@ code {
   border-color: rgba(34,197,94,0.22);
 }
 
+.theory-card-highlight.theory-card-exercise.card-acumulativo::before {
+  content: "RETO ACUMULATIVO";
+}
+
+.theory-card-highlight.theory-card-exercise.card-proyecto::before {
+  content: "PROYECTO";
+}
+
 .theory-card-exercise .badges {
   margin-top: 0.75rem;
 }
@@ -2273,7 +2281,6 @@ body.theme-light .theory-card pre code {
   color: #1e293b;
 }
 
-/* inline code, no bloques */
 body.theme-light :not(pre) > code {
   background: #edf3ff;
   color: #1d4ed8;
@@ -2328,7 +2335,7 @@ body.theme-light .CodeMirror-focused {
   outline: none;
 }
 
-/* tokens frecuentes de CodeMirror */
+
 body.theme-light .cm-keyword { color: #7c3aed !important; }
 body.theme-light .cm-atom { color: #2563eb !important; }
 body.theme-light .cm-number { color: #b45309 !important; }
@@ -2348,7 +2355,7 @@ body.theme-light .cm-qualifier { color: #0f766e !important; }
 body.theme-light .cm-builtin { color: #c2410c !important; }
 body.theme-light .cm-bracket { color: #334155 !important; }
 
-/* si tienes paneles tipo input-like oscuros encima del editor */
+
 body.theme-light .input-like {
   background: linear-gradient(180deg, #eef4ff 0%, #e3ecfb 100%);
   color: #1e293b;
@@ -2527,7 +2534,7 @@ body.theme-light .proyectos-grid .theory-card .mini-note {
   color: #64748b !important;
 }
 
-/* badges y chips dentro de retos/proyectos */
+
 body.theme-light .theory-card-exercise .badge,
 body.theme-light .theory-card-highlight .badge,
 body.theme-light .exercise-grid .badge,
@@ -2547,7 +2554,7 @@ body.theme-light .theory-card-highlight .badge.green {
   border: 1px solid #86efac !important;
 }
 
-/* botones dentro de esas tarjetas */
+
 body.theme-light .theory-card-exercise .btn.btn-secondary,
 body.theme-light .theory-card-highlight .btn.btn-secondary,
 body.theme-light .exercise-grid .btn.btn-secondary {
@@ -2636,7 +2643,7 @@ body.theme-light .progress-fill {
   transform: translateY(0);
 }
 
-/* Compatibilidad WebKit antigua */
+
 #config-avatar-input::-webkit-file-upload-button {
   margin-right: 12px;
   padding: 10px 14px;
@@ -2649,7 +2656,7 @@ body.theme-light .progress-fill {
   box-shadow: 0 6px 16px rgba(0,0,0,0.22);
 }
 
-/* Modo claro */
+
 body.theme-light #config-avatar-input {
   border: 1px solid #d6dfec;
   background: #f8fbff;
@@ -3149,7 +3156,6 @@ body.theme-light .checkpoint-result p {
   color: #475569 !important;
 }
 
-/* Estado correcto */
 body.theme-light .checkpoint-result-success {
   background: linear-gradient(180deg, #ecfdf3 0%, #dcfce7 100%) !important;
   border: 1px solid #86efac !important;
@@ -3164,7 +3170,7 @@ body.theme-light .checkpoint-result-success h3 {
   color: #166534 !important;
 }
 
-/* Estado aviso */
+
 body.theme-light .checkpoint-result-warning {
   background: linear-gradient(180deg, #fffbeb 0%, #fef3c7 100%) !important;
   border: 1px solid #fcd34d !important;
@@ -3179,7 +3185,7 @@ body.theme-light .checkpoint-result-warning h3 {
   color: #92400e !important;
 }
 
-/* Estado error */
+
 body.theme-light .checkpoint-result-error,
 body.theme-light .checkpoint-result-danger {
   background: linear-gradient(180deg, #fff1f2 0%, #ffe4e6 100%) !important;
@@ -3197,7 +3203,7 @@ body.theme-light .checkpoint-result-danger h3 {
   color: #991b1b !important;
 }
 
-/* Estado info */
+
 body.theme-light .checkpoint-result-info {
   background: linear-gradient(180deg, #eff6ff 0%, #dbeafe 100%) !important;
   border: 1px solid #93c5fd !important;

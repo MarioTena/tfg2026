@@ -34,7 +34,7 @@ initThemeProgress({
     },
     {
       id: "3.5",
-      title: "Mini-retos",
+      title: "Razonar y practicar bucles",
       file: "05-mini-retos.html",
       type: "Práctica guiada",
       time: "12-15 min"

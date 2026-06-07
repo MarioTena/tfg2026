@@ -6,7 +6,7 @@ initThemeProgress({
   topics: [
     {
       id: "5.1",
-      title: "¿Qué es una función?",
+      title: "Qué es una función",
       file: "01-que-es-una-funcion.html",
       type: "Concepto",
       time: "10-12 min"

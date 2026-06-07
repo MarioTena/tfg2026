@@ -8,8 +8,8 @@ const { validateUserCode } = require("./dockerRunner");
 
 const sessions = new Map();
 
-const MAX_SESSION_MS = 5 * 60 * 1000; // 5 minutos
-const INACTIVITY_MS = 90 * 1000; // 90 segundos
+const MAX_SESSION_MS = 5 * 60 * 1000;
+const INACTIVITY_MS = 90 * 1000;
 
 function mapSessionStatusToAttemptStatus(status) {
   if (status === "success") return "success";
