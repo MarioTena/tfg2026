@@ -205,11 +205,11 @@ else:
     </p>
 
     <pre><code>try:
-    archivo = open("datos.txt", "r")
-except FileNotFoundError:
-    print("No existe el archivo")
-finally:
-    print("Fin del intento")</code></pre>
+        numero = int("10")
+    except ValueError:
+        print("No válido")
+    finally:
+        print("Fin del intento")</code></pre>
 
     <div class="callout">
       <code>finally</code> es útil cuando hay acciones de cierre o limpieza que deben ocurrir pase lo que pase.

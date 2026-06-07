@@ -29,22 +29,22 @@ function buildCasePromptBlock(issueType, attempt, extraContext = {}) {
   switch (issueType) {
     case "syntax":
       return `
-CASO: Error de sintaxis
+    CASO: Error de sintaxis
 
-Objetivo de la ayuda:
-- Explica que hay un problema en la estructura de la instrucción.
-- Guía al alumno a revisar la línea marcada y, como mucho, la anterior.
-- No digas qué símbolo exacto falta.
-- No digas el nombre del carácter concreto.
-- No digas literalmente qué debe añadir.
-- No reescribas la línea.
-- No menciones la corrección exacta.
+    Objetivo de la ayuda:
+    - Explica que hay una instrucción incompleta o mal formada.
+    - Guía al alumno a revisar la estructura general de esa instrucción.
+    - No digas qué símbolo exacto falta.
+    - No digas literalmente qué debe añadir.
+    - No reescribas la instrucción.
+    - No menciones líneas concretas ni zonas exactas del código.
 
-Qué priorizar:
-- estructura incompleta
-- cierre correcto de la instrucción
-- final correcto de cabeceras de bloques
-- relación entre la línea señalada y la siguiente
+    Qué priorizar:
+    - instrucción incompleta
+    - cierres de paréntesis, corchetes o comillas
+    - separación entre elementos
+    - estructura de llamadas a funciones
+    - cabeceras de bloques
       `.trim();
 
     case "indentation":
@@ -195,25 +195,29 @@ Qué priorizar:
 - condición que nunca se cumple
       `.trim();
 
-    case "success_but_maybe_output":
-      return `
+      case "success_but_maybe_output":
+    return `
 CASO: Ejecución correcta pero posible salida incorrecta
 
 Objetivo de la ayuda:
 - No centres la respuesta en errores técnicos.
+- Analiza si el código realmente resuelve lo que pide el enunciado.
 - Compara el objetivo del ejercicio con la salida obtenida.
+- Si la salida no cumple el objetivo, explica qué aspecto debe revisar sin dar la solución.
 - No escribas la salida exacta esperada completa.
 - No completes el ejercicio.
-- Haz que el alumno revise formato, orden, lógica y contenido.
+- No digas simplemente que "no hay error"; recuerda que puede haber un error lógico.
 
 Qué priorizar:
-- texto exacto
+- relación entre código y enunciado
+- contenido de la salida
+- formato de la salida
 - orden de impresión
-- saltos de línea
-- estructura de salida
-- lógica correcta aunque no haya error
-      `.trim();
-
+- lógica usada para calcular el resultado
+- datos que faltan o sobran
+- diferencia entre ejecutar bien y resolver bien
+  `.trim();
+  
     case "success_no_output":
       return `
 CASO: Ejecución correcta pero sin salida útil
@@ -239,7 +243,7 @@ Objetivo de la ayuda:
 - No reescribas el ejercicio.
 
 Qué priorizar:
-- línea señalada
+- zona conceptual del fallo
 - causa probable
 - siguiente paso pequeño
       `.trim();
@@ -305,11 +309,82 @@ Restricción extra:
   `.trim();
 }
 
+function detectPossibleStatementMismatch(attempt, extraContext = {}) {
+  const code = (attempt.code || "").toLowerCase();
+  const statement = (extraContext.statement || "").toLowerCase();
+  const title = (extraContext.title || "").toLowerCase();
+
+  if (!code.trim() || !statement.trim()) return false;
+
+  const expectedSignals = [
+    "lista",
+    "diccionario",
+    "tupla",
+    "set",
+    "string",
+    "función",
+    "return",
+    "bucle",
+    "for",
+    "while",
+    "if",
+    "archivo",
+    "input",
+    "print"
+  ];
+
+  const signalMatchers = {
+    lista: (code) => code.includes("[") || code.includes("append") || code.includes("lista"),
+    diccionario: (code) => code.includes("{") || code.includes(":") || code.includes("diccionario"),
+    tupla: (code) => code.includes("(") || code.includes("tupla"),
+    set: (code) => code.includes("set(") || code.includes("{") || code.includes("set"),
+    string: (code) => code.includes('"') || code.includes("'") || code.includes("string"),
+    función: (code) => code.includes("def ") || code.includes("return"),
+    return: (code) => code.includes("return"),
+    bucle: (code) => code.includes("for ") || code.includes("while "),
+    for: (code) => code.includes("for "),
+    while: (code) => code.includes("while "),
+    if: (code) => code.includes("if "),
+    archivo: (code) => code.includes("open(") || code.includes(".txt") || code.includes(".csv"),
+    input: (code) => code.includes("input("),
+    print: (code) => code.includes("print(")
+  };
+
+  const statementSignals = expectedSignals.filter((word) =>
+    statement.includes(word) || title.includes(word)
+  );
+
+  if (!statementSignals.length) return false;
+
+  const matchedSignals = statementSignals.filter((word) => {
+    const matcher = signalMatchers[word];
+    return matcher ? matcher(code) : code.includes(word);
+  });
+
+  return matchedSignals.length === 0 && code.length > 20;
+}
 
 function buildTechnicalFallback(attempt, extraContext = {}) {
+  const possibleMismatch = detectPossibleStatementMismatch(attempt, extraContext);
   const issueType = detectIssueType(attempt);
 
   let message = "";
+
+  if (possibleMismatch) {
+    const hasTechnicalError = issueType !== "success_but_maybe_output" && issueType !== "success_no_output";
+
+    return {
+      message:
+        "1. Vuelve a comparar tu código con el enunciado del ejercicio.\n" +
+        "2. El código actual no parece estar usando todavía los conceptos principales que pide la actividad.\n" +
+        "3. Revisa qué estructura, operación o resultado espera realmente el ejercicio.\n" +
+        (hasTechnicalError
+          ? "4. Después corrige el error técnico y comprueba si la salida responde al objetivo pedido."
+          : "4. Después comprueba si la salida responde al objetivo completo de la actividad."),
+      level: "warning",
+      source: "fallback",
+    };
+  }
 
   switch (issueType) {
     case "timeout":
@@ -323,9 +398,9 @@ function buildTechnicalFallback(attempt, extraContext = {}) {
     case "syntax":
       message =
         "1. El problema está en la estructura de una instrucción o cabecera.\n" +
-        "2. Revisa cómo debe cerrarse correctamente esa línea antes de empezar el bloque siguiente.\n" +
+        "2. Revisa si esa instrucción está completa antes de empezar el bloque siguiente.\n" +
         "3. Compara esa instrucción con la sintaxis habitual de Python para ese caso.\n" +
-        "4. Comprueba si el fallo está en el final de la línea y no en el cuerpo indentado.";
+        "4. Comprueba si el fallo está en el cierre de la instrucción y no en el cuerpo indentado.";
       break;
 
     case "indentation":
@@ -392,13 +467,13 @@ function buildTechnicalFallback(attempt, extraContext = {}) {
         "4. Comprueba si hay diferencias en carpeta, extensión o nombre exacto.";
       break;
 
-    case "success_but_maybe_output":
-      message =
-        "1. El programa se ejecuta, pero eso no garantiza que resuelva bien el ejercicio.\n" +
-        "2. Revisa si la salida coincide con lo que pide el enunciado en contenido y formato.\n" +
-        "3. Piensa si el problema está en la lógica o en la forma de mostrar el resultado.\n" +
-        "4. Comprueba el orden, el texto y los saltos de línea de la salida.";
-      break;
+      case "success_but_maybe_output":
+        message =
+          "1. El programa se ejecuta sin error, pero eso no significa que resuelva bien el ejercicio.\n" +
+          "2. Compara la salida obtenida con lo que pide exactamente el enunciado.\n" +
+          "3. Revisa si el problema está en la lógica, en el dato usado o en el formato mostrado.\n" +
+          "4. Antes de volver a ejecutar, comprueba si la salida responde al objetivo completo de la actividad.";
+        break;
 
     case "success_no_output":
       message =
@@ -444,6 +519,42 @@ function getIssueTypeLabel(issueType) {
   return labels[issueType] || issueType;
 }
 
+function buildExerciseAlignmentBlock(attempt, extraContext = {}) {
+  const code = (attempt.code || "").trim();
+  const title = extraContext.title || extraContext.exerciseId || "Ejercicio sin título";
+  const statement = extraContext.statement || "Sin enunciado";
+  const hints = Array.isArray(extraContext.hints) ? extraContext.hints : [];
+  const expectedOutput = extraContext.expectedOutput || "";
+  const checks = Array.isArray(extraContext.checks) ? extraContext.checks : [];
+
+  return `
+Revisión obligatoria del enunciado:
+- Antes de hablar del error técnico, comprueba si el código del alumno parece responder al objetivo del ejercicio.
+- Si el código parece ir por otro camino o no usa los conceptos esperados por el enunciado, indícalo en la primera pista.
+- Si el código se ejecuta sin error, analiza si la salida realmente responde al enunciado.
+- Si hay salida esperada, compárala de forma conceptual con la salida obtenida, sin escribir la solución exacta.
+- Si la salida no coincide, da pistas sobre lógica, formato, orden, datos usados o información que falta.
+- No digas que está "mal" de forma brusca; di que todavía no parece responder del todo al objetivo pedido.
+- Usa el título, el enunciado, las pistas disponibles y la salida obtenida para orientar la ayuda.
+- No inventes requisitos que no aparezcan en el enunciado.
+
+Título del ejercicio:
+${title}
+
+Enunciado:
+${statement}
+
+Pistas del ejercicio:
+${hints.length ? hints.join(" | ") : "Sin pistas"}
+
+Salida esperada o comprobaciones:
+${expectedOutput || (checks.length ? checks.join(" | ") : "No especificada")}
+
+Código del alumno:
+${code || "Sin código"}
+  `.trim();
+}
+
 function buildTutorPrompt(attempt, extraContext = {}) {
   const { language, code, stdin, stdout, stderr, status } = attempt;
 
@@ -456,8 +567,9 @@ function buildTutorPrompt(attempt, extraContext = {}) {
   const casePromptBlock = buildCasePromptBlock(issueType, attempt, extraContext);
   const riskLevel = detectHintRisk(attempt, extraContext);
   const antiSolutionInstruction = buildAntiSolutionInstruction(riskLevel);
+  const exerciseAlignmentBlock = buildExerciseAlignmentBlock(attempt, extraContext);
 
-  return `
+return `
 Eres un tutor de programación para principiantes.
 
 Tu objetivo es ayudar a un alumno sin darle la solución completa.
@@ -467,18 +579,30 @@ Reglas generales obligatorias:
 - No devuelvas el código entero resuelto.
 - No reescribas el ejercicio completo.
 - No uses bloques de código.
-- No menciones funciones concretas, índices concretos, expresiones concretas ni líneas exactas.
+- No escribas código ni fragmentos de código.
+- No des expresiones exactas que resuelvan el ejercicio.
+- Puedes mencionar conceptos o herramientas del tema si ya aparecen en el enunciado, en las pistas o en el código del alumno.
+- Puedes mencionar funciones o estructuras de forma general, pero no escribas la línea exacta que debe usar.
+- No menciones índices concretos salvo que el enunciado ya los mencione.
 - No señales la línea donde está el fallo.
 - No menciones números de línea.
 - No uses expresiones como "línea 3", "línea 15", "línea anterior", "línea siguiente" o "línea marcada".
-- No des código, ni fragmentos de código, ni ejemplos de código.
 - Da pistas graduales, concretas y útiles.
-- Prioriza explicar el error real si existe.
+- Antes de centrarte en el error técnico, revisa si el código responde al enunciado.
+- Si el código no parece responder al enunciado, dilo en la primera pista.
+- Prioriza explicar el desajuste con el enunciado si existe.
 - Señala qué concepto debe revisar.
 - Sugiere un único siguiente paso pequeño y claro.
 - Responde en español.
 - Sé breve, clara y didáctica.
 - No inventes información.
+- Si el programa se ejecuta sin error, no asumas que está correcto.
+- Cuando haya stdout, compara la salida con lo que pide el enunciado.
+- Si la salida parece incorrecta, da pistas sobre la lógica o el formato sin escribir la salida correcta completa.
+- Distingue entre error técnico, error lógico y código que no responde al enunciado.
+
+Revisión del objetivo del ejercicio:
+${exerciseAlignmentBlock}
 
 Guía específica para este tipo de caso:
 ${casePromptBlock}
@@ -488,10 +612,10 @@ Nivel de riesgo de dar solución directa: ${riskLevel}
 ${antiSolutionInstruction}
 
 Formato deseado de respuesta:
-1. Qué concepto está fallando.
-2. Qué parte del problema debe revisar.
-3. Qué idea general necesita aplicar.
-4. Qué debe comprobar antes de volver a ejecutar.
+1. Indica si el código está enfocado al enunciado o si primero debe revisar el objetivo del ejercicio.
+2. Da una pista sobre el concepto principal que debería revisar.
+3. Da una pista sobre el error técnico o lógico más probable, si lo hay.
+4. Indica una comprobación pequeña antes de volver a ejecutar.
 
 Reglas del formato:
 - Intenta responder en 4 líneas numeradas.
@@ -499,28 +623,32 @@ Reglas del formato:
 - No uses negritas.
 - No uses bloques de código.
 - No escribas la solución literal.
-- No señales líneas concretas, números de línea, posiciones concretas ni una zona exacta del código; orienta solo por bloque o concepto.
+- No empieces frases con "Estás buscando", "Parece que quieres" o "Tu objetivo es entender".
+- Usa frases directas como "Revisa", "Comprueba", "Piensa si" o "Vuelve al enunciado".
+- No señales líneas concretas, números de línea, posiciones concretas ni una zona exacta del código; orienta solo por bloque, concepto o intención.
 
-Datos del ejercicio:
-Título: ${title}
+Datos de ejecución:
 Lenguaje: ${language}
 Estado de ejecución: ${status}
 Tipo de caso detectado: ${issueType}
-Enunciado: ${statement}
-Pistas ya disponibles: ${hints.length ? hints.join(" | ") : "Sin pistas"}
 
-Código actual del alumno:
-${code || ""}
+Entrada usada por el programa:
+${stdin || "Sin entrada"}
 
-Entrada del usuario (stdin):
-${stdin || ""}
+Resultado que produjo el programa:
+${stdout || "Sin salida"}
 
-Salida stdout:
-${stdout || ""}
+Error técnico:
+${stderr || "Sin error técnico"}
 
-Salida stderr:
-${stderr || ""}
+Análisis obligatorio de la salida:
+- Si hay salida, revisa si responde al enunciado completo.
+- No valores solo que el programa ejecute sin error.
+- Si la salida parece incompleta, desordenada o no relacionada con el objetivo, indícalo como pista.
+- No escribas la salida correcta completa.
+- Si no hay salida, revisa si el ejercicio pedía mostrar o devolver algún resultado.
 `.trim();
+
 }
 
 function normalizeAiResponse(text) {
@@ -547,7 +675,7 @@ function validateAiResponse(text, issueType = "generic_error", options = {}) {
   if (cleaned.length < 18) {
     return { ok: false, reason: "too_short" };
   }
-
+  
   let lines = cleaned
     .split("\n")
     .map((l) => l.trim())
@@ -623,6 +751,24 @@ if (strict) {
   };
 }
 
+function looksAwkwardTutorPhrase(text) {
+  if (!text) return false;
+
+  const lower = text.toLowerCase();
+
+  const awkwardPatterns = [
+    "estás buscando entender",
+    "parece que quieres entender",
+    "tu objetivo es entender",
+    "estás intentando comprender",
+    "es importante revisar la estructura de las llamadas a funciones",
+    "cómo se conectan los elementos"
+  ];
+
+  return awkwardPatterns.some((p) => lower.includes(p));
+}
+
+
 function expandSingleLineHint(text) {
   const cleaned = normalizeAiResponse(text);
   if (!cleaned) return "";
@@ -645,33 +791,26 @@ function looksTooSolutionLike(text) {
   const lower = text.toLowerCase();
 
   const directCodePatterns = [
-    "str()",
-    "int()",
-    "float()",
-    "len()",
-    "get()",
-    "append()",
-    "split()",
-    "join()",
-    "[0]",
-    "[-1]",
-    "return ",
     "print(",
     "input(",
     "def ",
-    "for ",
-    "while ",
-    "if ",
-    "elif ",
     "else:",
+    "elif ",
+    "[0]",
+    "[-1]",
+    " = ",
+    " == ",
+    " += ",
+    "return "
   ];
 
   const directivePatterns = [
-    "usa ",
-    "convierte ",
-    "añade ",
-    "escribe ",
-    "asigna ",
+    "usa exactamente",
+    "usa esta expresión",
+    "convierte directamente",
+    "añade directamente",
+    "escribe exactamente",
+    "asigna directamente",
     "debe devolver",
     "debe quedar",
     "la línea que falta",
@@ -760,7 +899,7 @@ async function requestFormattingFix(apiKey, rawText) {
         {
           role: "system",
           content:
-            "Reformula el texto en español en 4 líneas numeradas, una idea breve por línea. No añadas código, funciones, índices, expresiones concretas, líneas exactas ni bloques markdown. No des la solución. No menciones líneas ni números de línea.",
+            "Reformula el texto en español en 4 líneas numeradas, una idea breve por línea. No añadas bloques de código, líneas corregidas ni expresiones que resuelvan el ejercicio. Puedes mencionar conceptos o herramientas de forma general si ya aparecen en el texto original. No des la solución. No menciones líneas ni números de línea."
         },
         {
           role: "user",
@@ -796,8 +935,7 @@ async function generateRealAiFeedback(attempt, extraContext = {}) {
       {
         role: "system",
         content:
-          "Eres un tutor de programación para principiantes. Responde siempre en español. No des la solución literal. No escribas código, ni fragmentos de código, ni funciones, ni índices, ni expresiones concretas, ni líneas exactas. No indiques la línea concreta del fallo. No menciones números de línea ni expresiones como línea 3, línea 15, línea anterior o línea siguiente. Habla en términos de concepto, estructura, tipo de dato o intención del código. Si una respuesta suena como una instrucción exacta de implementación, es demasiado directa.",
-      },
+          "Eres un tutor de programación para principiantes. Responde siempre en español. No des la solución literal. No escribas bloques de código ni líneas corregidas. Puedes mencionar conceptos, estructuras o herramientas del tema si ayudan a orientar, pero sin construir la solución. No indiques la línea concreta del fallo ni números de línea. Habla en términos de concepto, estructura, tipo de dato, salida obtenida o intención del código. Si una respuesta suena como una instrucción exacta de implementación, es demasiado directa.",},
       {
         role: "user",
         content: prompt,
@@ -925,6 +1063,9 @@ async function generateRealAiFeedback(attempt, extraContext = {}) {
   if (mentionsSpecificLine(text)) {
     throw new Error("Respuesta IA inválida: mentions_specific_line");
   }
+  if (looksAwkwardTutorPhrase(text)) {
+    throw new Error("Respuesta IA inválida: awkward_tutor_phrase");
+  }
 
   return {
     message: text,
@@ -947,4 +1088,5 @@ module.exports = {
   looksTooSolutionLikeForIssue,
   mentionsSpecificLine,
   generateRealAiFeedback,
+  looksAwkwardTutorPhrase,
 };

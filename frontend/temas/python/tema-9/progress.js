@@ -6,7 +6,7 @@ initThemeProgress({
   topics: [
     {
       id: "9.1",
-      title: "¿Qué es un archivo?",
+      title: "Qué es un archivo",
       file: "01-que-es-un-archivo.html",
       type: "Concepto",
       time: "10-12 min"

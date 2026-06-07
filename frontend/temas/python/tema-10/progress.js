@@ -1,12 +1,12 @@
 initThemeProgress({
 nextTheme: {
-  label: "Ir a retos finales",
+  label: "Ir a retos acumulativos",
   href: "../retos/index.html"
 },
   topics: [
     {
       id: "10.1",
-      title: "¿Qué es un error?",
+      title: "Qué es un error",
       file: "01-que-es-un-error.html",
       type: "Concepto",
       time: "10-12 min"

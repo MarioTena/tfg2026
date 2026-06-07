@@ -11,18 +11,22 @@ window.EXERCISE_CATALOG["py_tema7_ej1"] = {
   skill: "Índices",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Primera y última letra
+`palabra = "python"
 
-palabra = "python"
-
-# Imprime la primera letra
-# Imprime la última letra
+# Muestra la primera y la última letra
 `,
   hints: [
-    "La primera letra está en índice 0",
-    "La última se puede sacar con -1",
-    "Haz dos print distintos",
+    "Necesitas acceder a posiciones concretas del texto.",
+    "La primera letra está al inicio de la palabra.",
+    "Para la última, piensa en una forma cómoda de acceder desde el final."
   ],
+  expectedOutput: "Debe mostrar la primera y la última letra de la palabra.",
+  checks: [
+    "Debe usar la variable palabra.",
+    "Debe acceder a la primera letra.",
+    "Debe acceder a la última letra.",
+    "Debe mostrar ambos resultados por pantalla."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema7_ej2"] = {
@@ -36,18 +40,23 @@ window.EXERCISE_CATALOG["py_tema7_ej2"] = {
   skill: "Slicing",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Tres primeras letras
+`texto = "programa"
 
-texto = "programa"
-
-# Usa slicing para extraer
-# las tres primeras letras
+# Extrae las tres primeras letras
+# y muestra el resultado
 `,
   hints: [
-    "El slicing empieza en 0 si lo omites",
-    "Piensa en texto[:3]",
-    "El límite final no se incluye",
+    "Necesitas obtener solo una parte del texto.",
+    "El fragmento empieza al principio.",
+    "Recuerda que el límite final del corte no se incluye."
   ],
+  expectedOutput: "Debe mostrar las tres primeras letras del texto.",
+  checks: [
+    "Debe usar slicing.",
+    "Debe partir del texto dado.",
+    "Debe obtener solo las tres primeras letras.",
+    "Debe mostrar el resultado."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema7_ej3"] = {
@@ -61,17 +70,22 @@ window.EXERCISE_CATALOG["py_tema7_ej3"] = {
   skill: "[::-1]",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Invertir texto
+`texto = "python"
 
-texto = "python"
-
-# Imprime el texto al revés
+# Muestra el texto al revés usando slicing
 `,
   hints: [
-    "Puedes usar un slicing con paso negativo",
-    "Piensa en [::-1]",
-    "No necesitas un bucle para este caso",
+    "Necesitas recorrer el texto en sentido inverso.",
+    "Piensa en el papel del paso dentro de un slicing.",
+    "No necesitas construir el texto manualmente con un bucle."
   ],
+  expectedOutput: "Debe mostrar el texto invertido.",
+  checks: [
+    "Debe usar slicing.",
+    "Debe invertir el texto original.",
+    "Debe mostrar el resultado por pantalla.",
+    "No debe cambiar el contenido original de forma innecesaria."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema7_ej4"] = {
@@ -85,19 +99,23 @@ window.EXERCISE_CATALOG["py_tema7_ej4"] = {
   skill: "lower()",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Pasar a minúsculas
-
-texto = "HoLa"
+`texto = "HoLa"
 
 # Convierte el texto a minúsculas
-# guarda el resultado correctamente
-# e imprímelo
+# guarda el resultado y muéstralo
 `,
   hints: [
-    "Usa lower()",
-    "Recuerda que devuelve un string nuevo",
-    "Si no guardas el resultado, el texto original seguirá igual",
+    "Debes aplicar una transformación al texto.",
+    "Recuerda que los strings no cambian por sí solos.",
+    "El resultado transformado debe ser el que se muestre."
   ],
+  expectedOutput: "Debe mostrar el texto convertido a minúsculas.",
+  checks: [
+    "Debe usar el texto dado.",
+    "Debe convertirlo a minúsculas.",
+    "Debe guardar o usar el resultado transformado.",
+    "Debe mostrar el texto final en minúsculas."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema7_ej5"] = {
@@ -111,18 +129,23 @@ window.EXERCISE_CATALOG["py_tema7_ej5"] = {
   skill: "strip()",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Limpiar espacios
-
-texto = "   hola   "
+`texto = "   hola   "
 
 # Elimina los espacios laterales
-# e imprime el resultado
+# y muestra el resultado
 `,
   hints: [
-    "Usa strip()",
-    "No elimina espacios del medio",
-    "Puedes guardar el resultado o imprimirlo directamente",
+    "El problema está en los espacios de los extremos.",
+    "No necesitas eliminar espacios internos.",
+    "Comprueba que la salida no conserva espacios al principio ni al final."
   ],
+  expectedOutput: "Debe mostrar el texto sin espacios al principio ni al final.",
+  checks: [
+    "Debe usar el texto dado.",
+    "Debe limpiar espacios laterales.",
+    "Debe mostrar el resultado limpio.",
+    "No debe eliminar contenido real del texto."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema7_ej6"] = {
@@ -136,21 +159,26 @@ window.EXERCISE_CATALOG["py_tema7_ej6"] = {
   skill: "Bucle",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Contar una letra
-
-texto = "banana"
+`texto = "banana"
 contador = 0
 
 # Recorre el texto
-# y cuenta cuántas veces aparece la letra "a"
+# y cuenta cuántas veces aparece la letra indicada
 
 print(contador)
 `,
   hints: [
-    "Usa un for para recorrer el string",
-    "Cada vez que la letra sea 'a', suma 1",
-    "Imprime contador al final",
+    "Debes revisar el texto carácter a carácter.",
+    "Solo algunas letras deben aumentar el contador.",
+    "El resultado final debe ser el número de apariciones."
   ],
+  expectedOutput: "Debe mostrar cuántas veces aparece la letra a en el texto.",
+  checks: [
+    "Debe recorrer el texto.",
+    "Debe comparar cada carácter con la letra buscada.",
+    "Debe usar un contador.",
+    "Debe mostrar el total final."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema7_ej7"] = {
@@ -164,19 +192,23 @@ window.EXERCISE_CATALOG["py_tema7_ej7"] = {
   skill: "split()",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Separar palabras
+`frase = "Python es muy util"
 
-frase = "Python es muy util"
-
-# Usa split() para convertir
-# la frase en una lista de palabras
-# e imprime el resultado
+# Convierte la frase en una lista de palabras
+# y muestra el resultado
 `,
   hints: [
-    "split() separa por espacios si no le pasas nada",
-    "El resultado ya no es un string",
-    "Imprime la lista resultante",
+    "Debes pasar de un texto completo a varias partes.",
+    "Las palabras están separadas por espacios.",
+    "El resultado ya no debería ser un string único."
   ],
+  expectedOutput: "Debe mostrar una lista con las palabras de la frase.",
+  checks: [
+    "Debe usar la frase dada.",
+    "Debe separar la frase en palabras.",
+    "Debe obtener una lista.",
+    "Debe mostrar la lista resultante."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema7_ej8"] = {
@@ -196,9 +228,17 @@ window.EXERCISE_CATALOG["py_tema7_ej8"] = {
 # y muéstrala
 `,
   hints: [
-    "Aquí no conviene concatenar una a una",
-    "Piensa desde qué objeto se usa join()"
+    "Debes pasar de una lista de palabras a un único texto.",
+    "Entre palabra y palabra debe quedar un espacio.",
+    "No conviene unirlo todo manualmente palabra por palabra."
   ],
+  expectedOutput: "Debe mostrar una frase construida a partir de la lista de palabras.",
+  checks: [
+    "Debe usar la lista dada.",
+    "Debe unir las palabras en un string.",
+    "Debe incluir espacios entre palabras.",
+    "Debe mostrar la frase final."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema7_ej9"] = {
@@ -212,20 +252,24 @@ window.EXERCISE_CATALOG["py_tema7_ej9"] = {
   skill: "find()",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Buscar con find()
-
-texto = "programacion"
+`texto = "programacion"
 posicion = texto.find("xyz")
 
-# Imprime posicion
-# y después escribe una condición
-# para detectar el caso en que no aparezca
+# Muestra la posición
+# y detecta correctamente si la subcadena no aparece
 `,
   hints: [
-    "find() devuelve -1 si no encuentra la subcadena",
-    "Guarda primero el resultado",
-    "Luego compara si vale -1 o no",
+    "Primero guarda el resultado de la búsqueda.",
+    "Debes distinguir entre encontrado y no encontrado.",
+    "Piensa qué valor especial indica que no hubo coincidencia."
   ],
+  expectedOutput: "Debe mostrar la posición obtenida y detectar correctamente que la subcadena no aparece.",
+  checks: [
+    "Debe usar el texto dado.",
+    "Debe buscar una subcadena.",
+    "Debe manejar el caso no encontrado.",
+    "Debe mostrar un resultado claro."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema7_ej10"] = {
@@ -244,9 +288,17 @@ window.EXERCISE_CATALOG["py_tema7_ej10"] = {
 # Escribe una comprobación útil para validar este texto
 `,
   hints: [
-    "En este caso conviene pensar en cómo termina el texto",
-    "La validación debe dar un resultado claro"
+    "Piensa qué característica del nombre del archivo quieres validar.",
+    "En este caso puede interesar revisar cómo termina el texto.",
+    "La validación debe producir un resultado claro."
   ],
+  expectedOutput: "Debe validar el texto del archivo comprobando una condición de inicio o final.",
+  checks: [
+    "Debe usar la variable archivo.",
+    "Debe comprobar una condición sobre el texto.",
+    "Debe producir un resultado booleano o un mensaje claro.",
+    "La comprobación debe estar relacionada con el nombre o extensión."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema7_ej11"] = {
@@ -265,9 +317,17 @@ texto.lower()
 print(texto)
 `,
   hints: [
-    "El método devuelve un string nuevo",
-    "El texto original no cambia por sí solo"
+    "El método devuelve un texto nuevo.",
+    "El texto original no cambia por sí solo.",
+    "Debes usar el resultado de la transformación."
   ],
+  expectedOutput: "Debe mostrar el texto transformado a minúsculas.",
+  checks: [
+    "Debe corregir el uso del método.",
+    "Debe aprovechar el valor devuelto.",
+    "Debe mostrar el texto en minúsculas.",
+    "Debe reflejar la idea de que los strings son inmutables."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema7_ej12"] = {
@@ -283,13 +343,21 @@ window.EXERCISE_CATALOG["py_tema7_ej12"] = {
   starterCode:
 `frase = "Python es muy util"
 
-# Escribe una solución para contar cuántas palabras hay
+# Cuenta cuántas palabras tiene la frase
 # y muestra el resultado
 `,
   hints: [
-    "Primero necesitas pasar de frase a lista",
-    "Después analiza la cantidad de elementos"
+    "Primero necesitas separar el texto en partes.",
+    "Después debes analizar cuántos elementos has obtenido.",
+    "El resultado final debe ser un número."
   ],
+  expectedOutput: "Debe mostrar cuántas palabras tiene la frase.",
+  checks: [
+    "Debe usar la frase dada.",
+    "Debe separar la frase en palabras.",
+    "Debe contar las palabras.",
+    "Debe mostrar el resultado final."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema7_reto1"] = {
@@ -303,19 +371,23 @@ window.EXERCISE_CATALOG["py_tema7_reto1"] = {
   skill: "Limpieza",
   type: "Reto",
   starterCode:
-`# MINI RETO: Normalizar nombre
+`nombre = "   ANA   "
 
-nombre = "   ANA   "
-
-# Elimina espacios laterales
-# pásalo a minúsculas
-# e imprime el resultado final
+# Limpia y normaliza el nombre
+# antes de mostrarlo
 `,
   hints: [
-    "Combina strip() y lower()",
-    "Puedes encadenarlos o hacerlo en dos pasos",
-    "Recuerda guardar el resultado",
+    "Primero elimina lo que sobra en los extremos.",
+    "Después unifica el formato del texto.",
+    "Recuerda usar el resultado transformado."
   ],
+  expectedOutput: "Debe mostrar el nombre limpio y normalizado.",
+  checks: [
+    "Debe usar la variable nombre.",
+    "Debe eliminar espacios laterales.",
+    "Debe normalizar mayúsculas y minúsculas.",
+    "Debe mostrar el resultado final."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema7_reto2"] = {
@@ -329,19 +401,24 @@ window.EXERCISE_CATALOG["py_tema7_reto2"] = {
   skill: "Integración",
   type: "Reto final",
   starterCode:
-`# RETO FINAL: Analizar frase
+`frase = "   Python Es Muy Util Para Texto   "
 
-frase = "   Python Es Muy Util Para Texto   "
-
-# 1. Limpia espacios laterales
-# 2. Pasa todo a minúsculas
-# 3. Cuenta cuántas vocales hay
-# 4. Cuenta cuántas palabras hay
-# 5. Imprime la frase final limpia, el número de vocales y el número de palabras
+# Limpia y normaliza la frase
+# cuenta vocales
+# cuenta palabras
+# y muestra un resumen final
 `,
   hints: [
-    "Empieza limpiando y normalizando el texto",
-    "Para vocales, recorre carácter a carácter",
-    "Para palabras, usa split()",
+    "Empieza preparando el texto antes de analizarlo.",
+    "Para contar vocales, tendrás que revisar caracteres.",
+    "Para contar palabras, primero necesitas separar la frase."
   ],
+  expectedOutput: "Debe mostrar la frase limpia y normalizada, el número de vocales y el número de palabras.",
+  checks: [
+    "Debe limpiar espacios laterales.",
+    "Debe pasar la frase a minúsculas.",
+    "Debe contar vocales.",
+    "Debe contar palabras.",
+    "Debe mostrar un resumen final claro."
+  ]
 };

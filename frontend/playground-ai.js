@@ -118,14 +118,16 @@
     if (this.dom.aiFeedbackEl) this.dom.aiFeedbackEl.textContent = "Pensando...";
 
     try {
-      const body = {
-        topic: ex.topic,
-        attemptId: this.state.lastAttemptId,
-        exerciseId: ex.id,
-        title: ex.title,
-        statement: ex.statement,
-        hints: ex.hints || [],
-      };
+     const body = {
+      topic: ex.topic,
+      attemptId: this.state.lastAttemptId,
+      exerciseId: ex.id,
+      title: ex.title,
+      statement: ex.statement,
+      hints: Array.isArray(ex.hints) ? ex.hints : [],
+      expectedOutput: ex.expectedOutput || "",
+      checks: Array.isArray(ex.checks) ? ex.checks : [],
+    };
 
       const res = await fetch(this.api.aiHint, {
         method: "POST",

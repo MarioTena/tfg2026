@@ -12,31 +12,30 @@ window.EXERCISE_CATALOG["py_reto_acumulativo_1_numeros"] = {
   estimatedTime: "20-30 min",
   skill: "Integración de entrada, listas y análisis",
   hints: [
-    "Usa un while para seguir pidiendo datos hasta que aparezca 'fin'.",
-    "Guarda cada número válido en una lista.",
-    "No conviertas la entrada a entero hasta comprobar que no es 'fin'.",
-    "Cuenta pares e impares recorriendo la lista al final.",
-    "Antes de calcular máximo y mínimo, comprueba que la lista no esté vacía."
+    "Necesitas mantener la entrada activa hasta que aparezca una palabra de salida.",
+    "Guarda solo los datos que realmente sean números válidos para el análisis.",
+    "No conviertas la entrada antes de comprobar si es la señal de finalización.",
+    "Al terminar, analiza la lista acumulada.",
+    "Controla el caso en que no se haya introducido ningún número."
+  ],
+  expectedOutput: "Debe pedir números hasta escribir fin y mostrar un resumen con cantidad total, pares, impares, mayor y menor.",
+  checks: [
+    "Debe pedir números repetidamente.",
+    "Debe terminar cuando el usuario escriba fin.",
+    "Debe guardar los números en una lista.",
+    "Debe contar cuántos números se han introducido.",
+    "Debe contar pares e impares.",
+    "Debe calcular el mayor y el menor.",
+    "Debe controlar el caso de lista vacía.",
+    "Debe mostrar un resumen final claro."
   ],
   starterCode:
 `numeros = []
 
-while True:
-    entrada = input("Escribe un número o 'fin': ").strip()
-
-    # TODO: terminar si el usuario escribe "fin"
-
-    # TODO: convertir la entrada a entero
-
-    # TODO: guardar el número en la lista
-
-# TODO: comprobar si se ha introducido algún número
-
-# TODO: calcular cuántos son pares y cuántos impares
-
-# TODO: mostrar cuántos números se han introducido
-
-# TODO: mostrar el mayor y el menor
+# Pide números hasta que el usuario escriba "fin".
+# Guarda los números válidos.
+# Al terminar, muestra un resumen con:
+# cantidad total, pares, impares, mayor y menor.
 `
 };
 
@@ -52,31 +51,31 @@ window.EXERCISE_CATALOG["py_reto_acumulativo_2_palabras"] = {
   estimatedTime: "20-30 min",
   skill: "Integración de strings, listas y funciones",
   hints: [
-    "Usa una lista para guardar las palabras.",
-    "Detén la entrada cuando el usuario escriba 'salir'.",
-    "Para la palabra más larga, compara longitudes con len().",
-    "Para las vocales, fíjate en la primera letra de cada palabra.",
-    "Para las repetidas, piensa cuántas veces aparece cada una."
+    "Necesitas acumular palabras hasta que aparezca la señal de salida.",
+    "Antes de analizar, comprueba que haya palabras guardadas.",
+    "Para la palabra más larga, compara tamaños.",
+    "Para las vocales, revisa la primera letra con cuidado.",
+    "Para las repetidas, piensa cuántas veces aparece cada palabra."
+  ],
+  expectedOutput: "Debe pedir palabras hasta escribir salir y mostrar cantidad total, palabra más larga, palabras que empiezan por vocal y palabras repetidas.",
+  checks: [
+    "Debe pedir palabras repetidamente.",
+    "Debe terminar cuando el usuario escriba salir.",
+    "Debe guardar las palabras en una lista.",
+    "Debe contar cuántas palabras se han introducido.",
+    "Debe encontrar la palabra más larga.",
+    "Debe contar palabras que empiezan por vocal.",
+    "Debe detectar palabras repetidas.",
+    "Debe controlar el caso de lista vacía."
   ],
   starterCode:
 `palabras = []
 
-while True:
-    entrada = input("Escribe una palabra o 'salir': ").strip()
-
-    # TODO: terminar si el usuario escribe "salir"
-
-    # TODO: guardar la palabra en la lista
-
-# TODO: comprobar si se ha introducido alguna palabra
-
-# TODO: mostrar cuántas palabras hay
-
-# TODO: encontrar la palabra más larga
-
-# TODO: contar cuántas empiezan por vocal
-
-# TODO: contar cuántas están repetidas
+# Pide palabras hasta que el usuario escriba "salir".
+# Guarda las palabras introducidas.
+# Al terminar, muestra:
+# cantidad total, palabra más larga,
+# palabras que empiezan por vocal y repetidas.
 `
 };
 
@@ -92,31 +91,31 @@ window.EXERCISE_CATALOG["py_reto_acumulativo_3_notas"] = {
   estimatedTime: "20-30 min",
   skill: "Integración de validación y análisis numérico",
   hints: [
-    "Usa una lista para guardar las notas válidas.",
-    "Detén la entrada cuando el usuario escriba 'fin'.",
-    "Valida que cada nota esté entre 0 y 10.",
-    "La media es suma total dividida entre cantidad.",
-    "Una nota aprobada suele ser mayor o igual que 5."
+    "La entrada termina con una palabra concreta.",
+    "Cada nota debe convertirse y validarse antes de guardarse.",
+    "No todas las entradas numéricas tienen por qué ser válidas.",
+    "Antes de calcular estadísticas, comprueba que haya datos.",
+    "Distingue entre notas aprobadas y suspensas con una condición clara."
+  ],
+  expectedOutput: "Debe pedir notas hasta escribir fin, validar el rango y mostrar cantidad, media, máxima, mínima, aprobados y suspensos.",
+  checks: [
+    "Debe pedir notas repetidamente.",
+    "Debe terminar cuando el usuario escriba fin.",
+    "Debe convertir las entradas numéricas.",
+    "Debe validar que cada nota esté entre 0 y 10.",
+    "Debe guardar solo notas válidas.",
+    "Debe calcular media, nota máxima y nota mínima.",
+    "Debe contar aprobados y suspensos.",
+    "Debe controlar el caso de no tener notas."
   ],
   starterCode:
 `notas = []
 
-while True:
-    entrada = input("Escribe una nota o 'fin': ").strip()
-
-    # TODO: terminar si el usuario escribe "fin"
-
-    # TODO: convertir la entrada a número
-
-    # TODO: validar que la nota esté entre 0 y 10
-
-    # TODO: guardar la nota en la lista
-
-# TODO: comprobar si hay notas
-
-# TODO: calcular media, máxima y mínima
-
-# TODO: contar aprobados y suspensos
+# Pide notas hasta que el usuario escriba "fin".
+# Valida cada nota antes de guardarla.
+# Al terminar, muestra:
+# cantidad, media, máxima, mínima,
+# aprobados y suspensos.
 `
 };
 
@@ -132,23 +131,29 @@ window.EXERCISE_CATALOG["py_reto_acumulativo_4_frases"] = {
   estimatedTime: "15-25 min",
   skill: "Análisis de strings con funciones",
   hints: [
-    "Usa split() para separar las palabras.",
-    "Ignora los espacios al contar letras.",
-    "Cuenta vocales recorriendo la frase.",
-    "Compara longitudes para encontrar la palabra más larga."
+    "Primero prepara la frase antes de analizarla.",
+    "Para contar palabras, piensa cómo separar el texto.",
+    "Para contar letras, no deberías contar los espacios.",
+    "Para contar vocales, recorre los caracteres.",
+    "Para la palabra más larga, compara tamaños."
+  ],
+  expectedOutput: "Debe analizar una frase y mostrar cantidad de palabras, letras sin espacios, vocales y palabra más larga.",
+  checks: [
+    "Debe pedir una frase al usuario.",
+    "Debe contar cuántas palabras tiene.",
+    "Debe contar letras sin incluir espacios.",
+    "Debe contar vocales.",
+    "Debe encontrar la palabra más larga.",
+    "Debe mostrar un resumen final claro."
   ],
   starterCode:
 `frase = input("Escribe una frase: ").strip()
 
-# TODO: separar la frase en palabras
-
-# TODO: contar cuántas palabras tiene
-
-# TODO: contar letras sin contar espacios
-
-# TODO: contar vocales
-
-# TODO: encontrar la palabra más larga
+# Analiza la frase y muestra:
+# número de palabras,
+# letras sin espacios,
+# vocales
+# y palabra más larga.
 `
 };
 
@@ -164,27 +169,30 @@ window.EXERCISE_CATALOG["py_reto_acumulativo_5_archivo"] = {
   estimatedTime: "25-35 min",
   skill: "Archivos, limpieza y validación",
   hints: [
-    "Usa with open(..., 'r') para leer.",
-    "Recorre línea a línea con un for.",
-    "Limpia cada línea con strip().",
+    "Debes leer el archivo por partes, no como un bloque único.",
+    "Cada línea debe limpiarse antes de validarse.",
     "Define una regla sencilla para decidir si una línea es válida.",
-    "Guarda las válidas en una lista."
+    "Guarda o cuenta los datos según el resultado de la validación.",
+    "El resumen final debe distinguir válidas e inválidas."
+  ],
+  expectedOutput: "Debe leer un archivo línea a línea, limpiar cada línea, validar su contenido y mostrar cuántas líneas son válidas e inválidas.",
+  checks: [
+    "Debe abrir un archivo en modo lectura.",
+    "Debe recorrer el archivo línea a línea.",
+    "Debe limpiar cada línea.",
+    "Debe aplicar una regla de validación.",
+    "Debe contar o guardar líneas válidas.",
+    "Debe contar líneas inválidas.",
+    "Debe mostrar un resumen final."
   ],
   starterCode:
 `validas = []
 invalidas = 0
 
-# TODO: abrir un archivo en modo lectura
-
-# TODO: recorrer sus líneas
-
-# TODO: limpiar cada línea con strip()
-
-# TODO: validar cada línea según una regla
-
-# TODO: guardar las válidas y contar las inválidas
-
-# TODO: mostrar el resumen final
+# Lee un archivo línea a línea.
+# Limpia cada línea.
+# Valida cada contenido según una regla.
+# Muestra un resumen final con válidas e inválidas.
 `
 };
 
@@ -200,11 +208,22 @@ window.EXERCISE_CATALOG["py_reto_acumulativo_6_menu"] = {
   estimatedTime: "25-35 min",
   skill: "Menú, funciones y flujo completo",
   hints: [
-    "Usa un while True para mantener el menú activo.",
-    "Crea una función para mostrar el menú.",
-    "Guarda los datos en una lista.",
-    "Valida las opciones con if / elif / else.",
-    "Empieza con una versión mínima y amplíala después."
+    "Empieza definiendo qué opciones tendrá el menú.",
+    "Guarda los datos en una estructura que puedas ir ampliando.",
+    "Separa las acciones importantes en funciones.",
+    "Valida las opciones que no existan.",
+    "Antes de mostrar resúmenes, piensa qué ocurre si no hay datos."
+  ],
+  expectedOutput: "Debe funcionar como un menú que permita añadir datos, verlos, mostrar un resumen simple y salir.",
+  checks: [
+    "Debe mostrar un menú.",
+    "Debe mantener el programa activo hasta elegir salir.",
+    "Debe permitir añadir datos.",
+    "Debe permitir ver los datos guardados.",
+    "Debe mostrar un resumen simple.",
+    "Debe validar opciones incorrectas.",
+    "Debe usar funciones para separar acciones.",
+    "Debe usar una lista para almacenar datos."
   ],
   starterCode:
 `def mostrar_menu():
@@ -216,17 +235,14 @@ window.EXERCISE_CATALOG["py_reto_acumulativo_6_menu"] = {
 
 
 def ver_datos(datos):
-    # TODO
     pass
 
 
 def anadir_dato(datos):
-    # TODO
     pass
 
 
 def mostrar_resumen(datos):
-    # TODO
     pass
 
 
@@ -237,17 +253,7 @@ def main():
         mostrar_menu()
         opcion = input("Elige una opción: ").strip()
 
-        if opcion == "1":
-            anadir_dato(datos)
-        elif opcion == "2":
-            ver_datos(datos)
-        elif opcion == "3":
-            mostrar_resumen(datos)
-        elif opcion == "4":
-            print("Saliendo...")
-            break
-        else:
-            print("Opción no válida")
+        # Completa el flujo del menú
 
 main()
 `

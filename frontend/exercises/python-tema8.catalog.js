@@ -11,16 +11,21 @@ window.EXERCISE_CATALOG["py_tema8_ej1"] = {
   skill: "Tuplas",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Crear una tupla
-
-# Crea una tupla con tres colores
-# Después imprime el segundo elemento
+`# Crea una tupla con tres colores
+# y muestra el segundo elemento
 `,
   hints: [
-    "Usa paréntesis ()",
-    "El segundo elemento tiene índice 1",
-    "Recuerda que una tupla expresa estabilidad",
+    "Necesitas una colección estable de varios valores.",
+    "El elemento pedido no es el primero.",
+    "Recuerda cómo se accede a una posición concreta."
   ],
+  expectedOutput: "Debe mostrar el segundo color de una tupla con tres colores.",
+  checks: [
+    "Debe crear una tupla.",
+    "La tupla debe contener tres colores.",
+    "Debe acceder al segundo elemento.",
+    "Debe mostrar ese elemento por pantalla."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema8_ej2"] = {
@@ -34,16 +39,21 @@ window.EXERCISE_CATALOG["py_tema8_ej2"] = {
   skill: "Sintaxis",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Tupla de un elemento
-
-# Crea una tupla con un solo elemento: 7
-# Después imprímela
+`# Crea correctamente una tupla con un solo número
+# y muéstrala por pantalla
 `,
   hints: [
-    "Necesitas una coma: (7,)",
-    "Sin coma, Python no lo interpreta como tupla de un elemento",
-    "Imprime la variable para comprobarlo",
+    "Una tupla de un solo elemento tiene una sintaxis especial.",
+    "No basta con escribir un valor entre paréntesis.",
+    "Comprueba que Python lo interpreta como tupla."
   ],
+  expectedOutput: "Debe mostrar una tupla de un solo elemento.",
+  checks: [
+    "Debe crear una tupla.",
+    "La tupla debe tener un solo elemento.",
+    "Debe usar la sintaxis correcta para un único elemento.",
+    "Debe mostrar el resultado."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema8_ej3"] = {
@@ -57,16 +67,21 @@ window.EXERCISE_CATALOG["py_tema8_ej3"] = {
   skill: "Casos frontera",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Tupla vacía y longitud
-
-# Crea una tupla vacía
-# Después imprime su longitud con len()
+`# Crea una tupla vacía
+# y muestra cuántos elementos tiene
 `,
   hints: [
-    "Una tupla vacía se puede crear con ()",
-    "Sigue siendo una secuencia",
-    "len() debería dar 0",
+    "Una colección puede no tener elementos.",
+    "Después de crearla, debes medir su tamaño.",
+    "El resultado esperado es una cantidad."
   ],
+  expectedOutput: "Debe mostrar la longitud de una tupla vacía.",
+  checks: [
+    "Debe crear una tupla vacía.",
+    "Debe calcular su longitud.",
+    "Debe mostrar el resultado.",
+    "La longitud debe corresponder a una colección sin elementos."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema8_ej4"] = {
@@ -80,18 +95,21 @@ window.EXERCISE_CATALOG["py_tema8_ej4"] = {
   skill: "Duplicados",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Crear un set
-
-# Crea un set con estos números:
-# 1, 2, 2, 3, 3, 4
-
-# Después imprímelo
+`# Crea un set con números repetidos
+# y muestra el resultado
 `,
   hints: [
-    "Usa llaves {}",
-    "Los sets eliminan duplicados",
-    "No esperes ver repetidos al imprimir",
+    "La colección debe representar valores únicos.",
+    "Incluye algunos valores repetidos al crearla.",
+    "Comprueba qué ocurre con los duplicados al mostrarla."
   ],
+  expectedOutput: "Debe mostrar un set donde los valores repetidos aparecen una sola vez.",
+  checks: [
+    "Debe crear un set.",
+    "Debe partir de valores con repetidos.",
+    "Debe mostrar el resultado.",
+    "Debe reflejar que los sets no conservan duplicados."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema8_ej5"] = {
@@ -105,17 +123,22 @@ window.EXERCISE_CATALOG["py_tema8_ej5"] = {
   skill: "set()",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Set vacío correcto
-
-# Crea un set vacío correctamente
-# Añade los valores 10 y 20
-# Después imprímelo
+`# Crea un set vacío correctamente
+# añade dos valores
+# y muestra el resultado
 `,
   hints: [
-    "No uses {} porque eso crea un diccionario vacío",
-    "El set vacío correcto es set()",
-    "Usa add() para añadir elementos",
+    "Crear un set vacío tiene una forma concreta.",
+    "Después debes añadir elementos al conjunto.",
+    "Comprueba que el resultado no sea un diccionario."
   ],
+  expectedOutput: "Debe mostrar un set con dos elementos añadidos desde un set vacío.",
+  checks: [
+    "Debe crear un set vacío.",
+    "No debe crear un diccionario vacío por error.",
+    "Debe añadir dos elementos.",
+    "Debe mostrar el set final."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema8_ej6"] = {
@@ -129,19 +152,24 @@ window.EXERCISE_CATALOG["py_tema8_ej6"] = {
   skill: "Modificar",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Añadir y eliminar en un set
+`letras = {"a", "b", "c"}
 
-letras = {"a", "b", "c"}
-
-# Añade "d"
-# Elimina "b"
-# Imprime el set final
+# Añade un elemento
+# elimina otro
+# y muestra el set final
 `,
   hints: [
-    "Usa add() para añadir",
-    "Usa remove() para eliminar",
-    "Imprime el set al final",
+    "Debes modificar el conjunto existente.",
+    "Una operación incorpora un valor nuevo.",
+    "La otra operación quita un valor que ya estaba."
   ],
+  expectedOutput: "Debe mostrar el set después de añadir un elemento y eliminar otro.",
+  checks: [
+    "Debe usar el set dado.",
+    "Debe añadir un elemento nuevo.",
+    "Debe eliminar un elemento existente.",
+    "Debe mostrar el set final."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema8_ej7"] = {
@@ -155,19 +183,23 @@ window.EXERCISE_CATALOG["py_tema8_ej7"] = {
   skill: "Pertenencia",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Pertenencia en set
+`numeros = {1, 2, 3, 4}
 
-numeros = {1, 2, 3, 4}
-
-# Comprueba si el número 3 pertenece al set
-# Si pertenece, imprime "Sí está"
-# Si no, imprime "No está"
+# Comprueba si un valor pertenece al set
+# y muestra un mensaje según el resultado
 `,
   hints: [
-    "La idea clave aquí es pertenencia",
-    "Usa el operador in",
-    "Resuelve con if",
+    "La idea clave es comprobar pertenencia.",
+    "El resultado de esa comprobación debe decidir el mensaje.",
+    "Piensa qué estructura condicional necesitas."
   ],
+  expectedOutput: "Debe mostrar si el valor buscado pertenece o no al set.",
+  checks: [
+    "Debe usar el set dado.",
+    "Debe comprobar pertenencia.",
+    "Debe usar una condición.",
+    "Debe mostrar un mensaje coherente."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema8_ej8"] = {
@@ -181,19 +213,24 @@ window.EXERCISE_CATALOG["py_tema8_ej8"] = {
   skill: "Operaciones",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Unión e intersección
-
-a = {1, 2, 3}
+`a = {1, 2, 3}
 b = {3, 4, 5}
 
-# Imprime la unión
-# Imprime la intersección
+# Calcula y muestra la unión
+# Calcula y muestra la intersección
 `,
   hints: [
-    "La unión se puede hacer con |",
-    "La intersección se puede hacer con &",
-    "Haz dos print separados",
+    "Una operación reúne elementos de ambos grupos.",
+    "La otra se queda solo con lo compartido.",
+    "Muestra ambos resultados por separado."
   ],
+  expectedOutput: "Debe mostrar la unión y la intersección de los dos sets.",
+  checks: [
+    "Debe usar los dos sets dados.",
+    "Debe calcular la unión.",
+    "Debe calcular la intersección.",
+    "Debe mostrar ambos resultados."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema8_ej9"] = {
@@ -207,21 +244,24 @@ window.EXERCISE_CATALOG["py_tema8_ej9"] = {
   skill: "Diferencia",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Diferencia y dirección
-
-a = {1, 2, 3}
+`a = {1, 2, 3}
 b = {3, 4, 5}
 
-# Imprime a - b
-# Imprime b - a
-# Después escribe un comentario explicando
-# por qué no devuelven lo mismo
+# Calcula ambas diferencias
+# y explica por qué no devuelven lo mismo
 `,
   hints: [
-    "La diferencia depende del orden de los operandos",
-    "Cada una responde a una pregunta distinta",
-    "Piensa qué sobra en A y qué sobra en B",
+    "La diferencia depende del orden.",
+    "Cada operación responde a una pregunta distinta.",
+    "Piensa qué elementos sobran en cada conjunto."
   ],
+  expectedOutput: "Debe mostrar ambas diferencias y explicar que el orden cambia el resultado.",
+  checks: [
+    "Debe calcular la diferencia de a respecto a b.",
+    "Debe calcular la diferencia de b respecto a a.",
+    "Debe mostrar ambos resultados.",
+    "Debe incluir una explicación en comentarios."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema8_ej10"] = {
@@ -235,19 +275,24 @@ window.EXERCISE_CATALOG["py_tema8_ej10"] = {
   skill: "^",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Diferencia simétrica
-
-a = {1, 2, 3}
+`a = {1, 2, 3}
 b = {3, 4, 5}
 
-# Imprime los elementos que están
-# en uno u otro pero no en ambos
+# Obtén los elementos que están en uno u otro,
+# pero no en ambos
 `,
   hints: [
-    "Aquí conviene la diferencia simétrica",
-    "El operador es ^",
-    "Piensa en lo no compartido",
+    "Debes quedarte con lo no compartido.",
+    "No es lo mismo que una diferencia en una sola dirección.",
+    "Piensa qué elementos aparecen solo en uno de los dos sets."
   ],
+  expectedOutput: "Debe mostrar los elementos que están en uno de los sets pero no en ambos.",
+  checks: [
+    "Debe usar los dos sets dados.",
+    "Debe obtener los elementos no compartidos.",
+    "Debe excluir los elementos comunes.",
+    "Debe mostrar el resultado."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema8_ej11"] = {
@@ -261,21 +306,27 @@ window.EXERCISE_CATALOG["py_tema8_ej11"] = {
   skill: "Diseño",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Elegir estructura
-
-# Decide qué estructura usarías para:
+`# Decide qué estructura usarías para:
 # 1. coordenadas de un punto
 # 2. usuarios únicos conectados
 # 3. lista ordenada de tareas
-#
-# Escribe una estructura para cada caso
+
+# Crea una estructura para cada caso
 # y añade un comentario justificando la elección
 `,
   hints: [
-    "Piensa en orden, duplicados, cambios y pertenencia",
-    "No todas las colecciones representan igual de bien el problema",
-    "Aquí importa justificar, no solo escribir algo que funcione",
+    "Piensa en orden, duplicados, cambios y pertenencia.",
+    "No todas las colecciones representan igual de bien el problema.",
+    "Aquí importa justificar, no solo escribir algo que funcione."
   ],
+  expectedOutput: "Debe crear estructuras adecuadas para varios casos y justificar la elección.",
+  checks: [
+    "Debe elegir una estructura para coordenadas.",
+    "Debe elegir una estructura para usuarios únicos.",
+    "Debe elegir una estructura para tareas ordenadas.",
+    "Debe incluir comentarios de justificación.",
+    "Las estructuras deben representar bien cada problema."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema8_ej12"] = {
@@ -289,19 +340,23 @@ window.EXERCISE_CATALOG["py_tema8_ej12"] = {
   skill: "Comparación",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Estructura que funciona pero representa peor
+`coordenada = [40.4, -3.7]
 
-coordenada = [40.4, -3.7]
-
-# Reescribe este caso con una estructura mejor
-# y añade un comentario explicando por qué
-# representa mejor el problema
+# Reescribe este caso con una estructura más adecuada
+# y explica por qué representa mejor el problema
 `,
   hints: [
-    "Aquí la clave no es si la lista funciona, sino si expresa bien la intención",
-    "Piensa en estabilidad",
-    "Compara lista y tupla",
+    "La clave no es si la lista funciona, sino si expresa bien la intención.",
+    "Piensa si esos datos deberían cambiar o mantenerse estables.",
+    "La explicación importa tanto como la estructura."
   ],
+  expectedOutput: "Debe representar la coordenada con una estructura más adecuada y explicar la mejora.",
+  checks: [
+    "Debe partir del caso dado.",
+    "Debe sustituir la lista por una estructura más adecuada.",
+    "Debe explicar por qué mejora la representación.",
+    "Debe mantener los valores de la coordenada."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema8_reto1"] = {
@@ -315,21 +370,25 @@ window.EXERCISE_CATALOG["py_tema8_reto1"] = {
   skill: "Unicidad",
   type: "Reto",
   starterCode:
-`# MINI RETO: Limpiar duplicados
+`numeros = [1, 2, 2, 3, 4, 4, 5]
 
-numeros = [1, 2, 2, 3, 4, 4, 5]
-
-# Convierte la lista en un set
-# Imprime el resultado
-# Después escribe comentarios explicando:
-# 1. qué se gana
-# 2. qué información se pierde
+# Convierte la lista en una estructura sin duplicados
+# muestra el resultado
+# y explica qué se gana y qué se pierde
 `,
   hints: [
-    "Se gana unicidad",
-    "Se pierde la idea de secuencia con repetidos",
-    "Piensa también en el orden",
+    "El objetivo es quedarte con valores únicos.",
+    "Piensa qué ocurre con los repetidos.",
+    "También debes explicar qué pasa con la idea de orden o repetición."
   ],
+  expectedOutput: "Debe mostrar los valores únicos y explicar qué se gana y qué se pierde al usar un set.",
+  checks: [
+    "Debe partir de la lista dada.",
+    "Debe obtener una estructura sin duplicados.",
+    "Debe mostrar el resultado.",
+    "Debe explicar qué se gana.",
+    "Debe explicar qué información se pierde."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema8_reto2"] = {
@@ -343,21 +402,23 @@ window.EXERCISE_CATALOG["py_tema8_reto2"] = {
   skill: "Integración",
   type: "Reto final",
   starterCode:
-`# RETO FINAL: Elegir estructura y operar
-
-# 1. Crea una tupla para representar unas coordenadas
-# 2. Crea un set con usuarios únicos conectados
-# 3. Crea otro set con usuarios de otro grupo
-# 4. Imprime:
-#    - usuarios en ambos grupos
-#    - usuarios exclusivos del primero
-#    - todos los usuarios distintos
-# 5. Añade comentarios justificando
-#    por qué en cada caso has usado tupla o set
+`# Resuelve estos casos:
+# 1. unas coordenadas estables
+# 2. usuarios únicos conectados
+# 3. comparación entre dos grupos de usuarios
+# 4. justificación de las estructuras elegidas
 `,
   hints: [
-    "Combinas estabilidad de tupla con unicidad y comparación de sets",
-    "Piensa primero en qué representa cada dato",
-    "Después usa las operaciones adecuadas entre sets",
+    "Combinas estabilidad, unicidad y comparación entre grupos.",
+    "Primero decide qué representa mejor cada dato.",
+    "Después aplica operaciones entre conjuntos donde tenga sentido."
   ],
+  expectedOutput: "Debe resolver varios casos usando tuplas y sets de forma justificada.",
+  checks: [
+    "Debe usar una estructura estable para coordenadas.",
+    "Debe usar una estructura de unicidad para usuarios.",
+    "Debe comparar dos grupos de usuarios.",
+    "Debe mostrar resultados de operaciones entre grupos.",
+    "Debe justificar las estructuras elegidas."
+  ]
 };

@@ -11,16 +11,20 @@ window.EXERCISE_CATALOG["py_tema3_ej1"] = {
   skill: "for",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Del 1 al 5
-
-# Usa un bucle for para imprimir
-# los números del 1 al 5
+`# Muestra los números del 1 al 5 usando un bucle for
 `,
   hints: [
-    "Usa range(1, 6)",
-    "Recuerda que el final no se incluye",
-    "Imprime la variable del bucle",
+    "Necesitas repetir una acción varias veces.",
+    "Piensa qué rango de números quieres recorrer.",
+    "Comprueba que aparecen el 1 y el 5."
   ],
+  expectedOutput: "Debe mostrar los números del 1 al 5.",
+  checks: [
+    "Debe usar un bucle for.",
+    "Debe empezar mostrando el número 1.",
+    "Debe terminar mostrando el número 5.",
+    "Debe mostrar todos los números intermedios."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema3_ej2"] = {
@@ -34,16 +38,20 @@ window.EXERCISE_CATALOG["py_tema3_ej2"] = {
   skill: "range()",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Cuenta atrás
-
-# Usa un for para imprimir
-# del 10 al 1
+`# Muestra los números del 10 al 1 en orden descendente
 `,
   hints: [
-    "Necesitas un salto negativo",
-    "Piensa en range(10, 0, -1)",
-    "El 0 no se imprime si pones ese final",
+    "Necesitas recorrer números hacia atrás.",
+    "Piensa en cómo indicar un salto descendente.",
+    "Comprueba que el 10 aparece primero y el 1 aparece al final."
   ],
+  expectedOutput: "Debe mostrar los números del 10 al 1 en orden descendente.",
+  checks: [
+    "Debe usar una repetición.",
+    "Debe comenzar en 10.",
+    "Debe terminar en 1.",
+    "El orden debe ser descendente."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema3_ej3"] = {
@@ -57,15 +65,20 @@ window.EXERCISE_CATALOG["py_tema3_ej3"] = {
   skill: "range()",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Números pares
-
-# Imprime los números pares del 2 al 20
+`# Muestra los números pares del 2 al 20
 `,
   hints: [
-    "Puedes usar un salto de 2",
-    "Empieza en 2",
-    "El final debe permitir llegar a 20",
+    "Solo deben aparecer números pares.",
+    "Piensa si puedes avanzar de dos en dos.",
+    "Comprueba que el 20 también aparece."
   ],
+  expectedOutput: "Debe mostrar los números pares desde 2 hasta 20 incluidos.",
+  checks: [
+    "Debe mostrar solo números pares.",
+    "Debe empezar en 2.",
+    "Debe incluir el 20.",
+    "No debe mostrar números impares."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema3_ej4"] = {
@@ -79,18 +92,22 @@ window.EXERCISE_CATALOG["py_tema3_ej4"] = {
   skill: "Recorrido",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Recorrer palabra
+`palabra = "python"
 
-palabra = "python"
-
-# Recorre la palabra con un for
-# e imprime cada letra
+# Recorre la palabra y muestra una letra por línea
 `,
   hints: [
-    "Puedes recorrer directamente el string",
-    "La variable del bucle puede llamarse letra",
-    "Imprime una letra en cada iteración",
+    "Un string se puede recorrer carácter a carácter.",
+    "Cada vuelta del bucle debe trabajar con una letra.",
+    "La salida debe aparecer en varias líneas."
   ],
+  expectedOutput: "Debe mostrar cada letra de la palabra python en una línea distinta.",
+  checks: [
+    "Debe recorrer la palabra.",
+    "Debe mostrar una letra por iteración.",
+    "Debe respetar el orden de las letras.",
+    "Cada letra debe aparecer separada."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema3_ej5"] = {
@@ -104,20 +121,25 @@ window.EXERCISE_CATALOG["py_tema3_ej5"] = {
   skill: "Acumulador",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Suma del 1 al 10
+`suma = 0
 
-suma = 0
-
-# Recorre del 1 al 10
+# Recorre los números necesarios
 # y acumula el total en suma
 
 print(suma)
 `,
   hints: [
-    "Inicializa suma antes del bucle",
-    "Usa suma = suma + numero",
-    "Imprime suma al final",
+    "Necesitas una variable que guarde el total.",
+    "En cada vuelta debes añadir el número actual.",
+    "El resultado final debe salir después del bucle."
   ],
+  expectedOutput: "Debe mostrar la suma total de los números del 1 al 10.",
+  checks: [
+    "Debe usar un acumulador.",
+    "Debe recorrer los números del 1 al 10.",
+    "Debe actualizar la suma durante el bucle.",
+    "Debe mostrar el resultado final al terminar."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema3_ej6"] = {
@@ -131,18 +153,22 @@ window.EXERCISE_CATALOG["py_tema3_ej6"] = {
   skill: "while",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: While del 1 al 5
+`contador = 1
 
-contador = 1
-
-# Usa while para imprimir
-# del 1 al 5
+# Usa while para mostrar del 1 al 5
 `,
   hints: [
-    "La condición puede ser contador <= 5",
-    "No olvides actualizar contador dentro del bucle",
-    "Si no actualizas, tendrás un bucle infinito",
+    "El bucle debe repetirse mientras no hayas llegado al final.",
+    "Necesitas cambiar la variable de control dentro del bucle.",
+    "Comprueba que el programa termina."
   ],
+  expectedOutput: "Debe mostrar los números del 1 al 5 usando un bucle while.",
+  checks: [
+    "Debe usar while.",
+    "Debe usar una variable de control.",
+    "Debe actualizar la variable de control.",
+    "Debe terminar después de mostrar el 5."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema3_ej7"] = {
@@ -156,17 +182,21 @@ window.EXERCISE_CATALOG["py_tema3_ej7"] = {
   skill: "continue",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Saltar pares
-
-# Recorre del 1 al 10
-# Si el número es par, sáltalo
-# Si no, imprímelo
+`# Recorre los números del 1 al 10
+# y muestra solo los que no sean pares
 `,
   hints: [
-    "Usa continue",
-    "Puedes detectar pares con numero % 2 == 0",
-    "Imprime solo los impares",
+    "Debes decidir cuándo no interesa ejecutar el resto de la vuelta.",
+    "Piensa qué condición identifica los números que quieres saltar.",
+    "La salida final debe contener solo impares."
   ],
+  expectedOutput: "Debe mostrar los números impares del 1 al 10.",
+  checks: [
+    "Debe recorrer del 1 al 10.",
+    "Debe detectar los números pares.",
+    "Debe saltar o evitar mostrar los pares.",
+    "Debe mostrar solo números impares."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema3_ej8"] = {
@@ -180,19 +210,23 @@ window.EXERCISE_CATALOG["py_tema3_ej8"] = {
   skill: "break",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Parar al encontrar
-
-palabra = "programacion"
+`palabra = "programacion"
 
 # Recorre la palabra
-# Si encuentras la letra "g", detén el bucle
-# Si no, imprime la letra
+# y detén el bucle al encontrar la letra indicada en el enunciado
 `,
   hints: [
-    "Aquí necesitas usar break",
-    "Piensa si el print va antes o después del break",
-    "El bucle debe terminar cuando aparezca la letra indicada",
+    "Debes recorrer la palabra letra a letra.",
+    "Cuando aparezca la letra buscada, el bucle debe terminar.",
+    "Piensa si quieres mostrar la letra antes o después de comprobarla."
   ],
+  expectedOutput: "Debe recorrer la palabra y detenerse cuando encuentre la letra indicada.",
+  checks: [
+    "Debe recorrer la palabra.",
+    "Debe comprobar cada letra.",
+    "Debe detener el bucle al encontrar la letra objetivo.",
+    "No debe seguir recorriendo después de encontrarla."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema3_ej9"] = {
@@ -208,15 +242,23 @@ window.EXERCISE_CATALOG["py_tema3_ej9"] = {
   starterCode:
 `texto = ""
 
-# Escribe una solución que siga pidiendo una palabra
-# hasta que el usuario escriba exactamente "python"
+# Sigue pidiendo una palabra
+# hasta que el usuario escriba la palabra correcta
 
 print("Correcto")
 `,
   hints: [
-    "Necesitas volver a pedir el dato mientras no sea correcto",
-    "Piensa bien qué condición mantiene vivo el bucle"
+    "Necesitas repetir la petición mientras la entrada no sea válida.",
+    "La condición del bucle debe depender del texto introducido.",
+    "El mensaje final solo debe aparecer cuando el dato ya sea correcto."
   ],
+  expectedOutput: "Debe pedir palabras hasta que el usuario escriba python y después mostrar Correcto.",
+  checks: [
+    "Debe usar un bucle while.",
+    "Debe pedir datos al usuario.",
+    "Debe repetir mientras el texto no sea el esperado.",
+    "Debe terminar cuando se introduzca la palabra correcta."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema3_ej10"] = {
@@ -233,13 +275,21 @@ window.EXERCISE_CATALOG["py_tema3_ej10"] = {
 `suma = 0
 
 # Recorre del 1 al 4
-# Actualiza la suma en cada iteración
+# actualiza la suma
 # y muestra el número actual junto con el valor acumulado
 `,
   hints: [
-    "Primero actualiza la variable y después muestra su estado",
-    "La salida debe ayudarte a seguir el proceso paso a paso"
+    "La salida debe ayudarte a seguir el proceso.",
+    "En cada vuelta debe verse el número usado y el acumulado.",
+    "Comprueba que el acumulador cambia en cada iteración."
   ],
+  expectedOutput: "Debe mostrar cómo evoluciona la suma acumulada al recorrer los números del 1 al 4.",
+  checks: [
+    "Debe usar un acumulador.",
+    "Debe recorrer del 1 al 4.",
+    "Debe actualizar la suma en cada vuelta.",
+    "Debe mostrar el número actual y el acumulado."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema3_ej11"] = {
@@ -261,9 +311,17 @@ while contador <= 5:
 # Corrige el código para que termine bien
 `,
   hints: [
-    "La condición no es el problema principal",
-    "Revisa qué debería cambiar dentro del bucle"
+    "La condición no es el problema principal.",
+    "Revisa qué debería cambiar dentro del bucle.",
+    "El programa debe mostrar una secuencia finita."
   ],
+  expectedOutput: "Debe mostrar los números esperados y terminar sin quedarse en un bucle infinito.",
+  checks: [
+    "Debe mantener una condición de salida coherente.",
+    "Debe modificar la variable de control.",
+    "Debe evitar el bucle infinito.",
+    "Debe terminar correctamente."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema3_ej12"] = {
@@ -279,13 +337,21 @@ window.EXERCISE_CATALOG["py_tema3_ej12"] = {
   starterCode:
 `contador_impares = 0
 
-# Escribe una solución para contar los números impares
-# entre 1 y 10 e imprime el resultado final
+# Cuenta cuántos números impares hay entre 1 y 10
+# y muestra el resultado final
 `,
   hints: [
-    "Necesitas recorrer varios números y usar un contador",
-    "Piensa qué condición identifica a un número impar"
+    "Necesitas recorrer varios números.",
+    "Usa una variable para contar los casos que cumplen la condición.",
+    "Piensa qué propiedad identifica a un número impar."
   ],
+  expectedOutput: "Debe mostrar cuántos números impares hay entre 1 y 10.",
+  checks: [
+    "Debe recorrer los números del 1 al 10.",
+    "Debe identificar los números impares.",
+    "Debe usar un contador.",
+    "Debe mostrar el total final."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema3_reto1"] = {
@@ -299,20 +365,23 @@ window.EXERCISE_CATALOG["py_tema3_reto1"] = {
   skill: "while + input()",
   type: "Reto",
   starterCode:
-`# MINI RETO: Input hasta número positivo
+`numero = -1
 
-numero = -1
-
-# Mientras numero sea menor o igual que 0:
-# 1. pide un número
-# 2. conviértelo a entero
-# Al final imprime "Número válido"
+# Pide números hasta obtener uno válido
+# y al final muestra un mensaje de confirmación
 `,
   hints: [
-    "Este ejercicio encaja bien con while",
-    "La condición debe mantener el bucle mientras el número no sea válido",
-    "Recuerda convertir el input con int()",
+    "Este ejercicio encaja bien con una repetición.",
+    "El bucle debe mantenerse mientras el número no sea válido.",
+    "Recuerda que la entrada del usuario llega como texto."
   ],
+  expectedOutput: "Debe pedir números hasta que el usuario introduzca un número positivo y después mostrar un mensaje de confirmación.",
+  checks: [
+    "Debe pedir datos al usuario.",
+    "Debe convertir la entrada a número.",
+    "Debe repetir mientras el número no sea positivo.",
+    "Debe terminar cuando el número sea válido."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema3_reto2"] = {
@@ -321,25 +390,28 @@ window.EXERCISE_CATALOG["py_tema3_reto2"] = {
   topic: "python/tema-3",
   title: "Reto final – Sumar hasta 0",
   statement: "Pide números al usuario, súmalos y termina cuando escriba 0.",
-  difficulty: "Reto Final",
+  difficulty: "Reto final",
   estimatedTime: "12 min",
   skill: "Integrador",
   type: "Reto final",
   starterCode:
-`# RETO FINAL: Sumar hasta 0
+`suma = 0
 
-suma = 0
-numero = -1
-
-# Mientras numero sea distinto de 0:
-# 1. pide un número
-# 2. conviértelo a entero
-# 3. súmalo si no es 0
-# Al final imprime la suma total
+# Pide números al usuario
+# súmalos mientras no aparezca la condición de salida
+# y muestra la suma total al final
 `,
   hints: [
-    "Este ejercicio encaja bien con while",
-    "El 0 es la condición de salida",
-    "Piensa bien en el orden: leer, comprobar, sumar",
+    "Necesitas una condición clara para terminar.",
+    "Piensa en el orden: pedir, comprobar y sumar.",
+    "El valor de salida no debería alterar el total final."
   ],
+  expectedOutput: "Debe pedir números, acumularlos y terminar al introducir 0 mostrando la suma total.",
+  checks: [
+    "Debe usar un bucle.",
+    "Debe pedir números al usuario.",
+    "Debe acumular los valores introducidos.",
+    "Debe terminar cuando el usuario escriba 0.",
+    "Debe mostrar la suma final."
+  ]
 };

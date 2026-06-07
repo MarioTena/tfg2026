@@ -11,18 +11,21 @@ window.EXERCISE_CATALOG["py_tema4_ej1"] = {
   skill: "Listas",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Crear una lista
-
-# Crea una lista con 5 comidas favoritas
-# y guárdala en una variable
-
-# Después imprímela
+`# Crea una lista con 5 comidas favoritas
+# y muéstrala por pantalla
 `,
   hints: [
-    "Usa corchetes []",
-    "Separa los elementos con comas",
-    "Guarda la lista en una variable y luego usa print",
+    "Necesitas una colección con varios elementos.",
+    "Cada comida debe ser un texto.",
+    "Comprueba que la salida muestra los 5 elementos."
   ],
+  expectedOutput: "Debe mostrar una lista con 5 comidas favoritas.",
+  checks: [
+    "Debe crear una lista.",
+    "La lista debe tener 5 elementos.",
+    "Los elementos deben representar comidas.",
+    "Debe mostrar la lista por pantalla."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema4_ej2"] = {
@@ -36,18 +39,22 @@ window.EXERCISE_CATALOG["py_tema4_ej2"] = {
   skill: "Índices",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Primer y último elemento
+`numeros = [10, 20, 30, 40]
 
-numeros = [10, 20, 30, 40]
-
-# Imprime el primer elemento
-# Imprime el último elemento
+# Muestra el primer y el último elemento
 `,
   hints: [
-    "El primer índice es 0",
-    "Puedes usar -1 para el último",
-    "Haz dos print separados",
+    "Necesitas acceder a posiciones concretas.",
+    "El primer elemento está al inicio de la lista.",
+    "Para el último, piensa en una forma que no dependa tanto de contar a mano."
   ],
+  expectedOutput: "Debe mostrar el primer y el último elemento de la lista.",
+  checks: [
+    "Debe acceder al primer elemento.",
+    "Debe acceder al último elemento.",
+    "Debe mostrar ambos valores por pantalla.",
+    "No debe modificar la lista."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema4_ej3"] = {
@@ -61,18 +68,23 @@ window.EXERCISE_CATALOG["py_tema4_ej3"] = {
   skill: "Modificar",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Modificar una posición
+`colores = ["rojo", "verde", "azul"]
 
-colores = ["rojo", "verde", "azul"]
-
-# Cambia "verde" por "amarillo"
-# Después imprime la lista
+# Cambia el segundo elemento por otro color
+# y muestra la lista final
 `,
   hints: [
-    "El segundo elemento tiene índice 1",
-    "Puedes asignar un nuevo valor con =",
-    "Imprime la lista al final",
+    "Debes modificar una posición existente.",
+    "Piensa qué índice corresponde al segundo elemento.",
+    "Comprueba la lista después del cambio."
   ],
+  expectedOutput: "Debe mostrar la lista con el segundo elemento cambiado.",
+  checks: [
+    "Debe acceder a una posición de la lista.",
+    "Debe modificar el segundo elemento.",
+    "Debe mantener el resto de elementos.",
+    "Debe mostrar la lista actualizada."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema4_ej4"] = {
@@ -86,18 +98,22 @@ window.EXERCISE_CATALOG["py_tema4_ej4"] = {
   skill: "for",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Recorrer una lista
+`animales = ["gato", "perro", "loro"]
 
-animales = ["gato", "perro", "loro"]
-
-# Recorre la lista con un for
-# e imprime cada elemento
+# Recorre la lista y muestra cada elemento
 `,
   hints: [
-    "Puedes recorrer directamente la lista",
-    "La variable del bucle puede llamarse animal",
-    "Imprime dentro del bucle",
+    "Una lista se puede recorrer elemento a elemento.",
+    "Cada vuelta debe trabajar con un animal.",
+    "La salida debe aparecer separada por elementos."
   ],
+  expectedOutput: "Debe mostrar cada animal de la lista en una línea distinta.",
+  checks: [
+    "Debe recorrer la lista.",
+    "Debe mostrar cada elemento.",
+    "Debe imprimir dentro del recorrido.",
+    "No debe mostrar la lista completa como un único bloque."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema4_ej5"] = {
@@ -111,21 +127,25 @@ window.EXERCISE_CATALOG["py_tema4_ej5"] = {
   skill: "Acumulador",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Sumar elementos de una lista
-
-numeros = [1, 2, 3, 4, 5]
+`numeros = [1, 2, 3, 4, 5]
 suma = 0
 
-# Recorre la lista
-# y acumula el total en suma
+# Recorre la lista y acumula el total
 
 print(suma)
 `,
   hints: [
-    "Necesitas un for y un acumulador",
-    "Usa suma = suma + numero",
-    "Imprime suma al final",
+    "Necesitas recorrer todos los números.",
+    "La variable suma debe cambiar durante el recorrido.",
+    "El resultado final debe mostrarse después."
   ],
+  expectedOutput: "Debe mostrar la suma total de todos los números de la lista.",
+  checks: [
+    "Debe recorrer la lista.",
+    "Debe usar un acumulador.",
+    "Debe sumar todos los elementos.",
+    "Debe mostrar el total final."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema4_ej6"] = {
@@ -139,21 +159,26 @@ window.EXERCISE_CATALOG["py_tema4_ej6"] = {
   skill: "Contador",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Contar pares
-
-numeros = [2, 5, 8, 11, 14]
+`numeros = [2, 5, 8, 11, 14]
 contador = 0
 
 # Recorre la lista
-# Si un número es par, suma 1 a contador
+# y cuenta cuántos números son pares
 
 print(contador)
 `,
   hints: [
-    "Usa numero % 2 == 0",
-    "Necesitas un contador que empiece en 0",
-    "Solo aumenta el contador cuando se cumpla la condición",
+    "Necesitas revisar cada número.",
+    "Solo algunos elementos deben aumentar el contador.",
+    "Piensa qué propiedad identifica a un número par."
   ],
+  expectedOutput: "Debe mostrar cuántos números pares hay en la lista.",
+  checks: [
+    "Debe recorrer la lista.",
+    "Debe identificar los números pares.",
+    "Debe usar un contador.",
+    "Debe mostrar el número total de pares."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema4_ej7"] = {
@@ -167,21 +192,26 @@ window.EXERCISE_CATALOG["py_tema4_ej7"] = {
   skill: "Búsqueda",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Buscar un valor
-
-nombres = ["Ana", "Luis", "Marta", "Carlos"]
+`nombres = ["Ana", "Luis", "Marta", "Carlos"]
 encontrado = False
 
 # Recorre la lista
-# Si encuentras "Marta", cambia encontrado a True
+# y cambia encontrado si aparece el nombre buscado
 
 print(encontrado)
 `,
   hints: [
-    "Puedes usar un for",
-    "Compara cada nombre con 'Marta'",
-    "Cuando lo encuentres, cambia la variable encontrado",
+    "Debes comparar cada elemento con el valor buscado.",
+    "La variable encontrado representa si ya apareció.",
+    "Comprueba que el resultado final sea coherente."
   ],
+  expectedOutput: "Debe mostrar True si Marta aparece en la lista.",
+  checks: [
+    "Debe recorrer la lista de nombres.",
+    "Debe buscar el valor Marta.",
+    "Debe actualizar la variable encontrado.",
+    "Debe mostrar el resultado final."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema4_ej8"] = {
@@ -195,19 +225,23 @@ window.EXERCISE_CATALOG["py_tema4_ej8"] = {
   skill: "Slicing",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Slicing básico
+`numeros = [10, 20, 30, 40, 50]
 
-numeros = [10, 20, 30, 40, 50]
-
-# Guarda en otra variable
-# los tres primeros elementos
-# Después imprímela
+# Guarda en otra variable los tres primeros elementos
+# y muestra el resultado
 `,
   hints: [
-    "Usa slicing con :",
-    "Piensa en qué índice quieres dejar fuera",
-    "El límite final no se incluye",
+    "Necesitas quedarte solo con una parte de la lista.",
+    "Piensa desde dónde empieza el fragmento.",
+    "Recuerda que el límite final no se incluye."
   ],
+  expectedOutput: "Debe mostrar una sublista con los tres primeros elementos.",
+  checks: [
+    "Debe partir de la lista original.",
+    "Debe obtener solo los tres primeros elementos.",
+    "Debe guardar o mostrar la sublista.",
+    "No debe modificar la lista original."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema4_ej9"] = {
@@ -221,19 +255,23 @@ window.EXERCISE_CATALOG["py_tema4_ej9"] = {
   skill: "append()",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: append()
+`tareas = ["estudiar", "repasar"]
 
-tareas = ["estudiar", "repasar"]
-
-# Añade "practicar"
-# al final de la lista
-# Después imprime la lista
+# Añade una nueva tarea al final
+# y muestra la lista actualizada
 `,
   hints: [
-    "Usa append()",
-    "append() añade al final",
-    "Imprime la lista al terminar",
+    "Debes modificar la lista existente.",
+    "El nuevo elemento debe quedar al final.",
+    "Comprueba la lista después de añadirlo."
   ],
+  expectedOutput: "Debe mostrar la lista con una nueva tarea añadida al final.",
+  checks: [
+    "Debe añadir un elemento nuevo.",
+    "El elemento debe añadirse al final.",
+    "Debe conservar los elementos anteriores.",
+    "Debe mostrar la lista actualizada."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema4_ej10"] = {
@@ -247,19 +285,25 @@ window.EXERCISE_CATALOG["py_tema4_ej10"] = {
   skill: "Métodos",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: remove() vs pop()
+`frutas = ["manzana", "pera", "uva", "plátano"]
 
-frutas = ["manzana", "pera", "uva", "plátano"]
+# Elimina un elemento por valor
+# y otro por posición
 
-# Elimina "pera" por valor
-# Luego elimina el último elemento por posición
-# Después imprime la lista final
+print(frutas)
 `,
   hints: [
-    "remove() elimina por valor",
-    "pop() elimina por posición",
-    "Si no pasas posición a pop(), elimina el último",
+    "Una eliminación depende del contenido del elemento.",
+    "La otra eliminación depende de su posición.",
+    "Comprueba cómo queda la lista final."
   ],
+  expectedOutput: "Debe mostrar la lista después de eliminar un elemento por valor y otro por posición.",
+  checks: [
+    "Debe eliminar un elemento usando su valor.",
+    "Debe eliminar otro elemento usando su posición.",
+    "Debe modificar la lista original.",
+    "Debe mostrar el resultado final."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema4_ej11"] = {
@@ -273,18 +317,23 @@ window.EXERCISE_CATALOG["py_tema4_ej11"] = {
   skill: "sort()",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Ordenar una lista
+`numeros = [8, 3, 12, 1, 5]
 
-numeros = [8, 3, 12, 1, 5]
-
-# Ordena la lista
-# Después imprímela
+# Ordena la lista de menor a mayor
+# y muestra el resultado
 `,
   hints: [
-    "Usa sort()",
-    "sort() modifica la lista original",
-    "Imprime la lista después de ordenarla",
+    "Debes cambiar el orden de la lista.",
+    "El resultado debe quedar de menor a mayor.",
+    "Comprueba que la salida ya aparece ordenada."
   ],
+  expectedOutput: "Debe mostrar la lista ordenada de menor a mayor.",
+  checks: [
+    "Debe ordenar la lista.",
+    "El orden debe ser ascendente.",
+    "Debe mostrar la lista después de ordenarla.",
+    "Debe conservar todos los números originales."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema4_ej12"] = {
@@ -298,22 +347,26 @@ window.EXERCISE_CATALOG["py_tema4_ej12"] = {
   skill: "Razonamiento",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Predecir qué cambia
-
-numeros = [10, 20, 30]
+`numeros = [10, 20, 30]
 numeros[1] = 99
 numeros.append(40)
 print(numeros)
 
 # Antes de ejecutar:
-# 1. piensa qué imprime
-# 2. explica qué operaciones cambian la lista
+# explica con comentarios qué ha cambiado en la lista
 `,
   hints: [
-    "Primero se modifica una posición",
-    "Luego se añade un nuevo elemento al final",
-    "Piensa en el estado de la lista después de cada línea",
+    "Primero se modifica una posición existente.",
+    "Después se añade un nuevo elemento.",
+    "Piensa en el estado de la lista paso a paso."
   ],
+  expectedOutput: "Debe mostrar la lista final y explicar cómo ha cambiado.",
+  checks: [
+    "Debe identificar el cambio de una posición.",
+    "Debe identificar la adición de un nuevo elemento.",
+    "Debe mostrar la lista final.",
+    "Debe incluir una explicación en comentarios."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema4_ej13"] = {
@@ -327,20 +380,24 @@ window.EXERCISE_CATALOG["py_tema4_ej13"] = {
   skill: "Depuración",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Índice fuera de rango
-
-colores = ["rojo", "verde", "azul"]
+`colores = ["rojo", "verde", "azul"]
 
 print(colores[3])
 
-# Corrige el código para acceder
-# a un índice válido
+# Corrige el acceso para usar una posición válida
 `,
   hints: [
-    "Si una lista tiene 3 elementos, sus índices válidos son 0, 1 y 2",
-    "El índice 3 queda fuera",
-    "Puedes acceder al último con 2 o con -1",
+    "El problema está en la posición usada.",
+    "Revisa cuántos elementos tiene realmente la lista.",
+    "El programa debe mostrar un elemento existente sin fallar."
   ],
+  expectedOutput: "Debe acceder a un elemento existente de la lista sin provocar IndexError.",
+  checks: [
+    "Debe corregir el índice inválido.",
+    "Debe acceder a una posición existente.",
+    "Debe mantener la lista original.",
+    "El programa debe ejecutarse sin IndexError."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema4_ej14"] = {
@@ -354,18 +411,23 @@ window.EXERCISE_CATALOG["py_tema4_ej14"] = {
   skill: "count()",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Contar apariciones
+`numeros = [1, 2, 2, 3, 2, 4]
 
-numeros = [1, 2, 2, 3, 2, 4]
-
-# Cuenta cuántas veces aparece el número 2
-# Después imprime el resultado
+# Cuenta cuántas veces aparece el valor indicado
+# y muestra el resultado
 `,
   hints: [
-    "Puedes usar count()",
-    "El valor buscado es 2",
-    "Imprime el resultado final",
+    "Debes contar apariciones dentro de la lista.",
+    "Piensa si existe un método que ya hace ese recuento.",
+    "El resultado final debe ser un número."
   ],
+  expectedOutput: "Debe mostrar cuántas veces aparece el número 2 en la lista.",
+  checks: [
+    "Debe analizar la lista.",
+    "Debe contar las apariciones del valor 2.",
+    "Debe mostrar el resultado final.",
+    "No debe modificar la lista."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema4_reto1"] = {
@@ -379,20 +441,24 @@ window.EXERCISE_CATALOG["py_tema4_reto1"] = {
   skill: "for + break",
   type: "Reto",
   starterCode:
-`# MINI RETO: Buscar y detener
-
-nombres = ["Ana", "Luis", "Marta", "Carlos"]
+`nombres = ["Ana", "Luis", "Marta", "Carlos"]
 
 # Recorre la lista
-# Si encuentras "Marta":
-# 1. imprime "Encontrado"
-# 2. detén el bucle
+# muestra un mensaje cuando encuentres el nombre buscado
+# y detén el bucle en ese momento
 `,
   hints: [
-    "Necesitas un for",
-    "Compara cada elemento con 'Marta'",
-    "Cuando la encuentres, usa break",
+    "Necesitas recorrer la lista de nombres.",
+    "Cuando encuentres el objetivo, no hace falta seguir.",
+    "Piensa qué instrucción detiene un bucle."
   ],
+  expectedOutput: "Debe mostrar un mensaje al encontrar el nombre buscado y detener el recorrido.",
+  checks: [
+    "Debe recorrer la lista.",
+    "Debe comparar cada nombre con el objetivo.",
+    "Debe mostrar un mensaje cuando lo encuentre.",
+    "Debe detener el bucle al encontrarlo."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema4_reto2"] = {
@@ -406,18 +472,23 @@ window.EXERCISE_CATALOG["py_tema4_reto2"] = {
   skill: "Integrador",
   type: "Reto final",
   starterCode:
-`# RETO FINAL: Gestión básica de notas
+`notas = [3, 7, 5, 2, 9, 6]
 
-notas = [3, 7, 5, 2, 9, 6]
-
-# 1. Imprime la lista completa
-# 2. Cuenta cuántas notas son mayores o iguales que 5
-# 3. Calcula la suma total de todas las notas
-# 4. Imprime ambos resultados al final
+# Muestra la lista completa
+# cuenta cuántas notas están aprobadas
+# calcula la suma total
+# y muestra los resultados finales
 `,
   hints: [
-    "Puedes resolverlo recorriendo la lista una sola vez",
-    "Necesitas una variable para contar y otra para acumular",
-    "Revisa bien qué representa cada variable",
+    "Puedes recorrer la lista una sola vez.",
+    "Necesitas una variable para contar y otra para acumular.",
+    "Revisa bien qué representa cada variable."
   ],
+  expectedOutput: "Debe mostrar la lista, el número de aprobados y la suma total de las notas.",
+  checks: [
+    "Debe recorrer la lista de notas.",
+    "Debe contar las notas aprobadas.",
+    "Debe calcular la suma total.",
+    "Debe mostrar los resultados finales de forma clara."
+  ]
 };

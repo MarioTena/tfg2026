@@ -6,14 +6,14 @@ initThemeProgress({
   topics: [
     {
       id: "8.1",
-      title: "¿Qué son las tuplas?",
+      title: "Qué son las tuplas",
       file: "01-que-son-las-tuplas.html",
       type: "Concepto",
       time: "10-12 min"
     },
     {
       id: "8.2",
-      title: "¿Qué son los sets?",
+      title: "Qué son los sets",
       file: "02-que-son-los-sets.html",
       type: "Concepto",
       time: "10-12 min"

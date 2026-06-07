@@ -11,16 +11,21 @@ window.EXERCISE_CATALOG["py_tema9_ej1"] = {
   skill: "w",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Crear un archivo nuevo
-
-# Abre un archivo llamado salida.txt en modo escritura
-# Escribe una frase dentro
+`# Crea un archivo llamado salida.txt
+# y escribe una frase dentro
 `,
   hints: [
-    "Usa with open(..., \"w\")",
-    "Dentro usa archivo.write()",
-    "El modo w crea o sobrescribe",
+    "Necesitas abrir un archivo para escribir.",
+    "El modo elegido debe crear o reemplazar el contenido.",
+    "Dentro del bloque debes escribir texto en el archivo."
   ],
+  expectedOutput: "Debe crear o sobrescribir un archivo llamado salida.txt y escribir una frase dentro.",
+  checks: [
+    "Debe abrir un archivo en modo escritura.",
+    "Debe usar el nombre salida.txt.",
+    "Debe escribir una frase en el archivo.",
+    "Debe cerrar el archivo correctamente o usar un bloque seguro."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema9_ej2"] = {
@@ -34,16 +39,21 @@ window.EXERCISE_CATALOG["py_tema9_ej2"] = {
   skill: "a",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Añadir contenido
-
-# Abre un archivo en modo append
-# Añade dos líneas nuevas
+`# Añade dos líneas nuevas a un archivo
+# sin borrar lo que ya tenía antes
 `,
   hints: [
-    "Usa el modo a",
-    "Añade \\n para salto de línea",
-    "No borres el contenido anterior",
+    "Debes conservar el contenido anterior.",
+    "Cada línea nueva debería quedar separada.",
+    "Piensa qué modo permite añadir al final."
   ],
+  expectedOutput: "Debe añadir dos líneas nuevas a un archivo sin borrar el contenido anterior.",
+  checks: [
+    "Debe abrir un archivo en modo de añadido.",
+    "Debe escribir dos líneas nuevas.",
+    "Debe conservar el contenido anterior.",
+    "Debe cuidar los saltos de línea."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema9_ej3"] = {
@@ -57,17 +67,21 @@ window.EXERCISE_CATALOG["py_tema9_ej3"] = {
   skill: "read()",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Leer archivo completo
-
-# Abre un archivo en modo lectura
-# Guarda su contenido en una variable
-# Imprímelo
+`# Lee el contenido completo de un archivo
+# y muéstralo por pantalla
 `,
   hints: [
-    "Usa with open(..., \"r\")",
-    "Lee con read()",
-    "Imprime el contenido al final",
+    "Necesitas abrir el archivo para lectura.",
+    "El contenido debe guardarse o usarse antes de mostrarlo.",
+    "La salida debe contener lo leído del archivo."
   ],
+  expectedOutput: "Debe leer el contenido completo de un archivo y mostrarlo por pantalla.",
+  checks: [
+    "Debe abrir un archivo en modo lectura.",
+    "Debe leer todo su contenido.",
+    "Debe mostrar el contenido leído.",
+    "Debe gestionar correctamente la apertura y cierre del archivo."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema9_ej4"] = {
@@ -81,17 +95,21 @@ window.EXERCISE_CATALOG["py_tema9_ej4"] = {
   skill: "Recorrido",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Leer línea a línea
-
-# Abre un archivo en modo lectura
-# Recorre cada línea
-# Imprime la línea sin espacios laterales
+`# Lee un archivo línea a línea
+# y muestra cada línea sin espacios laterales
 `,
   hints: [
-    "Puedes recorrer directamente el archivo con for",
-    "Usa linea.strip()",
-    "Imprime dentro del bucle",
+    "Debes recorrer el archivo por partes.",
+    "Cada línea puede traer saltos o espacios que no quieres mostrar.",
+    "La limpieza debe aplicarse antes de imprimir."
   ],
+  expectedOutput: "Debe mostrar cada línea del archivo limpia, sin espacios laterales ni saltos sobrantes.",
+  checks: [
+    "Debe abrir un archivo en modo lectura.",
+    "Debe recorrer el archivo línea a línea.",
+    "Debe limpiar cada línea antes de mostrarla.",
+    "Debe imprimir dentro del recorrido."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema9_ej5"] = {
@@ -105,19 +123,23 @@ window.EXERCISE_CATALOG["py_tema9_ej5"] = {
   skill: "Diseño",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Elegir modo correcto
-
-# Escribe en comentarios qué modo usarías
-# en estos casos:
+`# Escribe en comentarios qué modo usarías en estos casos:
 # 1. leer un informe ya existente
 # 2. crear un informe nuevo desde cero
 # 3. añadir una línea a un historial
 `,
   hints: [
-    "r es para leer",
-    "w sobrescribe o crea",
-    "a añade al final",
+    "Cada caso tiene una intención distinta.",
+    "Piensa si quieres leer, reemplazar o conservar lo anterior.",
+    "La respuesta debe justificar el modo elegido en cada situación."
   ],
+  expectedOutput: "Debe indicar el modo correcto para leer, crear desde cero y añadir contenido.",
+  checks: [
+    "Debe elegir un modo para leer un archivo existente.",
+    "Debe elegir un modo para crear o sobrescribir un archivo.",
+    "Debe elegir un modo para añadir al final.",
+    "Debe explicar o dejar claro el motivo de cada elección."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema9_ej6"] = {
@@ -131,16 +153,21 @@ window.EXERCISE_CATALOG["py_tema9_ej6"] = {
   skill: "Formato",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Varias líneas con \\n
-
-# Crea un archivo llamado tareas.txt
-# Escribe tres tareas, cada una en una línea distinta
+`# Crea un archivo llamado tareas.txt
+# y escribe tres tareas, cada una en una línea distinta
 `,
   hints: [
-    "Usa modo w",
-    "write() no añade saltos por sí solo",
-    "Necesitarás \\n para separar líneas",
+    "Debes escribir más de una línea.",
+    "La escritura no separa líneas automáticamente.",
+    "Comprueba que cada tarea quede visualmente separada."
   ],
+  expectedOutput: "Debe crear tareas.txt con tres tareas, cada una en una línea distinta.",
+  checks: [
+    "Debe abrir tareas.txt para escritura.",
+    "Debe escribir tres tareas.",
+    "Debe separar correctamente las líneas.",
+    "Debe cuidar el formato final del archivo."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema9_ej7"] = {
@@ -155,15 +182,23 @@ window.EXERCISE_CATALOG["py_tema9_ej7"] = {
   type: "Ejercicio",
   starterCode:
 `# Imagina que un archivo ya tiene contenido.
-# Escribe en comentarios:
-# 1. qué ocurre si lo abres en modo "w"
+# Explica:
+# 1. qué ocurre si lo abres en modo escritura
 # 2. por qué eso puede ser peligroso
-# 3. en qué caso sí tendría sentido usar ese modo
+# 3. cuándo sí tendría sentido usar ese modo
 `,
   hints: [
-    "Aquí importa más el efecto real que la sintaxis",
-    "Piensa qué pasa con el contenido anterior"
+    "Aquí importa más el efecto real que la sintaxis.",
+    "Piensa qué pasa con el contenido anterior.",
+    "Distingue entre crear desde cero y conservar información."
   ],
+  expectedOutput: "Debe explicar que el modo de escritura puede reemplazar el contenido previo y cuándo tiene sentido usarlo.",
+  checks: [
+    "Debe explicar qué ocurre con el contenido previo.",
+    "Debe mencionar el riesgo de perder información.",
+    "Debe indicar un caso donde tenga sentido usar ese modo.",
+    "Debe responder en comentarios o texto dentro del código."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema9_ej8"] = {
@@ -177,15 +212,21 @@ window.EXERCISE_CATALOG["py_tema9_ej8"] = {
   skill: "Caso frontera",
   type: "Ejercicio",
   starterCode:
-`# Escribe en comentarios qué esperas que devuelva read()
-# si el archivo está vacío.
-#
-# Después, si quieres, escríbelo también como una pequeña prueba.
+`# Explica qué esperas obtener al leer un archivo vacío.
+# Después puedes escribir una pequeña prueba para comprobarlo.
 `,
   hints: [
-    "No siempre leer significa obtener texto",
-    "Piensa qué devuelve una lectura total cuando no hay contenido"
+    "No siempre leer significa obtener texto visible.",
+    "Piensa qué representa la ausencia de contenido.",
+    "Puedes acompañarlo con una prueba simple."
   ],
+  expectedOutput: "Debe explicar o comprobar qué ocurre al leer un archivo vacío.",
+  checks: [
+    "Debe razonar sobre un archivo sin contenido.",
+    "Debe indicar qué devuelve una lectura sin datos.",
+    "Puede incluir una pequeña prueba.",
+    "Debe mostrar o comentar el resultado esperado."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema9_ej9"] = {
@@ -201,15 +242,21 @@ window.EXERCISE_CATALOG["py_tema9_ej9"] = {
   starterCode:
 `palabra_buscada = "Python"
 
-# Escribe una solución que:
-# 1. abra un archivo en lectura
-# 2. recorra sus líneas
-# 3. muestre solo las que contienen la palabra buscada
+# Lee un archivo línea a línea
+# y muestra solo las líneas que contienen la palabra buscada
 `,
   hints: [
-    "Aquí conviene recorrer el archivo línea a línea",
-    "Piensa en una condición de pertenencia dentro del bucle"
+    "Conviene revisar el archivo por líneas.",
+    "Cada línea debe evaluarse antes de mostrarla.",
+    "Solo deben aparecer las líneas que cumplan la condición."
   ],
+  expectedOutput: "Debe mostrar solo las líneas del archivo que contienen la palabra buscada.",
+  checks: [
+    "Debe abrir un archivo en modo lectura.",
+    "Debe recorrer sus líneas.",
+    "Debe comprobar si cada línea contiene la palabra buscada.",
+    "Debe mostrar solo las líneas que coincidan."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema9_ej10"] = {
@@ -223,15 +270,21 @@ window.EXERCISE_CATALOG["py_tema9_ej10"] = {
   skill: "Combinado",
   type: "Ejercicio",
   starterCode:
-`# Escribe una solución que:
-# 1. cree un archivo y escriba una línea
-# 2. lo abra otra vez en modo lectura
-# 3. muestre el contenido
+`# Crea un archivo y escribe una línea.
+# Después vuelve a abrirlo para leer y mostrar su contenido.
 `,
   hints: [
-    "Aquí necesitas dos aperturas distintas del mismo archivo",
-    "Piensa qué modo corresponde a cada paso"
+    "Necesitas dos operaciones distintas sobre el archivo.",
+    "Primero debes escribir y después leer.",
+    "Piensa qué modo corresponde a cada paso."
   ],
+  expectedOutput: "Debe escribir contenido en un archivo y después leerlo para mostrarlo por pantalla.",
+  checks: [
+    "Debe crear o escribir en un archivo.",
+    "Debe cerrar o finalizar la escritura antes de leer.",
+    "Debe abrir el archivo otra vez en modo lectura.",
+    "Debe mostrar el contenido leído."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema9_ej11"] = {
@@ -245,21 +298,26 @@ window.EXERCISE_CATALOG["py_tema9_ej11"] = {
   skill: "Depuración",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Salida limpia
-
-# Imagina este código:
+`# Imagina este código:
 #
 # with open("datos.txt", "r") as archivo:
 #     for linea in archivo:
 #         print(linea)
 #
-# Reescríbelo para mostrar cada línea más limpia
+# Reescríbelo para mostrar cada línea de forma más limpia
 `,
   hints: [
-    "Piensa en strip()",
-    "El problema no es leer, sino mostrar",
-    "Reescribe el print dentro del bucle",
+    "El problema no es leer, sino mostrar.",
+    "Cada línea puede traer caracteres sobrantes al final.",
+    "La limpieza debe hacerse antes de imprimir."
   ],
+  expectedOutput: "Debe reescribir el ejemplo para mostrar líneas limpias, sin saltos o espacios sobrantes.",
+  checks: [
+    "Debe mantener la lectura línea a línea.",
+    "Debe limpiar cada línea antes de mostrarla.",
+    "Debe imprimir la versión limpia.",
+    "Debe mejorar el formato de salida."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema9_ej12"] = {
@@ -273,18 +331,23 @@ window.EXERCISE_CATALOG["py_tema9_ej12"] = {
   skill: "Comparación",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Comparar w y a
-
-# Escribe en comentarios:
-# 1. qué hace el modo w
-# 2. qué hace el modo a
-# 3. en qué caso usarías cada uno
+`# Explica en comentarios:
+# 1. qué ocurre al escribir desde cero
+# 2. qué ocurre al añadir al final
+# 3. cuándo usarías cada enfoque
 `,
   hints: [
-    "Uno reemplaza, el otro conserva y añade",
-    "Piensa en contenido previo",
-    "Usa ejemplos reales sencillos",
+    "Uno puede reemplazar el contenido anterior.",
+    "El otro conserva lo existente y añade después.",
+    "Usa ejemplos sencillos para justificar la diferencia."
   ],
+  expectedOutput: "Debe explicar la diferencia entre escribir desde cero y añadir al final de un archivo.",
+  checks: [
+    "Debe explicar el comportamiento de w.",
+    "Debe explicar el comportamiento de a.",
+    "Debe comparar ambos modos.",
+    "Debe indicar un caso de uso para cada uno."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema9_reto1"] = {
@@ -298,17 +361,21 @@ window.EXERCISE_CATALOG["py_tema9_reto1"] = {
   skill: "a + r",
   type: "Reto",
   starterCode:
-`# MINI RETO: Historial incremental
-
-# 1. Añade dos líneas nuevas a un archivo de historial
-# 2. Después ábrelo en modo lectura
-# 3. Muestra cada línea limpia
+`# Añade dos líneas nuevas a un archivo de historial.
+# Después léelo y muestra cada línea limpia.
 `,
   hints: [
-    "Primero conviene a y luego r",
-    "Recuerda \\n en cada línea nueva",
-    "Usa strip() al mostrar",
+    "Primero debes conservar lo que ya existía.",
+    "Después necesitas revisar el contenido guardado.",
+    "Cuida el formato de las nuevas líneas y de la salida."
   ],
+  expectedOutput: "Debe añadir entradas a un historial sin borrar lo anterior y luego mostrar el contenido limpio.",
+  checks: [
+    "Debe añadir contenido sin sobrescribir.",
+    "Debe escribir al menos dos líneas nuevas.",
+    "Debe abrir después el archivo para lectura.",
+    "Debe mostrar cada línea de forma limpia."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema9_reto2"] = {
@@ -322,16 +389,23 @@ window.EXERCISE_CATALOG["py_tema9_reto2"] = {
   skill: "Integración",
   type: "Reto final",
   starterCode:
-`# RETO FINAL: Registro simple completo
-
-# 1. Crea un archivo nuevo y escribe tres líneas
-# 2. Ábrelo en modo append y añade una cuarta línea
-# 3. Ábrelo en modo lectura
-# 4. Recorre sus líneas y muéstralas limpias
+`# Crea un registro simple:
+# 1. escribe varias líneas iniciales
+# 2. añade una línea nueva después
+# 3. lee el archivo
+# 4. muestra sus líneas limpias
 `,
   hints: [
-    "Aquí combinas w, a y r",
-    "Piensa en el efecto de cada paso sobre el archivo",
-    "Usa strip() para una salida más clara",
+    "Combinas crear, añadir y leer.",
+    "Piensa en el efecto de cada modo sobre el archivo.",
+    "La salida final debe quedar limpia y legible."
   ],
+  expectedOutput: "Debe crear un registro, añadir una línea adicional y mostrar todas las líneas limpias.",
+  checks: [
+    "Debe escribir varias líneas iniciales.",
+    "Debe añadir una línea nueva sin borrar las anteriores.",
+    "Debe leer el archivo resultante.",
+    "Debe limpiar las líneas al mostrarlas.",
+    "Debe usar correctamente los modos de archivo."
+  ]
 };

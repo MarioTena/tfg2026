@@ -12,13 +12,25 @@ window.EXERCISE_CATALOG["py_proyecto1_gestor_tareas"] = {
   estimatedTime: "30-45 min",
   skill: "Integración de conceptos",
   hints: [
-    "Empieza creando solo el menú y la opción de salir.",
-    "Guarda las tareas en una lista.",
-    "Crea una función distinta para cada acción importante.",
-    "Usa enumerate(tareas, start=1) para mostrar tareas numeradas.",
-    "Valida que la tarea no esté vacía antes de añadirla.",
-    "Comprueba que el número introducido para eliminar o completar esté dentro del rango.",
-    "Puedes marcar una tarea como completada añadiendo '✅ ' al principio del texto."
+    "Empieza con una versión mínima del menú y la opción de salir.",
+    "Piensa qué estructura te permite guardar varias tareas.",
+    "Separa las acciones importantes en funciones.",
+    "Al mostrar tareas, conviene que el usuario pueda identificarlas fácilmente.",
+    "Valida que los datos introducidos tengan sentido antes de modificar la lista.",
+    "Comprueba los casos en los que la lista está vacía.",
+    "Antes de eliminar o completar una tarea, revisa que la posición elegida exista."
+  ],
+  expectedOutput: "Debe funcionar como un gestor de tareas en consola con menú, listado, alta, eliminación, marcado de completadas y salida.",
+  checks: [
+    "Debe mostrar un menú con varias opciones.",
+    "Debe guardar las tareas en una lista.",
+    "Debe permitir ver las tareas guardadas.",
+    "Debe permitir añadir nuevas tareas.",
+    "Debe permitir eliminar tareas existentes.",
+    "Debe permitir marcar tareas como completadas.",
+    "Debe validar opciones incorrectas del menú.",
+    "Debe usar funciones para separar responsabilidades.",
+    "Debe mantener el programa activo hasta que el usuario elija salir."
   ],
   starterCode:
 `def mostrar_menu():
@@ -31,22 +43,18 @@ window.EXERCISE_CATALOG["py_proyecto1_gestor_tareas"] = {
 
 
 def ver_tareas(tareas):
-    # TODO: mostrar las tareas numeradas
     pass
 
 
 def anadir_tarea(tareas):
-    # TODO: pedir una tarea y añadirla si no está vacía
     pass
 
 
 def eliminar_tarea(tareas):
-    # TODO: eliminar una tarea por su número
     pass
 
 
 def completar_tarea(tareas):
-    # TODO: marcar una tarea como completada
     pass
 
 
@@ -88,12 +96,26 @@ window.EXERCISE_CATALOG["py_proyecto2_registro_notas"] = {
   estimatedTime: "35-50 min",
   skill: "Datos estructurados",
   hints: [
-    "Usa un diccionario para guardar nombre y nota.",
-    "Valida que la nota esté entre 0 y 10.",
-    "Crea una función para cada acción importante.",
-    "Recorre el diccionario con .items() para mostrar los alumnos.",
-    "Antes de calcular la media, comprueba que haya alumnos guardados.",
-    "Para buscar, comprueba si el nombre existe como clave en el diccionario."
+    "Piensa qué estructura permite asociar cada alumno con su nota.",
+    "Separa cada acción del menú en una función.",
+    "Antes de guardar una nota, comprueba que esté dentro del rango válido.",
+    "Antes de calcular la media, revisa si hay datos guardados.",
+    "Para buscar un alumno, piensa si el nombre existe en la estructura.",
+    "La salida debe ser clara para que el usuario entienda qué alumnos y notas hay.",
+    "Controla opciones incorrectas del menú para que el programa no se corte."
+  ],
+  expectedOutput: "Debe funcionar como un registro de notas con menú, alta de alumnos, listado, búsqueda, cálculo de media y salida.",
+  checks: [
+    "Debe mostrar un menú con varias opciones.",
+    "Debe guardar alumnos y notas en una estructura adecuada.",
+    "Debe permitir añadir alumnos con nota.",
+    "Debe validar que la nota esté en un rango correcto.",
+    "Debe permitir mostrar los alumnos guardados.",
+    "Debe permitir buscar un alumno por nombre.",
+    "Debe calcular la media general cuando haya datos.",
+    "Debe controlar el caso de no tener alumnos.",
+    "Debe usar funciones para separar responsabilidades.",
+    "Debe mantener el programa activo hasta elegir salir."
   ],
   starterCode:
 `def mostrar_menu():
@@ -106,22 +128,18 @@ window.EXERCISE_CATALOG["py_proyecto2_registro_notas"] = {
 
 
 def ver_alumnos(alumnos):
-    # TODO: mostrar todos los alumnos con su nota
     pass
 
 
 def anadir_alumno(alumnos):
-    # TODO: pedir nombre y nota, validarlos y guardarlos
     pass
 
 
 def buscar_alumno(alumnos):
-    # TODO: pedir un nombre y mostrar su nota si existe
     pass
 
 
 def calcular_media(alumnos):
-    # TODO: calcular y mostrar la media general
     pass
 
 
@@ -163,12 +181,25 @@ window.EXERCISE_CATALOG["py_proyecto3_gestor_archivo"] = {
   estimatedTime: "40-60 min",
   skill: "Persistencia y robustez",
   hints: [
-    "Usa with open(..., 'r') para leer el archivo.",
-    "Usa with open(..., 'a') para añadir sin borrar lo anterior.",
-    "Valida que el registro no esté vacío antes de guardarlo.",
-    "Recuerda añadir \\n si quieres una línea nueva por cada registro.",
-    "Captura FileNotFoundError al intentar leer si el archivo no existe.",
-    "Puedes usar raise ValueError(...) si detectas una entrada inválida."
+    "Piensa qué acciones debe tener el menú antes de escribir todo el código.",
+    "Para ver registros, debes leer el archivo y mostrar su contenido de forma clara.",
+    "Para añadir registros, debes conservar los datos anteriores.",
+    "Valida la entrada antes de guardarla.",
+    "Controla el caso en que el archivo todavía no exista.",
+    "Separa lectura, escritura y menú en funciones diferentes.",
+    "El programa debe responder con mensajes claros en los casos de error."
+  ],
+  expectedOutput: "Debe funcionar como un gestor de registros con archivo, permitiendo leer registros, añadir nuevos, validar entradas, controlar errores básicos y salir.",
+  checks: [
+    "Debe mostrar un menú con varias opciones.",
+    "Debe usar una constante o variable para el nombre del archivo.",
+    "Debe permitir ver registros guardados.",
+    "Debe permitir añadir registros nuevos sin borrar los anteriores.",
+    "Debe validar que un registro no esté vacío.",
+    "Debe gestionar el caso de archivo inexistente.",
+    "Debe usar excepciones cuando corresponda.",
+    "Debe usar funciones para separar responsabilidades.",
+    "Debe mantener el programa activo hasta elegir salir."
   ],
   starterCode:
 `ARCHIVO = "registros.txt"
@@ -182,12 +213,10 @@ def mostrar_menu():
 
 
 def ver_registros():
-    # TODO: leer y mostrar las líneas del archivo
     pass
 
 
 def anadir_registro():
-    # TODO: pedir un registro, validarlo y guardarlo
     pass
 
 

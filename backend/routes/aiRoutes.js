@@ -98,6 +98,8 @@ router.post("/hint", requireAuth, async (req, res) => {
       title,
       statement,
       hints,
+      expectedOutput,
+      checks,
     } = req.body;
 
     const safeTopic = String(topic || "").trim();
@@ -149,6 +151,8 @@ router.post("/hint", requireAuth, async (req, res) => {
       title: title || null,
       statement: statement || null,
       hints: Array.isArray(hints) ? hints : [],
+      expectedOutput: expectedOutput || null,
+      checks: Array.isArray(checks) ? checks : [],
     };
 
     let hintResult;

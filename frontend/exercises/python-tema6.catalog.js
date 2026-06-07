@@ -11,18 +11,21 @@ window.EXERCISE_CATALOG["py_tema6_ej1"] = {
   skill: "Crear",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Crear un diccionario
-
-# Crea un diccionario con claves:
-# titulo, anio, director
-
-# Después imprímelo
+`# Crea un diccionario que represente una película
+# y muéstralo por pantalla
 `,
   hints: [
-    "Usa llaves {}",
-    "Cada elemento es clave: valor",
-    "Las claves de texto van entre comillas",
+    "Necesitas una estructura con claves y valores.",
+    "Piensa qué datos describen bien una película.",
+    "La salida debe mostrar toda la información guardada."
   ],
+  expectedOutput: "Debe mostrar un diccionario que represente una película.",
+  checks: [
+    "Debe crear un diccionario.",
+    "Debe incluir varias claves relacionadas con una película.",
+    "Debe asignar valores a esas claves.",
+    "Debe mostrar el diccionario por pantalla."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema6_ej2"] = {
@@ -36,22 +39,26 @@ window.EXERCISE_CATALOG["py_tema6_ej2"] = {
   skill: "Acceso",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Acceder por clave
-
-pelicula = {
+`pelicula = {
     "titulo": "Inception",
     "anio": 2010,
     "director": "Christopher Nolan"
 }
 
-# Imprime el titulo
-# Imprime el anio
+# Muestra el valor de dos claves distintas
 `,
   hints: [
-    "Usa diccionario[\"clave\"]",
-    "Recuerda escribir bien el nombre de la clave",
-    "Haz dos print distintos",
+    "Debes acceder a valores concretos, no imprimir todo el diccionario.",
+    "Cada valor está asociado a una clave.",
+    "Revisa que escribes las claves exactamente como aparecen."
   ],
+  expectedOutput: "Debe mostrar el valor de dos claves distintas del diccionario.",
+  checks: [
+    "Debe usar el diccionario dado.",
+    "Debe acceder a dos claves distintas.",
+    "Debe mostrar los valores por pantalla.",
+    "No debe modificar el diccionario."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema6_ej3"] = {
@@ -65,21 +72,26 @@ window.EXERCISE_CATALOG["py_tema6_ej3"] = {
   skill: "Añadir",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Añadir una clave
-
-usuario = {
+`usuario = {
     "nombre": "Ana",
     "activo": True
 }
 
-# Añade una clave email
-# Después imprime el diccionario
+# Añade una nueva clave al diccionario
+# y muestra el resultado final
 `,
   hints: [
-    "Puedes usar usuario[\"email\"] = ...",
-    "Si la clave no existe, se crea",
-    "Imprime el diccionario al final",
+    "Debes modificar el diccionario existente.",
+    "La clave nueva debe quedar asociada a un valor.",
+    "Comprueba el diccionario después del cambio."
   ],
+  expectedOutput: "Debe mostrar el diccionario con una nueva clave añadida.",
+  checks: [
+    "Debe partir del diccionario dado.",
+    "Debe añadir una clave nueva.",
+    "Debe asignar un valor a esa clave.",
+    "Debe mostrar el diccionario actualizado."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema6_ej4"] = {
@@ -93,21 +105,26 @@ window.EXERCISE_CATALOG["py_tema6_ej4"] = {
   skill: "Modificar",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Actualizar valor
-
-producto = {
+`producto = {
     "nombre": "Monitor",
     "precio": 200
 }
 
-# Cambia el precio a 180
-# Imprime el diccionario final
+# Actualiza el precio
+# y muestra el diccionario final
 `,
   hints: [
-    "La clave ya existe, así que se actualiza",
-    "Usa producto[\"precio\"] = 180",
-    "Imprime el resultado",
+    "La clave que quieres cambiar ya existe.",
+    "Debes sustituir el valor anterior por uno nuevo.",
+    "Comprueba que el resto del diccionario se mantiene."
   ],
+  expectedOutput: "Debe mostrar el diccionario con el precio actualizado.",
+  checks: [
+    "Debe usar el diccionario dado.",
+    "Debe modificar el valor de la clave precio.",
+    "Debe conservar el resto de claves.",
+    "Debe mostrar el resultado final."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema6_ej5"] = {
@@ -121,21 +138,26 @@ window.EXERCISE_CATALOG["py_tema6_ej5"] = {
   skill: "in",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Comprobar si existe una clave
-
-usuario = {
+`usuario = {
     "nombre": "Luis",
     "activo": True
 }
 
-# Comprueba si existe la clave "email"
-# e imprime el resultado
+# Comprueba si el usuario tiene email
+# y muestra el resultado
 `,
   hints: [
-    "Usa \"email\" in usuario",
-    "El resultado será True o False",
-    "Puedes imprimir directamente la expresión",
+    "Debes comprobar la existencia de una clave.",
+    "El resultado de la comprobación será verdadero o falso.",
+    "No hace falta acceder al valor si la clave no existe."
   ],
+  expectedOutput: "Debe mostrar si el diccionario usuario contiene la clave email.",
+  checks: [
+    "Debe trabajar con el diccionario dado.",
+    "Debe comprobar si existe una clave concreta.",
+    "Debe usar una comprobación de pertenencia.",
+    "Debe mostrar el resultado."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema6_ej6"] = {
@@ -149,22 +171,27 @@ window.EXERCISE_CATALOG["py_tema6_ej6"] = {
   skill: "items()",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Recorrer claves y valores
-
-alumno = {
+`alumno = {
     "nombre": "Lucía",
     "nota": 9,
     "activo": True
 }
 
 # Recorre el diccionario
-# e imprime cada clave con su valor
+# y muestra cada campo con su valor
 `,
   hints: [
-    "La forma más cómoda suele ser items()",
-    "Usa dos variables en el for",
-    "Piensa en una salida clara",
+    "Necesitas recorrer pares de información.",
+    "En cada vuelta deberías tener el nombre del campo y su contenido.",
+    "La salida debe ser legible."
   ],
+  expectedOutput: "Debe mostrar cada clave del diccionario junto con su valor.",
+  checks: [
+    "Debe recorrer el diccionario.",
+    "Debe obtener claves y valores.",
+    "Debe mostrar cada par de datos.",
+    "La salida debe ser clara."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema6_ej7"] = {
@@ -182,14 +209,22 @@ window.EXERCISE_CATALOG["py_tema6_ej7"] = {
     "tema": "oscuro"
 }
 
-# Lee la clave "idioma"
-# usando un valor por defecto "es"
-# y muestra el resultado
+# Lee una clave opcional de forma segura
+# usando un valor por defecto
 `,
   hints: [
-    "Aquí conviene usar un acceso seguro",
-    "Piensa qué debería ocurrir si la clave no existe"
+    "La clave que buscas puede no existir.",
+    "Conviene evitar un error al acceder.",
+    "Piensa qué valor debería usarse si falta la clave."
   ],
+  expectedOutput: "Debe mostrar un valor por defecto cuando la clave opcional no existe.",
+  checks: [
+    "Debe usar el diccionario dado.",
+    "Debe intentar leer una clave opcional.",
+    "Debe evitar un KeyError.",
+    "Debe usar un valor por defecto.",
+    "Debe mostrar el resultado."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema6_ej8"] = {
@@ -209,13 +244,21 @@ window.EXERCISE_CATALOG["py_tema6_ej8"] = {
     "stock": 12
 }
 
-# Elimina la clave "stock"
-# y muestra el diccionario final
+# Elimina una clave del diccionario
+# y muestra el resultado final
 `,
   hints: [
-    "Debes modificar el diccionario existente",
-    "Comprueba el resultado imprimiéndolo al final"
+    "Debes modificar el diccionario existente.",
+    "La clave eliminada no debería aparecer al final.",
+    "Comprueba el resultado imprimiendo el diccionario."
   ],
+  expectedOutput: "Debe mostrar el diccionario después de eliminar la clave stock.",
+  checks: [
+    "Debe partir del diccionario dado.",
+    "Debe eliminar una clave existente.",
+    "La clave eliminada no debe aparecer en el resultado.",
+    "Debe mostrar el diccionario final."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema6_ej9"] = {
@@ -235,13 +278,20 @@ window.EXERCISE_CATALOG["py_tema6_ej9"] = {
     "activo": True
 }
 
-# Escribe una solución para mostrar
-# cuántas claves tiene este diccionario
+# Muestra cuántas claves tiene este diccionario
 `,
   hints: [
-    "No necesitas recorrer una a una si conoces una función útil",
-    "La respuesta debe ser un número"
+    "No necesitas contar manualmente una a una.",
+    "El resultado debe ser un número.",
+    "Piensa qué función mide la cantidad de elementos."
   ],
+  expectedOutput: "Debe mostrar cuántas claves tiene el diccionario usuario.",
+  checks: [
+    "Debe usar el diccionario dado.",
+    "Debe calcular la cantidad de claves.",
+    "Debe mostrar un número.",
+    "No debe modificar el diccionario."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema6_ej10"] = {
@@ -261,13 +311,20 @@ window.EXERCISE_CATALOG["py_tema6_ej10"] = {
     "ciudad": "Madrid"
 }
 
-# Escribe una salida legible que resuma
-# la información principal de esta persona
+# Crea una salida legible con la información principal
 `,
   hints: [
-    "No se trata solo de imprimir el diccionario completo",
-    "Piensa en una frase o varias líneas claras para el usuario"
+    "No se trata solo de imprimir el diccionario completo.",
+    "Debes seleccionar varios valores concretos.",
+    "La salida debería entenderse como una frase o resumen."
   ],
+  expectedOutput: "Debe mostrar un resumen legible usando nombre, edad y ciudad.",
+  checks: [
+    "Debe acceder a varios valores del diccionario.",
+    "Debe construir una salida legible.",
+    "Debe incluir la información principal.",
+    "No debe limitarse necesariamente a imprimir el diccionario entero."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema6_ej11"] = {
@@ -281,19 +338,24 @@ window.EXERCISE_CATALOG["py_tema6_ej11"] = {
   skill: "Diseño",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Lista o diccionario
-
-# Quieres guardar:
+`# Quieres guardar:
 # nombre, precio y stock de un producto
 
 # Crea la estructura que tenga más sentido
-# y después imprímela
+# y después muéstrala
 `,
   hints: [
-    "Aquí no importa la posición, sino el nombre de cada dato",
-    "Piensa qué estructura permite pedir luego producto[\"precio\"]",
-    "La clave es elegir la estructura correcta",
+    "Aquí importa cómo representar cada dato.",
+    "Piensa si necesitas acceder por posición o por nombre.",
+    "La estructura elegida debe explicar bien el producto."
   ],
+  expectedOutput: "Debe representar un producto con una estructura adecuada y mostrarlo.",
+  checks: [
+    "Debe elegir una estructura adecuada para datos con nombre.",
+    "Debe representar nombre, precio y stock.",
+    "Debe mostrar la estructura creada.",
+    "Debe justificar implícitamente una representación clara del problema."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema6_ej12"] = {
@@ -307,20 +369,25 @@ window.EXERCISE_CATALOG["py_tema6_ej12"] = {
   skill: "Casos frontera",
   type: "Ejercicio",
   starterCode:
-`# EJERCICIO: Diccionario vacío y clave opcional
+`config = {}
 
-config = {}
-
-# Añade una clave "tema"
-# Después usa get() para leer "idioma"
-# con valor por defecto "es"
-# Imprime el diccionario y el idioma
+# Añade una clave principal
+# lee una clave opcional con valor por defecto
+# y muestra el resultado
 `,
   hints: [
-    "Empiezas con {}",
-    "Primero puedes añadir una clave con asignación",
-    "Luego usa get() para la clave opcional",
+    "Empiezas con un diccionario sin datos.",
+    "Primero puedes completar una clave.",
+    "Después piensa cómo leer una clave que puede no existir."
   ],
+  expectedOutput: "Debe mostrar el diccionario actualizado y un valor seguro para una clave opcional.",
+  checks: [
+    "Debe partir de un diccionario vacío.",
+    "Debe añadir una clave nueva.",
+    "Debe leer una clave opcional sin error.",
+    "Debe usar un valor por defecto.",
+    "Debe mostrar el resultado final."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema6_reto1"] = {
@@ -334,23 +401,29 @@ window.EXERCISE_CATALOG["py_tema6_reto1"] = {
   skill: "items()",
   type: "Reto",
   starterCode:
-`# MINI RETO: Ficha completa
-
-usuario = {
+`usuario = {
     "nombre": "Ana",
     "edad": 30,
     "email": "ana@email.com",
     "activo": True
 }
 
-# Recorre el diccionario
-# y muestra cada clave junto con su valor
+# Recorre la ficha
+# y muestra cada campo con formato claro
 `,
   hints: [
-    "Aquí conviene items()",
-    "Piensa en una salida legible",
-    "Recuerda que quieres mostrar el nombre del campo y su contenido",
+    "Debes mostrar tanto el nombre del campo como su contenido.",
+    "La salida debe ser más clara que imprimir el diccionario entero.",
+    "Piensa en un recorrido que te dé clave y valor."
   ],
+  expectedOutput: "Debe mostrar todos los campos de la ficha de usuario con formato claro.",
+  checks: [
+    "Debe recorrer el diccionario.",
+    "Debe mostrar cada clave.",
+    "Debe mostrar cada valor.",
+    "La salida debe ser legible.",
+    "Debe incluir todos los campos."
+  ]
 };
 
 window.EXERCISE_CATALOG["py_tema6_reto2"] = {
@@ -364,22 +437,27 @@ window.EXERCISE_CATALOG["py_tema6_reto2"] = {
   skill: "Integración",
   type: "Reto final",
   starterCode:
-`# RETO FINAL: Gestión básica de producto
-
-producto = {
+`producto = {
     "nombre": "Teclado",
     "precio": 50
 }
 
-# 1. Añade la clave "stock" con valor 10
-# 2. Actualiza el precio a 45
-# 3. Comprueba si existe la clave "categoria"
-# 4. Usa get() para leer "categoria" con valor por defecto "Sin categoría"
-# 5. Recorre el diccionario mostrando clave y valor
+# Completa y gestiona el producto:
+# añade información, actualiza datos,
+# comprueba claves opcionales
+# y muestra todos sus campos
 `,
   hints: [
-    "Combina varias cosas del tema en orden",
-    "Piensa cuándo usas asignación, in, get() e items()",
-    "Comprueba el diccionario final después de cada paso si lo necesitas",
+    "Combina varias operaciones del tema.",
+    "Piensa cuándo estás añadiendo, modificando, comprobando o recorriendo.",
+    "Comprueba el estado final del diccionario."
   ],
+  expectedOutput: "Debe mostrar un diccionario de producto actualizado y recorrido de forma clara.",
+  checks: [
+    "Debe añadir una nueva clave al producto.",
+    "Debe actualizar un valor existente.",
+    "Debe comprobar una clave opcional.",
+    "Debe leer una clave con valor por defecto.",
+    "Debe recorrer el diccionario mostrando claves y valores."
+  ]
 };

@@ -180,10 +180,9 @@
     </p>
 
     <pre><code>try:
-    numero = int("hola")
-except:
-    print("Ha ocurrido un error")</code></pre>
-
+        numero = int("hola")
+    except ValueError:
+        print("No se pudo convertir el texto")</code></pre>
     <div class="callout">
       <code>try</code> significa “inténtalo”; <code>except</code> significa “si falla, actúa así”.
     </div>
@@ -404,43 +403,43 @@ except ValueError:
     </div>
   </section>
 
-    <section id="reto" class="exercise-card">
-      <div class="exercise-header">
-        <div>
-          <h2 class="exercise-title">Mini-reto del subtema</h2>
-          <p class="exercise-subtitle">Ahora toca anticipar una conversión inválida de forma más controlada.</p>
-        </div>
-
-        <div class="badges">
-          <span class="badge blue">Mini-reto</span>
-          <span class="badge green">10.2</span>
-        </div>
+  <section id="reto" class="exercise-card">
+    <div class="exercise-header">
+      <div>
+        <h2 class="exercise-title">Mini-reto del subtema</h2>
+        <p class="exercise-subtitle">Ahora toca anticipar una conversión inválida de forma más controlada.</p>
       </div>
 
-      <div class="exercise-body">
-        <div class="exercise-block">
-          <h3>Enunciado</h3>
-          <p>
-            Escribe un ejemplo que pida un número al usuario y use <code>try</code> / <code>except ValueError</code>
-            para mostrar un mensaje útil si la conversión falla.
-          </p>
-        </div>
+      <div class="badges">
+        <span class="badge blue">Mini-reto</span>
+        <span class="badge green">10.2</span>
+      </div>
+    </div>
 
-        <div class="exercise-block">
-          <h3>Qué debes practicar</h3>
-          <ul>
-            <li>detectar una excepción previsible</li>
-            <li>capturar el tipo de error correcto</li>
-            <li>mostrar un mensaje claro sin romper el programa</li>
-          </ul>
+    <div class="exercise-body">
+      <div class="exercise-block">
+        <h3>Enunciado</h3>
+        <p>
+          Escribe un ejemplo que pida un número al usuario y use <code>try</code> / <code>except ValueError</code>
+          para mostrar un mensaje útil si la conversión falla.
+        </p>
+      </div>
 
-          <div class="buttons-row">
-            <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-10%2F02-try-except.html">Resolver en playground</a>
-            <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
-          </div>
+      <div class="exercise-block">
+        <h3>Qué debes practicar</h3>
+        <ul>
+          <li>detectar una excepción previsible</li>
+          <li>capturar el tipo de error correcto</li>
+          <li>mostrar un mensaje claro sin romper el programa</li>
+        </ul>
+
+        <div class="buttons-row">
+          <a class="btn btn-primary btn-sm" href="../../../playground/index.html?lang=python&returnTo=..%2Ftemas%2Fpython%2Ftema-10%2F02-try-except.html">Resolver en playground</a>
+          <button id="miniCompleteBtn" class="btn btn-primary btn-sm" type="button">Marcar mini-reto como completado</button>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
   <section class="exercise-card">
     <div class="exercise-header">

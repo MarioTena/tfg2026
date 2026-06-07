@@ -15,6 +15,12 @@ window.EXERCISE_CATALOG["py_tema1_ej1"] = {
     "Recuerda cómo se representa el texto en Python.",
     "Respeta exactamente el mensaje pedido."
   ],
+  expectedOutput: "Debe mostrar exactamente el texto: Hola, Python",
+  checks: [
+    "Debe mostrar texto por pantalla.",
+    "El texto debe coincidir exactamente con el enunciado.",
+    "No debe mostrar texto adicional."
+  ],
   starterCode: 'print("")'
 };
 
@@ -27,11 +33,17 @@ window.EXERCISE_CATALOG["py_tema1_ej2"] = {
   estimatedTime: "5 min",
   skill: "Salida en pantalla",
   title: "Dos líneas",
-  statement: "Muestra dos mensajes en líneas separadas usando dos instrucciones print(). El primer mensaje debe ser 'Estoy aprendiendo Python' y el segundo 'Paso a paso'.",
+  statement: "Muestra dos mensajes en líneas separadas. El primer mensaje debe ser 'Estoy aprendiendo Python' y el segundo 'Paso a paso'.",
   hints: [
     "La salida debe aparecer en dos líneas distintas.",
     "Piensa cuántas instrucciones necesitas para conseguirlo.",
     "Comprueba que cada mensaje quede en su propia línea."
+  ],
+  expectedOutput: "Debe mostrar dos líneas: primero 'Estoy aprendiendo Python' y después 'Paso a paso'.",
+  checks: [
+    "Debe mostrar dos mensajes.",
+    "Cada mensaje debe aparecer en una línea distinta.",
+    "El orden de los mensajes debe coincidir con el enunciado."
   ],
   starterCode: 'print("")\nprint("")'
 };
@@ -51,6 +63,12 @@ window.EXERCISE_CATALOG["py_tema1_ej3"] = {
     "Recuerda que un nombre es texto.",
     "El valor que se imprime debe salir de la variable."
   ],
+  expectedOutput: "Debe mostrar por pantalla el nombre guardado en la variable.",
+  checks: [
+    "Debe crear una variable llamada nombre.",
+    "La variable debe guardar un valor de texto.",
+    "Debe mostrar el contenido de la variable por pantalla."
+  ],
   starterCode: 'nombre = ""\nprint(nombre)'
 };
 
@@ -65,11 +83,22 @@ window.EXERCISE_CATALOG["py_tema1_ej4"] = {
   title: "Dos variables",
   statement: "Guarda tu edad y tu ciudad en dos variables distintas y muéstralas por pantalla.",
   hints: [
-    "Necesitas una variable para cada dato.",
-    "No ambos datos tienen el mismo tipo.",
-    "La salida final debe mostrar los dos valores."
+    "Necesitas guardar dos datos diferentes.",
+    "Piensa qué dato es numérico y cuál es texto.",
+    "La salida final debe mostrar ambos valores."
   ],
-  starterCode: 'edad = 0\nciudad = ""\nprint(edad)\nprint(ciudad)'
+  expectedOutput: "Debe mostrar por pantalla una edad y una ciudad guardadas previamente en variables.",
+  checks: [
+    "Debe usar una variable para la edad.",
+    "Debe usar una variable para la ciudad.",
+    "Debe mostrar ambos valores por pantalla."
+  ],
+  starterCode:
+`edad = 0
+ciudad = ""
+
+# Muestra los dos valores por pantalla
+`
 };
 
 window.EXERCISE_CATALOG["py_tema1_ej5"] = {
@@ -87,7 +116,18 @@ window.EXERCISE_CATALOG["py_tema1_ej5"] = {
     "Después calcula el resultado con una operación.",
     "Muestra el resultado final por pantalla."
   ],
-  starterCode: 'a = 0\nb = 0\nprint(a + b)'
+  expectedOutput: "Debe mostrar el resultado de sumar dos variables numéricas.",
+  checks: [
+    "Debe crear dos variables numéricas.",
+    "Debe realizar una suma entre ellas.",
+    "Debe mostrar el resultado de la operación."
+  ],
+  starterCode:
+`a = 0
+b = 0
+
+# Calcula y muestra la suma
+`
 };
 
 window.EXERCISE_CATALOG["py_tema1_ej6"] = {
@@ -105,7 +145,17 @@ window.EXERCISE_CATALOG["py_tema1_ej6"] = {
     "El objetivo es obtener una cantidad multiplicada respecto al valor original.",
     "Comprueba que la salida sea el doble del valor inicial."
   ],
-  starterCode: 'numero = 0\nprint(numero * 2)'
+  expectedOutput: "Debe mostrar el doble del número guardado en la variable.",
+  checks: [
+    "Debe partir de una variable numérica.",
+    "Debe calcular el doble de ese valor.",
+    "Debe mostrar el resultado final por pantalla."
+  ],
+  starterCode:
+`numero = 0
+
+# Calcula y muestra el doble
+`
 };
 
 window.EXERCISE_CATALOG["py_tema1_ej7"] = {
@@ -123,7 +173,17 @@ window.EXERCISE_CATALOG["py_tema1_ej7"] = {
     "Piensa cómo construir una salida legible.",
     "Vigila los espacios para que el saludo quede natural."
   ],
-  starterCode: 'nombre = ""\nprint("Hola", nombre)'
+  expectedOutput: "Debe mostrar un saludo formado por texto fijo y el valor de la variable nombre.",
+  checks: [
+    "Debe usar una variable llamada nombre.",
+    "Debe combinar texto fijo con el valor de la variable.",
+    "La salida debe ser legible y tener espacios correctos."
+  ],
+  starterCode:
+`nombre = ""
+
+# Construye y muestra un saludo usando la variable
+`
 };
 
 window.EXERCISE_CATALOG["py_tema1_ej8"] = {
@@ -141,7 +201,20 @@ window.EXERCISE_CATALOG["py_tema1_ej8"] = {
     "La frase debe sonar completa y natural.",
     "Revisa que aparezcan los tres datos pedidos."
   ],
-  starterCode: 'nombre = ""\nedad = 0\nciudad = ""\nprint("Me llamo", nombre, "tengo", edad, "años y vivo en", ciudad)'
+  expectedOutput: "Debe mostrar una frase completa que incluya nombre, edad y ciudad.",
+  checks: [
+    "Debe crear o usar una variable para el nombre.",
+    "Debe crear o usar una variable para la edad.",
+    "Debe crear o usar una variable para la ciudad.",
+    "Debe mostrar una frase legible con los tres datos."
+  ],
+  starterCode:
+`nombre = ""
+edad = 0
+ciudad = ""
+
+# Construye una frase completa con los tres datos
+`
 };
 
 window.EXERCISE_CATALOG["py_tema1_ej9"] = {
@@ -158,6 +231,12 @@ window.EXERCISE_CATALOG["py_tema1_ej9"] = {
     "El problema está en cómo se ha escrito el texto.",
     "Revisa si el inicio y el final están bien cerrados.",
     "Después de corregirlo, el programa debe mostrar el mensaje sin fallar."
+  ],
+  expectedOutput: "Debe mostrar el mensaje Hola mundo sin provocar error de sintaxis.",
+  checks: [
+    "Debe corregir el texto mal cerrado.",
+    "Debe mantener el mensaje pedido.",
+    "El programa debe ejecutarse sin error."
   ],
   starterCode: 'print("Hola mundo)'
 };
@@ -177,6 +256,12 @@ window.EXERCISE_CATALOG["py_tema1_ej10"] = {
     "Revisa cómo estás construyendo el mensaje.",
     "Busca una forma de mostrar texto y número sin forzar una suma incorrecta."
   ],
+  expectedOutput: "Debe mostrar una frase con la edad sin provocar un error de tipos.",
+  checks: [
+    "Debe mantener una variable numérica para la edad.",
+    "Debe construir una salida que mezcle texto y número correctamente.",
+    "El programa debe ejecutarse sin TypeError."
+  ],
   starterCode: 'edad = 18\nprint("Tengo " + edad + " años")'
 };
 
@@ -188,14 +273,27 @@ window.EXERCISE_CATALOG["py_tema1_reto1"] = {
   difficulty: "Media",
   estimatedTime: "10 min",
   skill: "Variables + strings",
-  title: "Tarjeta personal",
+  title: "Mini reto – Tarjeta personal",
   statement: "Crea un pequeño programa que muestre una tarjeta personal con nombre, edad y ciudad en formato claro y ordenado.",
   hints: [
     "Primero decide qué información vas a guardar.",
     "La salida debe verse clara y separada.",
     "Piensa en un formato que haga fácil leer cada dato."
   ],
-  starterCode: 'nombre = ""\nedad = 0\nciudad = ""\n\nprint("=== TARJETA PERSONAL ===")\nprint("Nombre:", nombre)\nprint("Edad:", edad)\nprint("Ciudad:", ciudad)'
+  expectedOutput: "Debe mostrar una tarjeta personal clara con nombre, edad y ciudad.",
+  checks: [
+    "Debe guardar nombre, edad y ciudad.",
+    "Debe mostrar los datos de forma ordenada.",
+    "La salida debe ser fácil de leer.",
+    "Debe combinar variables y texto."
+  ],
+  starterCode:
+`nombre = ""
+edad = 0
+ciudad = ""
+
+# Crea aquí tu tarjeta personal
+`
 };
 
 window.EXERCISE_CATALOG["py_tema1_reto2"] = {
@@ -206,12 +304,26 @@ window.EXERCISE_CATALOG["py_tema1_reto2"] = {
   difficulty: "Media",
   estimatedTime: "12 min",
   skill: "Integrador",
-  title: "Presentación completa",
+  title: "Reto final – Presentación completa",
   statement: "Construye un programa corto que use impresión, variables, operaciones y strings para presentar información personal de forma más elaborada. Debe incluir al menos: nombre, edad, ciudad y el doble de la edad.",
   hints: [
     "Necesitas combinar datos de texto y de número.",
     "Hay un cálculo sencillo que debe aparecer en la salida.",
     "Antes de ejecutar, revisa que el programa incluya todos los elementos pedidos."
   ],
-  starterCode: 'nombre = ""\nedad = 0\nciudad = ""\n\ndoble_edad = edad * 2\n\nprint("Hola, me llamo", nombre)\nprint("Vivo en", ciudad)\nprint("Tengo", edad, "años")\nprint("El doble de mi edad es", doble_edad)'
+  expectedOutput: "Debe mostrar una presentación personal que incluya nombre, edad, ciudad y el doble de la edad.",
+  checks: [
+    "Debe usar variables de texto y numéricas.",
+    "Debe calcular el doble de la edad.",
+    "Debe mostrar todos los datos pedidos.",
+    "La salida debe estar organizada y ser legible."
+  ],
+  starterCode:
+`nombre = ""
+edad = 0
+ciudad = ""
+
+# Calcula el doble de la edad
+# y construye una presentación completa
+`
 };
