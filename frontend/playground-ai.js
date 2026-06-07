@@ -4,15 +4,20 @@
     this.state.lastHintSource = null;
   };
 
-  app.setAiMessage = function setAiMessage(message, source = null) {
+  app.setAiMessage = function setAiMessage(message, source = null, level = null) {
     if (!this.dom.aiFeedbackEl) return;
 
-    const prefixMap = {
-      openrouter: "Pista IA:\n\n",
-      fallback: "Ayuda técnica básica:\n\n",
-    };
+    let prefix = "";
 
-    this.dom.aiFeedbackEl.textContent = `${prefixMap[source] || ""}${message || ""}`;
+    if (source === "openrouter") {
+      prefix = "Pista IA:\n\n";
+    } else if (source === "fallback" && level === "info") {
+      prefix = "Comprobación final:\n\n";
+    } else if (source === "fallback") {
+      prefix = "Ayuda técnica básica:\n\n";
+    }
+
+    this.dom.aiFeedbackEl.textContent = `${prefix}${message || ""}`;
     this.state.lastHintSource = source;
   };
 
@@ -157,7 +162,7 @@
         return;
       }
 
-      this.setAiMessage(data.hint || "", data.source || null);
+      this.setAiMessage(data.hint || "", data.source || null, data.level || null);
 
       if (typeof data.remainingCredits === "number") {
         this.state.remainingAiCredits = data.remainingCredits;
@@ -168,10 +173,14 @@
         }
       }
 
+      const isInfoFallback = data.source === "fallback" && data.level === "info";
+
       this.setStatusMessage(
         data.creditsSpent
           ? "Pista IA generada correctamente."
-          : "Se ha mostrado ayuda técnica sin consumir crédito."
+          : isInfoFallback
+            ? "Se ha mostrado una comprobación automática sin consumir crédito."
+            : "Se ha mostrado ayuda técnica sin consumir crédito."
       );
     } catch (error) {
       console.error("Error pidiendo pista IA:", error);

@@ -196,7 +196,7 @@ Qué priorizar:
       `.trim();
 
       case "success_but_maybe_output":
-    return `
+        return `
 CASO: Ejecución correcta pero posible salida incorrecta
 
 Objetivo de la ayuda:
@@ -369,6 +369,7 @@ function buildTechnicalFallback(attempt, extraContext = {}) {
   const issueType = detectIssueType(attempt);
 
   let message = "";
+  let level = "warning";
 
   if (possibleMismatch) {
     const hasTechnicalError = issueType !== "success_but_maybe_output" && issueType !== "success_no_output";
@@ -387,6 +388,24 @@ function buildTechnicalFallback(attempt, extraContext = {}) {
   }
 
   switch (issueType) {
+    case "success_but_maybe_output":
+      level = "info";
+      message =
+        "1. El programa se ejecuta sin errores.\n" +
+        "2. La salida obtenida parece coherente, pero compárala con el enunciado antes de darlo por cerrado.\n" +
+        "3. Revisa especialmente valores límite, orden de los mensajes y formato de salida.\n" +
+        "4. Si la salida coincide con lo pedido, puedes continuar con el siguiente ejercicio.";
+      break;
+
+    case "success_no_output":
+      level = "info";
+      message =
+        "1. El programa se ejecuta sin errores, pero no muestra ninguna salida.\n" +
+        "2. Revisa si el ejercicio esperaba algún mensaje o resultado visible.\n" +
+        "3. Comprueba si has calculado un valor pero no lo has mostrado.\n" +
+        "4. Si el enunciado no pedía imprimir nada, puede estar bien.";
+      break;
+
     case "timeout":
       message =
         "1. El programa parece quedarse en un flujo que no termina.\n" +
@@ -467,22 +486,6 @@ function buildTechnicalFallback(attempt, extraContext = {}) {
         "4. Comprueba si hay diferencias en carpeta, extensión o nombre exacto.";
       break;
 
-      case "success_but_maybe_output":
-        message =
-          "1. El programa se ejecuta sin error, pero eso no significa que resuelva bien el ejercicio.\n" +
-          "2. Compara la salida obtenida con lo que pide exactamente el enunciado.\n" +
-          "3. Revisa si el problema está en la lógica, en el dato usado o en el formato mostrado.\n" +
-          "4. Antes de volver a ejecutar, comprueba si la salida responde al objetivo completo de la actividad.";
-        break;
-
-    case "success_no_output":
-      message =
-        "1. El código se ejecuta sin error, pero no está produciendo una salida útil.\n" +
-        "2. Revisa qué haces con el resultado después de calcularlo.\n" +
-        "3. Piensa si falta mostrar, devolver o usar mejor la información.\n" +
-        "4. Comprueba si el programa calcula algo pero nunca lo hace visible.";
-      break;
-
     default:
       message =
         "1. El programa ha fallado por un problema técnico en la ejecución.\n" +
@@ -494,7 +497,7 @@ function buildTechnicalFallback(attempt, extraContext = {}) {
 
   return {
     message,
-    level: "warning",
+    level,
     source: "fallback",
   };
 }
