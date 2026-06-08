@@ -1,5 +1,6 @@
 const API_BASE_URL = window.APP_CONFIG?.API_BASE_URL || "http://localhost:3000";
 const API_REGISTER_URL = `${API_BASE_URL}/api/auth/register`;
+const API_RESEND_VERIFICATION_URL = `${API_BASE_URL}/api/auth/resend-verification`;
 
 const nameInput = document.getElementById("name");
 const emailInput = document.getElementById("email");
@@ -95,6 +96,51 @@ function showGoToLoginButton(email) {
   loginBtn.style.display = "inline-flex";
 }
 
+function showResendVerificationButton(email) {
+  let resendBtn = document.getElementById("resend-verification-btn");
+
+  if (!resendBtn) {
+    resendBtn = document.createElement("button");
+    resendBtn.id = "resend-verification-btn";
+    resendBtn.type = "button";
+    resendBtn.className = "btn btn-secondary";
+    resendBtn.textContent = "Reenviar correo de verificación";
+    resendBtn.style.marginLeft = "10px";
+
+    registerBtn.parentNode.appendChild(resendBtn);
+  }
+
+  resendBtn.style.display = "inline-flex";
+
+  resendBtn.onclick = async () => {
+    try {
+      resendBtn.disabled = true;
+      resendBtn.textContent = "Reenviando...";
+
+      const res = await fetch(API_RESEND_VERIFICATION_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await res.json().catch(() => null);
+
+      if (!res.ok || !data?.ok) {
+        showStatus(data?.error || "No se ha podido reenviar el correo de verificación.", true);
+        return;
+      }
+
+      showStatus(data.message || "Te hemos reenviado el correo de verificación.", false);
+    } catch (error) {
+      console.error("Resend verification error:", error);
+      showStatus("No se ha podido conectar con la API.", true);
+    } finally {
+      resendBtn.disabled = false;
+      resendBtn.textContent = "Reenviar correo de verificación";
+    }
+  };
+}
+
 function lockRegisterFormAfterSuccess() {
   if (nameInput) nameInput.disabled = true;
   if (emailInput) emailInput.disabled = true;
@@ -142,6 +188,7 @@ async function doRegister() {
 
     lockRegisterFormAfterSuccess();
     showGoToLoginButton(email);
+    showResendVerificationButton(email);
   } catch (err) {
     console.error("Register error:", err);
     showStatus("No se ha podido conectar con la API.");

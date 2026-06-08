@@ -50,7 +50,7 @@ async function sendVerifyEmail({ to, name, verifyUrl }) {
   const html = `
     <div style="margin:0;padding:0;background-color:#f4f7fb;font-family:Arial,sans-serif;color:#162033;">
       <div style="max-width:640px;margin:0 auto;padding:32px 20px;">
-        <div style="background:linear-gradient(135deg,#4f8cff,#2ce6ff,#8b5cf6);border-radius:24px 24px 0 0;padding:28px 32px;color:#ffffff;">
+        <div style="background-color:#4f8cff;background-image:linear-gradient(135deg,#4f8cff,#2ce6ff,#8b5cf6);border-radius:24px 24px 0 0;padding:28px 32px;color:#ffffff;">
           <div style="font-size:14px;opacity:0.9;margin-bottom:8px;">TFG Python</div>
           <h1 style="margin:0;font-size:28px;line-height:1.2;">Verifica tu correo</h1>
           <p style="margin:12px 0 0;font-size:16px;line-height:1.6;opacity:0.95;">
@@ -66,7 +66,7 @@ async function sendVerifyEmail({ to, name, verifyUrl }) {
           <div style="margin:28px 0;">
             <a href="${verifyUrl}"
                style="display:inline-block;padding:14px 24px;border-radius:14px;
-                      background:linear-gradient(135deg,#4ade80,#22c55e);
+                      background-color:#22c55e;background-image:linear-gradient(135deg,#4ade80,#22c55e);
                       color:#03121d;text-decoration:none;font-weight:700;font-size:15px;">
               Verificar correo
             </a>
@@ -100,7 +100,7 @@ async function sendWelcomeEmail({ to, name }) {
   const html = `
     <div style="margin:0;padding:0;background-color:#f4f7fb;font-family:Arial,sans-serif;color:#162033;">
       <div style="max-width:640px;margin:0 auto;padding:32px 20px;">
-        <div style="background:linear-gradient(135deg,#4f8cff,#2ce6ff,#8b5cf6);border-radius:24px 24px 0 0;padding:28px 32px;color:#ffffff;">
+        <div style="background-color:#4f8cff;background-image:linear-gradient(135deg,#4f8cff,#2ce6ff,#8b5cf6);border-radius:24px 24px 0 0;padding:28px 32px;color:#ffffff;">
           <div style="font-size:14px;opacity:0.9;margin-bottom:8px;">TFG Python</div>
           <h1 style="margin:0;font-size:28px;line-height:1.2;">¡Bienvenido/a, ${name}!</h1>
           <p style="margin:12px 0 0;font-size:16px;line-height:1.6;opacity:0.95;">
@@ -116,7 +116,7 @@ async function sendWelcomeEmail({ to, name }) {
           <div style="margin:28px 0;">
             <a href="${appBaseUrl}/login.html"
                style="display:inline-block;padding:14px 24px;border-radius:14px;
-                      background:linear-gradient(135deg,#4ade80,#22c55e);
+                      background-color:#22c55e;background-image:linear-gradient(135deg,#4ade80,#22c55e);
                       color:#03121d;text-decoration:none;font-weight:700;font-size:15px;">
               Entrar a la plataforma
             </a>
@@ -145,7 +145,7 @@ async function sendResetPasswordEmail({ to, name, resetUrl }) {
   const html = `
     <div style="margin:0;padding:0;background-color:#f4f7fb;font-family:Arial,sans-serif;color:#162033;">
       <div style="max-width:640px;margin:0 auto;padding:32px 20px;">
-        <div style="background:linear-gradient(135deg,#ff7aa2,#ff4ecd);border-radius:24px 24px 0 0;padding:28px 32px;color:#ffffff;">
+        <div style="background-color:#ff4ecd;background-image:linear-gradient(135deg,#ff7aa2,#ff4ecd);border-radius:24px 24px 0 0;padding:28px 32px;color:#ffffff;">
           <div style="font-size:14px;opacity:0.9;margin-bottom:8px;">TFG Python</div>
           <h1 style="margin:0;font-size:28px;line-height:1.2;">Recuperación de contraseña</h1>
           <p style="margin:12px 0 0;font-size:16px;line-height:1.6;opacity:0.95;">
@@ -165,7 +165,7 @@ async function sendResetPasswordEmail({ to, name, resetUrl }) {
           <div style="margin:28px 0;">
             <a href="${resetUrl}"
                style="display:inline-block;padding:14px 24px;border-radius:14px;
-                      background:linear-gradient(135deg,#4f8cff,#2ce6ff);
+                      background-color:#4f8cff;background-image:linear-gradient(135deg,#4f8cff,#2ce6ff);
                       color:#03121d;text-decoration:none;font-weight:700;font-size:15px;">
               Cambiar contraseña
             </a>
