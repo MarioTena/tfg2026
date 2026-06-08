@@ -130,9 +130,48 @@ window.PlaygroundApp = {
     this.updateAiButtonState?.();
   },
 
-  redirectIfNotLogged() {
-    if (!this.getToken()) {
+  async redirectIfNotLogged() {
+    const token = this.getToken();
+
+    if (!token) {
+      localStorage.removeItem("user");
+      sessionStorage.setItem("session-message", "Debes iniciar sesión para continuar.");
       window.location.href = "../login.html";
+      return false;
+    }
+
+    try {
+      const res = await fetch(`${this.config.API_BASE_URL}/api/auth/me`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await res.json().catch(() => null);
+
+      if (!res.ok || !data?.ok || !data.user) {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        sessionStorage.setItem(
+          "session-message",
+          "Tu sesión ha caducado o el usuario ya no existe. Vuelve a iniciar sesión."
+        );
+        window.location.href = "../login.html";
+        return false;
+      }
+
+      localStorage.setItem("user", JSON.stringify(data.user));
+      return true;
+    } catch (error) {
+      console.error("Error comprobando sesión:", error);
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      sessionStorage.setItem(
+        "session-message",
+        "No se ha podido comprobar tu sesión. Vuelve a iniciar sesión."
+      );
+      window.location.href = "../login.html";
+      return false;
     }
   },
 

@@ -245,8 +245,7 @@ function showResult(message, type = "info") {
 
     const buildMessage = failMessageBuilder || defaultFailMessageBuilder;
     const resultType = nextAttempt >= 3 ? "danger" : "warning";
-
-showResult(buildMessage(score, nextAttempt), resultType);
+    
     showResult(buildMessage(score, nextAttempt), resultType);
   });
 

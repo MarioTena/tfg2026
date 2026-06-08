@@ -18,6 +18,15 @@ function showStatus(message = "", isError = true) {
   statusMsg.classList.toggle("status-error", isError && !!message);
 }
 
+(function showSessionMessage() {
+  const message = sessionStorage.getItem("session-message");
+
+  if (message) {
+    sessionStorage.removeItem("session-message");
+    showStatus(message, true);
+  }
+})();
+
 let resendVerificationBtn = null;
 
 function hideResendVerificationButton() {

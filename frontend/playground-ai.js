@@ -67,9 +67,9 @@
         }
       );
 
-      const data = await res.json();
+      const data = await res.json().catch(() => null);
 
-      if (!res.ok || !data.ok) {
+      if (!res.ok || !data?.ok) {
         this.state.remainingAiCredits = null;
         this.state.aiCreditsLoadError = true;
         this.dom.aiCreditsEl.textContent = "Créditos IA: error";
@@ -161,7 +161,7 @@
         body: JSON.stringify(body),
       });
 
-      const data = await res.json();
+      const data = await res.json().catch(() => null);
 
       if (currentRequestId !== this.state.aiHintRequestId) {
         return;
@@ -171,10 +171,10 @@
         return;
       }
 
-      if (!res.ok || !data.ok) {
-        this.setAiMessage(data.error || "No se pudo obtener una pista");
+      if (!res.ok || !data?.ok) {
+        this.setAiMessage(data?.error || "No se pudo obtener una pista");
 
-        if (typeof data.remainingCredits === "number") {
+        if (typeof data?.remainingCredits === "number") {
           this.state.remainingAiCredits = data.remainingCredits;
           this.state.aiCreditsLoadError = false;
 

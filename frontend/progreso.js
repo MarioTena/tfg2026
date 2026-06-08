@@ -345,11 +345,38 @@ function updateNextStep(completedTopics) {
   }
 }
 
+function clearSessionAndRedirect(message = "Tu sesión ya no es válida. Vuelve a iniciar sesión.") {
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
+  sessionStorage.setItem("session-message", message);
+  window.location.href = "login.html";
+}
+
+async function readJsonSafely(res) {
+  try {
+    return await res.json();
+  } catch {
+    return null;
+  }
+}
+
+function isAuthError(status, data) {
+  const errorText = String(data?.error || "").toLowerCase();
+
+  return (
+    status === 401 ||
+    status === 403 ||
+    errorText.includes("token") ||
+    errorText.includes("usuario no existe") ||
+    errorText.includes("usuario no encontrado") ||
+    errorText.includes("sesión")
+  );
+}
+
 async function loadProfileProgress() {
   try {
     if (!token) {
-      updateGlobalProgress([]);
-      updateNextStep([]);
+      clearSessionAndRedirect("Debes iniciar sesión para continuar.");
       return;
     }
 
@@ -359,17 +386,21 @@ async function loadProfileProgress() {
       }
     });
 
-    if (res.status === 401) {
+    const data = await readJsonSafely(res);
+
+    if (!res.ok) {
+      if (isAuthError(res.status, data)) {
+        clearSessionAndRedirect(
+          "Tu sesión ha caducado o el usuario ya no existe. Vuelve a iniciar sesión."
+        );
+        return;
+      }
+
+      console.error(data?.error || data?.message || "No se ha podido cargar el progreso.");
       updateGlobalProgress([]);
       updateNextStep([]);
       return;
     }
-
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
-    }
-
-    const data = await res.json();
     const completedTopics = data?.progress?.completedTopics || [];
 
     updateGlobalProgress(completedTopics);

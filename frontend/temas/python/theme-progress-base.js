@@ -2,6 +2,44 @@ const API_BASE_URL = window.APP_CONFIG?.API_BASE_URL || "http://localhost:3000";
 const API_URL = `${API_BASE_URL}/api/progress/python`;
 const token = localStorage.getItem("token");
 
+function getLoginPath() {
+  const path = window.location.pathname;
+
+  if (path.includes("/temas/python/")) {
+    return "../../../login.html";
+  }
+
+  return "./login.html";
+}
+
+function clearSessionAndRedirect(message = "Tu sesión ya no es válida. Vuelve a iniciar sesión.") {
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
+  sessionStorage.setItem("session-message", message);
+  window.location.href = getLoginPath();
+}
+
+async function readJsonSafely(res) {
+  try {
+    return await res.json();
+  } catch {
+    return null;
+  }
+}
+
+function isAuthError(status, data) {
+  const errorText = String(data?.error || "").toLowerCase();
+
+  return (
+    status === 401 ||
+    status === 403 ||
+    errorText.includes("token") ||
+    errorText.includes("usuario no existe") ||
+    errorText.includes("usuario no encontrado") ||
+    errorText.includes("sesión")
+  );
+}
+
 function initThemeProgress(config) {
   const topics = config.topics || [];
 
@@ -13,8 +51,7 @@ function initThemeProgress(config) {
   async function loadProgress() {
     try {
       if (!token) {
-        renderTopics([]);
-        updateHeaderProgress([]);
+        clearSessionAndRedirect("Debes iniciar sesión para continuar.");
         return;
       }
 
@@ -23,18 +60,22 @@ function initThemeProgress(config) {
           Authorization: `Bearer ${token}`
         }
       });
+      const data = await readJsonSafely(res);
 
-      if (res.status === 401) {
+      if (!res.ok) {
+        if (isAuthError(res.status, data)) {
+          clearSessionAndRedirect(
+            "Tu sesión ha caducado o el usuario ya no existe. Vuelve a iniciar sesión."
+          );
+          return;
+        }
+
+        console.error(data?.error || data?.message || "No se ha podido cargar el progreso.");
         renderTopics([]);
         updateHeaderProgress([]);
         return;
       }
-
-      if (!res.ok) {
-        throw new Error(`Error HTTP: ${res.status}`);
-      }
-
-      const data = await res.json();
+      
       const completed = data?.progress?.completedTopics || [];
 
       renderTopics(completed);

@@ -21,6 +21,64 @@ function saveLastThemeFromTopic(topicId) {
   }
 }
 
+function getLoginPath() {
+  const path = window.location.pathname;
+
+  if (path.includes("/temas/python/")) {
+    return "../../../login.html";
+  }
+
+  if (path.includes("/playground/")) {
+    return "../login.html";
+  }
+
+  return "./login.html";
+}
+
+function clearSessionAndRedirect(message = "Tu sesión ya no es válida. Vuelve a iniciar sesión.") {
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
+  sessionStorage.setItem("session-message", message);
+  window.location.href = getLoginPath();
+}
+
+async function readJsonSafely(res) {
+  try {
+    return await res.json();
+  } catch {
+    return null;
+  }
+}
+
+function isAuthError(status, data) {
+  const errorText = String(data?.error || "").toLowerCase();
+
+  return (
+    status === 401 ||
+    status === 403 ||
+    errorText.includes("token") ||
+    errorText.includes("usuario no existe") ||
+    errorText.includes("usuario no encontrado") ||
+    errorText.includes("sesión")
+  );
+}
+
+function getReadableError(status, data, fallbackMessage) {
+  if (status === 400) {
+    return data?.error || "La petición no es válida.";
+  }
+
+  if (status === 404) {
+    return data?.error || "No se ha encontrado la información solicitada.";
+  }
+
+  if (status >= 500) {
+    return "Ha ocurrido un error en el servidor. Inténtalo de nuevo más tarde.";
+  }
+
+  return data?.error || data?.message || fallbackMessage;
+}
+
 function initTopicCompletion({
   topicId,
   nextUrl = null,
@@ -32,6 +90,7 @@ function initTopicCompletion({
     const token = localStorage.getItem("token");
 
     if (!token) {
+      clearSessionAndRedirect("Debes iniciar sesión para continuar.");
       return [];
     }
 
@@ -41,11 +100,25 @@ function initTopicCompletion({
       }
     });
 
+    const data = await readJsonSafely(res);
+
     if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
+      if (isAuthError(res.status, data)) {
+        clearSessionAndRedirect(
+          "Tu sesión ha caducado o el usuario ya no existe. Vuelve a iniciar sesión."
+        );
+        return [];
+      }
+
+      throw new Error(
+        getReadableError(
+          res.status,
+          data,
+          "No se ha podido consultar tu progreso."
+        )
+      );
     }
 
-    const data = await res.json();
     return data?.progress?.completedTopics || [];
   }
 
@@ -77,7 +150,8 @@ function initTopicCompletion({
     const token = localStorage.getItem("token");
 
     if (!token) {
-      throw new Error("Debes iniciar sesión para guardar el progreso");
+      clearSessionAndRedirect("Debes iniciar sesión para guardar el progreso.");
+      return false;
     }
 
     const res = await fetch(PROGRESS_COMPLETE_URL, {
@@ -89,8 +163,23 @@ function initTopicCompletion({
       body: JSON.stringify({ topic: topicId })
     });
 
+    const data = await readJsonSafely(res);
+
     if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
+      if (isAuthError(res.status, data)) {
+        clearSessionAndRedirect(
+          "Tu sesión ha caducado o el usuario ya no existe. Vuelve a iniciar sesión."
+        );
+        return false;
+      }
+
+      throw new Error(
+        getReadableError(
+          res.status,
+          data,
+          "No se ha podido guardar el progreso."
+        )
+      );
     }
 
     saveLastThemeFromTopic(topicId);

@@ -1,7 +1,6 @@
 const app = window.PlaygroundApp;
 
-// Si no hay token, no dejamos entrar al playground
-app.redirectIfNotLogged();
+
 
 // ============================================================================
 // Historial
@@ -29,8 +28,14 @@ async function loadAttempts() {
       headers: { Authorization: `Bearer ${token}` },
     });
 
-    if (res.status === 401) {
-      appendHistoryMessage("Sesión caducada o token inválido. Vuelve a hacer login.");
+    if (res.status === 401 || res.status === 403) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      sessionStorage.setItem(
+        "session-message",
+        "Tu sesión ha caducado o el usuario ya no existe. Vuelve a iniciar sesión."
+      );
+      window.location.href = "../login.html";
       return;
     }
 
@@ -42,7 +47,7 @@ async function loadAttempts() {
       return;
     }
 
-    if (!res.ok || !data.ok) {
+    if (!res.ok || !data?.ok) {
       appendHistoryMessage(data?.error || "No se ha podido cargar el historial.");
       return;
     }
@@ -235,46 +240,56 @@ function runCode() {
 // ============================================================================
 // Init
 // ============================================================================
-app.initCodeEditor();
+async function initPlayground() {
+  const isLogged = await app.redirectIfNotLogged();
 
-if (app.dom.runButton) {
-  app.dom.runButton.addEventListener("click", runCode);
-}
+  if (!isLogged) {
+    return;
+  }
 
-if (app.dom.aiHintBtn) {
-  app.dom.aiHintBtn.addEventListener("click", () => app.requestAiHint());
-}
+  app.initCodeEditor();
 
-if (app.dom.sendConsoleInputBtn) {
-  app.dom.sendConsoleInputBtn.addEventListener("click", sendInteractiveConsoleInput);
-}
+  if (app.dom.runButton) {
+    app.dom.runButton.addEventListener("click", runCode);
+  }
 
-if (app.dom.stopConsoleBtn) {
-  app.dom.stopConsoleBtn.addEventListener("click", stopInteractiveConsole);
-}
+  if (app.dom.aiHintBtn) {
+    app.dom.aiHintBtn.addEventListener("click", () => app.requestAiHint());
+  }
 
-if (app.dom.interactiveConsoleInputEl) {
-  app.dom.interactiveConsoleInputEl.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      sendInteractiveConsoleInput();
-    }
-  });
-}
+  if (app.dom.sendConsoleInputBtn) {
+    app.dom.sendConsoleInputBtn.addEventListener("click", sendInteractiveConsoleInput);
+  }
 
-window.addEventListener("beforeunload", () => {
-  if (app.state.consoleSocket && app.state.interactiveSessionId) {
-    app.state.consoleSocket.emit("console:stop", {
-      sessionId: app.state.interactiveSessionId
+  if (app.dom.stopConsoleBtn) {
+    app.dom.stopConsoleBtn.addEventListener("click", stopInteractiveConsole);
+  }
+
+  if (app.dom.interactiveConsoleInputEl) {
+    app.dom.interactiveConsoleInputEl.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        sendInteractiveConsoleInput();
+      }
     });
   }
-});
 
-app.loadExerciseFromURL();
-loadAttempts();
-app.loadAiCredits();
-app.updateAiButtonState();
-app.setInteractiveConsoleRunningState(false);
-app.updateExecutionModeUI();
-initInteractiveSocket();
-app.paintSessionUser();
+  window.addEventListener("beforeunload", () => {
+    if (app.state.consoleSocket && app.state.interactiveSessionId) {
+      app.state.consoleSocket.emit("console:stop", {
+        sessionId: app.state.interactiveSessionId
+      });
+    }
+  });
+
+  app.loadExerciseFromURL();
+  loadAttempts();
+  app.loadAiCredits();
+  app.updateAiButtonState();
+  app.setInteractiveConsoleRunningState(false);
+  app.updateExecutionModeUI();
+  initInteractiveSocket();
+  app.paintSessionUser();
+}
+
+initPlayground();

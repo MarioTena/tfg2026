@@ -177,7 +177,12 @@ async function doRegister() {
     const data = await res.json().catch(() => null);
 
     if (!res.ok || !data?.ok) {
-      showStatus(data?.error || "No se ha podido crear la cuenta.");
+      showStatus(data?.error || "No se ha podido crear la cuenta.", true);
+
+      if (res.status === 409) {
+        showGoToLoginButton(email);
+      }
+
       return;
     }
 
