@@ -6,7 +6,7 @@ initThemeProgress({
   topics: [
     {
       id: "3.1",
-      title: "¿Qué es un bucle?",
+      title: "Qué es un bucle",
       file: "01-que-es-un-bucle.html",
       type: "Concepto",
       time: "12-15 min"

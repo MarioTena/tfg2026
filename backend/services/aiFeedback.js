@@ -666,6 +666,24 @@ function normalizeAiResponse(text) {
     .trim();
 }
 
+function isUselessAiResponse(text) {
+  if (!text) return true;
+
+  const cleaned = normalizeAiResponse(text).toLowerCase().trim();
+
+  const uselessPatterns = [
+    "user safety: safe",
+    "safety: safe",
+    "safe",
+    "user_safe",
+    "content safety",
+    "policy: safe",
+    "no issues found"
+  ];
+
+  return uselessPatterns.some((pattern) => cleaned === pattern || cleaned.includes(pattern));
+}
+
 function validateAiResponse(text, issueType = "generic_error", options = {}) {
   const { strict = false } = options;
 
@@ -774,7 +792,7 @@ function looksAwkwardTutorPhrase(text) {
 
 function expandSingleLineHint(text) {
   const cleaned = normalizeAiResponse(text);
-  if (!cleaned) return "";
+  if (!cleaned || isUselessAiResponse(cleaned)) return "";
 
   const firstLine = cleaned.replace(/^\d+\.\s*/, "").trim();
   if (!firstLine) return "";
@@ -996,6 +1014,10 @@ async function generateRealAiFeedback(attempt, extraContext = {}) {
     throw new Error("La IA no devolvió contenido");
   }
 
+  if (isUselessAiResponse(text)) {
+    throw new Error("Respuesta IA inválida: useless_response");
+  }
+
   const issueType = detectIssueType(attempt);
   let validation = validateAiResponse(text, issueType, { strict: false });
 
@@ -1066,10 +1088,14 @@ async function generateRealAiFeedback(attempt, extraContext = {}) {
   if (mentionsSpecificLine(text)) {
     throw new Error("Respuesta IA inválida: mentions_specific_line");
   }
+
   if (looksAwkwardTutorPhrase(text)) {
     throw new Error("Respuesta IA inválida: awkward_tutor_phrase");
   }
-
+  
+  if (isUselessAiResponse(text)) {
+    throw new Error("Respuesta IA inválida: useless_response");
+  }
   return {
     message: text,
     level: "ai",
@@ -1092,4 +1118,5 @@ module.exports = {
   mentionsSpecificLine,
   generateRealAiFeedback,
   looksAwkwardTutorPhrase,
+  isUselessAiResponse,
 };

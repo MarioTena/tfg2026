@@ -6,6 +6,10 @@ window.PlaygroundApp = {
     lastRunStatus: null,
     lastHintSource: null,
 
+    aiHintLoading: false,
+    lastAiHintAttemptId: null,
+    aiHintRequestId: 0,
+
     consoleSocket: null,
     interactiveSessionId: null,
     interactiveConsoleRunning: false,
@@ -121,6 +125,7 @@ window.PlaygroundApp = {
   resetAttemptState() {
     this.state.lastAttemptId = null;
     this.state.lastRunStatus = null;
+    this.state.lastAiHintAttemptId = null;
     this.resetAiPanel?.();
     this.updateAiButtonState?.();
   },

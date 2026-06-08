@@ -2,6 +2,7 @@
   app.resetAiPanel = function resetAiPanel() {
     if (this.dom.aiFeedbackEl) this.dom.aiFeedbackEl.textContent = "";
     this.state.lastHintSource = null;
+    this.state.lastAiHintAttemptId = null;
   };
 
   app.setAiMessage = function setAiMessage(message, source = null, level = null) {
@@ -31,6 +32,7 @@
     const noCredits = creditsKnown && this.state.remainingAiCredits <= 0;
 
     aiHintBtn.disabled =
+      this.state.aiHintLoading ||
       !this.getToken() ||
       !hasExercise ||
       !hasAttempt ||
@@ -119,20 +121,36 @@
       return;
     }
 
+    if (this.state.aiHintLoading) {
+      return;
+    }
+
+    if (
+      this.state.lastAiHintAttemptId === this.state.lastAttemptId &&
+      this.dom.aiFeedbackEl?.textContent.trim()
+    ) {
+      this.setStatusMessage("Ya se ha mostrado una pista para este intento. Ejecuta de nuevo para pedir otra.");
+      return;
+    }
+
+    this.state.aiHintLoading = true;
+    const currentRequestId = ++this.state.aiHintRequestId;
+    const currentAttemptId = this.state.lastAttemptId;
+
     if (this.dom.aiHintBtn) this.dom.aiHintBtn.disabled = true;
     if (this.dom.aiFeedbackEl) this.dom.aiFeedbackEl.textContent = "Pensando...";
 
     try {
-     const body = {
-      topic: ex.topic,
-      attemptId: this.state.lastAttemptId,
-      exerciseId: ex.id,
-      title: ex.title,
-      statement: ex.statement,
-      hints: Array.isArray(ex.hints) ? ex.hints : [],
-      expectedOutput: ex.expectedOutput || "",
-      checks: Array.isArray(ex.checks) ? ex.checks : [],
-    };
+      const body = {
+        topic: ex.topic,
+        attemptId: currentAttemptId,
+        exerciseId: ex.id,
+        title: ex.title,
+        statement: ex.statement,
+        hints: Array.isArray(ex.hints) ? ex.hints : [],
+        expectedOutput: ex.expectedOutput || "",
+        checks: Array.isArray(ex.checks) ? ex.checks : [],
+      };
 
       const res = await fetch(this.api.aiHint, {
         method: "POST",
@@ -144,6 +162,14 @@
       });
 
       const data = await res.json();
+
+      if (currentRequestId !== this.state.aiHintRequestId) {
+        return;
+      }
+
+      if (currentAttemptId !== this.state.lastAttemptId) {
+        return;
+      }
 
       if (!res.ok || !data.ok) {
         this.setAiMessage(data.error || "No se pudo obtener una pista");
@@ -162,7 +188,26 @@
         return;
       }
 
-      this.setAiMessage(data.hint || "", data.source || null, data.level || null);
+      const hintText = data.hint || "";
+      const lowerHint = hintText.toLowerCase();
+
+      if (
+        lowerHint.includes("user safety: safe") ||
+        lowerHint.includes("safety: safe") ||
+        lowerHint.includes("content safety") ||
+        lowerHint.includes("policy: safe")
+      ) {
+        this.setAiMessage(
+          "No se ha podido generar una pista útil para este intento. Ejecuta de nuevo o revisa el enunciado paso a paso.",
+          "fallback",
+          "warning"
+        );
+        this.state.lastAiHintAttemptId = currentAttemptId;
+        return;
+      }
+
+      this.setAiMessage(hintText, data.source || null, data.level || null);
+      this.state.lastAiHintAttemptId = currentAttemptId;
 
       if (typeof data.remainingCredits === "number") {
         this.state.remainingAiCredits = data.remainingCredits;
@@ -187,7 +232,9 @@
       this.setAiMessage("Error de conexión con la IA.");
       await this.loadAiCredits();
     } finally {
+      this.state.aiHintLoading = false;
       this.updateAiButtonState();
     }
   };
+
 })(window.PlaygroundApp);
