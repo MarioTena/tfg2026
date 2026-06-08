@@ -150,9 +150,9 @@ router.post("/register", async (req, res) => {
   }
 });
 
-router.get("/verify-email", async (req, res) => {
+router.post("/verify-email", async (req, res) => {
   try {
-    const rawToken = String(req.query?.token || "").trim();
+    const rawToken = String(req.body?.token || "").trim();
 
     if (!rawToken) {
       return res.status(400).json({ ok: false, error: "Falta token." });

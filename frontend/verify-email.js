@@ -3,10 +3,20 @@ const API_VERIFY_EMAIL_URL = `${API_BASE_URL}/api/auth/verify-email`;
 const API_RESEND_VERIFICATION_URL = `${API_BASE_URL}/api/auth/resend-verification`;
 
 const statusMsg = document.getElementById("verify-status");
+const confirmVerifyBtn = document.getElementById("confirm-verify-btn");
+
 const resendPanel = document.getElementById("resend-verification-panel");
 const resendEmailInput = document.getElementById("resend-email");
 const resendBtn = document.getElementById("resend-verification-btn");
 const resendStatusMsg = document.getElementById("resend-status");
+
+const params = new URLSearchParams(window.location.search);
+const token = params.get("token");
+const email = params.get("email");
+
+if (email && resendEmailInput) {
+  resendEmailInput.value = email;
+}
 
 function showStatus(message = "", isError = true) {
   if (!statusMsg) return;
@@ -89,25 +99,33 @@ async function resendVerificationEmail() {
 }
 
 async function verifyEmail() {
-  const params = new URLSearchParams(window.location.search);
-  const token = params.get("token");
-  const email = params.get("email");
-
-  if (email && resendEmailInput) {
-    resendEmailInput.value = email;
-  }
-
   if (!token) {
     showStatus("Falta el token de verificación. Puedes solicitar un nuevo correo de verificación.", true);
     showResendPanel();
+
+    if (confirmVerifyBtn) {
+      confirmVerifyBtn.style.display = "none";
+    }
+
     return;
   }
 
   hideResendPanel();
-  showStatus("Verificando tu correo...", false);
 
   try {
-    const res = await fetch(`${API_VERIFY_EMAIL_URL}?token=${encodeURIComponent(token)}`);
+    if (confirmVerifyBtn) {
+      confirmVerifyBtn.disabled = true;
+      confirmVerifyBtn.textContent = "Verificando...";
+    }
+
+    showStatus("Verificando tu correo...", false);
+
+    const res = await fetch(API_VERIFY_EMAIL_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ token }),
+    });
+
     const data = await res.json().catch(() => null);
 
     if (!res.ok || !data?.ok) {
@@ -115,18 +133,47 @@ async function verifyEmail() {
         data?.error || "No se ha podido verificar el correo. Puedes solicitar un nuevo enlace.",
         true
       );
+
       showResendPanel();
+
+      if (confirmVerifyBtn) {
+        confirmVerifyBtn.style.display = "none";
+      }
+
       return;
     }
 
     showStatus("Correo verificado correctamente. Ya puedes iniciar sesión.", false);
     hideResendPanel();
+
+    if (confirmVerifyBtn) {
+      confirmVerifyBtn.style.display = "none";
+    }
   } catch (error) {
     console.error("Verify email error:", error);
     showStatus("No se ha podido conectar con la API. Puedes intentarlo de nuevo o solicitar otro enlace.", true);
     showResendPanel();
+
+    if (confirmVerifyBtn) {
+      confirmVerifyBtn.disabled = false;
+      confirmVerifyBtn.textContent = "Verificar correo";
+    }
   }
 }
+
+if (!token) {
+  showStatus("Falta el token de verificación. Puedes solicitar un nuevo correo de verificación.", true);
+  showResendPanel();
+
+  if (confirmVerifyBtn) {
+    confirmVerifyBtn.style.display = "none";
+  }
+} else {
+  showStatus("Pulsa el botón para verificar tu correo y activar tu cuenta.", false);
+  hideResendPanel();
+}
+
+confirmVerifyBtn?.addEventListener("click", verifyEmail);
 
 resendBtn?.addEventListener("click", resendVerificationEmail);
 
@@ -136,5 +183,3 @@ resendEmailInput?.addEventListener("keydown", (e) => {
     resendVerificationEmail();
   }
 });
-
-verifyEmail();

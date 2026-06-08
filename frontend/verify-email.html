@@ -13,7 +13,7 @@
   <header class="header">
     <span class="mission-tag">Cuenta</span>
     <h1>Verificación de correo</h1>
-    <p>Estamos comprobando tu enlace de verificación.</p>
+    <p>Confirma tu correo para activar la cuenta.</p>
   </header>
 
   <main class="main-container single-column">
@@ -21,13 +21,16 @@
       <div class="exercise-header">
         <div>
           <h2 class="exercise-title">Estado</h2>
-          <p class="exercise-subtitle">Resultado de la verificación de tu cuenta.</p>
+          <p class="exercise-subtitle">Pulsa el botón para verificar tu cuenta.</p>
         </div>
       </div>
 
       <div class="exercise-body">
         <div class="exercise-block">
           <p id="verify-status" class="status-msg" style="display:none;"></p>
+          <button id="confirm-verify-btn" class="btn btn-primary" type="button" style="margin-top:16px;">
+            Verificar correo
+          </button>
 
           <div id="resend-verification-panel" style="display:none; margin-top:16px;">
             <div class="field">
