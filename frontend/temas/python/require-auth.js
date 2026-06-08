@@ -1,5 +1,5 @@
 (() => {
-  const API_BASE_URL = window.APP_CONFIG?.API_BASE_URL || "http://localhost:3000";
+  const API_BASE_URL = window.APP_CONFIG?.API_BASE_URL || "https://tfg2026-backend.onrender.com";
 
   function getLoginPath() {
     const path = window.location.pathname;
