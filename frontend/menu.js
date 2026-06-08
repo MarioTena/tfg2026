@@ -1,3 +1,4 @@
+(() => {
 const API_BASE_URL = window.APP_CONFIG?.API_BASE_URL || "http://localhost:3000";
 const API_URL = `${API_BASE_URL}/api/progress/python`;
 const token = localStorage.getItem("token");
@@ -358,7 +359,7 @@ const data = await readJsonSafely(res);
       updateRecommendedBlock(pythonRoute[0], []);
       return;
     }
-    
+
     const completedTopics = data?.progress?.completedTopics || [];
 
     updateWelcomeUser();
@@ -380,3 +381,4 @@ const data = await readJsonSafely(res);
 }
 
 loadMenuProgress();
+})();
