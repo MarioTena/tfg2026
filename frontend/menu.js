@@ -144,21 +144,24 @@ function getFirstNotCompletedTheme(completedTopics) {
 }
 
 function getNextRecommendedTheme(completedTopics) {
-  const lastThemeId = getStoredLastThemeId();
+  const pendingThemes = pythonRoute.filter(theme => {
+    return !getThemeProgress(theme, completedTopics).completed;
+  });
 
-  if (lastThemeId) {
-    const lastTheme = pythonRoute.find(theme => theme.id === lastThemeId);
-
-    if (lastTheme) {
-      const progress = getThemeProgress(lastTheme, completedTopics);
-
-      if (!progress.completed) {
-        return lastTheme;
-      }
-    }
+  if (!pendingThemes.length) {
+    return pythonRoute[pythonRoute.length - 1];
   }
 
-  return getFirstNotCompletedTheme(completedTopics);
+  return pendingThemes.sort((a, b) => {
+    const progressA = getThemeProgress(a, completedTopics);
+    const progressB = getThemeProgress(b, completedTopics);
+
+    if (progressB.completedCount !== progressA.completedCount) {
+      return progressB.completedCount - progressA.completedCount;
+    }
+
+    return Number(a.id) - Number(b.id);
+  })[0];
 }
 
 function updateWelcomeUser() {
@@ -343,7 +346,7 @@ async function loadMenuProgress() {
       }
     });
 
-const data = await readJsonSafely(res);
+    const data = await readJsonSafely(res);
 
     if (!res.ok) {
       if (isAuthError(res.status, data)) {

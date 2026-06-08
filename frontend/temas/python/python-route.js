@@ -1,3 +1,4 @@
+(() => {
 const API_BASE_URL = window.APP_CONFIG?.API_BASE_URL || "http://localhost:3000";
 const API_URL = `${API_BASE_URL}/api/progress/python`;
 const token = localStorage.getItem("token");
@@ -145,21 +146,24 @@ function getFirstNotCompletedTheme(completedTopics) {
 }
 
 function getNextRecommendedTheme(completedTopics) {
-  const lastThemeId = getStoredLastThemeId();
+  const pendingThemes = routeTopics.filter(theme => {
+    return !getThemeProgress(theme, completedTopics).completed;
+  });
 
-  if (lastThemeId) {
-    const lastTheme = routeTopics.find(theme => theme.id === lastThemeId);
-
-    if (lastTheme) {
-      const progress = getThemeProgress(lastTheme, completedTopics);
-
-      if (!progress.completed) {
-        return lastTheme;
-      }
-    }
+  if (!pendingThemes.length) {
+    return routeTopics[routeTopics.length - 1];
   }
 
-  return getFirstNotCompletedTheme(completedTopics);
+  return pendingThemes.sort((a, b) => {
+    const progressA = getThemeProgress(a, completedTopics);
+    const progressB = getThemeProgress(b, completedTopics);
+
+    if (progressB.completedCount !== progressA.completedCount) {
+      return progressB.completedCount - progressA.completedCount;
+    }
+
+    return Number(a.id) - Number(b.id);
+  })[0];
 }
 
 function renderRoute(completedTopics) {
@@ -327,3 +331,4 @@ async function loadRouteProgress() {
 }
 
 loadRouteProgress();
+})();
