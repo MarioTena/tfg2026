@@ -41,14 +41,14 @@ nextTheme: {
     },
     {
       id: "10.quiz",
-      title: "Checkpoint del tema 10",
+      title: "Checkpoint",
       file: "tema-10-checkpoint.html",
       type: "Checkpoint",
       time: "5-7 min"
     },
     {
       id: "10.ejercicios",
-      title: "Ejercicios del tema 10",
+      title: "Ejercicios",
       file: "py-tema10-ejercicios.html",
       type: "Ejercicios",
       time: "2 horas"

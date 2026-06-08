@@ -41,14 +41,14 @@ initThemeProgress({
     },
     {
       id: "4.quiz",
-      title: "Checkpoint del tema 4",
+      title: "Checkpoint",
       file: "tema-4-checkpoint.html",
       type: "Checkpoint",
       time: "5-7 min"
     },
     {
       id: "4.ejercicios",
-      title: "Ejercicios del tema 4",
+      title: "Ejercicios",
       file: "py-tema4-ejercicios.html",
       type: "Ejercicios",
       time: "2 horas"
