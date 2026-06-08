@@ -146,25 +146,23 @@ function getFirstNotCompletedTheme(completedTopics) {
 }
 
 function getNextRecommendedTheme(completedTopics) {
-  const pendingThemes = routeTopics.filter(theme => {
-    return !getThemeProgress(theme, completedTopics).completed;
-  });
+  const lastThemeId = getStoredLastThemeId();
 
-  if (!pendingThemes.length) {
-    return routeTopics[routeTopics.length - 1];
+  if (lastThemeId) {
+    const lastTheme = routeTopics.find(theme => theme.id === lastThemeId);
+
+    if (lastTheme) {
+      const progress = getThemeProgress(lastTheme, completedTopics);
+
+      if (!progress.completed) {
+        return lastTheme;
+      }
+    }
   }
 
-  return pendingThemes.sort((a, b) => {
-    const progressA = getThemeProgress(a, completedTopics);
-    const progressB = getThemeProgress(b, completedTopics);
-
-    if (progressB.completedCount !== progressA.completedCount) {
-      return progressB.completedCount - progressA.completedCount;
-    }
-
-    return Number(a.id) - Number(b.id);
-  })[0];
+  return getFirstNotCompletedTheme(completedTopics);
 }
+
 
 function renderRoute(completedTopics) {
   routeMapEl.innerHTML = "";
