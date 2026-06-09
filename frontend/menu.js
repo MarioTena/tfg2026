@@ -143,7 +143,26 @@ function getFirstNotCompletedTheme(completedTopics) {
     || pythonRoute[pythonRoute.length - 1];
 }
 
-function getNextRecommendedTheme(completedTopics) {
+function getLastTopicActivity() {
+  try {
+    const user = JSON.parse(localStorage.getItem("user") || "{}");
+    const userId = user?.id || user?._id;
+
+    if (!userId) return null;
+
+    return JSON.parse(
+      localStorage.getItem(`lastPythonTopicActivity:${userId}`) || "null"
+    );
+  } catch {
+    return null;
+  }
+}
+
+function getThemeById(themeId) {
+  return pythonRoute.find(theme => String(theme.id) === String(themeId)) || null;
+}
+
+function getFallbackRecommendedTheme(completedTopics) {
   const pendingThemes = pythonRoute.filter(theme => {
     return !getThemeProgress(theme, completedTopics).completed;
   });
@@ -162,6 +181,24 @@ function getNextRecommendedTheme(completedTopics) {
 
     return Number(a.id) - Number(b.id);
   })[0];
+}
+
+function getNextRecommendedTheme(completedTopics) {
+  const lastActivity = getLastTopicActivity();
+
+  if (lastActivity?.themeId) {
+    const lastTheme = getThemeById(lastActivity.themeId);
+
+    if (lastTheme) {
+      const progress = getThemeProgress(lastTheme, completedTopics);
+
+      if (progress.started && !progress.completed) {
+        return lastTheme;
+      }
+    }
+  }
+
+  return getFallbackRecommendedTheme(completedTopics);
 }
 
 function updateWelcomeUser() {

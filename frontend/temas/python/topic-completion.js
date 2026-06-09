@@ -1,3 +1,4 @@
+(() => {
 const API_BASE_URL = window.APP_CONFIG?.API_BASE_URL || "http://localhost:3000";
 const PROGRESS_API_URL = `${API_BASE_URL}/api/progress/python`;
 const PROGRESS_COMPLETE_URL = `${API_BASE_URL}/api/progress/python/complete`;
@@ -19,6 +20,27 @@ function saveLastThemeFromTopic(topicId) {
   if (typeof setLastPythonThemeForCurrentUser === "function") {
     setLastPythonThemeForCurrentUser(themeId);
   }
+}
+
+function saveLastTopicActivity(topicId) {
+  try {
+    const themeId = extractThemeId(topicId);
+    if (!themeId || !topicId) return;
+
+    const user = JSON.parse(localStorage.getItem("user") || "{}");
+    const userId = user?.id || user?._id;
+
+    if (!userId) return;
+
+    localStorage.setItem(
+      `lastPythonTopicActivity:${userId}`,
+      JSON.stringify({
+        topicId,
+        themeId,
+        updatedAt: Date.now()
+      })
+    );
+  } catch {}
 }
 
 function getLoginPath() {
@@ -183,6 +205,7 @@ function initTopicCompletion({
     }
 
     saveLastThemeFromTopic(topicId);
+    saveLastTopicActivity(topicId);
 
     if (nextBtn && nextUrl) {
       nextBtn.classList.remove("btn-disabled");
@@ -202,4 +225,6 @@ function initTopicCompletion({
     isCompleted,
     getCompletedTopics
   };
-}
+} 
+window.initTopicCompletion = initTopicCompletion;
+})();
