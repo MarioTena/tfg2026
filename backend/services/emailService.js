@@ -8,9 +8,9 @@ function getRequiredEnv(name) {
   return value;
 }
 
-function getAppBaseUrl() {
-  const baseUrl = getRequiredEnv("APP_BASE_URL");
-  return baseUrl.replace(/\/+$/, "");
+function getFrontendUrl() {
+  const frontendUrl = getRequiredEnv("FRONTEND_URL");
+  return frontendUrl.replace(/\/+$/, "");
 }
 
 function getMailFrom() {
@@ -95,7 +95,7 @@ async function sendVerifyEmail({ to, name, verifyUrl }) {
 async function sendWelcomeEmail({ to, name }) {
   const transporter = createTransporter();
   const from = getMailFrom();
-  const appBaseUrl = getAppBaseUrl();
+  const frontendUrl = getFrontendUrl();
 
   const html = `
     <div style="margin:0;padding:0;background-color:#f4f7fb;font-family:Arial,sans-serif;color:#162033;">
@@ -114,7 +114,7 @@ async function sendWelcomeEmail({ to, name }) {
           </p>
 
           <div style="margin:28px 0;">
-            <a href="${appBaseUrl}/login.html"
+            <a href="${frontendUrl}/login.html"
                style="display:inline-block;padding:14px 24px;border-radius:14px;
                       background-color:#22c55e;background-image:linear-gradient(135deg,#4ade80,#22c55e);
                       color:#03121d;text-decoration:none;font-weight:700;font-size:15px;">
